@@ -18,14 +18,14 @@ const Footer = () => {
     <p className="text-base font-normal mt-2">Belgari, Fapor, Bogura Sadar, Bogura, Bangladesh<br/>support@prographr.com</p>
   </aside> 
  <div className="flex flex-wrap  justify-between lg:gap-40 gap-4 ">
- <nav className="flex flex-col flex-wrap text-base font-normal gap-4">
+ <nav className="flex flex-col flex-wrap text-base font-['__gellix_0bf537'] font-semibold gap-4">
    
    <a className="link link-hover">Flyers</a>
    <a className="link link-hover">Brochures</a>
    <a className="link link-hover">Logo and Branding</a>
    
  </nav> 
- <nav className="flex flex-col flex-wrap text-base font-normal gap-4">
+ <nav className="flex flex-col flex-wrap text-base font-['__gellix_0bf537'] font-semibold gap-4">
   
    <a className="link link-hover">Sales Sheets</a>
    <a className="link link-hover">About</a>
@@ -33,7 +33,7 @@ const Footer = () => {
   
  </nav> 
  
-  <nav className="flex flex-col flex-wrap text-base font-normal gap-4">
+  <nav className="flex flex-col flex-wrap text-base font-['__gellix_0bf537'] font-semibold gap-4">
    
     <a className="link link-hover">Customer Support</a>
     <a className="link link-hover">Terms & Conditions</a>
