@@ -1,0 +1,31 @@
+.scroll_wrapper__5yHC8 {
+    margin-top: -50px;
+    display: flex;
+    height: 680px;
+    overflow: hidden;
+    padding: 0;
+    -webkit-mask: linear-gradient(0deg, transparent, #fff 10%, #fff 90%, transparent);
+    mask: linear-gradient(0deg, transparent, #fff 10%, #fff 90%, transparent);
+    position: relative;
+    width: 88%;
+}
+
+.scroll_scrolling__mlJTJ {
+    animation: scroll_infScroll__EOahC 35s linear infinite backwards;
+}
+
+.scroll_scrolling2__yKLja {
+    margin-left: 20px;
+    animation: scroll_infScroll__EOahC 28s linear infinite backwards;
+}
+
+.scroll_scrolling3__QmJJF {
+    margin-left: 20px;
+    animation: scroll_infScroll__EOahC 35s linear infinite backwards;
+}
+
+@keyframes scroll_infScroll__EOahC {
+    100% {
+        transform: translateY(calc(-100% - 20px));
+    }
+}
