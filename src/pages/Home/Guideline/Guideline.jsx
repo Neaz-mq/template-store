@@ -132,7 +132,7 @@ const Guideline = () => {
                 )}
 
                 <div className="w-fit mt-20 mx-auto">
-                    <button className="btn bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:text-[#f2f2f5] hover:bg-[#5044a1]  font-medium capitalize text-white rounded-full gap-4 px-6 py-3 text-base mt-5">
+                    <button className="btn bg-[#7666E3] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:text-[#f2f2f5] hover:bg-[#5044a1]  font-medium capitalize text-white rounded-full gap-4 px-6 py-3 text-base mt-5">
                         <span className="-mt-1">Submit a Template</span>
                         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></button>
                 </div>
