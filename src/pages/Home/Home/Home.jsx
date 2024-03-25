@@ -3,6 +3,7 @@ import Creativity from '../Creativity/Creativity';
 import Guideline from '../Guideline/Guideline';
 import Ideas from '../Ideas/Ideas';
 import Template from '../Template/Template';
+import Testimonial from '../Testimonial/Testimonial';
 
 const Home = () => {
     return (
@@ -12,11 +13,14 @@ const Home = () => {
           <Creativity></Creativity>
           <Guideline></Guideline>
           <Ideas></Ideas>
+          <Testimonial></Testimonial>
         </div>
     );
 };
 
 export default Home;
+
+
 
 
 
