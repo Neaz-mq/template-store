@@ -1,0 +1,22 @@
+/* Style Swiper pagination bullets */
+.swiper-pagination {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #1e4b7c;
+    opacity: 0.5;
+    margin: 20px 5px;
+    border-radius: 50%; /* Make bullets round */
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: #2e10f2;
+    
+}
