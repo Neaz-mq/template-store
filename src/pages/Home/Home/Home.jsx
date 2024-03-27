@@ -1,4 +1,5 @@
 import Banner from '../Banner/Banner'
+import Community from '../Community/Community';
 import Creativity from '../Creativity/Creativity';
 import Guideline from '../Guideline/Guideline';
 import Ideas from '../Ideas/Ideas';
@@ -14,6 +15,7 @@ const Home = () => {
           <Guideline></Guideline>
           <Ideas></Ideas>
           <Testimonial></Testimonial>
+          <Community></Community>
         </div>
     );
 };
