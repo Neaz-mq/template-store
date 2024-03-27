@@ -17,7 +17,7 @@ const NavBar = () => {
       <div className="navbar bg-[#EDEEF7] py-7 -mt-7">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} className="lg:hidden ml-7">
+            <div tabIndex={0} className="lg:hidden ml-3">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </div>
             <ul tabIndex={0} className="menu menu-sm cursor-pointer  dropdown-content -mt-16 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-2 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-semibold">
@@ -30,8 +30,11 @@ const NavBar = () => {
               <Link to="/contact" className="hover:text-[#7673E5]">Contact Us</Link>
             </ul>
           </div>
-          <Link to="/" className={`${getTextColorClass()} mt-10 ml-20 -mr-2 mb-8`}>
-            <img src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg" alt="" />
+          <Link to="/" className={`${getTextColorClass()} lg:mt-10 mt-8 lg:ml-20 ml-2 -mr-1  lg:-mr-2 mb-8`}>
+            {/* Show different image on mobile */}
+            <img className="lg:hidden" src="https://prographr.vercel.app/_next/static/media/icon.87854914.svg" alt="" />
+            {/* Show original logo on larger devices */}
+            <img className="hidden lg:block" src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg" alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex mr-36 -ml-14">
