@@ -3,6 +3,7 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
+import Templates from "../pages/Temp/Templates/Templates";
 
  export const router = createBrowserRouter([
     {
@@ -12,7 +13,11 @@ import Home from "../pages/Home/Home/Home";
         {
             path: '/',
             element: <Home></Home>
-        }
+        },
+        {
+          path: '/template',
+          element: <Templates></Templates>
+      }
       ]
     },
   ]);
