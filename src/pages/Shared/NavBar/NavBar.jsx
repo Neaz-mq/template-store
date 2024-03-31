@@ -5,7 +5,23 @@ const NavBar = () => {
 
   // Function to determine the text color class based on the current page
   const getTextColorClass = () => {
-    if (location.pathname === '/template') {
+    if (location.pathname === '/template' ) {
+      return 'text-[#767BE8]'; // Apply this color class for the Template page
+    } else {
+      return 'text-base'; // Apply default color class for other pages
+    }
+  };
+
+  const getTextColorCompany = () => {
+    if (location.pathname === '/company' ) {
+      return 'text-[#767BE8]'; // Apply this color class for the Template page
+    } else {
+      return 'text-base'; // Apply default color class for other pages
+    }
+  };
+
+  const getTextColorContact = () => {
+    if (location.pathname === '/contact' ) {
       return 'text-[#767BE8]'; // Apply this color class for the Template page
     } else {
       return 'text-base'; // Apply default color class for other pages
@@ -26,8 +42,9 @@ const NavBar = () => {
               </Link>
 
               <Link to="/template" className={`hover:text-[#7673E5] ${getTextColorClass()}`}>Template</Link>
-              <Link to="/company" className="hover:text-[#7673E5]">Company</Link>
-              <Link to="/contact" className="hover:text-[#7673E5]">Contact Us</Link>
+              <Link to="/company" className={`hover:text-[#7673E5] ${getTextColorCompany()}`}>Company</Link>
+              <Link to="/contact" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Contact Us</Link>            
+
             </ul>
           </div>
           <Link to="/" className={`${getTextColorClass()} lg:mt-10 mt-8 lg:ml-20 ml-2 -mr-1  lg:-mr-2 mb-8`}>
@@ -40,11 +57,12 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex mr-36 -ml-14">
           <ul className="menu text-base cursor-pointer  menu-horizontal px-2 lg:flex flex-row gap-10 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#1e1c27] font-semibold">
             <Link to="/template" className={`hover:text-[#7673E5] ${getTextColorClass()}`}>Template</Link>
-            <Link to="/company" className="hover:text-[#7673E5]">Company</Link>
-            <Link to="/contact" className="hover:text-[#7673E5]">Contact Us</Link>
+            <Link to="/company" className={`hover:text-[#7673E5] ${getTextColorCompany()}`}>Company</Link>            
+            <Link to="/contact" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Contact Us</Link>            
+           
           </ul>
         </div>
-
+        
         <div className="navbar-end gap-3 lg:gap-0">
           <button className="btn btn-sm bg-transparent  capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none px-7 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 ml-2 -mr-2 lg:-ml-7">
             <span>Sign in</span>
