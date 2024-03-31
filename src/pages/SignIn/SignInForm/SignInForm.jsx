@@ -10,11 +10,11 @@ const SignInForm = () => {
                 <br/>
                 <input className="inputField mt-4" placeholder="Password" type="password"/><br/><br/>
 
-                <button className="btn btn-primary font-light capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none"><span className="-mt-1">Sign in</span><svg stroke="currentColor" fill="none"  viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                <button className="btn bg-[#6658C5]  capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]"><span className="-mt-1">Sign in</span><svg stroke="currentColor" fill="none"  viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
                 <br/><br/>
 
-                <button className="btn bg-white hover:bg-gray-100 font-light capitalize text-accent rounded-full gap-4 w-full py-3 shadow-none"><span className="-mt-1">Sign in With Facebook</span> <svg stroke="currentColor" fill="none" 
+                <button className="btn text-slate-800 bg-white hover:bg-gray-100  capitalize  rounded-full gap-4 w-full py-3 font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] shadow-none"><span className="-mt-1">Sign in With Facebook</span> <svg stroke="currentColor" fill="none" 
                  viewBox="0 0 24 24" 
                    height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button></form></div>
         </div>
