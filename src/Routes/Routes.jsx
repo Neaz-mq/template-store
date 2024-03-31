@@ -7,6 +7,7 @@ import Templates from "../pages/Temp/Templates/Templates";
 import Descriptions from "../pages/Temp/Descriptions/Descriptions";
 import Company from "../pages/Company/Company";
 import Contact from "../pages/Contact/Contact";
+import SignIn from "../pages/SignIn/SignIn";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact></Contact>
+      },
+      {
+        path: '/sign-in',
+        element: <SignIn></SignIn>
       }
     ]
   },

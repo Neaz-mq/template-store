@@ -64,9 +64,11 @@ const NavBar = () => {
         </div>
         
         <div className="navbar-end gap-3 lg:gap-0">
-          <button className="btn btn-sm bg-transparent  capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none px-7 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 ml-2 -mr-2 lg:-ml-7">
+       <Link to="sign-in">
+       <button className="btn btn-sm bg-transparent  capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none px-7 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 ml-2 -mr-2 lg:-ml-7">
             <span>Sign in</span>
           </button>
+       </Link>
 
           <button className="btn  btn-sm hover:bg-[#7666E3] bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 px-6 py-4 lg:mr-20 lg:-ml-9">
             <span className="-mt-2">Sign up</span>
