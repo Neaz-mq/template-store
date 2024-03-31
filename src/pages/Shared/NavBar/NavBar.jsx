@@ -70,9 +70,11 @@ const NavBar = () => {
           </button>
        </Link>
 
-          <button className="btn  btn-sm hover:bg-[#7666E3] bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 px-6 py-4 lg:mr-20 lg:-ml-9">
+         <Link to="sign-up-as">
+         <button className="btn  btn-sm hover:bg-[#7666E3] bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 px-6 py-4 lg:mr-20 lg:-ml-9">
             <span className="-mt-2">Sign up</span>
           </button>
+         </Link>
         </div>
       </div>
     </div>

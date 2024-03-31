@@ -8,6 +8,7 @@ import Descriptions from "../pages/Temp/Descriptions/Descriptions";
 import Company from "../pages/Company/Company";
 import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
+import SignUpForm from "../pages/SignUp/SignUpForm/SignUpForm";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: '/sign-in',
         element: <SignIn></SignIn>
+      },
+      {
+        path: '/sign-up-as',
+        element: <SignUpForm></SignUpForm>
       }
     ]
   },
