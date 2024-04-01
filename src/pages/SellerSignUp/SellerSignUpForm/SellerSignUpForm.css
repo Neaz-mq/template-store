@@ -1,8 +1,3 @@
-
-
-.inputField {
-    width: 420px;
-    border-radius: .5rem;
-    padding: 10px .75rem;
-    outline-color: var(--fallback-p, oklch(var(--p) / 1));
+.inputField{
+        outline-color: var(--fallback-p, oklch(var(--p) / 1));
 }
