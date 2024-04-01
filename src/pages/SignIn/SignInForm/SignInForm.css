@@ -1,6 +1,6 @@
-.inputField {
-    width: 280px;
-    border-radius: .5rem;
-    padding: 10px .75rem;
+.input {
+    
+    
+    
     outline-color: var(--fallback-p, oklch(var(--p) / 1));
 }

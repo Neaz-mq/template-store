@@ -13,11 +13,11 @@ const Guideline = () => {
             <div className="mt-20">
                 <div className="max-w-[740px] mx-auto  grid md:grid-cols-1 lg:grid-cols-3 gap-1 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
-                    <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900  p-3 text-sm hover:text-[#7668E5] hover:scale-105  duration-100 ${activeTab === 'guidelines' ? 'bg-[#7666E3] text-[#fffbfb]   hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('guidelines')}>Check Guidelines</button>
+                    <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900  p-3 text-sm hover:text-[#7668E5] hover:scale-105  duration-100 ${activeTab === 'guidelines' ? 'bg-[#7666E3] text-white  hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('guidelines')}>Check Guidelines</button>
 
-                    <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'submit' ? 'bg-[#7666E3] text-[#fffbfb] hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('submit')}>Submit template</button>
+                    <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'submit' ? 'bg-[#7666E3] text-white  hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('submit')}>Submit template</button>
 
-                    <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'approved' ? 'bg-[#7666E3] text-[#fffbfb] hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('approved')}>Approved</button>
+                    <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'approved' ? 'bg-[#7666E3] text-white  hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('approved')}>Approved</button>
                 </div>
             </div>
 
