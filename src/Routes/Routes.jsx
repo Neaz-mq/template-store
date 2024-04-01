@@ -9,6 +9,7 @@ import Company from "../pages/Company/Company";
 import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUpForm from "../pages/SignUp/SignUpForm/SignUpForm";
+import SellerSignUp from "../pages/SellerSignUp/SellerSignUp";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,11 @@ export const router = createBrowserRouter([
       {
         path: '/sign-up-as',
         element: <SignUpForm></SignUpForm>
-      }
+      },
+      {
+        path: '/sign-up',
+        element: <SellerSignUp></SellerSignUp>
+      },
     ]
   },
 ]);
