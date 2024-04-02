@@ -38,6 +38,9 @@ const Ideas = () => {
             </div>
             <div className="translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
                 <div className="w-full grid lg:grid-cols-2 px-10 gap-8 lg:gap-0 my-20">
+                <div className="flex items-center justify-center lg:hidden">
+                        {renderVideoForTab()}
+                        </div>
                     {activeTab === 'ideas' && (
                         <div className="text-slate-800 font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium max-w-[500px]">
                             <h2 className="text-2xl">Collect <strong> Ideas</strong></h2>
@@ -81,7 +84,7 @@ const Ideas = () => {
                             </button></div>
 
                     )}
-                    <div className="flex lg:justify-end">
+                    <div className="lg:flex lg:justify-end hidden ">
                         <div className="flex items-center justify-center">
                         {renderVideoForTab()}
                         </div>

@@ -41,8 +41,8 @@ const NavBar = () => {
                 <img src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg" alt="" />
               </Link>
 
-              <Link to="/template" className={`hover:text-[#7673E5] ${getTextColorClass()}`}>Template</Link>
-              <Link to="/company" className={`hover:text-[#7673E5] ${getTextColorCompany()}`}>Company</Link>
+              <Link to="/template" className={`hover:text-[#7673E5] mb-2 ${getTextColorClass()}`}>Template</Link>
+              <Link to="/company" className={`hover:text-[#7673E5] mb-2 ${getTextColorCompany()}`}>Company</Link>
               <Link to="/contact" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Contact Us</Link>            
 
             </ul>
