@@ -7,6 +7,25 @@ const Ideas = () => {
         setActiveTab(tab);
     }
 
+    const renderVideoForTab = () => {
+        switch (activeTab) {
+            case 'ideas':
+                return (
+                    <iframe className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" src="https://www.youtube.com/embed/YXZamW4-Ysk?si=R_MyyObrcaiPR0ex"></iframe>
+                );
+            case 'design':
+                return (
+                    <iframe className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" src="https://www.youtube.com/embed/XNkV6m4fosw?si=ytAB_ix0M2_ieC1_"></iframe>
+                );
+            case 'finalize':
+                return (
+                    <iframe className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" src="https://www.youtube.com/embed/KG5cltHpbYs?si=uOCzcZSXMJzSZm-d"></iframe>
+                );
+            default:
+                return null;
+        }
+    };
+
     return (
         <div className="layout mt-14 lg:mt-56 lg:mx-24">
             <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Get <strong>cutting-edge design</strong></h2>
@@ -63,12 +82,8 @@ const Ideas = () => {
 
                     )}
                     <div className="flex lg:justify-end">
-                        <div className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] bg-[#EDEEF7] rounded-[25px] flex items-center justify-center">
-                            <button className="text-4xl text-[#7666E3] hover:scale-110 duration-200">
-                                <svg stroke="currentColor" fill="currentColor" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
-                                </svg>
-                            </button>
+                        <div className="flex items-center justify-center">
+                        {renderVideoForTab()}
                         </div>
                     </div>
                 </div>
@@ -76,5 +91,9 @@ const Ideas = () => {
         </div>
     );
 };
+
+
+
+
 
 export default Ideas;
