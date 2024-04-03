@@ -10,7 +10,7 @@ const Guideline = () => {
     return (
         <div className="layout mt-14 lg:mt-48">
             <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Become a <strong>template creator</strong></h2>
-            <div className="mt-20">
+            <div className="mt-20" data-aos="fade-up" data-aos-duration="700">
                 <div className="max-w-[740px] mx-auto  grid md:grid-cols-1 lg:grid-cols-3 gap-1 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
                     <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900  p-3 text-sm hover:text-[#7668E5] hover:scale-105  duration-100 ${activeTab === 'guidelines' ? 'bg-[#7666E3] text-white  hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('guidelines')}>Check Guidelines</button>
@@ -21,10 +21,10 @@ const Guideline = () => {
                 </div>
             </div>
 
-            <div className="translate-y-24 opacity-0 " style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
+            <div className="translate-y-24 opacity-0"  style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
                 {activeTab === 'guidelines' && (
-                    <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
+                    <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16" data-aos="fade-up" data-aos-duration="700">
                         <div className="col-span-2 text-center flex flex-col items-center">
                             <div className="border-[10px] shadow-xl shadow-black/20 border-white rounded-full relative">
                                 <div className="absolute w-[120px] h-[120px] bg-white rounded-full animate-ping"></div>
@@ -61,7 +61,7 @@ const Guideline = () => {
                     </div>
                 )}
                 {activeTab === 'submit' && (
-                    <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
+                    <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16" data-aos="fade-up" data-aos-duration="700">
                         <div className="col-span-2 text-center flex flex-col items-center">
                             <div className="border-[10px] shadow-xl shadow-black/20 border-white rounded-full relative">
 
@@ -96,7 +96,7 @@ const Guideline = () => {
                     </div>
                 )}
                 {activeTab === 'approved' && (
-                    <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
+                    <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16" data-aos="fade-up" data-aos-duration="700">
                         <div className="col-span-2 text-center flex flex-col items-center">
                             <div className="border-[10px] shadow-xl shadow-black/20 border-white rounded-full relative">
                                 <div className="absolute w-[120px] h-[120px] bg-white rounded-full "></div>

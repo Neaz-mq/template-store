@@ -5,7 +5,7 @@ const Creativity = () => {
         <div className="layout lg:px-20 lg:mx-5">
             <h2 className="lg:text-4xl text-3xl -mt-14 text-[#2F1C6A] text-center">
                 What <strong>makes us better</strong></h2>
-            <div className="py-10 grid place-items-center gap-4 lg:grid-cols-3">
+            <div className="py-10 grid place-items-center gap-4 lg:grid-cols-3" data-aos="fade-up" data-aos-duration="700">
                 <div className="translate-y-24  opacity-0 gsapTrigger" style={{ transform: 'translateY(0px)', opacity: 1 }}>
                     <div className="bg-[#EDEEF7] max-w-[380px] min-h-[312px] p-6 rounded-[30px]">
                         <div className="flex items-center justify-between">
