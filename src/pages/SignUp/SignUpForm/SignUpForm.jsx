@@ -1,8 +1,13 @@
+import { Helmet } from "react-helmet-async";
 
 
 const SignUpForm = () => {
     return (
+        
         <div>
+             <Helmet>
+                <title>Template Store | Sign-Up-As</title>
+            </Helmet>
            <div className="layout min-h-[calc(100vh-500px)] flex items-center my-16">
             <div className="w-fit mx-auto flex flex-col items-center">
                 <h3 className="text-3xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800">Sign up as a</h3>
