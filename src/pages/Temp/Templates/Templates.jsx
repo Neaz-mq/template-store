@@ -1,5 +1,6 @@
+import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 import Free from "../Free/Free";
-import Graphics from "../Graphics/Graphics";
+
 import Marketplace from "../Marketplace/Marketplace";
 import Shop from "../Shop/Shop";
 import { Helmet } from 'react-helmet-async';
@@ -12,7 +13,7 @@ const Templates = () => {
                 <title>Template Store | Template</title>
             </Helmet>
             <Shop></Shop>
-            <Graphics></Graphics>
+            <AgencyTemplate></AgencyTemplate>
             <Free></Free>
             <Marketplace></Marketplace>
         </div>
