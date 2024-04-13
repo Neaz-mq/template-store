@@ -24,7 +24,7 @@ const AgencyTemplate = () => {
         setShowLess(false); // Hide the "View less top selling items" button
     };
 
-    const filteredTemplates = showBusiness ? template.filter(item => item.category === 'agency' || item.category === 'ecommerce' || item.category === 'business') : template.filter(item => item.category === 'agency' || item.category === 'ecommerce');
+    const filteredTemplates = showBusiness ? template.filter(item => item.category === 'agency' || item.category === 'ecommerce' || item.category === 'business' || item.category === 'portfolio') : template.filter(item => item.category === 'agency' || item.category === 'ecommerce' );
 
     return (
         <div>
@@ -48,7 +48,7 @@ const AgencyTemplate = () => {
                 </div>
             </div>
             <div className="flex justify-center">
-                <div className="mt-16">
+                <div className="mt-16 mb-12 lg:mb-0">
                 {showLess ? (
                         <button onClick={handleViewLess} className="btn mr-2 lg:mr-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700">
                             <span className="-mt-1">View less top selling items</span> 
