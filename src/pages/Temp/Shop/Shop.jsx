@@ -1,6 +1,14 @@
-
+import { useState } from "react";
+import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 
 const Shop = () => {
+    // Default selected category: agency
+    const [selectedCategory, setSelectedCategory] = useState(['agency', 'ecommerce', 'business', 'portfolio']); 
+
+    const handleCategoryClick = (category) => {
+        setSelectedCategory(category);
+    };
+    
     return (
         <div className="bg-[#EDEEF7] -mt-8">
             <div className="max-w-[700px] lg:h-[780px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
@@ -12,19 +20,25 @@ const Shop = () => {
 
                 <form className="w-fit border px-4 border-black/20 flex items-center hover:shadow-xl duration-200 bg-white rounded-full overflow-hidden">
                     <input placeholder="Search resources..." className="w-[300px] lg:w-[400px] p-3 bg-transparent outline-none" type="text" />
-
-                    <button><svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M221.09 64a157.09 157.09 0 1 0 157.09 157.09A157.1 157.1 0 0 0 221.09 64z"></path><path fill="none" d="M338.29 338.29 448 448"></path></svg></button></form>
+                    <button><svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M221.09 64a157.09 157.09 0 1 0 157.09 157.09A157.1 157.1 0 0 0 221.09 64z"></path><path fill="none" d="M338.29 338.29 448 448"></path></svg></button>
+                </form>
 
                 <div className="flex gap-5 items-center pb-16 pt-3 ">
-                    <p className=" font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg">Categories</p>
+                    <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg">Categories</p>
                     <ul className="flex flex-wrap gap-2">
-                        <li className="w-fit text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1]  duration-100 cursor-pointer">Agency</li>
-                        <li className="w-fit text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer">Ecommerce</li>
-                        <li className="w-fit text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1]  duration-100 cursor-pointer">Business</li>
-                        <li className="w-fit text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer">Portfolio</li>
-                        </ul>
-                        </div>
-                        </div>
+                        <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('agency') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['agency'])}>Agency</li>
+                        <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('ecommerce') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['ecommerce'])}>Ecommerce</li>
+                        <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('business') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['business'])}>Business</li>
+                        <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('portfolio') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['portfolio'])}>Portfolio</li>
+                    </ul>
+                </div>
+            </div>
+            {/* Render AgencyTemplate only when selectedCategory is not empty */}
+            {selectedCategory.length > 0 && (
+                <div className="bg-white">
+                    <AgencyTemplate selectedCategory={selectedCategory} />
+                </div>
+            )}
         </div>
     );
 };
