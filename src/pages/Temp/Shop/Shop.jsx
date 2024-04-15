@@ -4,9 +4,14 @@ import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 const Shop = () => {
     // Default selected category: agency
     const [selectedCategory, setSelectedCategory] = useState(['agency', 'ecommerce', 'business', 'portfolio']); 
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
+    };
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
     };
     
     return (
@@ -19,8 +24,19 @@ const Shop = () => {
                 <p className="max-w-[550px] text-center text-gray-500 text-lg py-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">Find and download the best high-quality 3D and vector illustrations, fonts, designs and mockups.</p>
 
                 <form className="w-fit border px-4 border-black/20 flex items-center hover:shadow-xl duration-200 bg-white rounded-full overflow-hidden">
-                    <input placeholder="Search resources..." className="w-[300px] lg:w-[400px] p-3 bg-transparent outline-none" type="text" />
-                    <button><svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M221.09 64a157.09 157.09 0 1 0 157.09 157.09A157.1 157.1 0 0 0 221.09 64z"></path><path fill="none" d="M338.29 338.29 448 448"></path></svg></button>
+                    <input 
+                        placeholder="Search resources..." 
+                        className="w-[300px] lg:w-[400px] p-3 bg-transparent outline-none" 
+                        type="text"
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
+                    <button>
+                        <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="none" d="M221.09 64a157.09 157.09 0 1 0 157.09 157.09A157.1 157.1 0 0 0 221.09 64z"></path>
+                            <path fill="none" d="M338.29 338.29 448 448"></path>
+                        </svg>
+                    </button>
                 </form>
 
                 <div className="flex gap-5 items-center pb-16 pt-3 ">
@@ -36,7 +52,7 @@ const Shop = () => {
             {/* Render AgencyTemplate only when selectedCategory is not empty */}
             {selectedCategory.length > 0 && (
                 <div className="bg-white">
-                    <AgencyTemplate selectedCategory={selectedCategory} />
+                    <AgencyTemplate selectedCategory={selectedCategory} searchQuery={searchQuery} />
                 </div>
             )}
         </div>

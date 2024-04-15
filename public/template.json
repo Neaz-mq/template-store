@@ -31,7 +31,6 @@
         "category": "agency",
         "price": 3.1
     },
-  
     {
         "_id": "325c155b2c4774f05c36ee7a",
         "name": "Kallesy",
@@ -128,8 +127,4 @@
         "category": "portfolio",
         "price": 6.4
     }
-
-  
-    
-    
 ]

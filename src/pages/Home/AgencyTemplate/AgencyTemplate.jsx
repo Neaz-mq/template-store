@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import TemplateItem from "../../Shared/TemplateItem/TemplateItem";
 import PropTypes from 'prop-types';
 
-const AgencyTemplate = ({ selectedCategory }) => {
+const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
     const [templates, setTemplates] = useState([]);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [showAll, setShowAll] = useState(false);
@@ -13,20 +13,20 @@ const AgencyTemplate = ({ selectedCategory }) => {
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
-                // Initially display a subset of templates based on the selected category
-                const filteredTemplates = data.filter(item => selectedCategory.includes(item.category));
+                // Initially display a subset of templates based on the selected category and search query
+                const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
             });
-    }, [selectedCategory]); // Trigger effect when selectedCategory changes
+    }, [selectedCategory, searchQuery]); // Trigger effect when selectedCategory or searchQuery changes
 
     const handleViewMore = () => {
         if (!showAll) {
-            // Display all templates based on the selected category
-            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category));
+            // Display all templates based on the selected category and search query
+            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates);
         } else {
-            // Display a subset of templates based on the selected category
-            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category));
+            // Display a subset of templates based on the selected category and search query
+            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
         }
         setShowAll(!showAll);
@@ -71,6 +71,7 @@ const AgencyTemplate = ({ selectedCategory }) => {
 
 AgencyTemplate.propTypes = {
     selectedCategory: PropTypes.array.isRequired, // Update prop type to array
+    searchQuery: PropTypes.string.isRequired, // Add prop type for search query
 };
 
 export default AgencyTemplate;

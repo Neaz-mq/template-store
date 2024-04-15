@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="bg-[#EDEEF7]">
             <footer className="footer p-10 text-base-content">
   <aside className="lg:ml-12">
-    <img src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg" alt="" />
+   <a href="/"> <img src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg" alt="" /></a>
     <p className="text-[#564e77] text-base font-semibold font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mt-2">Belgari, Fapor, Bogura Sadar, Bogura, Bangladesh<br/>support@prographr.com</p>
   </aside> 
  <div className="flex flex-wrap  justify-between lg:gap-24 gap-4 ">
