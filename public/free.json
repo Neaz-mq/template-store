@@ -1,0 +1,34 @@
+[
+    {
+        "_id": "421c155b2c4774f05c36eeaa",
+        "name": "Fertista",
+        "details": "Logo and Branding",
+        "image": "https://prographr.vercel.app/topimg/7.jpg",
+        "category": "agency",
+        "price": "Free"
+    },
+    {
+        "_id": "422c155b2c4774f05c36eeb9",
+        "name": "Certista",
+        "details": "Logo and Branding",
+        "image": "https://prographr.vercel.app/topimg/7.jpg",
+        "category": "agency",
+        "price": "Free"
+    },
+    {
+        "_id": "423c155b2c4774f05c36ee7c",
+        "name": "Dertista",
+        "details": "Logo and Branding",
+        "image": "https://prographr.vercel.app/topimg/7.jpg",
+        "category": "agency",
+        "price": "Free"
+    },
+    {
+        "_id": "424c155b2c4774f05c36ee88",
+        "name": "Sertista",
+        "details": "Logo and Branding",
+        "image": "https://prographr.vercel.app/topimg/7.jpg",
+        "category": "agency",
+        "price": "Free"
+    }
+]

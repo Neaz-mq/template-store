@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
+import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 
 const Shop = () => {
     // Default selected category: agency
@@ -53,6 +54,7 @@ const Shop = () => {
             {selectedCategory.length > 0 && (
                 <div className="bg-white">
                     <AgencyTemplate selectedCategory={selectedCategory} searchQuery={searchQuery} />
+                    <GraphicsTemplate selectedCategory={selectedCategory} searchQuery={searchQuery} />
                 </div>
             )}
         </div>

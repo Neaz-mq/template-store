@@ -1,6 +1,5 @@
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
-import Free from "../Free/Free";
-
+import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 import Marketplace from "../Marketplace/Marketplace";
 import Shop from "../Shop/Shop";
 import { Helmet } from 'react-helmet-async';
@@ -9,12 +8,12 @@ import { Helmet } from 'react-helmet-async';
 const Templates = () => {
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>Template Store | Template</title>
             </Helmet>
             <Shop></Shop>
             <AgencyTemplate></AgencyTemplate>
-            <Free></Free>
+            <GraphicsTemplate></GraphicsTemplate>
             <Marketplace></Marketplace>
         </div>
     );
