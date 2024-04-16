@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className="navbar bg-[#EDEEF7] py-7 -mt-7">
+      <div className="navbar  bg-[#EDEEF7] py-7 -mt-7 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} className="lg:hidden ml-3">
