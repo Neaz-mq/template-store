@@ -4,7 +4,7 @@ const About = () => {
     return (
         <div>
             <div className="layout lg:mx-24 mx-3">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20 lg:mt-20 mt-14">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20 lg:mt-20 mt-2">
                     <div className="flex items-center justify-center">
                         <iframe className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" src="https://www.youtube.com/embed/qfOo3vuvAb8?si=BxrOtvWRFsqcUVZ2"></iframe>
                     </div>
