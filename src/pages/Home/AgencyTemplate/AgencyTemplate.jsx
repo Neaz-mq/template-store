@@ -9,7 +9,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 8;
 
     useEffect(() => {
-        fetch('template.json')
+        fetch('http://localhost:5000/template')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
