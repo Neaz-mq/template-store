@@ -6,7 +6,7 @@ import './Testimonial.css'
 const Testimonial = () => {
     const [testimonials, setTestimonials] = useState([]);
     useEffect(() => {
-        fetch('testimonials.json')
+        fetch('http://localhost:5000/testimonials')
             .then(res => res.json())
             .then(data => setTestimonials(data))
         const swiper = new Swiper('.swiper-container', {

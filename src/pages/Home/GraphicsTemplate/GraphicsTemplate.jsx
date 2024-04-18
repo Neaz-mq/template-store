@@ -10,7 +10,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 4;
     
     useEffect(() => {
-        fetch('free.json')
+        fetch('http://localhost:5000/free')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
