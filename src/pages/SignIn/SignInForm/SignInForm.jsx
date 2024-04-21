@@ -1,14 +1,46 @@
+import { useContext } from 'react';
 import './SignInForm.css';
 import { FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 const SignInForm = () => {
+
+    const { signIn } = useContext(AuthContext);
+
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            Swal.fire({
+                title: 'User Login Successful.',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
+           
+        })
+          
+           
+    }
+
     return (
         <div className='mb-16'>
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center">
-                <form className="lg:w-fit min-h-[400px] mt-10 bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] ">
+                <form onSubmit={handleLogin} className="lg:w-fit min-h-[400px] mt-10 bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] ">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-600 mb-6">Sign In</h3>
-                    <input className="lg:w-96 w-64 rounded-lg py-2.5 input" placeholder="Email" type="email" />
+                    <input className="lg:w-96 w-64 rounded-lg py-2.5 input" placeholder="Email" name="email" type="email" />
                     <br />
-                    <input className="lg:w-96 w-64 rounded-lg py-2.5 input mt-4" placeholder="Password" type="password" />
+                    <input className="lg:w-96 w-64 rounded-lg py-2.5 input mt-4" placeholder="Password" type="password" name="password" />
                     <br /><br />
                     <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]">
                         <span className="-mt-1">Sign in</span>

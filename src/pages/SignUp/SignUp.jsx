@@ -1,14 +1,15 @@
+import { Helmet } from "react-helmet-async";
+import SellerSignUpForm from "./SellerSignUpForm/SellerSignUpForm";
 
-import SignUpForm from "./SignUpForm/SignUpForm";
-
-
-const SignUp = () => {
+const SellerSignUp = () => {
     return (
         <div>
-            
-            <SignUpForm></SignUpForm>
+             <Helmet>
+                <title>Template Store | Sign-Up</title>
+            </Helmet>
+            <SellerSignUpForm></SellerSignUpForm>
         </div>
     );
 };
 
-export default SignUp;
+export default SellerSignUp;

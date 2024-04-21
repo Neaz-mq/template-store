@@ -8,9 +8,11 @@ import Descriptions from "../pages/Temp/Descriptions/Descriptions";
 import Company from "../pages/Company/Company";
 import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
-import SignUpForm from "../pages/SignUp/SignUpForm/SignUpForm";
-import SellerSignUp from "../pages/SellerSignUp/SellerSignUp";
-import BuyerSignUp from "../pages/BuyerSignUp/BuyerSignUp";
+import SignUpForm from "../pages/SignUpForm/SignUpForm/SignUpForm";
+import SignUp from "../pages/SignUp/SignUp/SignUp";
+
+
+
 
 export const router = createBrowserRouter([
   {
@@ -47,12 +49,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/sign-up',
-        element: <SellerSignUp></SellerSignUp>
+        element: <SignUp></SignUp>
       },
-      {
-        path: '/sign-up',
-        element: <BuyerSignUp></BuyerSignUp>
-      },
+    
     ]
   },
 ]);
