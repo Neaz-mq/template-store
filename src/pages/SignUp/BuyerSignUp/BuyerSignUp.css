@@ -1,0 +1,3 @@
+.inputField{
+    outline-color: var(--fallback-p, oklch(var(--p) / 1));
+}

@@ -10,6 +10,7 @@ import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUpForm from "../pages/SignUpForm/SignUpForm/SignUpForm";
 import SignUp from "../pages/SignUp/SignUp/SignUp";
+import BuyerSignUp from "../pages/SignUp/BuyerSignUp/BuyerSignUp";
 
 
 
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
         path: '/sign-up',
         element: <SignUp></SignUp>
       },
+      {
+        path: '/sign-up-here',
+        element: <BuyerSignUp></BuyerSignUp>
+      }
     
     ]
   },

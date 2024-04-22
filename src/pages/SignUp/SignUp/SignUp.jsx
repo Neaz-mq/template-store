@@ -1,39 +1,50 @@
 import { useForm } from 'react-hook-form';
 import './SignUp.css'
-import { FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
 
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const toggleConfirmPasswordVisibility = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
 
     const onSubmit = data => {
-
         console.log(data);
-
     };
 
     return (
         <>
+        <div>
+            <Helmet>
+            <title>Template Store | Sign-Up</title>
+            </Helmet>
+        </div>
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center mb-20 mt-4">
                 <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] mt-10  lg:-ml-0">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6">Sign Up</h3>
                     <div className="flex flex-col gap-3 mb-3">
                         <div className="max-w-72 lg:max-w-[350px] flex gap-4">
-
+                        <div className="form-control"> 
                          
-                            <input type="text"  {...register("name", { required: true })} name="name" placeholder="First Name" className="input input-bordered  inputField hidden lg:block lg:w-44 rounded-lg outline-[#7666E3]" />
-                            {errors.name && <span className="text-red-600"> First Name is required</span>}
-
-                            <input type="text"  {...register("name", { required: true })} name="name" placeholder="First Name" className="input input-bordered lg:hidden w-28 lg:w-3/4 rounded-lg outline-[#7666E3] p-3" />
-                            {errors.name && <span className="text-red-600"> First Name is required</span>}
+                            <input type="text"  {...register("name", { required: true })} name="name" placeholder="First Name" className="input input-bordered  inputField w-28   lg:w-44 rounded-lg outline-[#7666E3]" /> 
+                            {errors.name && <span className="text-red-600 "> First Name is required</span>}                      
+                            </div>
 
                             <div className="form-control"> 
 
-                                <input type="text"  {...register("last", { required: true })} name="last" placeholder="Last Name" className="input input-bordered inputField  w-28 hidden lg:block lg:w-44  rounded-lg outline-[#7666E3]" />
-                                {errors.last && <span className="text-red-600"> Last Name is required</span>}
-
-                                <input type="text"  {...register("last", { required: true })} name="last" placeholder="Last Name" className="input input-bordered lg:hidden w-28 lg:w-full  rounded-lg outline-[#7666E3] p-3" />
-                                {errors.last && <span className="text-red-600"> Last Name is required</span>}
+                                <input type="text"  {...register("last", { required: true })} name="last" placeholder="Last Name" className="input input-bordered inputField  w-28  lg:w-44  rounded-lg outline-[#7666E3]" />
+                                {errors.last && <span className="text-red-600 "> Last Name is required</span>}
+                                
                             </div>
                         </div>
 
@@ -43,29 +54,48 @@ const SignUp = () => {
                             {errors.email && <span className="text-red-600">Email is required</span>}
 
                         </div>
-                        <div className="form-control">
-
-                            <input type="password"  {...register("password", {
-                                required: true,
-                                minLength: 6,
-                                maxLength: 20,
-                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                            })} placeholder="Password" className="input input-bordered inputField" />
-                            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                            {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
-                            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
-
+                        <div className="form-control relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                {...register("password", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })}
+                                placeholder="Password"
+                                className="input input-bordered inputField pr-12" // Added pr-12 for padding right
+                            />  
+                            <button
+                                type="button"
+                                className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-300"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? <FaEye /> : <FaEyeSlash />}
+                            </button>
+                            {errors.last && <span className="text-red-600 ">Password is required</span>}
                         </div>
-                        <div className="form-control">
-
-                            <input type="password"  {...register("confirm", {
-                                required: true,
-                                minLength: 6,
-                                maxLength: 20,
-                                pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                            })} placeholder="Confirm password" className="input input-bordered inputField" />
-                            {errors.confirm?.type === 'required' && <p className="text-red-600">Confirm Password is required</p>}
+                        <div className="form-control relative">
+                            <input
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                {...register("confirm", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                })}
+                                placeholder="Confirm password"
+                                className="input input-bordered inputField pr-12" // Added pr-12 for padding right
+                            />   
+                            <button
+                                type="button"
+                                className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-300"
+                                onClick={toggleConfirmPasswordVisibility}
+                            >
+                                {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                            </button>
+                            {errors.last && <span className="text-red-600 ">Confirm Password is required</span>}
+                        </div>
 
 
                         </div>
@@ -84,15 +114,15 @@ const SignUp = () => {
                                 </svg>
                             </button>
                         </div>
-
+                        </form>
                     </div>
 
-                </form>
+               
 
 
 
 
-            </div>
+            
 
 
         </>
