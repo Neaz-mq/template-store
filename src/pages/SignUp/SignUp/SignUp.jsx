@@ -2,13 +2,15 @@ import { useForm } from 'react-hook-form';
 import './SignUp.css';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [termsChecked, setTermsChecked] = useState(false);
+    const { createUser } = useContext(AuthContext);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -20,6 +22,11 @@ const SignUp = () => {
 
     const onSubmit = data => {
         console.log(data);
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
         // Reset the form after submission
         reset();
     };

@@ -1,36 +1,44 @@
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const NavBar = () => {
   const location = useLocation();
+  const { user, logOut } = useContext(AuthContext);
 
-  // Function to determine the text color class based on the current page
+  const handleLogOut = () => {
+    logOut()
+      .then(() => { })
+      .catch(error => console.log(error));
+  }
+
   const getTextColorClass = () => {
-    if (location.pathname === '/template' ) {
-      return 'text-[#767BE8]'; // Apply this color class for the Template page
+    if (location.pathname === '/template') {
+      return 'text-[#767BE8]';
     } else {
-      return 'text-base'; // Apply default color class for other pages
+      return 'text-base';
     }
   };
 
   const getTextColorCompany = () => {
-    if (location.pathname === '/company' ) {
-      return 'text-[#767BE8]'; // Apply this color class for the Template page
+    if (location.pathname === '/company') {
+      return 'text-[#767BE8]';
     } else {
-      return 'text-base'; // Apply default color class for other pages
+      return 'text-base';
     }
   };
 
   const getTextColorContact = () => {
-    if (location.pathname === '/contact' ) {
-      return 'text-[#767BE8]'; // Apply this color class for the Template page
+    if (location.pathname === '/contact') {
+      return 'text-[#767BE8]';
     } else {
-      return 'text-base'; // Apply default color class for other pages
+      return 'text-base';
     }
   };
 
   return (
     <div>
-      <div className="navbar  bg-[#EDEEF7] py-7 -mt-7 ">
+      <div className="navbar bg-[#EDEEF7] py-7 -mt-7 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} className="lg:hidden ml-3">
@@ -64,17 +72,22 @@ const NavBar = () => {
         </div>
         
         <div className="navbar-end gap-3 lg:gap-0">
-       <Link to="sign-in">
-       <button className="btn btn-sm bg-transparent  capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 -ml-4 mr-8 lg:-ml-7 lg:py-5 py-4">
-            <span className="-mt-2">Sign in</span>
-          </button>
-       </Link>
-
-         <Link to="sign-up-as">
-         <button className="btn  btn-sm hover:bg-[#7666E3] bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 lg:px-6 px-5 lg:py-5 py-4 lg:mr-20 mr-7 -ml-9 lg:-ml-9 ">
-            <span className="-mt-2">Sign up</span>
-          </button>
-         </Link>
+          {user ? (
+            <button onClick={handleLogOut} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 -ml-4 mr-8 lg:-ml-7 lg:py-5 py-4">
+              <span className="-mt-2">Sign Out</span>
+            </button>
+          ) : (
+            <Link to="/sign-in">
+              <button className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 -ml-4 mr-8 lg:-ml-7 lg:py-5 py-4">
+                <span className="-mt-2">Sign in</span>
+              </button>
+            </Link>
+          )}
+          <Link to="/sign-up-as">
+            <button className="btn btn-sm hover:bg-[#7666E3] bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 lg:px-6 px-5 lg:py-5 py-4 lg:mr-20 mr-7 -ml-9 lg:-ml-9 ">
+              <span className="-mt-2">Sign up</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
