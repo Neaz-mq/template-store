@@ -1,10 +1,16 @@
-import { useState } from "react";
+// Shop.jsx
+import { useRef, useState } from "react";
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 
 const Shop = () => {
-    // Default selected category: agency
-    const [selectedCategory, setSelectedCategory] = useState(['agency', 'ecommerce', 'business', 'portfolio']); 
+    const agencyTemplateRef = useRef(null);
+
+    const handleShopTemplatesClick = () => {
+        agencyTemplateRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const [selectedCategory, setSelectedCategory] = useState(['agency', 'ecommerce', 'business', 'portfolio']);
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleCategoryClick = (category) => {
@@ -14,20 +20,19 @@ const Shop = () => {
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
     };
-    
+
     return (
-        <div className="bg-[#EDEEF7] -mt-8">
+        <div className="-mt-8 bg-[#EDEEF7]">
             <div className="max-w-[700px] lg:h-[780px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
-
-                <p className="w-fit text-sm font-bold border border-black rounded-full px-4 py-1 font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Shop Templates</p>
+                <button onClick={handleShopTemplatesClick}>
+                    <p className="w-fit text-sm font-bold border border-black rounded-full px-4 py-1 font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Shop Templates</p>
+                </button>
                 <h1 className="text-4xl lg:text-7xl font-bold text-center">A template <br /> that match your business</h1>
-
                 <p className="max-w-[550px] text-center text-gray-500 text-lg py-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">Find and download the best high-quality 3D and vector illustrations, fonts, designs and mockups.</p>
-
                 <form className="w-fit border px-4 border-black/20 flex items-center hover:shadow-xl duration-200 bg-white rounded-full overflow-hidden">
-                    <input 
-                        placeholder="Search resources..." 
-                        className="w-[300px] lg:w-[400px] p-3 bg-transparent outline-none" 
+                    <input
+                        placeholder="Search resources..."
+                        className="w-[300px] lg:w-[400px] p-3 bg-transparent outline-none"
                         type="text"
                         value={searchQuery}
                         onChange={handleSearch}
@@ -39,24 +44,27 @@ const Shop = () => {
                         </svg>
                     </button>
                 </form>
-
                 <div className="flex gap-5 items-center pb-16 pt-3 ">
                     <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold text-lg">Categories</p>
                     <ul className="flex flex-wrap gap-2">
                         <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('agency') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['agency'])}>Agency</li>
                         <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('ecommerce') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['ecommerce'])}>Ecommerce</li>
                         <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('business') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['business'])}>Business</li>
-                        <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('portfolio') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['portfolio'])}>Portfolio</li>
+                        <li className={`text-sm font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-bold  text-gray-600 border border-black/50 rounded-full px-4 pt-1 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('portfolio') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['portfolio'])
+                        }>Portfolio</li>
                     </ul>
                 </div>
             </div>
+
             {/* Render AgencyTemplate only when selectedCategory is not empty */}
             {selectedCategory.length > 0 && (
-                <div className="bg-white">
+                <div className="bg-white" ref={agencyTemplateRef}>
                     <AgencyTemplate selectedCategory={selectedCategory} searchQuery={searchQuery} />
                     <GraphicsTemplate selectedCategory={selectedCategory} searchQuery={searchQuery} />
                 </div>
             )}
+
+           
         </div>
     );
 };
