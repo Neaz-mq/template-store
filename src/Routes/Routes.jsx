@@ -11,6 +11,8 @@ import SignIn from "../pages/SignIn/SignIn";
 import SignUpForm from "../pages/SignUpForm/SignUpForm/SignUpForm";
 import SignUp from "../pages/SignUp/SignUp/SignUp";
 import BuyerSignUp from "../pages/SignUp/BuyerSignUp/BuyerSignUp";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../pages/Shared/Secret/Secret";
 
 
 
@@ -55,6 +57,11 @@ export const router = createBrowserRouter([
       {
         path: '/sign-up-here',
         element: <BuyerSignUp></BuyerSignUp>
+      },
+      
+      {
+        path: 'secret',
+        element: <PrivateRoute><Secret></Secret></PrivateRoute>
       }
     
     ]

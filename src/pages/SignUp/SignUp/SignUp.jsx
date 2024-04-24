@@ -4,14 +4,17 @@ import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
 
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [termsChecked, setTermsChecked] = useState(false);
-    const { createUser } = useContext(AuthContext);
-
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -26,9 +29,25 @@ const SignUp = () => {
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
+            updateUserProfile(data.name)
+            .then(() => {
+                // create user entry in the database
+              
+                console.log('user profile info updated');
+                 // Reset the form after submission
+                   reset();
+                   Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User created successfully.',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
+            })
+            .catch(error => console.log(error))
         })
-        // Reset the form after submission
-        reset();
+       
     };
 
     const password = watch("password", "");
@@ -142,7 +161,8 @@ const SignUp = () => {
                             <span className="-mt-1">Sign Up</span>
                             <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
                         </button>
                         <br /> <br />
                         {/* Google Sign-in Button */}

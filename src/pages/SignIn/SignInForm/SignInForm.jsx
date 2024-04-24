@@ -3,10 +3,13 @@ import './SignInForm.css';
 import { FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { useLocation, useNavigate } from 'react-router-dom';
 const SignInForm = () => {
 
     const { signIn } = useContext(AuthContext);
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = event => {
         event.preventDefault();
@@ -27,7 +30,7 @@ const SignInForm = () => {
                     popup: 'animate__animated animate__fadeOutUp'
                 }
             });
-           
+            navigate(from, { replace: true });
         })
           
            
