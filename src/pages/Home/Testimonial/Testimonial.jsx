@@ -37,7 +37,7 @@ const Testimonial = () => {
 
     return (
         <div className='lg:mx-24 lg:-mt-14 lg:mb-20 overflow-hidden' style={{ overflowX: 'hidden' }}>
-            <div className="mb-28 lg:mx-24 mx-6">
+            <div className="mb-28 lg:mx-24 mx-3.5">
                 <div className="layout mt-14 mb-14  lg:mt-24">
                     <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Clients <strong>testimonial</strong></h2>
                 </div>

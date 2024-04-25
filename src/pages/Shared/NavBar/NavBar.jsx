@@ -137,23 +137,28 @@ const NavBar = () => {
               </span>
               <button
                 onClick={handleLogOut}
-                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 -ml-4 mr-8 lg:-ml-7 lg:py-5 py-4"
+                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 -ml-10 mr-16 lg:-ml-7 lg:py-5 py-4"
               >
                 <span className="-mt-2">Sign Out</span>
               </button>
             </div>
           ) : (
-            <Link to="/sign-in">
-              <button className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-14 -ml-4 mr-8 lg:-ml-7 lg:py-5 py-4">
-                <span className="-mt-2">Sign in</span>
+            <div className="flex items-center">
+              <Link to="/sign-in" className="mr-4">
+                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987] lg:mr-8 -ml-4 mr-8 lg:-ml-7 lg:py-5 py-4">
+                  <span className="-mt-2">Sign in</span>
+                </button>
+              </Link>
+            </div>
+          )}
+          {/* "Sign Up" button always visible */}
+          <div className="flex items-center">
+            <Link to="/sign-up-as">
+              <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 lg:px-6 px-8 lg:py-5 py-4 lg:mr-20 mr-4 -ml-10 lg:-ml-9 ">
+                <span className="-mt-2">Sign Up</span>
               </button>
             </Link>
-          )}
-          <Link to="/sign-up-as">
-            <button className="btn btn-sm hover:bg-[#7666E3] bg-[#6658C5] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 lg:px-6 px-5 lg:py-5 py-4 lg:mr-20 mr-7 -ml-9 lg:-ml-9 ">
-              <span className="-mt-2">Sign up</span>
-            </button>
-          </Link>
+          </div>
         </div>
       </div>
     </div>
