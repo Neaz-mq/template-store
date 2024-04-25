@@ -13,6 +13,7 @@ import SignUp from "../pages/SignUp/SignUp/SignUp";
 import BuyerSignUp from "../pages/SignUp/BuyerSignUp/BuyerSignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Shared/Secret/Secret";
+import TemplateDetails from "../pages/TemplateDetails/TemplateDetails";
 
 
 
@@ -31,8 +32,8 @@ export const router = createBrowserRouter([
         element: <Templates></Templates>
       },
       {
-        path: '/template/234',
-        element: <Descriptions></Descriptions>
+        path: '/template/:id',
+        element: <TemplateDetails></TemplateDetails>
       },
       {
         path: '/company',
