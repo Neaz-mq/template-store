@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 
-const TemplateDetails = () => {
+const FreeTemplateDetails = () => {
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
 
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
-    const temp = useLoaderData();
+    const free = useLoaderData();
 
-    const { name, _id, price, image } = temp;
+    const { name, _id, price, image } = free;
     return (
         
             
@@ -61,7 +61,7 @@ const TemplateDetails = () => {
                         <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'template'} />
                         <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">Template</h2>
                     </div>
-                    <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">${price}</div>
+                    <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">{price}</div>
                 </div>
                 <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium  ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
             </div>
@@ -77,4 +77,4 @@ const TemplateDetails = () => {
     );
 };
 
-export default TemplateDetails;
+export default FreeTemplateDetails;

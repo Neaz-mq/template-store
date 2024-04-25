@@ -10,7 +10,7 @@ const FreeTemplate = ({ item }) => {
                 style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
 
-           <Link to={`/template/${_id}`}>
+           <Link to={`/free/${_id}`}>
                     <div className="max-w-[500px] rounded-[20px] overflow-hidden border group">
                         <div className="px-7 pt-7 bg-[#EDEEF7] overflow-hidden">
 

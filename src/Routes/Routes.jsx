@@ -4,7 +4,6 @@ import {
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Templates from "../pages/Temp/Templates/Templates";
-import Descriptions from "../pages/Temp/Descriptions/Descriptions";
 import Company from "../pages/Company/Company";
 import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
@@ -14,6 +13,8 @@ import BuyerSignUp from "../pages/SignUp/BuyerSignUp/BuyerSignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Shared/Secret/Secret";
 import TemplateDetails from "../pages/TemplateDetails/TemplateDetails";
+import FreeTemplateDetails from "../pages/FreeTemplateDetails/FreeTemplateDetails";
+
 
 
 
@@ -33,8 +34,18 @@ export const router = createBrowserRouter([
       },
       {
         path: '/template/:id',
-        element: <TemplateDetails></TemplateDetails>
+        element: <TemplateDetails></TemplateDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/template/${params.id}`)
       },
+
+      {
+        path: '/free/:id',
+        element: <FreeTemplateDetails></FreeTemplateDetails>,
+        loader: ({params}) => fetch(`http://localhost:5000/free/${params.id}`)
+      },
+    
+    
+     
       {
         path: '/company',
         element: <Company></Company>
