@@ -1,8 +1,8 @@
 import './Banner.css'
 
 const Banner = () => {
-    return (
 
+    return (
         <div className="w-full bg-[#EDEEF7]">
             <div className="layout pb-10 lg:pb-0 lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
                 <div className="lg:col-span-5 pt-12 lg:pt-0 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-24">
@@ -13,6 +13,7 @@ const Banner = () => {
 
                 <div className="hidden lg:col-span-7 lg:flex items-center">
                     <div className="scroll_wrapper__5yHC8">
+
                         <section className="scroll_section__WwdTn scroll_scrolling__mlJTJ">
                             <img src="https://prographr.vercel.app/topimg/1.jpg" alt="" />
                             <img src="https://prographr.vercel.app/topimg/2.jpg" alt="" />
@@ -26,6 +27,7 @@ const Banner = () => {
                             <img src="https://prographr.vercel.app/topimg/10.jpg" alt="" />
                             <img src="https://prographr.vercel.app/topimg/11.jpg" alt="" />
                         </section>
+                        
                         <section className="scroll_section__WwdTn scroll_scrolling2__yKLja">
                             <img src="https://prographr.vercel.app/topimg/7.jpg" alt="" />
                             <img src="https://prographr.vercel.app/topimg/9.jpg" alt="" />

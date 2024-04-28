@@ -8,7 +8,7 @@ const BuyerSignUp = () => {
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' }); // Set mode to 'onChange' to trigger validation on each input change
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-   
+
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -32,6 +32,7 @@ const BuyerSignUp = () => {
                     <title>Template Store | Sign-Up</title>
                 </Helmet>
             </div>
+            
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center mb-20 mt-4">
                 <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] mt-10  lg:-ml-0">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6">Sign Up</h3>
@@ -87,13 +88,13 @@ const BuyerSignUp = () => {
                             >
                                 {showPassword ? <FaEye /> : <FaEyeSlash />}
                             </button>
-                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+                            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
                         </div>
                         <div className="form-control relative">
-                        <input
+                            <input
                                 type={showConfirmPassword ? 'text' : 'password'}
                                 {...register("confirm", {
                                     required: true,
@@ -102,7 +103,7 @@ const BuyerSignUp = () => {
                                 placeholder="Confirm password"
                                 className="input input-bordered inputField pr-12"
                             />
-                              <button
+                            <button
                                 type="button"
                                 className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-300"
                                 onClick={toggleConfirmPasswordVisibility}
@@ -114,11 +115,11 @@ const BuyerSignUp = () => {
                         </div>
                     </div>
                     <div className="form-control py-3"><label className="flex gap-3">
-                            <input className="checkbox checkbox-primary" type="checkbox" /><span className="label-text font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800">I agree with all the <a href="#" className="text-blue-500 underline">terms and services</a></span></label>
-                        </div>
-                        <div className="form-control -mt-5">
-                            <button className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-5 py-3 shadow-none" type="submit"><span className="-mt-1">Sign Up</span><svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-                            <br /> <br />
+                        <input className="checkbox checkbox-primary" type="checkbox" /><span className="label-text font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800">I agree with all the <a href="#" className="text-blue-500 underline">terms and services</a></span></label>
+                    </div>
+                    <div className="form-control -mt-5">
+                        <button className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-5 py-3 shadow-none" type="submit"><span className="-mt-1">Sign Up</span><svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
+                        <br /> <br />
                         {/* Google Sign-in Button */}
                         <button className="btn btn-google bg-white hover:bg-gray-100  capitalize text-black rounded-full gap-4 w-full -mt-4 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">
                             <FaGoogle className=" text-base

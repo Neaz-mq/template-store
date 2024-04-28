@@ -1,6 +1,5 @@
 [
     {
-       
         "name": "Vertista",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/1.jpg",
@@ -8,7 +7,6 @@
         "price": 2.7
     },
     {
-        
         "name": "Nertista",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/2.jpg",
@@ -16,7 +14,6 @@
         "price": 2.8
     },
     {
-       
         "name": "Mertista",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/3.jpg",
@@ -24,7 +21,6 @@
         "price": 2.9
     },
     {
-       
         "name": "Pertista",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/4.jpg",
@@ -32,7 +28,6 @@
         "price": 3.1
     },
     {
-        
         "name": "Kallesy",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/5.jpg",
@@ -40,7 +35,6 @@
         "price": 4.4
     },
     {
-        
         "name": "Sallesy",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/6.jpg",
@@ -48,7 +42,6 @@
         "price": 4.5
     },
     {
-       
         "name": "Tallesy",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/3.jpg",
@@ -56,7 +49,6 @@
         "price": 4.6
     },
     {
-        
         "name": "Rallesy",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/8.jpg",
@@ -64,7 +56,6 @@
         "price": 4.7
     },
     {
-       
         "name": "Maven",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/9.jpg",
@@ -72,7 +63,6 @@
         "price": 5.1
     },
     {
-        
         "name": "Baven",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/10.jpg",
@@ -80,7 +70,6 @@
         "price": 5.2
     },
     {
-        
         "name": "Caven",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/11.jpg",
@@ -88,7 +77,6 @@
         "price": 5.3
     },
     {
-       
         "name": "Daven",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/1.jpg",
@@ -96,7 +84,6 @@
         "price": 5.4
     },
     {
-        
         "name": "Photosen",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/2.jpg",
@@ -104,7 +91,6 @@
         "price": 6.1
     },
     {
-       
         "name": "Chotosen",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/3.jpg",
@@ -112,7 +98,6 @@
         "price": 6.2
     },
     {
-        
         "name": "Ahotosen",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/4.jpg",
@@ -120,7 +105,6 @@
         "price": 6.3
     },
     {
-       
         "name": "Jhotosen",
         "details": "Logo and Branding",
         "image": "https://prographr.vercel.app/topimg/5.jpg",

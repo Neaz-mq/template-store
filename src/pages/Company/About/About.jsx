@@ -3,6 +3,7 @@ import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 const About = () => {
     return (
         <div>
+
             <div className="layout lg:mx-24 mx-3">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20 lg:mt-20 mt-2">
                     <div className="flex items-center justify-center">
@@ -13,6 +14,7 @@ const About = () => {
                         <p className="mt-10 text-slate-600 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">Prographr is an online readymade graphic assets marketplace. A designer can upload their graphic assets and anyone can download any design which are premium and free. All the designs are also customizable. Customizable design have a fee. Which are negotiable with the asset owner.</p>
                     </div>
                 </div>
+
                 <section className="text-center mt-8 lg:pb-32 pb-14">
                     <h3 className="lg:text-3xl text-2xl text-[#2F1C6A] font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] pt-5">Team <strong>Members</strong></h3>
                     <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-8">
@@ -56,6 +58,7 @@ const About = () => {
                                 <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium my-1 text-slate-900 text-base">Neaz Morshed</p>
                                 <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium text-slate-600 text-base">Prographr</p>
                             </div>
+
                             {/* Social Icons */}
                             <div className="flex justify-center mt-6">
                                 <a href="https://www.facebook.com/profile.php?id=100008935244709" target="_blank" rel="noopener noreferrer"><FaFacebook className="text-[#4267B2] text-2xl mx-2" /></a>

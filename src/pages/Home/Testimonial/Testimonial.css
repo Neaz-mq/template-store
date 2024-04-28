@@ -12,11 +12,12 @@
     background-color: #1e4b7c;
     opacity: 0.5;
     margin: 20px 5px;
-    border-radius: 50%; /* Make bullets round */
+    border-radius: 50%;
+    /* Make bullets round */
 }
 
 .swiper-pagination-bullet-active {
     opacity: 1;
     background-color: #2e10f2;
-    
+
 }

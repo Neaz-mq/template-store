@@ -1,5 +1,3 @@
-
-
 const Creativity = () => {
     return (
         <div className="layout lg:px-20 lg:mx-5">
@@ -22,6 +20,7 @@ const Creativity = () => {
                         </button></a>
                     </div>
                 </div>
+
                 <div className="translate-y-24  opacity-0 gsapTrigger" style={{ transform: 'translateY(0px)', opacity: 1 }}>
                     <div className="bg-[#EDEEF7] max-w-[380px] min-h-[312px] p-6 rounded-[30px]">
                         <div className="flex items-center justify-between">
@@ -36,6 +35,7 @@ const Creativity = () => {
                             <span className="-mt-1">Learn More</span> <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></button></a>
                     </div>
                 </div>
+                
                 <div className="translate-y-24  opacity-0 gsapTrigger" style={{ transform: 'translateY(0px)', opacity: 1 }}>
                     <div className="bg-[#EDEEF7] max-w-[380px] min-h-[312px] p-6 rounded-[30px]">
                         <div className="flex items-center justify-between">

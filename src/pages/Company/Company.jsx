@@ -1,4 +1,3 @@
-import React from 'react';
 import About from './About/About';
 import { Helmet } from 'react-helmet-async';
 

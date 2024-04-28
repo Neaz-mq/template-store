@@ -30,17 +30,18 @@ const Ideas = () => {
         <div className="layout mt-14 lg:mt-56 lg:mx-24">
             <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Get <strong>cutting-edge design</strong></h2>
             <div className="mt-20" data-aos="fade-up" data-aos-duration="700">
-                <div className="max-w-[540px] lg:mx-auto text-accent grid md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0 mx-4"  style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
+                <div className="max-w-[540px] lg:mx-auto text-accent grid md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0 mx-4" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
                     <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900  p-3 text-sm hover:text-[#7668E5] hover:scale-105  duration-100 ${activeTab === 'ideas' ? 'bg-[#7666E3] text-white    hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('ideas')}>Collect Ideas</button>
                     <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900  p-3 text-sm hover:text-[#7668E5] hover:scale-105  duration-100 ${activeTab === 'design' ? 'bg-[#7666E3] text-white   hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('design')}>Design Analysis</button>
                     <button className={`rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium text-slate-900  p-3 text-sm hover:text-[#7668E5] hover:scale-105  duration-100 ${activeTab === 'finalize' ? 'bg-[#7666E3] text-white    hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('finalize')}>Finalize Design</button>
                 </div>
             </div>
+
             <div className="translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
                 <div className="w-full grid lg:grid-cols-2 px-10 gap-8 lg:gap-0 my-20" data-aos="fade-up" data-aos-duration="700">
-                <div className="flex items-center justify-center lg:hidden">
+                    <div className="flex items-center justify-center lg:hidden">
                         {renderVideoForTab()}
-                        </div>
+                    </div>
                     {activeTab === 'ideas' && (
                         <div className="text-slate-800 font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium max-w-[500px]">
                             <h2 className="text-2xl">Collect <strong> Ideas</strong></h2>
@@ -58,6 +59,7 @@ const Ideas = () => {
                                 </svg>
                             </button>
                         </div>
+
                     )}
                     {activeTab === 'design' && (
                         <div className="text-slate-800 font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium max-w-[500px]">
@@ -72,6 +74,7 @@ const Ideas = () => {
                         </div>
 
                     )}
+
                     {activeTab === 'finalize' && (
                         <div className="text-slate-800 font-['__gellix_0bf537, __gellix_Fallback_0bf537']  font-medium max-w-[500px]">
                             <h2 className="text-2xl">Finalize <strong> Analysis</strong></h2><p className="py-5">Conduct a thorough review of the design to ensure it meets the project requirements and objectives. Make any necessary revisions based on feedback from stakeholders, clients, or team members.</p><ul className="list-disc ml-4"><li>Perform quality assurance checks to identify and fix any errors, inconsistencies, or technical issues in the design.</li><li className="mt-3">Once all revisions, quality checks, and approvals are complete, finalize the design and request stakeholders or clients to confirm that the design is ready for handove.</li></ul><br />
@@ -84,9 +87,10 @@ const Ideas = () => {
                             </button></div>
 
                     )}
+                    
                     <div className="lg:flex lg:justify-end hidden ">
                         <div className="flex items-center justify-center">
-                        {renderVideoForTab()}
+                            {renderVideoForTab()}
                         </div>
                     </div>
                 </div>

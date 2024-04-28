@@ -26,28 +26,28 @@ const SignUp = () => {
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            updateUserProfile(data.name)
-            .then(() => {
-                // create user entry in the database
-              
-                console.log('user profile info updated');
-                 // Reset the form after submission
-                   reset();
-                   Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'User created successfully.',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate('/');
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name)
+                    .then(() => {
+                        // create user entry in the database
+
+                        console.log('user profile info updated');
+                        // Reset the form after submission
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+                    })
+                    .catch(error => console.log(error))
             })
-            .catch(error => console.log(error))
-        })
-       
+
     };
 
     const password = watch("password", "");
@@ -114,10 +114,10 @@ const SignUp = () => {
                             >
                                 {showPassword ? <FaEye /> : <FaEyeSlash />}
                             </button>
-                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                            {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                            {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                            {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+                            {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
                         </div>
                         <div className="form-control relative">
                             <input

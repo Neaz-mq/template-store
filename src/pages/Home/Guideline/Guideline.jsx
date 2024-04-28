@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-
 const Guideline = () => {
     const [activeTab, setActiveTab] = useState('guidelines');
 
     const handleTabClick = (tab) => {
         setActiveTab(tab);
     }
+
     return (
         <div className="layout mt-14 lg:mt-48">
             <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Become a <strong>template creator</strong></h2>
@@ -138,7 +138,6 @@ const Guideline = () => {
                 </div>
             </div>
         </div>
-
 
     );
 };

@@ -54,7 +54,7 @@ const SignInForm = () => {
                             {passwordVisible ? (
                                 <FaEye onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
                             ) : (
-                                
+
                                 <FaEyeSlash onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
                             )}
                         </span>

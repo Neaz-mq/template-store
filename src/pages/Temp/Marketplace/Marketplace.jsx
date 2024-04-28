@@ -1,5 +1,3 @@
-
-
 const Marketplace = () => {
     return (
         <div>

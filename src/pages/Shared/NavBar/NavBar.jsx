@@ -8,7 +8,7 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch(error => console.log(error));
   };
 
@@ -151,6 +151,7 @@ const NavBar = () => {
               </Link>
             </div>
           )}
+
           {/* "Sign Up" button always visible */}
           <div className="flex items-center">
             <Link to="/sign-up-as">
@@ -161,6 +162,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

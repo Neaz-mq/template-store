@@ -76,24 +76,23 @@ const Testimonial = () => {
 
 
                     </div>
+
                     {/* Add pagination bullet points */}
                     <div className='flex items-center justify-center mt-8 '>
                         <div className="swiper-pagination swiper-pagination-bullet swiper-pagination-bullet-active"></div>
                         <div className="swiper-pagination swiper-pagination-bullet swiper-pagination-bullet-active"></div>
                         <div className="swiper-pagination swiper-pagination-bullet swiper-pagination-bullet-active"></div>
                     </div>
+
                     {/* Add navigation buttons */}
                     <div className="swiper-button-prev"></div>
                     <div className="swiper-button-next"></div>
                 </div>
-
-
             </div>
-
-
 
             {/* Render cards in grid-cols-3 layout on larger screens */}
             <div className="hidden lg:grid grid-cols-3 gap-10 overflow-hidden" data-aos="fade-up" data-aos-duration="700">
+                
                 {/* Testimonial cards */}
 
                 {

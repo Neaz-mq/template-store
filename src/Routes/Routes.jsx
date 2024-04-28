@@ -35,17 +35,17 @@ export const router = createBrowserRouter([
       {
         path: '/template/:id',
         element: <TemplateDetails></TemplateDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/template/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/template/${params.id}`)
       },
 
       {
         path: '/free/:id',
         element: <FreeTemplateDetails></FreeTemplateDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/free/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
       },
-    
-    
-     
+
+
+
       {
         path: '/company',
         element: <Company></Company>
@@ -70,12 +70,12 @@ export const router = createBrowserRouter([
         path: '/sign-up-here',
         element: <BuyerSignUp></BuyerSignUp>
       },
-      
+
       {
         path: 'secret',
         element: <PrivateRoute><Secret></Secret></PrivateRoute>
       }
-    
+
     ]
   },
 ]);
