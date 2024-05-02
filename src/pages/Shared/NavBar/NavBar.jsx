@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const NavBar = () => {
   const location = useLocation();
@@ -86,6 +87,14 @@ const NavBar = () => {
               >
                 Contact Us
               </Link>
+
+              {/* Include the Inbox button in the mobile dropdown */}
+              <li className="mb-2 mt-3">
+                <Link to="/" className="btn ml-4">
+                <FaShoppingCart className="mr-4"></FaShoppingCart>
+                  <div className="badge">+0</div>
+                </Link>
+              </li>
             </ul>
           </div>
           <Link
@@ -127,6 +136,12 @@ const NavBar = () => {
               Contact Us
             </Link>
           </ul>
+          <Link to="/">
+            <button className="btn ml-10">
+            <FaShoppingCart className="mr-4"></FaShoppingCart>
+              <div className="badge">+0</div>
+            </button>
+          </Link>
         </div>
 
         <div className="navbar-end gap-3 lg:gap-0">

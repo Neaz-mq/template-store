@@ -2,14 +2,17 @@ import { useForm } from 'react-hook-form';
 import './BuyerSignUp.css';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const BuyerSignUp = () => {
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' }); // Set mode to 'onChange' to trigger validation on each input change
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -20,7 +23,28 @@ const BuyerSignUp = () => {
 
     const onSubmit = data => {
         console.log(data);
-        reset();
+        createUser(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            updateUserProfile(data.name)
+                .then(() => {
+                    // create user entry in the database
+
+                    console.log('user profile info updated');
+                    // Reset the form after submission
+                    reset();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User created successfully.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/');
+                })
+                .catch(error => console.log(error))
+        })
     };
 
     const password = watch("password", "");
