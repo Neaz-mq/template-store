@@ -53,7 +53,14 @@ const FreeTemplateDetails = () => {
                                 <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">$20.00</div>
                             </div>
                             <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
+
+
+                            {/* Add to Cart button */}
+                            <button className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
                         </div>
+
+
+
                         <div className={`border ${selectedTemplate === 'template' ? 'border-primary' : 'border-gray-400'} rounded-[20px] mt-6 p-8 mx-2 lg:mx-0 cursor-pointer`} onClick={() => handleTemplateChange('template')}>
                             <div className="flex justify-between pb-3">
                                 <div className="flex gap-3 font-bold">
@@ -62,7 +69,14 @@ const FreeTemplateDetails = () => {
                                 </div>
                                 <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">{price}</div>
                             </div>
-                            <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium  ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
+                            <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium  ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                            </div>
+
+
+                            {/* Add to Cart button */}
+                            <button  className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
+
+
                         </div>
                     </div>
 

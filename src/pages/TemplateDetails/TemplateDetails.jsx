@@ -1,13 +1,66 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import {useState } from "react";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import axios from "axios";
+
 
 
 const TemplateDetails = () => {
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
-
+    const {user} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
+
+    const handleAddToCart = template => {
+        if (user && user.email) {
+            //send cart item to the database
+
+            console.log(user.email, template);
+
+            const cartItem = {
+                tempId: _id,
+                email: user.email,
+                name,
+                image,
+                price
+            }
+           axios.post('http://localhost:5000/carts', cartItem)
+           .then(res => {
+               console.log(res.data);
+               if(res.data.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${name} added to your cart`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+               }
+           })
+            
+    }
+
+    else {
+        Swal.fire({
+            title: "You are not Signed In",
+            text: "Please signin to add to the cart?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Sign In!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //   send the user to the login page
+                navigate('/sign-in', { state: { from: location } })
+            }
+        });
+    }
+}
     const temp = useLoaderData();
 
     const { name, _id, price, image } = temp;
@@ -54,6 +107,11 @@ const TemplateDetails = () => {
                                 <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">$20.00</div>
                             </div>
                             <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
+
+
+                            {/* Add to Cart button */}
+                            <button className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
+
                         </div>
                         <div className={`border ${selectedTemplate === 'template' ? 'border-primary' : 'border-gray-400'} rounded-[20px] mt-6 p-8 mx-2 lg:mx-0 cursor-pointer`} onClick={() => handleTemplateChange('template')}>
                             <div className="flex justify-between pb-3">
@@ -64,7 +122,12 @@ const TemplateDetails = () => {
                                 <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">${price}</div>
                             </div>
                             <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium  ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
+
+                            {/* Add to Cart button */}
+                            <button onClick={() => handleAddToCart(temp)} className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
+
                         </div>
+
                     </div>
 
 
