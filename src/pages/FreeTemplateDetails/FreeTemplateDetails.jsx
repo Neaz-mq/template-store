@@ -2,23 +2,26 @@ import { useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 
 const FreeTemplateDetails = () => {
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
     const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCart();
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
 
     
-    const handleAddToCart = template => {
+    const handleAddToCart = () => {
         if (user && user.email) {
             //send cart item to the database
 
-            console.log(user.email, template);
+           
 
             const cartItem = {
                 tempId: _id,
@@ -27,7 +30,7 @@ const FreeTemplateDetails = () => {
                 image,
                 price
             }
-           axios.post('http://localhost:5000/carts', cartItem)
+            axiosSecure.post('http://localhost:5000/carts', cartItem)
            .then(res => {
                console.log(res.data);
                if(res.data.insertedId){
@@ -38,6 +41,9 @@ const FreeTemplateDetails = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+
+                 // refetch cart to update the cart items count
+                 refetch();
                }
            })
             
@@ -128,7 +134,7 @@ const FreeTemplateDetails = () => {
 
 
                             {/* Add to Cart button */}
-                            <button onClick={() => handleAddToCart(free)}  className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
+                            <button onClick={handleAddToCart}  className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
 
 
                         </div>

@@ -2,8 +2,8 @@ import {useState } from "react";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import axios from "axios";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
 
 
 const TemplateDetails = () => {
@@ -12,15 +12,15 @@ const TemplateDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCart();
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
 
-    const handleAddToCart = template => {
-        if (user && user.email) {
-            //send cart item to the database
+    const handleAddToCart = () => {
 
-            console.log(user.email, template);
+        if (user && user.email) {
+            //send cart item to the database        
 
             const cartItem = {
                 tempId: _id,
@@ -40,6 +40,8 @@ const TemplateDetails = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                 // refetch cart to update the cart items count
+                 refetch();
                }
            })
             
@@ -125,7 +127,7 @@ const TemplateDetails = () => {
                             <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium  ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
 
                             {/* Add to Cart button */}
-                            <button onClick={() => handleAddToCart(temp)} className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
+                            <button onClick={handleAddToCart} className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
 
                         </div>
 
