@@ -14,6 +14,8 @@ import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Shared/Secret/Secret";
 import TemplateDetails from "../pages/TemplateDetails/TemplateDetails";
 import FreeTemplateDetails from "../pages/FreeTemplateDetails/FreeTemplateDetails";
+import Dashboard from "../Layout/Dashboard";
+import Cart from "../pages/Dashboard/Cart/Cart";
 
 
 
@@ -78,4 +80,14 @@ export const router = createBrowserRouter([
 
     ]
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'cart',
+        element: <Cart></Cart>
+      },
+    ]
+  }
 ]);

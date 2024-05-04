@@ -92,7 +92,7 @@ const NavBar = () => {
 
               {/* Include the Inbox button in the mobile dropdown */}
               <li className="mb-2 mt-3">
-                <Link to="/" className="btn ml-4">
+                <Link to="/dashboard/cart" className="btn ml-4">
                 <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </Link>
@@ -138,7 +138,7 @@ const NavBar = () => {
               Contact Us
             </Link>
           </ul>
-          <Link to="/">
+          <Link to="/dashboard/cart">
             <button className="btn ml-10">
             <FaShoppingCart className="mr-4"></FaShoppingCart>
               <div className="badge">+{cart.length}</div>
