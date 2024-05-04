@@ -19,8 +19,6 @@ import Cart from "../pages/Dashboard/Cart/Cart";
 
 
 
-
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,8 +43,6 @@ export const router = createBrowserRouter([
         element: <FreeTemplateDetails></FreeTemplateDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
       },
-
-
 
       {
         path: '/company',

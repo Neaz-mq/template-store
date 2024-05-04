@@ -35,7 +35,7 @@ const Cart = () => {
                             refetch();
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your template has been deleted.",
                                 icon: "success"
                             });
                         }

@@ -29,6 +29,7 @@ const TemplateDetails = () => {
                 image,
                 price
             }
+            
             axiosSecure.post('/carts', cartItem)
            .then(res => {
                console.log(res.data);
