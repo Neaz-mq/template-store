@@ -3,7 +3,7 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const TemplateDetails = () => {
@@ -11,6 +11,7 @@ const TemplateDetails = () => {
     const {user} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosSecure = useAxiosSecure();
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
@@ -28,7 +29,7 @@ const TemplateDetails = () => {
                 image,
                 price
             }
-           axios.post('http://localhost:5000/carts', cartItem)
+            axiosSecure.post('/carts', cartItem)
            .then(res => {
                console.log(res.data);
                if(res.data.insertedId){

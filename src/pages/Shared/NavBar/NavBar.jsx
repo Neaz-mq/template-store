@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
+import useCart from '../../../hooks/useCart';
 
 const NavBar = () => {
   const location = useLocation();
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -92,7 +94,7 @@ const NavBar = () => {
               <li className="mb-2 mt-3">
                 <Link to="/" className="btn ml-4">
                 <FaShoppingCart className="mr-4"></FaShoppingCart>
-                  <div className="badge">+0</div>
+                  <div className="badge">+{cart.length}</div>
                 </Link>
               </li>
             </ul>
@@ -139,7 +141,7 @@ const NavBar = () => {
           <Link to="/">
             <button className="btn ml-10">
             <FaShoppingCart className="mr-4"></FaShoppingCart>
-              <div className="badge">+0</div>
+              <div className="badge">+{cart.length}</div>
             </button>
           </Link>
         </div>
@@ -152,7 +154,7 @@ const NavBar = () => {
               </span>
               <button
                 onClick={handleLogOut}
-                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-16 lg:-ml-9 lg:py-5 py-4"
+                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-12 mr-16 lg:-ml-12 lg:py-5 py-4"
               >
                 <span className="-mt-2">Sign Out</span>
               </button>
