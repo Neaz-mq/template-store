@@ -16,6 +16,7 @@ import TemplateDetails from "../pages/TemplateDetails/TemplateDetails";
 import FreeTemplateDetails from "../pages/FreeTemplateDetails/FreeTemplateDetails";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -84,6 +85,15 @@ export const router = createBrowserRouter([
         path: 'cart',
         element: <Cart></Cart>
       },
+
+
+
+      // admin only routes
+      {
+        path: 'users',
+        element: <AllUsers></AllUsers>
+      }
+     
     ]
   }
 ]);

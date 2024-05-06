@@ -1,15 +1,51 @@
-import { FaHome, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaHome, FaList, FaSearch, FaShoppingCart, FaUsers} from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../hooks/useCart";
+import { ImInsertTemplate } from "react-icons/im";
 
 
 const Dashboard = () => {
+    const [cart] = useCart();
+
+    
+ // TODO: get isAdmin value from the database
+ const isAdmin = true;
+
+
     return (
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-[#7868E6]">
 
                 <ul className="menu p-4">
+                    {
+                        isAdmin ? <>
+                     <li>
+                        <NavLink to="/dashboard/adminHome">
+                            <FaHome></FaHome>
+                            Admin Home</NavLink>
+                    </li>
                     <li>
+                                <NavLink to="/dashboard/addTemplates">
+                                <ImInsertTemplate />
+                                    Add Templates</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/manageTemplates">
+                                    <FaList></FaList>
+                                    Manage Templates</NavLink>
+                            </li>
+                           
+                            <li>
+                                <NavLink to="/dashboard/users">
+                                    <FaUsers></FaUsers>
+                                    All Users</NavLink>
+                            </li> 
+                        </>
+
+                        :
+                        <>
+                        <li>
                         <NavLink to="/dashboard/userHome">
                             <FaHome></FaHome>
                             User Home</NavLink>
@@ -18,6 +54,11 @@ const Dashboard = () => {
                         <NavLink to="/dashboard/cart">
                             <FaShoppingCart></FaShoppingCart>
                             My Cart</NavLink></li>
+                        </>
+                    }
+
+
+                {/* shared nav links */}
 
                     <div className="divider"></div>
                     <li>

@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react';
 import './SignInForm.css';
-import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
+import {  FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../../SocialLogin/SocialLogin';
 
 const SignInForm = () => {
     const { signIn } = useContext(AuthContext);
@@ -59,24 +60,17 @@ const SignInForm = () => {
                             )}
                         </span>
                     </div>
-                    <br /><br />
-                    <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]">
+                   
+                    <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-6 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]">
                         <span className="-mt-1">Sign in</span>
                         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </button>
-                    <br /><br />
+                   <br /> <br /> <br />
                     {/* Google Sign-in Button */}
-                    <button className="btn btn-google bg-white hover:bg-gray-100  capitalize text-black rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">
-                        <FaGoogle className="text-xl mr-2 text-red-600" />
-                        Sign in with Google
-                        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button> <br /><br />
+                    <SocialLogin></SocialLogin> <br />
                     <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]">
                         <span className="-mt-1">Sign in with Facebook</span>
                         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

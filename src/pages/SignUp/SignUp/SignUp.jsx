@@ -1,14 +1,17 @@
 import { useForm } from 'react-hook-form';
 import './SignUp.css';
-import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash} from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import SocialLogin from '../../SocialLogin/SocialLogin';
 
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -32,18 +35,28 @@ const SignUp = () => {
                 updateUserProfile(data.name)
                     .then(() => {
                         // create user entry in the database
-
-                        console.log('user profile info updated');
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                        }
+                        axiosPublic.post('/users', userInfo)
+                        .then(res => {
+                            if(res.data.insertedId){
+                                console.log('user added to the database');
+                                reset();
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'User created successfully.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                navigate('/');
+                            }
+                        })
+                        // console.log('user profile info updated');
                         // Reset the form after submission
-                        reset();
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'User created successfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate('/');
+                        
                     })
                     .catch(error => console.log(error))
             })
@@ -154,7 +167,7 @@ const SignUp = () => {
                     </div>
                     <div className="form-control -mt-5">
                         <button
-                            className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-5 py-3 shadow-none"
+                            className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none"
                             type="submit"
                             disabled={!termsChecked || !isValid}
                         >
@@ -166,14 +179,14 @@ const SignUp = () => {
                         </button>
                         <br /> <br />
                         {/* Google Sign-in Button */}
-                        <button className="btn btn-google bg-white hover:bg-gray-100  capitalize text-black rounded-full gap-4 w-full -mt-4 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">
-                            <FaGoogle className=" text-base
-                            mr-2 text-red-600" />Sign up with Google
-                            <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </button>
+                        <SocialLogin></SocialLogin> <br /> 
+                        <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]">
+                        <span className="-mt-1">Sign in with Facebook</span>
+                        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
                     </div>
                 </form>
             </div>
