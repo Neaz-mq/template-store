@@ -17,6 +17,8 @@ import FreeTemplateDetails from "../pages/FreeTemplateDetails/FreeTemplateDetail
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddTemplates from "../pages/Dashboard/AddTemplates/AddTemplates";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -81,6 +83,9 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+
+        // normal user routes
+
       {
         path: 'cart',
         element: <Cart></Cart>
@@ -89,6 +94,12 @@ export const router = createBrowserRouter([
 
 
       // admin only routes
+
+      {
+        path: 'addTemplates',
+        element: <AdminRoute><AddTemplates></AddTemplates></AdminRoute>
+      },
+
       {
         path: 'users',
         element: <AllUsers></AllUsers>
