@@ -19,6 +19,8 @@ import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddTemplates from "../pages/Dashboard/AddTemplates/AddTemplates";
 import AdminRoute from "./AdminRoute";
+import ManageTemplates from "../pages/Dashboard/ManageTemplates/ManageTemplates";
+import UpdateTemplate from "../pages/Dashboard/UpdateTemplate/UpdateTemplate";
 
 
 
@@ -98,6 +100,16 @@ export const router = createBrowserRouter([
       {
         path: 'addTemplates',
         element: <AdminRoute><AddTemplates></AddTemplates></AdminRoute>
+      },
+
+      {
+        path: 'manageTemplates',
+        element: <AdminRoute><ManageTemplates></ManageTemplates></AdminRoute>
+      },
+      {
+        path: 'updateTemplate/:id',
+        element: <AdminRoute><UpdateTemplate></UpdateTemplate></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/template/${params.id}`)
       },
 
       {
