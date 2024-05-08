@@ -1,5 +1,3 @@
-
-
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
@@ -13,7 +11,6 @@ const useFreeTemplate = () => {
             return res.data;
         }
     })
-
 
     return [free, loading, refetch]
 }

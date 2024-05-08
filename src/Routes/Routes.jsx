@@ -26,7 +26,6 @@ import ManageFreeTemplates from "../pages/Dashboard/ManageFreeTemplates/ManageFr
 import UpdateFreeTemplate from "../pages/Dashboard/UpdateFreeTemplate/UpdateFreeTemplate";
 
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -84,12 +83,13 @@ export const router = createBrowserRouter([
 
     ]
   },
+
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
 
-        // normal user routes
+      // normal user routes
 
       {
         path: 'cart',
@@ -139,4 +139,5 @@ export const router = createBrowserRouter([
      
     ]
   }
+  
 ]);

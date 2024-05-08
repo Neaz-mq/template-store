@@ -1,5 +1,3 @@
-// import { useEffect, useState } from "react";
-
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
@@ -13,7 +11,6 @@ const useTemplate = () => {
             return res.data;
         }
     })
-
 
     return [template, loading, refetch]
 }
