@@ -154,7 +154,7 @@ const NavBar = () => {
               </span>
               <button
                 onClick={handleLogOut}
-                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-12 mr-16 lg:-ml-12 lg:py-5 py-4"
+                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-14 mr-20 lg:-ml-14 lg:py-5 py-4"
               >
                 <span className="-mt-2">Sign Out</span>
               </button>
