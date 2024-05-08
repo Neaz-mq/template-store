@@ -1,8 +1,9 @@
-import { FaHome, FaList, FaSearch, FaShoppingCart, FaUsers} from "react-icons/fa";
+import { FaHome, FaList, FaRegListAlt, FaSearch, FaShoppingCart, FaUsers} from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import { ImInsertTemplate } from "react-icons/im";
 import useAdmin from "../hooks/useAdmin";
+import { CgTemplate } from "react-icons/cg";
 
 
 const Dashboard = () => {
@@ -36,6 +37,19 @@ const Dashboard = () => {
                                     <FaList></FaList>
                                     Manage Templates</NavLink>
                             </li>
+
+                            <li>
+                                <NavLink to="/dashboard/addFreeTemplates">
+                                <CgTemplate />
+                                    Add Free Templates</NavLink>
+                            </li>
+
+                            <li>
+                                <NavLink to="/dashboard/manageFreeTemplates">
+                                    <FaRegListAlt></FaRegListAlt>
+                                    Manage Free Templates</NavLink>
+                            </li>
+
                            
                             <li>
                                 <NavLink to="/dashboard/users">

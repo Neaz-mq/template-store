@@ -1,18 +1,15 @@
-import { useLoaderData } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { HiTemplate } from "react-icons/hi";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const UpdateTemplate = () => {
-
-    const {name, category, details, image, price, _id} = useLoaderData();
+const AddFreeTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
-   
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const onSubmit = async (data) => {
@@ -26,44 +23,41 @@ const UpdateTemplate = () => {
         });
         if (res.data.success) {
             // now send the menu item data to the server with the image url
-            const templateItem = {
+            const templateItemFree = {
                 name: data.name,
                 category: data.category,
-                price: parseFloat(data.price),
+                price: data.price,
                 details: data.details,
                 image: res.data.data.display_url
             }
             // 
-            const templateRes = await axiosSecure.patch(`/template/${_id}`, templateItem);
-            console.log(templateRes.data)
-            if(templateRes.data.modifiedCount > 0){
+            const templateFreeRes = await axiosSecure.post('/free', templateItemFree);
+            console.log(templateFreeRes.data)
+            if (templateFreeRes.data.insertedId) {
                 // show success popup
-                //reset();
+                reset();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is updated to the template`,
+                    title: `${data.name} is added to the template`,
                     showConfirmButton: false,
                     timer: 1500
-                  });
+                });
             }
         }
-        console.log( 'with image url', res.data);
+        console.log('with image url', res.data);
     };
-
     return (
         <div>
-              <h2 className="text-3xl text-center font-bold mb-10">Update Premium Templates</h2>
-
-              <div>
-           <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="text-3xl text-center font-bold">Add Free Template</h2>
+            <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Name*</span>
                         </label>
                         <input
                             type="text"
-                            defaultValue={name}
                             placeholder="Template Name"
                             {...register('name', { required: true })}
                             required
@@ -75,14 +69,14 @@ const UpdateTemplate = () => {
                             <label className="label">
                                 <span className="label-text">Category*</span>
                             </label>
-                            <select defaultValue={category} {...register('category', { required: true })}
+                            <select defaultValue="default" {...register('category', { required: true })}
                                 className="select select-bordered w-full">
                                 <option disabled value="default">Select a category</option>
                                 <option value="agency">Agency</option>
                                 <option value="ecommerce">Ecommerce</option>
                                 <option value="business">Business</option>
                                 <option value="portfolio">Portfolio</option>
-                                
+
                             </select>
                         </div>
 
@@ -92,35 +86,34 @@ const UpdateTemplate = () => {
                                 <span className="label-text">Price*</span>
                             </label>
                             <input
-                                type="number"
-                                step="0.01" // Allow decimal values
-                                defaultValue={price}
+                                type="text"                              
                                 placeholder="Price"
                                 {...register('price', { required: true })}
                                 className="input input-bordered w-full" />
                         </div>
 
                     </div>
+
                     {/* recipe details */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Template Details</span>
                         </label>
-                        <textarea defaultValue={details} {...register('details')} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
+                        <textarea {...register('details')} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
                     </div>
 
                     <div className="form-control w-full my-6">
-                        <input  {...register('image', { required: true })} type="file"  className="file-input w-full max-w-xs" />
+                        <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
                     </div>
 
                     <button className="btn">
-                        Update Template
+                        Add Template <HiTemplate className="ml-4"></HiTemplate>
                     </button>
                 </form>
-           </div>
-            
+            </div>
         </div>
     );
 };
 
-export default UpdateTemplate;
+
+export default AddFreeTemplates;

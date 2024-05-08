@@ -21,6 +21,9 @@ import AddTemplates from "../pages/Dashboard/AddTemplates/AddTemplates";
 import AdminRoute from "./AdminRoute";
 import ManageTemplates from "../pages/Dashboard/ManageTemplates/ManageTemplates";
 import UpdateTemplate from "../pages/Dashboard/UpdateTemplate/UpdateTemplate";
+import AddFreeTemplates from "../pages/Dashboard/AddFreeTemplates/AddFreeTemplates";
+import ManageFreeTemplates from "../pages/Dashboard/ManageFreeTemplates/ManageFreeTemplates";
+import UpdateFreeTemplate from "../pages/Dashboard/UpdateFreeTemplate/UpdateFreeTemplate";
 
 
 
@@ -106,10 +109,27 @@ export const router = createBrowserRouter([
         path: 'manageTemplates',
         element: <AdminRoute><ManageTemplates></ManageTemplates></AdminRoute>
       },
+    
       {
         path: 'updateTemplate/:id',
         element: <AdminRoute><UpdateTemplate></UpdateTemplate></AdminRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/template/${params.id}`)
+      },
+
+      {
+        path: 'addFreeTemplates',
+        element: <AdminRoute><AddFreeTemplates></AddFreeTemplates></AdminRoute>
+      },
+
+      {
+        path: 'manageFreeTemplates',
+        element: <AdminRoute><ManageFreeTemplates></ManageFreeTemplates></AdminRoute>
+      },
+
+      {
+        path: 'updateFreeTemplate/:id',
+        element: <AdminRoute><UpdateFreeTemplate></UpdateFreeTemplate></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/free/${params.id}`)
       },
 
       {

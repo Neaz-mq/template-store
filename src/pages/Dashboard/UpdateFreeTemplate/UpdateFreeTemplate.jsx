@@ -8,7 +8,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const UpdateTemplate = () => {
+const UpdateFreeTemplate = () => {
 
     const {name, category, details, image, price, _id} = useLoaderData();
     const { register, handleSubmit, reset } = useForm();
@@ -29,14 +29,14 @@ const UpdateTemplate = () => {
             const templateItem = {
                 name: data.name,
                 category: data.category,
-                price: parseFloat(data.price),
+                price: data.price,
                 details: data.details,
                 image: res.data.data.display_url
             }
             // 
-            const templateRes = await axiosSecure.patch(`/template/${_id}`, templateItem);
-            console.log(templateRes.data)
-            if(templateRes.data.modifiedCount > 0){
+            const templateFreeRes = await axiosSecure.patch(`/free/${_id}`, templateItem);
+            console.log(templateFreeRes.data)
+            if(templateFreeRes.data.modifiedCount > 0){
                 // show success popup
                 //reset();
                 Swal.fire({
@@ -53,7 +53,7 @@ const UpdateTemplate = () => {
 
     return (
         <div>
-              <h2 className="text-3xl text-center font-bold mb-10">Update Premium Templates</h2>
+              <h2 className="text-3xl text-center font-bold mb-10">Update Free Templates</h2>
 
               <div>
            <form onSubmit={handleSubmit(onSubmit)}>
@@ -92,8 +92,7 @@ const UpdateTemplate = () => {
                                 <span className="label-text">Price*</span>
                             </label>
                             <input
-                                type="number"
-                                step="0.01" // Allow decimal values
+                                type="text"  
                                 defaultValue={price}
                                 placeholder="Price"
                                 {...register('price', { required: true })}
@@ -114,7 +113,7 @@ const UpdateTemplate = () => {
                     </div>
 
                     <button className="btn">
-                        Update Template
+                        Update Free Template
                     </button>
                 </form>
            </div>
@@ -123,4 +122,4 @@ const UpdateTemplate = () => {
     );
 };
 
-export default UpdateTemplate;
+export default UpdateFreeTemplate;

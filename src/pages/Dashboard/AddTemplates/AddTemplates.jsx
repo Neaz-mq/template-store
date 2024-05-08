@@ -39,7 +39,7 @@ const AddTemplates = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is added to the template.`,
+                    title: `${data.name} is added to the template`,
                     showConfirmButton: false,
                     timer: 1500
                 });
