@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form';
 import './SignUp.css';
-import { FaEye, FaEyeSlash} from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle} from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import SocialLogin from '../../SocialLogin/SocialLogin';
+import useAuth from '../../../hooks/useAuth';
 
 
 const SignUp = () => {
@@ -21,10 +21,26 @@ const SignUp = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-
+    const {googleSignIn} = useAuth();
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+        .then(result => {
+                console.log(result.user);
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+
+                }
+                axiosPublic.post('/users', userInfo)
+                .then(res => {
+                    console.log(res.data);
+                    navigate('/');
+                })
+        })
+    }
 
     const onSubmit = data => {
         console.log(data);
@@ -72,8 +88,8 @@ const SignUp = () => {
                     <title>Template Store | Sign-Up</title>
                 </Helmet>
             </div>
-            <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center mb-20 mt-4">
-                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] mt-10  lg:-ml-0">
+            <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center  mt-4 ">
+                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 ">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6">Sign Up</h3>
                     <div className="flex flex-col gap-3 mb-3">
                         <div className="max-w-72 lg:max-w-[350px] flex gap-4">
@@ -167,7 +183,7 @@ const SignUp = () => {
                     </div>
                     <div className="form-control -mt-5">
                         <button
-                            className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none"
+                            className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
                             type="submit"
                             disabled={!termsChecked || !isValid}
                         >
@@ -178,18 +194,25 @@ const SignUp = () => {
                             </svg>
                         </button>
                         <br /> <br />
-                        {/* Google Sign-in Button */}
-                        <SocialLogin></SocialLogin> <br /> 
-                        <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-3 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3]">
-                        <span className="-mt-1">Sign in with Facebook</span>
-                        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button>
+                        
+                        
+                        
                     </div>
+                   
                 </form>
+              
             </div>
+            {/* Google Sign-in Button */}
+         <div className='flex justify-center items-center -mt-24 '>
+         <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24 ">
+                            <FaGoogle className=" text-base
+                            mr-2 text-red-600" />Sign up with Google
+                            <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+         </div>
         </>
     );
 };
