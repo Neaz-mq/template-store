@@ -24,6 +24,7 @@ import UpdateTemplate from "../pages/Dashboard/UpdateTemplate/UpdateTemplate";
 import AddFreeTemplates from "../pages/Dashboard/AddFreeTemplates/AddFreeTemplates";
 import ManageFreeTemplates from "../pages/Dashboard/ManageFreeTemplates/ManageFreeTemplates";
 import UpdateFreeTemplate from "../pages/Dashboard/UpdateFreeTemplate/UpdateFreeTemplate";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -96,7 +97,10 @@ export const router = createBrowserRouter([
         element: <Cart></Cart>
       },
 
-
+      {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
 
       // admin only routes
 
