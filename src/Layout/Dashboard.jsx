@@ -75,6 +75,12 @@ const Dashboard = () => {
                             My Cart ({cart.length})</NavLink>
                         </li>
 
+                        <li>
+                                    <NavLink to="/dashboard/paymentHistory">
+                                        <FaList></FaList>
+                                         Payment History</NavLink>
+                                </li>
+
                         </>
                     }
 
