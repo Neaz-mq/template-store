@@ -3,11 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
 
 const NavBar = () => {
   const location = useLocation();
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut()
@@ -90,6 +92,13 @@ const NavBar = () => {
                 Contact Us
               </Link>
 
+              {
+                user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+              }
+              {
+                user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+              }
+
               {/* Include the Inbox button in the mobile dropdown */}
               <li className="mb-2 mt-3">
                 <Link to="/dashboard/cart" className="btn ml-4">
@@ -117,33 +126,43 @@ const NavBar = () => {
             />
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex mr-36 -ml-14">
-          <ul className="menu text-base cursor-pointer  menu-horizontal px-2 lg:flex flex-row gap-10 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#1e1c27] font-semibold">
+        <div className="navbar-center hidden lg:flex ml-16 -mr-14 ">
+          <ul className="menu text-base cursor-pointer  menu-horizontal lg:flex flex-row gap-10 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#1e1c27] font-semibold">
             <Link
               to="/template"
-              className={`hover:text-[#7673E5] ${getTextColorClass()}`}
+              className={`hover:text-[#7673E5] mt-4  ${getTextColorClass()}`}
             >
               Template
             </Link>
             <Link
               to="/company"
-              className={`hover:text-[#7673E5] ${getTextColorCompany()}`}
+              className={`hover:text-[#7673E5] mt-4 ${getTextColorCompany()}`}
             >
               Company
             </Link>
             <Link
               to="/contact"
-              className={`hover:text-[#7673E5] ${getTextColorContact()}`}
+              className={`hover:text-[#7673E5] mt-4 ${getTextColorContact()}`}
             >
               Contact Us
             </Link>
-          </ul>
+
+          
+            {
+                user && isAdmin && <li className='mt-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
+              }
+              {
+                user && !isAdmin && <li className='mt-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
+              }
+              
           <Link to="/dashboard/cart">
-            <button className="btn ml-10">
+            <button className="btn ml-4 mr-16">
               <FaShoppingCart className="mr-4"></FaShoppingCart>
               <div className="badge">+{cart.length}</div>
             </button>
           </Link>
+          </ul>
+
         </div>
 
         <div className="navbar-end gap-3 lg:gap-0">
