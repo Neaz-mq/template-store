@@ -28,7 +28,7 @@ const Community = () => {
                         </div>
                         <div className="lg:ml-[15%] lg:-mt-[37px]"><a className="w-[160px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#9A8EE8]  hover:text-white rounded-full shadow-2xl" href="#">Behance<p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#7666E3]"><span className="-mt-1">b</span></p></a></div>
                         <div className="lg:-mt-[29%]">
-                            <a className="w-[160px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#9A8EE8] duration-200 hover:text-white rounded-full shadow-2xl" href="#">Dribble<p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#7666E3]"><span className="-mt-1">d</span>
+                            <a className="w-[160px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#9A8EE8] duration-200 hover:text-white rounded-full shadow-2xl" href="https://dribbble.com/prographr" target="_blank">Dribble<p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#7666E3]"><span className="-mt-1">d</span>
                             </p></a>
                         </div>
                     </div>

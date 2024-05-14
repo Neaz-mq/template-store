@@ -14,6 +14,8 @@ const PaymentHistory = () => {
         }
     })
 
+    
+
     return (
         <div>
             <h2 className="text3-xl">Total Payments: {payments.length}</h2>
@@ -31,7 +33,7 @@ const PaymentHistory = () => {
                     <tbody>
                         {payments.map((payment, index) => <tr key={payment._id}>
                             <th>{index + 1}</th>
-                            <td>${payment.price}</td>
+                            <td>${payment.price.toFixed(2)}</td>
                             <td>{payment.transactionId}</td>
                             <td>{payment.status}</td>
                         </tr>)}

@@ -80,9 +80,9 @@ const TemplateDetails = () => {
                             <img src={image} className="max-h-[400px] object-contain" alt="" />
                         </div>
                         <div className="w-full mt-4 flex flex-wrap gap-4 ml-2 lg:ml-0">
-                            <img src="https://prographr.vercel.app/topimg/1.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/2.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/3.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                            <img src="https://i.ibb.co/6FCc4gG/1.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                            <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                            <img src="https://i.ibb.co/vXmfTXW/2.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
                         </div>
                     </div>
                     <h3 className="mt-10 text-xl ml-1 lg:ml-0 font-bold font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Descriptions</h3>

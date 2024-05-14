@@ -15,46 +15,46 @@ const Banner = () => {
                     <div className="scroll_wrapper__5yHC8">
 
                         <section className="scroll_section__WwdTn scroll_scrolling__mlJTJ">
-                            <img src="https://prographr.vercel.app/topimg/1.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/2.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/3.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/4.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/5.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/6.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/7.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/8.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/9.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/10.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/11.jpg" alt="" />
+                            <img src="https://i.ibb.co/6FCc4gG/1.jpg" alt="" />
+                            <img src="https://i.ibb.co/vXmfTXW/2.jpg" alt="" />
+                            <img src="https://i.ibb.co/RDBLTCB/3.jpg" alt="" />
+                            <img src="https://i.ibb.co/Dr8pMnb/4.jpg" alt="" />
+                            <img src="https://i.ibb.co/d7Fgv3C/5.jpg" alt="" />
+                            <img src="https://i.ibb.co/ZfgLxNN/6.jpg" alt="" />
+                            <img src="https://i.ibb.co/RbBk3rt/7.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/8.jpg" alt="" />
+                            <img src="https://i.ibb.co/JrbZzVc/9.jpg" alt="" />
+                            <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" alt="" />
+                            <img src="https://i.ibb.co/44VVbr3/11.jpg" alt="" />
                         </section>
                         
                         <section className="scroll_section__WwdTn scroll_scrolling2__yKLja">
-                            <img src="https://prographr.vercel.app/topimg/7.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/9.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/8.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/11.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/10.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/1.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/2.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/3.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/4.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/5.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/6.jpg" alt="" />
+                            <img src="https://i.ibb.co/RbBk3rt/7.jpg" alt="" />
+                            <img src="https://i.ibb.co/JrbZzVc/9.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/8.jpg" alt="" />
+                            <img src="https://i.ibb.co/44VVbr3/11.jpg" alt="" />
+                            <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" alt="" />
+                            <img src="https://i.ibb.co/6FCc4gG/1.jpg" alt="" />
+                            <img src="https://i.ibb.co/vXmfTXW/2.jpg" alt="" />
+                            <img src="https://i.ibb.co/RDBLTCB/3.jpg" alt="" />
+                            <img src="https://i.ibb.co/Dr8pMnb/4.jpg" alt="" />
+                            <img src="https://i.ibb.co/d7Fgv3C/5.jpg" alt="" />
+                            <img src="https://i.ibb.co/ZfgLxNN/6.jpg" alt="" />
                         </section>
 
                         <section className="scroll_section__WwdTn scroll_scrolling3__QmJJF">
-                            <img src="https://prographr.vercel.app/topimg/10.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/11.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/8.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/6.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/7.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/1.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/2.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/3.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/4.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/5.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/6.jpg" alt="" />
-                            <img src="https://prographr.vercel.app/topimg/9.jpg" alt="" />
+                            <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" alt="" />
+                            <img src="https://i.ibb.co/44VVbr3/11.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/8.jpg" alt="" />
+                            <img src="https://i.ibb.co/ZfgLxNN/6.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/7.jpg" alt="" />
+                            <img src="https://i.ibb.co/6FCc4gG/1.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/2.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/3.jpg" alt="" />
+                            <img src="https://i.ibb.co/Dr8pMnb/4.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/5.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/6.jpg" alt="" />
+                            <img src="https://i.ibb.co/J2GbtNj/9.jpg" alt="" />
                         </section>
                     </div>
 
