@@ -7,7 +7,7 @@ const SignUpForm = () => {
         
         <div>
              <Helmet>
-                <title>Template Store | Sign-Up-As</title>
+                <title>Template Store | Sign-Up</title>
             </Helmet>
             
            <div className="layout min-h-[calc(100vh-500px)] flex items-center my-16">

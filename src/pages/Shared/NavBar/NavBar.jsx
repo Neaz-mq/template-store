@@ -190,7 +190,7 @@ const NavBar = () => {
 
           {/* "Sign Up" button always visible */}
           <div className="flex items-center">
-            <Link to="/sign-up-as">
+            <Link to="/sign-up">
               <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-['__gellix_0bf537, __gellix_Fallback_0bf537'] capitalize text-white rounded-full gap-4 lg:px-6 px-8 lg:py-5 py-4 lg:mr-20 mr-4 -ml-10 lg:-ml-9 ">
                 <span className="-mt-2">Sign Up</span>
               </button>
