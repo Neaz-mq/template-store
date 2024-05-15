@@ -4,6 +4,7 @@ import useCart from "../hooks/useCart";
 import { ImInsertTemplate } from "react-icons/im";
 import useAdmin from "../hooks/useAdmin";
 import { CgTemplate } from "react-icons/cg";
+import { GrUserAdmin } from "react-icons/gr";
 
 const Dashboard = () => {
     const [cart] = useCart();
@@ -55,7 +56,13 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to="/dashboard/users">
                                     <FaUsers></FaUsers>
-                                    All Users</NavLink>
+                                    All users</NavLink>
+                            </li> 
+
+                            <li>
+                                <NavLink to="/dashboard/admins">
+                                    <GrUserAdmin></GrUserAdmin>
+                                    All Admins</NavLink>
                             </li> 
                         </>
 
