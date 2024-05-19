@@ -47,7 +47,7 @@ const Banner = () => {
                             <img src="https://i.ibb.co/44VVbr3/11.jpg" alt="" />
                             <img src="https://i.ibb.co/J2GbtNj/8.jpg" alt="" />
                             <img src="https://i.ibb.co/ZfgLxNN/6.jpg" alt="" />
-                            <img src="https://i.ibb.co/J2GbtNj/7.jpg" alt="" />
+                            <img src="https://i.ibb.co/RbBk3rt/7.jpg" alt="" />
                             <img src="https://i.ibb.co/6FCc4gG/1.jpg" alt="" />
                             <img src="https://i.ibb.co/J2GbtNj/2.jpg" alt="" />
                             <img src="https://i.ibb.co/J2GbtNj/3.jpg" alt="" />
