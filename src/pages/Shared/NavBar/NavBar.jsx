@@ -93,10 +93,10 @@ const NavBar = () => {
               </Link>
 
               {
-                user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                user && isAdmin && <li className='mt-2 ml-6 font-medium text-3xl'><Link to="/dashboard/adminHome" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Dashboard</Link></li>
               }
               {
-                user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+                user && !isAdmin && <li className='mt-2 ml-6 font-medium text-3xl'><Link to="/dashboard/userHome" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Dashboard</Link></li>
               }
 
               {/* Include the Inbox button in the mobile dropdown */}
@@ -106,6 +106,13 @@ const NavBar = () => {
                   <div className="badge">+{cart.length}</div>
                 </Link>
               </li>
+               {/* Include the user display name in the mobile dropdown */}
+               {user && (
+                <li className="mb-2 mt-3 ml-4 text-[#7868E6] font-bold text-2xl">
+                  {user.displayName}
+                </li>
+              )}
+             
             </ul>
           </div>
           <Link
@@ -161,6 +168,8 @@ const NavBar = () => {
               <div className="badge">+{cart.length}</div>
             </button>
           </Link>
+
+          
           </ul>
 
         </div>
@@ -168,7 +177,7 @@ const NavBar = () => {
         <div className="navbar-end gap-3 lg:gap-0">
           {user ? (
             <div className="flex items-center">
-              <span className="font-bold text-2xl text-[#7868E6]  mr-16">
+              <span className=" hidden lg:block font-bold text-2xl text-[#7868E6]  mr-16">
                 {user.displayName}
               </span>
               <button
