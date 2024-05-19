@@ -105,9 +105,7 @@ const NavBar = () => {
                   <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </Link>
-              </li>
-              
-             
+              </li>                   
             </ul>
           </div>
           <Link
