@@ -106,12 +106,7 @@ const NavBar = () => {
                   <div className="badge">+{cart.length}</div>
                 </Link>
               </li>
-               {/* Include the user display name in the mobile dropdown */}
-               {user && (
-                <li className="mb-2 mt-3 ml-4 text-[#7868E6] font-bold text-2xl">
-                  {user.displayName}
-                </li>
-              )}
+              
              
             </ul>
           </div>
