@@ -5,37 +5,71 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 
 
 const TemplateDetails = () => {
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
+    const [selectedFiles, setSelectedFiles] = useState([]);
     const [showAdditionalImages, setShowAdditionalImages] = useState(false);
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
+    const temp = useLoaderData();
+    const { name, _id, price, image } = temp;
+    const [templates, setTemplates] = useState([]);
+    const [displayedTemplates, setDisplayedTemplates] = useState([]);
+    
+    const initialDisplayCount = 4;
+
+    useEffect(() => {
+        fetch('http://localhost:5000/free')
+            .then(res => res.json())
+            .then(data => {
+                setTemplates(data);
+                setDisplayedTemplates(data.slice(0, initialDisplayCount));
+            });
+    }, []);
+
+    
+
+    // Check if there are any templates to display
+    if (displayedTemplates.length === 0) {
+        return null;
+    }
+
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
 
+    const handleFileChange = (e) => {
+        const selectedValue = e.target.value;
+        if (selectedValue && !selectedFiles.includes(selectedValue)) {
+            setSelectedFiles([...selectedFiles, selectedValue]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
+    const handleRemoveFile = (file) => {
+        setSelectedFiles(selectedFiles.filter(f => f !== file));
+    };
+
     const handleAddToCart = () => {
-
         if (user && user.email) {
-            //send cart item to the database        
-
             const cartItem = {
                 tempId: _id,
                 email: user.email,
                 name,
                 image,
                 price
-            }
+            };
 
             axiosSecure.post('/carts', cartItem)
                 .then(res => {
-                    console.log(res.data);
                     if (res.data.insertedId) {
                         Swal.fire({
                             position: "top-end",
@@ -44,17 +78,13 @@ const TemplateDetails = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        // refetch cart to update the cart items count
                         refetch();
                     }
-                })
-
-        }
-
-        else {
+                });
+        } else {
             Swal.fire({
                 title: "You are not Signed In",
-                text: "Please signin to add to the cart?",
+                text: "Please sign in to add to the cart?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -62,158 +92,209 @@ const TemplateDetails = () => {
                 confirmButtonText: "Yes, Sign In!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    //   send the user to the login page
-                    navigate('/sign-in', { state: { from: location } })
+                    navigate('/sign-in', { state: { from: location } });
                 }
             });
         }
-    }
-    const temp = useLoaderData();
+    };
 
-    const { name, _id, price, image } = temp;
     return (
-
-
         <div className="lg:ml-20 mb-16">
-            <div className="layout mt-14 grid grid-cols-1 lg:grid-cols-7 gap-6 ml-2">
-                <div className="col-span-4">
-                    <h2 className="text-2xl text-[#2F1C6A] pb-5 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">Premium <strong> Graphics Template</strong></h2>
-                    <div className="">
-                        <div className="bg-[#EDEEF7] rounded-xl flex items-center justify-center pt-6 pb-4 pl-4 pr-8">
-                            <div className="flex items-center justify-between gap-12 my-8 -mx-20">
-                                <img src={image} className="max-h-[400px] object-contain ml-8 -mr-4 " alt="" />
-                                <img src={image} className="max-h-[400px] object-contain -ml-4 mr-4 " alt="" />
+            <div className="mt-14 flex flex-row gap-6 ml-2">
+                <div style={{ width: "65%" }}>
+                    <h2 className="text-2xl text-[#2F1C6A] pb-5 font-medium">
+                        Premium <strong>Graphics Template</strong>
+                    </h2>
+                    <div className="bg-[#EDEEF7] rounded-xl flex items-center justify-center pt-6 pb-4 pl-2 pr-4">
+                        <div className="flex items-center justify-between gap-16 my-8 -mx-20">
+                            <img src={image} className="max-h-[300px] object-contain ml-8 -mr-4" alt="" />
+                            <img src={image} className="max-h-[300px] object-contain -ml-4 mr-4" alt="" />
+                        </div>
+                    </div>
+                    <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0">
+                        <img src="https://i.ibb.co/6FCc4gG/1.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/vXmfTXW/2.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/Dr8pMnb/4.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/J2GbtNj/5.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/RbBk3rt/7.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+
+                        {!showAdditionalImages && (
+                            <div
+                                className="w-[47px] h-[47px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-4 ml-2"
+                                onClick={() => setShowAdditionalImages(true)}
+                            >
+                                <FontAwesomeIcon icon={faChevronRight} size="1x" />
                             </div>
-                        </div>
-                        <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0">
-                            <img src="https://i.ibb.co/6FCc4gG/1.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/vXmfTXW/2.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/Dr8pMnb/4.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/J2GbtNj/5.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/RbBk3rt/7.jpg" className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        )}
 
-                           
-
-                         {/* Toggle additional images */}
-{!showAdditionalImages && (
-    <div
-        className={`w-[50px] h-[50px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-6 ml-5`}
-        onClick={() => setShowAdditionalImages(true)}
-    >
-        <FontAwesomeIcon icon={faChevronRight} size="1x" />
-    </div>
-)}
-
-{/* Additional images */}
-{showAdditionalImages && (
-    <>
-        <div className="flex gap-4 mt-4 ml-2 lg:ml-0">
-            <img
-                src="https://i.ibb.co/44VVbr3/11.jpg"
-                className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
-                alt=""
-            />
-            <img
-                src="https://i.ibb.co/JrbZzVc/9.jpg"
-                className="w-[80px] h-[100px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
-                alt=""
-            />
-            {/* Add more images here if needed */}
-        </div>
-        {/* Google button */}
-        <div
-            className={`w-[50px] h-[50px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-6 ml-5`}
-            onClick={() => setShowAdditionalImages(false)}
-        >
-            <FontAwesomeIcon icon={faChevronRight} size="1x" style={{ transform: "rotate(180deg)" }} />
-        </div>
-    </>
-                            )}
-                        </div>
-                    </div>
-                    <h3 className="mt-10 text-xl ml-1 lg:ml-0 font-bold font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Descriptions</h3>
-                    <p className="mt-4 ml-1 lg:ml-0 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">A business flyer is a versatile and </p>
-                    <p className="mt-4 ml-1 lg:ml-0 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">A business flyer is a versatile and dynamic promotional tool designed to communicate essential information about a business, its products, services, events, or special offers. This tangible piece of marketing collateral is strategically crafted to capture attention, engage the target audience, and generate interest in what the business has to offer</p>
-                    <h3 className="mt-10 text-xl ml-2 lg:ml-0 font-bold font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Features</h3>
-                    <ul className="list-disc ml-2 lg:ml-0 pl-5 py-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
-                        <li>US Letter &amp; A4 Paper Size </li>
-                        <li>CMYK color mode</li>
-                        <li>Bleed size 3 mm </li>
-                        <li>300 DPI Print-ready</li>
-                        <li>Photos are not included</li>
-                    </ul>
-                    <h3 className="mt-10 ml-2 lg:ml-0 text-xl font-bold font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Files Included</h3>
-                    <div className="text-3xl flex gap-2 my-3 ml-2 lg:ml-0 ">
-                        <svg stroke="currentColor" fill="currentColor" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"></path>
-                        </svg>
-                        <svg stroke="currentColor" fill="currentColor" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.53 10.73c-.1-.31-.19-.61-.29-.92-.1-.31-.19-.6-.27-.89-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1
-.48-.44 1.48-.14 1.4h2.54c-.06-.211-.14-.46-.23-.721-.09-.269-.18-.559-.27-.859zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"></path>
-                        </svg>
-                    </div>
-
-                    <div className="mt-14">
-                        <div className={`border ${selectedTemplate === 'templateCustom' ? 'border-primary' : 'border-gray-400'} rounded-[20px] p-8 mx-2 lg:mx-0 cursor-pointer`} onClick={() => handleTemplateChange('templateCustom')}>
-                            <div className="flex justify-between pb-3 ">
-                                <div className="flex gap-3 font-bold">
-                                    <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'templateCustom'} />
-                                    <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">Template + Custom</h2>
+                        {showAdditionalImages && (
+                            <>
+                                <div className="flex gap-4 mt-4 ml-2 lg:ml-0">
+                                    <img
+                                        src="https://i.ibb.co/44VVbr3/11.jpg"
+                                        className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
+                                        alt=""
+                                    />
+                                    <img
+                                        src="https://i.ibb.co/JrbZzVc/9.jpg"
+                                        className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
+                                        alt=""
+                                    />
+                                    {/* Add more images here if needed */}
                                 </div>
-                                <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">$20.00</div>
+                                <div
+                                    className="w-[47px] h-[47px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-8 ml-5"
+                                    onClick={() => setShowAdditionalImages(false)}
+                                >
+                                    <FontAwesomeIcon icon={faChevronRight} size="1x" style={{ transform: "rotate(180deg)" }} />
+                                </div>
+                            </>
+                        )}
+                    </div>
+                </div>
+
+                <div className="flex flex-col items-center mt-12" style={{ width: "60%" }}>
+                    <div style={{ width: "87%", height: "28%" }} className={`border ${selectedTemplate === 'templateCustom' ? 'border-primary' : 'border-gray-400'} rounded-[20px] p-8 -ml-14 mr-9  cursor-pointer`} onClick={() => handleTemplateChange('templateCustom')}>
+                        <div className="flex justify-between pb-3">
+                            <div className="flex gap-3 font-bold">
+                                <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'templateCustom'} readOnly />
+                                <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">Template</h2>
                             </div>
-                            <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
-
-
-                            {/* Add to Cart button */}
-                            <button className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
-
+                            <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">${price}</div>
                         </div>
-                        <div className={`border ${selectedTemplate === 'template' ? 'border-primary' : 'border-gray-400'} rounded-[20px] mt-6 p-8 mx-2 lg:mx-0 cursor-pointer`} onClick={() => handleTemplateChange('template')}>
+                        <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
+                            We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                        </div>
+                    </div>
+
+                    {/* Additional section with the same style in column layout */}
+                    <div className="flex flex-col items-center mt-12">
+                        <div style={{ width: "100%", height: "100%" }} className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] -ml-9 p-8 mr-12 cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
                             <div className="flex justify-between pb-3">
                                 <div className="flex gap-3 font-bold">
-                                    <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'template'} />
-                                    <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">Template</h2>
+                                    <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'customizeTemplate'} readOnly />
+                                    <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">Template + Customization</h2>
                                 </div>
-                                <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">${price}</div>
+                                <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">$00</div>
                             </div>
-                            <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium  ">We are about pushing boundaries, exploring possibilities, and ultimately delivering designs</div>
+                            <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
 
-                            {/* Add to Cart button */}
-                            <button onClick={handleAddToCart} className="bg-[#2F1C6A] text-white font-semibold px-4 py-2 rounded-lg mt-4 hover:bg-[#241E2F]">Add to Cart</button>
-
+                            </div>
+                            <div className="flex items-center mt-4">
+                                <div className="flex items-center mr-8">
+                                    <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium mr-2">Revisions:</div>
+                                    <select className="border rounded-md px-6 py-2" defaultValue="1">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium mr-6">Files:</div>
+                                    <select
+                                        className="border rounded-md px-3 py-2 -ml-3"
+                                        value=""
+                                        onChange={handleFileChange}
+                                    >
+                                        <option value="">All Files</option>
+                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
+                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
+                                        <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
+                                        <option value="Canva">Canva</option>
+                                        <option value="Adobe InDesign">Adobe InDesign</option>
+                                        <option value="Microsoft Word">Microsoft Word</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="mt-4 flex flex-wrap ml-52">
+                                {selectedFiles.map((file, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
+                                        <span className="mr-2">{file}</span>
+                                        <button onClick={() => handleRemoveFile(file)}>
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-
                     </div>
+                    {/* Add to Cart button */}
+                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 -ml-4 w-[32rem] mt-10 hover:bg-[#4c16b1] btn ">
+    Add to Cart
+</button>
 
+                    {/* Check more items */}
+                    <button onClick={handleAddToCart} className="bg-gray-300 text-slate-900 font-semibold mr-14 -ml-4 w-[32rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn ">
+    Check more items
+</button>
 
-                </div>
-                <div className="col-span-3 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium -mb-4 lg:-mb-
-0 ">
-                    <h1>Payment Options</h1>
-                    <p className="text-sm mt-2 font-normal">Choose the payment method that suits you best.</p>
-                    <div className="mt-4 flex flex-col space-y-4">
-                        <div className="flex items-center">
-                            <input type="radio" id="credit_card" name="payment_method" value="credit_card" className="rounded border-gray-300 text-primary focus:ring-primary" />
-                            <label htmlFor="credit_card" className="ml-2 text-gray-700">Credit Card</label>
-                        </div>
-                        <div className="flex items-center">
-                            <input type="radio" id="paypal" name="payment_method" value="paypal" className="rounded border-gray-300 text-primary focus:ring-primary" />
-                            <label htmlFor="paypal" className="ml-2 text-gray-700">Paypal</label>
-                        </div>
-                        <div className="flex items-center">
-                            <input type="radio" id="stripe" name="payment_method" value="stripe" className="rounded border-gray-300 text-primary focus:ring-primary" />
-                            <label htmlFor="stripe" className="ml-2 text-gray-700">Stripe</label>
-                        </div>
-                    </div>
-                    <div className="mt-6">
-                        <button className="bg-primary text-white font-semibold py-2 px-6 rounded-lg hover:bg-opacity-80">Proceed to Payment</button>
-                    </div>
 
                 </div>
             </div>
+            <div className="mt-14 flex flex-wrap gap-12">
+                {/* Descriptions */}
+                <div className="flex-1 mb-8 ml-3">
+    <h3 className="text-xl text-[#2F1C6A] font-medium">Descriptions</h3>
+    <p className="text-gray-500 mt-2 overflow-hidden font-medium leading-relaxed" >
+    A business flyer is a versatile and dynamic promotional tool designed to communicate essential information about a business, its products, services, events, or special offers. This tangible marketing collateral is strategically crafted to capture attention, engage the target audience, and generate interest in what the business offers.
+    </p>
+</div>
+
+
+                {/* Item Specifications */}
+                <div className="flex-1 mb-8 ml-20 -mr-10">
+                    <h3 className="text-xl text-[#2F1C6A] font-medium">Item Specifications</h3>
+                    <p className="text-gray-500 mt-2 font-medium leading-relaxed">
+                        US Letter & A4 Paper Size<br />
+                        CMYK color mode<br />
+                        Bleed size 3 mm<br />
+                        300 DPI – Print-ready<br />
+                        Photos are not included
+                    </p>
+                </div>
+
+                {/* Product Specs */}
+                <div className="flex-1 mb-8 ml-10">
+                    <h3 className="text-xl text-[#2F1C6A] font-medium">Product Specs</h3>
+                    <p className="text-gray-500 mt-2 font-medium leading-relaxed">
+                        Created: Nov 19, 2024<br />
+                        Package File: ZIP<br />
+                        Package File Size: 89MB
+                    </p>
+                </div>
+
+                {/* Files Included */}
+                <div className="flex-1 mr-6 ml-7">
+                    <h3 className="text-xl text-[#2F1C6A] font-medium">Files Included</h3>
+                    <p className="text-gray-500 mt-2 font-medium leading-relaxed">
+                        Adobe Photoshop <br />  Adobe Illustrator <br /> Adobe InDesign <br /> Canva <br /> Figma <br /> Microsoft PowerPoint <br /> Microsoft Word
+                    </p>
+                </div>
+               
+            </div>
+
+            <div className="layout lg:py-20 py-12 mt-6 ">
+                <div className="flex items-center justify-between mb-10">
+                    <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Free <strong>Graphics Templates</strong></h2>
+                    <button className="btn mr-20 ml-4  font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700"><span className="-mt-1">Printing and Advertising</span> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path></svg></button>
+                </div>
+                <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 mr-20 " data-aos="lg:fade-right" data-aos-duration="700">
+                    {displayedTemplates.map(item =>
+                        <FreeTemplate
+                            key={item._id}
+                            item={item}
+                        />
+                    )}
+                </div>
+            </div>
+
+            
         </div>
+
+       
 
     );
 };
