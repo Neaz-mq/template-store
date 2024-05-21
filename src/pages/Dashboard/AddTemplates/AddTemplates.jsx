@@ -28,7 +28,12 @@ const AddTemplates = () => {
                 category: data.category,
                 price: parseFloat(data.price),
                 details: data.details,
-                image: res.data.data.display_url
+                image: res.data.data.display_url,
+                descriptions: data.descriptions,
+                specifications: data.specifications,
+                product: data.product,
+                files: data.files
+
             }
             // 
             const templateRes = await axiosSecure.post('/template', templateItem);
@@ -102,6 +107,44 @@ const AddTemplates = () => {
                         </label>
                         <textarea {...register('details')} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
                     </div>
+
+                     {/* descriptions */}
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Descriptions</span>
+                        </label>
+                        <textarea {...register('descriptions')} className="textarea textarea-bordered h-24" placeholder="Descriptions"></textarea>
+                    </div>
+
+                      {/* specifications */}
+
+                      <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Item Specifications</span>
+                        </label>
+                        <textarea {...register('specifications')} className="textarea textarea-bordered h-24" placeholder="Specifications"></textarea>
+                    </div>
+
+                      {/* product Specs */}
+
+                      <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Product Specifications</span>
+                        </label>
+                        <textarea {...register('product')} className="textarea textarea-bordered h-24" placeholder="Product Specifications"></textarea>
+                    </div>
+
+                    
+                      {/* Files Included */}
+
+                      <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Files Included</span>
+                        </label>
+                        <textarea {...register('files')} className="textarea textarea-bordered h-24" placeholder="Files"></textarea>
+                    </div>
+
 
                     <div className="form-control w-full my-6">
                         <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />

@@ -20,7 +20,7 @@ const TemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const temp = useLoaderData();
-    const { name, _id, price, image } = temp;
+    const { name, _id, price, image, descriptions, specifications, product, files } = temp;
     const [templates, setTemplates] = useState([]);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
 
@@ -65,7 +65,13 @@ const TemplateDetails = () => {
                 email: user.email,
                 name,
                 image,
-                price
+                price,
+                descriptions,
+                specifications,
+                product, 
+                files
+
+
             };
 
             axiosSecure.post('/carts', cartItem)
@@ -239,7 +245,7 @@ const TemplateDetails = () => {
                 <div className="flex-1 lg:mb-8 ml-3">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Descriptions</h3>
                     <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-medium leading-relaxed" >
-                        A business flyer is a versatile and dynamic promotional tool designed to communicate essential information about a business, its products, services, events, or special offers. This tangible marketing collateral is strategically crafted to capture attention, engage the target audience, and generate interest in what the business offers.
+                       {descriptions}
                     </p>
                 </div>
 
@@ -248,11 +254,7 @@ const TemplateDetails = () => {
                 <div className="flex-1 lg:mb-8  lg:-mr-10 ml-3 lg:ml-0">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Item Specifications</h3>
                     <p className="text-gray-500 mt-2 font-medium leading-relaxed">
-                        US Letter & A4 Paper Size<br />
-                        CMYK color mode<br />
-                        Bleed size 3 mm<br />
-                        300 DPI – Print-ready<br />
-                        Photos are not included
+                       {specifications}
                     </p>
                 </div>
 
@@ -260,9 +262,7 @@ const TemplateDetails = () => {
                 <div className="flex-1 lg:mb-8 lg:ml-10 ml-3">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Product Specs</h3>
                     <p className="text-gray-500 mt-2 font-medium leading-relaxed">
-                        Created: Nov 19, 2024<br />
-                        Package File: ZIP<br />
-                        Package File Size: 89MB
+                       {product}
                     </p>
                 </div>
 
@@ -270,7 +270,7 @@ const TemplateDetails = () => {
                 <div className="flex-1 lg:mr-10 ml-3 lg:ml-0">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Files Included</h3>
                     <p className="text-gray-500 mt-2 font-medium leading-relaxed">
-                        Adobe Photoshop <br />  Adobe Illustrator <br /> Adobe InDesign <br /> Canva <br /> Figma <br /> Microsoft PowerPoint <br /> Microsoft Word
+                      {files}
                     </p>
                 </div>
 
