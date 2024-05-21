@@ -251,15 +251,15 @@ const TemplateDetails = () => {
 
 
                 {/* Item Specifications */}
-                <div className="flex-1 lg:mb-8  lg:-mr-10 ml-3 lg:ml-0">
+                <div className="flex-1 lg:mb-8  lg:-mr-9 ml-3 lg:ml-0">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Item Specifications</h3>
-                    <p className="text-gray-500 mt-2 font-medium leading-relaxed">
+                    <p className="text-gray-500 mt-2 w-[11.10rem] font-medium leading-relaxed">
                        {specifications}
                     </p>
                 </div>
 
                 {/* Product Specs */}
-                <div className="flex-1 lg:mb-8 lg:ml-10 ml-3">
+                <div className="flex-1 lg:mb-8 lg:ml-8 ml-3">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Product Specs</h3>
                     <p className="text-gray-500 mt-2 font-medium leading-relaxed">
                        {product}
@@ -269,7 +269,7 @@ const TemplateDetails = () => {
                 {/* Files Included */}
                 <div className="flex-1 lg:mr-10 ml-3 lg:ml-0">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Files Included</h3>
-                    <p className="text-gray-500 mt-2 font-medium leading-relaxed">
+                    <p className="text-gray-500 mt-2 w-[9rem] font-medium leading-relaxed">
                       {files}
                     </p>
                 </div>
