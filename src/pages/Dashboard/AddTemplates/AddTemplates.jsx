@@ -157,8 +157,8 @@ const AddTemplates = () => {
                                 <option value="Adobe Illustrator">Adobe Illustrator</option>
                                 <option value="Adobe Photoshop">Adobe Photoshop</option>
                                 <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
-                                <option value="canva">Canva</option>
-                                <option value="figma">Figma</option>
+                                <option value="Canva">Canva</option>
+                                <option value="Figma">Figma</option>
                                 <option value="Adobe InDesign">Adobe InDesign</option>
                                 <option value="Microsoft Word">Microsoft Word</option>
                             </select>

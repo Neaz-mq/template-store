@@ -68,7 +68,7 @@ const TemplateDetails = () => {
                 price,
                 descriptions,
                 specifications,
-                product, 
+                product,
                 files
 
 
@@ -176,7 +176,7 @@ const TemplateDetails = () => {
 
                     {/* Additional section with the same style in column layout */}
                     <div className="flex flex-col items-center mt-12 ml-24 lg:ml-0">
-                        <div className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] lg:-ml-9 ml-16 p-8 lg:mr-12 lg:w-[97%] lg:h-[100%] w-[98%] h-[100%] cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
+                        <div className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] lg:-ml-9 ml-16 p-8 lg:mr-12 lg:w-[102%] lg:h-[100%] w-[98%] h-[100%] cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
                             <div className="flex justify-between pb-3">
                                 <div className="flex gap-3 font-bold">
                                     <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'customizeTemplate'} readOnly />
@@ -200,12 +200,12 @@ const TemplateDetails = () => {
                                 </div>
                                 <div className="flex items-center">
                                     <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:ml-3 ml-10 mr-6">Files:</div>
-                                    <select  className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
-                    <option value="">All Files</option>
-                    {files.map((file, index) => (
-                        <option key={index} value={file} className={`option-${_id}`}>{file}</option>
-                    ))}
-                </select>
+                                    <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
+                                        <option value="">All Files</option>
+                                        {files.map((file, index) => (
+                                            <option key={index} value={file} className={`option-${_id}`}>{file}</option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
                             <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
@@ -238,7 +238,7 @@ const TemplateDetails = () => {
                 <div className="flex-1 lg:mb-8 ml-3">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Descriptions</h3>
                     <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-medium leading-relaxed" >
-                       {descriptions}
+                        {descriptions}
                     </p>
                 </div>
 
@@ -247,25 +247,30 @@ const TemplateDetails = () => {
                 <div className="flex-1 lg:mb-8  lg:-mr-9 ml-3 lg:ml-0">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Item Specifications</h3>
                     <p className="text-gray-500 mt-2 w-[11.10rem] font-medium leading-relaxed">
-                       {specifications}
+                        {specifications}
                     </p>
+
+                    
                 </div>
 
                 {/* Product Specs */}
                 <div className="flex-1 lg:mb-8 lg:ml-8 ml-3">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Product Specs</h3>
                     <p className="text-gray-500 mt-2 font-medium leading-relaxed">
-                       {product}
+                        {product}
                     </p>
                 </div>
 
                 {/* Files Included */}
                 <div className="flex-1 lg:mr-10 ml-3 lg:ml-0">
                     <h3 className="text-xl text-[#2F1C6A] font-medium">Files Included</h3>
-                    <p className="text-gray-500 mt-2 w-[9rem] font-medium leading-relaxed">
-                      {files}
-                    </p>
+                    <div className="mt-2">
+                        {files.map((file, index) => (
+                            <p key={index} className="text-gray-500 mt-2 font-medium leading-relaxed">{file}</p>
+                        ))}
+                    </div>
                 </div>
+
 
             </div>
 
