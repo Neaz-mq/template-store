@@ -200,20 +200,12 @@ const TemplateDetails = () => {
                                 </div>
                                 <div className="flex items-center">
                                     <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:ml-3 ml-10 mr-6">Files:</div>
-                                    <select
-                                        className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0"
-                                        value=""
-                                        onChange={handleFileChange}
-                                    >
-                                        <option value="">All Files</option>
-                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
-                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
-                                        <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
-                                        <option value="canva">Canva</option>
-                                        <option value="figma">Figma</option>
-                                        <option value="Adobe InDesign">Adobe InDesign</option>
-                                        <option value="Microsoft Word">Microsoft Word</option>
-                                    </select>
+                                    <select  className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
+                    <option value="">All Files</option>
+                    {files.map((file, index) => (
+                        <option key={index} value={file} className={`option-${_id}`}>{file}</option>
+                    ))}
+                </select>
                                 </div>
                             </div>
                             <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
@@ -221,7 +213,7 @@ const TemplateDetails = () => {
                                     <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
                                         <span className="">{file}</span>
                                         <button onClick={() => handleRemoveFile(file)}>
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
                                         </button>
                                     </div>
                                 ))}
