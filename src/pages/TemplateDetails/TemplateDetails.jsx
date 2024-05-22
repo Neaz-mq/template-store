@@ -13,6 +13,7 @@ import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 const TemplateDetails = () => {
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [showAdditionalImages, setShowAdditionalImages] = useState(false);
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const TemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const temp = useLoaderData();
-    const { name, _id, price, image, descriptions, specifications, product, files } = temp;
+    const { name, _id, price, image, descriptions, specifications, product, files, revisions } = temp;
     const [templates, setTemplates] = useState([]);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
 
@@ -54,6 +55,14 @@ const TemplateDetails = () => {
         e.target.value = ""; // Reset the select input
     };
 
+    const handleRevisionChange = (e) => {
+        const selectedValue = e.target.value;
+        if (selectedValue && !selectedRevisions.includes(selectedValue)) {
+            setSelectedRevisions([...selectedRevisions, selectedValue]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
@@ -69,7 +78,8 @@ const TemplateDetails = () => {
                 descriptions,
                 specifications,
                 product,
-                files
+                files,
+                revisions
 
 
             };
@@ -190,14 +200,24 @@ const TemplateDetails = () => {
                             <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
                                 <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
                                     <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:mr-2 mr-8">Revisions:</div>
-                                    <select className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0" defaultValue="1">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                    <select
+                                        className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
+                                        onChange={(e) => {
+                                            const newValue = e.target.value;
+                                            setSelectedRevisions([...selectedRevisions, newValue]);
+                                        }}
+                                        value={selectedRevisions[selectedRevisions.length - 1] || ''}
+                                    >
+                                        {revisions.map((revision, index) => (
+                                            <option key={index} value={revision} className={`option-${_id}`}>
+                                                {revision}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
+
+
+
                                 <div className="flex items-center">
                                     <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:ml-3 ml-10 mr-6">Files:</div>
                                     <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
@@ -250,7 +270,7 @@ const TemplateDetails = () => {
                         {specifications}
                     </p>
 
-                    
+
                 </div>
 
                 {/* Product Specs */}

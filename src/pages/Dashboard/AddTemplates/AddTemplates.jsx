@@ -15,6 +15,7 @@ const AddTemplates = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [selectedRevisions, setSelectedRevisions] = useState([]);
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -36,7 +37,8 @@ const AddTemplates = () => {
                 descriptions: data.descriptions,
                 specifications: data.specifications,
                 product: data.product,
-                files: selectedFiles
+                files: selectedFiles,
+                revisions: selectedRevisions,
             };
             const templateRes = await axiosSecure.post('/template', templateItem);
             console.log(templateRes.data);
@@ -44,6 +46,7 @@ const AddTemplates = () => {
                 // show success popup
                 reset();
                 setSelectedFiles([]); // Reset the selected files
+                setSelectedRevisions([]); // Reset the selected revisions
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -64,8 +67,20 @@ const AddTemplates = () => {
         e.target.value = ""; // Reset the select input
     };
 
+    const handleRevisionChange = (e) => {
+        const selectedRate = e.target.value;
+        if (selectedRate && !selectedRevisions.includes(selectedRate)) {
+            setSelectedRevisions([...selectedRevisions, selectedRate]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
+    };
+
+    const handleRemoveRevision = (revision) => {
+        setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
     };
 
     return (
@@ -145,6 +160,37 @@ const AddTemplates = () => {
                         </label>
                         <textarea {...register('product')} className="textarea textarea-bordered h-24" placeholder="Product Specifications"></textarea>
                     </div>
+
+                    {/* Revisions */}
+
+                    <div className="flex gap-6">
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Revisions*</span>
+                            </label>
+                            <select className="select select-bordered w-full" onChange={handleRevisionChange}>
+                                <option value="">Select Revisions</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                             
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="mt-4 flex flex-wrap">
+                        {selectedRevisions.map((revision, index) => (
+                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
+                                <span>{revision}</span>
+                                <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
+                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
 
                     {/* Files Included */}
                     <div className="flex gap-6">
