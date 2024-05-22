@@ -3,7 +3,9 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { HiTemplate } from "react-icons/hi";
-
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -12,10 +14,12 @@ const AddTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const [selectedFiles, setSelectedFiles] = useState([]);
+
     const onSubmit = async (data) => {
-        console.log(data)
+        console.log(data);
         // image upload to imgbb and then get an url
-        const imageFile = { image: data.image[0] }
+        const imageFile = { image: data.image[0] };
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
@@ -32,15 +36,14 @@ const AddTemplates = () => {
                 descriptions: data.descriptions,
                 specifications: data.specifications,
                 product: data.product,
-                files: data.files
-
-            }
-            // 
+                files: selectedFiles
+            };
             const templateRes = await axiosSecure.post('/template', templateItem);
-            console.log(templateRes.data)
+            console.log(templateRes.data);
             if (templateRes.data.insertedId) {
                 // show success popup
                 reset();
+                setSelectedFiles([]); // Reset the selected files
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -52,6 +55,19 @@ const AddTemplates = () => {
         }
         console.log('with image url', res.data);
     };
+
+    const handleFileChange = (e) => {
+        const selectedValue = e.target.value;
+        if (selectedValue && !selectedFiles.includes(selectedValue)) {
+            setSelectedFiles([...selectedFiles, selectedValue]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
+    const handleRemoveFile = (file) => {
+        setSelectedFiles(selectedFiles.filter(f => f !== file));
+    };
+
     return (
         <div>
             <h2 className="text-3xl text-center font-bold">Add Premium Template</h2>
@@ -81,7 +97,6 @@ const AddTemplates = () => {
                                 <option value="ecommerce">Ecommerce</option>
                                 <option value="business">Business</option>
                                 <option value="portfolio">Portfolio</option>
-
                             </select>
                         </div>
 
@@ -97,7 +112,6 @@ const AddTemplates = () => {
                                 {...register('price', { required: true })}
                                 className="input input-bordered w-full" />
                         </div>
-
                     </div>
 
                     {/* recipe details */}
@@ -108,8 +122,7 @@ const AddTemplates = () => {
                         <textarea {...register('details')} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
                     </div>
 
-                     {/* descriptions */}
-
+                    {/* descriptions */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Descriptions</span>
@@ -117,34 +130,50 @@ const AddTemplates = () => {
                         <textarea {...register('descriptions')} className="textarea textarea-bordered h-24" placeholder="Descriptions"></textarea>
                     </div>
 
-                      {/* specifications */}
-
-                      <div className="form-control">
+                    {/* specifications */}
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text">Item Specifications</span>
                         </label>
                         <textarea {...register('specifications')} className="textarea textarea-bordered h-24" placeholder="Specifications"></textarea>
                     </div>
 
-                      {/* product Specs */}
-
-                      <div className="form-control">
+                    {/* product Specs */}
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text">Product Specifications</span>
                         </label>
                         <textarea {...register('product')} className="textarea textarea-bordered h-24" placeholder="Product Specifications"></textarea>
                     </div>
 
-                    
-                      {/* Files Included */}
-
-                      <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Files Included</span>
-                        </label>
-                        <textarea {...register('files')} className="textarea textarea-bordered h-24" placeholder="Files"></textarea>
+                    {/* Files Included */}
+                    <div className="flex gap-6">
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Files Included*</span>
+                            </label>
+                            <select className="select select-bordered w-full" onChange={handleFileChange}>
+                                <option value="">Select files</option>
+                                <option value="Adobe Illustrator">Adobe Illustrator</option>
+                                <option value="Adobe Photoshop">Adobe Photoshop</option>
+                                <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
+                                <option value="canva">Canva</option>
+                                <option value="figma">Figma</option>
+                                <option value="Adobe InDesign">Adobe InDesign</option>
+                                <option value="Microsoft Word">Microsoft Word</option>
+                            </select>
+                        </div>
                     </div>
-
+                    <div className="mt-4 flex flex-wrap">
+                        {selectedFiles.map((file, index) => (
+                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
+                                <span>{file}</span>
+                                <button onClick={() => handleRemoveFile(file)} className="ml-2">
+                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
 
                     <div className="form-control w-full my-6">
                         <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
@@ -158,6 +187,5 @@ const AddTemplates = () => {
         </div>
     );
 };
-
 
 export default AddTemplates;
