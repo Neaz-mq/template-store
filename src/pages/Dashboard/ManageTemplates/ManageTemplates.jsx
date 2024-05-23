@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useTemplate from "../../../hooks/useTemplate";
 
-
 const ManageTemplates = () => {
     const [template, , refetch] = useTemplate();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
 
-    //pagination
+    // Pagination
     const TEMPLATES_PER_PAGE = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,10 +20,6 @@ const ManageTemplates = () => {
     const currentItems = filteredTemplates.slice(indexOfFirstTemplate, indexOfLastTemplate);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  
-    //end
-
-
 
     const handleDeleteItem = (temp) => {
         Swal.fire({
@@ -38,9 +33,7 @@ const ManageTemplates = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.delete(`/template/${temp._id}`);
-                // console.log(res.data);
                 if (res.data.deletedCount > 0) {
-                    // refetch to update the ui
                     refetch();
                     Swal.fire({
                         position: "top-end",
@@ -50,28 +43,25 @@ const ManageTemplates = () => {
                         timer: 1500
                     });
                 }
-
-
             }
         });
     }
+
     const handleSearch = e => {
         e.preventDefault();
         const searchText = e.target.search.value;
-        // console.log(searchText);
         setSearch(searchText);
     }
+
     return (
         <div>
-           
-           <h2 className="text-3xl text-center font-bold mb-10">Manage Premium Templates</h2>
-         
+            <h2 className="text-3xl text-center font-bold mb-10">Manage Premium Templates</h2>
             <div>
                 <div className="text-center mb-10">
                     <form onSubmit={handleSearch}>
                         <div className="join">
                             <input type="text" name="search" id="" className="input input-bordered join-item" placeholder="Item Search" />
-                            <button className="btn join-item rounded-r-full" >Search</button>
+                            <button className="btn join-item rounded-r-full">Search</button>
                         </div>
                     </form>
                 </div>
@@ -80,9 +70,7 @@ const ManageTemplates = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                                <th>
-                                    #
-                                </th>
+                                <th>#</th>
                                 <th>Image</th>
                                 <th>Template Name</th>
                                 <th>Price</th>
@@ -91,57 +79,53 @@ const ManageTemplates = () => {
                             </tr>
                         </thead>
                         <tbody>
-                {currentItems.map((temp, index) => (
-                    <tr key={temp._id}>
-                        <td>{index + 1}</td>
-                        <td>
-                            <div className="flex items-center gap-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src={temp.image} alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{temp.name}</td>
-                        <td>${temp.price}</td>
-                        <td>
-                            <Link to={`/dashboard/updateTemplate/${temp._id}`}>
-                                <button className="btn btn-ghost btn-lg bg-orange-500">
-                                    <FaEdit className="text-white"></FaEdit>
-                                </button>
-                            </Link>
-                        </td>
-                        <td>
-                            <button
-                                onClick={() => handleDeleteItem(temp)}
-                                className="btn btn-ghost btn-lg -ml-4">
-                                <FaTrashAlt className="text-red-600"></FaTrashAlt>
-                            </button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-
-
-
+                            {currentItems.map((temp, index) => (
+                                <tr key={temp._id}>
+                                    <td>{indexOfFirstTemplate + index + 1}</td>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={temp.image} alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{temp.name}</td>
+                                    <td>${temp.price}</td>
+                                    <td>
+                                        <Link to={`/dashboard/updateTemplate/${temp._id}`}>
+                                            <button className="btn btn-ghost btn-lg bg-orange-500">
+                                                <FaEdit className="text-white" />
+                                            </button>
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleDeleteItem(temp)}
+                                            className="btn btn-ghost btn-lg -ml-4">
+                                            <FaTrashAlt className="text-red-600" />
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                     <div className="pagination mt-8 flex justify-center">
-    {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
-        <button
-            key={i + 1}
-            onClick={() => paginate(i + 1)}
-            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                currentPage === i + 1
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
-            }`}
-        >
-            {i + 1}
-        </button>
-    ))}
-</div>
-
+                        {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
+                            <button
+                                key={i + 1}
+                                onClick={() => paginate(i + 1)}
+                                className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
+                                    currentPage === i + 1
+                                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
+                                }`}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
