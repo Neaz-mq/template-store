@@ -22,26 +22,13 @@ const TemplateDetails = () => {
     const [, refetch] = useCart();
     const temp = useLoaderData();
     const { name, _id, price, image, descriptions, specifications, product, files, revisions } = temp;
-    const [templates, setTemplates] = useState([]);
-    const [displayedTemplates, setDisplayedTemplates] = useState([]);
-
-    const initialDisplayCount = 4;
-
-    useEffect(() => {
-        fetch('http://localhost:5000/free')
-            .then(res => res.json())
-            .then(data => {
-                setTemplates(data);
-                setDisplayedTemplates(data.slice(0, initialDisplayCount));
-            });
-    }, []);
 
 
 
-    // Check if there are any templates to display
-    if (displayedTemplates.length === 0) {
-        return null;
-    }
+
+
+
+
 
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
@@ -264,13 +251,17 @@ const TemplateDetails = () => {
 
 
                 {/* Item Specifications */}
-                <div className="flex-1 lg:mb-8  lg:-mr-9 ml-3 lg:ml-0">
-                    <h3 className="text-xl text-[#2F1C6A] font-medium">Item Specifications</h3>
-                    <p className="text-gray-500 mt-2 w-[11.10rem] font-medium leading-relaxed">
-                        {specifications}
-                    </p>
-
-
+                <div className="flex-1 lg:mb-8 lg:-mr-9 ml-3 lg:ml-0">
+                    <h3 className="text-xl text-[#2F1C6A] font-medium mb-2">Item Specifications</h3>
+                    {specifications.split('\n').map((specifications, index) => (
+                        <p
+                            key={index}
+                            className="text-gray-500 mt-1 font-medium leading-relaxed"
+                            style={{ whiteSpace: 'nowrap' }}
+                        >
+                            {specifications}
+                        </p>
+                    ))}
                 </div>
 
                 {/* Product Specs */}
@@ -294,20 +285,6 @@ const TemplateDetails = () => {
 
             </div>
 
-            <div className="layout lg:py-20 py-12 mt-6 ">
-                <div className="flex items-center justify-between mb-10">
-                    <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Free <strong>Graphics Templates</strong></h2>
-                    <button className="btn lg:mr-20 mr-2 lg:ml-4  font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700"><span className="-mt-1">Printing and Advertising</span> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path></svg></button>
-                </div>
-                <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 lg:mr-20 " data-aos="lg:fade-right" data-aos-duration="700">
-                    {displayedTemplates.map(item =>
-                        <FreeTemplate
-                            key={item._id}
-                            item={item}
-                        />
-                    )}
-                </div>
-            </div>
 
 
         </div>

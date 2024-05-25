@@ -129,7 +129,7 @@ const AddTemplates = () => {
                         </div>
                     </div>
 
-                    {/* recipe details */}
+                    {/* Template details */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Template Details</span>
