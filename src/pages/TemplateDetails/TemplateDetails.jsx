@@ -146,12 +146,12 @@ const TemplateDetails = () => {
                             <>
                                 <div className="flex gap-4 mt-4 ml-2 lg:ml-0">
                                     <img
-                                        src="https://i.ibb.co/44VVbr3/11.jpg"
+                                        src="https://i.ibb.co/CHk5qwv/11.jpg"
                                         className="w-[75px] h-[75px] -mt-4 -ml-2 lg:-mt-0 lg:-ml-0  object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
                                         alt=""
                                     />
                                     <img
-                                        src="https://i.ibb.co/JrbZzVc/9.jpg"
+                                        src="https://i.ibb.co/sbtqzwN/9.jpg"
                                         className="w-[75px] h-[75px] -mt-4 lg:-mt-0 object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
                                         alt=""
                                     />
