@@ -316,10 +316,6 @@ const TemplateDetails = () => {
         </div>
 
 
-        
-        
-
-
 
     );
 };

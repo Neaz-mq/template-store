@@ -93,10 +93,10 @@ const NavBar = () => {
               </Link>
 
               {
-                user && isAdmin && <li className='mt-2 ml-6 font-medium text-3xl'><Link to="/dashboard/adminHome" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Dashboard</Link></li>
+                user && isAdmin && <li className='mt-2 ml-6 font-medium text-3xl'><Link to="/dashboard/adminHome">Dashboard</Link></li>
               }
               {
-                user && !isAdmin && <li className='mt-2 ml-6 font-medium text-3xl'><Link to="/dashboard/userHome" className={`hover:text-[#7673E5] ${getTextColorContact()}`}>Dashboard</Link></li>
+                user && !isAdmin && <li className='mt-2 ml-6 font-medium text-3xl'><Link to="/dashboard/userHome">Dashboard</Link></li>
               }
 
               {/* Include the Inbox button in the mobile dropdown */}

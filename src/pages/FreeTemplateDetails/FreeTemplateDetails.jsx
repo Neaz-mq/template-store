@@ -173,7 +173,7 @@ const FreeTemplateDetails = () => {
             </div>
 
             <div className="flex flex-col items-center mt-12" style={{ width: "60%" }}>
-                <div className={`border ${selectedTemplate === 'templateCustom' ? 'border-primary' : 'border-gray-400'} rounded-[20px] p-8 lg:w-[87%] lg:h-[28%] w-[160%] h-[100%] lg:-ml-14 lg:mr-9 ml-40  cursor-pointer`} onClick={() => handleTemplateChange('templateCustom')}>
+                <div className={`border ${selectedTemplate === 'templateCustom' ? 'border-primary' : 'border-gray-400'} rounded-[20px] p-8 lg:w-[92%] lg:h-[45%] w-[160%] h-[100%] lg:-ml-14 lg:mr-9 ml-40  cursor-pointer`} onClick={() => handleTemplateChange('templateCustom')}>
                     <div className="flex justify-between pb-3">
                         <div className="flex gap-3 font-bold">
                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'templateCustom'} readOnly />
@@ -184,11 +184,15 @@ const FreeTemplateDetails = () => {
                     <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                     </div>
+                      {/* Add to Cart button */}
+                <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-4 lg:w-[32rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
+                    Add to Cart
+                </button>
                 </div>
 
                 {/* Additional section with the same style in column layout */}
                 <div className="flex flex-col items-center mt-12 ml-24 lg:ml-0">
-                    <div className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] lg:-ml-9 ml-16 p-8 lg:mr-12 lg:w-[102%] lg:h-[100%] w-[98%] h-[100%] cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
+                    <div className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] lg:-ml-9 ml-16 p-8 lg:mr-12 lg:w-[90%] lg:h-[100%] w-[98%] h-[100%] cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
                         <div className="flex justify-between pb-3">
                             <div className="flex gap-3 font-bold">
                                 <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'customizeTemplate'} readOnly />
@@ -240,12 +244,15 @@ const FreeTemplateDetails = () => {
                                 </div>
                             ))}
                         </div>
+
+                          {/* Add to Cart button */}
+                          <button className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-4 lg:w-[32rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
+                                        Add to Cart
+                                    </button>
                     </div>
+                   
                 </div>
-                {/* Add to Cart button */}
-                <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-4 lg:w-[32rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
-                    Add to Cart
-                </button>
+              
 
                 {/* Check more items */}
                 <button onClick={handleAddToCart} className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-4 lg:w-[32rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">

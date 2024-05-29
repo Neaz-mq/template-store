@@ -99,9 +99,9 @@ const AddTemplates = () => {
                             required
                             className="input input-bordered w-full" />
                     </div>
-                    <div className="flex gap-6">
+                    <div className="flex flex-col lg:flex-row gap-6">
                         {/* category */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full lg:my-6">
                             <label className="label">
                                 <span className="label-text">Category*</span>
                             </label>
@@ -116,7 +116,7 @@ const AddTemplates = () => {
                         </div>
 
                         {/* price */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full lg:my-6 my-3 ">
                             <label className="label">
                                 <span className="label-text">Price*</span>
                             </label>
@@ -130,7 +130,7 @@ const AddTemplates = () => {
                     </div>
 
                     {/* Template details */}
-                    <div className="form-control">
+                    <div className="form-control my-6">
                         <label className="label">
                             <span className="label-text">Template Details</span>
                         </label>
@@ -146,7 +146,7 @@ const AddTemplates = () => {
                     </div>
 
                     {/* specifications */}
-                    <div className="form-control">
+                    <div className="form-control my-6">
                         <label className="label">
                             <span className="label-text">Item Specifications</span>
                         </label>
@@ -194,7 +194,7 @@ const AddTemplates = () => {
 
                     {/* Files Included */}
                     <div className="flex gap-6">
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full lg:my-6">
                             <label className="label">
                                 <span className="label-text">Files Included*</span>
                             </label>
