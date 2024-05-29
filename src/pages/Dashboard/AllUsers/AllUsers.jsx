@@ -3,7 +3,6 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
     const { data: users = [], refetch } = useQuery({
@@ -12,25 +11,23 @@ const AllUsers = () => {
             const res = await axiosSecure.get('/users');
             return res.data;
         }
-    })
+    });
 
-    const handleMakeAdmin = user =>{
+    const handleMakeAdmin = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
-        .then(res =>{
-            console.log(res.data)
-            if(res.data.modifiedCount > 0){
-                refetch();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${user.name} is an Admin Now!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        })
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${user.name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
     }
-
 
     const handleDeleteUser = user => {
         Swal.fire({
@@ -43,7 +40,6 @@ const AllUsers = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
                 axiosSecure.delete(`/users/${user._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
@@ -54,55 +50,58 @@ const AllUsers = () => {
                                 icon: "success"
                             });
                         }
-                    })
+                    });
             }
         });
     }
+
     return (
-        <div>
-             <div className="flex justify-evenly my-4 pb-8">
-                <h2 className="text-3xl font-semibold">All Users</h2>
-                <h2 className="text-3xl font-semibold">Total users: {users.length}</h2>
+        <div className="px-4 py-6 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
+                <h2 className="text-2xl sm:text-3xl font-semibold">All Users</h2>
+                <h2 className="text-2xl sm:text-3xl font-semibold">Total users: {users.length}</h2>
             </div>
             <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            users.map((user, index) => <tr key={user._id}>
-                                <th>{index + 1}</th>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>
-                                { user.role === 'admin' ? 'Admin' : <button
-                                        onClick={() => handleMakeAdmin(user)}
-                                        className="btn btn-lg bg-orange-500">
-                                        <FaUsers className="text-white 
-                                        text-2xl"></FaUsers>
-                                    </button>}
-                                </td>
-                              
-                                <td>
-                                    <button
-                                        onClick={() => handleDeleteUser(user)}
-                                        className="btn btn-ghost btn-lg">
-                                        <FaTrashAlt className="text-red-600"></FaTrashAlt>
-                                    </button>
-                                </td>
-                            </tr>)
-                        }
-
-                    </tbody>
-                </table>
+                <div className="max-w-full overflow-hidden">
+                    {users.length > 0 && (
+                        <table className="min-w-full divide-y divide-gray-200">
+                            <thead className="bg-gray-50">
+                                <tr>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody className="bg-white divide-y divide-gray-200">
+                                {users.map((user, index) => (
+                                    <tr key={user._id} className="flex flex-col sm:table-row mb-4 sm:mb-0">
+                                        <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            {user.role === 'admin' ? 'Admin' : (
+                                                <button
+                                                    onClick={() => handleMakeAdmin(user)}
+                                                    className="btn btn-sm bg-orange-500 text-white">
+                                                    <FaUsers />
+                                                </button>
+                                            )}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <button
+                                                onClick={() => handleDeleteUser(user)}
+                                                className="btn btn-ghost btn-sm text-red-600">
+                                                <FaTrashAlt />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
             </div>
         </div>
     );
