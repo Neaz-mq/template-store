@@ -69,6 +69,7 @@ const AllAdmins = () => {
                     ))}
                 </div>
             </div>
+            
         </div>
     );
 };

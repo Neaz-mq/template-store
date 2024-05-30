@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
@@ -12,6 +13,13 @@ const AllUsers = () => {
             return res.data;
         }
     });
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [usersPerPage] = useState(10);
+
+    const indexOfLastUser = currentPage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
     const handleMakeAdmin = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
@@ -55,6 +63,20 @@ const AllUsers = () => {
         });
     }
 
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
+    const nextPage = () => {
+        if (currentPage < Math.ceil(users.length / usersPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     return (
         <div className="px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
@@ -63,53 +85,21 @@ const AllUsers = () => {
             </div>
             <div className="overflow-x-auto">
                 <div className="max-w-full overflow-hidden">
-                    {users.length > 0 && (
-                        <div className="grid grid-cols-1 sm:hidden gap-6">
-                            {users.map((user, index) => (
-                                <div key={user._id} className="p-6 border border-gray-200 rounded-lg shadow-md">
-                                    <div className="mb-4 text-sm text-left mr-2 -ml-4">
-                                        <strong>No.:</strong> {index + 1}
-                                    </div>
-                                    <div className="mb-4 text-sm text-left mr-2 -ml-4">
-                                        <strong>Name:</strong> {user.name}
-                                    </div>
-                                    <div className="mb-4 text-sm text-left mr-2 -ml-4">
-                                        <strong>Role:</strong> {user.role === 'admin' ? 'Admin' : (
-                                            <button
-                                                onClick={() => handleMakeAdmin(user)}
-                                                className="btn btn-sm bg-orange-500 text-white mt-2 md:mt-0">
-                                                <FaUsers />
-                                            </button>
-                                        )}
-                                    </div>
-                                    <div className="text-sm text-left mr-2 -ml-2">
-                                        <button
-                                            onClick={() => handleDeleteUser(user)}
-                                            className="btn btn-ghost btn-sm text-red-600">
-                                            <FaTrashAlt />
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                    {users.length > 0 && (
-                        <table className="min-w-full divide-y divide-gray-200 hidden sm:table">
+                    {currentUsers.length > 0 && (
+                        <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
                                 <tr>
                                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
                                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">Email</th>
                                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
                                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
-                                {users.map((user, index) => (
+                                {currentUsers.map((user, index) => (
                                     <tr key={user._id}>
-                                        <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{indexOfFirstUser + index + 1}</td>
                                         <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap hidden sm:table-cell">{user.email}</td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {user.role === 'admin' ? 'Admin' : (
                                                 <button
@@ -132,6 +122,42 @@ const AllUsers = () => {
                         </table>
                     )}
                 </div>
+            </div>
+            {/* Pagination */}
+            <div className="pagination mt-8 flex justify-center">
+                <button
+                    onClick={prevPage}
+                    className={`px-2 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
+                            ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                            : 'bg-blue-500 text-white'
+                        }`}
+                    disabled={currentPage === 1}
+                >
+                    <span className="mr-1">Previous</span>
+                </button>
+
+                {Array.from({ length: Math.ceil(users.length / usersPerPage) }, (_, i) => (
+                    <button
+                        key={i + 1}
+                        onClick={() => paginate(i + 1)}
+                        className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
+                                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
+                            }`}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={nextPage}
+                    className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil(users.length / usersPerPage)
+                            ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                            : 'bg-blue-500 text-white'
+                        }`}
+                    disabled={currentPage === Math.ceil(users.length / usersPerPage)}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );
