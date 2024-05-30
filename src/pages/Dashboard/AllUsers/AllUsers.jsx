@@ -81,66 +81,102 @@ const AllUsers = () => {
         <div className="px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>
-                <h2 className="text-xl sm:text-3xl font-semibold">Total users: {users.length}</h2>
+                <h2 className="text-xl sm:text-3xl font-semibold mr-32">Total users: {users.length}</h2>
             </div>
             <div className="overflow-x-auto">
                 <div className="max-w-full overflow-hidden">
-                    {currentUsers.length > 0 && (
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                                {currentUsers.map((user, index) => (
-                                    <tr key={user._id}>
-                                        <td className="px-6 py-4 whitespace-nowrap">{indexOfFirstUser + index + 1}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            {user.role === 'admin' ? 'Admin' : (
-                                                <button
-                                                    onClick={() => handleMakeAdmin(user)}
-                                                    className="btn btn-sm bg-orange-500 text-white">
-                                                    <FaUsers />
-                                                </button>
-                                            )}
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <button
-                                                onClick={() => handleDeleteUser(user)}
-                                                className="btn btn-ghost btn-sm text-red-600">
-                                                <FaTrashAlt />
-                                            </button>
-                                        </td>
+                    {/* Table for larger screens */}
+                    <div className="hidden md:block">
+                        {currentUsers.length > 0 && (
+                            <table className="min-w-full divide-y divide-gray-200">
+                                <thead className="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.</th>
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    )}
+                                </thead>
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                    {currentUsers.map((user, index) => (
+                                        <tr key={user._id}>
+                                            <td className="px-6 py-4 whitespace-nowrap">{indexOfFirstUser + index + 1}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                {user.role === 'admin' ? 'Admin' : (
+                                                    <button
+                                                        onClick={() => handleMakeAdmin(user)}
+                                                        className="btn btn-sm bg-orange-500 text-white">
+                                                        <FaUsers />
+                                                    </button>
+                                                )}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap">
+                                                <button
+                                                    onClick={() => handleDeleteUser(user)}
+                                                    className="btn btn-ghost btn-sm text-red-600">
+                                                    <FaTrashAlt />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        )}
+                    </div>
+
+                    {/* Cards for smaller screens */}
+                   <div className="w-full">
+                   <div className="block md:hidden">
+                        {currentUsers.map((user, index) => (
+                            <div key={user._id} className="bg-white shadow-md rounded-lg p-2 mb-4">
+                                <div className="flex justify-between items-center mb-2">
+                                    <div className="text-sm font-medium text-gray-900">No. {indexOfFirstUser + index + 1}</div>
+                                </div>
+                                <div className="text-sm text-gray-700"><strong>Name:</strong> {user.name}</div>
+                               
+                                <div className="text-sm text-gray-700">
+                                    <strong>Role:</strong> {user.role === 'admin' ? 'Admin' : (
+                                        <button
+                                            onClick={() => handleMakeAdmin(user)}
+                                            className="btn btn-sm bg-orange-500 text-white mt-1">
+                                            <FaUsers />
+                                        </button>
+                                    )}
+                                </div>
+                                <div className="mt-2">
+                                    <button
+                                        onClick={() => handleDeleteUser(user)}
+                                        className="btn btn-ghost btn-sm text-red-600 mt-1">
+                                        <FaTrashAlt />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                   </div>
                 </div>
             </div>
             {/* Pagination */}
-            <div className="pagination mt-8 flex justify-center">
+            <div className="flex pagination mt-8  justify-center mr-4 -ml-9 md:mr-0 md:-ml-0">
                 <button
                     onClick={prevPage}
-                    className={`px-2 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
+                    className={`md:px-2 md:py-2 px-1 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
                             ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
                             : 'bg-blue-500 text-white'
                         }`}
                     disabled={currentPage === 1}
                 >
-                    <span className="mr-1">Previous</span>
+                    <span className="mr-1 text-xs md:text-base">Previous</span>
                 </button>
 
                 {Array.from({ length: Math.ceil(users.length / usersPerPage) }, (_, i) => (
                     <button
                         key={i + 1}
                         onClick={() => paginate(i + 1)}
-                        className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
+                        className={`md:px-4 md:py-2 px-3 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
                                 ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
                             }`}
@@ -150,15 +186,18 @@ const AllUsers = () => {
                 ))}
                 <button
                     onClick={nextPage}
-                    className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil(users.length / usersPerPage)
+                    className={`md:px-4 md:py-2 px-2 py-1 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil(users.length / usersPerPage)
                             ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
                             : 'bg-blue-500 text-white'
                         }`}
                     disabled={currentPage === Math.ceil(users.length / usersPerPage)}
                 >
-                    Next
+                    <span className="mr-1 text-xs md:text-base">Next</span>
                 </button>
             </div>
+
+             {/* Pagination for mobile */}
+            
         </div>
     );
 };
