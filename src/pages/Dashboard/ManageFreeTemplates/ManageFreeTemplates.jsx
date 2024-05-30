@@ -28,6 +28,18 @@ const ManageFreeTemplates = () => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    const previousPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
+    const nextPage = () => {
+        if (currentPage < Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
     const handleDeleteItem = (temp) => {
         Swal.fire({
             title: "Are you sure?",
@@ -121,19 +133,36 @@ const ManageFreeTemplates = () => {
                         </tbody>
                     </table>
                     <div className="pagination mt-8 flex justify-center">
+                        <button
+                            onClick={previousPage}
+                            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
+                                    ? 'bg-gray-200 text-gray-700'
+                                    : 'bg-gradient-to-r from-purple-600 to-green-500 text-white hover:bg-purple-600'
+                                }`}
+                        >
+                            Previous
+                        </button>
                         {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
                             <button
                                 key={i + 1}
                                 onClick={() => paginate(i + 1)}
-                                className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                                    currentPage === i + 1
+                                className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
                                         ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
-                                }`}
+                                    }`}
                             >
                                 {i + 1}
                             </button>
                         ))}
+                        <button
+                            onClick={nextPage}
+                            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)
+                                    ? 'bg-gray-200 text-gray-700'
+                                    : 'bg-gradient-to-r from-purple-600 to-green-500 text-white hover:bg-purple-600'
+                                }`}
+                        >
+                            Next
+                        </button>
                     </div>
                 </div>
             </div>
@@ -142,3 +171,4 @@ const ManageFreeTemplates = () => {
 };
 
 export default ManageFreeTemplates;
+

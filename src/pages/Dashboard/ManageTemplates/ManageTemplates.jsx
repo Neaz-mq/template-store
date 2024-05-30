@@ -53,6 +53,18 @@ const ManageTemplates = () => {
         setSearch(searchText);
     }
 
+    const nextPage = () => {
+        if (currentPage < Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     return (
         <div>
             <h2 className="text-3xl text-center font-bold mb-10">Manage Premium Templates</h2>
@@ -112,6 +124,18 @@ const ManageTemplates = () => {
                         </tbody>
                     </table>
                     <div className="pagination mt-8 flex justify-center">
+                        <button
+                            onClick={prevPage}
+                            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
+                                currentPage === 1
+                                    ?
+                                    'bg-gray-200 text-gray-700 cursor-not-allowed'
+                                    : 'bg-blue-500 text-white'
+                            }`}
+                            disabled={currentPage === 1}
+                        >
+                            <span className="mr-1">Previous</span>
+                        </button>
                         {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
                             <button
                                 key={i + 1}
@@ -125,6 +149,17 @@ const ManageTemplates = () => {
                                 {i + 1}
                             </button>
                         ))}
+                        <button
+                            onClick={nextPage}
+                            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
+                                currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)
+                                    ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                                    : 'bg-blue-500 text-white'
+                            }`}
+                            disabled={currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)}
+                        >
+                            <span className="mr-1">Next</span>
+                        </button>
                     </div>
                 </div>
             </div>
