@@ -83,6 +83,7 @@ const AllUsers = () => {
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>
                 <h2 className="text-xl sm:text-3xl font-semibold mr-32">Total users: {users.length}</h2>
             </div>
+            
             <div className="overflow-x-auto">
                 <div className="max-w-full overflow-hidden">
                     {/* Table for larger screens */}

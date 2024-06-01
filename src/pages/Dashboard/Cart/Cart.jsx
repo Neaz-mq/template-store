@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
-    
+
     // Calculate total price based on the type of item
     const totalPrice = cart.reduce((total, temp) => {
         // Check if the price is "free" or numeric
@@ -14,7 +14,6 @@ const Cart = () => {
         // Check if itemPrice is a valid number, otherwise add 0
         return isNaN(itemPrice) ? total : total + itemPrice;
     }, 0);
-
 
     const axiosSecure = useAxiosSecure();
 
@@ -29,7 +28,6 @@ const Cart = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                
                 axiosSecure.delete(`/carts/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
@@ -44,20 +42,22 @@ const Cart = () => {
             }
         });
     }
-    
-   
+
     return (
-        <div>
-            <div className="flex justify-evenly mb-8">
-                <h2 className="text-4xl">Templates: {cart.length}</h2>
+        <div className="px-4 lg:px-0">
+            <div className="flex flex-col items-center mb-8 space-y-4 lg:space-y-0 lg:flex-row lg:justify-evenly lg:items-center">
+                <h2 className="text-xl lg:text-4xl">Templates: {cart.length}</h2>
                 <h2 className="text-xl lg:text-4xl">Total Price: ${totalPrice.toFixed(2)}</h2>
-                {cart.length ? <Link to="/dashboard/payment">
-                    <button className="btn btn-primary">Pay</button>
-                </Link>:
-                <button disabled className="btn btn-primary">Pay</button>
-                }
+                {cart.length ? (
+                    <Link to="/dashboard/payment">
+                        <button className="btn btn-primary">Pay</button>
+                    </Link>
+                ) : (
+                    <button disabled className="btn btn-primary">Pay</button>
+                )}
             </div>
-            <div className="overflow-x-auto w-1/2 lg:w-full">
+            {/* Table view for larger screens */}
+            <div className="hidden lg:block overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -76,7 +76,7 @@ const Cart = () => {
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img src={temp.image} alt="Avatar Tailwind CSS Component" />
+                                                <img src={temp.image} alt={temp.name} />
                                             </div>
                                         </div>
                                     </div>
@@ -85,8 +85,8 @@ const Cart = () => {
                                 <td>${temp.price}</td>
                                 <th>
                                     <button
-                                     onClick={() => handleDelete(temp._id)}
-                                    className="btn btn-ghost btn-lg">
+                                        onClick={() => handleDelete(temp._id)}
+                                        className="btn btn-ghost btn-lg">
                                         <FaTrashAlt className="text-red-600" />
                                     </button>
                                 </th>
@@ -94,6 +94,31 @@ const Cart = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            {/* Card view for smaller screens */}
+            <div className="lg:hidden space-y-4">
+                {cart.map((temp, index) => (
+                    <div key={temp._id} className="card bg-base-100 shadow-xl p-4">
+                        <div className="flex items-center gap-4">
+                            <div className="avatar">
+                                <div className="mask mask-squircle w-12 h-12">
+                                    <img src={temp.image} alt={temp.name} />
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <h2 className="text-sm font-bold">{temp.name}</h2>
+                                <p className="text-sm">Price: ${temp.price}</p>
+                                <div className="flex justify-end mt-2">
+                                    <button
+                                        onClick={() => handleDelete(temp._id)}
+                                        className="btn btn-ghost btn-sm">
+                                        <FaTrashAlt className="text-red-600" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
