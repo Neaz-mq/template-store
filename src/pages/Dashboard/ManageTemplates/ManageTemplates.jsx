@@ -66,18 +66,18 @@ const ManageTemplates = () => {
     };
 
     return (
-        <div>
-            <h2 className="text-3xl text-center font-bold mb-10">Manage Premium Templates</h2>
+        <div className="px-2 md:px-6">
+            <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Premium Templates</h2>
             <div>
-                <div className="text-center mb-10">
-                    <form onSubmit={handleSearch}>
-                        <div className="join">
-                            <input type="text" name="search" id="" className="input input-bordered join-item" placeholder="Item Search" />
-                            <button className="btn join-item rounded-r-full">Search</button>
-                        </div>
+                <div className="text-center mb-4 md:mb-10">
+                    <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center">
+                        <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Item Search" />
+                        <button className="btn text-xs md:text-base">Search</button>
                     </form>
                 </div>
-                <div className="overflow-x-auto">
+
+                {/* Table for larger screens */}
+                <div className="hidden md:block overflow-x-auto">
                     <table className="table w-full">
                         {/* head */}
                         <thead>
@@ -107,7 +107,7 @@ const ManageTemplates = () => {
                                     <td>${temp.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateTemplate/${temp._id}`}>
-                                            <button className="btn btn-ghost btn-lg bg-orange-500">
+                                            <button className="btn btn-ghost btn-sm bg-orange-500">
                                                 <FaEdit className="text-white" />
                                             </button>
                                         </Link>
@@ -115,7 +115,7 @@ const ManageTemplates = () => {
                                     <td>
                                         <button
                                             onClick={() => handleDeleteItem(temp)}
-                                            className="btn btn-ghost btn-lg -ml-4">
+                                            className="btn btn-ghost btn-sm -ml-2">
                                             <FaTrashAlt className="text-red-600" />
                                         </button>
                                     </td>
@@ -123,44 +123,70 @@ const ManageTemplates = () => {
                             ))}
                         </tbody>
                     </table>
-                    <div className="pagination mt-8 flex justify-center">
+                </div>
+
+                {/* Cards for smaller screens */}
+                <div className="block md:hidden">
+                    {currentItems.map((temp, index) => (
+                        <div key={temp._id} className="card bg-base-100 shadow-xl mb-3 p-2 mr-2">
+                            <figure className="px-2 pt-2">
+                                <img src={temp.image} alt="Template Image" className="w-full h-20 object-cover rounded-md" />
+                            </figure>
+                            <div className="card-body p-2">
+                                <h2 className="card-title text-xs">{temp.name}</h2>
+                                <p className="text-xs">Price: ${temp.price}</p>
+                                <div className="card-actions justify-end mt-1">
+                                    <Link to={`/dashboard/updateTemplate/${temp._id}`}>
+                                        <button className="btn btn-primary btn-xs">
+                                            <FaEdit />
+                                        </button>
+                                    </Link>
+                                    <button onClick={() => handleDeleteItem(temp)} className="btn btn-danger btn-xs">
+                                        <FaTrashAlt />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Pagination */}
+                <div className="pagination mt-4 md:mt-8 flex justify-center text-xs md:text-base">
+                    <button
+                        onClick={prevPage}
+                        className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
+                            currentPage === 1
+                                ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                                : 'bg-blue-500 text-white'
+                        }`}
+                        disabled={currentPage === 1}
+                    >
+                        <span className="mr-1">Previous</span>
+                    </button>
+                    {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
                         <button
-                            onClick={prevPage}
-                            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                                currentPage === 1
-                                    ?
-                                    'bg-gray-200 text-gray-700 cursor-not-allowed'
-                                    : 'bg-blue-500 text-white'
+                            key={i + 1}
+                            onClick={() => paginate(i + 1)}
+                            className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
+                                currentPage === i + 1
+                                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
                             }`}
-                            disabled={currentPage === 1}
                         >
-                            <span className="mr-1">Previous</span>
+                            {i + 1}
                         </button>
-                        {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
-                            <button
-                                key={i + 1}
-                                onClick={() => paginate(i + 1)}
-                                className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                                    currentPage === i + 1
-                                        ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
-                                }`}
-                            >
-                                {i + 1}
-                            </button>
-                        ))}
-                        <button
-                            onClick={nextPage}
-                            className={`px-4 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                                currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)
-                                    ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
-                                    : 'bg-blue-500 text-white'
-                            }`}
-                            disabled={currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)}
-                        >
-                            <span className="mr-1">Next</span>
-                        </button>
-                    </div>
+                    ))}
+                    <button
+                        onClick={nextPage}
+                        className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
+                            currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)
+                                ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                                : 'bg-blue-500 text-white'
+                        }`}
+                        disabled={currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)}
+                    >
+                        <span className="mr-1">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
