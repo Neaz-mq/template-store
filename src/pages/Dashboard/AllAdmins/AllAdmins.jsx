@@ -20,12 +20,12 @@ const AllAdmins = () => {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <div className="p-4 md:p-8 bg-white rounded-lg shadow-lg">
-            <div className="flex flex-col md:flex-row justify-between items-center my-4 pb-8">
+        <div className="p-4 md:p-8 bg-white rounded-lg shadow-lg overflow-x-hidden">
+            <div className="flex flex-col md:flex-row justify-between items-center my-4 pb-8 space-y-4 md:space-y-0">
                 <h2 className="hidden md:block text-2xl md:text-3xl font-semibold text-center md:text-left">All Admins</h2>
                 <h2 className="text-2xl md:text-3xl font-semibold text-center md:text-left">Total Admins: {admins.length}</h2>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto w-full">
                 <table className="hidden md:table table-auto w-full">
                     <thead>
                         <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -46,22 +46,22 @@ const AllAdmins = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="md:hidden space-y-4">
+                <div className="md:hidden space-y-6">
                     {admins.map((admin, index) => (
                         <div key={admin._id} className="border border-gray-200 rounded-lg p-4 shadow-sm">
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-between items-center text-sm">
                                 <span className="font-semibold">No.</span>
                                 <span>{index + 1}</span>
                             </div>
-                            <div className="mt-2">
+                            <div className="mt-2 text-sm">
                                 <span className="font-semibold">ID:</span>
                                 <span className="block break-all">{admin._id}</span>
                             </div>
-                            <div className="mt-2">
+                            <div className="mt-2 text-sm">
                                 <span className="font-semibold">Name:</span>
                                 <span className="block">{admin.name}</span>
                             </div>
-                            <div className="mt-2">
+                            <div className="mt-2 text-sm">
                                 <span className="font-semibold">Email:</span>
                                 <span className="block break-all">{admin.email}</span>
                             </div>
@@ -69,7 +69,6 @@ const AllAdmins = () => {
                     ))}
                 </div>
             </div>
-            
         </div>
     );
 };
