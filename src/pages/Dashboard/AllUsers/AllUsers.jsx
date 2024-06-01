@@ -83,7 +83,12 @@ const AllUsers = () => {
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>
                 <h2 className="text-xl sm:text-3xl font-semibold mr-32">Total users: {users.length}</h2>
             </div>
-            
+            <div className="text-center mb-4 md:mb-10">
+                    <form className="flex flex-col items-center md:flex-row md:justify-center">
+                        <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Email Search" />
+                        <button className="btn text-xs md:text-base">Search</button>
+                    </form>
+                </div>
             <div className="overflow-x-auto">
                 <div className="max-w-full overflow-hidden">
                     {/* Table for larger screens */}
