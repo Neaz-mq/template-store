@@ -1,4 +1,4 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { CardNumberElement, CardExpiryElement, CardCvcElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from "../../../hooks/useCart";
@@ -17,14 +17,13 @@ const CheckoutForm = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
-   // Calculate total price based on the type of item
-   const totalPrice = cart.reduce((total, temp) => {
-    // Check if the price is "free" or numeric
-    const itemPrice = temp.price === "free" ? 0 : parseFloat(temp.price);
-    // Check if itemPrice is a valid number, otherwise add 0
-    return isNaN(itemPrice) ? total : total + itemPrice;
-}, 0);
-
+    // Calculate total price based on the type of item
+    const totalPrice = cart.reduce((total, temp) => {
+        // Check if the price is "free" or numeric
+        const itemPrice = temp.price === "free" ? 0 : parseFloat(temp.price);
+        // Check if itemPrice is a valid number, otherwise add 0
+        return isNaN(itemPrice) ? total : total + itemPrice;
+    }, 0);
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -34,37 +33,36 @@ const CheckoutForm = () => {
                     setClientSecret(res.data.clientSecret);
                 })
         }
-
-    }, [axiosSecure, totalPrice])
+    }, [axiosSecure, totalPrice]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (!stripe || !elements) {
-            return
+            return;
         }
 
-        const card = elements.getElement(CardElement)
+        const card = elements.getElement(CardNumberElement);
 
         if (card === null) {
-            return
+            return;
         }
 
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
-        })
+        });
 
         if (error) {
             console.log('payment error', error);
             setError(error.message);
-        }
-        else {
-            console.log('payment method', paymentMethod)
+        } else {
+            console.log('payment method', paymentMethod);
             setError('');
         }
-         // confirm payment
-         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+
+        // confirm payment
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {
@@ -72,13 +70,12 @@ const CheckoutForm = () => {
                     name: user?.displayName || 'anonymous'
                 }
             }
-        })
+        });
 
         if (confirmError) {
-            console.log('confirm error')
-        }
-        else {
-            console.log('payment intent', paymentIntent)
+            console.log('confirm error');
+        } else {
+            console.log('payment intent', paymentIntent);
             if (paymentIntent.status === 'succeeded') {
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
@@ -92,7 +89,7 @@ const CheckoutForm = () => {
                     cartIds: cart.map(temp => temp._id),
                     tempItemIds: cart.map(temp => temp.tempId),
                     status: 'pending'
-                }
+                };
 
                 const res = await axiosSecure.post('/payments', payment);
                 console.log('payment saved', res.data);
@@ -105,41 +102,82 @@ const CheckoutForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/dashboard/paymentHistory')
+                    navigate('/dashboard/paymentHistory');
                 }
-
             }
         }
-
-    }
-
+    };
 
     return (
-       
-              <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <div className="container mx-auto px-4 py-8">
+            <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto bg-white p-6 shadow-md rounded-lg lg:w-1/2 xl:w-1/3">
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">Card Number</label>
+                    <CardNumberElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#424770',
+                                    '::placeholder': {
+                                        color: '#aab7c4',
+                                    },
+                                },
+                                invalid: {
+                                    color: '#9e2146',
+                                },
                             },
-                        },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
-                Pay
-            </button>
-            <p className="text-red-600">{error}</p>
-            {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
-        </form>
-     
+                        }}
+                        className="p-2 border border-gray-300 rounded-md"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">Expiry Date</label>
+                    <CardExpiryElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#424770',
+                                    '::placeholder': {
+                                        color: '#aab7c4',
+                                    },
+                                },
+                                invalid: {
+                                    color: '#9e2146',
+                                },
+                            },
+                        }}
+                        className="p-2 border border-gray-300 rounded-md"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700">CVC</label>
+                    <CardCvcElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#424770',
+                                    '::placeholder': {
+                                        color: '#aab7c4',
+                                    },
+                                },
+                                invalid: {
+                                    color: '#9e2146',
+                                },
+                            },
+                        }}
+                        className="p-2 border border-gray-300 rounded-md"
+                    />
+                </div>
+                <button className="btn btn-sm btn-primary my-4 w-full" type="submit" disabled={!stripe || !clientSecret}>
+                    Pay
+                </button>
+                {error && <p className="text-red-600">{error}</p>}
+                {transactionId && <p className="text-green-600">Your transaction id: {transactionId}</p>}
+            </form>
+        </div>
     );
 };
 
