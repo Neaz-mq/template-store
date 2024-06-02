@@ -71,7 +71,7 @@ const ManageTemplates = () => {
             <div>
                 <div className="text-center mb-4 md:mb-10">
                     <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center">
-                        <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Item Search" />
+                        <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Template Search" />
                         <button className="btn text-xs md:text-base">Search</button>
                     </form>
                 </div>

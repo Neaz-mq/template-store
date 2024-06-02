@@ -16,10 +16,12 @@ const AllUsers = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage] = useState(10);
+    const [search, setSearch] = useState('');
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+    const currentUsers = (search ? filteredUsers : users).slice(indexOfFirstUser, indexOfLastUser);
 
     const handleMakeAdmin = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
@@ -66,10 +68,20 @@ const AllUsers = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const nextPage = () => {
-        if (currentPage < Math.ceil(users.length / usersPerPage)) {
+        if (currentPage < Math.ceil((search ? filteredUsers : users).length / usersPerPage)) {
             setCurrentPage(currentPage + 1);
         }
     };
+
+    const handleSearch = e => {
+        e.preventDefault();
+        const searchText = e.target.search.value.toLowerCase();
+        setSearch(searchText);
+
+        const filtered = users.filter(user => user.email.toLowerCase().includes(searchText));
+        setFilteredUsers(filtered);
+        setCurrentPage(1);  // Reset to the first page on new search
+    }
 
     const prevPage = () => {
         if (currentPage > 1) {
@@ -81,14 +93,14 @@ const AllUsers = () => {
         <div className="px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>
-                <h2 className="text-xl sm:text-3xl font-semibold mr-32">Total users: {users.length}</h2>
+                <h2 className="text-xl sm:text-3xl font-semibold ">Total users: {(search ? filteredUsers : users).length}</h2>
             </div>
-            <div className="text-center mb-4 md:mb-10">
-                    <form className="flex flex-col items-center md:flex-row md:justify-center">
-                        <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Email Search" />
-                        <button className="btn text-xs md:text-base">Search</button>
-                    </form>
-                </div>
+            <div className="text-center mb-4 md:mb-10 hidden md:block">
+                <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center ">
+                    <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Email Search" />
+                    <button className="btn text-xs md:text-base">Search</button>
+                </form>
+            </div>
             <div className="overflow-x-auto">
                 <div className="max-w-full overflow-hidden">
                     {/* Table for larger screens */}
@@ -134,78 +146,77 @@ const AllUsers = () => {
                     </div>
 
                     {/* Cards for smaller screens */}
-                   <div className="w-full">
-                   <div className="block md:hidden">
-                        {currentUsers.map((user, index) => (
-                            <div key={user._id} className="bg-white shadow-md rounded-lg p-2 mb-4">
-                                <div className="flex justify-between items-center mb-2">
-                                    <div className="text-sm font-medium text-gray-900">No. {indexOfFirstUser + index + 1}</div>
-                                </div>
-                                <div className="text-sm text-gray-700"><strong>Name:</strong> {user.name}</div>
-                               
-                                <div className="text-sm text-gray-700">
-                                    <strong>Role:</strong> {user.role === 'admin' ? 'Admin' : (
+                    <div className="w-full">
+                        <div className="block md:hidden">
+                            {currentUsers.map((user, index) => (
+                                <div key={user._id} className="bg-white shadow-md rounded-lg p-2 mb-4">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <div className="text-sm font-medium text-gray-900">No. {indexOfFirstUser + index + 1}</div>
+                                    </div>
+                                    <div className="text-sm text-gray-700"><strong>Name:</strong> {user.name}</div>
+                                    
+                                    <div className="text-sm text-gray-700">
+                                        <strong>Role:</strong> {user.role === 'admin' ? 'Admin' : (
+                                            <button
+                                                onClick={() => handleMakeAdmin(user)}
+                                                className="btn btn-sm bg-orange-500 text-white mt-1">
+                                                <FaUsers />
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div className="mt-2">
                                         <button
-                                            onClick={() => handleMakeAdmin(user)}
-                                            className="btn btn-sm bg-orange-500 text-white mt-1">
-                                            <FaUsers />
+                                            onClick={() => handleDeleteUser(user)}
+                                            className="btn btn-ghost btn-sm text-red-600 mt-1">
+                                            <FaTrashAlt />
                                         </button>
-                                    )}
+                                    </div>
                                 </div>
-                                <div className="mt-2">
-                                    <button
-                                        onClick={() => handleDeleteUser(user)}
-                                        className="btn btn-ghost btn-sm text-red-600 mt-1">
-                                        <FaTrashAlt />
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                   </div>
                 </div>
             </div>
             {/* Pagination */}
-            <div className="flex pagination mt-8  justify-center mr-4 -ml-9 md:mr-0 md:-ml-0">
+            <div className="flex pagination mt-8 justify-center mr-4 -ml-9 md:mr-0 md:-ml-0">
                 <button
                     onClick={prevPage}
                     className={`md:px-2 md:py-2 px-1 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
-                            ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
-                            : 'bg-blue-500 text-white'
+                        ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                        : 'bg-blue-500 text-white'
                         }`}
                     disabled={currentPage === 1}
                 >
                     <span className="mr-1 text-xs md:text-base">Previous</span>
                 </button>
 
-                {Array.from({ length: Math.ceil(users.length / usersPerPage) }, (_, i) => (
+                {Array.from({ length: Math.ceil((search ? filteredUsers : users).length / usersPerPage) }, (_, i) => (
                     <button
                         key={i + 1}
                         onClick={() => paginate(i + 1)}
                         className={`md:px-4 md:py-2 px-3 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
-                                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
+                            ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
                             }`}
                     >
                         {i + 1}
                     </button>
                 ))}
+
                 <button
                     onClick={nextPage}
-                    className={`md:px-4 md:py-2 px-2 py-1 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil(users.length / usersPerPage)
-                            ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
-                            : 'bg-blue-500 text-white'
+                    className={`md:px-4 md:py-2 px-2 py-1 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil((search ? filteredUsers : users).length / usersPerPage)
+                        ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
+                        : 'bg-blue-500 text-white'
                         }`}
-                    disabled={currentPage === Math.ceil(users.length / usersPerPage)}
+                    disabled={currentPage === Math.ceil((search ? filteredUsers : users).length / usersPerPage)}
                 >
                     <span className="mr-1 text-xs md:text-base">Next</span>
                 </button>
             </div>
-
-             {/* Pagination for mobile */}
-            
         </div>
     );
 };
 
 export default AllUsers;
+
