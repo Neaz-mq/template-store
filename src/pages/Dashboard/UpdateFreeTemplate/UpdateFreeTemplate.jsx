@@ -101,10 +101,10 @@ const UpdateFreeTemplate = () => {
     };
 
     return (
-        <div>
+        <div className="container mx-auto px-4">
             <h2 className="text-3xl text-center font-bold mb-10">Update Free Templates</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-control w-full my-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="form-control w-full">
                     <label className="label">
                         <span className="label-text">Template Name*</span>
                     </label>
@@ -118,8 +118,8 @@ const UpdateFreeTemplate = () => {
                     />
                     {errors.name && <span className="text-red-500">{errors.name.message}</span>}
                 </div>
-                <div className="flex gap-6">
-                    <div className="form-control w-full my-6">
+                <div className="flex flex-col lg:flex-row gap-6">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Category*</span>
                         </label>
@@ -136,7 +136,7 @@ const UpdateFreeTemplate = () => {
                         </select>
                         {errors.category && <span className="text-red-500">{errors.category.message}</span>}
                     </div>
-                    <div className="form-control w-full my-6">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Price*</span>
                         </label>
@@ -156,7 +156,7 @@ const UpdateFreeTemplate = () => {
                     <textarea
                         defaultValue={details}
                         {...register('details')}
-                        className="textarea textarea-bordered h-24"
+                        className="textarea textarea-bordered w-full h-24"
                         placeholder="Details"
                     ></textarea>
                 </div>
@@ -167,7 +167,7 @@ const UpdateFreeTemplate = () => {
                     <textarea
                         defaultValue={descriptions}
                         {...register('descriptions')}
-                        className="textarea textarea-bordered h-24"
+                        className="textarea textarea-bordered w-full h-24"
                         placeholder="Descriptions"
                     ></textarea>
                 </div>
@@ -178,7 +178,7 @@ const UpdateFreeTemplate = () => {
                     <textarea
                         defaultValue={specifications}
                         {...register('specifications')}
-                        className="textarea textarea-bordered h-24"
+                        className="textarea textarea-bordered w-full h-24"
                         placeholder="Specifications"
                     ></textarea>
                 </div>
@@ -189,12 +189,12 @@ const UpdateFreeTemplate = () => {
                     <textarea
                         defaultValue={product}
                         {...register('product')}
-                        className="textarea textarea-bordered h-24"
+                        className="textarea textarea-bordered w-full h-24"
                         placeholder="Product Specifications"
                     ></textarea>
                 </div>
-                <div className="flex gap-6">
-                    <div className="form-control w-full my-6">
+                <div className="flex flex-col lg:flex-row gap-6">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Revisions*</span>
                         </label>
@@ -222,8 +222,8 @@ const UpdateFreeTemplate = () => {
                         </div>
                     ))}
                 </div>
-                <div className="flex gap-6">
-                    <div className="form-control w-full my-6">
+                <div className="flex flex-col lg:flex-row gap-6">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Files Included*</span>
                         </label>
@@ -254,23 +254,23 @@ const UpdateFreeTemplate = () => {
                     ))}
                 </div>
                 <div className="form-control w-full my-6">
-                    <label className="label">
-                        <span className="label-text">Image*</span>
-                    </label>
-                    <div className="flex items-center">
-                        {image && (
-                            <div className="mr-4">
-                                <img src={image} alt="Template Preview" className="max-w-xs max-h-48" />
-                            </div>
-                        )}
-                        <input
-                            {...register('image')}
-                            type="file"
-                            className="file-input"
-                        />
+                        <label className="label">
+                            <span className="label-text">Image*</span>
+                        </label>
+                        <div className="flex flex-col lg:flex-row items-center">
+                            {image && (
+                                <div className="mr-4 mb-4 lg:mb-0">
+                                    <img src={image} alt="Template Preview" className="max-w-xs max-h-48" />
+                                </div>
+                            )}
+                            <input
+                                {...register('image')}
+                                type="file"
+                                className="file-input w-full lg:w-auto"
+                            />
+                        </div>
                     </div>
-                </div>
-                <button type="submit" className="btn" disabled={isLoading}>
+                <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
                     {isLoading ? 'Updating...' : 'Update Free Template'}
                 </button>
             </form>

@@ -38,10 +38,10 @@ const AllAdmins = () => {
                     <tbody className="text-gray-600 text-sm font-light">
                         {admins.map((admin, index) => (
                             <tr key={admin._id} className="border-b border-gray-200 hover:bg-gray-100">
-                                <td className="py-3 px-6 text-left whitespace-nowrap">{index + 1}</td>
-                                <td className="py-3 px-6 text-left break-all">{admin._id}</td>
-                                <td className="py-3 px-6 text-left">{admin.name}</td>
-                                <td className="py-3 px-6 text-left break-all">{admin.email}</td>
+                                <td className="py-3 px-6 text-left whitespace-nowrap font-medium">{index + 1}</td>
+                                <td className="py-3 px-6 text-left break-all font-medium">{admin._id}</td>
+                                <td className="py-3 px-6 text-left font-medium">{admin.name}</td>
+                                <td className="py-3 px-6 text-left break-all font-medium">{admin.email}</td>
                             </tr>
                         ))}
                     </tbody>

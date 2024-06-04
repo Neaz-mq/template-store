@@ -193,8 +193,9 @@ const AddFreeTemplates = () => {
                         ))}
                     </div>
 
-  {/* Files Included */}
-  <div className="flex gap-6">
+                {/* Files Included */}
+  
+                       <div className="flex gap-6">
                         <div className="form-control w-full lg:my-6">
                             <label className="label">
                                 <span className="label-text">Files Included*</span>

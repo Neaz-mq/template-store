@@ -1,4 +1,4 @@
-import { FaHome, FaList, FaRegListAlt, FaSearch, FaShoppingCart, FaUsers} from "react-icons/fa";
+import { FaHome, FaList, FaRegListAlt, FaSearch, FaShoppingCart, FaUsers } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import { ImInsertTemplate } from "react-icons/im";
@@ -8,8 +8,8 @@ import { GrUserAdmin } from "react-icons/gr";
 
 const Dashboard = () => {
     const [cart] = useCart();
-   
- // TODO: get isAdmin value from the database
+
+    // TODO: get isAdmin value from the database
 
     const [isAdmin] = useAdmin();
 
@@ -20,19 +20,19 @@ const Dashboard = () => {
             {/* dashboard side bar */}
             <div className={`w-64 min-h-screen ${isAdmin ? 'bg-[#7868E6]' : 'bg-orange-300'}`}>
 
-          
+
 
                 <ul className="menu p-4">
                     {
                         isAdmin ? <>
-                     <li>
-                        <NavLink to="/dashboard/adminHome">
-                            <FaHome></FaHome>
-                            Admin Home</NavLink>
-                    </li>
-                    <li>
+                            <li>
+                                <NavLink to="/dashboard/adminHome">
+                                    <FaHome></FaHome>
+                                    Admin Home</NavLink>
+                            </li>
+                            <li>
                                 <NavLink to="/dashboard/addTemplates">
-                                <ImInsertTemplate />
+                                    <ImInsertTemplate />
                                     Add Templates</NavLink>
                             </li>
                             <li>
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
                             <li>
                                 <NavLink to="/dashboard/addFreeTemplates">
-                                <CgTemplate />
+                                    <CgTemplate />
                                     Add Free Templates</NavLink>
                             </li>
 
@@ -52,47 +52,47 @@ const Dashboard = () => {
                                     <FaRegListAlt></FaRegListAlt>
                                     Manage Free Templates</NavLink>
                             </li>
-                           
+
                             <li>
                                 <NavLink to="/dashboard/users">
                                     <FaUsers></FaUsers>
                                     All users</NavLink>
-                            </li> 
+                            </li>
 
                             <li>
                                 <NavLink to="/dashboard/admins">
                                     <GrUserAdmin></GrUserAdmin>
                                     All Admins</NavLink>
-                            </li> 
+                            </li>
                         </>
 
-                        :
+                            :
 
-                        <>
+                            <>
 
-                        <li>
-                        <NavLink to="/dashboard/userHome">
-                            <FaHome></FaHome>
-                            User Home</NavLink>
-                       </li>
-
-                        <li>
-                        <NavLink to="/dashboard/cart">
-                            <FaShoppingCart></FaShoppingCart>
-                            My Cart ({cart.length})</NavLink>
-                        </li>
-
-                        <li>
-                                    <NavLink to="/dashboard/paymentHistory">
-                                        <FaList></FaList>
-                                         Payment History</NavLink>
+                                <li>
+                                    <NavLink to="/dashboard/userHome">
+                                        <FaHome></FaHome>
+                                        User Home</NavLink>
                                 </li>
 
-                        </>
+                                <li>
+                                    <NavLink to="/dashboard/cart">
+                                        <FaShoppingCart></FaShoppingCart>
+                                        My Cart ({cart.length})</NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink to="/dashboard/paymentHistory">
+                                        <FaList></FaList>
+                                        Payment History</NavLink>
+                                </li>
+
+                            </>
                     }
 
 
-                {/* shared nav links */}
+                    {/* shared nav links */}
 
                     <div className="divider"></div>
 
@@ -116,7 +116,7 @@ const Dashboard = () => {
             <div className="flex-1 p-8">
                 <Outlet></Outlet>
             </div>
-            
+
         </div>
     );
 };
