@@ -126,12 +126,12 @@ const TemplateDetails = () => {
                         </div>
                     </div>
                     <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0">
-                        <img src="https://i.ibb.co/6FCc4gG/1.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                        <img src="https://i.ibb.co/pWZ7pqJ/10.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                        <img src="https://i.ibb.co/vXmfTXW/2.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                        <img src="https://i.ibb.co/Dr8pMnb/4.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                        <img src="https://i.ibb.co/J2GbtNj/5.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                        <img src="https://i.ibb.co/RbBk3rt/7.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/GtL3624/1.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/tQf0zSY/10.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/WWqZ87h/2.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/wygHX9R/4.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/yFsgRSH/5.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
+                        <img src="https://i.ibb.co/mSdYgC1/7.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
 
                         {!showAdditionalImages && (
                             <div
