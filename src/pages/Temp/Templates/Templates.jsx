@@ -10,6 +10,7 @@ const Templates = () => {
         <div>
             <Helmet>
                 <title>Template Store | Template</title>
+                <meta name="description" content="Find high-quality templates for your projects at the Template Store. Choose from a variety of options including agency templates, graphics templates, and more." />
             </Helmet>
             <Shop></Shop>
             <AgencyTemplate></AgencyTemplate>

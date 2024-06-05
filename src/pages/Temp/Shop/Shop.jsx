@@ -22,7 +22,8 @@ const Shop = () => {
     };
 
     return (
-        <div className="-mt-8 bg-[#EDEEF7]">
+        <main>
+            <div className="-mt-8 bg-[#EDEEF7]">
             <div className="max-w-[700px] lg:h-[780px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
                 <button onClick={handleShopTemplatesClick}>
                     <p className="w-fit text-sm font-bold border border-black rounded-full px-4 py-1 font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Shop Templates</p>
@@ -65,6 +66,7 @@ const Shop = () => {
             )}
 
         </div>
+        </main>
     );
 };
 
