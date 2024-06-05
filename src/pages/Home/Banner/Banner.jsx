@@ -29,7 +29,7 @@ const Banner = () => {
             observer.disconnect();
         };
     }, []);
-    
+
     return (
         <section className="w-full bg-[#EDEEF7]">
             <div className="layout pb-10 lg:pb-0 lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
@@ -64,7 +64,7 @@ const Banner = () => {
                             <img src="https://i.ibb.co/tQf0zSY/10.jpg" alt="Design example 10" />
                             <img src="https://i.ibb.co/CHk5qwv/11.jpg" alt="Design example 11" />
                         </section>
-                        
+
                         <section className="scroll_section__WwdTn scroll_scrolling2__yKLja">
                             <img src="https://i.ibb.co/mSdYgC1/7.jpg" alt="Design example 7" />
                             <img src="https://i.ibb.co/sbtqzwN/9.jpg" alt="Design example 9" />

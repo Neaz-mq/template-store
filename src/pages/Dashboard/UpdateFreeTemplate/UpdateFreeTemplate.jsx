@@ -12,7 +12,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdateFreeTemplate = () => {
     const { name, category, details, descriptions, specifications, product, revisions, files, image, price, _id } = useLoaderData();
-    
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [selectedFiles, setSelectedFiles] = useState(files || []);
     const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
@@ -141,11 +141,11 @@ const UpdateFreeTemplate = () => {
                             <span className="label-text">Price*</span>
                         </label>
                         <input
-                                type="text"  
-                                defaultValue={price}
-                                placeholder="Price"
-                                {...register('price', { required: true })}
-                                className="input input-bordered w-full" />
+                            type="text"
+                            defaultValue={price}
+                            placeholder="Price"
+                            {...register('price', { required: true })}
+                            className="input input-bordered w-full" />
                         {errors.price && <span className="text-red-500">{errors.price.message}</span>}
                     </div>
                 </div>
@@ -237,7 +237,7 @@ const UpdateFreeTemplate = () => {
                             <option value="Adobe Photoshop">Adobe Photoshop</option>
                             <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
                             <option value="Canva">Canva</option>
-                            <option value="Figma">Figma</option>                            
+                            <option value="Figma">Figma</option>
                             <option value="Adobe InDesign">Adobe InDesign</option>
                             <option value="Microsoft Word">Microsoft Word</option>
                         </select>
@@ -254,22 +254,22 @@ const UpdateFreeTemplate = () => {
                     ))}
                 </div>
                 <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Image*</span>
-                        </label>
-                        <div className="flex flex-col lg:flex-row items-center">
-                            {image && (
-                                <div className="mr-4 mb-4 lg:mb-0">
-                                    <img src={image} alt="Template Preview" className="max-w-xs max-h-48" />
-                                </div>
-                            )}
-                            <input
-                                {...register('image')}
-                                type="file"
-                                className="file-input w-full lg:w-auto"
-                            />
-                        </div>
+                    <label className="label">
+                        <span className="label-text">Image*</span>
+                    </label>
+                    <div className="flex flex-col lg:flex-row items-center">
+                        {image && (
+                            <div className="mr-4 mb-4 lg:mb-0">
+                                <img src={image} alt="Template Preview" className="max-w-xs max-h-48" />
+                            </div>
+                        )}
+                        <input
+                            {...register('image')}
+                            type="file"
+                            className="file-input w-full lg:w-auto"
+                        />
                     </div>
+                </div>
                 <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
                     {isLoading ? 'Updating...' : 'Update Free Template'}
                 </button>

@@ -14,14 +14,14 @@ const Creativity = () => {
                         <div className="flex items-center justify-between">
                             <h2 className="text-2xl font-medium text-[#2F1C6A]">Creativity</h2>
                             <div className="w-[65px] h-[65px] rounded-full overflow-hidden bg-primary text-white flex items-center justify-center text-2xl">
-                                <img 
-                                    className="decoration-transparent scale-125" 
-                                    src="https://prographr.vercel.app/_next/static/media/Creativity.78da9627.svg" 
-                                    alt="Creativity Icon" 
-                                    loading="lazy" 
-                                    width="65" 
-                                    height="65" 
-                                    decoding="async" 
+                                <img
+                                    className="decoration-transparent scale-125"
+                                    src="https://prographr.vercel.app/_next/static/media/Creativity.78da9627.svg"
+                                    alt="Creativity Icon"
+                                    loading="lazy"
+                                    width="65"
+                                    height="65"
+                                    decoding="async"
                                 />
                             </div>
                         </div>
@@ -43,14 +43,14 @@ const Creativity = () => {
                         <div className="flex items-center justify-between">
                             <h2 className="text-2xl font-medium text-[#2F1C6A]">Team Collaboration</h2>
                             <div className="w-[65px] h-[65px] rounded-full overflow-hidden bg-primary text-white flex items-center justify-center text-2xl">
-                                <img 
-                                    className="decoration-transparent scale-125" 
-                                    src="https://prographr.vercel.app/_next/static/media/TeamCollaboration.88e3e422.svg" 
-                                    alt="Team Collaboration Icon" 
-                                    loading="lazy" 
-                                    width="65" 
-                                    height="65" 
-                                    decoding="async" 
+                                <img
+                                    className="decoration-transparent scale-125"
+                                    src="https://prographr.vercel.app/_next/static/media/TeamCollaboration.88e3e422.svg"
+                                    alt="Team Collaboration Icon"
+                                    loading="lazy"
+                                    width="65"
+                                    height="65"
+                                    decoding="async"
                                 />
                             </div>
                         </div>
@@ -72,14 +72,14 @@ const Creativity = () => {
                         <div className="flex items-center justify-between">
                             <h2 className="text-2xl font-medium text-[#2F1C6A]">Professionalism</h2>
                             <div className="w-[65px] h-[65px] rounded-full overflow-hidden bg-primary text-white flex items-center justify-center text-2xl">
-                                <img 
-                                    className="decoration-transparent scale-125" 
-                                    src="https://prographr.vercel.app/_next/static/media/Professionalism.3454926c.svg" 
-                                    alt="Professionalism Icon" 
-                                    loading="lazy" 
-                                    width="65" 
-                                    height="65" 
-                                    decoding="async" 
+                                <img
+                                    className="decoration-transparent scale-125"
+                                    src="https://prographr.vercel.app/_next/static/media/Professionalism.3454926c.svg"
+                                    alt="Professionalism Icon"
+                                    loading="lazy"
+                                    width="65"
+                                    height="65"
+                                    decoding="async"
                                 />
                             </div>
                         </div>

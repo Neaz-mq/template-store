@@ -24,7 +24,7 @@ const UpdateTemplate = () => {
         price,
         _id
     } = useLoaderData();
-    
+
     const { register, handleSubmit, reset } = useForm();
     const [selectedFiles, setSelectedFiles] = useState(files || []);
     const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);

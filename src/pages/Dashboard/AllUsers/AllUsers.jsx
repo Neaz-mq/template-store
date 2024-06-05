@@ -154,7 +154,7 @@ const AllUsers = () => {
                                         <div className="text-sm font-medium text-gray-900">No. {indexOfFirstUser + index + 1}</div>
                                     </div>
                                     <div className="text-sm text-gray-700"><strong>Name:</strong> {user.name}</div>
-                                    
+
                                     <div className="text-sm text-gray-700">
                                         <strong>Role:</strong> {user.role === 'admin' ? 'Admin' : (
                                             <button

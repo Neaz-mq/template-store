@@ -162,11 +162,10 @@ const ManageFreeTemplates = () => {
                 <div className="pagination mt-4 md:mt-8 flex justify-center text-xs md:text-base">
                     <button
                         onClick={prevPage}
-                        className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                            currentPage === 1
+                        className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
                                 ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
                                 : 'bg-blue-500 text-white'
-                        }`}
+                            }`}
                         disabled={currentPage === 1}
                     >
                         Previous
@@ -175,22 +174,20 @@ const ManageFreeTemplates = () => {
                         <button
                             key={i + 1}
                             onClick={() => paginate(i + 1)}
-                            className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                                currentPage === i + 1
+                            className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
                                     ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
                                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
-                            }`}
+                                }`}
                         >
                             {i + 1}
                         </button>
                     ))}
                     <button
                         onClick={nextPage}
-                        className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${
-                            currentPage === totalPages
+                        className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === totalPages
                                 ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
                                 : 'bg-blue-500 text-white'
-                        }`}
+                            }`}
                         disabled={currentPage === totalPages}
                     >
                         Next
