@@ -1,6 +1,35 @@
 import './Banner.css';
+import React, { useEffect } from 'react';
 
 const Banner = () => {
+    useEffect(() => {
+        // Lazy load images when they enter the viewport
+        const images = document.querySelectorAll('.lazy-load');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    observer.unobserve(img);
+                }
+            });
+        }, options);
+
+        images.forEach(img => {
+            observer.observe(img);
+        });
+
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+    
     return (
         <section className="w-full bg-[#EDEEF7]">
             <div className="layout pb-10 lg:pb-0 lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
