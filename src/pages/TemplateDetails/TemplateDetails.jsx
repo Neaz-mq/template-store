@@ -239,13 +239,13 @@ const TemplateDetails = () => {
                         </div>
                     </div>
                     {/* Add to Cart button */}
-                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-4 lg:w-[32rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
+                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-7 lg:w-[31rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
                         Add to Cart
                     </button>
 
                     {/* Check more items */}
                   <Link to="http://localhost:5173/template">
-                  <button  className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-4 lg:w-[32rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
+                  <button  className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-7 lg:w-[31rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
                         Check more items
                     </button>
                   
