@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -183,7 +183,7 @@ const TemplateDetails = () => {
                     </div>
 
                     {/* Additional section with the same style in column layout */}
-                    <div className="flex flex-col items-center mt-12 ml-24 lg:ml-0">
+                    <div className="hidden flex flex-col items-center mt-12 ml-24 lg:ml-0">
                         <div className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] lg:-ml-9 ml-16 p-8 lg:mr-12 lg:w-[102%] lg:h-[100%] w-[98%] h-[100%] cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
                             <div className="flex justify-between pb-3">
                                 <div className="flex gap-3 font-bold">
@@ -244,9 +244,12 @@ const TemplateDetails = () => {
                     </button>
 
                     {/* Check more items */}
-                    <button onClick={handleAddToCart} className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-4 lg:w-[32rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
+                  <Link to="http://localhost:5173/template">
+                  <button  className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-4 lg:w-[32rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
                         Check more items
                     </button>
+                  
+                  </Link>
 
 
                 </div>
