@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Form.css' // Import your CSS file with custom styles
 
 const Form = () => {
-    
+
     const form = useRef();
     const diffToast = (message, isError) => {
         toast(message, {

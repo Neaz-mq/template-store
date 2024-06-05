@@ -175,7 +175,7 @@ const AddTemplates = () => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
-                             
+
                             </select>
                         </div>
                     </div>
@@ -185,7 +185,7 @@ const AddTemplates = () => {
                             <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
                                 <span>{revision}</span>
                                 <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
                                 </button>
                             </div>
                         ))}
@@ -215,7 +215,7 @@ const AddTemplates = () => {
                             <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
                                 <span>{file}</span>
                                 <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
                                 </button>
                             </div>
                         ))}

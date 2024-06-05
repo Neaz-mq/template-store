@@ -123,7 +123,7 @@ const AddFreeTemplates = () => {
                                 <span className="label-text">Price*</span>
                             </label>
                             <input
-                                type="text"                              
+                                type="text"
                                 placeholder="Price"
                                 {...register('price', { required: true })}
                                 className="input input-bordered w-full" />
@@ -139,33 +139,33 @@ const AddFreeTemplates = () => {
                         <textarea {...register('details')} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
                     </div>
 
-                      {/* descriptions */}
-                      <div className="form-control ">
+                    {/* descriptions */}
+                    <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Descriptions</span>
                         </label>
                         <textarea {...register('descriptions')} className="textarea textarea-bordered h-24 " placeholder="Descriptions"></textarea>
                     </div>
 
-                      {/* specifications */}
-                      <div className="form-control">
+                    {/* specifications */}
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text">Item Specifications</span>
                         </label>
                         <textarea {...register('specifications')} className="textarea textarea-bordered h-24" placeholder="Specifications"></textarea>
                     </div>
 
-                      {/* product Specs */}
-                      <div className="form-control">
+                    {/* product Specs */}
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text">Product Specifications</span>
                         </label>
                         <textarea {...register('product')} className="textarea textarea-bordered h-24" placeholder="Product Specifications"></textarea>
                     </div>
 
-                        {/* Revisions */}
+                    {/* Revisions */}
 
-                        <div className="flex gap-6">
+                    <div className="flex gap-6">
                         <div className="form-control w-full my-6">
                             <label className="label">
                                 <span className="label-text">Revisions*</span>
@@ -177,7 +177,7 @@ const AddFreeTemplates = () => {
                                 <option value="3">3</option>
                                 <option value="4">4</option>
                                 <option value="5">5</option>
-                             
+
                             </select>
                         </div>
                     </div>
@@ -187,15 +187,15 @@ const AddFreeTemplates = () => {
                             <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
                                 <span>{revision}</span>
                                 <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
                                 </button>
                             </div>
                         ))}
                     </div>
 
-                {/* Files Included */}
-  
-                       <div className="flex gap-6">
+                    {/* Files Included */}
+
+                    <div className="flex gap-6">
                         <div className="form-control w-full lg:my-6">
                             <label className="label">
                                 <span className="label-text">Files Included*</span>
@@ -217,7 +217,7 @@ const AddFreeTemplates = () => {
                             <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
                                 <span>{file}</span>
                                 <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
                                 </button>
                             </div>
                         ))}
