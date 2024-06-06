@@ -11,6 +11,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateTemplate = () => {
+
     const {
         name,
         category,
@@ -75,7 +76,9 @@ const UpdateTemplate = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-        } else {
+        }
+
+        else {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
@@ -112,10 +115,16 @@ const UpdateTemplate = () => {
     };
 
     return (
+
         <div className="container mx-auto px-4">
+
             <h2 className="text-3xl text-center font-bold mb-10">Update Premium Templates</h2>
+
             <div>
+
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+
+                    {/* Template Name */}
                     <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Name*</span>
@@ -129,8 +138,9 @@ const UpdateTemplate = () => {
                             className="input input-bordered w-full"
                         />
                     </div>
-                    <div className="flex flex-col lg:flex-row gap-6">
-                        {/* category */}
+
+                     {/* category */}
+                    <div className="flex flex-col lg:flex-row gap-6">                      
                         <div className="form-control w-full my-6">
                             <label className="label">
                                 <span className="label-text">Category*</span>
@@ -163,6 +173,7 @@ const UpdateTemplate = () => {
                             />
                         </div>
                     </div>
+
                     {/* Template details */}
                     <div className="form-control">
                         <label className="label">
@@ -303,7 +314,9 @@ const UpdateTemplate = () => {
                     <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
                         {isLoading ? 'Updating...' : 'Update Template'}
                     </button>
+                    
                 </form>
+
             </div>
         </div>
     );

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
+
     const [cart, refetch] = useCart();
 
     // Calculate total price based on the type of item
@@ -45,89 +46,94 @@ const Cart = () => {
     }
 
     return (
+
         <div>
+
             <div>
                 <Helmet>
                     <title>Prographr | Cart</title>
                 </Helmet>
             </div>
+
             <div className="px-4 lg:px-0">
-            <div className="flex flex-col items-center mb-8 space-y-4 lg:space-y-0 lg:flex-row lg:justify-evenly lg:items-center">
-                <h2 className="text-xl lg:text-4xl">Templates: {cart.length}</h2>
-                <h2 className="text-xl lg:text-4xl">Total Price: ${totalPrice.toFixed(2)}</h2>
-                {cart.length ? (
-                    <Link to="/dashboard/payment">
-                        <button className="btn btn-primary">Pay</button>
-                    </Link>
-                ) : (
-                    <button disabled className="btn btn-primary">Pay</button>
-                )}
-            </div>
-            {/* Table view for larger screens */}
-            <div className="hidden lg:block overflow-x-auto w-full">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cart.map((temp, index) => (
-                            <tr key={temp._id}>
-                                <th>{index + 1}</th>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={temp.image} alt={temp.name} />
+                <div className="flex flex-col items-center mb-8 space-y-4 lg:space-y-0 lg:flex-row lg:justify-evenly lg:items-center">
+                    <h2 className="text-xl lg:text-4xl">Templates: {cart.length}</h2>
+                    <h2 className="text-xl lg:text-4xl">Total Price: ${totalPrice.toFixed(2)}</h2>
+                    {cart.length ? (
+                        <Link to="/dashboard/payment">
+                            <button className="btn btn-primary">Pay</button>
+                        </Link>
+                    ) : (
+                        <button disabled className="btn btn-primary">Pay</button>
+                    )}
+                </div>
+
+                {/* Table view for larger screens */}
+                <div className="hidden lg:block overflow-x-auto w-full">
+                    <table className="table w-full">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cart.map((temp, index) => (
+                                <tr key={temp._id}>
+                                    <th>{index + 1}</th>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={temp.image} alt={temp.name} />
+                                                </div>
                                             </div>
                                         </div>
+                                    </td>
+                                    <td>{temp.name}</td>
+                                    <td>${temp.price}</td>
+                                    <th>
+                                        <button
+                                            onClick={() => handleDelete(temp._id)}
+                                            className="btn btn-ghost btn-lg">
+                                            <FaTrashAlt className="text-red-600" />
+                                        </button>
+                                    </th>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                
+                {/* Card view for smaller screens */}
+                <div className="lg:hidden space-y-4">
+                    {cart.map((temp, index) => (
+                        <div key={temp._id} className="card bg-base-100 shadow-xl p-4">
+                            <div className="flex items-center gap-4">
+                                <div className="avatar">
+                                    <div className="mask mask-squircle w-12 h-12">
+                                        <img src={temp.image} alt={temp.name} />
                                     </div>
-                                </td>
-                                <td>{temp.name}</td>
-                                <td>${temp.price}</td>
-                                <th>
-                                    <button
-                                        onClick={() => handleDelete(temp._id)}
-                                        className="btn btn-ghost btn-lg">
-                                        <FaTrashAlt className="text-red-600" />
-                                    </button>
-                                </th>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-            {/* Card view for smaller screens */}
-            <div className="lg:hidden space-y-4">
-                {cart.map((temp, index) => (
-                    <div key={temp._id} className="card bg-base-100 shadow-xl p-4">
-                        <div className="flex items-center gap-4">
-                            <div className="avatar">
-                                <div className="mask mask-squircle w-12 h-12">
-                                    <img src={temp.image} alt={temp.name} />
                                 </div>
-                            </div>
-                            <div className="flex-1">
-                                <h2 className="text-sm font-bold">{temp.name}</h2>
-                                <p className="text-sm">Price: ${temp.price}</p>
-                                <div className="flex justify-end mt-2">
-                                    <button
-                                        onClick={() => handleDelete(temp._id)}
-                                        className="btn btn-ghost btn-sm">
-                                        <FaTrashAlt className="text-red-600" />
-                                    </button>
+                                <div className="flex-1">
+                                    <h2 className="text-sm font-bold">{temp.name}</h2>
+                                    <p className="text-sm">Price: ${temp.price}</p>
+                                    <div className="flex justify-end mt-2">
+                                        <button
+                                            onClick={() => handleDelete(temp._id)}
+                                            className="btn btn-ghost btn-sm">
+                                            <FaTrashAlt className="text-red-600" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
         </div>
     );
 };

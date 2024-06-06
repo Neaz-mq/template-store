@@ -11,8 +11,8 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateFreeTemplate = () => {
-    const { name, category, details, descriptions, specifications, product, revisions, files, image, price, _id } = useLoaderData();
 
+    const { name, category, details, descriptions, specifications, product, revisions, files, image, price, _id } = useLoaderData();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [selectedFiles, setSelectedFiles] = useState(files || []);
     const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
@@ -24,6 +24,7 @@ const UpdateFreeTemplate = () => {
         setSelectedFiles(files || []);
         setSelectedRevisions(revisions || []);
     }, [files, revisions]);
+
 
     const onSubmit = async (data) => {
         setIsLoading(true);
@@ -64,7 +65,9 @@ const UpdateFreeTemplate = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-        } else {
+        }
+
+        else {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
@@ -101,8 +104,11 @@ const UpdateFreeTemplate = () => {
     };
 
     return (
+
         <div className="container mx-auto px-4">
+
             <h2 className="text-3xl text-center font-bold mb-10">Update Free Templates</h2>
+
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="form-control w-full">
                     <label className="label">
@@ -118,6 +124,7 @@ const UpdateFreeTemplate = () => {
                     />
                     {errors.name && <span className="text-red-500">{errors.name.message}</span>}
                 </div>
+
                 <div className="flex flex-col lg:flex-row gap-6">
                     <div className="form-control w-full">
                         <label className="label">
@@ -136,6 +143,7 @@ const UpdateFreeTemplate = () => {
                         </select>
                         {errors.category && <span className="text-red-500">{errors.category.message}</span>}
                     </div>
+
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Price*</span>
@@ -148,7 +156,9 @@ const UpdateFreeTemplate = () => {
                             className="input input-bordered w-full" />
                         {errors.price && <span className="text-red-500">{errors.price.message}</span>}
                     </div>
+
                 </div>
+
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Details</span>
@@ -160,6 +170,7 @@ const UpdateFreeTemplate = () => {
                         placeholder="Details"
                     ></textarea>
                 </div>
+
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Descriptions</span>
@@ -171,6 +182,7 @@ const UpdateFreeTemplate = () => {
                         placeholder="Descriptions"
                     ></textarea>
                 </div>
+
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Item Specifications</span>
@@ -182,6 +194,7 @@ const UpdateFreeTemplate = () => {
                         placeholder="Specifications"
                     ></textarea>
                 </div>
+
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Product Specifications</span>
@@ -193,6 +206,7 @@ const UpdateFreeTemplate = () => {
                         placeholder="Product Specifications"
                     ></textarea>
                 </div>
+
                 <div className="flex flex-col lg:flex-row gap-6">
                     <div className="form-control w-full">
                         <label className="label">
@@ -212,6 +226,7 @@ const UpdateFreeTemplate = () => {
                         </select>
                     </div>
                 </div>
+
                 <div className="mt-4 flex flex-wrap">
                     {selectedRevisions.map((revision, index) => (
                         <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
@@ -222,6 +237,7 @@ const UpdateFreeTemplate = () => {
                         </div>
                     ))}
                 </div>
+
                 <div className="flex flex-col lg:flex-row gap-6">
                     <div className="form-control w-full">
                         <label className="label">
@@ -243,6 +259,7 @@ const UpdateFreeTemplate = () => {
                         </select>
                     </div>
                 </div>
+
                 <div className="mt-4 flex flex-wrap">
                     {selectedFiles.map((file, index) => (
                         <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
@@ -253,6 +270,7 @@ const UpdateFreeTemplate = () => {
                         </div>
                     ))}
                 </div>
+
                 <div className="form-control w-full my-6">
                     <label className="label">
                         <span className="label-text">Image*</span>
@@ -274,6 +292,7 @@ const UpdateFreeTemplate = () => {
                     {isLoading ? 'Updating...' : 'Update Free Template'}
                 </button>
             </form>
+
         </div>
     );
 };

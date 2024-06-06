@@ -6,6 +6,7 @@ import { useState } from "react";
 import useTemplate from "../../../hooks/useTemplate";
 
 const ManageTemplates = () => {
+
     const [template, , refetch] = useTemplate();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
@@ -66,8 +67,10 @@ const ManageTemplates = () => {
     };
 
     return (
+
         <div className="px-2 md:px-6">
             <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Premium Templates</h2>
+
             <div>
                 <div className="text-center mb-4 md:mb-10">
                     <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center">
@@ -186,6 +189,7 @@ const ManageTemplates = () => {
                     </button>
                 </div>
             </div>
+            
         </div>
     );
 };

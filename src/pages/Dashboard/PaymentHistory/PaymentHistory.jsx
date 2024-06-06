@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PaymentHistory = () => {
+
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
@@ -15,8 +16,11 @@ const PaymentHistory = () => {
     });
 
     return (
+
         <div>
+
             <h2 className="md:text-3xl text-xl md:mb-5 ml-2">Total Payments: {payments.length}</h2>
+
             <div className="overflow-x-auto w-full lg:w-full">
                 <table className="hidden lg:table table-zebra">
                     {/* head */}
@@ -51,6 +55,7 @@ const PaymentHistory = () => {
                     ))}
                 </div>
             </div>
+            
         </div>
     );
 };

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
+
     const [clientSecret, setClientSecret] = useState('');
     const [error, setError] = useState('');
     const [transactionId, setTransactionId] = useState('');
@@ -109,7 +110,9 @@ const CheckoutForm = () => {
     };
 
     return (
+
         <div className="container mx-auto px-4 py-8">
+
             <form onSubmit={handleSubmit} className="w-full max-w-lg mx-auto bg-white p-6 shadow-md rounded-lg lg:w-1/2 xl:w-1/3">
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Card Number</label>
@@ -131,6 +134,7 @@ const CheckoutForm = () => {
                         className="p-2 border border-gray-300 rounded-md"
                     />
                 </div>
+
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">Expiry Date</label>
                     <CardExpiryElement
@@ -151,6 +155,7 @@ const CheckoutForm = () => {
                         className="p-2 border border-gray-300 rounded-md"
                     />
                 </div>
+
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700">CVC</label>
                     <CardCvcElement
@@ -171,12 +176,14 @@ const CheckoutForm = () => {
                         className="p-2 border border-gray-300 rounded-md"
                     />
                 </div>
+                
                 <button className="btn btn-sm btn-primary my-4 w-full" type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>
                 {error && <p className="text-red-600">{error}</p>}
                 {transactionId && <p className="text-green-600">Your transaction id: {transactionId}</p>}
             </form>
+
         </div>
     );
 };

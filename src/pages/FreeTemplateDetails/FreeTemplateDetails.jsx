@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const FreeTemplateDetails = () => {
+
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
     const [showAdditionalImages, setShowAdditionalImages] = useState(false);
     const [selectedRevisions, setSelectedRevisions] = useState([]);
@@ -21,6 +22,7 @@ const FreeTemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const free = useLoaderData();
+
     const { name, _id, price, image, descriptions, specifications, product, files, revisions } = free;
 
     const [templates, setTemplates] = useState([]);
@@ -226,8 +228,6 @@ const FreeTemplateDetails = () => {
                                         </select>
                                     </div>
 
-
-
                                     <div className="flex items-center">
                                         <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:ml-3 ml-10 mr-6">Files:</div>
                                         <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
@@ -238,6 +238,7 @@ const FreeTemplateDetails = () => {
                                         </select>
                                     </div>
                                 </div>
+
                                 <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
                                     {selectedFiles.map((file, index) => (
                                         <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
@@ -272,9 +273,10 @@ const FreeTemplateDetails = () => {
 
                         </Link>
 
-
                     </div>
+
                 </div>
+
                 <div className="mt-14 flex flex-wrap lg:flex-row flex-col gap-12">
                     {/* Descriptions */}
                     <div className="flex-1 lg:mb-8 ml-3">
@@ -316,14 +318,14 @@ const FreeTemplateDetails = () => {
                             ))}
                         </div>
                     </div>
-
-
                 </div>
+
                 <div className="layout lg:py-20 py-12 mt-6 ">
                     <div className="flex items-center justify-between mb-10">
                         <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Top Selling <strong>Graphics Templates</strong></h2>
                         <button className="btn mr-20 ml-4  font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700"><span className="-mt-1">Printing and Advertising</span> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path></svg></button>
                     </div>
+
                     <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 mr-20 " data-aos="lg:fade-right" data-aos-duration="700">
                         {displayedTemplates.map(item =>
                             <TemplateItem
@@ -332,11 +334,11 @@ const FreeTemplateDetails = () => {
                             />
                         )}
                     </div>
+
                 </div>
-
-
             </div>
 
+            
         </div>
 
 
