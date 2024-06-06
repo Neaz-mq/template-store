@@ -11,27 +11,27 @@ const Ideas = () => {
         switch (activeTab) {
             case 'ideas':
                 return (
-                    <iframe 
-                        title="Ideas Video" 
-                        className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" 
+                    <iframe
+                        title="Ideas Video"
+                        className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]"
                         src="https://www.youtube.com/embed/YXZamW4-Ysk?si=R_MyyObrcaiPR0ex"
                         allowFullScreen>
                     </iframe>
                 );
             case 'design':
                 return (
-                    <iframe 
-                        title="Design Video" 
-                        className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" 
+                    <iframe
+                        title="Design Video"
+                        className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]"
                         src="https://www.youtube.com/embed/XNkV6m4fosw?si=ytAB_ix0M2_ieC1_"
                         allowFullScreen>
                     </iframe>
                 );
             case 'finalize':
                 return (
-                    <iframe 
-                        title="Finalize Video" 
-                        className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" 
+                    <iframe
+                        title="Finalize Video"
+                        className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]"
                         src="https://www.youtube.com/embed/KG5cltHpbYs?si=uOCzcZSXMJzSZm-d"
                         allowFullScreen>
                     </iframe>
@@ -104,7 +104,7 @@ const Ideas = () => {
                             <br />
                             <button className="btn bg-[#7666E3] hover:bg-[#5842e7] capitalize text-white rounded-full gap-4 mt-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
                                 <span className="-mt-1 ml-1">Learn More</span>
-                                <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em"                                 xmlns="http://www.w3.org/2000/svg">
+                                <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="7" y1="17" x2="17" y2="7"></line>
                                     <polyline points="7 7 17 7 17 17"></polyline>
                                 </svg>

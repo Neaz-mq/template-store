@@ -4,7 +4,7 @@ import ScrollTrigger from 'react-scroll-trigger';
 
 const Template = () => {
     const [counterOn, setCounterOn] = useState(false);
-    
+
 
     return (
         <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
