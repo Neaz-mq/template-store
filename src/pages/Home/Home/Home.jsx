@@ -8,14 +8,18 @@ import Template from '../Template/Template';
 import Testimonial from '../Testimonial/Testimonial';
 
 const Home = () => {
+
     return (
+
         <div>
+
             <Helmet>
                 <title>Prographr | Home</title>
                 <meta name="description" content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more." />
                 <meta name="keywords" content="templates, creativity, community, guidelines, ideas, testimonials" />
                 <link rel="canonical" href="https://www.prographr.com/home" />
             </Helmet>
+
             <main>
                 <section id="banner">
                     <Banner />
@@ -38,7 +42,9 @@ const Home = () => {
                 <section id="community">
                     <Community />
                 </section>
+
             </main>
+            
         </div>
     );
 };

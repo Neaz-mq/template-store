@@ -1,7 +1,8 @@
 import './Banner.css';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 const Banner = () => {
+
     useEffect(() => {
         // Lazy load images when they enter the viewport
         const images = document.querySelectorAll('.lazy-load');
@@ -31,8 +32,11 @@ const Banner = () => {
     }, []);
 
     return (
+
         <section className="w-full bg-[#EDEEF7]">
+
             <div className="layout pb-10 lg:pb-0 lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
+
                 <div className="lg:col-span-5 pt-12 lg:pt-0 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-24">
                     <p className="tracking-[0.5rem] text-sm text-primary mb-3">
                         <span className="bg-[#7666E3] px-2 py-1 rounded-[4px] tracking-widest text-white text-center lg:-ml-1">PRO</span> PREMIUM
@@ -95,7 +99,9 @@ const Banner = () => {
                         </section>
                     </div>
                 </div>
+                
             </div>
+
         </section>
     );
 };

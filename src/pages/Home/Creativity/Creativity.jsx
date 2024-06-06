@@ -1,13 +1,17 @@
 import React from "react";
 
 const Creativity = () => {
+
     return (
+
         <div className="layout lg:px-20 lg:mx-5">
+
             <header>
                 <h1 className="lg:text-4xl text-3xl -mt-14 text-[#2F1C6A] text-center">
                     What <strong>makes us better</strong>
                 </h1>
             </header>
+
             <main className="py-10 grid place-items-center gap-4 lg:grid-cols-3" data-aos="fade-up" data-aos-duration="700">
                 <section className="translate-y-24 opacity-0 gsapTrigger" style={{ transform: 'translateY(0px)', opacity: 1 }}>
                     <article className="bg-[#EDEEF7] max-w-[380px] min-h-[312px] p-6 rounded-[30px]">
@@ -96,6 +100,7 @@ const Creativity = () => {
                     </article>
                 </section>
             </main>
+            
         </div>
     );
 };

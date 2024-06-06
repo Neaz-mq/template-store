@@ -10,6 +10,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 4;
 
     useEffect(() => {
+
         fetch('http://localhost:5000/free')
             .then(res => res.json())
             .then(data => {
@@ -18,6 +19,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
                 const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
             });
+
     }, [selectedCategory, searchQuery]);
 
     const handleViewMore = () => {
@@ -30,13 +32,16 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
         }
         setShowAll(!showAll);
     };
+
     // Check if there are any templates to display
     if (displayedTemplates.length === 0) {
         return null;
     }
 
     return (
+
         <div>
+
             <header className="layout lg:mt-24 py-12 mt-6 lg:mx-20">
                 <div className="flex items-center justify-between mb-10">
                     <h1 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Free <strong>Graphics Templates</strong></h1>
@@ -72,6 +77,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
                     <span className="-mt-1">{showAll ? "Show Less" : "View More Top Selling Items"}</span>
                 </button>
             </footer>
+            
         </div>
     );
 };

@@ -3,12 +3,15 @@ import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 
 const Template = () => {
+
     const [counterOn, setCounterOn] = useState(false);
 
-
     return (
+
         <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
+
             <div>
+
                 <section className="layout lg:mx-24 mx-2 bg-[#EDEEF7] lg:py-16 py-20 rounded-[40px] mt-32 lg:mt-44 mb-48 ">
                     <div className="flex justify-center gap-8 lg:gap-32 px-5 ">
                         <div className="text-center">
@@ -40,7 +43,9 @@ const Template = () => {
                         </div>
                     </div>
                 </section>
+
             </div>
+            
         </ScrollTrigger>
     );
 };

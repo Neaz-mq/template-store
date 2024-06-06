@@ -3,12 +3,14 @@ import TemplateItem from "../../Shared/TemplateItem/TemplateItem";
 import PropTypes from 'prop-types';
 
 const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
+
     const [templates, setTemplates] = useState([]);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const initialDisplayCount = 8;
 
     useEffect(() => {
+
         fetch('http://localhost:5000/template')
             .then(res => res.json())
             .then(data => {
@@ -17,6 +19,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
                 const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
             });
+
     }, [selectedCategory, searchQuery]); // Trigger effect when selectedCategory or searchQuery changes
 
     const handleViewMore = () => {
@@ -24,11 +27,14 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
             // Display all templates based on the selected category and search query
             const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates);
-        } else {
+        }
+
+        else {
             // Display a subset of templates based on the selected category and search query
             const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
         }
+
         setShowAll(!showAll);
     };
 
@@ -38,7 +44,9 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
     }
 
     return (
+
         <div>
+
             <div className="layout lg:py-20 py-14 mt-24 lg:mx-20 ">
                 <div className="flex items-center justify-between  mb-10">
                     <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Top Selling <strong>Graphics Templates</strong></h2>
@@ -58,6 +66,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
                     )}
                 </div>
             </div>
+
             <div className="flex justify-center">
                 <div className="mt-16 mb-10 lg:mb-0">
                     <button className="btn mr-2 lg:mr-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700" onClick={handleViewMore}>
@@ -65,6 +74,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
                     </button>
                 </div>
             </div>
+
         </div>
     );
 };

@@ -4,9 +4,11 @@ import 'swiper/css';
 import './Testimonial.css';
 
 const Testimonial = () => {
+
     const [testimonials, setTestimonials] = useState([]);
 
     useEffect(() => {
+
         const fetchTestimonials = async () => {
             try {
                 const response = await fetch('http://localhost:5000/testimonials');
@@ -45,7 +47,9 @@ const Testimonial = () => {
     }, []);
 
     return (
+
         <div className='lg:mx-24 lg:-mt-14 lg:mb-20 overflow-hidden' style={{ overflowX: 'hidden' }}>
+
             <div className="mb-28 lg:mx-24 mx-3.5">
                 <div className="layout mt-14 mb-14  lg:mt-24">
                     <h1 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Clients <strong>Testimonials</strong></h1>
@@ -94,6 +98,7 @@ const Testimonial = () => {
                     <div className="swiper-button-prev"></div>
                     <div className="swiper-button-next"></div>
                 </div>
+
             </div>
 
             {/* Render cards in grid-cols-3 layout on larger screens */}
@@ -119,6 +124,7 @@ const Testimonial = () => {
                     </div>
                 ))}
             </div>
+            
         </div>
     );
 };

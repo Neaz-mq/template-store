@@ -1,8 +1,11 @@
 import React from 'react';
 
 const Community = () => {
+
     return (
+
         <div className='lg:mx-24 mx-3'>
+
             <header className="layout mb-20 lg:mt-60 -mt-16">
                 <section className="text-[#2F1C6A] bg-[#EDEEF7] rounded-2xl pt-10 pb-24 lg:pb-20 px-5 lg:px-12 grid gap-5 lg:gap-10 md:grid-cols-1 lg:grid-cols-2 lg:mb-36 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
                     <div>
@@ -38,6 +41,7 @@ const Community = () => {
                     </div>
                 </section>
             </header>
+            
         </div>
     );
 };

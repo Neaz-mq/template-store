@@ -9,7 +9,9 @@ const Footer = () => {
     }, []);
 
     return (
+
         <footer className="bg-[#EDEEF7] relative">
+
             <div className="footer p-10 text-base-content relative">
                 <aside className="lg:ml-12">
                     <a href="/">
@@ -53,6 +55,7 @@ const Footer = () => {
                     </button>
                 </Link>
             </div>
+            
         </footer>
     );
 };
