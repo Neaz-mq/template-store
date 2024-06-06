@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 
 
-    
+
 
 const TemplateDetails = () => {
     const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
@@ -244,12 +244,12 @@ const TemplateDetails = () => {
                     </button>
 
                     {/* Check more items */}
-                  <Link to="http://localhost:5173/template">
-                  <button  className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-7 lg:w-[31rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
-                        Check more items
-                    </button>
-                  
-                  </Link>
+                    <Link to="http://localhost:5173/template">
+                        <button className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-7 lg:w-[31rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
+                            Check more items
+                        </button>
+
+                    </Link>
 
 
                 </div>

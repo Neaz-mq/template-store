@@ -24,27 +24,27 @@ const BuyerSignUp = () => {
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            updateUserProfile(data.name)
-                .then(() => {
-                    // create user entry in the database
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name)
+                    .then(() => {
+                        // create user entry in the database
 
-                    console.log('user profile info updated');
-                    // Reset the form after submission
-                    reset();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'User created successfully.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate('/');
-                })
-                .catch(error => console.log(error))
-        })
+                        console.log('user profile info updated');
+                        // Reset the form after submission
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+                    })
+                    .catch(error => console.log(error))
+            })
     };
 
     const password = watch("password", "");
@@ -56,7 +56,7 @@ const BuyerSignUp = () => {
                     <title>Template Store | Sign-Up</title>
                 </Helmet>
             </div>
-            
+
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center mb-20 mt-4">
                 <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] mt-10  lg:-ml-0">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6">Sign Up</h3>

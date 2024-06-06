@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
         path: '/sign-in',
         element: <SignIn></SignIn>
       },
-    
+
       {
         path: '/sign-up',
         element: <SignUp></SignUp>
@@ -127,11 +127,11 @@ export const router = createBrowserRouter([
         path: 'manageTemplates',
         element: <AdminRoute><ManageTemplates></ManageTemplates></AdminRoute>
       },
-    
+
       {
         path: 'updateTemplate/:id',
         element: <AdminRoute><UpdateTemplate></UpdateTemplate></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/template/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/template/${params.id}`)
       },
 
       {
@@ -147,7 +147,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateFreeTemplate/:id',
         element: <AdminRoute><UpdateFreeTemplate></UpdateFreeTemplate></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/free/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
       },
 
       {
@@ -159,8 +159,8 @@ export const router = createBrowserRouter([
         path: 'admins',
         element: <AllAdmins></AllAdmins>
       }
-     
+
     ]
   }
-  
+
 ]);

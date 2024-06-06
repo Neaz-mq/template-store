@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { useEffect } from 'react'; // Import useEffect for SEO purposes
 import './SignInForm.css';
-import {  FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../SocialLogin/SocialLogin';
@@ -55,7 +55,7 @@ const SignInForm = () => {
                             )}
                         </span>
                     </div>
-                   
+
                     <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 w-full mt-6 py-3 shadow-none font-medium hover:bg-[#4936c3]">
                         <span className="-mt-1">Sign in</span>
                         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@ const SignInForm = () => {
                     </button>
                     <br /> <br /> <br />
                     {/* Google Sign-in Button */}
-                    <SocialLogin></SocialLogin> 
+                    <SocialLogin></SocialLogin>
                 </form>
             </div>
         </div>

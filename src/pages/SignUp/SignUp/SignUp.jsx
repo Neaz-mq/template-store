@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import './SignUp.css';
-import { FaEye, FaEyeSlash, FaGoogle} from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
@@ -21,13 +21,13 @@ const SignUp = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
-    const {googleSignIn} = useAuth();
+    const { googleSignIn } = useAuth();
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
     const handleGoogleSignIn = () => {
         googleSignIn()
-        .then(result => {
+            .then(result => {
                 console.log(result.user);
                 const userInfo = {
                     email: result.user?.email,
@@ -35,11 +35,11 @@ const SignUp = () => {
 
                 }
                 axiosPublic.post('/users', userInfo)
-                .then(res => {
-                    console.log(res.data);
-                    navigate('/');
-                })
-        })
+                    .then(res => {
+                        console.log(res.data);
+                        navigate('/');
+                    })
+            })
     }
 
     const onSubmit = data => {
@@ -56,23 +56,23 @@ const SignUp = () => {
                             email: data.email,
                         }
                         axiosPublic.post('/users', userInfo)
-                        .then(res => {
-                            if(res.data.insertedId){
-                                console.log('user added to the database');
-                                reset();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'User created successfully.',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                                navigate('/');
-                            }
-                        })
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database');
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
                         // console.log('user profile info updated');
                         // Reset the form after submission
-                        
+
                     })
                     .catch(error => console.log(error))
             })
@@ -194,25 +194,25 @@ const SignUp = () => {
                             </svg>
                         </button>
                         <br /> <br />
-                        
-                        
-                        
+
+
+
                     </div>
-                   
+
                 </form>
-              
+
             </div>
             {/* Google Sign-in Button */}
-         <div className='flex justify-center items-center -mt-24 '>
-         <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24 ">
-                            <FaGoogle className=" text-base
+            <div className='flex justify-center items-center -mt-24 '>
+                <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24 ">
+                    <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
-                            <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </button>
-         </div>
+                    <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
         </>
     );
 };

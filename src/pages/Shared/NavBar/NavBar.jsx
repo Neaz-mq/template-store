@@ -105,7 +105,7 @@ const NavBar = () => {
                   <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </Link>
-              </li>                   
+              </li>
             </ul>
           </div>
           <Link
@@ -147,22 +147,22 @@ const NavBar = () => {
               Contact Us
             </Link>
 
-          
-            {
-                user && isAdmin && <li className='mt-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
-              }
-              {
-                user && !isAdmin && <li className='mt-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
-              }
-              
-          <Link to="/dashboard/cart">
-            <button className="btn ml-4 mr-16">
-              <FaShoppingCart className="mr-4"></FaShoppingCart>
-              <div className="badge">+{cart.length}</div>
-            </button>
-          </Link>
 
-          
+            {
+              user && isAdmin && <li className='mt-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
+            }
+            {
+              user && !isAdmin && <li className='mt-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
+            }
+
+            <Link to="/dashboard/cart">
+              <button className="btn ml-4 mr-16">
+                <FaShoppingCart className="mr-4"></FaShoppingCart>
+                <div className="badge">+{cart.length}</div>
+              </button>
+            </Link>
+
+
           </ul>
 
         </div>
