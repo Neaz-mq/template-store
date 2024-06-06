@@ -7,7 +7,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
@@ -27,6 +26,7 @@ const AddFreeTemplates = () => {
                 'content-type': 'multipart/form-data'
             }
         });
+
         if (res.data.success) {
             // now send the menu item data to the server with the image url
             const templateItemFree = {
@@ -41,10 +41,12 @@ const AddFreeTemplates = () => {
                 files: selectedFiles,
                 revisions: selectedRevisions,
             }
-            // 
+
             const templateFreeRes = await axiosSecure.post('/free', templateItemFree);
             console.log(templateFreeRes.data)
+
             if (templateFreeRes.data.insertedId) {
+
                 // show success popup
                 reset();
                 setSelectedFiles([]); // Reset the selected files
@@ -58,7 +60,9 @@ const AddFreeTemplates = () => {
                 });
             }
         }
+
         console.log('with image url', res.data);
+
     };
 
     const handleFileChange = (e) => {
@@ -68,6 +72,7 @@ const AddFreeTemplates = () => {
         }
         e.target.value = ""; // Reset the select input
     };
+
     const handleRevisionChange = (e) => {
         const selectedRate = e.target.value;
         if (selectedRate && !selectedRevisions.includes(selectedRate)) {
@@ -85,10 +90,16 @@ const AddFreeTemplates = () => {
     };
 
     return (
+
         <div>
+
             <h2 className="text-3xl text-center font-bold">Add Free Template</h2>
+
             <div>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
+
+                    {/* Template Name */}
                     <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Name*</span>
@@ -100,8 +111,10 @@ const AddFreeTemplates = () => {
                             required
                             className="input input-bordered w-full" />
                     </div>
+
+                    {/* category */}
+
                     <div className="flex flex-col lg:flex-row gap-6">
-                        {/* category */}
                         <div className="form-control w-full lg:my-6">
                             <label className="label">
                                 <span className="label-text">Category*</span>
@@ -118,6 +131,7 @@ const AddFreeTemplates = () => {
                         </div>
 
                         {/* price */}
+
                         <div className="form-control w-full lg:my-6 my-3">
                             <label className="label">
                                 <span className="label-text">Price*</span>
@@ -128,10 +142,10 @@ const AddFreeTemplates = () => {
                                 {...register('price', { required: true })}
                                 className="input input-bordered w-full" />
                         </div>
-
                     </div>
 
                     {/* recipe details */}
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Template Details</span>
@@ -140,6 +154,7 @@ const AddFreeTemplates = () => {
                     </div>
 
                     {/* descriptions */}
+
                     <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Descriptions</span>
@@ -148,6 +163,7 @@ const AddFreeTemplates = () => {
                     </div>
 
                     {/* specifications */}
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Item Specifications</span>
@@ -156,6 +172,7 @@ const AddFreeTemplates = () => {
                     </div>
 
                     {/* product Specs */}
+
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Product Specifications</span>

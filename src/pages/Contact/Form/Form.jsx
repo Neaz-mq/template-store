@@ -7,6 +7,7 @@ import './Form.css' // Import your CSS file with custom styles
 const Form = () => {
 
     const form = useRef();
+
     const diffToast = (message, isError) => {
         toast(message, {
             position: "top-center",
@@ -55,7 +56,9 @@ const Form = () => {
     };
 
     return (
+
         <div>
+
             <div className="layout pt-20 pb-48 flex flex-col items-center justify-center">
                 <h2 className="text-5xl font-bold text-slate-800 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] pb-4">How can we help?</h2>
                 <p className="mb-10 font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-600">If you have any questions, reach out to our team for help</p>
@@ -66,7 +69,9 @@ const Form = () => {
                     <button type="submit" className="col-span-2 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium py-4 rounded-lg text-white bg-[#7666E3]">Send Message</button>
                 </form>
             </div>
+
             <ToastContainer />
+            
         </div>
     );
 };

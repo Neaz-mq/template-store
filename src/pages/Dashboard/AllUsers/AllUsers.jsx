@@ -5,6 +5,7 @@ import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
+
     const axiosSecure = useAxiosSecure();
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -90,6 +91,7 @@ const AllUsers = () => {
     };
 
     return (
+
         <div className="px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>
@@ -177,6 +179,7 @@ const AllUsers = () => {
                     </div>
                 </div>
             </div>
+            
             {/* Pagination */}
             <div className="flex pagination mt-8 justify-center mr-4 -ml-9 md:mr-0 md:-ml-0">
                 <button

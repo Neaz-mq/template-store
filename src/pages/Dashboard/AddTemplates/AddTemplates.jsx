@@ -11,6 +11,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddTemplates = () => {
+
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
@@ -26,6 +27,7 @@ const AddTemplates = () => {
                 'content-type': 'multipart/form-data'
             }
         });
+
         if (res.data.success) {
             // now send the menu item data to the server with the image url
             const templateItem = {
@@ -40,8 +42,10 @@ const AddTemplates = () => {
                 files: selectedFiles,
                 revisions: selectedRevisions,
             };
+
             const templateRes = await axiosSecure.post('/template', templateItem);
             console.log(templateRes.data);
+
             if (templateRes.data.insertedId) {
                 // show success popup
                 reset();
@@ -56,6 +60,7 @@ const AddTemplates = () => {
                 });
             }
         }
+
         console.log('with image url', res.data);
     };
 
@@ -84,10 +89,16 @@ const AddTemplates = () => {
     };
 
     return (
+
         <div>
+
             <h2 className="text-3xl text-center font-bold">Add Premium Template</h2>
+
             <div>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
+
+                     {/* Template Name */}
                     <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Name*</span>
@@ -99,8 +110,9 @@ const AddTemplates = () => {
                             required
                             className="input input-bordered w-full" />
                     </div>
-                    <div className="flex flex-col lg:flex-row gap-6">
-                        {/* category */}
+
+                   {/* category */}
+                    <div className="flex flex-col lg:flex-row gap-6">                    
                         <div className="form-control w-full lg:my-6">
                             <label className="label">
                                 <span className="label-text">Category*</span>
@@ -127,6 +139,7 @@ const AddTemplates = () => {
                                 {...register('price', { required: true })}
                                 className="input input-bordered w-full" />
                         </div>
+                        
                     </div>
 
                     {/* Template details */}

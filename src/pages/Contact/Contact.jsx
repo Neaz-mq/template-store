@@ -3,11 +3,14 @@ import Form from "./Form/Form";
 
 const Contact = () => {
     return (
+
         <div>
             <Helmet>
                 <title>Prographr | Contact</title>
             </Helmet>
+
             <Form></Form>
+            
         </div>
     );
 };
