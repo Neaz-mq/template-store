@@ -5,7 +5,7 @@ const Contact = () => {
     return (
         <div>
             <Helmet>
-                <title>Template Store | Contact</title>
+                <title>Prographr | Contact</title>
             </Helmet>
             <Form></Form>
         </div>

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { FaBook, FaList, FaUsers } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const StatCard = ({ icon, title, value }) => (
     <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100 transition-all duration-300">
@@ -34,7 +35,14 @@ const AdminHome = () => {
     }
 
     return (
-        <div className="p-4">
+       <div>
+        <div>
+        <Helmet>
+                <title>Prographr | Admin</title>
+                <meta name="description" content="Find high-quality templates for your projects at the Template Store. Choose from a variety of options including agency templates, graphics templates, and more." />
+            </Helmet>
+        </div>
+         <div className="p-4">
             <h2 className="text-xl lg:text-3xl mb-4">
                 <span>Hi, Welcome </span>
                 {user?.displayName ? user.displayName : 'Back'}
@@ -67,6 +75,7 @@ const AdminHome = () => {
                 />
             </div>
         </div>
+       </div>
     );
 };
 

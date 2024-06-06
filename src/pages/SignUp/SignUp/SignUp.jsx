@@ -85,7 +85,7 @@ const SignUp = () => {
         <>
             <div>
                 <Helmet>
-                    <title>Template Store | Sign-Up</title>
+                    <title>Prographr | Sign-Up</title>
                 </Helmet>
             </div>
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center  mt-4 ">

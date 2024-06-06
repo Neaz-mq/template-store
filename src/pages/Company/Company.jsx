@@ -5,7 +5,7 @@ const Company = () => {
     return (
         <div>
             <Helmet>
-                <title>Template Store | Company</title>
+                <title>Prographr | Company</title>
             </Helmet>
             <About></About>
         </div>

@@ -14,7 +14,7 @@ const SignInForm = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     useEffect(() => {
-        document.title = "Sign In - Your Website Name"; // Set document title for better SEO
+        document.title = "Prographr | Sign In"; // Set document title for better SEO
     }, []);
 
     const handleLogin = event => {

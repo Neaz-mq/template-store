@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <div>
             <Helmet>
-                <title>Template Store | Home</title>
+                <title>Prographr | Home</title>
                 <meta name="description" content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more." />
                 <meta name="keywords" content="templates, creativity, community, guidelines, ideas, testimonials" />
                 <link rel="canonical" href="https://www.prographr.com/home" />

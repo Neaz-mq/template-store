@@ -53,7 +53,7 @@ const BuyerSignUp = () => {
         <>
             <div>
                 <Helmet>
-                    <title>Template Store | Sign-Up</title>
+                    <title>Prographr | Sign-Up</title>
                 </Helmet>
             </div>
 

@@ -9,7 +9,7 @@ const Templates = () => {
     return (
         <div>
             <Helmet>
-                <title>Template Store | Template</title>
+                <title>Prographr | Template</title>
                 <meta name="description" content="Find high-quality templates for your projects at the Template Store. Choose from a variety of options including agency templates, graphics templates, and more." />
             </Helmet>
             <Shop></Shop>

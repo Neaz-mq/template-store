@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -44,7 +45,13 @@ const Cart = () => {
     }
 
     return (
-        <div className="px-4 lg:px-0">
+        <div>
+            <div>
+                <Helmet>
+                    <title>Prographr | Cart</title>
+                </Helmet>
+            </div>
+            <div className="px-4 lg:px-0">
             <div className="flex flex-col items-center mb-8 space-y-4 lg:space-y-0 lg:flex-row lg:justify-evenly lg:items-center">
                 <h2 className="text-xl lg:text-4xl">Templates: {cart.length}</h2>
                 <h2 className="text-xl lg:text-4xl">Total Price: ${totalPrice.toFixed(2)}</h2>
@@ -120,6 +127,7 @@ const Cart = () => {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
     );
 };
