@@ -7,9 +7,8 @@ import { CgTemplate } from "react-icons/cg";
 import { GrUserAdmin } from "react-icons/gr";
 
 const Dashboard = () => {
-    const [cart] = useCart();
 
-    // TODO: get isAdmin value from the database
+    const [cart] = useCart();
 
     const [isAdmin] = useAdmin();
 
@@ -18,9 +17,8 @@ const Dashboard = () => {
         <div className="flex">
 
             {/* dashboard side bar */}
+
             <div className={`w-64 min-h-screen ${isAdmin ? 'bg-[#7868E6]' : 'bg-orange-300'}`}>
-
-
 
                 <ul className="menu p-4">
                     {
