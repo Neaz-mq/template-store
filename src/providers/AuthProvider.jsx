@@ -66,6 +66,7 @@ const AuthProvider = ({ children }) => {
             }
 
         });
+
         return () => {
             return unsubscribe();
         }
@@ -84,9 +85,11 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
+
         <AuthContext.Provider value={authInfo}>
             {children}
         </AuthContext.Provider>
+        
     );
 };
 

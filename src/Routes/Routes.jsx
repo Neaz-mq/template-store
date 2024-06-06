@@ -34,15 +34,18 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+
     children: [
       {
         path: '/',
         element: <Home></Home>
       },
+
       {
         path: '/template',
         element: <Templates></Templates>
       },
+
       {
         path: '/template/:id',
         element: <TemplateDetails></TemplateDetails>,
@@ -59,10 +62,12 @@ export const router = createBrowserRouter([
         path: '/company',
         element: <Company></Company>
       },
+
       {
         path: '/contact',
         element: <Contact></Contact>
       },
+
       {
         path: '/sign-in',
         element: <SignIn></SignIn>
@@ -72,6 +77,7 @@ export const router = createBrowserRouter([
         path: '/sign-up',
         element: <SignUp></SignUp>
       },
+
       {
         path: '/sign-up-here',
         element: <BuyerSignUp></BuyerSignUp>
@@ -88,9 +94,11 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+
     children: [
 
       // normal user routes
+
       {
         path: 'userHome',
         element: <UserHome></UserHome>

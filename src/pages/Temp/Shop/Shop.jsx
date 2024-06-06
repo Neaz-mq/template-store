@@ -1,9 +1,11 @@
 // Shop.jsx
+
 import { useRef, useState } from "react";
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 
 const Shop = () => {
+
     const agencyTemplateRef = useRef(null);
 
     const handleShopTemplatesClick = () => {
@@ -11,19 +13,26 @@ const Shop = () => {
     };
 
     const [selectedCategory, setSelectedCategory] = useState(['agency', 'ecommerce', 'business', 'portfolio']);
+
     const [searchQuery, setSearchQuery] = useState('');
+
 
     const handleCategoryClick = (category) => {
         setSelectedCategory(category);
     };
 
+
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
     };
 
+
     return (
+
         <main>
+
             <div className="-mt-8 bg-[#EDEEF7]">
+
                 <div className="max-w-[700px] lg:h-[780px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
                     <button onClick={handleShopTemplatesClick}>
                         <p className="w-fit text-sm font-bold border border-black rounded-full px-4 py-1 font-['__gellix_0bf537, __gellix_Fallback_0bf537']">Shop Templates</p>
@@ -57,7 +66,9 @@ const Shop = () => {
                     </div>
                 </div>
 
+
                 {/* Render AgencyTemplate only when selectedCategory is not empty */}
+                
                 {selectedCategory.length > 0 && (
                     <div className="bg-white" ref={agencyTemplateRef}>
                         <AgencyTemplate selectedCategory={selectedCategory} searchQuery={searchQuery} />
@@ -66,6 +77,7 @@ const Shop = () => {
                 )}
 
             </div>
+
         </main>
     );
 };
