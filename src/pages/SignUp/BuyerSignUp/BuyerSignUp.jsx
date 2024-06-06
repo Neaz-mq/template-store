@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const BuyerSignUp = () => {
+
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' }); // Set mode to 'onChange' to trigger validation on each input change
+    
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const { createUser, updateUserProfile } = useContext(AuthContext);

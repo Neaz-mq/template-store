@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../SocialLogin/SocialLogin';
 
 const SignInForm = () => {
+
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -39,8 +40,11 @@ const SignInForm = () => {
     const inputType = passwordVisible ? 'text' : 'password';
 
     return (
+
         <div className='mb-16'>
+
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center">
+                
                 <form onSubmit={handleLogin} className="lg:w-fit min-h-[400px] mt-10 bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] ">
                     <h3 className="text-xl font-medium text-slate-600 mb-6">Sign In</h3>
                     <input className="lg:w-96 w-64 rounded-lg py-2.5 input" placeholder="Email" name="email" type="email" />
@@ -64,9 +68,13 @@ const SignInForm = () => {
                         </svg>
                     </button>
                     <br /> <br /> <br />
+
                     {/* Google Sign-in Button */}
+
                     <SocialLogin></SocialLogin>
+
                 </form>
+
             </div>
         </div>
     );

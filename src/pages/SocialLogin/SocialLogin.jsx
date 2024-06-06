@@ -4,10 +4,13 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
+
     const { googleSignIn } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+
     const handleGoogleSignIn = () => {
+
         googleSignIn()
             .then(result => {
                 console.log(result.user);
@@ -23,7 +26,9 @@ const SocialLogin = () => {
                     })
             })
     }
+
     return (
+        
         <div>
             <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100  capitalize text-black rounded-full gap-4 w-full -mt-4 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">
                 <FaGoogle className=" text-base

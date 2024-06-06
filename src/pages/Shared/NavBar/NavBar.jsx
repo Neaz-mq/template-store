@@ -6,6 +6,7 @@ import useCart from '../../../hooks/useCart';
 import useAdmin from '../../../hooks/useAdmin';
 
 const NavBar = () => {
+
   const location = useLocation();
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
@@ -42,7 +43,9 @@ const NavBar = () => {
   };
 
   return (
+
     <div>
+      
       <div className="navbar bg-[#EDEEF7] py-7 -mt-7 ">
         <div className="navbar-start">
           <div className="dropdown">

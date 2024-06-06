@@ -6,6 +6,7 @@ const FreeTemplate = ({ item }) => {
     return (
 
         <article>
+
             <div>
                 <div className="translate-y-10 opacity-0 templateScrollTrigger"
                     style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
@@ -28,6 +29,7 @@ const FreeTemplate = ({ item }) => {
                     </Link>
                 </div>
             </div>
+            
         </article>
     );
 };

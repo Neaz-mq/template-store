@@ -11,6 +11,7 @@ import useAuth from '../../../hooks/useAuth';
 
 
 const SignUp = () => {
+
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
     const [showPassword, setShowPassword] = useState(false);
@@ -21,10 +22,12 @@ const SignUp = () => {
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
     const { googleSignIn } = useAuth();
     const toggleConfirmPasswordVisibility = () => {
         setShowConfirmPassword(!showConfirmPassword);
     };
+
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
@@ -88,6 +91,7 @@ const SignUp = () => {
                     <title>Prographr | Sign-Up</title>
                 </Helmet>
             </div>
+
             <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center  mt-4 ">
                 <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 ">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6">Sign Up</h3>
@@ -202,6 +206,7 @@ const SignUp = () => {
                 </form>
 
             </div>
+
             {/* Google Sign-in Button */}
             <div className='flex justify-center items-center -mt-24 '>
                 <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24 ">
@@ -213,6 +218,7 @@ const SignUp = () => {
                     </svg>
                 </button>
             </div>
+            
         </>
     );
 };
