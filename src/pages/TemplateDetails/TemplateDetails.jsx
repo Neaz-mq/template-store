@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -113,7 +114,16 @@ const TemplateDetails = () => {
     };
 
     return (
-        <div className="lg:ml-20 mb-16">
+        <div>
+            <div>
+            <Helmet>
+                <title>Prographr | Premium</title>
+                <meta name="description" content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more." />
+                <meta name="keywords" content="templates, creativity, community, guidelines, ideas, testimonials" />
+                <link rel="canonical" href="https://www.prographr.com/premium" />
+            </Helmet>
+            </div>
+            <div className="lg:ml-20 mb-16">
             <div className="mt-14 flex lg:flex-row flex-col gap-6 ml-2">
                 <div className="lg:w-[65%] w-[97%]">
                     <h2 className="text-2xl text-[#2F1C6A] pb-5 font-medium">
@@ -318,6 +328,7 @@ const TemplateDetails = () => {
 
         </div>
 
+        </div>
 
 
     );
