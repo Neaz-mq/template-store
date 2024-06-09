@@ -181,7 +181,7 @@ const AllUsers = () => {
             </div>
             
             {/* Pagination */}
-            <div className="flex pagination mt-8 justify-center mr-4 -ml-9 md:mr-0 md:-ml-0">
+            <div className="flex pagination mt-8 justify-center mr-4 ml-4 md:mr-0 md:-ml-0">
                 <button
                     onClick={prevPage}
                     className={`md:px-2 md:py-2 px-1 py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1

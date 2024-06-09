@@ -34,6 +34,7 @@ const Dashboard = () => {
         { to: "/template", icon: <AiTwotoneAppstore />, label: "Template" },
     ];
 
+
     return (
         <div>
             <TopBar />
@@ -74,7 +75,7 @@ const Dashboard = () => {
                         }
                     </ul>
                     <ul className="p-4  space-y-2">
-                        <div className="divider -mt-56"></div>
+                        <div className="divider md:-mt-56"></div>
                         {sharedLinks.map(link => (
                             <li key={link.to}>
                                 <NavLink
