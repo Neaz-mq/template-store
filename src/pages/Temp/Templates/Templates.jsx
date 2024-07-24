@@ -20,7 +20,7 @@ const Templates = () => {
             <AgencyTemplate></AgencyTemplate>
 
             <GraphicsTemplate></GraphicsTemplate>
-            
+
             <Marketplace></Marketplace>
 
         </div>

@@ -15,7 +15,7 @@ const Dashboard = () => {
 
     const adminLinks = [
         { to: "/dashboard/adminHome", icon: <BiSolidCategory />, label: "Admin Home" },
-        { to: "/dashboard/addTemplates", icon: <AiOutlineUpload />, label: "Add Templates" },
+        { to: "/dashboard/uploadTemplates", icon: <AiOutlineUpload />, label: "Upload Templates" },
         { to: "/dashboard/manageTemplates", icon: <FaList />, label: "Manage Templates" },
         { to: "/dashboard/addFreeTemplates", icon: <AiOutlineUpload />, label: "Add Free Templates" },
         { to: "/dashboard/manageFreeTemplates", icon: <FaList />, label: "Manage Free Templates" },

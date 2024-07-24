@@ -31,7 +31,7 @@ const Shop = () => {
 
         <main>
 
-            <div className="-mt-8 bg-[#EDEEF7]">
+            <div className="3xl:-mt-1 2xl:-mt-1 desktop:-mt-1 laptop:-mt-1 bg-[#EDEEF7] tablet:-mt-24 -mt-20">
 
                 <div className="max-w-[700px] lg:h-[780px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
                     <button onClick={handleShopTemplatesClick}>

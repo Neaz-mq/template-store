@@ -30,7 +30,7 @@ const SocialLogin = () => {
     return (
         
         <div>
-            <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100  capitalize text-black rounded-full gap-4 w-full -mt-4 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">
+            <button onClick={handleGoogleSignIn} className="btn btn-google mb-6 bg-[#EDEEF7] hover:bg-gray-100  capitalize text-black rounded-full gap-4 w-full -mt-4 py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">
                 <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
                 <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

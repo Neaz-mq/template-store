@@ -1,77 +1,41 @@
-import { FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
-
 const About = () => {
+
     return (
 
-        <div>
-
-            <div className="layout lg:mx-24 mx-3">
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20 lg:mt-20 mt-2">
-                    <div className="flex items-center justify-center">
-                        <iframe className="w-[300px] h-[150px] lg:w-[500px] lg:h-[300px] rounded-[25px]" src="https://www.youtube.com/embed/qfOo3vuvAb8?si=BxrOtvWRFsqcUVZ2"></iframe>
-                    </div>
-                    <div className="lg:mb-32">
-                        <h3 className="lg:text-3xl text-2xl text-[#2F1C6A] font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] pt-5">About <strong>Prographr</strong></h3>
-                        <p className="mt-10 text-slate-600 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">Prographr is an online readymade graphic assets marketplace. A designer can upload their graphic assets and anyone can download any design which are premium and free. All the designs are also customizable. Customizable design have a fee. Which are negotiable with the asset owner.</p>
+        <div className='min-h-screen'>
+            <div className="w-full bg-[#EDEEF7]  ">
+                <div className='container mx-auto overflow-x-hidden -mt-24 tablet:-mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0'>
+                    <div className="layout lg:mx-24 mx-3 ">
+                        <div>
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-20 h-[60rem] ">
+                                <div className="relative flex items-center justify-center rounded-[25px]">
+                                    <div className="relative ml-2 -mr-2 w-[20rem] h-[15rem] 3xl:h-[22rem] 2xl:h-[20rem] desktop:h-[21rem] laptop:h-[27rem] 3xl:w-[30.2rem] 3xl:ml-40  2xl:w-[23rem] 2xl:ml-28 desktop:w-[26rem] laptop:w-[29rem] desktop:mr-28 desktop:-ml-3 laptop:ml-16 desktop:-mt-40 3xl:-mt-16 2xl:-mt-24 laptop:-mt-32 ">
+                                        <img className='rounded-[20px] w-[20rem] h-[15rem]bg-[#257aa8a0] 3xl:h-[22rem] laptop:h-[27rem] 2xl:h-[21rem]  desktop:h-[20rem] 3xl:w-[40rem] 2xl:w-[40rem] desktop:w-[27rem] laptop:w-[29rem]  ' src="https://i.ibb.co/j8hKMkL/prographr-team.jpg" alt="" />
+                                        <div className="absolute inset-0 bg-[#705FC1] opacity-75 rounded-[20px]"></div>
+                                        <img src="/Prographr_Icon_White.svg" alt="" className='absolute top-1/2 w-20 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />
+                                    </div>
+                                </div>
+                                <div className="lg:mb-32 mr-2 desktop:mt-40 laptop:mt-32 3xl:-ml-[8rem] 3xl:mr-[9rem] 2xl:-ml-[9.5rem] desktop:-ml-[9rem] desktop:mr-16 2xl:mr-[11rem] 3xl:mt-48 2xl:mt-44 tablet:ml-10 ml-2">
+                                    <h3 className="text-[#2F1C6A] text-base desktop:text-xl 3xl:text-3xl 2xl:text-xl laptop:text-lg tablet:text-base font-medium font-roboto pt-5 ml-7">Welcome at <strong>Prographr</strong></h3>
+                                    <p className="mt-10 text-slate-600 font-roboto font-medium ml-7 leading-7 3xl:text-base 2xl:text-base desktop:text-sm laptop:text-sm tablet:text-sm text-sm">Prographr is a pre-made graphic resource site. There is also an option for clients who want to modify the template with their brand identity. We have dedicated team members specialized in specific sectors, can be logo specialists, or print design specialists. Paying a fee per revision any client can modify the template from us. Our team members are ready to assist you as long as the client wants.</p>
+                                    <p className="mt-8 text-slate-600 font-roboto font-medium ml-7 leading-7 3xl:text-base 2xl:text-base desktop:text-sm laptop:text-sm tablet:text-sm text-sm">We are professionals and always think about professional design, and provide professional services.All templates are pre-made for specific businesses and can be used for multipurpose businesses.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <section className="text-center mt-8 lg:pb-32 pb-14">
-                    <h3 className="lg:text-3xl text-2xl text-[#2F1C6A] font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] pt-5">Team <strong>Members</strong></h3>
-                    <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-8">
-                        {/* Team Member 1: CEO */}
-                        <div className="bg-white p-12 w-80 rounded-3xl shadow-lg">
-                            <img src="https://i.ibb.co/vXhpcM3/pexels-justin-shaifer-1222271.jpg" alt="CEO" className=" w-32 h-32 rounded-full mx-auto mb-4" />
-                            <div className="text-center">
-                                <p className="font-semibold font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-lg mt-6">CEO & Founder</p>
-                                <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium my-1 text-slate-900 text-base">Mahmudul Hasan</p>
-                                <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium text-slate-600 text-base">Prographr</p>
-                            </div>
-                            {/* Social Icons */}
-                            <div className="flex justify-center mt-6">
-                                <a href="YOUR_FACEBOOK_URL" target="_blank" rel="noopener noreferrer"><FaFacebook className="text-[#4267B2] text-2xl mx-2" /></a>
-                                <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer"><FaLinkedin className="text-[#0A66C2] text-2xl mx-2" /></a>
-                                <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer"><FaInstagram className="text-[#C13584] text-2xl mx-2" /></a>
-                            </div>
-                        </div>
-
-                        {/* Team Member 2: Graphic Designer */}
-                        <div className="bg-white p-12 w-80 rounded-3xl shadow-lg">
-                            <img src="https://i.ibb.co/VwgkRFw/pexels-italo-melo-2379004.jpg" alt="Graphic Designer" className="w-32 h-32 rounded-full mx-auto mb-4" />
-                            <div className="text-center">
-                                <p className="font-semibold font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-lg mt-6">Graphic Designer</p>
-                                <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium my-1 text-slate-900 text-base">Adnan Habib</p>
-                                <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium text-slate-600 text-base">Prographr</p>
-                            </div>
-                            {/* Social Icons */}
-                            <div className="flex justify-center mt-6">
-                                <a href="YOUR_FACEBOOK_URL" target="_blank" rel="noopener noreferrer"><FaFacebook className="text-[#4267B2] text-2xl mx-2" /></a>
-                                <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer"><FaLinkedin className="text-[#0A66C2] text-2xl mx-2" /></a>
-                                <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer"><FaInstagram className="text-[#C13584] text-2xl mx-2" /></a>
-                            </div>
-                        </div>
-
-                        {/* Team Member 3: Web Developer */}
-                        <div className="bg-white p-12 w-80 rounded-3xl shadow-lg">
-                            <img src="https://i.ibb.co/Q9dq0vV/web-dev.png" alt="Web Developer" className="w-32 h-32 rounded-full mx-auto mb-4" />
-                            <div className="text-center">
-                                <p className="font-semibold font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-lg mt-6">Web Developer</p>
-                                <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium my-1 text-slate-900 text-base">Neaz Morshed</p>
-                                <p className="font-['__gellix_0bf537, __gellix_Fallback_0bf537 font-medium text-slate-600 text-base">Prographr</p>
-                            </div>
-
-                            {/* Social Icons */}
-                            <div className="flex justify-center mt-6">
-                                <a href="https://www.facebook.com/profile.php?id=100008935244709" target="_blank" rel="noopener noreferrer"><FaFacebook className="text-[#4267B2] text-2xl mx-2" /></a>
-                                <a href="https://www.linkedin.com/in/neaz-morshed/?fbclid=IwZXh0bgNhZW0CMTAAAR2iuhLSGNmM_DxG1ImO3JQM9wCflb6HdPfUbGymjDptqSwW9nzoBsC1CFQ_aem_AXOS6lxo7CtKT3-ZvO403_-mg6ZlvFzl-kD8quh4R2DkwfY83bfjXXkcGVZeDUkVSzgpBnXBbx1KaTi1CsGU3VkC" target="_blank" rel="noopener noreferrer"><FaLinkedin className="text-[#0A66C2] text-2xl mx-2" /></a>
-                                <a href="https://www.instagram.com/neazmorshednoman?fbclid=IwZXh0bgNhZW0CMTAAAR0ONvbFKgRLiYxjL3zJPXkv8J9_VONOAED8qjshnVZX08U0bvJZFdPZGto_aem_AXPUx51QcQN1pyO47GEzCO1OnHOrj_5Y7bbM97JavVZVns3cV8Im63VZ7fI5cRBu7nM3N8sWpGG2n8xsUFas_KY-" target="_blank" rel="noopener noreferrer"><FaInstagram className="text-[#C13584] text-2xl mx-2" /></a>
-                            </div>
+            <div className='container mx-auto overflow-x-hidden '>
+                <section className="text-center pb-14 font-roboto">
+                    <h3 className="lg:text-3xl text-2xl text-[#2F1C6A] font-medium font-roboto pt-14 mb-36">We are <strong>Prographr's</strong></h3>
+                    <div className='container mx-auto'>
+                        <div className='bg-[#EDEEF7] w-[21rem] h-[15rem] ml-4 -mt-28 3xl:w-[75rem] 2xl:w-[65rem] desktop:w-[60rem] laptop:w-[55rem] tablet:w-[45rem] desktop:h-[30rem] laptop:h-[28rem] tablet:h-[25rem] desktop:ml-32 laptop:ml-14 desktop:-mt-20 laptop:-mt-20 tablet:-mt-20 3xl:h-[35rem] 2xl:h-[25rem]  3xl:ml-52 2xl:ml-52 rounded-[25px] 3xl:-mt-16 3xl:mb-24'>
                         </div>
                     </div>
                 </section>
             </div>
-            
+
         </div>
     );
 };

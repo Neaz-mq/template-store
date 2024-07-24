@@ -127,7 +127,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: 'addTemplates',
+        path: 'uploadTemplates',
         element: <AdminRoute><AddTemplates></AddTemplates></AdminRoute>
       },
 

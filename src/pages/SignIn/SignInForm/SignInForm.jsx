@@ -41,16 +41,18 @@ const SignInForm = () => {
 
     return (
 
-        <div className='mb-16'>
+        <div className='min-h-screen 3xl:h-[60rem] 2xl:h-[60rem] desktop:h-[20rem] laptop:h-[60rem] tablet:h-[60rem] h-[60rem]  '>
 
-            <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center">
+        <div className='  mb-16 bg-[#EDEEF7] min-h-screen  '>
+
+            <div className="flex items-center justify-center container mx-auto">
                 
-                <form onSubmit={handleLogin} className="lg:w-fit min-h-[400px] mt-10 bg-[#EDEEF7] text-center px-10 py-6 rounded-[30px] ">
-                    <h3 className="text-xl font-medium text-slate-600 mb-6">Sign In</h3>
-                    <input className="lg:w-96 w-64 rounded-lg py-2.5 input" placeholder="Email" name="email" type="email" />
+                <form onSubmit={handleLogin} className="lg:w-fit  mt-10 bg-white text-center px-10 py-6  rounded-[30px] container mx-auto 3xl:mt-[25rem]  ">
+                    <h3 className="text-xl font-medium text-slate-600 mb-6 mt-6  ">Sign In</h3>
+                    <input className="lg:w-96 w-64 rounded-lg py-2.5 input bg-[#EDEEF7]" placeholder="Email" name="email" type="email" />
                     <br />
                     <div className="relative">
-                        <input className="lg:w-96 w-64 rounded-lg py-2.5 input mt-4" placeholder="Password" type={inputType} name="password" />
+                        <input className="lg:w-96 w-64 rounded-lg py-2.5 input mt-4 bg-[#EDEEF7]" placeholder="Password" type={inputType} name="password" />
                         <span className="absolute inset-y-0 right-0 pr-3 flex items-center mt-4">
                             {passwordVisible ? (
                                 <FaEye onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
@@ -76,6 +78,7 @@ const SignInForm = () => {
                 </form>
 
             </div>
+        </div>
         </div>
     );
 };

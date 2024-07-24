@@ -92,9 +92,10 @@ const SignUp = () => {
                 </Helmet>
             </div>
 
-            <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center  mt-4 ">
-                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-[#EDEEF7] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 ">
-                    <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6">Sign Up</h3>
+            <div className='min-h-screen h-[60rem] bg-[#EDEEF7] '>
+            <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center  mt-4 container mx-auto ">
+                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-white text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 3xl:mt-[25rem] ">
+                    <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6 mt-4">Sign Up</h3>
                     <div className="flex flex-col gap-3 mb-3">
                         <div className="max-w-72 lg:max-w-[350px] flex gap-4">
                             <div className="form-control">
@@ -209,7 +210,7 @@ const SignUp = () => {
 
             {/* Google Sign-in Button */}
             <div className='flex justify-center items-center -mt-24 '>
-                <button onClick={handleGoogleSignIn} className="btn btn-google bg-white hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24 ">
+                <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24  ">
                     <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
                     <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -217,6 +218,7 @@ const SignUp = () => {
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </button>
+            </div>
             </div>
             
         </>
