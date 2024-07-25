@@ -53,7 +53,7 @@ const SignInForm = () => {
                     <br />
                     <div className="relative">
                         <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-64 rounded-lg py-2.5 input mt-4 bg-[#EDEEF7]" placeholder="Password" type={inputType} name="password" />
-                        <span className="absolute inset-y-0 right-0 pr-3 flex items-center mt-4 tablet:mr-36 3xl:mr-0 2xl:mr-0 desktop:mr-0 laptop:mr-0 mr-0 ">
+                        <span className="absolute inset-y-0 right-0 pr-3 flex items-center mt-4  tablet:mr-36 3xl:mr-0 2xl:mr-0 desktop:mr-0 laptop:mr-0 mr-7 ">
                             {passwordVisible ? (
                                 <FaEye onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
                             ) : (
@@ -62,7 +62,7 @@ const SignInForm = () => {
                         </span>
                     </div>
 
-                    <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full tablet:w-96 mt-6 py-3 shadow-none font-medium hover:bg-[#4936c3]">
+                    <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full w-60 tablet:w-96 mt-6 py-3 shadow-none font-medium hover:bg-[#4936c3]">
                         <span className="-mt-1">Sign in</span>
                         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
