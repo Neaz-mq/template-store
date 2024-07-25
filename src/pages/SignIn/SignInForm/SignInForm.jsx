@@ -47,7 +47,7 @@ const SignInForm = () => {
 
             <div className="flex items-center justify-center container mx-auto">
                 
-                <form onSubmit={handleLogin} className="lg:w-fit  mt-10 bg-white text-center px-10 py-6  rounded-[30px] container mx-auto 3xl:mt-[25rem] 2xl:mt-[20rem] desktop:mt-[5rem] laptop:mt-[2rem]  ">
+                <form onSubmit={handleLogin} className="lg:w-fit  mt-10 bg-white text-center px-10 py-6  rounded-[30px] container mx-auto 3xl:mt-[25rem] 2xl:mt-[20rem] desktop:mt-[5rem] laptop:mt-[2rem] font-roboto  ">
                     <h3 className="text-xl font-medium text-slate-600 mb-6 mt-6  ">Sign In</h3>
                     <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-64 rounded-lg py-2.5 input bg-[#EDEEF7]" placeholder="Email" name="email" type="email" />
                     <br />

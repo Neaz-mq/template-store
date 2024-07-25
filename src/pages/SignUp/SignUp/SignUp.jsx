@@ -95,7 +95,7 @@ const SignUp = () => {
             <div className='min-h-screen  bg-[#EDEEF7] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 tablet:-mt-28 -mt-28 '>
             <div className=" flex items-center justify-center  mt-4 container mx-auto ">
                 <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-96 min-h-[400px] bg-white text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 3xl:mt-[20rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem]  tablet:mt-[20rem] ">
-                    <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6 mt-4">Sign Up</h3>
+                    <h3 className="text-xl font-medium font-roboto text-slate-800 mb-6 mt-4">Sign Up</h3>
                     <div className="flex flex-col gap-3 mb-3">
                         <div className="max-w-72 lg:max-w-[350px] flex gap-4">
                             <div className="form-control">
@@ -181,14 +181,14 @@ const SignUp = () => {
                                 type="checkbox"
                                 onChange={(e) => setTermsChecked(e.target.checked)}
                             />
-                            <span className="label-text font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800">
+                            <span className="label-text font-medium font-roboto text-slate-800">
                                 I agree with all the <a href="#" className="text-blue-500 underline">terms and services</a>
                             </span>
                         </label>
                     </div>
                     <div className="form-control -mt-5">
                         <button
-                            className="btn bg-[#6658C5]  font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
+                            className="btn bg-[#6658C5]  font-medium font-roboto hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
                             type="submit"
                             disabled={!termsChecked || !isValid}
                         >
@@ -210,7 +210,7 @@ const SignUp = () => {
 
             {/* Google Sign-in Button */}
             <div className='flex justify-center items-center -mt-24 3xl:-mt-24 '>
-                <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24 w-[19rem]  ">
+                <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-roboto mb-24 w-[19rem]  ">
                     <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
                     <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
