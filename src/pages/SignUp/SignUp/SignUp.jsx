@@ -92,9 +92,9 @@ const SignUp = () => {
                 </Helmet>
             </div>
 
-            <div className='min-h-screen h-[60rem] bg-[#EDEEF7] '>
-            <div className="lg:min-h-[calc(100vh-450px)] flex items-center justify-center  mt-4 container mx-auto ">
-                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-white text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 3xl:mt-[25rem] ">
+            <div className='min-h-screen  bg-[#EDEEF7] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 tablet:-mt-4 -mt-4 '>
+            <div className=" flex items-center justify-center  mt-4 container mx-auto ">
+                <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-80 min-h-[400px] bg-white text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 3xl:mt-[20rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem]  tablet:mt-[20rem] ">
                     <h3 className="text-xl font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-slate-800 mb-6 mt-4">Sign Up</h3>
                     <div className="flex flex-col gap-3 mb-3">
                         <div className="max-w-72 lg:max-w-[350px] flex gap-4">
@@ -209,7 +209,7 @@ const SignUp = () => {
             </div>
 
             {/* Google Sign-in Button */}
-            <div className='flex justify-center items-center -mt-24 '>
+            <div className='flex justify-center items-center -mt-24 3xl:-mt-24 '>
                 <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-['__gellix_0bf537, __gellix_Fallback_0bf537'] mb-24  ">
                     <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google

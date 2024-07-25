@@ -42,7 +42,7 @@ const Creativity = () => {
 
                     </section>
 
-                    <section className="w-full flex justify-center 3xl:mr-[12.7rem] 2xl:mr-[12.7rem] desktop:mr-[12.7rem]">
+                    <section className="w-full flex justify-center 3xl:mr-[12.7rem] 2xl:mr-[12.7rem] desktop:mr-[11rem] laptop:ml-[1rem]">
                         <article className="bg-[#EDEEF7] desktop:max-w-[300px] laptop:h-[380px] 2xl:max-w-[300px] desktop:h-[290px] laptop:max-w-[250px] p-6 rounded-[30px] 3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-4 3xl:mr-4 3xl:mb-12 2xl:ml-4 2xl:mr-4  2xl:mb-12 desktop:ml-10 desktop:mr-2 desktop:mb-12">
 
                             <div className="flex items-center justify-between">
