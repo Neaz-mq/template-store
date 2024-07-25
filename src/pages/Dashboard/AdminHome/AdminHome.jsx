@@ -7,12 +7,12 @@ import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const StatCard = ({ icon, title, value }) => (
-    <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100 transition-all duration-300">
+    <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100 transition-all duration-300 font-roboto">
         <div className="stat-figure text-secondary mb-2">
             {icon}
         </div>
-        <div className="stat-title text-lg font-semibold mb-1">{title}</div>
-        <div className="stat-value text-2xl lg:text-3xl font-bold">{value}</div>
+        <div className="stat-title text-lg font-medium mb-1">{title}</div>
+        <div className="stat-value text-2xl lg:text-3xl font-medium">{value}</div>
     </div>
 );
 
@@ -76,7 +76,7 @@ const AdminHome = () => {
                 </select>
             </div>
 
-            <div className='-mt-16'>
+            <div className='-mt-16 font-roboto'>
                 <h2 className="-ml-2 lg:text-2xl text-xl font-medium text-[#2F1C6A] mt-10 md:mt-0">Good day! Prographr</h2>
                 <p className="text-gray-400 font-medium md:text-lg text-base -ml-2 mt-2">Wish you have less work today!</p>
             </div>
@@ -127,7 +127,7 @@ const AdminHome = () => {
 
             <div className='hidden md:block w-full -mt-4'>
             <div className="bg-white p-3  rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1">
-                <h4 className="text-base font-semibold text-gray-700 mb-4  ">Monthly Statistics</h4>
+                <h4 className="text-base font-roboto font-semibold text-gray-700 mb-4  ">Monthly Statistics</h4>
               
                <div className='ml-16'>
 
