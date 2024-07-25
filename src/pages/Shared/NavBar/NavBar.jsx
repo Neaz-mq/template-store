@@ -134,7 +134,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex ml-16 -mr-14 3xl:mr-36 ">
-          <ul className="menu text-base cursor-pointer menu-horizontal desktop:flex flex-row gap-8  font-roboto text-[#15141ce7] font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-6 2xl:mt-24 desktop:mr-32 desktop:gap-6 desktop:mt-[6rem] laptop:mr-16 laptop:gap-2 laptop:mt-[5.5rem]">
+          <ul className="menu text-base cursor-pointer menu-horizontal desktop:flex flex-row gap-8  font-roboto text-[#15141ce7] font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-6 2xl:mt-24 desktop:mr-32 desktop:gap-6 desktop:mt-[6rem] laptop:mr-12 laptop:-ml-10 laptop:gap-2 laptop:mt-[5.5rem]">
             <Link
               to="/template"
               className={`hover:text-[#7673E5] mt-[1.3rem]  ${getTextColorClass()}`}
@@ -156,10 +156,10 @@ const NavBar = () => {
 
 
             {
-              user && isAdmin && <li className='mt-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
+              user && isAdmin && <li className='mt-3'><Link to="/dashboard/adminHome">Dashboard</Link></li>
             }
             {
-              user && !isAdmin && <li className='mt-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
+              user && !isAdmin && <li className='mt-3'><Link to="/dashboard/userHome">Dashboard</Link></li>
             }
 
             <Link to="/dashboard/cart">
@@ -177,12 +177,12 @@ const NavBar = () => {
         <div className="navbar-end gap-3 lg:gap-0">
           {user ? (
             <div className="flex items-center">
-              <span className=" hidden lg:block font-bold text-2xl text-[#7868E6]  mr-16">
+              <span className=" hidden  3xl:block 2xl:block font-bold text-2xl text-[#7868E6]  mr-16 3xl:mt-[6.3rem] 3xl:-ml-[12rem] 3xl:mr-[6rem] 2xl:mt-[6.3rem] 2xl:-ml-[7.75rem] 2xl:mr-[4.5rem] desktop:hidden laptop:hidden tablet:hidden  ">
                 {user.displayName}
               </span>
               <button
                 onClick={handleLogOut}
-                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-14 mr-20 lg:-ml-14 lg:py-5 py-4"
+                className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#241e2f] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-10 tablet:mr-10 tablet:-ml-10   py-[1.12rem] 3xl:mt-[6.8rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[9.5rem] laptop:mt-[6.4rem] laptop:-ml-36"
               >
                 <span className="-mt-2">Sign Out</span>
               </button>
@@ -190,7 +190,7 @@ const NavBar = () => {
           ) : (
             <div className="flex items-center">
               <Link to="/sign-in" className="mr-4">
-                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  lg:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.8rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-24 desktop:mt-[6.4rem] laptop:-mr-48 laptop:ml-16 laptop:mt-[6.4rem]">
+                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none lg:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  lg:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.8rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-14 desktop:mt-[6.4rem] laptop:mr-14  laptop:ml-0 laptop:mt-[6.4rem]">
                   <span className="-mt-2">Sign in</span>
                 </button>
               </Link>
@@ -200,7 +200,7 @@ const NavBar = () => {
           {/* "Sign Up" button always visible */}
           <div className="flex items-center">
             <Link to="/sign-up">
-              <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium lg:px-6 px-5 lg:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.8rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-16 desktop:-ml-24  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:-mr-2 laptop:ml-40  ">
+              <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium lg:px-6 px-5 lg:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.8rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-16 desktop:-ml-16  desktop:mt-[6.4rem] laptop:mt-[6.4rem]  laptop:-ml-14 laptop:mr-16    ">
                 <span className="-mt-2">Sign Up</span>
               </button>
             </Link>
