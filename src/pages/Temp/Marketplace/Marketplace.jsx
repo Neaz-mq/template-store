@@ -3,7 +3,9 @@ const Marketplace = () => {
     return (
 
         <header>
+
             <div className="container mx-auto">
+
                 <div className="layout rounded-[30px] bg-[#7666E3] flex justify-between lg:mx-20 mx-3 lg:mb-20 mb-10 lg:mt-24 mt-16 3xl:ml-[15.2rem] 3xl:mr-[13.8rem] 2xl:ml-[15.4rem] 2xl:mr-[15.8rem] desktop:ml-[6.5rem] desktop:mr-[6rem]">
 
                     <section className="p-10 lg:pl-14">
@@ -17,7 +19,6 @@ const Marketplace = () => {
                     <aside className="hidden lg:block lg:mt-2">
                         <img alt="Happy Customer" loading="lazy" width="255" height="355" decoding="async" data-nimg="1" className="-mt-[100px] mr-[100px]" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fclient.62dc3892.png&w=640&q=75" style={{ color: 'transparent' }} />
                     </aside>
-
                 </div>
             </div>
         </header>
