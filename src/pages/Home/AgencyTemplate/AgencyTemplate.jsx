@@ -80,8 +80,8 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
 };
 
 AgencyTemplate.propTypes = {
-    selectedCategory: PropTypes.array.isRequired, // Update prop type to array
-    searchQuery: PropTypes.string.isRequired, // Add prop type for search query
+    selectedCategory: PropTypes.array.isRequired,
+    searchQuery: PropTypes.string.isRequired,
 };
 
 export default AgencyTemplate;

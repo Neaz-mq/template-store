@@ -1,7 +1,6 @@
 const Community = () => {
 
     return (
-
         <div className='container mx-auto 2xl:overflow-x-hidden 3xl:overflow-x-hidden'>
             <div className='mx-3'>
                 <header className="layout mb-20 lg:mt-48 -mt-16">               

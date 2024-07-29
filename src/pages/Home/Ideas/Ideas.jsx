@@ -33,7 +33,9 @@ const Ideas = () => {
     };
 
     return (
+
         <div className="container mx-auto ">
+
             <section className="layout mt-24 lg:mt-[20rem] lg:mx-24">
                 <h1 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center font-roboto">Get <strong>cutting-edge design</strong></h1>
                 <div className="lg:mt-20 mt-16 tablet:w-[20rem] laptop:w-[50rem] desktop:w-[72rem] mx-auto place-items-center" data-aos="fade-up" data-aos-duration="700">
@@ -108,6 +110,7 @@ const Ideas = () => {
                                     </button>
                                 </article>
                             )}
+
                             <div className="lg:flex lg:justify-end hidden">
                                 <div className="flex items-center justify-center">
                                     {renderVideoForTab()}
@@ -117,6 +120,7 @@ const Ideas = () => {
                     </div>
                 </div>
             </section>
+
         </div>
     );
 };
