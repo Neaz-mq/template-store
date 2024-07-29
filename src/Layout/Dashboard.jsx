@@ -1,4 +1,4 @@
-import { FaHome, FaList,  FaShoppingCart} from "react-icons/fa";
+import { FaHome, FaList, FaShoppingCart } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
@@ -47,8 +47,7 @@ const Dashboard = () => {
                                     <NavLink
                                         to={link.to}
                                         className={({ isActive }) =>
-                                            `flex items-center space-x-2 p-2 hover:bg-[#A855F7] relative ${
-                                                isActive ? 'border-l-4 border-blue-600 pl-4 -ml-4' : ''
+                                            `flex items-center space-x-2 p-2 hover:bg-[#A855F7] relative ${isActive ? 'border-l-4 border-blue-600 pl-4 -ml-4' : ''
                                             }`
                                         }
                                     >
@@ -62,8 +61,7 @@ const Dashboard = () => {
                                     <NavLink
                                         to={link.to}
                                         className={({ isActive }) =>
-                                            `flex items-center space-x-2 p-2 hover:bg-[#A855F7] relative ${
-                                                isActive ? 'border-l-4 border-blue-500 pl-4 -ml-4' : ''
+                                            `flex items-center space-x-2 p-2 hover:bg-[#A855F7] relative ${isActive ? 'border-l-4 border-blue-500 pl-4 -ml-4' : ''
                                             }`
                                         }
                                     >
@@ -81,8 +79,7 @@ const Dashboard = () => {
                                 <NavLink
                                     to={link.to}
                                     className={({ isActive }) =>
-                                        `flex items-center space-x-2 p-2 rounded-md hover:bg-[#A855F7] relative ${
-                                            isActive ? 'border-l-4 border-blue-500 pl-4 -ml-4' : ''
+                                        `flex items-center space-x-2 p-2 rounded-md hover:bg-[#A855F7] relative ${isActive ? 'border-l-4 border-blue-500 pl-4 -ml-4' : ''
                                         }`
                                     }
                                 >

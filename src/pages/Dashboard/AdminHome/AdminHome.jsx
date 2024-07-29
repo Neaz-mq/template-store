@@ -49,7 +49,7 @@ const AdminHome = () => {
         setSelectedMonth(e.target.value);
     };
 
-    const filteredData = selectedMonth === "This Month" 
+    const filteredData = selectedMonth === "This Month"
         ? data.filter(d => d.name === currentMonth)
         : data.filter(d => d.name === selectedMonth);
 
@@ -80,7 +80,7 @@ const AdminHome = () => {
                 <h2 className="-ml-2 lg:text-2xl text-xl font-medium text-[#2F1C6A] mt-10 md:mt-0">Good day! Prographr</h2>
                 <p className="text-gray-400 font-medium md:text-lg text-base -ml-2 mt-2">Wish you have less work today!</p>
             </div>
-           
+
             <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-4  lg:space-x-4 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 ">
                 <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-yellow-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>}
@@ -126,48 +126,48 @@ const AdminHome = () => {
             </div>
 
             <div className='hidden md:block w-full -mt-4'>
-            <div className="bg-white p-3  rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1">
-                <h4 className="text-base font-roboto font-semibold text-gray-700 mb-4  ">Monthly Statistics</h4>
-              
-               <div className='ml-16'>
+                <div className="bg-white p-3  rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1">
+                    <h4 className="text-base font-roboto font-semibold text-gray-700 mb-4  ">Monthly Statistics</h4>
 
-               <ResponsiveContainer width="80%" height={232}>
-                    <BarChart data={filteredData} margin={{ top: 6, right: 30, left: 40, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="orders" fill="#8884d8" />
-                        <Bar dataKey="earning" fill="#82ca9d" />
-                    </BarChart>
-                </ResponsiveContainer>
-               </div>
-            </div>
+                    <div className='ml-16'>
+
+                        <ResponsiveContainer width="80%" height={232}>
+                            <BarChart data={filteredData} margin={{ top: 6, right: 30, left: 40, bottom: 5 }}>
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                                <Legend />
+                                <Bar dataKey="orders" fill="#8884d8" />
+                                <Bar dataKey="earning" fill="#82ca9d" />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </div>
             </div>
 
             <div className='md:hidden w-full -mt-4 -ml-4'>
-      <div className="bg-white p-3 rounded-lg shadow-lg mt-10">
-        <h4 className="text-base font-semibold text-gray-700 mb-4">Monthly Statistics</h4>
-        <div className='w-full flex justify-center'>
-          <div className='w-full md:w-3/4'>
-            <ResponsiveContainer width="100%" height={250}>
-              <BarChart data={filteredData} margin={{ top: 6, right: 30, left: 20, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="orders" fill="#8884d8" />
-                <Bar dataKey="earning" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
-    </div>
+                <div className="bg-white p-3 rounded-lg shadow-lg mt-10">
+                    <h4 className="text-base font-semibold text-gray-700 mb-4">Monthly Statistics</h4>
+                    <div className='w-full flex justify-center'>
+                        <div className='w-full md:w-3/4'>
+                            <ResponsiveContainer width="100%" height={250}>
+                                <BarChart data={filteredData} margin={{ top: 6, right: 30, left: 20, bottom: 5 }}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar dataKey="orders" fill="#8884d8" />
+                                    <Bar dataKey="earning" fill="#82ca9d" />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+        </div>
+
     );
 };
 

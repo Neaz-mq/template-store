@@ -121,6 +121,7 @@ const AddTemplates = () => {
             </div>
 
             <div>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Template Name */}
                     <div className="form-control w-full my-3 mr-3 -ml-3">
@@ -267,7 +268,7 @@ const AddTemplates = () => {
                                     <option value="Poster">Poster</option>
                                     <option value="Business Card">Business Card</option>
                                     <option value="Menu">Menu</option>
-                                   
+
                                 </select>
                             </div>
                             <div className="mt-4 flex flex-wrap mx-4">
@@ -293,6 +294,7 @@ const AddTemplates = () => {
                     </div>
 
                 </form>
+
             </div>
         </div>
     );

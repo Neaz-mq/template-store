@@ -1,7 +1,6 @@
 const About = () => {
 
     return (
-
         <div className='min-h-screen'>
             <div className="w-full bg-[#EDEEF7]  ">
                 <div className='container mx-auto overflow-x-hidden -mt-24 tablet:-mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0'>

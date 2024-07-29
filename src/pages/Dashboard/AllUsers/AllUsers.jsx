@@ -179,7 +179,7 @@ const AllUsers = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* Pagination */}
             <div className="flex pagination mt-8 justify-center mr-4 ml-4 md:mr-0 md:-ml-0">
                 <button

@@ -2,7 +2,7 @@ import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './Form.css'; 
+import './Form.css';
 
 const Form = () => {
 
@@ -31,7 +31,7 @@ const Form = () => {
         if (isEmpty) {
             // Show toast notification for empty fields with error color
             diffToast("Please fill the form carefully!", true);
-            return; 
+            return;
         }
 
         // If all fields are filled, proceed to send email
