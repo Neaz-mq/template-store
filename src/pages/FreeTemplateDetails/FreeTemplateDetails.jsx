@@ -40,7 +40,6 @@ const FreeTemplateDetails = () => {
     }, []);
 
 
-
     const handleTemplateChange = (template) => {
         setSelectedTemplate(template);
     };
@@ -53,7 +52,6 @@ const FreeTemplateDetails = () => {
         }
         e.target.value = ""; // Reset the select input
     };
-
 
 
     const handleRemoveFile = (file) => {
@@ -114,7 +112,6 @@ const FreeTemplateDetails = () => {
         }
     }
 
-
     return (
 
         <div>
@@ -167,8 +164,7 @@ const FreeTemplateDetails = () => {
                                             src="https://i.ibb.co/sbtqzwN/9.jpg"
                                             className="w-[75px] h-[75px] -mt-4 lg:-mt-0 object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
                                             alt=""
-                                        />
-                                        {/* Add more images here if needed */}
+                                        />                                     
                                     </div>
                                     <div
                                         className="w-[47px] h-[47px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-8 ml-5"
@@ -186,11 +182,11 @@ const FreeTemplateDetails = () => {
                             <div className="flex justify-between pb-3">
                                 <div className="flex gap-3 font-bold">
                                     <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'templateCustom'} readOnly />
-                                    <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] ">Template</h2>
+                                    <h2 className="font-roboto ">Template</h2>
                                 </div>
-                                <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">${price}</div>
+                                <div className="font-roboto font-medium ">${price}</div>
                             </div>
-                            <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
+                            <div className="pt-2 border-t font-roboto font-medium">
                                 We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                             </div>
 
@@ -202,16 +198,16 @@ const FreeTemplateDetails = () => {
                                 <div className="flex justify-between pb-3">
                                     <div className="flex gap-3 font-bold">
                                         <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'customizeTemplate'} readOnly />
-                                        <h2 className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] lg:ml-0 ">Template + Customization</h2>
+                                        <h2 className="font-roboto lg:ml-0 ">Template + Customization</h2>
                                     </div>
-                                    <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium ">$00</div>
+                                    <div className="font-roboto font-medium ">$00</div>
                                 </div>
-                                <div className="pt-2 border-t font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium">
+                                <div className="pt-2 border-t font-roboto font-medium">
 
                                 </div>
                                 <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
                                     <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-                                        <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:mr-2 mr-8">Revisions:</div>
+                                        <div className="font-roboto font-medium lg:mr-2 mr-8">Revisions:</div>
                                         <select
                                             className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
                                             onChange={(e) => {
@@ -229,7 +225,7 @@ const FreeTemplateDetails = () => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <div className="font-['__gellix_0bf537, __gellix_Fallback_0bf537'] font-medium lg:ml-3 ml-10 mr-6">Files:</div>
+                                        <div className="font-roboto font-medium lg:ml-3 ml-10 mr-6">Files:</div>
                                         <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
                                             <option value="">All Files</option>
                                             {files.map((file, index) => (
@@ -323,7 +319,7 @@ const FreeTemplateDetails = () => {
                 <div className="layout lg:py-20 py-12 mt-6 ">
                     <div className="flex items-center justify-between mb-10">
                         <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Top Selling <strong>Graphics Templates</strong></h2>
-                        <button className="btn mr-20 ml-4  font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700"><span className="-mt-1">Printing and Advertising</span> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path></svg></button>
+                        <button className="btn mr-20 ml-4  font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700"><span className="-mt-1">Printing and Advertising</span> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path></svg></button>
                     </div>
 
                     <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 mr-20 " data-aos="lg:fade-right" data-aos-duration="700">
@@ -336,9 +332,7 @@ const FreeTemplateDetails = () => {
                     </div>
 
                 </div>
-            </div>
-
-            
+            </div>       
         </div>
 
 

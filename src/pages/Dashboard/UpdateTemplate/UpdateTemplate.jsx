@@ -139,8 +139,8 @@ const UpdateTemplate = () => {
                         />
                     </div>
 
-                     {/* category */}
-                    <div className="flex flex-col lg:flex-row gap-6">                      
+                    {/* category */}
+                    <div className="flex flex-col lg:flex-row gap-6">
                         <div className="form-control w-full my-6">
                             <label className="label">
                                 <span className="label-text">Category*</span>
@@ -165,7 +165,7 @@ const UpdateTemplate = () => {
                             </label>
                             <input
                                 type="number"
-                                step="0.01" // Allow decimal values
+                                step="0.01"
                                 defaultValue={price}
                                 placeholder="Price"
                                 {...register('price', { required: true })}
@@ -314,7 +314,7 @@ const UpdateTemplate = () => {
                     <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
                         {isLoading ? 'Updating...' : 'Update Template'}
                     </button>
-                    
+
                 </form>
 
             </div>

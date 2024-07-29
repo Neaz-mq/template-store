@@ -176,7 +176,7 @@ const CheckoutForm = () => {
                         className="p-2 border border-gray-300 rounded-md"
                     />
                 </div>
-                
+
                 <button className="btn btn-sm btn-primary my-4 w-full" type="submit" disabled={!stripe || !clientSecret}>
                     Pay
                 </button>

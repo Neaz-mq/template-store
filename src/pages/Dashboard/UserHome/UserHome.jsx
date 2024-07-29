@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../hooks/useAuth";
 
-
 const UserHome = () => {
 
     const {user} = useAuth();
