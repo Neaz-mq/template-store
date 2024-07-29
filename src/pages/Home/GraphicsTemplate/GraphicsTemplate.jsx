@@ -40,13 +40,13 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
 
     return (
 
-        <div>
+        <div className="container mx-auto">
 
             <header className="layout lg:mt-24 py-12 mt-6 lg:mx-20">
                 <div className="flex items-center justify-between mb-10">
-                    <h1 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Free <strong>Graphics Templates</strong></h1>
+                    <h1 className="lg:text-4xl text-xl text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-roboto 3xl:ml-[10rem] 2xl:ml-[10rem] desktop:ml-[1rem]">Free <strong>Graphics Templates</strong></h1>
                     <button
-                        className="btn mr-2 lg:mr-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700"
+                        className="btn hidden mr-2 lg:mr-4 font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700"
                         aria-label="View Printing and Advertising templates"
                     >
                         <span className="-mt-1">Printing and Advertising</span>
@@ -58,7 +58,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
             </header>
 
             <main className="layout lg:-mt-10 py-12 mt-6 lg:mx-20">
-                <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6" data-aos="lg:fade-right" data-aos-duration="700">
+                <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-40 3xl:mr-36 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-40 2xl:mr-44 2xl:gap-x-2 2xl:gap-y-8" data-aos="fade-up" data-aos-duration="700">
                     {displayedTemplates.map(item => (
                         <FreeTemplate
                             key={item._id}
@@ -70,7 +70,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
 
             <footer className="flex justify-center mt-16 mb-10 lg:mb-0">
                 <button
-                    className="btn mr-2 lg:mr-4 font-['__gellix_0bf537, __gellix_Fallback_0bf537'] text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700"
+                    className="btn mr-2 lg:mr-4 font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-[10px] font-semibold gap-4 shadow-none pt-1 pl-4 border-slate-700"
                     onClick={handleViewMore}
                     aria-label={showAll ? "Show Less" : "View More Top Selling Items"}
                 >
