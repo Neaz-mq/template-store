@@ -27,6 +27,7 @@ const FreeTemplate = ({ item }) => {
                             <p className="font-bold text-[#2F1C6A] px-3 py-1 rounded-xl text-base bg-[#EDEEF7] template-price">{price}</p>
                         </div>
                     </Link>
+                    
                 </div>
             </div>
             

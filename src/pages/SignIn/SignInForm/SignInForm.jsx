@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useEffect } from 'react'; // Import useEffect for SEO purposes
+import { useEffect } from 'react';
 import './SignInForm.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../../providers/AuthProvider';
@@ -15,7 +15,7 @@ const SignInForm = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     useEffect(() => {
-        document.title = "Prographr | Sign In"; // Set document title for better SEO
+        document.title = "Prographr | Sign In";
     }, []);
 
     const handleLogin = event => {
@@ -43,42 +43,42 @@ const SignInForm = () => {
 
         <div className='min-h-screen 3xl:h-[0rem] 2xl:h-[0rem] desktop:h-[0rem] laptop:h-[0rem] tablet:h-[0rem] h-[0rem]  '>
 
-        <div className='  mb-16 bg-[#EDEEF7] min-h-screen 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-mt-24 -mt-24  '>
+            <div className='  mb-16 bg-[#EDEEF7] min-h-screen 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-mt-24 -mt-24  '>
 
-            <div className="flex items-center justify-center container mx-auto">
-                
-                <form onSubmit={handleLogin} className="lg:w-fit  mt-10 bg-white text-center px-10 py-6  rounded-[30px] container mx-auto 3xl:mt-[25rem] 2xl:mt-[20rem] desktop:mt-[5rem] laptop:mt-[2rem] font-roboto  ">
-                    <h3 className="text-xl font-medium text-slate-600 mb-6 mt-6  ">Sign In</h3>
-                    <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-64 rounded-lg py-2.5 input bg-[#EDEEF7]" placeholder="Email" name="email" type="email" />
-                    <br />
-                    <div className="relative">
-                        <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-64 rounded-lg py-2.5 input mt-4 bg-[#EDEEF7]" placeholder="Password" type={inputType} name="password" />
-                        <span className="absolute inset-y-0 right-0 pr-3 flex items-center mt-4  tablet:mr-36 3xl:mr-0 2xl:mr-0 desktop:mr-0 laptop:mr-0 mr-7 ">
-                            {passwordVisible ? (
-                                <FaEye onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
-                            ) : (
-                                <FaEyeSlash onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
-                            )}
-                        </span>
-                    </div>
+                <div className="flex items-center justify-center container mx-auto">
 
-                    <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full w-60 tablet:w-96 mt-6 py-3 shadow-none font-medium hover:bg-[#4936c3]">
-                        <span className="-mt-1">Sign in</span>
-                        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button>
-                    <br /> <br /> <br />
+                    <form onSubmit={handleLogin} className="lg:w-fit  mt-10 bg-white text-center px-10 py-6  rounded-[30px] container mx-auto 3xl:mt-[25rem] 2xl:mt-[20rem] desktop:mt-[5rem] laptop:mt-[2rem] font-roboto  ">
+                        <h3 className="text-xl font-medium text-slate-600 mb-6 mt-6  ">Sign In</h3>
+                        <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-64 rounded-lg py-2.5 input bg-[#EDEEF7]" placeholder="Email" name="email" type="email" />
+                        <br />
+                        <div className="relative">
+                            <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-64 rounded-lg py-2.5 input mt-4 bg-[#EDEEF7]" placeholder="Password" type={inputType} name="password" />
+                            <span className="absolute inset-y-0 right-0 pr-3 flex items-center mt-4  tablet:mr-36 3xl:mr-0 2xl:mr-0 desktop:mr-0 laptop:mr-0 mr-7 ">
+                                {passwordVisible ? (
+                                    <FaEye onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
+                                ) : (
+                                    <FaEyeSlash onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
+                                )}
+                            </span>
+                        </div>
 
-                    {/* Google Sign-in Button */}
+                        <button className="btn bg-[#6658C5] capitalize text-white rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full w-60 tablet:w-96 mt-6 py-3 shadow-none font-medium hover:bg-[#4936c3]">
+                            <span className="-mt-1">Sign in</span>
+                            <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                        <br /> <br /> <br />
 
-                    <SocialLogin></SocialLogin>
+                        {/* Google Sign-in Button */}
 
-                </form>
+                        <SocialLogin></SocialLogin>
 
+                    </form>
+
+                </div>
             </div>
-        </div>
         </div>
     );
 };

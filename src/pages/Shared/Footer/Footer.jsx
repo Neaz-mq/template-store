@@ -11,6 +11,7 @@ const Footer = () => {
     return (
 
         <footer className="bg-[#EDEEF7] relative ">
+
             <div className="container mx-auto 2xl:overflow-x-hidden 3xl:overflow-x-hidden">
                 <div className="footer p-10 text-base-content relative">
                     <aside className="3xl:ml-52 3xl:-mr-[35rem] 2xl:ml-48 2xl:-mr-[35rem] desktop:ml-36 desktop:-mr-[34rem] laptop:-ml-5 laptop:-mr-[25rem]">
@@ -56,6 +57,7 @@ const Footer = () => {
                     </Link>
                 </div>
             </div>
+            
         </footer>
 
     );

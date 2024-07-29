@@ -83,7 +83,6 @@ const NavBar = () => {
                   />
                 </Link>
 
-
                 <Link
                   to="/template"
                   className={`hover:text-[#7673E5] mb-3 font-roboto ${getTextColorClass()}`}
@@ -119,6 +118,7 @@ const NavBar = () => {
                 </li>
               </ul>
             </div>
+
             <Link
               to="/"
               className={`${getTextColorClass('/')} 3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8  3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8`}
@@ -131,18 +131,20 @@ const NavBar = () => {
                   alt=""
                 />
               </div>
+
               {/* Show original logo on larger devices */}
               <div className="mt-[5.5rem] ">
                 <a href="/">
-                <img
-                  className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.3rem] 3xl:pt-1 2xl:ml-[9.3rem] 2xl:pt-1   laptop:ml-[0.4rem] laptop:pt-2"
-                  src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg"
-                  alt=""
-                />
+                  <img
+                    className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.3rem] 3xl:pt-1 2xl:ml-[9.3rem] 2xl:pt-1   laptop:ml-[0.4rem] laptop:pt-2"
+                    src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg"
+                    alt=""
+                  />
                 </a>
               </div>
             </Link>
           </div>
+
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 ">
             <ul className="menu text-base cursor-pointer menu-horizontal  flex-row gap-8  font-roboto text-[#15141ce7] font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-6 2xl:mt-24 desktop:ml-16   laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] laptop:text-sm ">
               <Link
@@ -178,10 +180,7 @@ const NavBar = () => {
                   <div className="badge">+{cart.length}</div>
                 </button>
               </Link>
-
-
             </ul>
-
           </div>
 
           <div className="navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0">
@@ -216,6 +215,7 @@ const NavBar = () => {
               </Link>
             </div>
           </div>
+
         </div>
       </div>
     </div>
