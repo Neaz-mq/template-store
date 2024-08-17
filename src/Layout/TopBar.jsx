@@ -19,7 +19,7 @@ const TopBar = () => {
                         </Link>
                     </div>
                     <div className="relative ">
-                        <div className="md:border-l md:border-gray-200 md:pl-8 md:ml-20 md:h-16  mt-16 md:mt-0 -ml-20  pb-5 md:pb-0   ">
+                        <div className="md:border-l md:border-gray-200 md:pl-8 md:ml-[5.18rem] md:h-16  mt-16 md:mt-0 -ml-20  pb-5 md:pb-0   ">
                             <div className="relative">
                                 <input
                                     type="text"
