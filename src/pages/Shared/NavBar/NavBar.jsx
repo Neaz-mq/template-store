@@ -26,7 +26,7 @@ const NavBar = () => {
         <div className="navbar -mt-[6rem] 3xl:-mt-[7rem] 2xl:-mt-[7rem]  laptop:-mt-[7rem]">
           <div className="navbar-start">
             <div className="dropdown">
-              <div tabIndex={0} className="3xl:hidden 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:mt-[6.3rem]  ml-3">
+              <div tabIndex={0} className="3xl:hidden 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:mt-[6rem]  ml-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -53,7 +53,7 @@ const NavBar = () => {
                   />
                 </Link>
 
-                <Link to="/" className="hidden laptop:block text-xl mt-5 ml-6 mr-1 mb-8">
+                <Link to="/" className="hidden laptop:block text-xl mt-6 ml-6 mr-1 mb-8">
                   <img
                     src="/prographr.svg"
                     alt=""
@@ -123,7 +123,7 @@ const NavBar = () => {
           </div>
 
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 ">
-            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8  font-roboto font-medium  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
+            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8  font-roboto font-medium  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
               <Link
                 to="/template"
                 className="hover:text-[#7673E5] mt-[1.3rem] 2xl:mr-8 3xl:mr-0" 
