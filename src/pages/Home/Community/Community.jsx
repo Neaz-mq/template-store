@@ -5,7 +5,7 @@ const Community = () => {
         <div className='container mx-auto overflow-x-hidden tablet:overflow-x-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-x-hidden laptop:overflow-x-hidden'>
             <div className='mx-3'>
                 <header className="layout mb-20 lg:mt-48 -mt-20">               
-                    <section className="text-[#15141ce7] ml-4  tablet:ml-28  w-[16rem] tablet:w-[30rem] laptop:w-[55rem]   bg-[#EDEEF7] rounded-2xl  pt-10 pb-24 font-roboto font-medium px-5 3xl:pb-28 3xl:px-13 2xl:pb-28 2xl:px-10 desktop:pb-28 desktop:px-5 gap-5 grid 3xl:grid-cols-2 2xl:grid-cols-2 desktop:grid-cols-2 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[73.2rem] 3xl:ml-[14.4rem] 2xl:w-[65.5rem] 2xl:ml-[13rem] desktop:w-[60.5rem] tablet:mt-24 mt-20 desktop:ml-[10rem] laptop:ml-12 place-items-center">
+                    <section className="text-[#15141ce7] ml-4  tablet:ml-28  w-[16rem] tablet:w-[30rem] laptop:w-[55rem] bg-[#EDEEF7] rounded-2xl  pt-10 pb-24 font-roboto font-medium px-5 3xl:pb-28 3xl:px-13 2xl:pb-28 2xl:px-10 desktop:pb-28 desktop:px-5 gap-5 grid 3xl:grid-cols-2 2xl:grid-cols-2 desktop:grid-cols-2 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[73.2rem] 3xl:ml-[14.4rem] 2xl:w-[65.5rem] 2xl:ml-[13rem] desktop:w-[60.5rem] tablet:mt-24 mt-20 desktop:ml-[10rem] laptop:ml-12 place-items-center">
                         <div className='3xl:ml-8 laptop:-ml-9 2xl:ml-8 desktop:ml-5'>
                             <h2 className="text-3xl mb-10">Check Our Portfolio</h2>
                             <p className='leading-7'>Join our online portfolio to explore our imagination. Learn more about our focus, interests, and our creativity.</p>
