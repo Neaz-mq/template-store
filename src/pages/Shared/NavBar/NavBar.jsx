@@ -23,10 +23,10 @@ const NavBar = () => {
 
     <div className="bg-white">
       <div className="container mx-auto">
-        <div className="navbar -mt-[6rem] 3xl:-mt-[7rem] 2xl:-mt-[7rem]  laptop:-mt-[7rem]">
+        <div className="navbar -mt-[6rem] 3xl:-mt-[7rem] 2xl:-mt-[7rem]  laptop:-mt-[7rem] -ml-2">
           <div className="navbar-start">
             <div className="dropdown">
-              <div tabIndex={0} className="3xl:hidden 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:mt-[6rem]  ml-3">
+              <div tabIndex={0} className="3xl:hidden 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:mt-[6rem]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -104,7 +104,7 @@ const NavBar = () => {
               <div className="mt-[5.5rem] ">
                 <img
                   className="3xl:hidden 2xl:hidden desktop:hidden laptop:hidden  tablet:ml-[2rem]"
-                  src="/prographr.svg"
+                  src="/public/icon.svg"
                   alt=""
                 />
               </div>
@@ -168,7 +168,7 @@ const NavBar = () => {
                 </span>
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-10 tablet:mr-10 tablet:-ml-10   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[10.7rem] laptop:mt-[6.4rem] laptop:-ml-36"
+                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-14 mr-14 tablet:mr-16 tablet:-ml-1   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[10.7rem] laptop:mt-[6.4rem] laptop:-ml-36"
                 >
                   <span className="-mt-2">Sign Out</span>
                 </button>
@@ -186,7 +186,7 @@ const NavBar = () => {
             {/* "Sign Up" button always visible */}
             <div className="flex items-center">
               <Link to="/sign-up">
-                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10      ">
+                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10       ">
                   <span className="-mt-2">Sign Up</span>
                 </button>
               </Link>
