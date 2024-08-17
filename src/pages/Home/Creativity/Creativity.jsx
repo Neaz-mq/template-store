@@ -38,7 +38,7 @@ const Creativity = () => {
           </h1>
         </header>
 
-        <main className="py-6  tablet:ml-2 tablet:mr-3 grid place-items-center desktop:gap-0 tablet:grid-cols-2 laptop:grid-cols-3 gap-4 tablet:gap-6 laptop:gap-0 2xl:gap-0 3xl:gap-0 3xl:ml-48 2xl:-mr-6 2xl:ml-48 3xl:-mr-6 desktop:-mr-10 desktop:ml-28 laptop:mr-10 laptop:ml-9">
+        <main className="py-6 -ml-1  tablet:ml-2 tablet:mr-3 grid place-items-center desktop:gap-0 tablet:grid-cols-2 laptop:grid-cols-3 gap-4 tablet:gap-6 laptop:gap-0 2xl:gap-0 3xl:gap-0 3xl:ml-48 2xl:-mr-6 2xl:ml-48 3xl:-mr-6 desktop:-mr-10 desktop:ml-28 laptop:mr-10 laptop:ml-9">
           <section className="w-full flex justify-center 3xl:mr-10 3xl:-ml-20 2xl:mr-10 2xl:-ml-20 desktop:mr-16 desktop:-ml-16">
             <article className="bg-[#EDEEF7] 2xl:max-w-[300px] desktop:max-w-[340px] laptop:max-w-[250px] laptop:h-[380px] desktop:h-[290px] p-6 rounded-[30px] 3xl:max-w-[400px] 3xl:ml-28 desktop:ml-20 2xl:ml-28 laptop:ml-16 3xl:mb-12 2xl:mb-12 desktop:mb-12 place-items-center mx-auto">
               <div className="flex items-center justify-between">
