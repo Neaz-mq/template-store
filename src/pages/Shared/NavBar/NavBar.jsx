@@ -7,7 +7,7 @@ import useAdmin from '../../../hooks/useAdmin';
 
 const NavBar = () => {
 
-  const location = useLocation();
+  
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
@@ -18,30 +18,7 @@ const NavBar = () => {
       .catch(error => console.log(error));
   };
 
-  const getTextColorClass = () => {
-    if (location.pathname === '/template') {
-      return 'text-[#767BE8]';
-    } else {
-      return 'text-base';
-    }
-  };
-
-  const getTextColorCompany = () => {
-    if (location.pathname === '/company') {
-      return 'text-[#767BE8]';
-    } else {
-      return 'text-base';
-    }
-  };
-
-  const getTextColorContact = () => {
-    if (location.pathname === '/contact') {
-      return 'text-[#767BE8]';
-    } else {
-      return 'text-base';
-    }
-  };
-
+  
   return (
 
     <div className="bg-white">
@@ -71,33 +48,33 @@ const NavBar = () => {
               >
                 <Link to="/" className="laptop:hidden text-xl mt-5 ml-4 mr-1 mb-8">
                   <img
-                    src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg"
+                    src="/prographr.svg"
                     alt=""
                   />
                 </Link>
 
                 <Link to="/" className="hidden laptop:block text-xl mt-5 ml-14 mr-1 mb-8">
                   <img
-                    src="https://prographr.vercel.app/_next/static/media/icon.87854914.svg"
+                    src="/prographr.svg"
                     alt=""
                   />
                 </Link>
 
                 <Link
                   to="/template"
-                  className={`hover:text-[#7673E5] mb-3 font-roboto ${getTextColorClass()}`}
+                  className="hover:text-[#7673E5] mb-3  font-roboto"
                 >
                   Template
                 </Link>
                 <Link
                   to="/company"
-                  className={`hover:text-[#7673E5] mb-3 font-roboto ${getTextColorCompany()}`}
+                  className="hover:text-[#7673E5] mb-3 font-roboto"
                 >
                   Company
                 </Link>
                 <Link
                   to="/contact"
-                  className={`hover:text-[#7673E5] mb-3 font-roboto ${getTextColorContact()}`}
+                  className="hover:text-[#7673E5] mb-3 font-roboto"
                 >
                   Contact Us
                 </Link>
@@ -121,13 +98,13 @@ const NavBar = () => {
 
             <Link
               to="/"
-              className={`${getTextColorClass('/')} 3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8  3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8`}
+              className="3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8  3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8"
             >
               {/* Show different image on mobile */}
               <div className="mt-[5.5rem] ">
                 <img
                   className="3xl:hidden 2xl:hidden desktop:hidden laptop:hidden  tablet:ml-[2rem]"
-                  src="https://prographr.vercel.app/_next/static/media/icon.87854914.svg"
+                  src="/prographr.svg"
                   alt=""
                 />
               </div>
@@ -137,7 +114,7 @@ const NavBar = () => {
                 <a href="/">
                   <img
                     className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.3rem] 3xl:pt-1 2xl:ml-[9.3rem] 2xl:pt-1   laptop:ml-[0.4rem] laptop:pt-2"
-                    src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg"
+                    src="/prographr.svg"
                     alt=""
                   />
                 </a>
@@ -146,22 +123,22 @@ const NavBar = () => {
           </div>
 
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 ">
-            <ul className="menu text-base cursor-pointer menu-horizontal  flex-row gap-8  font-roboto text-[#15141ce7] font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-6 2xl:mt-24 desktop:ml-16   laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] laptop:text-sm ">
+            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8  font-roboto font-medium  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-6 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
               <Link
                 to="/template"
-                className={`hover:text-[#7673E5] mt-[1.3rem] laptop:ml-4 laptop:text-sm  ${getTextColorClass()}`}
+                className="hover:text-[#7673E5] mt-[1.3rem]" 
               >
                 Template
               </Link>
               <Link
                 to="/company"
-                className={`hover:text-[#7673E5] mt-[1.3rem] laptop:text-sm laptop:ml-2 ${getTextColorCompany()}`}
+                className="hover:text-[#7673E5] mt-[1.3rem]" 
               >
                 Company
               </Link>
               <Link
                 to="/contact"
-                className={`hover:text-[#7673E5] mt-[1.3rem] laptop:text-sm laptop:ml-2 ${getTextColorContact()}`}
+                className="hover:text-[#7673E5] mt-[1.3rem]" 
               >
                 Contact Us
               </Link>
