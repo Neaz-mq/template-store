@@ -113,7 +113,7 @@ const NavBar = () => {
               <div className="mt-[5.5rem] ">
                 <a href="/">
                   <img
-                    className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.3rem] 3xl:pt-1 2xl:ml-[9.3rem] 2xl:pt-1   laptop:ml-[0.4rem] laptop:pt-2"
+                    className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.3rem] 3xl:pt-1  2xl:ml-[9.3rem] 2xl:pt-1   laptop:ml-[0.4rem] laptop:pt-2"
                     src="/prographr.svg"
                     alt=""
                   />
@@ -145,14 +145,14 @@ const NavBar = () => {
 
 
               {
-                user && isAdmin && <li className='mt-3 laptop:mr-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                user && isAdmin && <li className='mt-[0.8rem] laptop:mr-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
               }
               {
                 user && !isAdmin && <li className='mt-3 laptop:mr-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
               }
 
               <Link to="/dashboard/cart">
-                <button className="btn ml-4 mr-16 3xl:mt-2 2xl:mt-2 laptop:mt-2 laptop:ml-2 laptop:mr-10" >
+                <button className="btn ml-4 mr-16 3xl:mt-1 2xl:mt-2 laptop:mt-2 laptop:ml-2 laptop:mr-10" >
                   <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </button>
@@ -168,7 +168,7 @@ const NavBar = () => {
                 </span>
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-10 tablet:mr-10 tablet:-ml-10   py-[1.12rem] 3xl:mt-[6.8rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[9.5rem] laptop:mt-[6.4rem] laptop:-ml-36"
+                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-10 tablet:mr-10 tablet:-ml-10   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[9.5rem] laptop:mt-[6.4rem] laptop:-ml-36"
                 >
                   <span className="-mt-2">Sign Out</span>
                 </button>
@@ -176,7 +176,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4">
-                  <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.8rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-14 desktop:mt-[6.4rem] laptop:mt-[6.4rem]">
+                  <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.3rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-14 desktop:mt-[6.4rem] laptop:mt-[6.4rem]">
                     <span className="-mt-2">Sign in</span>
                   </button>
                 </Link>
@@ -186,7 +186,7 @@ const NavBar = () => {
             {/* "Sign Up" button always visible */}
             <div className="flex items-center">
               <Link to="/sign-up">
-                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.8rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-16 desktop:-ml-16  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10      ">
+                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-16 desktop:-ml-16  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10      ">
                   <span className="-mt-2">Sign Up</span>
                 </button>
               </Link>
