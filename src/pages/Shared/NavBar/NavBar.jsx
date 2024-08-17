@@ -113,7 +113,7 @@ const NavBar = () => {
               <div className="mt-[5.5rem] ">
                 <a href="/">
                   <img
-                    className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.3rem] 3xl:pt-1  2xl:ml-[9.3rem] 2xl:pt-1   laptop:ml-[0.4rem] laptop:pt-2"
+                    className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.45rem] 3xl:pt-1  2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem]   laptop:ml-[0.4rem] laptop:pt-2"
                     src="/prographr.svg"
                     alt=""
                   />
