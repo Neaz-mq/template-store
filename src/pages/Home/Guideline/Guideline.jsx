@@ -10,10 +10,10 @@ const Guideline = () => {
 
     return (
 
-        <div className="container mx-auto 2xl:overflow-x-hidden 3xl:overflow-x-hidden">
+        <section className="container mx-auto overflow-x-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-x-hidden laptop:overflow-x-hidden">
 
             <div className="layout mt-14 lg:mt-52">
-                <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">Become a <strong>template creator</strong></h2>
+                <h2 className="lg:text-4xl text-3xl text-[#2F1C6A] text-center">How a <strong>template sold</strong></h2>
                 <div className="mt-20">
                     <div className="max-w-[740px] mx-auto grid md:grid-cols-1 lg:grid-cols-3 gap-1 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
@@ -28,7 +28,7 @@ const Guideline = () => {
                 <div className="translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
                     {activeTab === 'guidelines' && (
-                        <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
+                        <article className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
                             <div className="col-span-2 text-center flex flex-col items-center">
                                 <div className="border-[10px] shadow-xl shadow-black/20 border-white rounded-full relative">
                                     <div className="absolute w-[120px] h-[120px] bg-white rounded-full animate-ping"></div>
@@ -50,6 +50,7 @@ const Guideline = () => {
 
                                     </div>
                                 </div>
+                                
                                 <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
 
                             </div>
@@ -64,14 +65,13 @@ const Guideline = () => {
                                 </div>
                                 <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Template Sold</p>
                             </div>
-                        </div>
+                        </article>
                     )}
 
                     {activeTab === 'submit' && (
-                        <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
+                        <article className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
                             <div className="col-span-2 text-center flex flex-col items-center">
-                                <div className="border-[10px] shadow-xl shadow-black/20 border-white rounded-full relative">
-
+                                <div className="relative">
                                     <img alt="Template" loading="lazy" width="150" height="167" decoding="async" data-nimg="1" className="relative z-10 w-[120px] h-[120px] bg-[#ECEDF6] object-contain p-2 rounded-full" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslider.2aa6a74b.png&w=256&q=75" style={{ color: 'transparent' }} />
                                 </div>
                                 <p className="font-roboto font-medium text-slate-900 mt-8">Template</p>
@@ -100,13 +100,13 @@ const Guideline = () => {
                                 </div>
                                 <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Template Sold </p>
                             </div>
-                        </div>
+                        </article>
                     )}
 
                     {activeTab === 'approved' && (
-                        <div className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
+                        <article className="max-w-[940px] mx-auto grid gap-8 lg:gap-0 grid-cols-1 lg:grid-cols-12 place-items-center mt-16">
                             <div className="col-span-2 text-center flex flex-col items-center">
-                                <div className="border-[10px] shadow-xl shadow-black/20 border-white rounded-full relative">
+                                <div className="relative">
                                     <div className="absolute w-[120px] h-[120px] bg-white rounded-full "></div>
                                     <img alt="Template" loading="lazy" width="150" height="167" decoding="async" data-nimg="1" className="relative z-10 w-[120px] h-[120px] bg-[#ECEDF6] object-contain p-2 rounded-full" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslider.2aa6a74b.png&w=256&q=75" style={{ color: 'transparent' }} />
                                 </div>
@@ -136,12 +136,11 @@ const Guideline = () => {
                                 </div>
                                 <p className=" font-roboto  font-medium text-slate-900 mt-8 w-[210px]">Template Sold</p>
                             </div>
-                        </div>
+                        </article>
                     )}
-
                 </div>
             </div>
-        </div>
+        </section>
 
     );
 };
