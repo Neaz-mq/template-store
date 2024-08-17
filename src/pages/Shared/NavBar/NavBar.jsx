@@ -53,7 +53,7 @@ const NavBar = () => {
                   />
                 </Link>
 
-                <Link to="/" className="hidden laptop:block text-xl mt-5 ml-14 mr-1 mb-8">
+                <Link to="/" className="hidden laptop:block text-xl mt-5 ml-6 mr-1 mb-8">
                   <img
                     src="/prographr.svg"
                     alt=""
@@ -123,36 +123,36 @@ const NavBar = () => {
           </div>
 
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 ">
-            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8  font-roboto font-medium  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-6 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
+            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8  font-roboto font-medium  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
               <Link
                 to="/template"
-                className="hover:text-[#7673E5] mt-[1.3rem]" 
+                className="hover:text-[#7673E5] mt-[1.3rem] 2xl:mr-8 3xl:mr-0" 
               >
                 Template
               </Link>
               <Link
                 to="/company"
-                className="hover:text-[#7673E5] mt-[1.3rem]" 
+                className="hover:text-[#7673E5] mt-[1.3rem] 2xl:mr-8 3xl:mr-0" 
               >
                 Company
               </Link>
               <Link
                 to="/contact"
-                className="hover:text-[#7673E5] mt-[1.3rem]" 
+                className="hover:text-[#7673E5] mt-[1.3rem] 2xl:mr-8 3xl:mr-0" 
               >
                 Contact Us
               </Link>
 
 
               {
-                user && isAdmin && <li className='mt-[0.8rem] laptop:mr-2'><Link to="/dashboard/adminHome">Dashboard</Link></li>
+                user && isAdmin && <li className='mt-[0.8rem] laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0'><Link to="/dashboard/adminHome">Dashboard</Link></li>
               }
               {
-                user && !isAdmin && <li className='mt-3 laptop:mr-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
+                user && !isAdmin && <li className='mt-[0.8rem]  laptop:mr-2'><Link to="/dashboard/userHome">Dashboard</Link></li>
               }
 
               <Link to="/dashboard/cart">
-                <button className="btn ml-4 mr-16 3xl:mt-1 2xl:mt-2 laptop:mt-2 laptop:ml-2 laptop:mr-10" >
+                <button className="btn ml-4 mr-16 3xl:mt-1 2xl:mt-2  2xl:mr-20 2xl:-ml-4 3xl:-ml-0 3xl:mr-10 laptop:mt-2 laptop:ml-2 laptop:mr-10" >
                   <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </button>
@@ -163,12 +163,12 @@ const NavBar = () => {
           <div className="navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0">
             {user ? (
               <div className="flex items-center">
-                <span className=" hidden  3xl:block 2xl:block font-bold text-2xl text-[#7868E6]  mr-16 3xl:mt-[6.3rem] 3xl:-ml-[12rem] 3xl:mr-[6rem] 2xl:mt-[6.3rem] 2xl:-ml-[7.75rem] 2xl:mr-[4.5rem]  laptop:hidden tablet:hidden font-roboto  ">
+                <span className=" hidden  3xl:block 2xl:block font-bold text-2xl text-[#7868E6]  mr-16 3xl:mt-[6.3rem] 3xl:-ml-[12rem] 3xl:mr-[6rem] 2xl:mt-[6.3rem] 2xl:-ml-[8.2rem] 2xl:mr-[5rem]  laptop:hidden tablet:hidden font-roboto  ">
                   {user.displayName}
                 </span>
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-10 tablet:mr-10 tablet:-ml-10   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[9.5rem] laptop:mt-[6.4rem] laptop:-ml-36"
+                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-10 mr-10 tablet:mr-10 tablet:-ml-10   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[10.7rem] laptop:mt-[6.4rem] laptop:-ml-36"
                 >
                   <span className="-mt-2">Sign Out</span>
                 </button>
@@ -176,7 +176,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4">
-                  <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.3rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-14 desktop:mt-[6.4rem] laptop:mt-[6.4rem]">
+                  <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.3rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem]">
                     <span className="-mt-2">Sign in</span>
                   </button>
                 </Link>
@@ -186,7 +186,7 @@ const NavBar = () => {
             {/* "Sign Up" button always visible */}
             <div className="flex items-center">
               <Link to="/sign-up">
-                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-16 desktop:-ml-16  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10      ">
+                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] mr-4 -ml-10  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10      ">
                   <span className="-mt-2">Sign Up</span>
                 </button>
               </Link>
