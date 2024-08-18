@@ -1,13 +1,31 @@
 import { useState } from "react";
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure'; // Import your custom hook
 
 const Template = () => {
-
     const [counterOn, setCounterOn] = useState(false);
+    const axiosSecure = useAxiosSecure();
+
+    // Fetch the admin stats
+    const { data: stats = {}, isLoading, error } = useQuery({
+        queryKey: ['admin-stats'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/admin-stats');
+            return res.data;
+        }
+    });
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error loading stats: {error.message}</div>;
+    }
 
     return (
-        
         <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
             <div className="container mx-auto overflow-x-hidden">
                 <div className="font-roboto">
@@ -15,25 +33,19 @@ const Template = () => {
                         <div className="flex justify-center gap-4 lg:gap-36 px-5">
                             <div className="text-center" aria-labelledby="templates-sold">
                                 <h2 id="templates-sold" className="text-2xl font-bold lg:text-5xl text-[#7666E4]">
-                                    {counterOn && <CountUp start={0} end={15} duration={3} delay={0} />}+
+                                    {counterOn && <CountUp start={0} end={stats.orders || 0} duration={3} delay={0} />}
                                 </h2>
                                 <p className="text-sm text-[#7666E4]">Templates sold till now</p>
                             </div>
-                            <div className="text-center hidden" aria-labelledby="funds-cleared">
-                                <h2 id="funds-cleared" className="text-2xl font-bold lg:text-5xl text-[#7666E4]">
-                                    $2k+
-                                </h2>
-                                <p className="text-sm text-[#7666E4]">Funds cleared to sellers</p>
-                            </div>
                             <div className="text-center" aria-labelledby="premium-templates">
                                 <h2 id="premium-templates" className="text-2xl font-bold lg:text-5xl text-[#7666E4]">
-                                    {counterOn && <CountUp start={0} end={20} duration={3} delay={0} />}+
+                                    {counterOn && <CountUp start={0} end={stats.templates || 0} duration={3} delay={0} />}
                                 </h2>
                                 <p className="text-sm text-[#7666E4]">Premium templates</p>
                             </div>
                             <div className="text-center" aria-labelledby="free-templates">
                                 <h2 id="free-templates" className="text-2xl font-bold lg:text-5xl text-[#7666E4]">
-                                    {counterOn && <CountUp start={0} end={13} duration={3} delay={0} />}+
+                                    {counterOn && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
                                 </h2>
                                 <p className="text-sm text-[#7666E4]">Free templates</p>
                             </div>
