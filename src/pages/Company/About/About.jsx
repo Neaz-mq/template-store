@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload';
 const About = () => {
     return (
         <div className='min-h-screen'>
-            <div className="w-full bg-[#EDEEF7]">
+            <div className="w-full bg-[#EDEEF7] -mt-24 tablet:-mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0">
                 <div className='container mx-auto overflow-x-hidden min-h-screen -mt-4'>
                     <div className="layout lg:mx-24 mx-3">
                         <div>
@@ -11,7 +11,7 @@ const About = () => {
                                 <div className="relative flex items-center justify-center rounded-[25px]">
                                     <div className="relative ml-2 -mr-2 w-[20rem] h-[15rem] 3xl:h-[22rem] 2xl:h-[20rem] desktop:h-[21rem] laptop:h-[27rem] 3xl:w-[30.2rem] 3xl:ml-36 2xl:w-[23rem] 2xl:ml-28 desktop:w-[26rem] laptop:w-[29rem] desktop:mr-28 desktop:-ml-3 desktop:mt-24 3xl:mt-52 2xl:mt-20 laptop:mt-20">
                                         <LazyLoad height={200} offset={100}>
-                                            <img className='rounded-[20px] w-[20rem] h-[15rem] bg-[#257aa8a0] 3xl:h-[22rem] laptop:h-[27rem] 2xl:h-[20rem] desktop:h-[20rem] 3xl:w-[40rem] 2xl:w-[40rem] desktop:w-[27rem] laptop:w-[29rem]' 
+                                            <img className='rounded-[20px] w-[20rem] h-[15rem] bg-[#257aa8a0] 3xl:h-[22rem] laptop:h-[27rem] 2xl:h-[20rem] desktop:h-[21rem] 3xl:w-[40rem] 2xl:w-[40rem] desktop:w-[27rem] laptop:w-[29rem]' 
                                                 src="https://i.ibb.co/j8hKMkL/prographr-team.jpg" 
                                                 alt="Prographr team" 
                                             />
