@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import LazyLoad from 'react-lazyload';
+import { Link } from 'react-router-dom';
 
 const TemplateItem = ({ item }) => {
 
@@ -13,7 +14,9 @@ const TemplateItem = ({ item }) => {
                 <Link to={`/template/${_id}`}>
                     <div>
                         <div className="overflow-hidden">
+                        <LazyLoad height={200} offset={100}>
                         <img src={image} alt={name} />
+                        </LazyLoad>
                         </div>
                     </div>
 
