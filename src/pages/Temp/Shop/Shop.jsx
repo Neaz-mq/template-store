@@ -25,7 +25,7 @@ const Shop = () => {
     return (
 
         <main>
-        <header className="bg-[#EDEEF7]">
+        <header className="bg-[#EDEEF7] -mt-20 tablet:-mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0">
             <div className="container mx-auto -mt-[1rem]">
                 <div className="max-w-[700px] lg:h-[780px]  mx-auto px-4 flex flex-col items-center justify-center gap-4">
                     <button className="mt-28 3xl:mt-28 2xl:mt-28" onClick={handleShopTemplatesClick}>
