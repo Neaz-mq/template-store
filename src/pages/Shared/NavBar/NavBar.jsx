@@ -104,7 +104,7 @@ const NavBar = () => {
               <div className="mt-[5.5rem] ">
                 <img
                   className="3xl:hidden 2xl:hidden desktop:hidden laptop:hidden  tablet:ml-[2rem]"
-                  src="/public/icon.svg"
+                  src="/icon.svg"
                   alt=""
                 />
               </div>

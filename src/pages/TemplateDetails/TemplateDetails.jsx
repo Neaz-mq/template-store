@@ -1,33 +1,17 @@
-import { useState } from "react";
-import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useCart from "../../hooks/useCart";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
-import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
+import React, { useEffect, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
-
+import { useLoaderData } from "react-router-dom";
+import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
+import LazyLoad from 'react-lazyload';
 
 const TemplateDetails = () => {
+    const template = useLoaderData();
 
-    const [selectedTemplate, setSelectedTemplate] = useState('templateCustom');
-    const [selectedFiles, setSelectedFiles] = useState([]);
-    const [selectedRevisions, setSelectedRevisions] = useState([]);
-    const [showAdditionalImages, setShowAdditionalImages] = useState(false);
-    const { user } = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const axiosSecure = useAxiosSecure();
-    const [, refetch] = useCart();
-    const temp = useLoaderData();
-
-    const { name, _id, price, image, descriptions, specifications, product, files, revisions } = temp;
-
+    const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
     const [templates, setTemplates] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
 
     const initialDisplayCount = 4;
@@ -41,295 +25,179 @@ const TemplateDetails = () => {
                 setDisplayedTemplates(data.slice(0, initialDisplayCount));
             });
 
+        window.scrollTo(0, 0);
     }, []);
 
-
-
-    const handleTemplateChange = (template) => {
-        setSelectedTemplate(template);
-    };
-
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
+    useEffect(() => {
+        if (template && template.picture && template.picture.length > 0) {
+            setSelectedImage(template.picture[0]);
+            setSelectedIndex(0);
         }
-        e.target.value = ""; // Reset the select input
+    }, [template]);
+
+    if (!template) {
+        return <div>Loading...</div>;
+    }
+
+    const { _id, price, image, description, picture, specifications, product, files } = template;
+
+    const handleTemplateChange = (templateType) => {
+        setSelectedTemplate(templateType);
     };
 
-    const handleRevisionChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedRevisions.includes(selectedValue)) {
-            setSelectedRevisions([...selectedRevisions, selectedValue]);
-        }
-        e.target.value = ""; // Reset the select input
+    const handleImageClick = () => {
+        setIsModalOpen(true);
     };
 
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
+    const handleThumbnailClick = useCallback((src, index) => {
+        setSelectedImage(src);
+        setSelectedIndex(index);
+    }, []);
 
-    const handleAddToCart = () => {
-        if (user && user.email) {
-            const cartItem = {
-                tempId: _id,
-                email: user.email,
-                name,
-                image,
-                price,
-                descriptions,
-                specifications,
-                product,
-                files,
-                revisions
-
-            };
-
-            axiosSecure.post('/carts', cartItem)
-                .then(res => {
-                    if (res.data.insertedId) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: `${name} added to your cart`,
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        refetch();
-                    }
-                });
-
-        }
-
-        else {
-            Swal.fire({
-                title: "You are not Signed In",
-                text: "Please sign in to add to the cart?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, Sign In!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/sign-in', { state: { from: location } });
-                }
-            });
-        }
-    };
+   
 
     return (
 
-        <div>
-            <div>
+        <div className="bg-[#EDEEF7] ml-2 overflow-hidden -mt-[4.6rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 h-[250rem] 3xl:h-[114rem] 2xl:h-[110rem] desktop:h-[108rem] laptop:h-[100rem] tablet:h-[180rem] min-h-[calc(120vh-450px)]">
+            <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Premium</title>
-                    <meta name="description" content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more." />
+                    <meta
+                        name="description"
+                        content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more."
+                    />
                     <meta name="keywords" content="templates, creativity, community, guidelines, ideas, testimonials" />
                     <link rel="canonical" href="https://www.prographr.com/premium" />
                 </Helmet>
-            </div>
 
-            <div className="lg:ml-20 mb-16">
-                <div className="mt-14 flex lg:flex-row flex-col gap-6 ml-2">
-                    <div className="lg:w-[65%] w-[97%]">
-                        <h2 className="text-2xl text-[#2F1C6A] pb-5 font-medium">
-                            Premium <strong>Graphics Template</strong>
-                        </h2>
-                        <div className="bg-[#EDEEF7] rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4">
-                            <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
-                                <img src={image} className="lg:max-h-[300px]  max-h-[200px] object-contain ml-8 -mr-4 " alt="" />
-                                <img src={image} className="lg:max-h-[300px]  max-h-[200px] object-contain -ml-4 mr-4" alt="" />
-                            </div>
-                        </div>
-                        <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0">
-                            <img src="https://i.ibb.co/GtL3624/1.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/tQf0zSY/10.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/WWqZ87h/2.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/wygHX9R/4.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/yFsgRSH/5.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-                            <img src="https://i.ibb.co/mSdYgC1/7.jpg" className="w-[75px] h-[75px] object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]" alt="" />
-
-                            {!showAdditionalImages && (
-                                <div
-                                    className="w-[47px] h-[47px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-4 ml-2"
-                                    onClick={() => setShowAdditionalImages(true)}
-                                >
-                                    <FontAwesomeIcon icon={faChevronRight} size="1x" />
-                                </div>
-                            )}
-
-                            {showAdditionalImages && (
-                                <>
-                                    <div className="flex gap-4 mt-4 ml-2 lg:ml-0">
+                <div className="lg:ml-20 mb-16">
+                    <div className="md:mt-14 flex lg:flex-row flex-col gap-6 ml-2">
+                        <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] ">
+                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-roboto 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
+                                Premium <strong>Graphics Template</strong>
+                            </h2>
+                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[7.9rem] 3xl:-mr-20 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
+                                <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
+                                    <LazyLoad height={200} offset={100}>
                                         <img
-                                            src="https://i.ibb.co/CHk5qwv/11.jpg"
-                                            className="w-[75px] h-[75px] -mt-4 -ml-2 lg:-mt-0 lg:-ml-0  object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
-                                            alt=""
+                                            src={selectedImage || image}
+                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] rounded-[20px] cursor-pointer"
+                                            alt="Template"
+                                            onClick={handleImageClick}
                                         />
-                                        <img
-                                            src="https://i.ibb.co/sbtqzwN/9.jpg"
-                                            className="w-[75px] h-[75px] -mt-4 lg:-mt-0 object-contain bg-[#EDEEF7] rounded-lg p-3 cursor-pointer hover:bg-[#7666E3]"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div
-                                        className="w-[47px] h-[47px] flex items-center justify-center bg-[#EDEEF7] rounded-full cursor-pointer hover:bg-[#7666E3] mt-8 ml-5"
-                                        onClick={() => setShowAdditionalImages(false)}
-                                    >
-                                        <FontAwesomeIcon icon={faChevronRight} size="1x" style={{ transform: "rotate(180deg)" }} />
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col items-center mt-12" style={{ width: "60%" }}>
-                        <div className={`border ${selectedTemplate === 'templateCustom' ? 'border-primary' : 'border-gray-400'} rounded-[20px] p-8 lg:w-[87%] lg:h-[28%] w-[160%] h-[100%] lg:-ml-14 lg:mr-9 ml-40  cursor-pointer`} onClick={() => handleTemplateChange('templateCustom')}>
-                            <div className="flex justify-between pb-3">
-                                <div className="flex gap-3 font-bold">
-                                    <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'templateCustom'} readOnly />
-                                    <h2 className="font-roboto ">Template</h2>
+                                    </LazyLoad>
                                 </div>
-                                <div className="font-roboto font-medium ">${price}</div>
                             </div>
-                            <div className="pt-2 border-t font-roboto font-medium">
-                                We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5">
+                                {picture.map((src, index) => (
+                                    <LazyLoad key={index} height={75} offset={100}>
+                                        <img
+                                            src={src}
+                                            className={`w-[75px] h-[75px] object-contain rounded-lg p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#7666E3]' : 'bg-slate-50 hover:bg-[#7666E3]'}`}
+                                            alt="Template"
+                                            onClick={() => handleThumbnailClick(src, index)}
+                                        />
+                                    </LazyLoad>
+                                ))}
                             </div>
                         </div>
 
-                        {/* Additional section with the same style in column layout */}
-
-                        <div className="hidden flex flex-col items-center mt-12 ml-24 lg:ml-0">
-                            <div className={`border ${selectedTemplate === 'customizeTemplate' ? 'border-primary' : 'border-gray-400'} rounded-[20px] lg:-ml-9 ml-16 p-8 lg:mr-12 lg:w-[102%] lg:h-[100%] w-[98%] h-[100%] cursor-pointer`} onClick={() => handleTemplateChange('customizeTemplate')}>
+                        <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[40%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                            <div
+                                className={`border ${selectedTemplate === "templateCustom" ? "border-primary" : "border-gray-400"
+                                    } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                onClick={() => handleTemplateChange("templateCustom")}
+                            >
                                 <div className="flex justify-between pb-3">
                                     <div className="flex gap-3 font-bold">
-                                        <input className="radio radio-primary" type="radio" checked={selectedTemplate === 'customizeTemplate'} readOnly />
-                                        <h2 className="font-roboto lg:ml-0 ">Template + Customization</h2>
+                                        <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
+                                        <h2 className="font-roboto">Template</h2>
                                     </div>
-                                    <div className="font-roboto font-medium   ">$00</div>
+                                    <div className="font-roboto font-medium">${price}</div>
                                 </div>
                                 <div className="pt-2 border-t font-roboto font-medium">
-                                </div>
-
-                                <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
-                                    <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-                                        <div className="font-roboto font-medium lg:mr-2 mr-8">Revisions:</div>
-                                        <select
-                                            className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                            onChange={(e) => {
-                                                const newValue = e.target.value;
-                                                setSelectedRevisions([...selectedRevisions, newValue]);
-                                            }}
-                                            value={selectedRevisions[selectedRevisions.length - 1] || ''}
-                                        >
-                                            {revisions.map((revision, index) => (
-                                                <option key={index} value={revision} className={`option-${_id}`}>
-                                                    {revision}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-
-                                    <div className="flex items-center">
-                                        <div className="font-roboto font-medium lg:ml-3 ml-10 mr-6">Files:</div>
-                                        <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
-                                            <option value="">All Files</option>
-                                            {files.map((file, index) => (
-                                                <option key={index} value={file} className={`option-${_id}`}>{file}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
-                                    {selectedFiles.map((file, index) => (
-                                        <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                                            <span className="">{file}</span>
-                                            <button onClick={() => handleRemoveFile(file)}>
-                                                <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
-                                            </button>
-                                        </div>
-                                    ))}
+                                    We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                 </div>
                             </div>
+
+                            <a href="/contact">
+                                <button className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:-ml-10 lg:w-[31rem] mt-10 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4.8rem] 2xl:mr-[4.8rem] 3xl:w-[30rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                    Contact Us
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
+                        <div className="flex-1 lg:mb-8 ml-3">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Descriptions</h3>
+                            <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-roboto leading-relaxed">
+                                {description}
+                            </p>
+                        </div>
+                        <div className="flex-1 lg:mb-8 lg:-mr-16 ml-3 lg:ml-2">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium mb-2 font-roboto">Item Specifications</h3>
+                            <ul className="text-gray-500 mt-1 font-roboto leading-6 list-disc ml-5">
+                                {specifications.map((spec, index) => (
+                                    <li key={index} className="mb-2">
+                                        {spec}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
-                        {/* Add to Cart button */}
-                        <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-7 lg:w-[31rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
-                            Add to Cart
-                        </button>
+                        <div className="flex-1 lg:mb-8 lg:ml-14 lg:-mr-2 ml-3">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Product Specs</h3>
+                            <ul className="text-gray-500 mt-2 font-roboto leading-8 list-disc ml-5">
+                                {product.map((spec, index) => (
+                                    <li key={index}>
+                                        {spec}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                        {/* Check more items */}
-                        <Link to="http://localhost:5173/template">
-                            <button className="bg-gray-300 text-slate-900 font-semibold mr-14 lg:-ml-7 lg:w-[31rem] py-3 rounded-lg mt-4 hover:bg-[#d1bbff] btn w-[20rem] ml-56 ">
-                                Check more items
+                        <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Files Included</h3>
+                            <div className="mt-2">
+                                {files.map((file, index) => (
+                                    <p key={index} className="text-gray-500 mt-2 font-roboto leading-relaxed">
+                                        {file}
+                                    </p>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="layout lg:py-20 py-12 mt-6">
+                        <div className="flex items-center justify-between mb-10">
+                            <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-roboto 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
+                                Free <strong>Graphics Templates</strong>
+                            </h2>
+                            <button className="btn hidden mr-20 md:ml-4 ml-20 font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
+                                <span className="-mt-1">Printing and Advertising</span>
+                                <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path>
+                                </svg>
                             </button>
-                        </Link>
-
-                    </div>
-                </div>
-
-                <div className="mt-14 flex flex-wrap lg:flex-row flex-col gap-12">
-                    {/* Descriptions */}
-                    <div className="flex-1 lg:mb-8 ml-3">
-                        <h3 className="text-xl text-[#2F1C6A] font-medium">Descriptions</h3>
-                        <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-medium leading-relaxed" >
-                            {descriptions}
-                        </p>
-                    </div>
-
-                    {/* Item Specifications */}
-                    <div className="flex-1 lg:mb-8 lg:-mr-9 ml-3 lg:ml-0">
-                        <h3 className="text-xl text-[#2F1C6A] font-medium mb-2">Item Specifications</h3>
-                        {specifications.split('\n').map((specifications, index) => (
-                            <p
-                                key={index}
-                                className="text-gray-500 mt-1 font-medium leading-relaxed"
-                                style={{ whiteSpace: 'nowrap' }}
-                            >
-                                {specifications}
-                            </p>
-                        ))}
-                    </div>
-
-                    {/* Product Specs */}
-                    <div className="flex-1 lg:mb-8 lg:ml-8 ml-3">
-                        <h3 className="text-xl text-[#2F1C6A] font-medium">Product Specs</h3>
-                        <p className="text-gray-500 mt-2 font-medium leading-relaxed">
-                            {product}
-                        </p>
-                    </div>
-
-                    {/* Files Included */}
-                    <div className="flex-1 lg:mr-10 ml-3 lg:ml-0">
-                        <h3 className="text-xl text-[#2F1C6A] font-medium">Files Included</h3>
-                        <div className="mt-2">
-                            {files.map((file, index) => (
-                                <p key={index} className="text-gray-500 mt-2 font-medium leading-relaxed">{file}</p>
+                        </div>
+                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
+                            {displayedTemplates.map(item => (
+                                <FreeTemplate
+                                    key={item._id}
+                                    item={item}
+                                />
                             ))}
                         </div>
                     </div>
                 </div>
-
-                <div className="layout lg:py-20 py-12 mt-6 ">
-                    <div className="flex items-center justify-between mb-10">
-                        <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium">Free <strong>Graphics Templates</strong></h2>
-                        <button className="btn mr-20 ml-4  font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold  gap-4 shadow-none p-3 pl-4 border-slate-700"><span className="-mt-1">Printing and Advertising</span> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path></svg></button>
-                    </div>
-                    <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 mr-20 " data-aos="lg:fade-right" data-aos-duration="700">
-                        {displayedTemplates.map(item =>
-                            <FreeTemplate
-                                key={item._id}
-                                item={item}
-                            />
-                        )}
-                    </div>
-                </div>
             </div>
+
+            
+           
         </div>
-
-
+           
+        
     );
 };
 

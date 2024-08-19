@@ -34,7 +34,7 @@ const Banner = () => {
 
   return (
 
-    <section className="w-full bg-[#EDEEF7] font-roboto pb-[4rem] pt-6 3xl:-mt-4 2xl:-mt-2 desktop:-mt-2 laptop:-mt-4 tablet:-mt-24 -mt-24 ">
+    <section className="w-full bg-[#EDEEF7] font-roboto pb-[4rem] pt-6 3xl:-mt-4 2xl:-mt-2 desktop:-mt-4 laptop:-mt-4 tablet:-mt-24 -mt-24 ">
       <div className='container mx-auto overflow-x-hidden'>
         <div className="layout pb-10 lg:pb-0 lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5 pt-12 lg:-mt-36 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-24 3xl:ml-60 2xl:ml-60 3xl:mt-2 2xl:mt-2">
