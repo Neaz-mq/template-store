@@ -47,16 +47,14 @@ const AddTemplates = () => {
 
             // Send the template data to the server with image URLs
             const templateItem = {
-                name: data.name,
+                type: data.type,
                 category: data.category,
                 price: parseFloat(data.price),
-                details: data.details,
                 image: res.data.data.display_url,
                 description: data.description,
                 specifications: specificationsArray, // Convert to array
                 product: productArray,               // Convert to array
-                files: filesArray,                   // Convert to array
-                type: data.type,
+                files: filesArray,                   // Convert to array         
                 picture: uploadedPicture // Store pictures as an array
             };
 
@@ -69,7 +67,7 @@ const AddTemplates = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} has been added as a template.`,
+                    title: `${data.type} has been added as a template.`,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -93,20 +91,7 @@ const AddTemplates = () => {
             <h2 className="text-3xl text-center font-bold">Add Premium Template</h2>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Template Name*</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Template Name"
-                            {...register('name', { required: true })}
-                            required
-                            className="input input-bordered w-full"
-                        />
-                    </div>
-
-                    <div className="form-control w-full my-6">
+                <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Type*</span>
                         </label>
@@ -118,6 +103,8 @@ const AddTemplates = () => {
                             className="input input-bordered w-full"
                         />
                     </div>
+
+                  
                     
                     <div className="flex gap-6">
                         {/* Category */}
@@ -132,8 +119,11 @@ const AddTemplates = () => {
                             >
                                 <option disabled value="default">Select a category</option>
                                 <option value="agency">Agency</option>
-                                <option value="ecommerce">Ecommerce</option>
                                 <option value="business">Business</option>
+                                <option value="medical">Medical</option>
+                                <option value="construction">Construction</option>
+                                <option value="financial">Financial</option>
+                                <option value="food">Food</option>
                                 <option value="portfolio">Portfolio</option>
                             </select>
                         </div>
@@ -153,17 +143,6 @@ const AddTemplates = () => {
                         </div>
                     </div>
 
-                    {/* Template Details */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Template Details</span>
-                        </label>
-                        <textarea
-                            {...register('details')}
-                            className="textarea textarea-bordered h-24"
-                            placeholder="Details"
-                        ></textarea>
-                    </div>
 
                     {/* Descriptions */}
                     <div className="form-control">

@@ -17,7 +17,7 @@ const ManageTemplates = () => {
 
     const indexOfLastTemplate = currentPage * TEMPLATES_PER_PAGE;
     const indexOfFirstTemplate = indexOfLastTemplate - TEMPLATES_PER_PAGE;
-    const filteredTemplates = template.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
+    const filteredTemplates = template.filter(item => item.type.toLowerCase().includes(search.toLowerCase()));
     const currentItems = filteredTemplates.slice(indexOfFirstTemplate, indexOfLastTemplate);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);

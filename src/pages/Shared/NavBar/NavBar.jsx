@@ -143,6 +143,13 @@ const NavBar = () => {
                 Contact Us
               </Link>
 
+              {/* <Link
+                to="/market"
+                className="hover:text-[#7673E5] mt-[1.3rem] 2xl:mr-8 3xl:mr-0" 
+              >
+                Market
+              </Link> */}
+
 
               {
                 user && isAdmin && <li className='mt-[0.8rem] laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0'><Link to="/dashboard/adminHome">Dashboard</Link></li>

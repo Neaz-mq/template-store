@@ -16,7 +16,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
             .then(data => {
                 setTemplates(data);
                 // Initially display a subset of templates based on the selected category and search query
-                const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+                const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
             });
 
@@ -25,20 +25,20 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
     const handleViewMore = () => {
         if (!showAll) {
             // Display all templates based on the selected category and search query
-            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates);
         }
 
         else {
             // Display a subset of templates based on the selected category and search query
-            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
         }
 
         setShowAll(!showAll);
     };
 
-    // Check if there are any templates to display
+    // Check that there are any templates to display
     if (displayedTemplates.length === 0) {
         return null;
     }
@@ -79,8 +79,8 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
 };
 
 AgencyTemplate.propTypes = {
-    selectedCategory: PropTypes.array.isRequired,
-    searchQuery: PropTypes.string.isRequired,
+    selectedCategory: PropTypes.array.isRequired, // Update prop type to array
+    searchQuery: PropTypes.string.isRequired, // Add prop type for search query
 };
 
 export default AgencyTemplate;

@@ -30,6 +30,7 @@ import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllAdmins from "../pages/Dashboard/AllAdmins/AllAdmins";
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -62,6 +63,11 @@ export const router = createBrowserRouter([
         path: '/company',
         element: <Company></Company>
       },
+
+      // {
+      //   path: '/market',
+      //   element: <Market></Market>
+      // },
 
       {
         path: '/contact',
