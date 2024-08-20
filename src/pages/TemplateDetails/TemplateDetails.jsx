@@ -1,8 +1,14 @@
 import React, { useEffect, useState, useCallback } from "react";
+import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useCart from "../../hooks/useCart";
+
 import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
+import { FaSearchPlus, FaSearchMinus } from 'react-icons/fa'; // Import icons
 
 const TemplateDetails = () => {
     const template = useLoaderData();
@@ -12,8 +18,14 @@ const TemplateDetails = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
-
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [zoomLevel, setZoomLevel] = useState(1); // Add zoom level state
+    const [isHovering, setIsHovering] = useState(false); // Hover state
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCart();
     const initialDisplayCount = 4;
 
     useEffect(() => {
@@ -35,11 +47,34 @@ const TemplateDetails = () => {
         }
     }, [template]);
 
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden'; // Disable scrolling
+
+            const handleWheel = (event) => {
+                if (isHovering) { // Only zoom on hover
+                    event.preventDefault();
+                    setZoomLevel(prevZoom => {
+                        const newZoom = prevZoom + (event.deltaY < 0 ? 0.1 : -0.1);
+                        return Math.max(1, newZoom); // Ensure zoom level doesn't go below 1
+                    });
+                }
+            };
+
+            window.addEventListener('wheel', handleWheel, { passive: true });
+
+            return () => {
+                document.body.style.overflow = ''; // Re-enable scrolling
+                window.removeEventListener('wheel', handleWheel);
+            };
+        }
+    }, [isModalOpen, isHovering]);
+
     if (!template) {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, image, description, picture, specifications, product, files } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -54,7 +89,90 @@ const TemplateDetails = () => {
         setSelectedIndex(index);
     }, []);
 
-   
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setZoomLevel(1); // Reset zoom level on close
+    };
+
+    const handleNextImage = () => {
+        const nextIndex = (selectedIndex + 1) % picture.length;
+        setSelectedImage(picture[nextIndex]);
+        setSelectedIndex(nextIndex);
+    };
+
+    const handlePreviousImage = () => {
+        const prevIndex = (selectedIndex - 1 + picture.length) % picture.length;
+        setSelectedImage(picture[prevIndex]);
+        setSelectedIndex(prevIndex);
+    };
+
+    const zoomIn = () => {
+        setZoomLevel(prev => prev + 0.1); // Increase zoom level
+    };
+
+    const zoomOut = () => {
+        setZoomLevel(prev => Math.max(1, prev - 0.1)); // Decrease zoom level, but not below 1
+    };
+
+    const handleWheel = (event) => {
+        event.preventDefault();
+        if (event.deltaY < 0) {
+            zoomIn();
+        } else {
+            zoomOut();
+        }
+    };
+
+    const handleAddToCart = () => {
+        if (user && user.email) {
+            //send cart item to the database
+
+            const cartItem = {
+                tempId: _id,
+                email: user.email,  
+                type,        
+                image,
+                price,
+                description,
+                specifications,
+                product,
+                files
+                
+            }
+            axiosSecure.post('http://localhost:5000/carts', cartItem)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `${type} added to your cart`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        // refetch cart to update the cart items count
+                        refetch();
+                    }
+                })      
+    }
+    else {
+        Swal.fire({
+            title: "You are not Signed In",
+            text: "Please signin to add to the cart?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Sign In!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                //   send the user to the login page
+                navigate('/sign-in', { state: { from: location } })
+            }
+        });
+    }
+}
 
     return (
 
@@ -120,11 +238,11 @@ const TemplateDetails = () => {
                                 </div>
                             </div>
 
-                            <a href="/contact">
-                                <button className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:-ml-10 lg:w-[31rem] mt-10 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4.8rem] 2xl:mr-[4.8rem] 3xl:w-[30rem] 2xl:w-[25rem] desktop:w-[18rem]">
-                                    Contact Us
+                              {/* Add to Cart button */}
+                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-4 lg:w-[32rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
+                                Add to Cart
                                 </button>
-                            </a>
+                            
                         </div>
                     </div>
 
@@ -193,11 +311,77 @@ const TemplateDetails = () => {
                 </div>
             </div>
 
-            
-           
+            {isModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 overflow-hidden">
+                    <div
+                        className="relative p-4 sm:p-8 md:p-12 lg:p-16 xl:p-20 3xl:p-2 overflow-hidden"
+                        style={{
+                            transform: `scale(${zoomLevel})`, // Apply zoom level to the modal container
+                            transformOrigin: 'center', // Center the scaling
+                            transition: 'transform 0.3s ease-out', // Smooth zoom transition
+                        }}
+                    >
+                        {/* Modal Content */}
+
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setIsHovering(true)}
+                            onMouseLeave={() => setIsHovering(false)}
+                        >
+                            <img
+                                src={selectedImage || image}
+                                className="w-full h-auto max-h-screen object-contain rounded-lg"
+                                alt="Template"
+                            />
+
+                            {/* Fixed Size Buttons */}
+                            <button
+                                className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
+                                onClick={closeModal}
+                                style={{ zIndex: 10 }} // Ensure the close button is above other elements
+                            >
+                                &times;
+                            </button>
+
+                            <button
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
+                                onClick={handlePreviousImage}
+                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                            >
+                                &lt;
+                            </button>
+
+                            <button
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
+                                onClick={handleNextImage}
+                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                            >
+                                &gt;
+                            </button>
+
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-3 flex gap-4 " style={{ zIndex: 10 }}>
+                                <button
+                                    onClick={zoomOut}
+                                    className="text-white bg-black p-3 rounded-full text-sm focus:outline-none transition-transform duration-300 ease-in-out hover:bg-[#7666E3] active:bg-[#5a4ab2] active:scale-95 "
+                                >
+                                    <FaSearchMinus />
+                                </button>
+                                <button
+                                    onClick={zoomIn}
+                                    className="text-white bg-black p-3 rounded-full text-sm focus:outline-none transition-transform duration-300 ease-in-out hover:bg-[#7666E3] active:bg-[#5a4ab2] active:scale-95"
+                                >
+                                    <FaSearchPlus />
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
         </div>
-           
-        
+
     );
 };
 
