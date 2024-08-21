@@ -12,33 +12,39 @@ const AddTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const [mainImage, setMainImage] = useState(null);
     const [picture, setPicture] = useState([]);
 
     const onSubmit = async (data) => {
         console.log(data);
 
-        // Upload main image
-        const imageFile = { image: data.image[0] };
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
+       // Upload main image
+       const imageFile = mainImage ? { image: mainImage } : null;
+       let mainImageUrl = '';
+       if (imageFile) {
+           const res = await axiosPublic.post(image_hosting_api, imageFile, {
+               headers: {
+                   'content-type': 'multipart/form-data'
+               }
+           });
+           if (res.data.success) {
+               mainImageUrl = res.data.data.display_url;
+           }
+       }
 
-        if (res.data.success) {
-            // Upload additional images
-            const uploadedPicture = await Promise.all(
-                picture.map(async (picture) => {
-                    const formData = new FormData();
-                    formData.append('image', picture);
-                    const pictureRes = await axiosPublic.post(image_hosting_api, formData, {
-                        headers: {
-                            'content-type': 'multipart/form-data'
-                        }
-                    });
-                    return pictureRes.data.data.display_url;
-                })
-            );
+       // Upload additional images
+       const uploadedPicture = await Promise.all(
+           picture.map(async (picture) => {
+               const formData = new FormData();
+               formData.append('image', picture);
+               const pictureRes = await axiosPublic.post(image_hosting_api, formData, {
+                   headers: {
+                       'content-type': 'multipart/form-data'
+                   }
+               });
+               return pictureRes.data.data.display_url;
+           })
+       );
 
             // Convert fields to arrays
             const specificationsArray = data.specifications.split('\n').map(item => item.trim()).filter(item => item);
@@ -50,12 +56,12 @@ const AddTemplates = () => {
                 type: data.type,
                 category: data.category,
                 price: parseFloat(data.price),
-                image: res.data.data.display_url,
+                image: mainImageUrl,
                 description: data.description,
-                specifications: specificationsArray, // Convert to array
-                product: productArray,               // Convert to array
-                files: filesArray,                   // Convert to array         
-                picture: uploadedPicture // Store pictures as an array
+                specifications: specificationsArray,
+                product: productArray,
+                files: filesArray,
+                picture: uploadedPicture
             };
 
             const templateRes = await axiosSecure.post('/template', templateItem);
@@ -63,6 +69,7 @@ const AddTemplates = () => {
             if (templateRes.data.insertedId) {
                 // Show success popup
                 reset();
+                setMainImage(null); // Clear the selected main image
                 setPicture([]); // Clear the selected pictures
                 Swal.fire({
                     position: "top-end",
@@ -72,13 +79,19 @@ const AddTemplates = () => {
                     timer: 1500
                 });
             }
-        }
-    };
+        };
+
+        const handleMainImageChange = (e) => {
+            const file = e.target.files[0];
+            setMainImage(file);
+        };
 
     const handlePictureChange = (e) => {
         const selectedFiles = Array.from(e.target.files);
         setPicture((prevPictures) => [...prevPictures, ...selectedFiles]);
     };
+
+   
 
     const removePicture = (index) => {
         const newPictures = [...picture];
@@ -195,17 +208,29 @@ const AddTemplates = () => {
                     {/* Main Image */}
                     <div className="form-control w-full my-6">
                         <input
-                            {...register('image', { required: true })}
                             type="file"
+                            accept="image/*"
                             className="file-input w-full max-w-xs"
+                            onChange={handleMainImageChange}
                         />
+                        {mainImage && (
+                            <div className="relative mt-4">
+                                <img
+                                    src={URL.createObjectURL(mainImage)}
+                                    alt="Selected"
+                                    className="w-24 h-24 object-cover"
+                                />
+                               
+                            </div>
+                        )}
                     </div>
 
-                    {/* Additional Images */}
-                    <div className="form-control w-full my-6">
+                  {/* Additional Images */}
+                  <div className="form-control w-full my-6">
                         <input
                             multiple
                             type="file"
+                            accept="image/*"
                             className="file-input w-full max-w-xs"
                             onChange={handlePictureChange}
                         />

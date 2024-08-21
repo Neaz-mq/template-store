@@ -29,6 +29,8 @@ const UpdateTemplate = () => {
     const [selectedFiles, setSelectedFiles] = useState(files || []);
     const [selectedPictures, setSelectedPictures] = useState(picture || []);
     const [isLoading, setIsLoading] = useState(false);
+    const [newImage, setNewImage] = useState(null); // State for the new image
+    const [newPictures, setNewPictures] = useState([]); // State for new pictures
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
@@ -37,10 +39,11 @@ const UpdateTemplate = () => {
     const onSubmit = async (data) => {
         setIsLoading(true);
         let imageUrl = image;
-        let updatedPictures = [...selectedPictures];
+        let updatedPictures = [...selectedPictures, ...newPictures];
 
-        if (data.image && data.image.length > 0) {
-            const imageFile = { image: data.image[0] };
+        // Handle main image upload
+        if (newImage) {
+            const imageFile = { image: newImage };
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
                 headers: {
                     'content-type': 'multipart/form-data'
@@ -122,6 +125,27 @@ const UpdateTemplate = () => {
 
     const handleRemovePicture = (pictureUrl) => {
         setSelectedPictures(selectedPictures.filter(p => p !== pictureUrl));
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setNewImage(file);
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                // Display the new image in the preview
+                const previewImage = event.target.result;
+                document.getElementById('mainImagePreview').src = previewImage;
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleNewPicturesChange = (e) => {
+        const files = Array.from(e.target.files);
+        if (files.length > 0) {
+            setNewPictures([...newPictures, ...files.map(file => URL.createObjectURL(file))]);
+        }
     };
 
     return (
@@ -260,23 +284,23 @@ const UpdateTemplate = () => {
                         ))}
                     </div>
 
-                    {/* Image */}
-                    <div className="form-control w-full my-6">
+                  {/* Main Image Upload */}
+                  <div className="form-control w-full my-6">
                         <label className="label">
-                            <span className="label-text">Image*</span>
+                            <span className="label-text">Main Image*</span>
                         </label>
-                        <div className="flex flex-col lg:flex-row items-center">
-                            {image && (
-                                <div className="mr-4 mb-4 lg:mb-0">
-                                    <img src={image} alt="Template Preview" className="max-w-xs max-h-48" />
-                                </div>
-                            )}
-                            <input
-                                {...register('image')}
-                                type="file"
-                                className="file-input w-full lg:w-auto"
-                            />
-                        </div>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            className="file-input file-input-bordered w-full"
+                        />
+                        <img
+                            id="mainImagePreview"
+                            src={newImage ? URL.createObjectURL(newImage) : image}
+                            alt="Main Preview"
+                            className="mt-4 w-36  h-auto"
+                        />
                     </div>
 
 
@@ -285,6 +309,7 @@ const UpdateTemplate = () => {
                         <label className="label">
                             <span className="label-text">Additional Pictures</span>
                         </label>
+                        
                         <div className="flex flex-col lg:flex-row items-center">
                             {selectedPictures.map((pictureUrl, index) => (
                                 <div key={index} className="mr-4 mb-4 lg:mb-0 relative">
