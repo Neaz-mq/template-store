@@ -39,7 +39,7 @@ const ManageTemplates = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `${temp.name} has been deleted`,
+                        title: `${temp.type} has been deleted`,
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -87,7 +87,7 @@ const ManageTemplates = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
-                                <th>Template Name</th>
+                                <th>Template Type</th>
                                 <th>Price</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -106,7 +106,7 @@ const ManageTemplates = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{temp.name}</td>
+                                    <td>{temp.type}</td>
                                     <td>${temp.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateTemplate/${temp._id}`}>

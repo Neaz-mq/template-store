@@ -239,7 +239,7 @@ const TemplateDetails = () => {
                             </div>
 
                               {/* Add to Cart button */}
-                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-14 lg:-ml-4 lg:w-[32rem] mt-10 hover:bg-[#4c16b1] btn w-[20rem] ml-56 ">
+                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:-ml-10 lg:w-[31rem] mt-10 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4.8rem] 2xl:mr-[4.8rem] 3xl:w-[30rem] 2xl:w-[25rem] desktop:w-[18rem]">
                                 Add to Cart
                                 </button>
                             
