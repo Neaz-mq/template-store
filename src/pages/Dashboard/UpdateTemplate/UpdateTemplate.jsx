@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,30 +13,25 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const UpdateTemplate = () => {
 
     const {
-        name,
+        type,
         category,
-        details,
-        descriptions,
+        description,
         specifications,
         product,
-        revisions,
         files,
         image,
+        picture,
         price,
         _id
     } = useLoaderData();
 
     const { register, handleSubmit, reset } = useForm();
-    const [selectedFiles, setSelectedFiles] = useState(files || []);
-    const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
+    const [selectedFiles, setSelectedFiles] = useState(files || []);   
     const [isLoading, setIsLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-    useEffect(() => {
-        setSelectedFiles(files || []);
-        setSelectedRevisions(revisions || []);
-    }, [files, revisions]);
+  
 
     const onSubmit = async (data) => {
         setIsLoading(true);
@@ -55,16 +50,16 @@ const UpdateTemplate = () => {
         }
 
         const templateItem = {
-            name: data.name,
+            type: data.type,
             category: data.category,
             price: parseFloat(data.price),
-            details: data.details,
             image: imageUrl,
-            descriptions: data.descriptions,
+            picture: pictureUrl,
+            description: data.description,
             specifications: data.specifications,
             product: data.product,
             files: selectedFiles,
-            revisions: selectedRevisions,
+            
         };
 
         const templateRes = await axiosSecure.patch(`/template/${_id}`, templateItem);
@@ -72,7 +67,7 @@ const UpdateTemplate = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${data.name} is updated in the template`,
+                title: `${data.type} is updated in the template`,
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -98,21 +93,13 @@ const UpdateTemplate = () => {
         e.target.value = ""; // Reset the select input
     };
 
-    const handleRevisionChange = (e) => {
-        const selectedRate = e.target.value;
-        if (selectedRate && !selectedRevisions.includes(selectedRate)) {
-            setSelectedRevisions([...selectedRevisions, selectedRate]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
+   
 
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
-    const handleRemoveRevision = (revision) => {
-        setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
-    };
+   
 
     return (
 
@@ -127,13 +114,13 @@ const UpdateTemplate = () => {
                     {/* Template Name */}
                     <div className="form-control w-full my-6">
                         <label className="label">
-                            <span className="label-text">Template Name*</span>
+                            <span className="label-text">Template Type*</span>
                         </label>
                         <input
                             type="text"
-                            defaultValue={name}
-                            placeholder="Template Name"
-                            {...register('name', { required: true })}
+                            defaultValue={type}
+                            placeholder="Template Type"
+                            {...register('type', { required: true })}
                             required
                             className="input input-bordered w-full"
                         />
@@ -152,8 +139,11 @@ const UpdateTemplate = () => {
                             >
                                 <option disabled value="default">Select a category</option>
                                 <option value="agency">Agency</option>
-                                <option value="ecommerce">Ecommerce</option>
                                 <option value="business">Business</option>
+                                <option value="medical">Medical</option>
+                                <option value="construction">Construction</option>
+                                <option value="financial">Financial</option>
+                                <option value="food">Food</option>
                                 <option value="portfolio">Portfolio</option>
                             </select>
                         </div>
@@ -174,27 +164,16 @@ const UpdateTemplate = () => {
                         </div>
                     </div>
 
-                    {/* Template details */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Details</span>
-                        </label>
-                        <textarea
-                            defaultValue={details}
-                            {...register('details')}
-                            className="textarea textarea-bordered w-full h-24"
-                            placeholder="Details"
-                        ></textarea>
-                    </div>
+                   
 
                     {/* descriptions */}
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text">Descriptions</span>
+                            <span className="label-text">Description</span>
                         </label>
                         <textarea
-                            defaultValue={descriptions}
-                            {...register('descriptions')}
+                            defaultValue={description}
+                            {...register('description')}
                             className="textarea textarea-bordered w-full h-24"
                             placeholder="Descriptions"
                         ></textarea>
@@ -226,37 +205,6 @@ const UpdateTemplate = () => {
                         ></textarea>
                     </div>
 
-                    {/* Revisions */}
-                    <div className="flex flex-col lg:flex-row gap-6">
-                        <div className="form-control w-full my-6">
-                            <label className="label">
-                                <span className="label-text">Revisions*</span>
-                            </label>
-                            <select
-                                defaultValue=""
-                                className="select select-bordered w-full"
-                                onChange={handleRevisionChange}
-                            >
-                                <option value="">Select Revisions</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="mt-4 flex flex-wrap">
-                        {selectedRevisions.map((revision, index) => (
-                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                                <span>{revision}</span>
-                                <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
 
                     {/* Files Included */}
                     <div className="flex flex-col lg:flex-row gap-6">
@@ -270,13 +218,10 @@ const UpdateTemplate = () => {
                                 onChange={handleFileChange}
                             >
                                 <option value="">Select files</option>
-                                <option value="Adobe Illustrator">Adobe Illustrator</option>
-                                <option value="Adobe Photoshop">Adobe Photoshop</option>
-                                <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
+                                <option value=".AI">.AI</option>
+                                <option value=".EPS">.EPS</option>
+                                <option value=".PSD">.PSD</option>
                                 <option value="Canva">Canva</option>
-                                <option value="Figma">Figma</option>
-                                <option value="Adobe InDesign">Adobe InDesign</option>
-                                <option value="Microsoft Word">Microsoft Word</option>
                             </select>
                         </div>
                     </div>

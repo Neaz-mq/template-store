@@ -91,7 +91,7 @@ const AddTemplates = () => {
             <h2 className="text-3xl text-center font-bold">Add Premium Template</h2>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-control w-full my-6">
+                    <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Type*</span>
                         </label>
@@ -104,8 +104,8 @@ const AddTemplates = () => {
                         />
                     </div>
 
-                  
-                    
+
+
                     <div className="flex gap-6">
                         {/* Category */}
                         <div className="form-control w-full my-6">
