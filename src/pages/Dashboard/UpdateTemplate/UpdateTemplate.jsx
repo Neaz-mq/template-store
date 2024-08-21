@@ -26,16 +26,18 @@ const UpdateTemplate = () => {
     } = useLoaderData();
 
     const { register, handleSubmit, reset } = useForm();
-    const [selectedFiles, setSelectedFiles] = useState(files || []);   
+    const [selectedFiles, setSelectedFiles] = useState(files || []);
+    const [selectedPictures, setSelectedPictures] = useState(picture || []);
     const [isLoading, setIsLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-  
+
 
     const onSubmit = async (data) => {
         setIsLoading(true);
         let imageUrl = image;
+        let updatedPictures = [...selectedPictures];
 
         if (data.image && data.image.length > 0) {
             const imageFile = { image: data.image[0] };
@@ -49,17 +51,36 @@ const UpdateTemplate = () => {
             }
         }
 
+        // Handle additional picture uploads
+        if (data.newPictures && data.newPictures.length > 0) {
+            for (let i = 0; i < data.newPictures.length; i++) {
+                const pictureFile = { image: data.newPictures[i] };
+                const res = await axiosPublic.post(image_hosting_api, pictureFile, {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                });
+                if (res.data.success) {
+                    updatedPictures.push(res.data.data.display_url);
+                }
+            }
+        }
+
+        // Ensure fields are arrays
+        const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
+        const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
+        const filesArray = Array.isArray(selectedFiles) ? selectedFiles : selectedFiles.split(',');
+
         const templateItem = {
             type: data.type,
             category: data.category,
             price: parseFloat(data.price),
             image: imageUrl,
-            picture: pictureUrl,
+            picture: updatedPictures,
             description: data.description,
-            specifications: data.specifications,
-            product: data.product,
-            files: selectedFiles,
-            
+            specifications: specificationsArray,
+            product: productArray,
+            files: filesArray,
         };
 
         const templateRes = await axiosSecure.patch(`/template/${_id}`, templateItem);
@@ -93,13 +114,15 @@ const UpdateTemplate = () => {
         e.target.value = ""; // Reset the select input
     };
 
-   
+
 
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
-   
+    const handleRemovePicture = (pictureUrl) => {
+        setSelectedPictures(selectedPictures.filter(p => p !== pictureUrl));
+    };
 
     return (
 
@@ -111,7 +134,7 @@ const UpdateTemplate = () => {
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
-                    {/* Template Name */}
+                    {/* Template Type */}
                     <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Template Type*</span>
@@ -164,7 +187,7 @@ const UpdateTemplate = () => {
                         </div>
                     </div>
 
-                   
+
 
                     {/* descriptions */}
                     <div className="form-control">
@@ -179,13 +202,13 @@ const UpdateTemplate = () => {
                         ></textarea>
                     </div>
 
-                    {/* specifications */}
+                    {/* Specifications */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Item Specifications</span>
                         </label>
                         <textarea
-                            defaultValue={specifications}
+                            defaultValue={specifications.join('\n')}
                             {...register('specifications')}
                             className="textarea textarea-bordered w-full h-24"
                             placeholder="Specifications"
@@ -198,7 +221,7 @@ const UpdateTemplate = () => {
                             <span className="label-text">Product Specifications</span>
                         </label>
                         <textarea
-                            defaultValue={product}
+                            defaultValue={product.join('\n')}
                             {...register('product')}
                             className="textarea textarea-bordered w-full h-24"
                             placeholder="Product Specifications"
@@ -255,6 +278,35 @@ const UpdateTemplate = () => {
                             />
                         </div>
                     </div>
+
+
+                    {/* Pictures */}
+                    <div className="form-control w-full my-6">
+                        <label className="label">
+                            <span className="label-text">Additional Pictures</span>
+                        </label>
+                        <div className="flex flex-col lg:flex-row items-center">
+                            {selectedPictures.map((pictureUrl, index) => (
+                                <div key={index} className="mr-4 mb-4 lg:mb-0 relative">
+                                    <img src={pictureUrl} alt="Template Picture" className="max-w-xs max-h-48" />
+                                    <button
+                                        type="button"
+                                        onClick={() => handleRemovePicture(pictureUrl)}
+                                        className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                    >
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </button>
+                                </div>
+                            ))}
+                            <input
+                                {...register('newPictures')}
+                                type="file"
+                                multiple
+                                className="file-input w-full lg:w-auto"
+                            />
+                        </div>
+                    </div>
+
 
                     <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
                         {isLoading ? 'Updating...' : 'Update Template'}
