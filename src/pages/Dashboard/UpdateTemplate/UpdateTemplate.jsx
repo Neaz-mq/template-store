@@ -11,7 +11,6 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateTemplate = () => {
-
     const {
         type,
         category,
@@ -34,16 +33,15 @@ const UpdateTemplate = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-
-
     const onSubmit = async (data) => {
         setIsLoading(true);
         let imageUrl = image;
-        let updatedPictures = [...selectedPictures, ...newPictures];
+        let updatedPictures = [...selectedPictures];
 
         // Handle main image upload
         if (newImage) {
-            const imageFile = { image: newImage };
+            const imageFile = new FormData();
+            imageFile.append('image', newImage);
             const res = await axiosPublic.post(image_hosting_api, imageFile, {
                 headers: {
                     'content-type': 'multipart/form-data'
@@ -55,9 +53,10 @@ const UpdateTemplate = () => {
         }
 
         // Handle additional picture uploads
-        if (data.newPictures && data.newPictures.length > 0) {
-            for (let i = 0; i < data.newPictures.length; i++) {
-                const pictureFile = { image: data.newPictures[i] };
+        if (newPictures.length > 0) {
+            for (let i = 0; i < newPictures.length; i++) {
+                const pictureFile = new FormData();
+                pictureFile.append('image', newPictures[i]);
                 const res = await axiosPublic.post(image_hosting_api, pictureFile, {
                     headers: {
                         'content-type': 'multipart/form-data'
@@ -95,9 +94,7 @@ const UpdateTemplate = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-        }
-
-        else {
+        } else {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
@@ -117,8 +114,6 @@ const UpdateTemplate = () => {
         e.target.value = ""; // Reset the select input
     };
 
-
-
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
@@ -133,7 +128,6 @@ const UpdateTemplate = () => {
             setNewImage(file);
             const reader = new FileReader();
             reader.onload = (event) => {
-                // Display the new image in the preview
                 const previewImage = event.target.result;
                 document.getElementById('mainImagePreview').src = previewImage;
             };
@@ -141,23 +135,28 @@ const UpdateTemplate = () => {
         }
     };
 
+    // Function to handle the addition of new pictures
     const handleNewPicturesChange = (e) => {
         const files = Array.from(e.target.files);
-        if (files.length > 0) {
-            setNewPictures([...newPictures, ...files.map(file => URL.createObjectURL(file))]);
-        }
+        const newPictureUrls = files.map((file) => URL.createObjectURL(file));
+
+        // Ensure that only unique pictures are added
+        const updatedPictures = [...selectedPictures];
+        newPictureUrls.forEach((url) => {
+            if (!updatedPictures.includes(url)) {
+                updatedPictures.push(url);
+            }
+        });
+
+        setSelectedPictures(updatedPictures);
     };
 
+
     return (
-
         <div className="container mx-auto px-4">
-
             <h2 className="text-3xl text-center font-bold mb-10">Update Premium Templates</h2>
-
             <div>
-
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-
                     {/* Template Type */}
                     <div className="form-control w-full my-6">
                         <label className="label">
@@ -211,8 +210,6 @@ const UpdateTemplate = () => {
                         </div>
                     </div>
 
-
-
                     {/* descriptions */}
                     <div className="form-control">
                         <label className="label">
@@ -252,7 +249,6 @@ const UpdateTemplate = () => {
                         ></textarea>
                     </div>
 
-
                     {/* Files Included */}
                     <div className="flex flex-col lg:flex-row gap-6">
                         <div className="form-control w-full my-6">
@@ -273,74 +269,91 @@ const UpdateTemplate = () => {
                         </div>
                     </div>
 
-                    <div className="mt-4 flex flex-wrap">
-                        {selectedFiles.map((file, index) => (
-                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                                <span>{file}</span>
-                                <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                </button>
-                            </div>
-                        ))}
+                    {/* Display Selected Files */}
+                    <div className="form-control w-full my-6">
+                        <label className="label">
+                            <span className="label-text">Selected Files</span>
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                            {selectedFiles.map((file, index) => (
+                                <div key={index} className="bg-gray-200 p-2 rounded flex items-center">
+                                    <span>{file}</span>
+                                    <button
+                                        type="button"
+                                        className="ml-2 text-red-500"
+                                        onClick={() => handleRemoveFile(file)}
+                                    >
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                  {/* Main Image Upload */}
-                  <div className="form-control w-full my-6">
+                    {/* Main Image */}
+                    <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Main Image*</span>
                         </label>
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={handleImageChange}
                             className="file-input file-input-bordered w-full"
+                            onChange={handleImageChange}
                         />
-                        <img
-                            id="mainImagePreview"
-                            src={newImage ? URL.createObjectURL(newImage) : image}
-                            alt="Main Preview"
-                            className="mt-4 w-36  h-auto"
-                        />
+                        <div className="mt-4">
+                            <img
+                                id="mainImagePreview"
+                                src={image}
+                                alt="Main Preview"
+                                className="w-36  h-auto"
+                            />
+                        </div>
                     </div>
 
-
-                    {/* Pictures */}
+                    {/* Additional Pictures */}
                     <div className="form-control w-full my-6">
                         <label className="label">
                             <span className="label-text">Additional Pictures</span>
                         </label>
-
                         <input
-                                {...register('newPictures')}
-                                type="file"
-                                multiple
-                                className="file-input w-full lg:w-auto mb-5"
-                            />
-                        
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            className="file-input w-full lg:w-auto mb-5"
+                            onChange={handleNewPicturesChange}
+                        />
                         <div className="flex flex-col lg:flex-row items-center">
                             {selectedPictures.map((pictureUrl, index) => (
                                 <div key={index} className="mr-4 mb-4 lg:mb-0 relative">
-                                    <img src={pictureUrl} alt="Template Picture" className="w-36 h-44" />
+                                    <img
+                                        src={pictureUrl}
+                                        alt={`Additional Preview ${index + 1}`}
+                                        className="w-36 h-44"
+                                    />
                                     <button
                                         type="button"
-                                        onClick={() => handleRemovePicture(pictureUrl)}
                                         className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                        onClick={() => handleRemovePicture(pictureUrl)}
                                     >
                                         <FontAwesomeIcon icon={faTimes} />
                                     </button>
                                 </div>
                             ))}
-                           
                         </div>
                     </div>
 
-
-                    <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
-                        {isLoading ? 'Updating...' : 'Update Template'}
-                    </button>
-
+                    {/* Submit Button */}
+                    <div className="form-control mt-6">
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Updating...' : 'Update Template'}
+                        </button>
+                    </div>
                 </form>
-
             </div>
         </div>
     );
