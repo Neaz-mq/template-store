@@ -309,11 +309,18 @@ const UpdateTemplate = () => {
                         <label className="label">
                             <span className="label-text">Additional Pictures</span>
                         </label>
+
+                        <input
+                                {...register('newPictures')}
+                                type="file"
+                                multiple
+                                className="file-input w-full lg:w-auto mb-5"
+                            />
                         
                         <div className="flex flex-col lg:flex-row items-center">
                             {selectedPictures.map((pictureUrl, index) => (
                                 <div key={index} className="mr-4 mb-4 lg:mb-0 relative">
-                                    <img src={pictureUrl} alt="Template Picture" className="max-w-xs max-h-48" />
+                                    <img src={pictureUrl} alt="Template Picture" className="w-36 h-44" />
                                     <button
                                         type="button"
                                         onClick={() => handleRemovePicture(pictureUrl)}
@@ -323,12 +330,7 @@ const UpdateTemplate = () => {
                                     </button>
                                 </div>
                             ))}
-                            <input
-                                {...register('newPictures')}
-                                type="file"
-                                multiple
-                                className="file-input w-full lg:w-auto"
-                            />
+                           
                         </div>
                     </div>
 
@@ -345,4 +347,3 @@ const UpdateTemplate = () => {
 };
 
 export default UpdateTemplate;
-
