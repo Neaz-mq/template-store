@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,29 +11,38 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const UpdateFreeTemplate = () => {
+    const {
+        type,
+        category,
+        description,
+        specifications,
+        product,
+        files,
+        image,
+        picture,
+        price,
+        _id
+    } = useLoaderData();
 
-    const { name, category, details, descriptions, specifications, product, revisions, files, image, price, _id } = useLoaderData();
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [selectedFiles, setSelectedFiles] = useState(files || []);
-    const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
+    const [selectedPictures, setSelectedPictures] = useState(picture || []);
     const [isLoading, setIsLoading] = useState(false);
+    const [newImage, setNewImage] = useState(null); // State for the new image
+    const [newPictures, setNewPictures] = useState([]); // State for new pictures
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
-
-    useEffect(() => {
-        setSelectedFiles(files || []);
-        setSelectedRevisions(revisions || []);
-    }, [files, revisions]);
-
 
     const onSubmit = async (data) => {
         setIsLoading(true);
         let imageUrl = image;
+        let updatedPictures = [...selectedPictures];
 
-        if (data.image && data.image.length > 0) {
-            const formData = new FormData();
-            formData.append('image', data.image[0]);
-            const res = await axiosPublic.post(image_hosting_api, formData, {
+        // Handle main image upload
+        if (newImage) {
+            const imageFile = new FormData();
+            imageFile.append('image', newImage);
+            const res = await axiosPublic.post(image_hosting_api, imageFile, {
                 headers: {
                     'content-type': 'multipart/form-data'
                 }
@@ -43,17 +52,37 @@ const UpdateFreeTemplate = () => {
             }
         }
 
+        // Handle additional picture uploads
+        if (newPictures.length > 0) {
+            for (let i = 0; i < newPictures.length; i++) {
+                const pictureFile = new FormData();
+                pictureFile.append('image', newPictures[i]);
+                const res = await axiosPublic.post(image_hosting_api, pictureFile, {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                });
+                if (res.data.success) {
+                    updatedPictures.push(res.data.data.display_url);
+                }
+            }
+        }
+
+        // Ensure fields are arrays
+        const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
+        const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
+        const filesArray = Array.isArray(selectedFiles) ? selectedFiles : selectedFiles.split(',');
+
         const templateItem = {
-            name: data.name,
+            type: data.type,
             category: data.category,
             price: data.price,
-            details: data.details,
             image: imageUrl,
-            descriptions: data.descriptions,
-            specifications: data.specifications,
-            product: data.product,
-            files: selectedFiles,
-            revisions: selectedRevisions,
+            picture: updatedPictures,
+            description: data.description,
+            specifications: specificationsArray,
+            product: productArray,
+            files: filesArray,
         };
 
         const templateRes = await axiosSecure.patch(`/free/${_id}`, templateItem);
@@ -61,17 +90,15 @@ const UpdateFreeTemplate = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `${data.name} is updated in the template`,
+                title: `${data.type} is updated in the template`,
                 showConfirmButton: false,
                 timer: 1500
             });
-        }
-
-        else {
+        } else {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: `Failed to update ${data.name}`,
+                title: `Failed to update ${data.type}`,
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -87,212 +114,246 @@ const UpdateFreeTemplate = () => {
         e.target.value = ""; // Reset the select input
     };
 
-    const handleRevisionChange = (e) => {
-        const selectedRate = e.target.value;
-        if (selectedRate && !selectedRevisions.includes(selectedRate)) {
-            setSelectedRevisions([...selectedRevisions, selectedRate]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
-
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
-    const handleRemoveRevision = (revision) => {
-        setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
+    const handleRemovePicture = (pictureUrl) => {
+        setSelectedPictures(selectedPictures.filter(p => p !== pictureUrl));
     };
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setNewImage(file);
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const previewImage = event.target.result;
+                document.getElementById('mainImagePreview').src = previewImage;
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    // Function to handle the addition of new pictures
+    const handleNewPicturesChange = (e) => {
+        const files = Array.from(e.target.files);
+        const newPictureUrls = files.map((file) => URL.createObjectURL(file));
+
+        // Ensure that only unique pictures are added
+        const updatedPictures = [...selectedPictures];
+        newPictureUrls.forEach((url) => {
+            if (!updatedPictures.includes(url)) {
+                updatedPictures.push(url);
+            }
+        });
+
+        setSelectedPictures(updatedPictures);
+    };
+
+
     return (
-
         <div className="container mx-auto px-4">
-
-            <h2 className="text-3xl text-center font-bold mb-10">Update Free Templates</h2>
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="form-control w-full">
-                    <label className="label">
-                        <span className="label-text">Template Name*</span>
-                    </label>
-                    <input
-                        type="text"
-                        defaultValue={name}
-                        placeholder="Template Name"
-                        {...register('name', { required: 'Template Name is required' })}
-                        required
-                        className="input input-bordered w-full"
-                    />
-                    {errors.name && <span className="text-red-500">{errors.name.message}</span>}
-                </div>
-
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="form-control w-full">
+            <h2 className="text-3xl text-center font-bold mb-10">Update Premium Templates</h2>
+            <div>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    {/* Template Type */}
+                    <div className="form-control w-full my-6">
                         <label className="label">
-                            <span className="label-text">Category*</span>
-                        </label>
-                        <select
-                            defaultValue={category}
-                            {...register('category', { required: 'Category is required' })}
-                            className="select select-bordered w-full"
-                        >
-                            <option disabled value="default">Select a category</option>
-                            <option value="agency">Agency</option>
-                            <option value="ecommerce">Ecommerce</option>
-                            <option value="business">Business</option>
-                            <option value="portfolio">Portfolio</option>
-                        </select>
-                        {errors.category && <span className="text-red-500">{errors.category.message}</span>}
-                    </div>
-
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Price*</span>
+                            <span className="label-text">Template Type*</span>
                         </label>
                         <input
                             type="text"
-                            defaultValue={price}
-                            placeholder="Price"
-                            {...register('price', { required: true })}
-                            className="input input-bordered w-full" />
-                        {errors.price && <span className="text-red-500">{errors.price.message}</span>}
-                    </div>
-
-                </div>
-
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Details</span>
-                    </label>
-                    <textarea
-                        defaultValue={details}
-                        {...register('details')}
-                        className="textarea textarea-bordered w-full h-24"
-                        placeholder="Details"
-                    ></textarea>
-                </div>
-
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Descriptions</span>
-                    </label>
-                    <textarea
-                        defaultValue={descriptions}
-                        {...register('descriptions')}
-                        className="textarea textarea-bordered w-full h-24"
-                        placeholder="Descriptions"
-                    ></textarea>
-                </div>
-
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Item Specifications</span>
-                    </label>
-                    <textarea
-                        defaultValue={specifications}
-                        {...register('specifications')}
-                        className="textarea textarea-bordered w-full h-24"
-                        placeholder="Specifications"
-                    ></textarea>
-                </div>
-
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Product Specifications</span>
-                    </label>
-                    <textarea
-                        defaultValue={product}
-                        {...register('product')}
-                        className="textarea textarea-bordered w-full h-24"
-                        placeholder="Product Specifications"
-                    ></textarea>
-                </div>
-
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Revisions*</span>
-                        </label>
-                        <select
-                            defaultValue=""
-                            className="select select-bordered w-full"
-                            onChange={handleRevisionChange}
-                        >
-                            <option value="">Select Revisions</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div className="mt-4 flex flex-wrap">
-                    {selectedRevisions.map((revision, index) => (
-                        <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                            <span>{revision}</span>
-                            <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                            </button>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Files Included*</span>
-                        </label>
-                        <select
-                            defaultValue=""
-                            className="select select-bordered w-full"
-                            onChange={handleFileChange}
-                        >
-                            <option value="">Select files</option>
-                            <option value="Adobe Illustrator">Adobe Illustrator</option>
-                            <option value="Adobe Photoshop">Adobe Photoshop</option>
-                            <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
-                            <option value="Canva">Canva</option>
-                            <option value="Figma">Figma</option>
-                            <option value="Adobe InDesign">Adobe InDesign</option>
-                            <option value="Microsoft Word">Microsoft Word</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div className="mt-4 flex flex-wrap">
-                    {selectedFiles.map((file, index) => (
-                        <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                            <span>{file}</span>
-                            <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                            </button>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="form-control w-full my-6">
-                    <label className="label">
-                        <span className="label-text">Image*</span>
-                    </label>
-                    <div className="flex flex-col lg:flex-row items-center">
-                        {image && (
-                            <div className="mr-4 mb-4 lg:mb-0">
-                                <img src={image} alt="Template Preview" className="max-w-xs max-h-48" />
-                            </div>
-                        )}
-                        <input
-                            {...register('image')}
-                            type="file"
-                            className="file-input w-full lg:w-auto"
+                            defaultValue={type}
+                            placeholder="Template Type"
+                            {...register('type', { required: true })}
+                            required
+                            className="input input-bordered w-full"
                         />
                     </div>
-                </div>
-                <button type="submit" className="btn w-full lg:w-auto" disabled={isLoading}>
-                    {isLoading ? 'Updating...' : 'Update Free Template'}
-                </button>
-            </form>
 
+                    {/* category */}
+                    <div className="flex flex-col lg:flex-row gap-6">
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Category*</span>
+                            </label>
+                            <select
+                                defaultValue={category}
+                                {...register('category', { required: true })}
+                                className="select select-bordered w-full"
+                            >
+                                <option disabled value="default">Select a category</option>
+                                <option value="agency">Agency</option>
+                                <option value="business">Business</option>
+                                <option value="medical">Medical</option>
+                                <option value="construction">Construction</option>
+                                <option value="financial">Financial</option>
+                                <option value="food">Food</option>
+                                <option value="portfolio">Portfolio</option>
+                            </select>
+                        </div>
+
+                        {/* price */}
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Price*</span>
+                            </label>
+                            <input
+                                type="text"
+                                defaultValue={price}
+                                placeholder="Price"
+                                {...register('price', { required: true })}
+                                className="input input-bordered w-full"
+                            />
+                        </div>
+                    </div>
+
+                    {/* descriptions */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Description</span>
+                        </label>
+                        <textarea
+                            defaultValue={description}
+                            {...register('description')}
+                            className="textarea textarea-bordered w-full h-24"
+                            placeholder="Descriptions"
+                        ></textarea>
+                    </div>
+
+                    {/* Specifications */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Item Specifications</span>
+                        </label>
+                        <textarea
+                            defaultValue={specifications.join('\n')}
+                            {...register('specifications')}
+                            className="textarea textarea-bordered w-full h-24"
+                            placeholder="Specifications"
+                        ></textarea>
+                    </div>
+
+                    {/* Product */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Product Specifications</span>
+                        </label>
+                        <textarea
+                            defaultValue={product.join('\n')}
+                            {...register('product')}
+                            className="textarea textarea-bordered w-full h-24"
+                            placeholder="Product Specifications"
+                        ></textarea>
+                    </div>
+
+                    {/* Files Included */}
+                    <div className="flex flex-col lg:flex-row gap-6">
+                        <div className="form-control w-full my-6">
+                            <label className="label">
+                                <span className="label-text">Files Included*</span>
+                            </label>
+                            <select
+                                defaultValue=""
+                                className="select select-bordered w-full"
+                                onChange={handleFileChange}
+                            >
+                                <option value="">Select files</option>
+                                <option value=".AI">.AI</option>
+                                <option value=".EPS">.EPS</option>
+                                <option value=".PSD">.PSD</option>
+                                <option value="Canva">Canva</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Display Selected Files */}
+                    <div className="form-control w-full my-6">
+                        <label className="label">
+                            <span className="label-text">Selected Files</span>
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                            {selectedFiles.map((file, index) => (
+                                <div key={index} className="bg-gray-200 p-2 rounded flex items-center">
+                                    <span>{file}</span>
+                                    <button
+                                        type="button"
+                                        className="ml-2 text-red-500"
+                                        onClick={() => handleRemoveFile(file)}
+                                    >
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Main Image */}
+                    <div className="form-control w-full my-6">
+                        <label className="label">
+                            <span className="label-text">Main Image*</span>
+                        </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            className="file-input file-input-bordered w-full"
+                            onChange={handleImageChange}
+                        />
+                        <div className="mt-4">
+                            <img
+                                id="mainImagePreview"
+                                src={image}
+                                alt="Main Preview"
+                                className="w-36  h-auto"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Additional Pictures */}
+                    <div className="form-control w-full my-6">
+                        <label className="label">
+                            <span className="label-text">Additional Pictures</span>
+                        </label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            multiple
+                            className="file-input w-full lg:w-auto mb-5"
+                            onChange={handleNewPicturesChange}
+                        />
+                        <div className="flex flex-col lg:flex-row items-center">
+                            {selectedPictures.map((pictureUrl, index) => (
+                                <div key={index} className="mr-4 mb-4 lg:mb-0 relative">
+                                    <img
+                                        src={pictureUrl}
+                                        alt={`Additional Preview ${index + 1}`}
+                                        className="w-36 h-44"
+                                    />
+                                    <button
+                                        type="button"
+                                        className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                        onClick={() => handleRemovePicture(pictureUrl)}
+                                    >
+                                        <FontAwesomeIcon icon={faTimes} />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div className="form-control mt-6">
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            disabled={isLoading}
+                        >
+                            {isLoading ? 'Updating...' : 'Update Template'}
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };

@@ -34,7 +34,7 @@ const ManageFreeTemplates = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `${template.name} has been deleted`,
+                        title: `${template.type} has been deleted`,
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -49,7 +49,7 @@ const ManageFreeTemplates = () => {
     }
 
     const filteredTemplates = useMemo(() => {
-        return freeTemplates.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
+        return freeTemplates.filter(item => item.type.toLowerCase().includes(search.toLowerCase()));
     }, [freeTemplates, search]);
 
     const currentItems = useMemo(() => {
@@ -94,7 +94,7 @@ const ManageFreeTemplates = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
-                                <th>Template Name</th>
+                                <th>Template Type</th>
                                 <th>Price</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -113,7 +113,7 @@ const ManageFreeTemplates = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{template.name}</td>
+                                    <td>{template.type}</td>
                                     <td>{template.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateFreeTemplate/${template._id}`}>
@@ -143,7 +143,7 @@ const ManageFreeTemplates = () => {
                                 <img src={template.image} alt={template.name} className="w-full h-20 object-cover rounded-md" />
                             </figure>
                             <div className="card-body p-2">
-                                <h2 className="card-title text-xs">{template.name}</h2>
+                                <h2 className="card-title text-xs">{template.price}</h2>
                                 <p className="text-xs">Price: ${template.price}</p>
                                 <div className="card-actions justify-end mt-1">
                                     <Link to={`/dashboard/updateFreeTemplate/${template._id}`}>
