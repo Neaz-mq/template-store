@@ -248,7 +248,7 @@ const TemplateDetails = () => {
 
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Descriptions</h3>
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Description</h3>
                             <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-roboto leading-relaxed">
                                 {description}
                             </p>

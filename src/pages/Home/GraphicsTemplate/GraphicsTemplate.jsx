@@ -16,7 +16,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
             .then(data => {
                 setTemplates(data);
                 // Initially display a subset of templates based on the selected category and search query
-                const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+                const filteredTemplates = data.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
             });
 
@@ -24,10 +24,10 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
 
     const handleViewMore = () => {
         if (!showAll) {
-            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates);
         } else {
-            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+            const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
         }
         setShowAll(!showAll);
@@ -56,7 +56,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
                 </div>
             </header>
 
-            <main className="layout lg:-mt-20 py-12 -mt-16 lg:mx-20">
+            <section className="layout lg:-mt-20 py-12 -mt-16 lg:mx-20">
                 <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-40 3xl:mr-36 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-40 2xl:mr-44 2xl:gap-x-4 2xl:gap-y-8" data-aos="fade-up" data-aos-duration="700">
                     {displayedTemplates.map(item => (
                         <FreeTemplate
@@ -65,9 +65,9 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
                         />
                     ))}
                 </div>
-            </main>
+            </section>
 
-            <footer className="flex justify-center mt-16 mb-10 lg:mb-0">
+            <div className="flex justify-center mt-16 mb-10 lg:mb-0">
                 <button
                     className="btn mr-2 lg:mr-4 font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-[10px] font-semibold gap-4 shadow-none pt-1 pl-4 border-slate-700"
                     onClick={handleViewMore}
@@ -75,7 +75,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
                 >
                     <span className="-mt-1">{showAll ? "Show Less" : "View More Top Selling Items"}</span>
                 </button>
-            </footer>
+            </div>
         </div>
     );
 };
