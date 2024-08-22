@@ -101,7 +101,7 @@ const AddTemplates = () => {
 
     return (
         <div>
-            <h2 className="text-3xl text-center font-bold">Add Premium Template</h2>
+            <h2 className="text-3xl text-center font-bold">Upload Premium Template</h2>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full my-6">

@@ -17,7 +17,7 @@ const Dashboard = () => {
         { to: "/dashboard/adminHome", icon: <BiSolidCategory />, label: "Admin Home" },
         { to: "/dashboard/uploadTemplates", icon: <AiOutlineUpload />, label: "Upload Templates" },
         { to: "/dashboard/manageTemplates", icon: <FaList />, label: "Manage Templates" },
-        { to: "/dashboard/addFreeTemplates", icon: <AiOutlineUpload />, label: "Add Free Templates" },
+        { to: "/dashboard/uploadFreeTemplates", icon: <AiOutlineUpload />, label: "Upload Free Templates" },
         { to: "/dashboard/manageFreeTemplates", icon: <FaList />, label: "Manage Free Templates" },
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },

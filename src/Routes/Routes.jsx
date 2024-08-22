@@ -149,7 +149,7 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: 'addFreeTemplates',
+        path: 'uploadFreeTemplates',
         element: <AdminRoute><AddFreeTemplates></AddFreeTemplates></AdminRoute>
       },
 
