@@ -5,7 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { RxUpload } from "react-icons/rx";
 import { useDropzone } from "react-dropzone";
-import { HiTemplate } from "react-icons/hi";
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -42,22 +42,22 @@ const AddTemplates = () => {
     const onSubmit = async (data) => {
         console.log(data);
 
-          // Upload main image
-       const imageFile = mainImage ? { image: mainImage } : null;
-       let mainImageUrl = '';
-       if (imageFile) {
-           const res = await axiosPublic.post(image_hosting_api, imageFile, {
-               headers: {
-                   'content-type': 'multipart/form-data'
-               }
-           });
-           if (res.data.success) {
-               mainImageUrl = res.data.data.display_url;
-           }
-       }
+        // Upload main image
+        const imageFile = mainImage ? { image: mainImage } : null;
+        let mainImageUrl = '';
+        if (imageFile) {
+            const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            });
+            if (res.data.success) {
+                mainImageUrl = res.data.data.display_url;
+            }
+        }
 
-         // Upload additional images
-         const uploadedPicture = await Promise.all(
+        // Upload additional images
+        const uploadedPicture = await Promise.all(
             picture.map(async (picture) => {
                 const formData = new FormData();
                 formData.append('image', picture);
@@ -89,21 +89,21 @@ const AddTemplates = () => {
         };
 
         const templateRes = await axiosSecure.post('/template', templateItem);
-            console.log(templateRes.data);
-            if (templateRes.data.insertedId) {
-                // Show success popup
-                reset();
-                setMainImage(null); // Clear the selected main image
-                setPicture([]); // Clear the selected pictures
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data.type} has been added as a template.`,
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
-        };
+        console.log(templateRes.data);
+        if (templateRes.data.insertedId) {
+            // Show success popup
+            reset();
+            setMainImage(null); // Clear the selected main image
+            setPicture([]); // Clear the selected pictures
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${data.type} has been added as a template.`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    };
 
 
     const removePicture = (index) => {
@@ -268,42 +268,42 @@ const AddTemplates = () => {
                                 ></textarea>
                             </div>
 
-                             {/* Product Specifications */}
-                    <div className="form-control w-full my-6 h-auto px-6">
-                        <label className="label">
-                            <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
-                        </label>
-                        <textarea
-                            {...register('product')}
-                            className="textarea textarea-bordered h-24"
-                            placeholder="Product Specifications"
-                        ></textarea>
-                    </div>
+                            {/* Product Specifications */}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('product')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Product Specifications"
+                                ></textarea>
+                            </div>
 
-                     {/* Files Included */}
-                     <div className="form-control w-full my-6 h-auto px-6">
-                        <label className="label">
-                            <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
-                        </label>
-                        <textarea
-                            {...register('files')}
-                            className="textarea textarea-bordered h-24"
-                            placeholder="Files"
-                        ></textarea>
-                    </div>
+                            {/* Files Included */}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('files')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Files"
+                                ></textarea>
+                            </div>
 
                         </div>
 
-                        
 
-                         
+
+
                     </div>
 
 
 
 
-                    <button className="btn mt-6">
-                        Add Template <HiTemplate className="ml-4" />
+                    <button className="btn  mt-6 hover:bg-[#7666E3] px-20  bg-[#9A8EE8] text-white">
+                        Publish
                     </button>
                 </form>
             </div>
