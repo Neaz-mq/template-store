@@ -3,9 +3,8 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from 'react';
+import { RxUpload } from 'react-icons/rx';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -24,19 +23,26 @@ const UpdateFreeTemplate = () => {
         _id
     } = useLoaderData();
 
-    const { register, handleSubmit, reset } = useForm();
-    const [selectedFiles, setSelectedFiles] = useState(files || []);
-    const [selectedPictures, setSelectedPictures] = useState(picture || []);
+    const { register, handleSubmit} = useForm();
     const [isLoading, setIsLoading] = useState(false);
+    const [existingPictures, setExistingPictures] = useState(picture);
+    const [imageURLs, setImageURLs] = useState([]); // Object URLs for new pictures
     const [newImage, setNewImage] = useState(null); // State for the new image
     const [newPictures, setNewPictures] = useState([]); // State for new pictures
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
+    useEffect(() => {
+        // Clean up object URLs when the component unmounts
+        return () => {
+            imageURLs.forEach(url => URL.revokeObjectURL(url));
+        };
+    }, [imageURLs]);
+
     const onSubmit = async (data) => {
         setIsLoading(true);
         let imageUrl = image;
-        let updatedPictures = [...selectedPictures];
+        let updatedPictures = [...existingPictures];
 
         // Handle main image upload
         if (newImage) {
@@ -71,7 +77,7 @@ const UpdateFreeTemplate = () => {
         // Ensure fields are arrays
         const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
-        const filesArray = Array.isArray(selectedFiles) ? selectedFiles : selectedFiles.split(',');
+        const filesArray = data.files.split('\n').filter(file => file.trim() !== '');
 
         const templateItem = {
             type: data.type,
@@ -106,82 +112,147 @@ const UpdateFreeTemplate = () => {
         setIsLoading(false);
     };
 
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
-
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
-
-    const handleRemovePicture = (pictureUrl) => {
-        setSelectedPictures(selectedPictures.filter(p => p !== pictureUrl));
+    const handleRemovePicture = (url) => {
+        setExistingPictures(existingPictures.filter(pic => pic !== url));
     };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             setNewImage(file);
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const previewImage = event.target.result;
-                document.getElementById('mainImagePreview').src = previewImage;
-            };
-            reader.readAsDataURL(file);
         }
     };
 
-    // Function to handle the addition of new pictures
     const handleNewPicturesChange = (e) => {
         const files = Array.from(e.target.files);
-        const newPictureUrls = files.map((file) => URL.createObjectURL(file));
+        setNewPictures(prevPictures => [...prevPictures, ...files]);
 
-        // Ensure that only unique pictures are added
-        const updatedPictures = [...selectedPictures];
-        newPictureUrls.forEach((url) => {
-            if (!updatedPictures.includes(url)) {
-                updatedPictures.push(url);
-            }
-        });
-
-        setSelectedPictures(updatedPictures);
+        // Create object URLs for new pictures
+        setImageURLs(prevURLs => [
+            ...prevURLs,
+            ...files.map(file => URL.createObjectURL(file))
+        ]);
     };
 
+    const handleRemoveNewPicture = (index) => {
+        setNewPictures(newPictures.filter((_, i) => i !== index));
+        setImageURLs(imageURLs.filter((_, i) => i !== index));
+    };
 
     return (
-        <div className="container mx-auto px-4">
-            <h2 className="text-3xl text-center font-bold mb-10">Update Premium Templates</h2>
-            <div>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    {/* Template Type */}
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Template Type*</span>
-                        </label>
-                        <input
-                            type="text"
-                            defaultValue={type}
-                            placeholder="Template Type"
-                            {...register('type', { required: true })}
-                            required
-                            className="input input-bordered w-full"
-                        />
+        <div>
+        <div className='mt-5'>
+            <h2 className="-ml-3 lg:text-xl text-lg font-medium text-[#2F1C6A] mt-10 md:mt-0">Good day! Prographr</h2>
+            <p className="text-gray-400 font-medium md:text-base text-sm -ml-3 mt-2">Wish you have less work today!</p>
+        </div>
+        <div>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-control w-full my-3 mr-3 -ml-3">
+                    <input
+                        type="text"
+                        defaultValue={type}
+                        placeholder="Add Product title"
+                        {...register('type', { required: true })}
+                        required
+                        className="input input-bordered w-full"
+                    />
+                </div>
+
+                {/* Main Row */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
+                    {/* File Upload Section for Main Image */}
+                    <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
+                        <div>
+                            <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Upload Your Files</h2>
+                        </div>
+                        <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-6">
+                            <div className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
+                                <label className="block cursor-pointer">
+                                    <input
+                                        type="file"
+                                        onChange={handleImageChange}
+                                        className="hidden"
+                                    />
+                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
+                                    <div className="mt-2 font-medium">
+                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose file</span> to Upload
+                                    </div>
+                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div className="relative mt-4 flex items-center justify-center">
+                            <img
+                                id="mainImagePreview"
+                                src={newImage ? URL.createObjectURL(newImage) : image}
+                                alt="Preview"
+                                className="w-80 object-cover"
+                            />
+                        </div>
+
+                        {/* Additional Images */}
+                        <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
+                            <div className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
+                                <label className="block cursor-pointer">
+                                    <input
+                                        type="file"
+                                        multiple
+                                        onChange={handleNewPicturesChange}
+                                        className="hidden"
+                                    />
+                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
+                                    <div className="mt-2 font-medium">
+                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple files</span> to Upload
+                                    </div>
+                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
+                                </label>
+                            </div>
+                        </div>
+
+                        {/* Preview Selected Pictures */}
+
+                        <div className="flex flex-wrap gap-4 p-4">
+                            {[...existingPictures, ...newPictures.map((file, index) => imageURLs[index])].map((pic, index) => (
+                                <div key={index} className="relative">
+                                    <img
+                                        src={pic}
+                                        alt={`Picture ${index}`}
+                                        className="w-24 h-24 object-cover"
+                                    />
+                                    {index >= existingPictures.length && (
+                                        <button
+                                            type="button"
+                                            onClick={() => handleRemoveNewPicture(index - existingPictures.length)}
+                                            className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                        >
+                                            X
+                                        </button>
+                                    )}
+                                    {index < existingPictures.length && (
+                                        <button
+                                            type="button"
+                                            onClick={() => handleRemovePicture(pic)}
+                                            className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                        >
+                                            X
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
 
-                    {/* category */}
-                    <div className="flex flex-col lg:flex-row gap-6">
-                        <div className="form-control w-full my-6">
-                            <label className="label">
-                                <span className="label-text">Category*</span>
-                            </label>
+                    {/* Category and Price */}
+                    <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+                        <div>
+                            <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
+                        </div>
+                        <div className="form-control w-full lg:my-4 px-3 h-auto">
                             <select
                                 defaultValue={category}
                                 {...register('category', { required: true })}
-                                className="select select-bordered w-full"
+                                className="select select-bordered w-full h-auto"
                             >
                                 <option disabled value="default">Select a category</option>
                                 <option value="agency">Agency</option>
@@ -194,13 +265,13 @@ const UpdateFreeTemplate = () => {
                             </select>
                         </div>
 
-                        {/* price */}
-                        <div className="form-control w-full my-6">
+                        {/* Price */}
+                        <div className="form-control w-full my-72 h-auto px-3">
                             <label className="label">
-                                <span className="label-text">Price*</span>
+                                <span className="label-text font-medium text-lg">Price*</span>
                             </label>
                             <input
-                                type="text"
+                                type="text"                       
                                 defaultValue={price}
                                 placeholder="Price"
                                 {...register('price', { required: true })}
@@ -209,152 +280,75 @@ const UpdateFreeTemplate = () => {
                         </div>
                     </div>
 
-                    {/* descriptions */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Description</span>
-                        </label>
-                        <textarea
-                            defaultValue={description}
-                            {...register('description')}
-                            className="textarea textarea-bordered w-full h-24"
-                            placeholder="Descriptions"
-                        ></textarea>
-                    </div>
-
-                    {/* Specifications */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Item Specifications</span>
-                        </label>
-                        <textarea
-                            defaultValue={specifications.join('\n')}
-                            {...register('specifications')}
-                            className="textarea textarea-bordered w-full h-24"
-                            placeholder="Specifications"
-                        ></textarea>
-                    </div>
-
-                    {/* Product */}
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Product Specifications</span>
-                        </label>
-                        <textarea
-                            defaultValue={product.join('\n')}
-                            {...register('product')}
-                            className="textarea textarea-bordered w-full h-24"
-                            placeholder="Product Specifications"
-                        ></textarea>
-                    </div>
-
-                    {/* Files Included */}
-                    <div className="flex flex-col lg:flex-row gap-6">
-                        <div className="form-control w-full my-6">
+                    {/* Descriptions, Specifications, Product Specifications, Files Included */}
+                    <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+                        {/* Descriptions */}
+                        <div className="form-control w-full my-6 h-auto px-6">
                             <label className="label">
-                                <span className="label-text">Files Included*</span>
+                                <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
                             </label>
-                            <select
-                                defaultValue=""
-                                className="select select-bordered w-full"
-                                onChange={handleFileChange}
-                            >
-                                <option value="">Select files</option>
-                                <option value=".AI">.AI</option>
-                                <option value=".EPS">.EPS</option>
-                                <option value=".PSD">.PSD</option>
-                                <option value="Canva">Canva</option>
-                            </select>
+                            <textarea
+                                defaultValue={description}
+                                {...register('description')}
+                                className="textarea textarea-bordered w-full h-auto"
+                                placeholder="Description"
+                            ></textarea>
+                        </div>
+
+                        {/* Specifications */}
+                        <div className="form-control w-full my-6 h-auto px-6">
+                            <label className="label">
+                                <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
+                            </label>
+                            <textarea
+                                defaultValue={specifications.join('\n')}
+                                {...register('specifications')}
+                                className="textarea textarea-bordered h-24"
+                                placeholder="Specifications"
+                            ></textarea>
+                        </div>
+
+                        {/* Product Specifications */}
+                        <div className="form-control w-full my-6 h-auto px-6">
+                            <label className="label">
+                                <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
+                            </label>
+                            <textarea
+                                defaultValue={product.join('\n')}
+                                {...register('product')}
+                                className="textarea textarea-bordered h-24"
+                                placeholder="Product Specifications"
+                            ></textarea>
+                        </div>
+
+                        {/* Files Included */}
+                        <div className="form-control w-full my-6 h-auto px-6">
+                            <label className="label">
+                                <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
+                            </label>
+                            <textarea
+                                defaultValue={files.join('\n')}
+                                {...register('files')}
+                                className="textarea textarea-bordered h-24"
+                                placeholder="Files"
+                            ></textarea>
                         </div>
                     </div>
+                </div>
 
-                    {/* Display Selected Files */}
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Selected Files</span>
-                        </label>
-                        <div className="flex flex-wrap gap-2">
-                            {selectedFiles.map((file, index) => (
-                                <div key={index} className="bg-gray-200 p-2 rounded flex items-center">
-                                    <span>{file}</span>
-                                    <button
-                                        type="button"
-                                        className="ml-2 text-red-500"
-                                        onClick={() => handleRemoveFile(file)}
-                                    >
-                                        <FontAwesomeIcon icon={faTimes} />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Main Image */}
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Main Image*</span>
-                        </label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            className="file-input file-input-bordered w-full"
-                            onChange={handleImageChange}
-                        />
-                        <div className="mt-4">
-                            <img
-                                id="mainImagePreview"
-                                src={image}
-                                alt="Main Preview"
-                                className="w-36  h-auto"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Additional Pictures */}
-                    <div className="form-control w-full my-6">
-                        <label className="label">
-                            <span className="label-text">Additional Pictures</span>
-                        </label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            className="file-input w-full lg:w-auto mb-5"
-                            onChange={handleNewPicturesChange}
-                        />
-                        <div className="flex flex-col lg:flex-row items-center">
-                            {selectedPictures.map((pictureUrl, index) => (
-                                <div key={index} className="mr-4 mb-4 lg:mb-0 relative">
-                                    <img
-                                        src={pictureUrl}
-                                        alt={`Additional Preview ${index + 1}`}
-                                        className="w-36 h-44"
-                                    />
-                                    <button
-                                        type="button"
-                                        className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
-                                        onClick={() => handleRemovePicture(pictureUrl)}
-                                    >
-                                        <FontAwesomeIcon icon={faTimes} />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Submit Button */}
-                    <div className="form-control mt-6">
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                            disabled={isLoading}
-                        >
-                            {isLoading ? 'Updating...' : 'Update Template'}
-                        </button>
-                    </div>
-                </form>
-            </div>
+                {/* Submit Button */}
+                <div className="">
+                    <button
+                        type="submit"
+                        className="btn mt-6 hover:bg-[#7666E3] bg-[#9A8EE8] text-white"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Updating...' : 'Update Template'}
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
     );
 };
 

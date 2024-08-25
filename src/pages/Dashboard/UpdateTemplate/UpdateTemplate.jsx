@@ -5,6 +5,8 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useState, useEffect } from 'react';
 import { RxUpload } from 'react-icons/rx';
+import { useDropzone } from 'react-dropzone';
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -109,24 +111,39 @@ const UpdateTemplate = () => {
         setIsLoading(false);
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
+    const onDropMainImage = (acceptedFiles) => {
+        const file = acceptedFiles[0];
         if (file) {
             setNewImage(file);
         }
     };
 
-    const handleNewPicturesChange = (e) => {
-        const files = Array.from(e.target.files);
-        setNewPictures(prevPictures => [...prevPictures, ...files]);
+    const onDropNewPictures = (acceptedFiles) => {
+        setNewPictures((prevPictures) => [...prevPictures, ...acceptedFiles]);
 
         // Create object URLs for new pictures
-        setImageURLs(prevURLs => [
+        setImageURLs((prevURLs) => [
             ...prevURLs,
-            ...files.map(file => URL.createObjectURL(file))
+            ...acceptedFiles.map((file) => URL.createObjectURL(file)),
         ]);
     };
 
+    const { getRootProps: getRootPropsMain, getInputProps: getInputPropsMain } = useDropzone({
+        onDrop: onDropMainImage,
+        accept: 'image/jpeg, image/png',
+        maxFiles: 1,
+    });
+
+
+    const { getRootProps: getRootPropsPictures, getInputProps: getInputPropsPictures } = useDropzone({
+        onDrop: onDropNewPictures,
+        accept: 'image/jpeg, image/png',
+        multiple: true,
+    });
+
+
+
+  
     const handleRemovePicture = (url) => {
         setExistingPictures(existingPictures.filter(pic => pic !== url));
     };
@@ -163,19 +180,13 @@ const UpdateTemplate = () => {
                                 <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Upload Your Files</h2>
                             </div>
                             <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-6">
-                                <div className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
-                                    <label className="block cursor-pointer">
-                                        <input
-                                            type="file"
-                                            onChange={handleImageChange}
-                                            className="hidden"
-                                        />
-                                        <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                                        <div className="mt-2 font-medium">
-                                            Drag & Drop or <span className="text-blue-600 font-medium">Choose file</span> to Upload
-                                        </div>
-                                        <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
-                                    </label>
+                                <div {...getRootPropsMain()} className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
+                                    <input {...getInputPropsMain()} className="hidden" />
+                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
+                                    <div className="mt-2 font-medium">
+                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose file</span> to Upload
+                                    </div>
+                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
                                 </div>
                             </div>
                             <div className="relative mt-4 flex items-center justify-center">
@@ -189,27 +200,19 @@ const UpdateTemplate = () => {
 
                             {/* Additional Images */}
                             <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
-                                <div className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
-                                    <label className="block cursor-pointer">
-                                        <input
-                                            type="file"
-                                            multiple
-                                            onChange={handleNewPicturesChange}
-                                            className="hidden"
-                                        />
-                                        <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                                        <div className="mt-2 font-medium">
-                                            Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple files</span> to Upload
-                                        </div>
-                                        <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
-                                    </label>
+                                <div {...getRootPropsPictures()} className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
+                                    <input {...getInputPropsPictures()} className="hidden" />
+                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
+                                    <div className="mt-2 font-medium">
+                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple files</span> to Upload
+                                    </div>
+                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
                                 </div>
                             </div>
 
                             {/* Preview Selected Pictures */}
-
                             <div className="flex flex-wrap gap-4 p-4">
-                                {[...existingPictures, ...newPictures.map((file, index) => imageURLs[index])].map((pic, index) => (
+                                {[...existingPictures, ...imageURLs].map((pic, index) => (
                                     <div key={index} className="relative">
                                         <img
                                             src={pic}
