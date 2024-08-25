@@ -223,7 +223,7 @@ const AddTemplates = () => {
                                 </select>
 
                                 {/* Price */}
-                                <div className="form-control w-full my-52  h-auto">
+                                <div className="form-control w-full my-60  h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
                                     </label>
