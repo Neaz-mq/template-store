@@ -97,18 +97,20 @@ const AdminHome = () => {
                     title="Templates"
                     value={stats.templates}
                 />
+                 <div className='hidden'>
                 <StatCard
                     icon={<FaBullseye className='text-3xl lg:text-4xl text-black-500' />}
                     title="Product View"
                     value="256"
                 />
-                <div className='hidden'>
+                </div>
+               
                     <StatCard
                         icon={<FaList className='text-3xl lg:text-4xl text-red-500' />}
                         title="Free Templates"
                         value={stats.free}
                     />
-                </div>
+                
                 <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-purple-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m1-4H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2v-7h-1V4a2 2 0 00-2-2zm-1 0h-4"></path></svg>}
                     title="Total Earning"
