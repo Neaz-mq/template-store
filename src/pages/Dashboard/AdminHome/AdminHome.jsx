@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { FaBook, FaBullseye, FaList, FaUsers } from 'react-icons/fa';
+import { FaBook, FaList, FaUsers } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -19,10 +19,11 @@ const StatCard = ({ icon, title, value }) => (
 const AdminHome = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const currentMonth = new Date().toLocaleString('default', { month: 'short' });
-    const [selectedMonth, setSelectedMonth] = useState("This Month");
+    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
 
-    const { data: stats = {}, error, isLoading } = useQuery({
+    // Fetch all-time stats
+    const { data: allTimeStats = {}, error: allTimeError, isLoading: isAllTimeLoading } = useQuery({
         queryKey: ['admin-stats'],
         queryFn: async () => {
             const res = await axiosSecure.get('/admin-stats');
@@ -30,111 +31,89 @@ const AdminHome = () => {
         }
     });
 
-    const data = [
-        { name: 'Jan', orders: 4000, earning: 2400 },
-        { name: 'Feb', orders: 3000, earning: 1398 },
-        { name: 'Mar', orders: 2000, earning: 9800 },
-        { name: 'Apr', orders: 2780, earning: 3908 },
-        { name: 'May', orders: 1890, earning: 4800 },
-        { name: 'Jun', orders: 2390, earning: 3800 },
-        { name: 'Jul', orders: 3490, earning: 4300 },
-        { name: 'Aug', orders: 4000, earning: 2400 },
-        { name: 'Sep', orders: 3000, earning: 1398 },
-        { name: 'Oct', orders: 2000, earning: 9800 },
-        { name: 'Nov', orders: 2780, earning: 3908 },
-        { name: 'Dec', orders: 1890, earning: 4800 },
-    ];
+    // Fetch monthly stats
+    const { data: monthlyStats = {}, error: monthlyError, isLoading: isMonthlyLoading } = useQuery({
+        queryKey: ['monthly-stats', { month: selectedMonth, year: selectedYear }],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/monthly-stats', {
+                params: { month: selectedMonth, year: selectedYear }
+            });
+            return res.data;
+        },
+        enabled: !!selectedMonth && !!selectedYear // Ensure query is enabled only if month and year are selected
+    });
 
-    const handleMonthChange = (e) => {
-        setSelectedMonth(e.target.value);
-    };
-
-    const filteredData = selectedMonth === "This Month"
-        ? data.filter(d => d.name === currentMonth)
-        : data.filter(d => d.name === selectedMonth);
-
-    if (isLoading) {
+    // If either query is loading
+    if (isAllTimeLoading || isMonthlyLoading) {
         return <div className="flex justify-center items-center h-screen">Loading...</div>;
     }
 
-    if (error) {
-        return <div className="flex justify-center items-center h-screen">Error loading stats: {error.message}</div>;
+    // If either query fails
+    if (allTimeError || monthlyError) {
+        return <div className="flex justify-center items-center h-screen">Error loading stats: {allTimeError?.message || monthlyError?.message}</div>;
     }
 
+    const monthlyChartData = [
+        {
+            name: `0${selectedMonth}/${selectedYear}`,
+            orders: monthlyStats.orders,
+            earning: monthlyStats.revenue,
+        }
+    ];
+
     return (
-        <div>
+        <div className="relative">
             <Helmet>
                 <title>Prographr | Admin</title>
-                <meta name="description" content="Find high-quality templates for your projects at the Template Store. Choose from a variety of options including agency templates, graphics templates, and more." />
+                <meta name="description" content="Admin dashboard for Prographr, view monthly statistics and performance." />
             </Helmet>
-            <div className="md:flex hidden justify-end mr-8 mb-2 -mt-2">
-                <select value={selectedMonth} onChange={handleMonthChange} className="pt-2 pb-2 pl-4 pr-4 border rounded-md">
-                    <option value="This Month">This Month</option>
-                    {data.map(d => (
-                        <option key={d.name} value={d.name}>{d.name}</option>
-                    ))}
-                </select>
-            </div>
 
-            <div className='-mt-16 font-roboto'>
-                <h2 className="-ml-2 lg:text-2xl text-xl font-medium text-[#2F1C6A] mt-10 md:mt-0">Good day! Prographr</h2>
+            {/* Greeting Section */}
+            <div className='-mt-12 font-roboto'>
+                <h2 className="-ml-2 lg:text-2xl text-xl font-medium text-[#2F1C6A] mt-10 md:mt-16">Good day! Prographr</h2>
                 <p className="text-gray-400 font-medium md:text-lg text-base -ml-2 mt-2">Wish you have less work today!</p>
             </div>
 
-            <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-4  lg:space-x-4 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 ">
-                <StatCard
+            {/* Statistics Cards */}
+            <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-1 lg:space-x-2 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 mt-12">
+
+            <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-yellow-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>}
                     title="Product Sold"
-                    value={stats.orders}
+                    value={allTimeStats.orders}
                 />
-                <StatCard
-                    icon={<FaUsers className='text-3xl lg:text-4xl text-blue-500' />}
-                    title="Users"
-                    value={stats.users}
-                />
-                <StatCard
-                    icon={<FaBook className='text-3xl lg:text-4xl text-green-500' />}
-                    title="Templates"
-                    value={stats.templates}
-                />
-                 <div className='hidden'>
-                <StatCard
-                    icon={<FaBullseye className='text-3xl lg:text-4xl text-black-500' />}
-                    title="Product View"
-                    value="256"
-                />
-                </div>
-               
-                    <StatCard
-                        icon={<FaList className='text-3xl lg:text-4xl text-red-500' />}
-                        title="Free Templates"
-                        value={stats.free}
-                    />
-                
-                <StatCard
-                    icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-purple-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m1-4H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2v-7h-1V4a2 2 0 00-2-2zm-1 0h-4"></path></svg>}
-                    title="Total Earning"
-                    value={`$${stats.revenue}`}
-                />
-            </div>
 
-            <div className=" md:hidden justify-end mr-10 -ml-2 mb-2 mt-4 mb-4 ">
-                <select value={selectedMonth} onChange={handleMonthChange} className="pt-2 pb-2 pl-4 pr-4 border rounded-md">
-                    <option value="This Month">This Month</option>
-                    {data.map(d => (
-                        <option key={d.name} value={d.name}>{d.name}</option>
-                    ))}
-                </select>
-            </div>
+    <StatCard
+        icon={<FaUsers className='text-3xl lg:text-4xl text-blue-500' />}
+        title="Users"
+        value={allTimeStats.users}
+    />
+    
+    <StatCard
+        icon={<FaBook className='text-3xl lg:text-4xl text-green-500' />}
+        title="Templates"
+        value={allTimeStats.templates}
+    />
+    <StatCard
+        icon={<FaList className='text-3xl lg:text-4xl text-red-500' />}
+        title="Free Templates"
+        value={allTimeStats.free}
+    />
+    <StatCard
+        icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-purple-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m1-4H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2v-7h-1V4a2 2 0 00-2-2zm-1 0h-4"></path></svg>}
+        title="Total Earning"
+        value={`$${allTimeStats.revenue}`}
+    />
+</div>
 
-            <div className='hidden md:block w-full -mt-4'>
-                <div className="bg-white p-3  rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1">
-                    <h4 className="text-base font-roboto font-semibold text-gray-700 mb-4  ">Monthly Statistics</h4>
 
+            {/* Monthly Statistics Chart */}
+            <div className="w-full mt-8">
+                <div className="bg-white p-3 rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1">
+                    <h4 className="text-base font-roboto font-semibold text-gray-700 mb-4">Monthly Statistics</h4>
                     <div className='ml-16'>
-
                         <ResponsiveContainer width="80%" height={232}>
-                            <BarChart data={filteredData} margin={{ top: 6, right: 30, left: 40, bottom: 5 }}>
+                            <BarChart data={monthlyChartData} margin={{ top: 6, right: 30, left: 40, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="name" />
                                 <YAxis />
@@ -148,28 +127,47 @@ const AdminHome = () => {
                 </div>
             </div>
 
-            <div className='md:hidden w-full -mt-4 -ml-4'>
-                <div className="bg-white p-3 rounded-lg shadow-lg mt-10">
-                    <h4 className="text-base font-semibold text-gray-700 mb-4">Monthly Statistics</h4>
-                    <div className='w-full flex justify-center'>
-                        <div className='w-full md:w-3/4'>
-                            <ResponsiveContainer width="100%" height={250}>
-                                <BarChart data={filteredData} margin={{ top: 6, right: 30, left: 20, bottom: 5 }}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="name" />
-                                    <YAxis />
-                                    <Tooltip />
-                                    <Legend />
-                                    <Bar dataKey="orders" fill="#8884d8" />
-                                    <Bar dataKey="earning" fill="#82ca9d" />
-                                </BarChart>
-                            </ResponsiveContainer>
-                        </div>
-                    </div>
+           {/* Month and Year Selector */}
+<div className="absolute top-0 right-0 p-4 -mt-2 mr-3">
+    <div className="bg-gradient-to-r from-purple-300 to-green-300 p-1 rounded-lg shadow-lg">
+        <div className="bg-white p-4 rounded-lg">
+            <div className="flex space-x-4">
+                <div className="flex flex-col">
+                    <label htmlFor="month" className="font-medium text-gray-700 mb-1">Select Month:</label>
+                    <select
+                        id="month"
+                        value={selectedMonth}
+                        onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
+                        className="p-2 border rounded-lg focus:outline-none transition-all duration-200 hover:shadow-lg focus:ring-2 focus:ring-blue-400"
+                    >
+                        {[...Array(12)].map((_, i) => (
+                            <option key={i + 1} value={i + 1}>
+                                {new Date(0, i).toLocaleString('en', { month: 'long' })}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="flex flex-col">
+                    <label htmlFor="year" className="font-medium text-gray-700 mb-1">Select Year:</label>
+                    <select
+                        id="year"
+                        value={selectedYear}
+                        onChange={(e) => setSelectedYear(parseInt(e.target.value))}
+                        className="p-2 border rounded-lg focus:outline-none transition-all duration-200 hover:shadow-lg focus:ring-2 focus:ring-blue-400"
+                    >
+                        {[...Array(5)].map((_, i) => (
+                            <option key={i} value={new Date().getFullYear() - i}>
+                                {new Date().getFullYear() - i}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
+        </div>
     );
 };
 
