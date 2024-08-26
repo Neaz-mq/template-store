@@ -112,7 +112,7 @@ const ManageTemplates = () => {
                                     <td>${temp.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateTemplate/${temp._id}`}>
-                                            <button className="btn btn-ghost btn-sm bg-orange-500">
+                                            <button className="btn btn-ghost btn-sm bg-[#9A8EE8]">
                                                 <FaEdit className="text-white" />
                                             </button>
                                         </Link>
