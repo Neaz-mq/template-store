@@ -88,6 +88,7 @@ const ManageTemplates = () => {
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Template Type</th>
+                                <th>Category</th>
                                 <th>Price</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -105,8 +106,9 @@ const ManageTemplates = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td>                           
                                     <td>{temp.type}</td>
+                                    <td>{temp.category}</td>
                                     <td>${temp.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateTemplate/${temp._id}`}>
@@ -136,7 +138,7 @@ const ManageTemplates = () => {
                                 <img src={temp.image} alt="Template Image" className="w-full h-20 object-cover rounded-md" />
                             </figure>
                             <div className="card-body p-2">
-                                <h2 className="card-title text-xs">{temp.name}</h2>
+                                <h2 className="card-title text-xs">{temp.type}</h2>
                                 <p className="text-xs">Price: ${temp.price}</p>
                                 <div className="card-actions justify-end mt-1">
                                     <Link to={`/dashboard/updateTemplate/${temp._id}`}>

@@ -95,6 +95,7 @@ const ManageFreeTemplates = () => {
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Template Type</th>
+                                <th>Category</th>
                                 <th>Price</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -114,6 +115,7 @@ const ManageFreeTemplates = () => {
                                         </div>
                                     </td>
                                     <td>{template.type}</td>
+                                    <td>{template.category}</td>
                                     <td>{template.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateFreeTemplate/${template._id}`}>
