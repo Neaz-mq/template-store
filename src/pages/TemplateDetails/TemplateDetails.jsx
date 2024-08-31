@@ -5,14 +5,13 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
-
 import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
 
 
 const TemplateDetails = () => {
     const template = useLoaderData();
-
+    const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
     const [templates, setTemplates] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -74,7 +73,7 @@ const TemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -92,6 +91,14 @@ const TemplateDetails = () => {
     const closeModal = () => {
         setIsModalOpen(false);
         setZoomLevel(1); // Reset zoom level on close
+    };
+
+    const handleRevisionChange = (e) => {
+        const selectedValue = e.target.value;
+        if (selectedValue && !selectedRevisions.includes(selectedValue)) {
+            setSelectedRevisions([...selectedRevisions, selectedValue]);
+        }
+        e.target.value = ""; // Reset the select input
     };
 
     const handleNextImage = () => {
@@ -136,7 +143,8 @@ const TemplateDetails = () => {
                 description,
                 specifications,
                 product,
-                files
+                files,
+                revisions
                 
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
@@ -220,7 +228,8 @@ const TemplateDetails = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[40%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+<div>
+                        <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
                             <div
                                 className={`border ${selectedTemplate === "templateCustom" ? "border-primary" : "border-gray-400"
                                     } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
@@ -236,15 +245,76 @@ const TemplateDetails = () => {
                                 <div className="pt-2 border-t font-roboto font-medium">
                                     We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                 </div>
-                            </div>
 
-                              {/* Add to Cart button */}
-                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:-ml-10 lg:w-[31rem] mt-10 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4.8rem] 2xl:mr-[4.8rem] 3xl:w-[30rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                  {/* Add to Cart button */}
+                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
                                 Add to Cart
                                 </button>
+                            </div>
+
                             
+
+                            
+                            
+                        
+                        
                         </div>
+
+                        <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                            <div
+                                className={`border ${selectedTemplate === "customizeTemplate" ? "border-primary" : "border-gray-400"
+                                    } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                onClick={() => handleTemplateChange("customizeTemplate")}
+                            >
+                                <div className="flex justify-between pb-3">
+                                    <div className="flex gap-3 font-bold">
+                                        <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
+                                        <h2 className="font-roboto">Template + Customization</h2>
+                                    </div>
+                                    <div className="font-roboto font-medium">$00</div>
+                                </div>
+                                <div className="pt-2 border-t font-roboto font-medium">
+                                   
+                                </div>
+
+                                <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
+                                <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
+                                <div className="font-roboto  font-medium lg:mr-2 mr-8">Revisions:</div>
+                                <select
+                                        className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
+                                        onChange={(e) => {
+                                            const newValue = e.target.value;
+                                            setSelectedRevisions([...selectedRevisions, newValue]);
+                                        }}
+                                        value={selectedRevisions[selectedRevisions.length - 1] || ''}
+                                    >
+                                        {revisions.map((revision, index) => (
+                                            <option key={index} value={revision} className={`option-${_id}`}>
+                                                {revision}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                </div>
+
+                                  {/* Add to Cart button */}
+                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                Add to Cart
+                                </button>
+                            </div>
+
+                            
+
+                            </div>
+                            
+                        
+                        
+                        </div>
+                        
+                        
                     </div>
+
+                    
 
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
                         <div className="flex-1 lg:mb-8 ml-3">

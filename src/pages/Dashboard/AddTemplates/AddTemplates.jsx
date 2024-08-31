@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const AddTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -11,6 +13,8 @@ const AddTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
+    const [selectedRevisions, setSelectedRevisions] = useState([]);
+    
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -39,7 +43,8 @@ const AddTemplates = () => {
             specifications: specificationsArray,
             product: productArray,
             files: filesArray,
-            picture: pictureUrls
+            picture: pictureUrls,
+            revisions: selectedRevisions,
         };
 
         try {
@@ -49,6 +54,7 @@ const AddTemplates = () => {
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
                 setPictureUrls([]); // Clear the picture URLs
+                setSelectedRevisions([]);
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -67,6 +73,18 @@ const AddTemplates = () => {
                 timer: 1500
             });
         }
+    };
+
+    const handleRevisionChange = (e) => {
+        const selectedRate = e.target.value;
+        if (selectedRate && !selectedRevisions.includes(selectedRate)) {
+            setSelectedRevisions([...selectedRevisions, selectedRate]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
+    const handleRemoveRevision = (revision) => {
+        setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
     };
 
     return (
@@ -168,7 +186,7 @@ const AddTemplates = () => {
                                 </select>
 
                                 {/* Price */}
-                                <div className="form-control w-full my-60 h-auto">
+                                <div className="form-control w-full mt-60 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
                                     </label>
@@ -180,6 +198,36 @@ const AddTemplates = () => {
                                         className="input input-bordered w-full"
                                     />
                                 </div>
+
+                                      {/* Revisions */}
+
+                    <div className="flex gap-6  pb-24 pt-16 ">
+                        <div className="form-control w-full my-10 h-auto">
+                            <label className="label">
+                                <span className="label-text font-medium text-lg">Revisions*</span>
+                            </label>
+                            <select className="select select-bordered w-full" onChange={handleRevisionChange}>
+                                <option value="">Select Revisions</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                             
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="mt-4 flex flex-wrap">
+                        {selectedRevisions.map((revision, index) => (
+                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
+                                <span>{revision}</span>
+                                <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
+                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
                             </div>
                         </div>
 
@@ -231,6 +279,9 @@ const AddTemplates = () => {
                                     placeholder="Files"
                                 ></textarea>
                             </div>
+
+                         
+
                         </div>
                     </div>
 
