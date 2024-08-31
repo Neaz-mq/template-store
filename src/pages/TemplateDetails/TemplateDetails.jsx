@@ -7,7 +7,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const TemplateDetails = () => {
     const template = useLoaderData();
@@ -26,6 +27,7 @@ const TemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
+    const [selectedFiles, setSelectedFiles] = useState([]);
 
     useEffect(() => {
 
@@ -73,7 +75,7 @@ const TemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -100,6 +102,15 @@ const TemplateDetails = () => {
         }
         e.target.value = ""; // Reset the select input
     };
+
+    const handleFileChange = (e) => {
+        const selectedValue = e.target.value;
+        if (selectedValue && !selectedFiles.includes(selectedValue)) {
+            setSelectedFiles([...selectedFiles, selectedValue]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
 
     const handleNextImage = () => {
         const nextIndex = (selectedIndex + 1) % picture.length;
@@ -130,6 +141,11 @@ const TemplateDetails = () => {
         }
     };
 
+    const handleRemoveFile = (file) => {
+        setSelectedFiles(selectedFiles.filter(f => f !== file));
+    };
+
+
     const handleAddToCart = () => {
         if (user && user.email) {
             //send cart item to the database
@@ -144,7 +160,8 @@ const TemplateDetails = () => {
                 specifications,
                 product,
                 files,
-                revisions
+                revisions,
+                documents
                 
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
@@ -250,13 +267,7 @@ const TemplateDetails = () => {
                               <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
                                 Add to Cart
                                 </button>
-                            </div>
-
-                            
-
-                            
-                            
-                        
+                            </div>                  
                         
                         </div>
 
@@ -295,26 +306,38 @@ const TemplateDetails = () => {
                                         ))}
                                     </select>
                                 </div>
+                                <div className="flex items-center">
+                                <div className="font-roboto font-medium lg:ml-0  ml-10 mr-6">Files:</div>
+                                <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
+                                        <option value="">All Files</option>
+                                        {files.map((file, index) => (
+                                            <option key={index} value={file} className={`option-${_id}`} >{file}</option>
+                                        ))}
+                                    </select>
                                 </div>
-
+                                </div>
+                                <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
+                                {selectedFiles.map((file, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
+                                        <span className="">{file}</span>
+                                        <button onClick={() => handleRemoveFile(file)}>
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
+                                        </button>
+                                    </div>
+                                ))}
+                                </div>
+                               
                                   {/* Add to Cart button */}
                               <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
                                 Add to Cart
                                 </button>
-                            </div>
+                            </div>                     
 
-                            
-
-                            </div>
-                            
+                            </div>                      
                         
-                        
-                        </div>
-                        
+                        </div>                       
                         
                     </div>
-
-                    
 
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
@@ -348,9 +371,9 @@ const TemplateDetails = () => {
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Files Included</h3>
                             <div className="mt-2">
-                                {files.map((file, index) => (
+                                {documents.map((document, index) => (
                                     <p key={index} className="text-gray-500 mt-2 font-roboto leading-relaxed">
-                                        {file}
+                                        {document}
                                     </p>
                                 ))}
                             </div>
@@ -427,16 +450,12 @@ const TemplateDetails = () => {
                                 style={{ zIndex: 10 }} // Ensure the button is above other elements
                             >
                                 &gt;
-                            </button>
-
-                            
+                            </button>                      
 
                         </div>
                     </div>
                 </div>
             )}
-
-
         </div>
 
     );
