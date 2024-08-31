@@ -33,7 +33,7 @@ const AddFreeTemplates = () => {
         const templateItem = {
             type: data.type,
             category: data.category,
-            price: parseFloat(data.price),
+            price: data.price,
             image: mainImageUrl,
             description: data.description,
             specifications: specificationsArray,
@@ -173,8 +173,7 @@ const AddFreeTemplates = () => {
                                         <span className="label-text font-medium text-lg">Price*</span>
                                     </label>
                                     <input
-                                        type="number"
-                                        step="0.01" // Allow decimal values
+                                        type="text"
                                         placeholder="Price"
                                         {...register('price', { required: true })}
                                         className="input input-bordered w-full"

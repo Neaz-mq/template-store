@@ -106,13 +106,7 @@ const FreeTemplateDetails = () => {
         setSelectedIndex(prevIndex);
     };
 
-    const zoomIn = () => {
-        setZoomLevel(prev => prev + 0.1); // Increase zoom level
-    };
-
-    const zoomOut = () => {
-        setZoomLevel(prev => Math.max(1, prev - 0.1)); // Decrease zoom level, but not below 1
-    };
+    
 
     const handleWheel = (event) => {
         event.preventDefault();
@@ -359,21 +353,7 @@ const FreeTemplateDetails = () => {
                                 &gt;
                             </button>
 
-                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-3 flex gap-4 " style={{ zIndex: 10 }}>
-                                <button
-                                    onClick={zoomOut}
-                                    className="text-white bg-black p-3 rounded-full text-sm focus:outline-none transition-transform duration-300 ease-in-out hover:bg-[#7666E3] active:bg-[#5a4ab2] active:scale-95 "
-                                >
-                                    <FaSearchMinus />
-                                </button>
-                                <button
-                                    onClick={zoomIn}
-                                    className="text-white bg-black p-3 rounded-full text-sm focus:outline-none transition-transform duration-300 ease-in-out hover:bg-[#7666E3] active:bg-[#5a4ab2] active:scale-95"
-                                >
-                                    <FaSearchPlus />
-                                </button>
-                            </div>
-
+                           
                         </div>
                     </div>
                 </div>
