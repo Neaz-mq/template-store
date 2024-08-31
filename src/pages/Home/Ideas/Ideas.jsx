@@ -35,7 +35,7 @@ const Ideas = () => {
     return (
         
         <div className="container mx-auto overflow-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-hidden laptop:overflow-hidden tablet:overflow-hidden">
-            <section className="layout mt-24 lg:mt-[20rem] lg:mx-24">
+            <section className="layout mt-24 lg:mt-[14rem] lg:mx-24">
                 <h1 className="lg:text-4xl text-2xl tablet:text-3xl text-[#2F1C6A] text-center font-roboto">Get <strong>cutting-edge design</strong></h1>
                 <div className="lg:mt-20 mt-16 tablet:w-[20rem] laptop:w-[50rem] desktop:w-[72rem] mx-auto place-items-center" data-aos="fade-up" data-aos-duration="700">
                     <nav className="max-w-[540px] desktop:ml-60 3xl:mx-auto 2xl:mx-auto laptop:mx-auto text-accent grid md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0 mx-4" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>

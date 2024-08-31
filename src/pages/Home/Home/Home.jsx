@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Banner from '../Banner/Banner';
 import Community from '../Community/Community';
 import Creativity from '../Creativity/Creativity';
-import Guideline from '../Guideline/Guideline';
+
 import Ideas from '../Ideas/Ideas';
 import Template from '../Template/Template';
 import Testimonial from '../Testimonial/Testimonial';
@@ -30,9 +30,9 @@ const Home = () => {
                 <section id="creativity">
                     <Creativity />
                 </section>
-                <section id="guidelines">
+                {/* <section id="guidelines">
                     <Guideline />
-                </section>
+                </section> */}
                 <section id="ideas">
                     <Ideas />
                 </section>

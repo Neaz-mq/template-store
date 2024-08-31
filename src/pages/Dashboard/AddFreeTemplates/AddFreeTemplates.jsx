@@ -3,111 +3,70 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { RxUpload } from "react-icons/rx";
-import { useDropzone } from "react-dropzone";
-
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddFreeTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
-    const [mainImage, setMainImage] = useState(null);
-    const [picture, setPicture] = useState([]);
+    const [mainImageUrl, setMainImageUrl] = useState("");
+    const [pictureUrls, setPictureUrls] = useState([]);
+    const [currentPictureUrl, setCurrentPictureUrl] = useState("");
 
-    const onDropMain = (acceptedFiles) => {
-        if (acceptedFiles.length > 0) {
-            setMainImage(acceptedFiles[0]);
+    const addPictureUrl = () => {
+        if (currentPictureUrl.trim() !== "") {
+            setPictureUrls([...pictureUrls, currentPictureUrl.trim()]);
+            setCurrentPictureUrl(""); // Clear the input field after adding
         }
     };
-    const onDropPictures = (acceptedFiles) => {
-        setPicture((prevPictures) => [...prevPictures, ...acceptedFiles]);
+
+    const removePictureUrl = (indexToRemove) => {
+        setPictureUrls(pictureUrls.filter((_, index) => index !== indexToRemove));
     };
-
-    const { getRootProps: getRootPropsMain, getInputProps: getInputPropsMain } = useDropzone({
-        onDrop: onDropMain,
-        accept: 'image/*',
-        multiple: false // Allow only one file for the main image
-    });
-
-    const { getRootProps: getRootPropsPics, getInputProps: getInputPropsPics } = useDropzone({
-        onDrop: onDropPictures,
-        accept: 'image/*',
-        multiple: true // Allow multiple files for additional images
-    });
 
     const onSubmit = async (data) => {
-        console.log(data);
-
-        // Upload main image
-        const imageFile = mainImage ? { image: mainImage } : null;
-        let mainImageUrl = '';
-        if (imageFile) {
-            const res = await axiosPublic.post(image_hosting_api, imageFile, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            });
-            if (res.data.success) {
-                mainImageUrl = res.data.data.display_url;
-            }
-        }
-
-        // Upload additional images
-        const uploadedPicture = await Promise.all(
-            picture.map(async (picture) => {
-                const formData = new FormData();
-                formData.append('image', picture);
-                const pictureRes = await axiosPublic.post(image_hosting_api, formData, {
-                    headers: {
-                        'content-type': 'multipart/form-data'
-                    }
-                });
-                return pictureRes.data.data.display_url;
-            })
-        );
-
         // Convert fields to arrays
         const specificationsArray = data.specifications.split('\n').map(item => item.trim()).filter(item => item);
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const filesArray = data.files.split('\n').map(item => item.trim()).filter(item => item);
 
-
-        // Send the template data to the server with image URLs
+        // Prepare the template item
         const templateItem = {
             type: data.type,
             category: data.category,
-            price: data.price,
+            price: parseFloat(data.price),
             image: mainImageUrl,
             description: data.description,
             specifications: specificationsArray,
             product: productArray,
             files: filesArray,
-            picture: uploadedPicture
+            picture: pictureUrls
         };
 
-        const templateRes = await axiosSecure.post('/free', templateItem);
-        console.log(templateRes.data);
-        if (templateRes.data.insertedId) {
-            // Show success popup
-            reset();
-            setMainImage(null); // Clear the selected main image
-            setPicture([]); // Clear the selected pictures
+        try {
+            const templateRes = await axiosSecure.post('/free', templateItem);
+            if (templateRes.data.insertedId) {
+                // Show success popup
+                reset();
+                setMainImageUrl(""); // Clear the main image URL
+                setPictureUrls([]); // Clear the picture URLs
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.type} has been added as a template.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        } catch (error) {
+            console.error("Error adding free template:", error);
             Swal.fire({
                 position: "top-end",
-                icon: "success",
-                title: `${data.type} has been added as a template.`,
+                icon: "error",
+                title: "Failed to add template.",
                 showConfirmButton: false,
                 timer: 1500
             });
         }
-    };
-
-    const removePicture = (index) => {
-        const newPictures = [...picture];
-        newPictures.splice(index, 1);
-        setPicture(newPictures);
     };
 
     return (
@@ -128,76 +87,67 @@ const AddFreeTemplates = () => {
                         />
                     </div>
 
-                    {/* Main Row */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
-                        {/* File Upload Section for Main Image */}
-                        <div className="bg-white w-full my-5 pb-10  rounded-lg mr-2 h-auto ">
+                        {/* Main Image URL Section */}
+                        <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div>
-                                <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Upload Your Files</h2>
+                                <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Main Image</h2>
                             </div>
-                            <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-6">
-                                <div {...getRootPropsMain({ className: 'dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer' })}>
-                                    <input
-                                        {...getInputPropsMain()}
-                                        type="file"
-                                        className="hidden"
-                                    />
-                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                                    <div className="mt-2 font-medium">
-                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose file</span> to Upload
-                                    </div>
-                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
-                                </div>
-                            </div>
-                            {mainImage && (
-                                <div className="relative mt-4 flex items-center justify-center">
-                                    <img
-                                        src={URL.createObjectURL(mainImage)}
-                                        alt="Selected"
-                                        className="w-80  object-cover"
-                                    />
-                                </div>
-                            )}
-
-                            {/* Additional Images */}
-                            <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
-                                <div {...getRootPropsPics({ className: 'dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer' })}>
-                                    <input
-                                        {...getInputPropsPics()}
-                                        type="file"
-                                        className="hidden"
-                                    />
-                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                                    <div className="mt-2 font-medium">
-                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple files</span> to Upload
-                                    </div>
-                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
-                                </div>
-                            </div>
-
-                            {/* Preview Selected Images */}
-                            <div className="flex flex-wrap gap-4">
-                                {picture.map((pic, index) => (
-                                    <div key={index} className="relative">
+                            <div className="form-control rounded-md mx-3 my-3">
+                                <input
+                                    type="url"
+                                    placeholder="Enter main image URL"
+                                    value={mainImageUrl}
+                                    onChange={(e) => setMainImageUrl(e.target.value)}
+                                    className="input input-bordered w-full"
+                                />
+                                {mainImageUrl && (
+                                    <div className="mt-4 flex justify-center">
                                         <img
-                                            src={URL.createObjectURL(pic)}
-                                            alt="Selected"
-                                            className="w-24 h-24 object-cover"
+                                            src={mainImageUrl}
+                                            alt="Main Preview"
+                                            className="w-64 h-64 object-cover rounded"
                                         />
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Additional Images URLs Section */}
+                            <div className="form-control rounded-md mx-3 my-3">
+                                <input
+                                    type="url"
+                                    placeholder="Enter additional image URL"
+                                    value={currentPictureUrl}
+                                    onChange={(e) => setCurrentPictureUrl(e.target.value)}
+                                    className="input input-bordered w-full"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={addPictureUrl}
+                                    className="btn btn-sm mt-2"
+                                >
+                                    Add Image URL
+                                </button>
+                            </div>
+
+                            {/* Preview and Remove Buttons for Additional Image URLs */}
+                            <div className="flex flex-wrap gap-4">
+                                {pictureUrls.map((url, index) => (
+                                    <div key={index} className="relative">
+                                        <img src={url} alt={`Selected ${index + 1}`} className="w-32 h-32 object-cover rounded ml-4" />
                                         <button
                                             type="button"
-                                            onClick={() => removePicture(index)}
-                                            className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                            onClick={() => removePictureUrl(index)}
+                                            className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
                                         >
-                                            X
+                                            &times;
                                         </button>
                                     </div>
                                 ))}
                             </div>
-
                         </div>
 
-                        <div className=" bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
                             </div>
@@ -218,28 +168,24 @@ const AddFreeTemplates = () => {
                                 </select>
 
                                 {/* Price */}
-                                <div className="form-control w-full my-60  h-auto">
+                                <div className="form-control w-full my-60 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
                                     </label>
                                     <input
-                                type="text"
-                                placeholder="Price"
-                                {...register('price', { required: true })}
-                                className="input input-bordered w-full"
-                            />
+                                        type="number"
+                                        step="0.01" // Allow decimal values
+                                        placeholder="Price"
+                                        {...register('price', { required: true })}
+                                        className="input input-bordered w-full"
+                                    />
                                 </div>
                             </div>
-
-
-
                         </div>
 
-
-                        <div className=" bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
-
+                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             {/* Descriptions */}
-                            <div className="form-control w-full my-6 h-auto px-6 ">
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
                                 </label>
@@ -251,7 +197,7 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Specifications */}
-                            <div className="form-control w-full my-6 h-auto px-6 ">
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
                                 </label>
@@ -285,20 +231,13 @@ const AddFreeTemplates = () => {
                                     placeholder="Files"
                                 ></textarea>
                             </div>
-
-                        </div>
-
-
-
-
+                            </div>
                     </div>
 
-
-
-
-                    <button className="btn  mt-6 hover:bg-[#7666E3] px-20  bg-[#9A8EE8] text-white">
+                    <button className="btn mt-6 hover:bg-[#7666E3] px-20 bg-[#9A8EE8] text-white">
                         Publish
                     </button>
+
                 </form>
             </div>
         </div>
@@ -306,3 +245,4 @@ const AddFreeTemplates = () => {
 };
 
 export default AddFreeTemplates;
+

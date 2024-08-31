@@ -1,0 +1,129 @@
+[
+    {
+        "_id": "421c155b2c4774f05c36eeaa",
+        "name": "Fertista",
+        "type": "Creative Business Flyer",
+        "image": "https://i.ibb.co/d2pC50B/Business-Single-page-flyer-Artboard-1.jpg",
+        "picture": [
+            "https://i.ibb.co/d2pC50B/Business-Single-page-flyer-Artboard-1.jpg",
+            "https://i.ibb.co/nfd4fDY/Business-Single-page-flyer-Artboard-2.jpg",
+            "https://i.ibb.co/28BYT6D/Business-Single-page-flyer-Artboard-3.jpg",
+            "https://i.ibb.co/QcnqCc1/Business-Single-page-flyer-Artboard-4.jpg"
+        ],
+        "category": "business",
+        "price": "Free",
+        "description": "A business flyer is a versatile and dynamic promotional tool designed to communicate essential information about a business, its products, services, events, or special offers. This tangible marketing collateral is strategically crafted to capture attention, engage the target audience, and generate interest in what the business offers.",
+        "specifications": [
+            "US Letter & A4 Paper Size",
+            "CMYK color mode",
+            "Bleed size 3 mm",
+            "Photos are not included"
+        ],
+        "product": [
+            "Package File: ZIP",
+            "Package File Size: 130MB"
+        ],
+        "files": [
+           ".AI",
+            ".EPS",
+            ".PSD",
+            "Canva"
+        ]
+    },
+
+    {
+        "_id": "427c155b2c4774f05c36ee94",
+        "name": "Gallesy",
+        "type": "Real-estate Tri-fold Brochure",
+        "image": "https://i.ibb.co/n1LTMKT/Real-Estate-Tri-fold-Brochure-Artboard-1.jpg",
+        "picture": [
+            "https://i.ibb.co/n1LTMKT/Real-Estate-Tri-fold-Brochure-Artboard-1.jpg",
+            "https://i.ibb.co/qy8X3rv/Real-Estate-Tri-fold-Brochure-Artboard-2.jpg",
+            "https://i.ibb.co/HYP1N9Y/Real-Estate-Tri-fold-Brochure-Artboard-3.jpg",
+            "https://i.ibb.co/f2Jpsyq/Real-Estate-Tri-fold-Brochure-Design.jpg"
+        ],
+        "category": "construction",
+        "price": "Free",
+        "description": "The Real-Estate Tri-fold brochure offers an elegant design to showcase property listings and key selling points. Its clean layout and professional look make it perfect for attracting potential buyers and highlighting real estate opportunities.",
+        "specifications": [
+            "US Letter & A4 Paper Size",
+            "CMYK color mode",
+            "Bleed size 3 mm",
+            "Photos are not included"
+        ],
+        "product": [
+            "Package File: ZIP",
+            "Package File Size: 130MB"
+        ],
+        "files": [
+            ".AI",
+            ".EPS",
+            ".PSD",
+            "Canva"
+        ]
+    },
+
+    {
+        "_id": "430c155b2c4774f05c36ee9e",
+        "name": "Taven",
+        "type": "Creative Agency Flyer",
+        "image": "https://i.ibb.co/BsJDDZM/Flyer-Design-04-Artboard-1-Artboard-3-Artboard-3-Artboard-1.jpg",
+        "picture": [
+            "https://i.ibb.co/BsJDDZM/Flyer-Design-04-Artboard-1-Artboard-3-Artboard-3-Artboard-1.jpg",
+            "https://i.ibb.co/HKFXX3H/Flyer-Design-04-Artboard-1-Artboard-3-Artboard-3-Artboard-2.jpg",
+            "https://i.ibb.co/RyyjjLM/Flyer-Design-04-Artboard-1-Artboard-3-Artboard-3-Artboard-3.jpg",
+            "https://i.ibb.co/YdXxP4F/Flyer-Design-04-Artboard-1-Artboard-3-Artboard-3-Artboard-3-copy.jpg"
+        ],
+        "category": "business",
+        "price": "Free",
+        "description": "A business flyer is a versatile and dynamic promotional tool designed to communicate essential information about a business, its products, services, events, or special offers. This tangible marketing collateral is strategically crafted to capture attention, engage the target audience, and generate interest in what the business offers.",
+        "specifications": [
+            "US Letter & A4 Paper Size",
+            "CMYK color mode",
+            "Bleed size 3 mm",
+            "Photos are not included"
+        ],
+        "product": [
+            "Package File: ZIP",
+            "Package File Size: 130MB"
+        ],
+        "files": [
+            ".AI",
+            ".EPS",
+            ".PSD",
+            "Canva"
+        ]
+    },
+    
+    {
+        "_id": "434c155b2c4774f05c36ee9e",
+        "name": "Yhotosen",
+        "type": "Real-estate Flyer",
+        "image": "https://i.ibb.co/2N14VG7/Real-Estate-Single-page-flyer-Artboard-1-Artboard-1.jpg",
+        "picture": [
+            "https://i.ibb.co/2N14VG7/Real-Estate-Single-page-flyer-Artboard-1-Artboard-1.jpg",
+            "https://i.ibb.co/WFFhnnq/Real-Estate-Single-page-flyer-Artboard-1-Artboard-2.jpg",
+            "https://i.ibb.co/Gv66hGp/Real-Estate-Single-page-flyer-Artboard-1-Artboard-3.jpg",
+            "https://i.ibb.co/PxbmwtJ/Real-Estate-Single-page-flyer-Artboard-1-Artboard-4.jpg"
+        ],
+        "category": "construction",
+        "price": "Free",
+        "description": "The Real-Estate Flyer features a striking design to capture attention and present property details clearly. Ideal for promoting listings, it combines visual appeal with essential information to attract potential buyers effectively.",
+        "specifications": [
+            "US Letter & A4 Paper Size",
+            "CMYK color mode",
+            "Bleed size 3 mm",
+            "Photos are not included"
+        ],
+       "product": [
+            "Package File: ZIP",
+            "Package File Size: 130MB"
+        ],
+        "files": [
+           ".AI",
+            ".EPS",
+            ".PSD",
+            "Canva"
+        ]
+    }
+]
