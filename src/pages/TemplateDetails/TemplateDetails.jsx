@@ -152,8 +152,8 @@ const TemplateDetails = () => {
 
             const cartItem = {
                 tempId: _id,
-                email: user.email,  
-                type,        
+                email: user.email,
+                type,
                 image,
                 price,
                 description,
@@ -162,7 +162,6 @@ const TemplateDetails = () => {
                 files,
                 revisions,
                 documents
-                
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
@@ -179,28 +178,27 @@ const TemplateDetails = () => {
                         // refetch cart to update the cart items count
                         refetch();
                     }
-                })      
+                })
+        }
+        else {
+            Swal.fire({
+                title: "You are not Signed In",
+                text: "Please signin to add to the cart?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Sign In!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //   send the user to the login page
+                    navigate('/sign-in', { state: { from: location } })
+                }
+            });
+        }
     }
-    else {
-        Swal.fire({
-            title: "You are not Signed In",
-            text: "Please signin to add to the cart?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, Sign In!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                //   send the user to the login page
-                navigate('/sign-in', { state: { from: location } })
-            }
-        });
-    }
-}
 
     return (
-
         <div className="bg-[#EDEEF7] ml-2 overflow-hidden -mt-[4.6rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 h-[250rem] 3xl:h-[114rem] 2xl:h-[110rem] desktop:h-[108rem] laptop:h-[100rem] tablet:h-[180rem] min-h-[calc(120vh-450px)]">
             <div className="container mx-auto">
                 <Helmet>
@@ -245,100 +243,96 @@ const TemplateDetails = () => {
                             </div>
                         </div>
 
-<div>
-                        <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
-                            <div
-                                className={`border ${selectedTemplate === "templateCustom" ? "border-primary" : "border-gray-400"
-                                    } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
-                                onClick={() => handleTemplateChange("templateCustom")}
-                            >
-                                <div className="flex justify-between pb-3">
-                                    <div className="flex gap-3 font-bold">
-                                        <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
-                                        <h2 className="font-roboto">Template</h2>
+                        <div>
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                                <div
+                                    className={`border ${selectedTemplate === "templateCustom" ? "border-primary" : "border-gray-400"
+                                        } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                    onClick={() => handleTemplateChange("templateCustom")}
+                                >
+                                    <div className="flex justify-between pb-3">
+                                        <div className="flex gap-3 font-bold">
+                                            <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
+                                            <h2 className="font-roboto">Template</h2>
+                                        </div>
+                                        <div className="font-roboto font-medium">${price}</div>
                                     </div>
-                                    <div className="font-roboto font-medium">${price}</div>
-                                </div>
-                                <div className="pt-2 border-t font-roboto font-medium">
-                                    We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                                    <div className="pt-2 border-t font-roboto font-medium">
+                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                                    </div>
+
+                                    {/* Add to Cart button */}
+                                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                        Add to Cart
+                                    </button>
                                 </div>
 
-                                  {/* Add to Cart button */}
-                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
-                                Add to Cart
-                                </button>
-                            </div>                  
-                        
+                            </div>
+
+                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                                <div
+                                    className={`border ${selectedTemplate === "customizeTemplate" ? "border-primary" : "border-gray-400"
+                                        } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                    onClick={() => handleTemplateChange("customizeTemplate")}
+                                >
+                                    <div className="flex justify-between pb-3">
+                                        <div className="flex gap-3 font-bold">
+                                            <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
+                                            <h2 className="font-roboto">Template + Customization</h2>
+                                        </div>
+                                        <div className="font-roboto font-medium">${price}</div>
+                                    </div>
+                                    <div className="pt-2 border-t font-roboto font-medium">
+
+                                    </div>
+
+                                    <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
+                                        <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
+                                            <div className="font-roboto  font-medium lg:mr-2 mr-8">Revisions:</div>
+                                            <select
+                                                className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setSelectedRevisions([...selectedRevisions, newValue]);
+                                                }}
+                                                value={selectedRevisions[selectedRevisions.length - 1] || ''}
+                                            >
+                                                {revisions.map((revision, index) => (
+                                                    <option key={index} value={revision} className={`option-${_id}`}>
+                                                        {revision}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <div className="font-roboto font-medium lg:ml-0  ml-10 mr-6">Files:</div>
+                                            <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
+                                                <option value="">All Files</option>
+                                                {files.map((file, index) => (
+                                                    <option key={index} value={file} className={`option-${_id}`} >{file}</option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
+                                        {selectedFiles.map((file, index) => (
+                                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
+                                                <span className="">{file}</span>
+                                                <button onClick={() => handleRemoveFile(file)}>
+                                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Add to Cart button */}
+                                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
-                            <div
-                                className={`border ${selectedTemplate === "customizeTemplate" ? "border-primary" : "border-gray-400"
-                                    } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
-                                onClick={() => handleTemplateChange("customizeTemplate")}
-                            >
-                                <div className="flex justify-between pb-3">
-                                    <div className="flex gap-3 font-bold">
-                                        <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
-                                        <h2 className="font-roboto">Template + Customization</h2>
-                                    </div>
-                                    <div className="font-roboto font-medium">$00</div>
-                                </div>
-                                <div className="pt-2 border-t font-roboto font-medium">
-                                   
-                                </div>
-
-                                <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
-                                <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-                                <div className="font-roboto  font-medium lg:mr-2 mr-8">Revisions:</div>
-                                <select
-                                        className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                        onChange={(e) => {
-                                            const newValue = e.target.value;
-                                            setSelectedRevisions([...selectedRevisions, newValue]);
-                                        }}
-                                        value={selectedRevisions[selectedRevisions.length - 1] || ''}
-                                    >
-                                        {revisions.map((revision, index) => (
-                                            <option key={index} value={revision} className={`option-${_id}`}>
-                                                {revision}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="flex items-center">
-                                <div className="font-roboto font-medium lg:ml-0  ml-10 mr-6">Files:</div>
-                                <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
-                                        <option value="">All Files</option>
-                                        {files.map((file, index) => (
-                                            <option key={index} value={file} className={`option-${_id}`} >{file}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                </div>
-                                <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
-                                {selectedFiles.map((file, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                                        <span className="">{file}</span>
-                                        <button onClick={() => handleRemoveFile(file)}>
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
-                                        </button>
-                                    </div>
-                                ))}
-                                </div>
-                               
-                                  {/* Add to Cart button */}
-                              <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
-                                Add to Cart
-                                </button>
-                            </div>                     
-
-                            </div>                      
-                        
-                        </div>                       
-                        
                     </div>
-
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Description</h3>
@@ -450,14 +444,12 @@ const TemplateDetails = () => {
                                 style={{ zIndex: 10 }} // Ensure the button is above other elements
                             >
                                 &gt;
-                            </button>                      
-
+                            </button>
                         </div>
                     </div>
                 </div>
             )}
         </div>
-
     );
 };
 
