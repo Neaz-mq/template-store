@@ -330,8 +330,6 @@ const AddTemplates = () => {
                                 ></textarea>
                             </div>
 
-
-
                         </div>
                     </div>
 

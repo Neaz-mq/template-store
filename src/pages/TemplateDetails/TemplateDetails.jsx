@@ -25,7 +25,7 @@ const TemplateDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const [, refetch] = useCart();
+    const [cart, refetch] = useCart();
     const initialDisplayCount = 4;
     const [selectedFiles, setSelectedFiles] = useState([]);
 
@@ -163,9 +163,20 @@ const TemplateDetails = () => {
                 revisions,
                 documents
             }
+            const isDuplicate = cart.some(item => item.tempId === _id);
+
+            if (isDuplicate) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "warning",
+                    title: `${type} is already in your cart`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            } else {
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
-                    console.log(res.data);
+                   
                     if (res.data.insertedId) {
                         Swal.fire({
                             position: "top-end",
@@ -178,12 +189,12 @@ const TemplateDetails = () => {
                         // refetch cart to update the cart items count
                         refetch();
                     }
-                })
+                });
         }
-        else {
+      }  else {
             Swal.fire({
                 title: "You are not Signed In",
-                text: "Please signin to add to the cart?",
+                text: "Please sign in to add to the cart",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
