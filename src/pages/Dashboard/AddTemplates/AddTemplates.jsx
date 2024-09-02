@@ -318,7 +318,7 @@ const AddTemplates = () => {
                                 ></textarea>
                             </div>
 
-                            {/* Files Included */}
+                            {/* Documents Included */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
@@ -326,7 +326,7 @@ const AddTemplates = () => {
                                 <textarea
                                     {...register('documents')}
                                     className="textarea textarea-bordered h-24"
-                                    placeholder="Files"
+                                    placeholder="Documents"
                                 ></textarea>
                             </div>
 
@@ -344,4 +344,3 @@ const AddTemplates = () => {
 };
 
 export default AddTemplates;
-

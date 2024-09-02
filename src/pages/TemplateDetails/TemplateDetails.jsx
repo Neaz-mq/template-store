@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ const TemplateDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
-    const [cart, refetch] = useCart();
+    const [, refetch] = useCart();
     const initialDisplayCount = 4;
     const [selectedFiles, setSelectedFiles] = useState([]);
 
@@ -163,20 +163,9 @@ const TemplateDetails = () => {
                 revisions,
                 documents
             }
-            const isDuplicate = cart.some(item => item.tempId === _id);
-
-            if (isDuplicate) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "warning",
-                    title: `${type} is already in your cart`,
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            } else {
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
-                   
+                    console.log(res.data);
                     if (res.data.insertedId) {
                         Swal.fire({
                             position: "top-end",
@@ -189,12 +178,12 @@ const TemplateDetails = () => {
                         // refetch cart to update the cart items count
                         refetch();
                     }
-                });
+                })
         }
-      }  else {
+        else {
             Swal.fire({
                 title: "You are not Signed In",
-                text: "Please sign in to add to the cart",
+                text: "Please signin to add to the cart?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -374,7 +363,7 @@ const TemplateDetails = () => {
                         </div>
 
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Files Included</h3>
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Documents Included</h3>
                             <div className="mt-2">
                                 {documents.map((document, index) => (
                                     <p key={index} className="text-gray-500 mt-2 font-roboto leading-relaxed">
