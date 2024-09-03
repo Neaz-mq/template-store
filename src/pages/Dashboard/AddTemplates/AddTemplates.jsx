@@ -58,7 +58,7 @@ const AddTemplates = () => {
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
                 Swal.fire({
-                    position: "top-end",
+                    position: "middle",
                     icon: "success",
                     title: `${data.type} has been added as a template.`,
                     showConfirmButton: false,
@@ -68,7 +68,7 @@ const AddTemplates = () => {
         } catch (error) {
             console.error("Error adding template:", error);
             Swal.fire({
-                position: "top-end",
+                position: "middle",
                 icon: "error",
                 title: "Failed to add template.",
                 showConfirmButton: false,
@@ -233,6 +233,8 @@ const AddTemplates = () => {
                                     <option value="financial">Financial</option>
                                     <option value="food">Food</option>
                                     <option value="portfolio">Portfolio</option>
+                                    <option value="education">Education</option>
+                                    <option value="environment">Environment</option>
                                 </select>
 
                                 {/* Price */}

@@ -10,7 +10,7 @@ const Shop = () => {
         agencyTemplateRef.current.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const [selectedCategory, setSelectedCategory] = useState(['agency', 'medical', 'business', 'portfolio', 'construction', 'financial', 'food']);
+    const [selectedCategory, setSelectedCategory] = useState(['agency', 'medical', 'business', 'portfolio', 'construction', 'financial', 'food', 'environment', 'education']);
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -58,6 +58,8 @@ const Shop = () => {
                                 <li className={`text-sm font-roboto font-bold text-gray-600 border border-black/50 rounded-full px-4 pt-2 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('financial') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['financial'])}>Financial</li>
                                 <li className={`text-sm font-roboto font-bold text-gray-600 border border-black/50 rounded-full px-4 pt-2 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('food') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['food'])}>Food</li>
                                 <li className={`text-sm font-roboto font-bold text-gray-600 border border-black/50 rounded-full px-4 pt-2 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('portfolio') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['portfolio'])}>Portfolio</li>
+                                <li className={`text-sm font-roboto font-bold text-gray-600 border border-black/50 rounded-full px-4 pt-2 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('environment') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['environment'])}>Environment</li>
+                                <li className={`text-sm font-roboto font-bold text-gray-600 border border-black/50 rounded-full px-4 pt-2 pb-2 hover:text-[#7b75f1] duration-100 cursor-pointer ${selectedCategory.includes('environment') ? 'text-[#7b75f1]' : ''}`} onClick={() => handleCategoryClick(['education'])}>Education</li>
 
                             </ul>
                         </div>
