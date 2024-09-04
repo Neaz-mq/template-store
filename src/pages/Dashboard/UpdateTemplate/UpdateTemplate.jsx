@@ -70,7 +70,7 @@ const UpdateTemplate = () => {
             });
         } else {
             Swal.fire({
-                position: "top-end",
+                position: "middle",
                 icon: "error",
                 title: `Failed to update ${data.type}`,
                 showConfirmButton: false,
@@ -257,6 +257,8 @@ const UpdateTemplate = () => {
                                     <option value="financial">Financial</option>
                                     <option value="food">Food</option>
                                     <option value="portfolio">Portfolio</option>
+                                    <option value="education">Education</option>
+                                    <option value="environment">Environment</option>
                                 </select>
                             </div>
 
