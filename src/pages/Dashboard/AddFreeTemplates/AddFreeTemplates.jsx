@@ -5,16 +5,18 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useDropzone } from 'react-dropzone';
+import { RxUpload } from "react-icons/rx";
 
 const AddFreeTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
-    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [selectedDocs, setSelectedDocs] = useState([]);
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -46,6 +48,7 @@ const AddFreeTemplates = () => {
             picture: pictureUrls,
             revisions: selectedRevisions,
             files: selectedFiles,
+            docs: selectedDocs
         };
 
         try {
@@ -57,8 +60,9 @@ const AddFreeTemplates = () => {
                 setPictureUrls([]); // Clear the picture URLs
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
+                setSelectedDocs([]);
                 Swal.fire({
-                    position: "middle",
+                    position: "center",
                     icon: "success",
                     title: `${data.type} has been added as a template.`,
                     showConfirmButton: false,
@@ -68,7 +72,7 @@ const AddFreeTemplates = () => {
         } catch (error) {
             console.error("Error adding free template:", error);
             Swal.fire({
-                position: "middle",
+                position: "center",
                 icon: "error",
                 title: "Failed to add template.",
                 showConfirmButton: false,
@@ -100,6 +104,21 @@ const AddFreeTemplates = () => {
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
+
+    const handleRemoveDoc = (doc) => {
+        setSelectedDocs(selectedDocs.filter(f => f !== doc));
+    };
+
+    const { getRootProps, getInputProps } = useDropzone({
+        accept: '.psd, .ai, .indd',
+        onDrop: (acceptedDocs) => {
+            setSelectedDocs(prevDocs => [
+                ...prevDocs,
+                ...acceptedDocs.map(doc => doc.name)
+            ]);
+        }
+    });
+
 
     return (
         <div>
@@ -211,6 +230,32 @@ const AddFreeTemplates = () => {
                                     </div>
                                 ))}
                             </div>
+
+                         {/* Drag and Drop File Upload Section */}
+                    <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
+                        <div
+                            {...getRootProps({ className: 'dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer' })}
+                        >
+                            <input {...getInputProps()} className="hidden" />
+                            <RxUpload className="text-gray-700 text-4xl mx-auto" />
+                            <div className="mt-2 font-medium">
+                                Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple docs</span> to Upload
+                            </div>
+                            <p className="text-gray-400 mt-1">.psd, .ai, .indd</p>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-wrap mt-4 ml-4">
+                        {selectedDocs.map((doc, index) => (
+                            <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                <span>{doc}</span>
+                                <button onClick={() => handleRemoveDoc(doc)} className="ml-2">
+                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
                         </div>
 
 
@@ -270,15 +315,15 @@ const AddFreeTemplates = () => {
                                 </div>
                             </div>
                             <div className="-mt-36 pb-20 flex flex-wrap">
-                                    {selectedRevisions.map((revision, index) => (
-                                        <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2 ml-4">
-                                            <span>{revision}</span>
-                                            <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
+                                {selectedRevisions.map((revision, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2 ml-4">
+                                        <span>{revision}</span>
+                                        <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
 
 
                         </div>
@@ -320,15 +365,15 @@ const AddFreeTemplates = () => {
                                 ></textarea>
                             </div>
 
-                           {/* Documents Included */}
+                            {/* Documents Included */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
                                 </label>
                                 <textarea
-                                     {...register('documents')}
-                                     className="textarea textarea-bordered h-24"
-                                     placeholder="Documents"
+                                    {...register('documents')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Documents"
                                 ></textarea>
                             </div>
                         </div>
@@ -345,4 +390,3 @@ const AddFreeTemplates = () => {
 };
 
 export default AddFreeTemplates;
-
