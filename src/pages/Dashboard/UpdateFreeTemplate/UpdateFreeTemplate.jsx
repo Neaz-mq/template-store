@@ -3,12 +3,11 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useState, useEffect } from 'react';
-import { RxUpload } from 'react-icons/rx';
-import { useDropzone } from 'react-dropzone';
+import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 
 const UpdateFreeTemplate = () => {
     const {
@@ -17,85 +16,53 @@ const UpdateFreeTemplate = () => {
         description,
         specifications,
         product,
+        documents,
         files,
-        image,
         picture,
         price,
+        revisions,
+        image,
         _id
     } = useLoaderData();
 
     const { register, handleSubmit } = useForm();
-    const [isLoading, setIsLoading] = useState(false);
-    const [existingPictures, setExistingPictures] = useState(picture);
-    const [imageURLs, setImageURLs] = useState([]); // Object URLs for new pictures
-    const [newImage, setNewImage] = useState(null); // State for the new image
-    const [newPictures, setNewPictures] = useState([]); // State for new pictures
+    const [imageUrl, setImageUrl] = useState(image);
+    const [additionalImages, setAdditionalImages] = useState(picture || []);
+    const [newImageUrl, setNewImageUrl] = useState('');
+    const [newAdditionalImageUrl, setNewAdditionalImageUrl] = useState('');
     const axiosPublic = useAxiosPublic();
+    const [selectedFiles, setSelectedFiles] = useState(files || []);
+    const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
+    const [newRevision, setNewRevision] = useState('');  // New state for revision
     const axiosSecure = useAxiosSecure();
-
-    useEffect(() => {
-        // Clean up object URLs when the component unmounts
-        return () => {
-            imageURLs.forEach(url => URL.revokeObjectURL(url));
-        };
-    }, [imageURLs]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const onSubmit = async (data) => {
-        setIsLoading(true);
-        let imageUrl = image;
-        let updatedPictures = [...existingPictures];
-
-        // Handle main image upload
-        if (newImage) {
-            const imageFile = new FormData();
-            imageFile.append('image', newImage);
-            const res = await axiosPublic.post(image_hosting_api, imageFile, {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            });
-            if (res.data.success) {
-                imageUrl = res.data.data.display_url;
-            }
-        }
-
-        // Handle additional picture uploads
-        if (newPictures.length > 0) {
-            for (let i = 0; i < newPictures.length; i++) {
-                const pictureFile = new FormData();
-                pictureFile.append('image', newPictures[i]);
-                const res = await axiosPublic.post(image_hosting_api, pictureFile, {
-                    headers: {
-                        'content-type': 'multipart/form-data'
-                    }
-                });
-                if (res.data.success) {
-                    updatedPictures.push(res.data.data.display_url);
-                }
-            }
-        }
-
-        // Ensure fields are arrays
         const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
-        const filesArray = data.files.split('\n').filter(file => file.trim() !== '');
+        const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
+
+        const filesArray = selectedFiles;
+        const revisionsArray = selectedRevisions;
 
         const templateItem = {
             type: data.type,
             category: data.category,
             price: data.price,
-            image: imageUrl,
-            picture: updatedPictures,
+            image: imageUrl,  // Use the main image URL
+            picture: additionalImages, // Use the additional image URLs
             description: data.description,
             specifications: specificationsArray,
             product: productArray,
-            files: filesArray,
+            documents: documentsArray,
+            files: selectedFiles,
+            revisions: selectedRevisions
         };
 
         const templateRes = await axiosSecure.patch(`/free/${_id}`, templateItem);
         if (templateRes.data.modifiedCount > 0) {
             Swal.fire({
-                position: "top-end",
+                position: "middle",
                 icon: "success",
                 title: `${data.type} is updated in the template`,
                 showConfirmButton: false,
@@ -103,53 +70,48 @@ const UpdateFreeTemplate = () => {
             });
         } else {
             Swal.fire({
-                position: "top-end",
+                position: "middle",
                 icon: "error",
                 title: `Failed to update ${data.type}`,
                 showConfirmButton: false,
                 timer: 1500
             });
         }
-        setIsLoading(false);
     };
 
-    const onDropMainImage = (acceptedFiles) => {
-        const file = acceptedFiles[0];
-        if (file) {
-            setNewImage(file);
+    const handleAddAdditionalImage = () => {
+        if (newAdditionalImageUrl.trim()) {
+            setAdditionalImages([...additionalImages, newAdditionalImageUrl.trim()]);
+            setNewAdditionalImageUrl('');  // Clear the input field
         }
     };
 
-    const onDropNewPictures = (acceptedFiles) => {
-        setNewPictures((prevPictures) => [...prevPictures, ...acceptedFiles]);
-
-        // Create object URLs for new pictures
-        setImageURLs((prevURLs) => [
-            ...prevURLs,
-            ...acceptedFiles.map((file) => URL.createObjectURL(file)),
-        ]);
-    };
-
-    const { getRootProps: getRootPropsMain, getInputProps: getInputPropsMain } = useDropzone({
-        onDrop: onDropMainImage,
-        accept: 'image/jpeg, image/png',
-        maxFiles: 1,
-    });
-
-    const { getRootProps: getRootPropsPictures, getInputProps: getInputPropsPictures } = useDropzone({
-        onDrop: onDropNewPictures,
-        accept: 'image/jpeg, image/png',
-        multiple: true,
-    });
-
-    const handleRemovePicture = (url) => {
-        setExistingPictures(existingPictures.filter(pic => pic !== url));
+    const handleRemoveAdditionalImage = (url) => {
+        setAdditionalImages(additionalImages.filter(img => img !== url));
     };
 
 
-    const handleRemoveNewPicture = (index) => {
-        setNewPictures(newPictures.filter((_, i) => i !== index));
-        setImageURLs(imageURLs.filter((_, i) => i !== index));
+    const handleAddFile = (event) => {
+        const selectedFile = event.target.value;
+        if (selectedFile && !selectedFiles.includes(selectedFile)) {
+            setSelectedFiles([...selectedFiles, selectedFile]);
+        }
+    };
+
+    const handleRemoveFile = (file) => {
+        setSelectedFiles(selectedFiles.filter(f => f !== file));
+    };
+
+
+    const handleAddRevision = (event) => {
+        const selectedRevision = event.target.value;
+        if (selectedRevision && !selectedRevisions.includes(selectedRevision)) {
+            setSelectedRevisions([...selectedRevisions, selectedRevision]);
+        }
+    };
+
+    const handleRemoveRevision = (revision) => {
+        setSelectedRevisions(selectedRevisions.filter(r => r !== revision));
     };
 
     return (
@@ -176,66 +138,97 @@ const UpdateFreeTemplate = () => {
                         {/* File Upload Section for Main Image */}
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div>
-                                <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Upload Your Files</h2>
+                                <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Main Image URL</h2>
                             </div>
                             <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-6">
-                                <div {...getRootPropsMain()} className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
-                                    <input {...getInputPropsMain()} className="hidden" />
-                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                                    <div className="mt-2 font-medium">
-                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose file</span> to Upload
-                                    </div>
-                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
-                                </div>
-                            </div>
-                            <div className="relative mt-4 flex items-center justify-center">
-                                <img
-                                    id="mainImagePreview"
-                                    src={newImage ? URL.createObjectURL(newImage) : image}
-                                    alt="Preview"
-                                    className="w-80 object-cover"
+                                <input
+                                    type="url"
+                                    value={imageUrl}
+                                    onChange={(e) => setImageUrl(e.target.value)}
+                                    placeholder="Enter main image URL"
+                                    className="input input-bordered w-full"
                                 />
-                            </div>
-
-                            {/* Additional Images */}
-                            <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
-                                <div {...getRootPropsPictures()} className="dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer">
-                                    <input {...getInputPropsPictures()} className="hidden" />
-                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                                    <div className="mt-2 font-medium">
-                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple files</span> to Upload
+                                {imageUrl && (
+                                    <div className="relative mt-4 flex items-center justify-center">
+                                        <img
+                                            src={imageUrl}
+                                            alt="Main"
+                                            className="w-80 object-cover"
+                                        />
                                     </div>
-                                    <p className="text-gray-400 mt-1">jpg, jpeg, png</p>
+                                )}
+                            </div>
+                            {/* Additional Image URLs */}
+                            <div>
+                                <div>
+                                    <h2 className="p-4 font-medium text-lg">Additional Image URLs</h2>
+                                </div>
+                                <div className="form-control w-full my-3 px-3">
+                                    <input
+                                        type="url"
+                                        value={newAdditionalImageUrl}
+                                        onChange={(e) => setNewAdditionalImageUrl(e.target.value)}
+                                        placeholder="Enter additional image URL"
+                                        className="input input-bordered w-full"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={handleAddAdditionalImage}
+                                        className="btn mt-2 hover:bg-[#7666E3] bg-[#9A8EE8] text-white"
+                                    >
+                                        Add Image
+                                    </button>
+                                </div>
+                                {/* Preview Additional Images */}
+                                <div className="flex flex-wrap gap-4 p-4">
+                                    {additionalImages.map((pic, index) => (
+                                        <div key={index} className="relative">
+                                            <img
+                                                src={pic}
+                                                alt={`Picture ${index}`}
+                                                className="w-24 h-24 object-cover"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => handleRemoveAdditionalImage(pic)}
+                                                className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
+                                            >
+                                                X
+                                            </button>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
-                            {/* Preview Selected Pictures */}
-                            <div className="flex flex-wrap gap-4 p-4">
-                                {[...existingPictures, ...imageURLs].map((pic, index) => (
-                                    <div key={index} className="relative">
-                                        <img
-                                            src={pic}
-                                            alt={`Picture ${index}`}
-                                            className="w-24 h-24 object-cover"
-                                        />
-                                        {index >= existingPictures.length && (
-                                            <button
-                                                type="button"
-                                                onClick={() => handleRemoveNewPicture(index - existingPictures.length)}
-                                                className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
-                                            >
-                                                X
-                                            </button>
-                                        )}
-                                        {index < existingPictures.length && (
-                                            <button
-                                                type="button"
-                                                onClick={() => handleRemovePicture(pic)}
-                                                className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
-                                            >
-                                                X
-                                            </button>
-                                        )}
+                            {/* Files Included */}
+                            <div className="flex pb-36 gap-6">
+                                <div className="form-control w-full mt-10 px-2">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg ">Files attached*</span>
+                                    </label>
+                                    <select defaultValue={selectedFiles}
+                                        {...register('files', { required: true })}
+                                        onChange={handleAddFile}  // Attach the function to the select element
+                                        className="select select-bordered w-full h-auto">
+                                        <option value="default">Select files</option>
+                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
+                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
+                                        <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
+                                        <option value="Canva">Canva</option>
+                                        <option value="Figma">Figma</option>
+                                        <option value="Adobe InDesign">Adobe InDesign</option>
+                                        <option value="Microsoft Word">Microsoft Word</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {/* Displaying Selected Files */}
+                            <div className="-mt-28 flex pb-36 flex-wrap ml-2">
+                                {selectedFiles.map((file, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                        <span>{file}</span>
+                                        <button onClick={() => handleRemoveFile(file)} className="ml-2">
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
                                     </div>
                                 ))}
                             </div>
@@ -261,11 +254,13 @@ const UpdateFreeTemplate = () => {
                                     <option value="financial">Financial</option>
                                     <option value="food">Food</option>
                                     <option value="portfolio">Portfolio</option>
+                                    <option value="education">Education</option>
+                                    <option value="environment">Environment</option>
                                 </select>
                             </div>
 
-                            {/* Price */}
-                            <div className="form-control w-full my-72 h-auto px-3">
+                             {/* Price */}
+                             <div className="form-control w-full my-72 h-auto px-3">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Price*</span>
                                 </label>
@@ -277,6 +272,42 @@ const UpdateFreeTemplate = () => {
                                     className="input input-bordered w-full"
                                 />
                             </div>
+                       
+                            {/* Revisions */}
+
+                            <div className="flex gap-6  pb-32 pt-16">
+                                <div className="form-control w-full my-10 h-auto px-3">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Revisions*</span>
+                                    </label>
+                                    <select
+                                        defaultValue={selectedRevisions}
+                                        {...register('revisions', { required: true })}
+                                        onChange={handleAddRevision}
+                                        className="select select-bordered w-full h-auto "
+                                    >
+                                        <option value="default">Select Revisions</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            {/* Displaying Selected Revisions */}
+                            <div className="-mt-24 pb-20 flex flex-wrap ml-4">
+                                {selectedRevisions.map((revision, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                        <span>{revision}</span>
+                                        <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
@@ -326,10 +357,10 @@ const UpdateFreeTemplate = () => {
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
                                 </label>
                                 <textarea
-                                    defaultValue={files.join('\n')}
-                                    {...register('files')}
+                                    defaultValue={documents.join('\n')}
+                                    {...register('documents')}
                                     className="textarea textarea-bordered h-24"
-                                    placeholder="Files"
+                                    placeholder="Files Included"
                                 ></textarea>
                             </div>
                         </div>
@@ -350,5 +381,6 @@ const UpdateFreeTemplate = () => {
         </div>
     );
 };
+
 
 export default UpdateFreeTemplate;
