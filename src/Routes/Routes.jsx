@@ -28,6 +28,8 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllAdmins from "../pages/Dashboard/AllAdmins/AllAdmins";
+import AddExclusiveTemplates from "../pages/Dashboard/AddExclusiveTemplates/AddExclusiveTemplates";
+import ManageExclusiveTemplates from "../pages/Dashboard/ManageExclusiveTemplates/ManageExclusiveTemplates";
 
 
 
@@ -162,6 +164,22 @@ export const router = createBrowserRouter([
         path: 'updateFreeTemplate/:id',
         element: <AdminRoute><UpdateFreeTemplate></UpdateFreeTemplate></AdminRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
+      },
+
+      {
+        path: 'uploadExclusiveTemplates',
+        element: <AdminRoute><AddExclusiveTemplates></AddExclusiveTemplates></AdminRoute>
+      },
+
+      {
+        path: 'manageExclusiveTemplates',
+        element: <AdminRoute><ManageExclusiveTemplates></ManageExclusiveTemplates></AdminRoute>
+      },
+
+      {
+        path: 'updateExclusiveTemplate/:id',
+        element: <AdminRoute></AdminRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/exclusive/${params.id}`)
       },
 
       {

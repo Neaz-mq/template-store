@@ -3,13 +3,12 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import useTemplate from "../../../hooks/useTemplate";
+import useExclusiveTemplate from "../../../hooks/useExclusiveTemplate";
 
 
+const ManageExclusiveTemplates = () => {
 
-const ManageTemplates = () => {
-
-    const [template, , refetch] = useTemplate();
+    const [exclusive, , refetch] = useExclusiveTemplate();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
 
@@ -19,7 +18,7 @@ const ManageTemplates = () => {
 
     const indexOfLastTemplate = currentPage * TEMPLATES_PER_PAGE;
     const indexOfFirstTemplate = indexOfLastTemplate - TEMPLATES_PER_PAGE;
-    const filteredTemplates = template.filter(item => item.type.toLowerCase().includes(search.toLowerCase()));
+    const filteredTemplates = exclusive.filter(item => item.type.toLowerCase().includes(search.toLowerCase()));
     const currentItems = filteredTemplates.slice(indexOfFirstTemplate, indexOfLastTemplate);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -35,7 +34,7 @@ const ManageTemplates = () => {
             confirmButtonText: "Yes, delete it!"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.delete(`/template/${temp._id}`);
+                const res = await axiosSecure.delete(`/exclusive/${temp._id}`);
                 if (res.data.deletedCount > 0) {
                     refetch();
                     Swal.fire({
@@ -71,7 +70,7 @@ const ManageTemplates = () => {
     return (
 
         <div className="px-2 md:px-6">
-            <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Premium Templates</h2>
+            <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Exclusive Templates</h2>
 
             <div>
                 <div className="text-center mb-4 md:mb-10">
@@ -198,4 +197,4 @@ const ManageTemplates = () => {
     );
 };
 
-export default ManageTemplates;
+export default ManageExclusiveTemplates;

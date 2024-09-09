@@ -19,10 +19,12 @@ const Dashboard = () => {
         { to: "/dashboard/manageTemplates", icon: <FaList />, label: "Manage Templates" },
         { to: "/dashboard/uploadFreeTemplates", icon: <AiOutlineUpload />, label: "Upload Free Templates" },
         { to: "/dashboard/manageFreeTemplates", icon: <FaList />, label: "Manage Free Templates" },
+        { to: "/dashboard/uploadExclusiveTemplates", icon: <AiOutlineUpload />, label: "Upload Exclusive" },
+        { to: "/dashboard/manageExclusiveTemplates", icon: <FaList />, label: "Manage Exclusive" },
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
     ];
-
+    
     const userLinks = [
         { to: "/dashboard/userHome", icon: <FaHome />, label: "User Home" },
         { to: "/dashboard/cart", icon: <FaShoppingCart />, label: `My Cart (${cart.length})` },

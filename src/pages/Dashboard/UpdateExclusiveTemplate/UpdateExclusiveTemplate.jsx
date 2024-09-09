@@ -8,8 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 
-
-const UpdateTemplate = () => {
+const UpdateExclusiveTemplate = () => {
     const {
         type,
         category,
@@ -386,4 +385,4 @@ const UpdateTemplate = () => {
     );
 };
 
-export default UpdateTemplate;
+export default UpdateExclusiveTemplate;
