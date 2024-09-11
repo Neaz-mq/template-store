@@ -6,6 +6,7 @@ import Creativity from '../Creativity/Creativity';
 import Ideas from '../Ideas/Ideas';
 import Template from '../Template/Template';
 import Testimonial from '../Testimonial/Testimonial';
+import Exclusive from '../Exclusive/Exclusive';
 
 const Home = () => {
 
@@ -27,12 +28,15 @@ const Home = () => {
                 <section id="templates">
                     <Template />
                 </section>
+
+                <section id="exclusive">
+                    <Exclusive />
+                </section> 
+                
                 <section id="creativity">
                     <Creativity />
                 </section>
-                {/* <section id="guidelines">
-                    <Guideline />
-                </section> */}
+                 
                 <section id="ideas">
                     <Ideas />
                 </section>

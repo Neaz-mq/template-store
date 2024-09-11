@@ -59,7 +59,7 @@ const UpdateExclusiveTemplate = () => {
             revisions: selectedRevisions
         };
 
-        const templateRes = await axiosSecure.patch(`/template/${_id}`, templateItem);
+        const templateRes = await axiosSecure.patch(`/exclusive/${_id}`, templateItem);
         if (templateRes.data.modifiedCount > 0) {
             Swal.fire({
                 position: "middle",

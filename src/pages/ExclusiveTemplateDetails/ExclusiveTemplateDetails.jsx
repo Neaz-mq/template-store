@@ -5,13 +5,12 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
-import TemplateItem from "../Shared/TemplateItem/TemplateItem";
 import LazyLoad from 'react-lazyload';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import TemplateItem from "../Shared/TemplateItem/TemplateItem";
 
-
-const FreeTemplateDetails = () => {
+const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
@@ -29,8 +28,6 @@ const FreeTemplateDetails = () => {
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const [selectedDoc, setSelectedDoc] = useState("");
-
 
     useEffect(() => {
 
@@ -78,7 +75,7 @@ const FreeTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, docs } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -98,12 +95,6 @@ const FreeTemplateDetails = () => {
         setZoomLevel(1); // Reset zoom level on close
     };
 
-    const handleNextImage = () => {
-        const nextIndex = (selectedIndex + 1) % picture.length;
-        setSelectedImage(picture[nextIndex]);
-        setSelectedIndex(nextIndex);
-    };
-
     const handleRevisionChange = (e) => {
         const selectedValue = e.target.value;
         if (selectedValue && !selectedRevisions.includes(selectedValue)) {
@@ -120,11 +111,12 @@ const FreeTemplateDetails = () => {
         e.target.value = ""; // Reset the select input
     };
 
-    const handleDocChange = (event) => {
-        const selected = event.target.value;
-        setSelectedDoc(selected); // Set the selected document for download
-    };
 
+    const handleNextImage = () => {
+        const nextIndex = (selectedIndex + 1) % picture.length;
+        setSelectedImage(picture[nextIndex]);
+        setSelectedIndex(nextIndex);
+    };
 
     const handlePreviousImage = () => {
         const prevIndex = (selectedIndex - 1 + picture.length) % picture.length;
@@ -170,7 +162,6 @@ const FreeTemplateDetails = () => {
                 files,
                 revisions,
                 documents
-
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
@@ -208,11 +199,10 @@ const FreeTemplateDetails = () => {
     }
 
     return (
-
         <div className="bg-[#EDEEF7] ml-2 overflow-hidden -mt-[4.6rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 h-[250rem] 3xl:h-[114rem] 2xl:h-[110rem] desktop:h-[108rem] laptop:h-[100rem] tablet:h-[180rem] min-h-[calc(120vh-450px)]">
             <div className="container mx-auto">
                 <Helmet>
-                    <title>Prographr | Free</title>
+                    <title>Prographr | Exclusive</title>
                     <meta
                         name="description"
                         content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more."
@@ -225,7 +215,7 @@ const FreeTemplateDetails = () => {
                     <div className="md:mt-14 flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] ">
                             <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-roboto 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
-                                Free <strong>Graphics Template</strong>
+                               Exclusive <strong>Graphics Template</strong>
                             </h2>
                             <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[7.9rem] 3xl:-mr-20 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
@@ -271,28 +261,10 @@ const FreeTemplateDetails = () => {
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                     </div>
 
-                                    <select className="border rounded-md lg:px-3 py-2 lg:ml-20 mr-10 -ml-3 lg:mr-0 mt-3" onChange={handleDocChange}>
-                                        <option value="">Download</option>
-                                        {docs.map((doc, index) => (
-                                            <option key={index} value={doc}>
-                                                {doc}
-                                            </option>
-                                        ))}
-                                    </select>
-
-                                  <div className="mt-6">
-                                     
-                                  {selectedDoc && (
-                                        <a
-                                            href={selectedDoc} // Link to the document
-                                            download // This attribute tells the browser to download the file instead of navigating to it
-                                            className="bg-[#7666E3] text-white font-semibold rounded-lg p-2 hover:bg-[#4c16b1] font-roboto lg:ml-20"
-                                        >
-                                            Download Selected Document
-                                        </a>
-                                    )}
-                                  </div>
-
+                                    {/* Add to Cart button */}
+                                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                        Add to Cart
+                                    </button>
                                 </div>
 
                             </div>
@@ -415,12 +387,13 @@ const FreeTemplateDetails = () => {
                             </button>
                         </div>
                         <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
-                            {displayedTemplates.map(item => (
+                        {displayedTemplates.map(item => (
                                 <TemplateItem
                                     key={item._id}
                                     item={item}
                                 />
                             ))}
+                           
                         </div>
                     </div>
                 </div>
@@ -481,4 +454,4 @@ const FreeTemplateDetails = () => {
     );
 };
 
-export default FreeTemplateDetails;
+export default ExclusiveTemplateDetails;

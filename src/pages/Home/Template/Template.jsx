@@ -29,7 +29,7 @@ const Template = () => {
         <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
             <div className="container mx-auto overflow-x-hidden">
                 <div className="font-roboto">
-                    <section className="layout bg-[#EDEEF7] py-10 lg:py-16 rounded-[20px] mt-16 lg:mt-36 mb-20 3xl:w-[74rem] 2xl:w-[62rem] desktop:w-[65.5rem] laptop:w-[50rem] mx-auto">
+                    <section className="layout bg-[#EDEEF7] py-10 lg:py-16 rounded-[20px] mt-16 lg:mt-32 mb-20 3xl:w-[74rem] 2xl:w-[62rem] desktop:w-[65.5rem] laptop:w-[50rem] mx-auto">
                         <div className="flex justify-center gap-4 lg:gap-36 px-5">
                             <div className="text-center" aria-labelledby="templates-sold">
                                 <h2 id="templates-sold" className="text-2xl font-bold lg:text-5xl text-[#7666E4]">
