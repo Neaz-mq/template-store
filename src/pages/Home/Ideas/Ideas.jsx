@@ -12,13 +12,13 @@ const Ideas = () => {
         let gifUrl;
         switch (activeTab) {
             case 'ideas':
-                gifUrl = "https://i.ibb.co/MZKCPkn/Web-1-animation.gif";
+                gifUrl = "https://res.cloudinary.com/dzi3u164c/image/upload/v1725944876/Web-1-animation_uavfhe.gif";
                 break;
             case 'design':
-                gifUrl = "https://i.ibb.co/MB2zBqs/Web-2.gif";
+                gifUrl = "https://res.cloudinary.com/dzi3u164c/image/upload/v1725945389/Web-2_slzrcs.gif";
                 break;
             case 'finalize':
-                gifUrl = "https://i.ibb.co/HHGftpJ/Web-3.gif";
+                gifUrl = "https://res.cloudinary.com/dzi3u164c/image/upload/v1725945537/Web-3_sivn04.gif";
                 break;
             default:
                 gifUrl = null;

@@ -2,7 +2,6 @@ import { Helmet } from 'react-helmet-async';
 import Banner from '../Banner/Banner';
 import Community from '../Community/Community';
 import Creativity from '../Creativity/Creativity';
-
 import Ideas from '../Ideas/Ideas';
 import Template from '../Template/Template';
 import Testimonial from '../Testimonial/Testimonial';

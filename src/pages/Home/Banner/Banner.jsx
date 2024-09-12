@@ -55,34 +55,34 @@ const Banner = () => {
           <div className="hidden lg:col-span-7 lg:flex items-center 3xl:-ml-7 3xl:mr-36 3xl:pl-16 2xl:-ml-16 2xl:mr-44 2xl:pl-5">
             <div className="scroll_wrapper__5yHC8" aria-label="Scrolling gallery of images for business promotion designs">
               <section className="scroll_section__WwdTn scroll_scrolling__mlJTJ">
-                <img className="lazy-load" data-src="https://i.ibb.co/CwrFb2M/1.jpg" alt="Business promotion design example 1" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/3cfC2Bv/15.jpg" alt="Business promotion design example 2" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/T8x897w/2.jpg" alt="Business promotion design example 3" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/G2C4WPd/3.jpg" alt="Business promotion design example 4" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/GQXdj44/4.jpg" alt="Business promotion design example 5" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/PD6mgF0/5.jpg" alt="Business promotion design example 6" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/P61Y6VS/10.jpg" alt="Business promotion design example 7" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/FhK7LHw/13.jpg" alt="Business promotion design example 8" loading="lazy" />
+              <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943321/1_ggnznm.jpg" alt="Business promotion design example 1" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943390/15_yd0cqf.jpg" alt="Business promotion design example 2" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943694/2_c2kafr.jpg" alt="Business promotion design example 3" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943738/3_xukkuu.jpg" alt="Business promotion design example 4" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943767/4_xdobit.jpg" alt="Business promotion design example 5" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943798/5_wpq43l.jpg" alt="Business promotion design example 6" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943830/10_l7ij9n.jpg" alt="Business promotion design example 7" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943871/13_m7cl8p.jpg" alt="Business promotion design example 8" loading="lazy" />
               </section>
 
               <section className="scroll_section__WwdTn scroll_scrolling2__yKLja">
-                <img className="lazy-load" data-src="https://i.ibb.co/xzCkxqs/7.jpg" alt="Business promotion design example 9" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/rfX9hfx/9.jpg" alt="Business promotion design example 10" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/3cYzzPX/8.jpg" alt="Business promotion design example 11" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/5kk478p/20.jpg" alt="Business promotion design example 12" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/t3XZc8Y/25.jpg" alt="Business promotion design example 13" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/B4SSy9j/16.jpg" alt="Business promotion design example 14" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/CwrFb2M/1.jpg" alt="Business promotion design example 15" loading="lazy" />
+              <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943895/7_gecfyu.jpg" alt="Business promotion design example 9" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943925/9_lihhtf.jpg" alt="Business promotion design example 10" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943960/8_dpmbyv.jpg" alt="Business promotion design example 11" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943993/20_h41u28.jpg" alt="Business promotion design example 12" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944023/25_acpkgl.jpg" alt="Business promotion design example 13" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944050/16_htvkwd.jpg" alt="Business promotion design example 14" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943321/1_ggnznm.jpg" alt="Business promotion design example 15" loading="lazy" />
               </section>
 
               <section className="scroll_section__WwdTn scroll_scrolling3__QmJJF">
-                <img className="lazy-load" data-src="https://i.ibb.co/JFnQfxd/24.jpg" alt="Business promotion design example 16" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/ygRhtnW/11.jpg" alt="Business promotion design example 17" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/rHnzJFY/26.jpg" alt="Business promotion design example 18" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/VLqXsFR/14.jpg" alt="Business promotion design example 19" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/0KXBJ2y/6.jpg" alt="Business promotion design example 20" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/rfX9hfx/9.jpg" alt="Business promotion design example 21" loading="lazy" />
-                <img className="lazy-load" data-src="https://i.ibb.co/3cfC2Bv/15.jpg" alt="Business promotion design example 22" loading="lazy" />
+              <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944122/24_amwg6n.jpg" alt="Business promotion design example 16" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944184/11_comqiv.jpg" alt="Business promotion design example 17" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944224/26_mcqeqh.jpg" alt="Business promotion design example 18" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944267/14_qncylu.jpg" alt="Business promotion design example 19" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725944318/6_zqlmrf.jpg" alt="Business promotion design example 20" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943925/9_lihhtf.jpg" alt="Business promotion design example 21" loading="lazy" />
+                <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943390/15_yd0cqf.jpg" alt="Business promotion design example 22" loading="lazy" />
               </section>
             </div>
           </div>

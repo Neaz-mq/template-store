@@ -46,7 +46,7 @@ const Creativity = () => {
                 <div className="w-[80px] h-[80px] laptop:hidden rounded-full overflow-hidden bg-primary text-white flex items-center justify-center text-2xl 3xl:block 2xl:block desktop:block tablet:block">
                   <img
                     className="lazy-load decoration-transparent scale-125"
-                    data-src="https://prographr.vercel.app/_next/static/media/Creativity.78da9627.svg"
+                    data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725945988/Screenshot_1_u2llv1.png"
                     alt="Creativity Icon"
                     width="80"
                     height="80"
@@ -77,7 +77,7 @@ const Creativity = () => {
                 <div className="w-[80px] h-[80px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block rounded-full overflow-hidden bg-primary text-white flex items-center justify-center text-2xl">
                   <img
                     className="lazy-load decoration-transparent scale-125"
-                    data-src="https://prographr.vercel.app/_next/static/media/TeamCollaboration.88e3e422.svg"
+                    data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725946124/team_pgcefs.png"
                     alt="Team Collaboration Icon"
                     width="80"
                     height="80"
@@ -108,7 +108,7 @@ const Creativity = () => {
                 <div className="w-[80px] h-[80px] laptop:hidden rounded-full overflow-hidden bg-primary text-white flex items-center justify-center text-2xl laptop:ml-2 3xl:block 2xl:block desktop:block tablet:block ml-1">
                   <img
                     className="lazy-load decoration-transparent scale-125"
-                    data-src="https://prographr.vercel.app/_next/static/media/Professionalism.3454926c.svg"
+                    data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725946315/professional_vvxtp2.png"
                     alt="Professionalism Icon"
                     width="80"
                     height="80"
