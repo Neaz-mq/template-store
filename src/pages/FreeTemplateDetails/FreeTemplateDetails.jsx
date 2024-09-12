@@ -272,7 +272,7 @@ const FreeTemplateDetails = () => {
                                     </div>
 
                                     <select className="border rounded-md lg:px-3 py-2 lg:ml-20 mr-10 -ml-3 lg:mr-0 mt-3" onChange={handleDocChange}>
-                                        <option value="">Download</option>
+                                        <option value="">Choose file to Download</option>
                                         {docs.map((doc, index) => (
                                             <option key={index} value={doc}>
                                                 {doc}
@@ -308,7 +308,7 @@ const FreeTemplateDetails = () => {
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
                                             <h2 className="font-roboto">Template + Customization</h2>
                                         </div>
-                                        <div className="font-roboto font-medium">${price}</div>
+                                        <div className="font-roboto font-medium">$00</div>
                                     </div>
                                     <div className="pt-2 border-t font-roboto font-medium">
 

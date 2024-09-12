@@ -280,7 +280,7 @@ const ExclusiveTemplateDetails = () => {
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
                                             <h2 className="font-roboto">Template + Customization</h2>
                                         </div>
-                                        <div className="font-roboto font-medium">${price}</div>
+                                        <div className="font-roboto font-medium">$00</div>
                                     </div>
                                     <div className="pt-2 border-t font-roboto font-medium">
 
