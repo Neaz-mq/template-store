@@ -57,9 +57,9 @@ const Form = () => {
 
     return (
 
-        <div className='min-h-screen'>
+        <div className='min-h-screen font-raleway'>
             <div className="layout pt-20 pb-48 flex flex-col items-center justify-center bg-white 3xl:-mt-0 2xl:-mt-0 desktop:-mt-4 laptop:-mt-4 -mt-0">
-                <section className="bg-[#EDEEF7] p-4 rounded-lg w-full 3xl:-mt-24 2xl:-mt-20 desktop:-mt-20 laptop:-mt-20 tablet:-mt-44 -mt-44   text-center 3xl:h-[100rem] 2xl:h-[90rem] desktop:h-[85rem]  laptop:h-[80rem] tablet:h-[75rem] h-[60rem] min-h-screen">
+                <section className="bg-[#ffffff] p-4 rounded-lg w-full 3xl:-mt-24 2xl:-mt-20 desktop:-mt-20 laptop:-mt-20 tablet:-mt-44 -mt-44   text-center 3xl:h-[100rem] 2xl:h-[90rem] desktop:h-[85rem]  laptop:h-[80rem] tablet:h-[75rem] h-[60rem] min-h-screen">
                     <div className='container mx-auto mt-20 tablet:mt-24 3xl:mt-[22rem] 2xl:mt-52 desktop:mt-60 laptop:mt-52'>
                         <h1 className="md:text-5xl text-3xl font-bold text-slate-800 pb-4 md:mt-24 mt-16">
                             How can we help?
@@ -70,10 +70,10 @@ const Form = () => {
                     </div>
                 </section>
                 <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-roboto 3xl:-mt-[65rem] 2xl:-mt-[65rem] desktop:-mt-[58rem] laptop:-mt-[54rem] tablet:-mt-[56rem] -mt-[45rem] 3xl:mb-64 2xl:mb-64 desktop:mb-52">
-                    <input className="bg-white py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Full Name" type="text" name="from_name" />
-                    <input className="bg-white py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Email" type="email" name="from_email" />
-                    <textarea className="col-span-2 h-[150px] bg-white py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Message" name="message"></textarea>
-                    <button type="submit" className="col-span-2  font-roboto font-medium py-4 rounded-lg text-white bg-[#7666E3]">
+                    <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Full Name" type="text" name="from_name" />
+                    <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Email" type="email" name="from_email" />
+                    <textarea className="col-span-2 h-[150px] bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Message" name="message"></textarea>
+                    <button type="submit" className="col-span-2 font-raleway   font-medium py-4 rounded-lg text-white bg-[#7666E3]">
                         Send Message
                     </button>
 
@@ -82,7 +82,7 @@ const Form = () => {
                     <a
                         href="https://wa.me/+8801738200107"
                         target="_blank"
-                        className="col-span-2 border dark:border-gray-800 flex items-center justify-center hover:bg-[#9A8EE8] hover:text-white dark:hover:bg-[#9A8EE8] gap-3 font-roboto font-medium py-4 rounded-lg text-black "
+                        className="col-span-2 border dark:border-gray-800 flex items-center justify-center hover:bg-[#9A8EE8] hover:text-white dark:hover:bg-[#9A8EE8] gap-3 font-raleway font-medium py-4 rounded-lg text-black "
                     >
                         <svg
                             stroke="currentColor"
