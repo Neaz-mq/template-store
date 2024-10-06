@@ -7,6 +7,7 @@ import Template from '../Template/Template';
 import Testimonial from '../Testimonial/Testimonial';
 import Exclusive from '../Exclusive/Exclusive';
 import Free from '../Free/Free';
+import Promote from '../Promote/Promote';
 
 const Home = () => {
 
@@ -35,6 +36,10 @@ const Home = () => {
 
                 <section id="free">
                     <Free />
+                </section> 
+
+                <section id="promote">
+                    <Promote />
                 </section> 
                 
                 <section id="creativity">
