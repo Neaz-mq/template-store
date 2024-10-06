@@ -44,7 +44,7 @@ const NavBar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm cursor-pointer dropdown-content -mt-16 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-2 font-roboto font-medium text-[17px]"
+                className="menu menu-sm cursor-pointer dropdown-content -mt-16 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-2 font-raleway font-semibold text-[17px]"
               >
                 <Link to="/" className="laptop:hidden text-xl mt-5 ml-4 mr-1 mb-8">
                   <img
@@ -103,8 +103,8 @@ const NavBar = () => {
               {/* Show different image on mobile */}
               <div className="mt-[5.5rem] ">
                 <img
-                  className="3xl:hidden 2xl:hidden desktop:hidden laptop:hidden  tablet:ml-[2rem]"
-                  src="/icon.svg"
+                  className="3xl:hidden 2xl:hidden desktop:hidden laptop:hidden  tablet:ml-[2rem] w-36 h-auto"
+                  src="/public/Logo_Prographr_Semi Color 2.svg"
                   alt=""
                 />
               </div>
@@ -123,7 +123,7 @@ const NavBar = () => {
           </div>
 
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 ">
-            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8  font-roboto font-medium  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
+            <ul className="menu  cursor-pointer menu-horizontal  flex-row gap-8 font-raleway font-semibold  3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px]  laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem] ">
               <Link
                 to="/template"
                 className="hover:text-[#7673E5] mt-[1.3rem] 2xl:mr-8 3xl:mr-0" 
@@ -175,7 +175,7 @@ const NavBar = () => {
                 </span>
                 <button
                   onClick={handleLogOut}
-                  className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto text-[#201e24] gap-4 shadow-none  hover:bg-primary/30 !border-[#5D4987]  -ml-14 mr-14 tablet:mr-16 tablet:-ml-1   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[10.7rem] laptop:mt-[6.4rem] laptop:-ml-36"
+                  className="btn btn-sm bg-[#ffffff] hover:bg-[#ffffff]  capitalize rounded-none font-raleway text-[#201e24] gap-4 shadow-none   !border-[#5D4987]  -ml-14 mr-14 tablet:mr-16 tablet:-ml-1   py-[1.12rem] 3xl:mt-[6.3rem]  3xl:mr-[14.4rem] 3xl:-ml-[3rem]  2xl:mr-[17.4rem] 2xl:-ml-[5rem] 2xl:mt-[6.8rem]  desktop:mt-[6.4rem] desktop:-ml-[10.7rem] laptop:mt-[6.4rem] laptop:-ml-36"
                 >
                   <span className="-mt-2">Sign Out</span>
                 </button>
@@ -183,7 +183,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4">
-                  <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm bg-transparent capitalize hover:bg-[#C8C5F0] rounded-full font-roboto font-medium text-[#241e2f] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 hover:bg-primary/30 !border-[#5D4987]  -ml-4 mr-8  3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-48 3xl:mt-[6.3rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
+                  <button style={{ whiteSpace: 'nowrap' }} className=" capitalize font-raleway font-semibold text-[#282A37] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5  -ml-4 mr-8  3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem]  2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
                     <span className="-mt-2">Sign in</span>
                   </button>
                 </Link>
@@ -193,7 +193,7 @@ const NavBar = () => {
             {/* "Sign Up" button always visible */}
             <div className="flex items-center">
               <Link to="/sign-up">
-                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm  hover:bg-[#6658C5] bg-[#7666E3] font-roboto capitalize text-white rounded-full gap-4 font-medium 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10       ">
+                <button style={{ whiteSpace: 'nowrap' }} className="btn btn-sm hover:bg-[#4864EC]   bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4  3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14  3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20  desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-semibold">
                   <span className="-mt-2">Sign Up</span>
                 </button>
               </Link>
