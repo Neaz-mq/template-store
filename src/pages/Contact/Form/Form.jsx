@@ -73,7 +73,7 @@ const Form = () => {
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Full Name" type="text" name="from_name" />
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Email" type="email" name="from_email" />
                     <textarea className="col-span-2 h-[150px] bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Message" name="message"></textarea>
-                    <button type="submit" className="col-span-2 font-raleway   font-medium py-4 rounded-lg text-white bg-[#7666E3]">
+                    <button type="submit" className="col-span-2 font-raleway   font-medium py-4 rounded-lg text-white bg-[#4864EC]">
                         Send Message
                     </button>
 
@@ -82,7 +82,7 @@ const Form = () => {
                     <a
                         href="https://wa.me/+8801738200107"
                         target="_blank"
-                        className="col-span-2 border dark:border-gray-800 flex items-center justify-center hover:bg-[#9A8EE8] hover:text-white dark:hover:bg-[#9A8EE8] gap-3 font-raleway font-medium py-4 rounded-lg text-black "
+                        className="col-span-2 border dark:border-gray-800 flex items-center justify-center hover:bg-[#9A8EE8] hover:text-white dark:hover:bg-[#4864EC] gap-3 font-raleway font-medium py-4 rounded-lg text-black "
                     >
                         <svg
                             stroke="currentColor"
