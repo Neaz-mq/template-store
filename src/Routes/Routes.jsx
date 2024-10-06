@@ -33,6 +33,7 @@ import ManageExclusiveTemplates from "../pages/Dashboard/ManageExclusiveTemplate
 import ExclusiveTemplateDetails from "../pages/ExclusiveTemplateDetails/ExclusiveTemplateDetails";
 import UpdateExclusiveTemplate from "../pages/Dashboard/UpdateExclusiveTemplate/UpdateExclusiveTemplate";
 import Exclusives from "../pages/Temp/Exclusives/Exclusives";
+import Frees from "../pages/Temp/Frees/Frees";
 
 
 
@@ -67,6 +68,11 @@ export const router = createBrowserRouter([
       {
         path: '/exclusive',
         element: <Exclusives></Exclusives>
+      },
+
+      {
+        path: '/free',
+        element: <Frees></Frees>
       },
 
       {
