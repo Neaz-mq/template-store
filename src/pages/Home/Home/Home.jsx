@@ -8,6 +8,7 @@ import Testimonial from '../Testimonial/Testimonial';
 import Exclusive from '../Exclusive/Exclusive';
 import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
+import Package from '../Package/Package';
 
 const Home = () => {
 
@@ -41,17 +42,23 @@ const Home = () => {
                 <section id="promote">
                     <Promote />
                 </section> 
+
+                <section id="package">
+                    <Package />
+                </section> 
                 
-                <section id="creativity">
+                {/* <section id="creativity">
                     <Creativity />
-                </section>
+                </section> */}
                  
-                <section id="ideas">
+                {/* <section id="ideas">
                     <Ideas />
-                </section>
-                <section id="testimonials">
+                </section> */}
+
+                {/* <section id="testimonials">
                     <Testimonial />
-                </section>
+                </section> */}
+                
                 <section id="community">
                     <Community />
                 </section>
