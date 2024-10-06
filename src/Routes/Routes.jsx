@@ -34,6 +34,7 @@ import ExclusiveTemplateDetails from "../pages/ExclusiveTemplateDetails/Exclusiv
 import UpdateExclusiveTemplate from "../pages/Dashboard/UpdateExclusiveTemplate/UpdateExclusiveTemplate";
 import Exclusives from "../pages/Temp/Exclusives/Exclusives";
 import Frees from "../pages/Temp/Frees/Frees";
+import Career from "../pages/Career/Career";
 
 
 
@@ -86,11 +87,12 @@ export const router = createBrowserRouter([
         element: <Company></Company>
       },
 
-      // {
-      //   path: '/market',
-      //   element: <Market></Market>
-      // },
+      {
+        path: '/career',
+        element: <Career></Career>
+      },
 
+   
       {
         path: '/contact',
         element: <Contact></Contact>
