@@ -7,8 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ['Roboto', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
       },
+      /* Check for any global CSS files or libraries */
       screens: {
         'sm': '320px',
         'tablet': '640px',
@@ -19,8 +20,9 @@ export default {
       },
       container: {
         center: true,
-        padding: '1rem', 
+        padding: '1rem',
       },
+
     },
   },
   plugins: [

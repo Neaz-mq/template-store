@@ -21,7 +21,7 @@ const NavBar = () => {
   
   return (
 
-    <div className="bg-white">
+    <div className="bg-[#ffffff] font-raleway">
       <div className="container mx-auto">
         <div className="navbar -mt-[6rem] 3xl:-mt-[7rem] 2xl:-mt-[7rem]  laptop:-mt-[7rem] -ml-2">
           <div className="navbar-start">
@@ -48,14 +48,14 @@ const NavBar = () => {
               >
                 <Link to="/" className="laptop:hidden text-xl mt-5 ml-4 mr-1 mb-8">
                   <img
-                    src="/prographr.svg"
+                    src="/Logo_Prographr_Color.svg"
                     alt=""
                   />
                 </Link>
 
                 <Link to="/" className="hidden laptop:block text-xl mt-6 ml-6 mr-1 mb-8">
                   <img
-                    src="/prographr.svg"
+                    src="/Logo_Prographr_Color.svg"
                     alt=""
                   />
                 </Link>
@@ -113,8 +113,8 @@ const NavBar = () => {
               <div className="mt-[5.5rem] ">
                 <a href="/">
                   <img
-                    className="hidden 3xl:block 2xl:block desktop:block laptop:block 3xl:ml-[9.45rem] 3xl:pt-1  2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem]   laptop:ml-[0.4rem] laptop:pt-2"
-                    src="/prographr.svg"
+                    className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto   2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem]   laptop:ml-[0.4rem] laptop:pt-2"
+                    src="/public/Logo_Prographr_Color.svg"
                     alt=""
                   />
                 </a>
