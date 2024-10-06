@@ -33,12 +33,12 @@ const Banner = () => {
 
   return (
 
-    <section className="w-full bg-[#ffffff] font-raleway 3xl:pb-[7rem] 2xl:pb-[7rem] desktop:pb-[7rem] laptop:pb-[7rem] pt-6 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5">
+    <section className="w-full bg-[#ffffff] font-raleway 3xl:pb-[7rem] 2xl:pb-[7rem] desktop:pb-[7rem] laptop:pb-[7rem] pt-6 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5 -mt-16">
       <div className='container mx-auto overflow-x-hidden'>
         <div className="layout lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5 lg:-mt-36 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-24 3xl:ml-60 2xl:ml-60 3xl:-mt-14 2xl:mt-2">
             <p className="tracking-[0.2rem] text-sm text-primary mb-3 laptop:-mt-16 tablet:-mt-0 font-medium">
-              <span className="bg-[#4864EC] px-2 py-1.5 text-white text-center lg:-ml-1">PRO</span> <span className='text-[#4864EC]'>PREMIUM</span>
+              <span className="bg-[#4864EC] px-2 3xl:py-1.5 2xl:py-1.5 desktop:py-1.5 laptop:py-1.5 py-1  text-white text-center lg:-ml-1">PRO</span> <span className='text-[#4864EC]'>PREMIUM</span>
             </p>
             <h1 className="text-3xl lg:text-6xl text-[#282A37] font-extrabold lg:font-bold leading-[50px] text-center lg:text-start md:mt-1 mb-3 lg:-ml-1">
               A design that <br />match your business
@@ -51,7 +51,7 @@ const Banner = () => {
             </a>
           </div>
 
-          <div className="hidden lg:col-span-7 lg:flex items-center 3xl:-ml-4 3xl:mr-48 3xl:pl-16 2xl:-ml-16 2xl:mr-44 2xl:pl-5">
+          <div className="hidden lg:col-span-7 lg:flex items-center 3xl:-ml-4 3xl:mr-48 3xl:pl-16 2xl:-ml-16 2xl:mr-52 2xl:pl-5 desktop:-ml-16 desktop:mr-6">
             <div className="scroll_wrapper__5yHC8 3xl:ml-8 2xl:ml-7 desktop:ml-7" aria-label="Scrolling gallery of images for business promotion designs">
               <section className="scroll_section__WwdTn scroll_scrolling__mlJTJ">
                 <img className="lazy-load" data-src="https://res.cloudinary.com/dzi3u164c/image/upload/v1725943321/1_ggnznm.jpg" alt="Business promotion design example 1" loading="lazy" />
