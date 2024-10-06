@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
@@ -10,6 +10,7 @@ const NavBar = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
   const [selected, setSelected] = useState(null); // State to track selected button
+  const location = useLocation(); // Hook to get the current location
 
   const handleLogOut = () => {
     logOut()
@@ -20,6 +21,23 @@ const NavBar = () => {
   const handleSelect = (link) => {
     setSelected(link); // Set the selected link
   };
+
+  // Use useEffect to update the selected link based on the current path
+  useEffect(() => {
+    // Update the selected link based on the current path
+    if (location.pathname === '/') {
+      setSelected(null); // No link is selected when on the home page
+    } else if (location.pathname.includes('template')) {
+      setSelected('template');
+    } else if (location.pathname.includes('company')) {
+      setSelected('company');
+    } else if (location.pathname.includes('contact')) {
+      setSelected('contact');
+    } else if (location.pathname.includes('sign-in') || location.pathname.includes('sign-up')) {
+      setSelected(null); // No link is selected when on Sign In or Sign Up page
+    }
+  }, [location.pathname]);
+  
 
   return (
     <div className="bg-[#ffffff] font-raleway">
@@ -99,6 +117,7 @@ const NavBar = () => {
 
             <Link
               to="/"
+              onClick={() => handleSelect(null)} // Reset selected when going to home
               className="3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8  3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8"
             >
               <div className="mt-[5.5rem] ">
@@ -158,7 +177,7 @@ const NavBar = () => {
 
               <Link to="/dashboard/cart">
                 <button className="btn ml-4 mr-16 3xl:mt-1 2xl:mt-2  2xl:mr-20 2xl:-ml-4 3xl:-ml-0 3xl:mr-10 laptop:mt-2 laptop:ml-2 laptop:mr-10">
-                  <FaShoppingCart className="mr-4"></FaShoppingCart>
+                <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </button>
               </Link>
