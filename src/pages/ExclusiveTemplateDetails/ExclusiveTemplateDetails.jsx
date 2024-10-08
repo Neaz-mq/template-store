@@ -15,6 +15,7 @@ import PresentationTemplate from "../Home/PresentationTemplate/PresentationTempl
 const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
     const [selectedRevisions, setSelectedRevisions] = useState([]);
+    const [selectedPackages, setSelectedPackages] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
     const [templates, setTemplates] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -39,6 +40,10 @@ const ExclusiveTemplateDetails = () => {
             setSelectedIndex(0);
         }
     }, [template]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0); 
+    }, []); 
 
     useEffect(() => {
         if (isModalOpen) {
@@ -91,6 +96,14 @@ const ExclusiveTemplateDetails = () => {
         const selectedValue = e.target.value;
         if (selectedValue && !selectedRevisions.includes(selectedValue)) {
             setSelectedRevisions([...selectedRevisions, selectedValue]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
+    const handlePackageChange = (e) => {
+        const selectedPack = e.target.value;
+        if (selectedPack && !selectedPackages.includes(selectedPack)) {
+            setSelectedPackages([...selectedPackages, selectedPack]);
         }
         e.target.value = ""; // Reset the select input
     };
@@ -291,6 +304,22 @@ const ExclusiveTemplateDetails = () => {
                                     <div className="pt-2 border-t font-raleway font-medium">
 
                                     </div>
+
+                                    <select
+                                                className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setSelectedPackages([...selectedPackages, newValue]);
+                                                }}
+                                                value={selectedPackages[selectedPackages.length - 1] || ''}
+                                            >
+                                                
+                                                {packages.map((pack, index) => (
+                                                    <option key={index} value={pack} className={`option-${_id}`}>
+                                                        {pack}
+                                                    </option>
+                                                ))}
+                                            </select>
 
                                     <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0 font-raleway">
                                         <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
