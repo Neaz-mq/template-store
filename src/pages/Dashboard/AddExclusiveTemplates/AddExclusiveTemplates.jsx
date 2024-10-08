@@ -15,6 +15,7 @@ const AddExclusiveTemplates = () => {
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [selectedPackages, setSelectedPackages] = useState([]);
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -46,6 +47,8 @@ const AddExclusiveTemplates = () => {
             picture: pictureUrls,
             revisions: selectedRevisions,
             files: selectedFiles,
+            packages: selectedPackages,
+            
         };
 
         try {
@@ -57,6 +60,7 @@ const AddExclusiveTemplates = () => {
                 setPictureUrls([]); // Clear the picture URLs
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
+                setSelectedPackages([]);
                 Swal.fire({
                     position: "middle",
                     icon: "success",
@@ -85,6 +89,14 @@ const AddExclusiveTemplates = () => {
         e.target.value = ""; // Reset the select input
     };
 
+    const handlePackageChange = (e) => {
+        const selectedPrice = e.target.value;
+        if (selectedPrice && !selectedPackages.includes(selectedPrice)) {
+            setSelectedPackages([...selectedPackages, selectedPrice]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
 
     const handleRevisionChange = (e) => {
         const selectedRate = e.target.value;
@@ -100,6 +112,10 @@ const AddExclusiveTemplates = () => {
 
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
+    };
+
+    const handleRemovePackage = (pack) => {
+        setSelectedPackages(selectedPackages.filter(f => f !== pack));
     };
 
     return (
@@ -210,6 +226,32 @@ const AddExclusiveTemplates = () => {
                                     </div>
                                 ))}
                             </div>
+
+                            {/* Packages Included */}
+                            <div className="flex pb-36 gap-6">
+                                <div className="form-control w-full mt-10 px-2">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg ">Packages attached*</span>
+                                    </label>
+                                    <select className="select select-bordered w-full " onChange={handlePackageChange}>
+                                        <option value="">Select Packages</option>
+                                        <option value="Basic Packages $3">Basic Packages $3</option>
+                                        <option value="Standard Packages $5">Standard Packages $5</option>
+                                        <option value="Premium Packages $7">Premium Packages $7</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="-mt-28 flex pb-36 flex-wrap ml-2">
+                                {selectedPackages.map((pack, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                        <span>{pack}</span>
+                                        <button onClick={() => handleRemovePackage(pack)} className="ml-2">
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+
                         </div>
 
 

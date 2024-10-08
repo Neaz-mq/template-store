@@ -28,10 +28,10 @@ const ExclusiveTemplateDetails = () => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
-    
+
     const [selectedFiles, setSelectedFiles] = useState([]);
 
-   
+
 
     useEffect(() => {
         if (template && template.picture && template.picture.length > 0) {
@@ -67,7 +67,7 @@ const ExclusiveTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, delivery } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -153,7 +153,10 @@ const ExclusiveTemplateDetails = () => {
                 product,
                 files,
                 revisions,
-                documents
+                documents,
+                packages,
+                delivery
+
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
@@ -207,7 +210,7 @@ const ExclusiveTemplateDetails = () => {
                     <div className="flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] ">
                             <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
-                               Exclusive <strong>Graphics Template</strong>
+                                Exclusive <strong>Graphics Template</strong>
                             </h2>
                             <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
@@ -226,7 +229,7 @@ const ExclusiveTemplateDetails = () => {
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
                                             src={src}
-                                            className={`w-[75px] h-[75px] object-contain  p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#7666E3]' : 'bg-slate-50 hover:bg-[#7666E3]'}`}
+                                            className={`w-[75px] h-[75px] object-contain  p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
                                             alt="Template"
                                             onClick={() => handleThumbnailClick(src, index)}
                                         />
@@ -253,7 +256,7 @@ const ExclusiveTemplateDetails = () => {
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                     </div>
 
-                                 
+
                                 </div>
 
                             </div>
@@ -267,17 +270,19 @@ const ExclusiveTemplateDetails = () => {
                                     <div className="flex justify-between pb-3">
                                         <div className="flex gap-3 font-bold">
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
-                                            <h2 className="font-raleway">Template + Customization</h2>
+                                            <h2 className="font-raleway">Template + Customization
+                                                <span className="font-raleway text-[14px] text-[#4864EC] ml-3  ">( Basic )</span>
+                                            </h2>
                                         </div>
-                                        <div className="font-raleway font-medium">$00</div>
+                                        <div className="font-raleway font-medium">${price}</div>
                                     </div>
                                     <div className="pt-2 border-t font-raleway font-medium">
 
                                     </div>
 
-                                    <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
+                                    <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0 font-raleway">
                                         <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-                                            <div className="font-raleway  font-medium lg:mr-2 mr-8">Revisions:</div>
+
                                             <select
                                                 className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
                                                 onChange={(e) => {
@@ -286,6 +291,7 @@ const ExclusiveTemplateDetails = () => {
                                                 }}
                                                 value={selectedRevisions[selectedRevisions.length - 1] || ''}
                                             >
+                                                <option value="">Revisions</option>
                                                 {revisions.map((revision, index) => (
                                                     <option key={index} value={revision} className={`option-${_id}`}>
                                                         {revision}
@@ -294,9 +300,9 @@ const ExclusiveTemplateDetails = () => {
                                             </select>
                                         </div>
                                         <div className="flex items-center">
-                                            <div className="font-raleway font-medium lg:ml-0  ml-10 mr-6">Files:</div>
+
                                             <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
-                                                <option value="">All Files</option>
+                                                <option value="">Files</option>
                                                 {files.map((file, index) => (
                                                     <option key={index} value={file} className={`option-${_id}`} >{file}</option>
                                                 ))}
@@ -314,20 +320,20 @@ const ExclusiveTemplateDetails = () => {
                                         ))}
                                     </div>
 
-                                   
+
                                 </div>
                             </div>
-                             {/* Add to Cart button */}
+                            {/* Add to Cart button */}
                             <div className="ml-[12.5rem] mt-5">
-                            <button onClick={handleAddToCart} className="p-3 bg-[#4864EC]  3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] tablet:w-[36rem]  text-white font-bold rounded-lg hover:bg-blue-700">
-                                        Add to Cart
-                                    </button>
+                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC]  3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] tablet:w-[36rem]  text-white font-bold rounded-lg hover:bg-blue-700">
+                                    Add to Cart
+                                </button>
 
-                                    <a href="/exclusive">
-                                        <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-4 ">
-                                            Check more items
-                                        </button>
-                                    </a>
+                                <a href="/exclusive">
+                                    <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-4 ">
+                                        Check more items
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -372,9 +378,9 @@ const ExclusiveTemplateDetails = () => {
                         </div>
                     </div>
 
-                   
+
                     <div className="lg:py-4 py-2 3xl:mt-6 2xl:mt-6 desktop:mt-6 laptop:mt-6 tablet:mt-6 mt-24 3xl:w-[120%] 3xl:h-[27rem] h-[60rem] 2xl:h-[27rem] desktop:h-[27rem] 3xl:-ml-52 2xl:w-[116%] laptop:w-[120%] desktop:w-[110%] 2xl:-ml-44 laptop:-ml-48 laptop:h-[55rem] tablet:h-[55rem] desktop:-ml-28 ">
-                    <Free></Free>
+                        <Free></Free>
                     </div>
                 </div>
             </div>
@@ -429,10 +435,10 @@ const ExclusiveTemplateDetails = () => {
                         </div>
                     </div>
                 </div>
-               
+
             )}
 
-<PresentationTemplate></PresentationTemplate>
+            <PresentationTemplate></PresentationTemplate>
 
 
         </div>
