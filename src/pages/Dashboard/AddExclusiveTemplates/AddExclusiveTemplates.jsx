@@ -15,7 +15,6 @@ const AddExclusiveTemplates = () => {
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const [selectedPackages, setSelectedPackages] = useState([]);
     const [selectedTimes, setSelectedTimes] = useState([]);
 
     const addPictureUrl = () => {
@@ -32,6 +31,7 @@ const AddExclusiveTemplates = () => {
     const onSubmit = async (data) => {
         // Convert fields to arrays
         const specificationsArray = data.specifications.split('\n').map(item => item.trim()).filter(item => item);
+        const packagesArray = data.packages.split('\n').map(item => item.trim()).filter(item => item);
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
 
@@ -48,7 +48,7 @@ const AddExclusiveTemplates = () => {
             picture: pictureUrls,
             revisions: selectedRevisions,
             files: selectedFiles,
-            packages: selectedPackages,
+            packages: packagesArray,
             times: selectedTimes,
             
         };
@@ -62,7 +62,6 @@ const AddExclusiveTemplates = () => {
                 setPictureUrls([]); // Clear the picture URLs
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
-                setSelectedPackages([]);
                 setSelectedTimes([]);
                 Swal.fire({
                     position: "middle",
@@ -92,13 +91,7 @@ const AddExclusiveTemplates = () => {
         e.target.value = ""; // Reset the select input
     };
 
-    const handlePackageChange = (e) => {
-        const selectedPrice = e.target.value;
-        if (selectedPrice && !selectedPackages.includes(selectedPrice)) {
-            setSelectedPackages([...selectedPackages, selectedPrice]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
+   
 
 
     const handleRevisionChange = (e) => {
@@ -125,9 +118,7 @@ const AddExclusiveTemplates = () => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
-    const handleRemovePackage = (pack) => {
-        setSelectedPackages(selectedPackages.filter(f => f !== pack));
-    };
+    
 
     const handleRemoveTime = (time) => {
         setSelectedTimes(selectedTimes.filter(f => f !== time));
@@ -243,28 +234,15 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Packages Included */}
-                            <div className="flex pb-10 gap-6">
-                                <div className="form-control w-full mt-10 px-2">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg ">Packages attached*</span>
-                                    </label>
-                                    <select className="select select-bordered w-full " onChange={handlePackageChange}>
-                                        <option value="">Select Packages</option>
-                                        <option value="Basic Packages $3">Basic Packages $3</option>
-                                        <option value="Standard Packages $5">Standard Packages $5</option>
-                                        <option value="Premium Packages $7">Premium Packages $7</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="-mt-28 flex pb-16 flex-wrap ml-2">
-                                {selectedPackages.map((pack, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{pack}</span>
-                                        <button onClick={() => handleRemovePackage(pack)} className="ml-2">
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                        </button>
-                                    </div>
-                                ))}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Packages (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('packages')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Packages"
+                                ></textarea>
                             </div>
 
                         </div>
