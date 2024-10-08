@@ -16,6 +16,7 @@ const AddExclusiveTemplates = () => {
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [selectedPackages, setSelectedPackages] = useState([]);
+    const [selectedTimes, setSelectedTimes] = useState([]);
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -48,6 +49,7 @@ const AddExclusiveTemplates = () => {
             revisions: selectedRevisions,
             files: selectedFiles,
             packages: selectedPackages,
+            times: selectedTimes,
             
         };
 
@@ -61,6 +63,7 @@ const AddExclusiveTemplates = () => {
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
                 setSelectedPackages([]);
+                setSelectedTimes([]);
                 Swal.fire({
                     position: "middle",
                     icon: "success",
@@ -106,6 +109,14 @@ const AddExclusiveTemplates = () => {
         e.target.value = ""; // Reset the select input
     };
 
+    const handleTimeChange = (e) => {
+        const selectedDay = e.target.value;
+        if (selectedDay && !selectedTimes.includes(selectedDay)) {
+            setSelectedTimes([...selectedTimes, selectedDay]);
+        }
+        e.target.value = ""; // Reset the select input
+    };
+
     const handleRemoveRevision = (revision) => {
         setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
     };
@@ -116,6 +127,10 @@ const AddExclusiveTemplates = () => {
 
     const handleRemovePackage = (pack) => {
         setSelectedPackages(selectedPackages.filter(f => f !== pack));
+    };
+
+    const handleRemoveTime = (time) => {
+        setSelectedTimes(selectedTimes.filter(f => f !== time));
     };
 
     return (
@@ -317,6 +332,35 @@ const AddExclusiveTemplates = () => {
                                         <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2">
                                             <span>{revision}</span>
                                             <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
+                                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                  {/* Delivery Time */}
+
+                                  <div className="flex gap-6  pb-24 pt-16 ">
+                                    <div className="form-control w-full my-10 h-auto">
+                                        <label className="label">
+                                            <span className="label-text font-medium text-lg">Delivery Time*</span>
+                                        </label>
+                                        <select className="select select-bordered w-full" onChange={handleTimeChange}>
+                                            <option value="">Select Delivery Time</option>
+                                            <option value="3 Days">3 Days</option>
+                                            <option value="6 Days">6 Days</option>
+                                            <option value="10 Days">10 Days</option>
+                                           
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="-mt-24 pb-20 flex flex-wrap">
+                                    {selectedTimes.map((time, index) => (
+                                        <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2">
+                                            <span>{time}</span>
+                                            <button onClick={() => handleRemoveTime(time)} className="ml-2">
                                                 <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
                                             </button>
                                         </div>
