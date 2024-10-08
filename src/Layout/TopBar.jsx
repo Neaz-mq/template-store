@@ -10,16 +10,16 @@ const TopBar = () => {
             <div className="flex items-center justify-between -mt-3 -mb-2">
                 <div className="flex items-center ">
                     <div className="md:relative">
-                        <Link to="/dashboard/adminHome" className="text-xl mt-7 ml-4 mr-3 mb-8">
+                        <Link to="/dashboard/adminHome" className="text-xl mt-7  ml-4 mr-3 mb-8">
                             <img
-                                src="https://prographr.vercel.app/_next/static/media/logo.426fb6b7.svg"
+                                src="/public/Logo_Prographr_Color.svg"
                                 alt=""
-                                className="md:ml-24 md:mr-2 ml-2  -mt-8 md:-mt-0"
+                                className="md:ml-24 md:mr-2 ml-2 w-36 h-auto  -mt-8 md:-mt-0"
                             />
                         </Link>
                     </div>
                     <div className="relative ">
-                        <div className="md:border-l md:border-gray-200 md:pl-8 md:ml-[5.18rem] md:h-16  mt-16 md:mt-0 -ml-20  pb-5 md:pb-0   ">
+                        <div className="md:border-l md:border-gray-200 md:pl-8 md:ml-[5.54rem] md:h-16  mt-16 md:mt-0 -ml-20  pb-5 md:pb-0   ">
                             <div className="relative">
                                 <input
                                     type="text"
@@ -53,7 +53,7 @@ const TopBar = () => {
                     <div className="flex items-center mr-6 mt-3">
                         <FaBell className="text-gray-500 mr-2 text-xl" />
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || 'Admin'}</span>
-                        <div className="ml-4 md:h-8 h-6 md:w-8 w-9 bg-purple-500 rounded-full"></div>
+                        <div className="ml-4 md:h-8 h-6 md:w-8 w-9 bg-[#4864EC] rounded-full"></div>
                     </div>
                 </div>
             </div>

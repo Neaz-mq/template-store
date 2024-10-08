@@ -125,7 +125,7 @@ const AddExclusiveTemplates = () => {
     };
 
     return (
-        <div>
+        <div className="font-raleway">
             <div className='mt-5'>
                 <h2 className="-ml-3 lg:text-xl text-lg font-medium text-[#2F1C6A] mt-10 md:mt-0">Good day! Prographr</h2>
                 <p className="text-gray-400 font-medium md:text-base text-sm -ml-3 mt-2">Wish you have less work today!</p>
@@ -399,7 +399,7 @@ const AddExclusiveTemplates = () => {
                         </div>
                     </div>
 
-                    <button className="btn mt-6 hover:bg-[#7666E3] px-20 bg-[#9A8EE8] text-white">
+                    <button className="btn mt-6 hover:bg-[#4864EC] px-20 bg-[#4864EC] text-white">
                         Publish
                     </button>
 

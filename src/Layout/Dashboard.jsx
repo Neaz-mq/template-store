@@ -38,7 +38,7 @@ const Dashboard = () => {
 
 
     return (
-        <div>
+        <div className="font-raleway">
             <TopBar />
             <div className="flex min-h-screen bg-[#F3F4F6]">
                 <div className={`md:w-64 w-48 min-h-screen  bg-white text-black flex flex-col md:ml-20 shadow-lg -mt-0.4`}>
@@ -49,7 +49,7 @@ const Dashboard = () => {
                                     <NavLink
                                         to={link.to}
                                         className={({ isActive }) =>
-                                            `flex items-center space-x-2 p-2 hover:bg-[#A855F7] relative ${isActive ? 'border-l-4 border-blue-600 pl-4 -ml-4' : ''
+                                            `flex items-center space-x-2 p-2 hover:bg-[#4864EC] hover:text-[#ffffff] relative ${isActive ? 'border-l-4 border-blue-600 pl-4 -ml-4' : ''
                                             }`
                                         }
                                     >
