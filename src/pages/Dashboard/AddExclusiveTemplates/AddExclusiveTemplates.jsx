@@ -243,7 +243,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Packages Included */}
-                            <div className="flex pb-36 gap-6">
+                            <div className="flex pb-10 gap-6">
                                 <div className="form-control w-full mt-10 px-2">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg ">Packages attached*</span>
@@ -256,7 +256,7 @@ const AddExclusiveTemplates = () => {
                                     </select>
                                 </div>
                             </div>
-                            <div className="-mt-28 flex pb-36 flex-wrap ml-2">
+                            <div className="-mt-28 flex pb-16 flex-wrap ml-2">
                                 {selectedPackages.map((pack, index) => (
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
                                         <span>{pack}</span>
@@ -310,7 +310,7 @@ const AddExclusiveTemplates = () => {
 
                                 {/* Revisions */}
 
-                                <div className="flex gap-6  pb-32 pt-16 ">
+                                <div className="flex gap-6  pb-28 pt-16 ">
                                     <div className="form-control w-full my-10 h-auto">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg">Revisions*</span>
@@ -327,7 +327,7 @@ const AddExclusiveTemplates = () => {
                                     </div>
                                 </div>
 
-                                <div className="-mt-24 pb-20 flex flex-wrap">
+                                <div className="-mt-24 pb-10 flex flex-wrap">
                                     {selectedRevisions.map((revision, index) => (
                                         <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2">
                                             <span>{revision}</span>
