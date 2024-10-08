@@ -8,7 +8,9 @@ import useCart from "../../hooks/useCart";
 import LazyLoad from 'react-lazyload';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import TemplateItem from "../Shared/TemplateItem/TemplateItem";
+import Free from "../Home/Free/Free";
+import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
+
 
 const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
@@ -26,20 +28,10 @@ const ExclusiveTemplateDetails = () => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
-    const initialDisplayCount = 4;
+    
     const [selectedFiles, setSelectedFiles] = useState([]);
 
-    useEffect(() => {
-
-        fetch('http://localhost:5000/template')
-            .then(res => res.json())
-            .then(data => {
-                setTemplates(data);
-                setDisplayedTemplates(data.slice(0, initialDisplayCount));
-            });
-
-        window.scrollTo(0, 0);
-    }, []);
+   
 
     useEffect(() => {
         if (template && template.picture && template.picture.length > 0) {
@@ -199,7 +191,7 @@ const ExclusiveTemplateDetails = () => {
     }
 
     return (
-        <div className="bg-[#EDEEF7] ml-2 overflow-hidden -mt-[4.6rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 h-[250rem] 3xl:h-[114rem] 2xl:h-[110rem] desktop:h-[108rem] laptop:h-[100rem] tablet:h-[180rem] min-h-[calc(120vh-450px)]">
+        <div className="bg-[#ffffff] font-raleway">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Exclusive</title>
@@ -217,12 +209,12 @@ const ExclusiveTemplateDetails = () => {
                             <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-roboto 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
                                Exclusive <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[7.9rem] 3xl:-mr-20 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
+                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
                                             src={selectedImage || image}
-                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] rounded-[20px] cursor-pointer"
+                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] cursor-pointer"
                                             alt="Template"
                                             onClick={handleImageClick}
                                         />
@@ -234,7 +226,7 @@ const ExclusiveTemplateDetails = () => {
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
                                             src={src}
-                                            className={`w-[75px] h-[75px] object-contain rounded-lg p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#7666E3]' : 'bg-slate-50 hover:bg-[#7666E3]'}`}
+                                            className={`w-[75px] h-[75px] object-contain  p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#7666E3]' : 'bg-slate-50 hover:bg-[#7666E3]'}`}
                                             alt="Template"
                                             onClick={() => handleThumbnailClick(src, index)}
                                         />
@@ -244,10 +236,10 @@ const ExclusiveTemplateDetails = () => {
                         </div>
 
                         <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
                                 <div
-                                    className={`border ${selectedTemplate === "templateCustom" ? "border-primary" : "border-gray-400"
-                                        } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                    className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                        }  p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-3">
@@ -261,18 +253,15 @@ const ExclusiveTemplateDetails = () => {
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                     </div>
 
-                                    {/* Add to Cart button */}
-                                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
-                                        Add to Cart
-                                    </button>
+                                 
                                 </div>
 
                             </div>
 
-                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52  3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
                                 <div
-                                    className={`border ${selectedTemplate === "customizeTemplate" ? "border-primary" : "border-gray-400"
-                                        } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                    className={`border ${selectedTemplate === "customizeTemplate" ? "border-[#4864EC]" : "border-gray-400"
+                                        } p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("customizeTemplate")}
                                 >
                                     <div className="flex justify-between pb-3">
@@ -325,11 +314,20 @@ const ExclusiveTemplateDetails = () => {
                                         ))}
                                     </div>
 
-                                    {/* Add to Cart button */}
-                                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-roboto md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
+                                   
+                                </div>
+                            </div>
+                             {/* Add to Cart button */}
+                            <div className="ml-[12.5rem] mt-5">
+                            <button onClick={handleAddToCart} className="p-3 bg-[#4864EC]  3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] tablet:w-[36rem]  text-white font-bold rounded-lg hover:bg-blue-700">
                                         Add to Cart
                                     </button>
-                                </div>
+
+                                    <a href="/exclusive">
+                                        <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-4 ">
+                                            Check more items
+                                        </button>
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -374,27 +372,9 @@ const ExclusiveTemplateDetails = () => {
                         </div>
                     </div>
 
-                    <div className="layout lg:py-20 py-12 mt-6">
-                        <div className="flex items-center justify-between mb-10">
-                            <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-roboto 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
-                                Top Selling <strong>Graphics Templates</strong>
-                            </h2>
-                            <button className="btn hidden mr-20 md:ml-4 ml-20 font-roboto text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
-                                <span className="-mt-1">Printing and Advertising</span>
-                                <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path>
-                                </svg>
-                            </button>
-                        </div>
-                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
-                        {displayedTemplates.map(item => (
-                                <TemplateItem
-                                    key={item._id}
-                                    item={item}
-                                />
-                            ))}
-                           
-                        </div>
+                   
+                    <div className="lg:py-4 py-2 3xl:mt-6 2xl:mt-6 desktop:mt-6 laptop:mt-6 tablet:mt-6 mt-24 3xl:w-[120%] 3xl:h-[27rem] h-[60rem] 2xl:h-[27rem] desktop:h-[27rem] 3xl:-ml-52 2xl:w-[116%] laptop:w-[120%] desktop:w-[110%] 2xl:-ml-44 laptop:-ml-48 laptop:h-[55rem] tablet:h-[55rem] desktop:-ml-28 ">
+                    <Free></Free>
                     </div>
                 </div>
             </div>
@@ -449,7 +429,12 @@ const ExclusiveTemplateDetails = () => {
                         </div>
                     </div>
                 </div>
+               
             )}
+
+<PresentationTemplate></PresentationTemplate>
+
+
         </div>
     );
 };
