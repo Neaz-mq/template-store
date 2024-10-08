@@ -191,7 +191,7 @@ const ExclusiveTemplateDetails = () => {
     }
 
     return (
-        <div className="bg-[#ffffff] font-raleway">
+        <div className="bg-[#ffffff]">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Exclusive</title>
@@ -204,9 +204,9 @@ const ExclusiveTemplateDetails = () => {
                 </Helmet>
 
                 <div className="lg:ml-20 mb-16">
-                    <div className="md:mt-14 flex lg:flex-row flex-col gap-6 ml-2">
+                    <div className="flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] ">
-                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-roboto 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
+                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
                                Exclusive <strong>Graphics Template</strong>
                             </h2>
                             <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
@@ -239,17 +239,17 @@ const ExclusiveTemplateDetails = () => {
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
                                 <div
                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                        }  p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                        } rounded-[8px]  p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-3">
                                         <div className="flex gap-3 font-bold">
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
-                                            <h2 className="font-roboto">Template</h2>
+                                            <h2 className="font-raleway">Template</h2>
                                         </div>
-                                        <div className="font-roboto font-medium">${price}</div>
+                                        <div className="font-raleway font-medium">${price}</div>
                                     </div>
-                                    <div className="pt-2 border-t font-roboto font-medium">
+                                    <div className="pt-2 border-t font-raleway font-medium">
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                     </div>
 
@@ -261,23 +261,23 @@ const ExclusiveTemplateDetails = () => {
                             <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52  3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
                                 <div
                                     className={`border ${selectedTemplate === "customizeTemplate" ? "border-[#4864EC]" : "border-gray-400"
-                                        } p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                        } rounded-[8px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("customizeTemplate")}
                                 >
                                     <div className="flex justify-between pb-3">
                                         <div className="flex gap-3 font-bold">
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
-                                            <h2 className="font-roboto">Template + Customization</h2>
+                                            <h2 className="font-raleway">Template + Customization</h2>
                                         </div>
-                                        <div className="font-roboto font-medium">$00</div>
+                                        <div className="font-raleway font-medium">$00</div>
                                     </div>
-                                    <div className="pt-2 border-t font-roboto font-medium">
+                                    <div className="pt-2 border-t font-raleway font-medium">
 
                                     </div>
 
                                     <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
                                         <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-                                            <div className="font-roboto  font-medium lg:mr-2 mr-8">Revisions:</div>
+                                            <div className="font-raleway  font-medium lg:mr-2 mr-8">Revisions:</div>
                                             <select
                                                 className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
                                                 onChange={(e) => {
@@ -294,7 +294,7 @@ const ExclusiveTemplateDetails = () => {
                                             </select>
                                         </div>
                                         <div className="flex items-center">
-                                            <div className="font-roboto font-medium lg:ml-0  ml-10 mr-6">Files:</div>
+                                            <div className="font-raleway font-medium lg:ml-0  ml-10 mr-6">Files:</div>
                                             <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
                                                 <option value="">All Files</option>
                                                 {files.map((file, index) => (
@@ -333,14 +333,14 @@ const ExclusiveTemplateDetails = () => {
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Description</h3>
-                            <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-roboto leading-relaxed">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Description</h3>
+                            <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-raleway leading-relaxed">
                                 {description}
                             </p>
                         </div>
                         <div className="flex-1 lg:mb-8 lg:-mr-16 ml-3 lg:ml-2">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium mb-2 font-roboto">Item Specifications</h3>
-                            <ul className="text-gray-500 mt-1 font-roboto leading-6 list-disc ml-5">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium mb-2 font-raleway">Item Specifications</h3>
+                            <ul className="text-gray-500 mt-1 font-raleway leading-6 list-disc ml-5">
                                 {specifications.map((spec, index) => (
                                     <li key={index} className="mb-2">
                                         {spec}
@@ -350,8 +350,8 @@ const ExclusiveTemplateDetails = () => {
                         </div>
 
                         <div className="flex-1 lg:mb-8 lg:ml-14 lg:-mr-2 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Product Specs</h3>
-                            <ul className="text-gray-500 mt-2 font-roboto leading-8 list-disc ml-5">
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Product Specs</h3>
+                            <ul className="text-gray-500 mt-2 font-raleway leading-8 list-disc ml-5">
                                 {product.map((spec, index) => (
                                     <li key={index}>
                                         {spec}
@@ -361,10 +361,10 @@ const ExclusiveTemplateDetails = () => {
                         </div>
 
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-roboto">Documents Included</h3>
+                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Documents Included</h3>
                             <div className="mt-2">
                                 {documents.map((document, index) => (
-                                    <p key={index} className="text-gray-500 mt-2 font-roboto leading-relaxed">
+                                    <p key={index} className="text-gray-500 mt-2 font-raleway leading-relaxed">
                                         {document}
                                     </p>
                                 ))}

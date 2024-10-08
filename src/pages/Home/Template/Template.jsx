@@ -55,7 +55,7 @@ const Template = () => {
                             <section className="text-white">
                                 <div className="flex justify-start items-start flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row gap-2 lg:gap-16 3xl:gap-28 2xl:gap-24 desktop:gap-20 tablet:gap-16 px-5 mt-6 3xl:ml-24 3xl:mt-7 2xl:ml-20 desktop:ml-8 laptop:ml-0 tablet:ml-6 ml-2">
                                     <div className="text-center">
-                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 -ml-6 3xl:-ml-0" aria-label="Template sales">
+                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 -ml-6 3xl:-ml-0 font-raleway" aria-label="Template sales">
                                             {counterOn && <CountUp start={0} end={stats.orders || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5 ml-6 hidden 3xl:block 2xl:block desktop:block laptop:block">
