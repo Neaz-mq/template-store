@@ -38,7 +38,7 @@ const Banner = () => {
         <div className="layout lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
           <div className="lg:col-span-5 lg:-mt-36 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-24 3xl:ml-60 2xl:ml-60 3xl:-mt-14 2xl:mt-2">
             <p className="tracking-[0.2rem] text-sm text-primary mb-3 laptop:-mt-16 tablet:-mt-0 font-medium">
-              <span className="bg-[#4864EC] px-2 3xl:py-1.5 2xl:py-1.5 desktop:py-1.5 laptop:py-1.5 py-1  text-white text-center lg:-ml-1">PRO</span> <span className='text-[#4864EC]'>PREMIUM</span>
+              <span className="bg-[#4864EC] px-2 3xl:py-1.5 2xl:py-1.5 desktop:py-1.5 laptop:py-1.5 py-0.5  text-white text-center lg:-ml-1">PRO</span> <span className='text-[#4864EC]'>PREMIUM</span>
             </p>
             <h1 className="text-3xl lg:text-6xl text-[#282A37] font-extrabold lg:font-bold leading-[50px] text-center lg:text-start md:mt-1 mb-3 lg:-ml-1">
               A design that <br />match your business

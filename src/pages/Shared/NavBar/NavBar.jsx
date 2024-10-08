@@ -66,7 +66,7 @@ const NavBar = () => {
                 tabIndex={0}
                 className="menu menu-sm cursor-pointer dropdown-content -mt-16 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-2 font-raleway font-semibold text-[17px]"
               >
-                <Link to="/" className="laptop:hidden text-xl mt-5 ml-4 mr-1 mb-8">
+                <Link to="/" className="text-xl mt-5 ml-4 mr-1 mb-8">
                   <img
                     src="/Logo_Prographr_Color.svg"
                     alt="Logo"
@@ -76,7 +76,7 @@ const NavBar = () => {
                 <Link
                   to="/template"
                   onClick={() => handleSelect('template')}
-                  className={` mb-3 font-roboto ${selected === 'template' ? 'text-[#4864EC]' : ''}`}
+                  className={` mb-3 mt-4 font-roboto ${selected === 'template' ? 'text-[#4864EC]' : ''}`}
                 >
                   Template
                 </Link>
