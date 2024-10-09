@@ -379,7 +379,7 @@ const AddFreeTemplates = () => {
                         </div>
                     </div>
 
-                    <button className="btn mt-6 hover:bg-[#7666E3] px-20 bg-[#9A8EE8] text-white">
+                    <button className="btn mt-6 hover:bg-[#4864EC] bg-[#4864EC] px-20  text-white">
                         Publish
                     </button>
 

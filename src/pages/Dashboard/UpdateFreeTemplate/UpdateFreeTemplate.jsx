@@ -174,7 +174,7 @@ const UpdateFreeTemplate = () => {
                                     <button
                                         type="button"
                                         onClick={handleAddAdditionalImage}
-                                        className="btn mt-2 hover:bg-[#7666E3] bg-[#9A8EE8] text-white"
+                                        className="btn mt-2 hover:bg-[#4864EC] bg-[#4864EC] text-white"
                                     >
                                         Add Image
                                     </button>
@@ -370,7 +370,7 @@ const UpdateFreeTemplate = () => {
                     <div className="">
                         <button
                             type="submit"
-                            className="btn mt-6 hover:bg-[#7666E3] bg-[#9A8EE8] text-white"
+                            className="btn mt-6 hover:bg-[#4864EC] bg-[#4864EC] text-white"
                             disabled={isLoading}
                         >
                             {isLoading ? 'Updating...' : 'Update Template'}

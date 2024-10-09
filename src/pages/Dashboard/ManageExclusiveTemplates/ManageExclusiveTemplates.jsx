@@ -113,7 +113,7 @@ const ManageExclusiveTemplates = () => {
                                     <td>${temp.price}</td>
                                     <td>
                                         <Link to={`/dashboard/updateExclusiveTemplate/${temp._id}`}>
-                                            <button className="btn btn-ghost btn-sm bg-[#9A8EE8]">
+                                            <button className="btn btn-ghost btn-sm hover:bg-[#4864EC] bg-[#4864EC]">
                                                 <FaEdit className="text-white" />
                                             </button>
                                         </Link>
