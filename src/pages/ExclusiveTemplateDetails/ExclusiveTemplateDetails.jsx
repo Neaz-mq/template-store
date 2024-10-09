@@ -42,8 +42,8 @@ const ExclusiveTemplateDetails = () => {
     }, [template]);
 
     useEffect(() => {
-        window.scrollTo(0, 0); 
-    }, []); 
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (isModalOpen) {
@@ -306,20 +306,20 @@ const ExclusiveTemplateDetails = () => {
                                     </div>
 
                                     <select
-                                                className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setSelectedPackages([...selectedPackages, newValue]);
-                                                }}
-                                                value={selectedPackages[selectedPackages.length - 1] || ''}
-                                            >
-                                                
-                                                {packages.map((pack, index) => (
-                                                    <option key={index} value={pack} className={`option-${_id}`}>
-                                                        {pack}
-                                                    </option>
-                                                ))}
-                                            </select>
+                                        className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
+                                        onChange={(e) => {
+                                            const newValue = e.target.value;
+                                            setSelectedPackages([...selectedPackages, newValue]);
+                                        }}
+                                        value={selectedPackages[selectedPackages.length - 1] || ''}
+                                    >
+
+                                        {packages.map((pack, index) => (
+                                            <option key={index} value={pack} className={`option-${_id}`}>
+                                                {pack}
+                                            </option>
+                                        ))}
+                                    </select>
 
                                     <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0 font-raleway">
                                         <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
@@ -380,7 +380,7 @@ const ExclusiveTemplateDetails = () => {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
+                                    <div className="mt-4 flex flex-wrap flex-col lg:ml-32 ml-24 w-52">
                                         {selectedFiles.map((file, index) => (
                                             <div key={index} className="flex  items-center border rounded-md px-4 py-2 mr-2 mb-2">
                                                 <span className="">{file}</span>

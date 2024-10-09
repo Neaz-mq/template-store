@@ -41,7 +41,7 @@ const SignInForm = () => {
 
     return (
 
-        <div className='min-h-screen 3xl:h-[0rem] 2xl:h-[0rem] desktop:h-[0rem] laptop:h-[0rem] tablet:h-[0rem] h-[0rem]  '>
+        <div className='min-h-screen 3xl:h-[0rem] 2xl:h-[0rem] desktop:h-[0rem] laptop:h-[0rem] tablet:h-[0rem] h-[0rem] font-raleway  '>
 
             <div className='mb-16 bg-[#ffffff] min-h-screen 3xl:-mt-4 2xl:-mt-0 desktop:-mt-4 laptop:-mt-4 tablet:-mt-24 -mt-24  '>
 

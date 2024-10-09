@@ -63,7 +63,7 @@ const Dashboard = () => {
                                     <NavLink
                                         to={link.to}
                                         className={({ isActive }) =>
-                                            `flex items-center space-x-2 p-2 hover:bg-[#A855F7] relative ${isActive ? 'border-l-4 border-blue-500 pl-4 -ml-4' : ''
+                                            `flex items-center space-x-2 p-2 hover:bg-[#4864EC] hover:text-[#ffffff] relative ${isActive ? 'border-l-4 border-blue-500 pl-4 -ml-4' : ''
                                             }`
                                         }
                                     >
