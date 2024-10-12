@@ -3,59 +3,114 @@ import PresentationTemplate from '../Home/PresentationTemplate/PresentationTempl
 
 const jobData = [
   {
-    title: 'UI/UX Designer',
-    skills: 'Figma, Adobe Xd',
-    position: 1,
-    experience: 'Minimum 2 years',
-    requirements: [
-      'The candidate must be from Bangladesh and must be willing to work onsite',
-      'Strong understanding of design principles, typography, color theory, and layout techniques.',
-      'Knowledge of usability and accessibility standards in design.',
-      'Ability to create visually appealing and user-friendly interfaces for websites and mobile.',
-      'Stay up-to-date with the latest UI/UX/Webpage Design trends.',
-      'Ability to create wireframes, mockups, and prototypes.'
-    ],
-    qualifications: [
-      'Minimum graduation in related fields',
-      'UI/UX/Webpage Designer, with a focus on web and mobile applications.',
-      'A strong portfolio showcasing your UI/UX/Webpage Design skills and projects.',
-      'Excellent communication and collaboration skills.',
-      'Ability to focus on meeting deadlines'
-    ],
-    benefits: [
-      'Yearly two bonuses.',
-      'Opportunity to work with a dynamic and innovative team.',
-      'Long-term career growth and stability.'
-    ],
+  title: 'UI/UX Designer',
+  skills: 'Figma, Adobe Xd',
+  position: 1,
+  experience: 'Minimum 2 years',
+  requirements: [
+  'The candidate must be from Bangladesh and must be willing to work onsite',
+  'Strong understanding of design principles, typography, color theory, and layout techniques.',
+  'Knowledge of usability and accessibility standards in design.',
+  'Ability to create visually appealing and user-friendly interfaces for websites and mobile.',
+  'Stay up-to-date with the latest UI/UX/Webpage Design trends.',
+  'Ability to create wireframes, mockups, and prototypes.'
+  ],
+  qualifications: [
+  'Minimum graduation in related fields',
+  'UI/UX/Webpage Designer, with a focus on web and mobile applications.',
+  'A strong portfolio showcasing your UI/UX/Webpage Design skills and projects.',
+  'Excellent communication and collaboration skills.',
+  'Ability to focus on meeting deadlines'
+  ],
+  benefits: [
+  'Yearly two bonuses.',
+  'Opportunity to work with a dynamic and innovative team.',
+  'Long-term career growth and stability.',
+  'Salary increments opportunity, considering the performance of services.'
+  ],
   },
   {
-    title: 'Creative Graphic Designer',
-    skills: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop',
-    position: 2,
-    experience: 'Minimum 2 years',
-    requirements: ['Some requirements for this role...', 'Another requirement...'],
-    qualifications: ['A different set of requirements...', 'More details...'],
-    benefits: ['Some benefits for this role...'],
+  title: 'Creative Graphic Designer',
+  skills: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop',
+  position: 2,
+  experience: 'Minimum 2 years',
+  requirements: [
+  'The candidate must be from Bangladesh and must be willing to work onsite',
+  'Strong understanding of design principles, typography, color theory, and layout techniques.',
+  'Knowledge of usability and accessibility standards in design.',
+  'Ability to create visually appealing and user-friendly design following modern design trends.',
+  'Stay up-to-date with the latest Graphics Design trends.',
+  'Ability to create wireframes, mockups, and prototypes.'
+  ],
+  qualifications: [
+  'Minimum graduation in related fields',
+  'Creative Graphics Designer, with a focus on print and digital design.',
+  'A strong portfolio showcasing your Creative Design skills and projects.',
+  'Excellent communication and collaboration skills.',
+  'Ability to focus on meeting deadlines'
+  ],
+  benefits: [
+  'Yearly two bonuses.',
+  'Opportunity to work with a dynamic and innovative team.',
+  'Long-term career growth and stability.',
+  'Salary increments opportunity, considering the performance of services.'
+  ],
   },
   {
-    title: 'Digital Marketing Specialist',
-    skills: 'SEO',
-    position: 1,
-    experience: 'Minimum 2 years',
-    requirements: ['Some requirements for this role...', 'Another requirement...'],
-    qualifications: ['More requirements...'],
-    benefits: ['Some benefits for this role...'],
+  title: 'Digital Marketing Specialist',
+  skills: 'SEO, Digital Marketing, Customer Handling',
+  position: 1,
+  experience: 'Minimum 2 years',
+  requirements: [
+  'The candidate must be from Bangladesh and must be willing to work onsite',
+  'Strong understanding of social media management, SEO and customer needs.',
+  'Execute SEO campaigns (on-page and off-page) to improve search engine rankings and website traffic.',
+  'Conduct keyword research, competitive analysis, and content optimization.',
+  'Stay updated on the latest trends and best practices in digital marketing and SEO.',
+  'Develop content calendars and schedules to ensure timely delivery of all social media content.'
+  ],
+  qualifications: [
+  'Minimum graduation in related fields',
+  'Expert Digital Marketer, with a focus on social media marketing, content marketing and SEO.',
+  'A strong portfolio showcasing your Creative marketing skills and ideas.',
+  'Excellent communication and collaboration skills.',
+  'Ability to reach on right customers'
+  ],
+  benefits: [
+  'Yearly two bonuses.',
+  'Opportunity to work with a dynamic and innovative team.',
+  'Long-term career growth and stability.',
+  'Salary increments opportunity, considering the performance of services.'
+  ],
   },
   {
-    title: 'Presentation Designer',
-    skills: 'Microsoft PowerPoint, Google Slides, Keynote, Canva',
-    position: 1,
-    experience: 'Minimum 2 years',
-    requirements: ['Some requirements for this role...', 'Another requirement...'],
-    qualifications: ['Additional requirements...'],
-    benefits: ['Some benefits for this role...'],
+  title: 'Presentation Designer',
+  skills: 'Microsoft PowerPoint, Google Slides, Keynote, Canva',
+  position: 1,
+  experience: 'Minimum 2 years',
+  requirements: [
+  'The candidate must be from Bangladesh and must be willing to work onsite',
+  'Strong understanding of design principles, typography, color theory, and layout techniques.',
+  'Knowledge of usability and accessibility standards in design.',
+  'Ability to create visually appealing and user-friendly design following modern design trends.',
+  'Stay up-to-date with the latest Graphics Design trends.',
+  'Ability to create creative design, and presentation design.'
+  ],
+  qualifications: [
+  'Minimum graduation in related fields',
+  'Creative Presentation Designer, with a focus on digital marketplaces like Graphicriver.net, and creativemarket.com ',
+  'A strong portfolio showcasing your Creative Design skills and projects.',
+  'Excellent communication and collaboration skills.',
+  'Ability to focus on meeting deadlines'
+  ],
+  benefits: [
+  'Yearly two bonuses.',
+  'Opportunity to work with a dynamic and innovative team.',
+  'Long-term career growth and stability.',
+  'Salary increments opportunity, considering the performance of services.'
+  ],
   },
-];
+  ];
 
 const Career = () => {
   const [activeJob, setActiveJob] = useState(null);
@@ -127,7 +182,7 @@ const Career = () => {
                           <div className="grid grid-cols-3 gap-6">
                             <div className="space-y-4">
                               <h4 className="font-semibold text-sm text-[#282A37]">Requirements:</h4>
-                              <ul className="list-disc ml-5 text-sm w-72 text-[#282A37]">
+                              <ul className="list-disc ml-5 text-sm 3xl:w-72 2xl:w-72 desktop:w-72 laptop:w-72 tablet:w-48 text-[#282A37]">
                                 {job.requirements.map((req, i) => (
                                   <li key={i} className="mb-4">{req}</li>
                                 ))}
@@ -136,7 +191,7 @@ const Career = () => {
                             </div>
                             <div className="space-y-4">
                               <h4 className="font-semibold text-sm text-[#282A37]">Qualifications:</h4>
-                              <ul className="list-disc ml-5 text-sm w-72 text-[#282A37]">
+                              <ul className="list-disc ml-5 text-sm 3xl:w-72 2xl:w-72 desktop:w-72 laptop:w-72 tablet:w-48 text-[#282A37]">
                                 {job.qualifications.map((req, i) => (
                                   <li key={i} className="mb-4">{req}</li>
                                 ))}
@@ -144,7 +199,7 @@ const Career = () => {
                             </div>
                             <div className="space-y-4">
                               <h4 className="font-semibold text-sm text-[#282A37]">Benefits:</h4>
-                              <ul className="list-disc ml-5 text-sm w-72 text-[#282A37]">
+                              <ul className="list-disc ml-5 text-sm 3xl:w-72 2xl:w-72 desktop:w-72 laptop:w-72 tablet:w-48 text-[#282A37]">
                                 {job.benefits.map((benefit, i) => (
                                   <li key={i} className="mb-4">{benefit}</li>
                                 ))}

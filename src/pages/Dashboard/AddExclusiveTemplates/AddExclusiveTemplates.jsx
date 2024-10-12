@@ -34,6 +34,7 @@ const AddExclusiveTemplates = () => {
         const packagesArray = data.packages.split('\n').map(item => item.trim()).filter(item => item);
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
+        const basicsArray = data.basics.split('\n').map(item => item.trim()).filter(item => item);
 
         // Prepare the template item
         const templateItem = {
@@ -50,7 +51,8 @@ const AddExclusiveTemplates = () => {
             files: selectedFiles,
             packages: packagesArray,
             times: selectedTimes,
-            
+            basics: basicsArray
+
         };
 
         try {
@@ -91,7 +93,7 @@ const AddExclusiveTemplates = () => {
         e.target.value = ""; // Reset the select input
     };
 
-   
+
 
 
     const handleRevisionChange = (e) => {
@@ -118,7 +120,7 @@ const AddExclusiveTemplates = () => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
-    
+
 
     const handleRemoveTime = (time) => {
         setSelectedTimes(selectedTimes.filter(f => f !== time));
@@ -245,6 +247,22 @@ const AddExclusiveTemplates = () => {
                                 ></textarea>
                             </div>
 
+                            {/* Basic Packages description */}
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Basic Packages Description (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('basics')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Basics"
+                                ></textarea>
+                            </div>
+                            {/* Standard Packages description */}
+                            {/* Premium Packages description */}
+
+
                         </div>
 
 
@@ -316,9 +334,9 @@ const AddExclusiveTemplates = () => {
                                     ))}
                                 </div>
 
-                                  {/* Delivery Time */}
+                                {/* Delivery Time */}
 
-                                  <div className="flex gap-6  pb-24 pt-16 ">
+                                <div className="flex gap-6  pb-24 pt-16 ">
                                     <div className="form-control w-full my-10 h-auto">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg">Delivery Time*</span>
@@ -328,7 +346,7 @@ const AddExclusiveTemplates = () => {
                                             <option value="3 Days">3 Days</option>
                                             <option value="6 Days">6 Days</option>
                                             <option value="10 Days">10 Days</option>
-                                           
+
 
                                         </select>
                                     </div>
