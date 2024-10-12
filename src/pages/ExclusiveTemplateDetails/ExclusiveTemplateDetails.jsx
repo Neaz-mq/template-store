@@ -34,6 +34,8 @@ const ExclusiveTemplateDetails = () => {
 
     const [selectedTimes, setSelectedTimes] = useState([]);
 
+    
+
     useEffect(() => {
         if (template && template.picture && template.picture.length > 0) {
             setSelectedImage(template.picture[0]);
@@ -72,7 +74,7 @@ const ExclusiveTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times, basics } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -180,7 +182,8 @@ const ExclusiveTemplateDetails = () => {
                 revisions,
                 documents,
                 packages,
-                times
+                times,
+                basics
 
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
@@ -313,13 +316,26 @@ const ExclusiveTemplateDetails = () => {
                                         }}
                                         value={selectedPackages[selectedPackages.length - 1] || ''}
                                     >
-
+                                        <option value="">Select Package</option>
                                         {packages.map((pack, index) => (
                                             <option key={index} value={pack} className={`option-${_id}`}>
                                                 {pack}
                                             </option>
                                         ))}
                                     </select>
+
+
+                                    {/* Basics Data Card */}
+                                    <div className="mt-4 p-4 border rounded-lg bg-white shadow-md">
+                                        <h3 className="text-lg font-bold text-[#2F1C6A] mb-2">Basics</h3>
+                                        <ul className="list-disc ml-5">
+                                            {basics.map((item, index) => (
+                                                <li key={index} className="text-gray-500 mb-1">
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
 
                                     <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0 font-raleway">
                                         <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
