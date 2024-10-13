@@ -12,7 +12,7 @@ import Free from "../Home/Free/Free";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
 
-const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
+const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
     const template = useLoaderData();
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedPackages, setSelectedPackages] = useState([]);
@@ -36,7 +36,10 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
 
     // State to track the selected package
     const [selectedPackage, setSelectedPackage] = useState('');
+    const [price, setPrice] = useState(0); // Dynamically updated price state
 
+    // Assuming `data` is passed from MongoDB and contains the template info
+    const { packages, amount, money, charge } = template;
 
 
     useEffect(() => {
@@ -77,7 +80,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times, basics, standards, premiums, amount, money, charge } = template;
+    const { _id, price: initialPrice, type, image, description, picture, specifications, product, files, revisions, documents,  packages: templatePackages, times, basics, standards, premiums, amount: basicAmount, money: standardMoney, charge: premiumCharge } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -105,14 +108,24 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
         e.target.value = ""; // Reset the select input
     };
 
-    const handlePackageChange = (e) => {
-        const selectedPack = e.target.value;
-        if (selectedPack && !selectedPackages.includes(selectedPack)) {
-            setSelectedPackages([...selectedPackages, selectedPack]);
+    const handlePackageChange = (selectedPackage) => {
+        setSelectedPackage(selectedPackage);
+
+        // Dynamically update price based on selected package from MongoDB
+        if (selectedPackage.includes("Basic")) {
+            setPrice(amount); // Use the amount field from MongoDB
+        } else if (selectedPackage.includes("Standard")) {
+            setPrice(money); // Use the money field from MongoDB
+        } else if (selectedPackage.includes("Premium")) {
+            setPrice(charge); // Use the charge field from MongoDB
         }
-        e.target.value = ""; // Reset the select input
     };
 
+
+    useEffect(() => {
+        // Set the initial price to the price from MongoDB when the component loads
+        setPrice(initialPrice);
+    }, [initialPrice]);
 
 
     const handleFileChange = (e) => {
@@ -311,16 +324,15 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                                 <span className="font-raleway text-[14px] text-[#4864EC] ml-3  ">( Basic )</span>
                                             </h2>
                                         </div>
-                                        <div className="font-raleway font-medium">$00</div>
+                                        <div className="font-raleway font-medium">${price}</div>
                                     </div>
                                     <div className="pt-2 border-t font-raleway font-medium">
 
                                     </div>
-
                                     <select
                                         className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                        onChange={(e) => setSelectedPackage(e.target.value)} // Set selected package
-                                        value={selectedPackage} // Bind value to state
+                                        onChange={(e) => handlePackageChange(e.target.value)} // Handle package change
+                                        value={selectedPackage}
                                     >
                                         <option value="">Select Package</option>
                                         {packages.map((pack, index) => (
@@ -352,7 +364,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                                 {standards.map((item, index) => (
                                                     <li key={index} className="mb-1">{item}</li>
                                                 ))}
-                                                <li className="mb-1">Price:${money}</li> 
+                                                <li className="mb-1">Price:${money}</li>
                                             </ul>
                                         </div>
                                     )}
@@ -364,7 +376,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                                 {premiums.map((item, index) => (
                                                     <li key={index} className="mb-1">{item}</li>
                                                 ))}
-                                                  <li className="mb-1">Price:${charge}</li> 
+                                                <li className="mb-1">Price:${charge}</li>
                                             </ul>
                                         </div>
                                     )}
