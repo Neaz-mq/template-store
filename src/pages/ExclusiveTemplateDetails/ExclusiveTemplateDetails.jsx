@@ -77,7 +77,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times, basics, standards, premiums, amount } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times, basics, standards, premiums, amount, money, charge } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -191,7 +191,9 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                 basics,
                 standards,
                 premiums,
-                amount
+                amount,
+                money,
+                charge
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
@@ -309,7 +311,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                                 <span className="font-raleway text-[14px] text-[#4864EC] ml-3  ">( Basic )</span>
                                             </h2>
                                         </div>
-                                        <div className="font-raleway font-medium">${amount}</div>
+                                        <div className="font-raleway font-medium">$00</div>
                                     </div>
                                     <div className="pt-2 border-t font-raleway font-medium">
 
@@ -333,11 +335,12 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                     {/* Conditionally Render Package Cards */}
                                     {selectedPackage === 'Basic package $5' && (
                                         <div className="card basics-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
-                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Basics</h3>
+                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Basic</h3>
                                             <ul className="list-disc ml-5 mt-2 text-gray-700">
                                                 {basics.map((item, index) => (
                                                     <li key={index} className="mb-1">{item}</li>
                                                 ))}
+                                                <li className="mb-1">Price:${amount}</li>
                                             </ul>
                                         </div>
                                     )}
@@ -349,6 +352,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                                 {standards.map((item, index) => (
                                                     <li key={index} className="mb-1">{item}</li>
                                                 ))}
+                                                <li className="mb-1">Price:${money}</li> 
                                             </ul>
                                         </div>
                                     )}
@@ -360,6 +364,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
                                                 {premiums.map((item, index) => (
                                                     <li key={index} className="mb-1">{item}</li>
                                                 ))}
+                                                  <li className="mb-1">Price:${charge}</li> 
                                             </ul>
                                         </div>
                                     )}
