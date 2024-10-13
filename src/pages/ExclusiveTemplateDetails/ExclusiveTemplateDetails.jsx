@@ -300,7 +300,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
                                             <h2 className="font-raleway">Template</h2>
                                         </div>
-                                        <div className="font-raleway font-medium">${price}</div>
+                                        <div className="font-raleway font-medium">${amount}</div>
                                     </div>
                                     <div className="pt-2 border-t font-raleway font-medium">
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
@@ -345,7 +345,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
 
 
                                     {/* Conditionally Render Package Cards */}
-                                    {selectedPackage === 'Basic package $5' && (
+                                    {selectedPackage === 'Basic package' && (
                                         <div className="card basics-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
                                             <h3 className="text-xl text-[#2F1C6A] font-medium">Basic</h3>
                                             <ul className="list-disc ml-5 mt-2 text-gray-700">
@@ -357,7 +357,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         </div>
                                     )}
 
-                                    {selectedPackage === 'Standard package $7' && (
+                                    {selectedPackage === 'Standard package' && (
                                         <div className="card standard-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
                                             <h3 className="text-xl text-[#2F1C6A] font-medium">Standard</h3>
                                             <ul className="list-disc ml-5 mt-2 text-gray-700">
@@ -369,7 +369,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         </div>
                                     )}
 
-                                    {selectedPackage === 'Premium package $9' && (
+                                    {selectedPackage === 'Premium package' && (
                                         <div className="card premium-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
                                             <h3 className="text-xl text-[#2F1C6A] font-medium">Premium</h3>
                                             <ul className="list-disc ml-5 mt-2 text-gray-700">
