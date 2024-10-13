@@ -55,7 +55,8 @@ const AddExclusiveTemplates = () => {
             times: selectedTimes,
             basics: basicsArray,
             standards: standardsArray,
-            premiums: premiumsArray
+            premiums: premiumsArray,
+            amount: parseFloat(data.amount),
 
         };
 
@@ -289,6 +290,21 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Premiums"
                                 ></textarea>
                             </div>
+
+
+                             {/* Amount */}
+                             <div className="form-control w-full my-6 h-auto px-6">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Amount*</span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        step="0.01" // Allow decimal values
+                                        placeholder="Amount"
+                                        {...register('amount', { required: true })}
+                                        className="input input-bordered w-full"
+                                    />
+                                </div>
 
                         </div>
 
