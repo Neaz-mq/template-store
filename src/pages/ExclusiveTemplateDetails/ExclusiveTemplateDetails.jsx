@@ -12,7 +12,7 @@ import Free from "../Home/Free/Free";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
 
-const ExclusiveTemplateDetails = () => {
+const ExclusiveTemplateDetails = ({ basicPackage, standard, premium }) => {
     const template = useLoaderData();
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedPackages, setSelectedPackages] = useState([]);
@@ -34,7 +34,10 @@ const ExclusiveTemplateDetails = () => {
 
     const [selectedTimes, setSelectedTimes] = useState([]);
 
-    
+    // State to track the selected package
+    const [selectedPackage, setSelectedPackage] = useState('');
+
+
 
     useEffect(() => {
         if (template && template.picture && template.picture.length > 0) {
@@ -74,7 +77,7 @@ const ExclusiveTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times, basics } = template;
+    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, packages, times, basics, standards, premiums } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -109,6 +112,8 @@ const ExclusiveTemplateDetails = () => {
         }
         e.target.value = ""; // Reset the select input
     };
+
+
 
     const handleFileChange = (e) => {
         const selectedValue = e.target.value;
@@ -183,8 +188,9 @@ const ExclusiveTemplateDetails = () => {
                 documents,
                 packages,
                 times,
-                basics
-
+                basics,
+                standards,
+                premiums
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
@@ -310,32 +316,52 @@ const ExclusiveTemplateDetails = () => {
 
                                     <select
                                         className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                        onChange={(e) => {
-                                            const newValue = e.target.value;
-                                            setSelectedPackages([...selectedPackages, newValue]);
-                                        }}
-                                        value={selectedPackages[selectedPackages.length - 1] || ''}
+                                        onChange={(e) => setSelectedPackage(e.target.value)} // Set selected package
+                                        value={selectedPackage} // Bind value to state
                                     >
                                         <option value="">Select Package</option>
                                         {packages.map((pack, index) => (
-                                            <option key={index} value={pack} className={`option-${_id}`}>
+                                            <option key={index} value={pack}>
                                                 {pack}
                                             </option>
                                         ))}
                                     </select>
 
 
-                                    {/* Basics Data Card */}
-                                    <div className="mt-4 p-4 border rounded-lg bg-white shadow-md">
-                                        <h3 className="text-lg font-bold text-[#2F1C6A] mb-2">Basics</h3>
-                                        <ul className="list-disc ml-5">
-                                            {basics.map((item, index) => (
-                                                <li key={index} className="text-gray-500 mb-1">
-                                                    {item}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+
+                                    {/* Conditionally Render Package Cards */}
+                                    {selectedPackage === 'Basic package $5' && (
+                                        <div className="card basics-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
+                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Basics</h3>
+                                            <ul className="list-disc ml-5 mt-2 text-gray-700">
+                                                {basics.map((item, index) => (
+                                                    <li key={index} className="mb-1">{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {selectedPackage === 'Standard package $7' && (
+                                        <div className="card standard-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
+                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Standard</h3>
+                                            <ul className="list-disc ml-5 mt-2 text-gray-700">
+                                                {standards.map((item, index) => (
+                                                    <li key={index} className="mb-1">{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {selectedPackage === 'Premium package $9' && (
+                                        <div className="card premium-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
+                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Premium</h3>
+                                            <ul className="list-disc ml-5 mt-2 text-gray-700">
+                                                {premiums.map((item, index) => (
+                                                    <li key={index} className="mb-1">{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
 
                                     <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0 font-raleway">
                                         <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">

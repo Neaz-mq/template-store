@@ -35,6 +35,8 @@ const AddExclusiveTemplates = () => {
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
         const basicsArray = data.basics.split('\n').map(item => item.trim()).filter(item => item);
+        const standardsArray = data.standards.split('\n').map(item => item.trim()).filter(item => item);
+        const premiumsArray = data.premiums.split('\n').map(item => item.trim()).filter(item => item);
 
         // Prepare the template item
         const templateItem = {
@@ -51,7 +53,9 @@ const AddExclusiveTemplates = () => {
             files: selectedFiles,
             packages: packagesArray,
             times: selectedTimes,
-            basics: basicsArray
+            basics: basicsArray,
+            standards: standardsArray,
+            premiums: premiumsArray
 
         };
 
@@ -259,9 +263,32 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Basics"
                                 ></textarea>
                             </div>
+
                             {/* Standard Packages description */}
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Standard Packages Description (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('standards')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Standards"
+                                ></textarea>
+                            </div>
+
                             {/* Premium Packages description */}
 
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Premium Packages Description (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('premiums')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Premiums"
+                                ></textarea>
+                            </div>
 
                         </div>
 
