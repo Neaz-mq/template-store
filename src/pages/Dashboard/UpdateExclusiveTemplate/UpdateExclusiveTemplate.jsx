@@ -274,6 +274,19 @@ const UpdateExclusiveTemplate = () => {
                                 ))}
                             </div>
 
+                             {/* Packages Included */}
+                             <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Packages (one per line)</span>
+                                </label>
+                                <textarea
+                                    defaultValue={packages.join('\n')}
+                                    {...register('packages')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Packages"
+                                ></textarea>
+                            </div>
+
                         </div>
 
                         {/* Category and Price */}
@@ -429,7 +442,7 @@ const UpdateExclusiveTemplate = () => {
                             {/* Files Included */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
                                 </label>
                                 <textarea
                                     defaultValue={documents.join('\n')}
