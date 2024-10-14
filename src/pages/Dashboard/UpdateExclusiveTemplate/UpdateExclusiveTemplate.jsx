@@ -287,6 +287,35 @@ const UpdateExclusiveTemplate = () => {
                                 ></textarea>
                             </div>
 
+                           {/* Basic Packages description */}
+
+                             <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Basic Packages Description (one per line)</span>
+                                </label>
+                                <textarea
+                                    defaultValue={basics.join('\n')}
+                                    {...register('basics')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Basics"
+                                ></textarea>
+                            </div>
+
+                              {/* Standard Packages description */}
+
+
+                              <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Standard Packages Description (one per line)</span>
+                                </label>
+                                <textarea
+                                    defaultValue={standards.join('\n')}
+                                    {...register('standards')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Standards"
+                                ></textarea>
+                            </div>
+
                         </div>
 
                         {/* Category and Price */}
