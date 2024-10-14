@@ -64,12 +64,12 @@ const UpdateExclusiveTemplate = () => {
             type: data.type,
             category: data.category,
             price: parseFloat(data.price),
-            image: mainImageUrl,
+            image: imageUrl,
             description: data.description,
             specifications: specificationsArray,
             product: productArray,
             documents: documentsArray,
-            picture: pictureUrls,
+            picture: additionalImages,
             revisions: selectedRevisions,
             files: selectedFiles,
             packages: packagesArray,
@@ -340,7 +340,7 @@ const UpdateExclusiveTemplate = () => {
                                     step="0.01"
                                     defaultValue={amount}
                                     placeholder="amount"
-                                    {...register('price', { required: true })}
+                                    {...register('amount', { required: true })}
                                     className="input input-bordered w-full"
                                 />
                             </div>
