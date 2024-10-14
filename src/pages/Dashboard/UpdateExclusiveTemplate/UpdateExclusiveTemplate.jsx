@@ -316,6 +316,65 @@ const UpdateExclusiveTemplate = () => {
                                 ></textarea>
                             </div>
 
+                               {/* Premium Packages description */}
+
+                               <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Premium Packages Description (one per line)</span>
+                                </label>
+                                <textarea
+                                    defaultValue={premiums.join('\n')}
+                                    {...register('premiums')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Premiums"
+                                ></textarea>
+                            </div>
+
+                                {/* Amount */}
+                             <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    defaultValue={amount}
+                                    placeholder="amount"
+                                    {...register('price', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                                {/* Money */}
+                             <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    defaultValue={money}
+                                    placeholder="Money"
+                                    {...register('money', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                             {/* Charge */}
+                              <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    defaultValue={charge}
+                                    placeholder="Charge"
+                                    {...register('charge', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
                         </div>
 
                         {/* Category and Price */}
