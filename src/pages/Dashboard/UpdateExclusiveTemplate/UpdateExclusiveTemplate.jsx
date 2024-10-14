@@ -17,10 +17,18 @@ const UpdateExclusiveTemplate = () => {
         product,
         documents,
         files,
+        packages,
         picture,
         price,
         revisions,
         image,
+        times,
+        basics,
+        standards,
+        premiums,
+        amount,
+        money,
+        charge,
         _id
     } = useLoaderData();
 
@@ -32,31 +40,47 @@ const UpdateExclusiveTemplate = () => {
     const axiosPublic = useAxiosPublic();
     const [selectedFiles, setSelectedFiles] = useState(files || []);
     const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
+    const [selectedTimes, setSelectedTimes] = useState(times || []);
     const [newRevision, setNewRevision] = useState('');  // New state for revision
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
+    
 
 
     const onSubmit = async (data) => {
         const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
+        const packagesArray = data.packages.split('\n').filter(pack => pack.trim() !== '');
+        const basicsArray = data.basics.split('\n').filter(basic => basic.trim() !== '');
+        const standardsArray = data.standards.split('\n').filter(standard => standard.trim() !== '');
+        const premiumsArray = data.premiums.split('\n').filter(premium => premium.trim() !== '');
 
         const filesArray = selectedFiles;
         const revisionsArray = selectedRevisions;
+        const timesArray = selectedTimes;
 
         const templateItem = {
             type: data.type,
             category: data.category,
             price: parseFloat(data.price),
-            image: imageUrl,  // Use the main image URL
-            picture: additionalImages, // Use the additional image URLs
+            image: mainImageUrl,
             description: data.description,
             specifications: specificationsArray,
             product: productArray,
             documents: documentsArray,
+            picture: pictureUrls,
+            revisions: selectedRevisions,
             files: selectedFiles,
-            revisions: selectedRevisions
+            packages: packagesArray,
+            times: selectedTimes,
+            basics: basicsArray,
+            standards: standardsArray,
+            premiums: premiumsArray,
+            amount: parseFloat(data.amount),
+            money: parseFloat(data.money),
+            charge: parseFloat(data.charge),
+
         };
 
         const templateRes = await axiosSecure.patch(`/exclusive/${_id}`, templateItem);
@@ -104,6 +128,8 @@ const UpdateExclusiveTemplate = () => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
+   
+
 
     const handleAddRevision = (event) => {
         const selectedRevision = event.target.value;
@@ -114,6 +140,18 @@ const UpdateExclusiveTemplate = () => {
 
     const handleRemoveRevision = (revision) => {
         setSelectedRevisions(selectedRevisions.filter(r => r !== revision));
+    };
+
+
+    const handleAddTime = (event) => {
+        const selectedTime = event.target.value;
+        if (selectedTime && !selectedTimes.includes(selectedTime)) {
+            setSelectedTimes([...selectedTimes, selectedTime]);
+        }
+    };
+
+    const handleRemoveTime = (time) => {
+        setSelectedTimes(selectedTimes.filter(r => r !== time));
     };
 
 
@@ -305,6 +343,40 @@ const UpdateExclusiveTemplate = () => {
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
                                         <span>{revision}</span>
                                         <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+
+
+                             {/* Delivery Time */}
+
+                             <div className="flex gap-6  pb-32 pt-16">
+                                <div className="form-control w-full my-10 h-auto px-3">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Delivery Time*</span>
+                                    </label>
+                                    <select
+                                        defaultValue={selectedTimes}
+                                        {...register('times', { required: true })}
+                                        onChange={handleAddTime}
+                                        className="select select-bordered w-full h-auto "
+                                    >
+                                        <option  value="default">Select Delivery Time</option>
+                                        <option value="3 Days">3 Days</option>
+                                            <option value="6 Days">6 Days</option>
+                                            <option value="10 Days">10 Days</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            {/* Displaying Selected Revisions */}
+                            <div className="-mt-24 pb-20 flex flex-wrap ml-4">
+                                {selectedTimes.map((time, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                        <span>{time}</span>
+                                        <button onClick={() => handleRemoveTime(time)} className="ml-2">
                                             <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
                                         </button>
                                     </div>
