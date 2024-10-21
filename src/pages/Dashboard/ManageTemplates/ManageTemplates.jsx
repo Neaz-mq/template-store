@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useTemplate from "../../../hooks/useTemplate";
 
-
-
 const ManageTemplates = () => {
 
     const [template, , refetch] = useTemplate();

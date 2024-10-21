@@ -95,7 +95,7 @@ const AllUsers = () => {
         <div className="px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>
-                <h2 className="text-xl sm:text-3xl font-semibold ">Total users: {(search ? filteredUsers : users).length}</h2>
+                <h2 className="text-xl sm:text-3xl font-semibold">Total users: {(search ? filteredUsers : users).length}</h2>
             </div>
             <div className="text-center mb-4 md:mb-10 hidden md:block">
                 <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center ">

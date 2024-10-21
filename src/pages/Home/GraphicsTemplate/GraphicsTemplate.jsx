@@ -63,7 +63,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
 
             <footer className="flex justify-center mt-16 mb-10 lg:mb-0">
                 <button
-                    className="btn mr-2 lg:mr-4 font-roboto  bg-transparent capitalize rounded-none font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 text-[#4864EC]  hover:bg-[#F9F9F9]"
+                    className="btn mr-2 lg:mr-4 font-roboto  bg-transparent capitalize rounded-none font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 text-[#4864EC] hover:bg-[#F9F9F9]"
                     onClick={handleViewMore}
                     aria-label={showAll ? "Show Less" : "View More Top Selling Items"}
                 >

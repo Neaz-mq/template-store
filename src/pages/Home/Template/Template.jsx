@@ -2,7 +2,7 @@ import { useState } from "react";
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../../hooks/useAxiosSecure'; // Import your custom hook
+import useAxiosSecure from '../../../hooks/useAxiosSecure'; 
 
 const Template = () => {
     const [counterOn, setCounterOn] = useState(false);
@@ -80,7 +80,7 @@ const Template = () => {
                                         <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 3xl:-ml-9 2xl:-ml-9 desktop:-ml-9 laptop:-ml-9 tablet:-ml-0 -ml-9" aria-label="Free templates">
                                             {counterOn && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
                                         </h1>
-                                        <p className="text-lg text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block  -ml-12">
+                                        <p className="text-lg text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block -ml-12">
                                             Free <br /> <span className="ml-10">Templates</span>
                                         </p>
                                         <p className="text-lg text-white mt-5 block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden">

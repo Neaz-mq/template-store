@@ -71,7 +71,7 @@ const Creativity = () => {
           </section>
 
           <section className="w-full flex justify-center 3xl:mr-[12.7rem] 2xl:mr-[13.6rem] desktop:mr-[12.7rem]">
-            <article className="bg-[#F9F9F9] desktop:max-w-[340px] laptop:h-[380px] 2xl:max-w-[330px] desktop:h-[290px] laptop:max-w-[250px] tablet:max-w-[350px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-4 3xl:mr-4 3xl:mb-12 2xl:ml-4 2xl:mr-4 2xl:mb-12 desktop:ml-14 laptop:ml-3 desktop:mr-1 desktop:mb-12 font-raleway ">
+            <article className="bg-[#F9F9F9] desktop:max-w-[340px] laptop:h-[380px] 2xl:max-w-[330px] desktop:h-[290px] laptop:max-w-[250px] tablet:max-w-[350px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-4 3xl:mr-4 3xl:mb-12 2xl:ml-4 2xl:mr-4 2xl:mb-12 desktop:ml-14 laptop:ml-3 desktop:mr-1 desktop:mb-12 font-raleway">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-medium text-[#15141ce7]">Team Collaboration</h2>
                 <div className="w-[90px] 3xl:w-[80px] 2xl:w-[80px] desktop:w-[80px] tablet:w-[80px] h-[80px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl">
@@ -90,7 +90,7 @@ const Creativity = () => {
                 Working together effectively and efficiently to achieve common goals or objectives of any business.
               </p>
               <a href="#" title="Learn more about our team collaboration" className="hidden">
-                <button className="btn bg-white hover:bg-gray-100 font-medium capitalize text-[#15141ce7]  gap-4 mt-5">
+                <button className="btn bg-white hover:bg-gray-100 font-medium capitalize text-[#15141ce7] gap-4 mt-5">
                   <span className="-mt-1">Learn More</span>
                   <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -102,7 +102,7 @@ const Creativity = () => {
           </section>
 
           <section className="w-full flex justify-center 3xl:mr-72 2xl:mr-72 desktop:mr-36">
-            <article className="bg-[#F9F9F9] desktop:max-w-[340px] 2xl:max-w-[330px] laptop:max-w-[245px] desktop:h-[290px] laptop:h-[380px] tablet:max-w-[320px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  desktop:mr-28 3xl:max-w-[400px] 3xl:mr-28 desktop:mb-12 3xl:mb-12 2xl:mr-28 2xl:mb-12 laptop:mr-10 font-raleway ">
+            <article className="bg-[#F9F9F9] desktop:max-w-[340px] 2xl:max-w-[330px] laptop:max-w-[245px] desktop:h-[290px] laptop:h-[380px] tablet:max-w-[320px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  desktop:mr-28 3xl:max-w-[400px] 3xl:mr-28 desktop:mb-12 3xl:mb-12 2xl:mr-28 2xl:mb-12 laptop:mr-10 font-raleway">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-medium text-[#15141ce7]">Professionalism</h2>
                 <div className="w-[80px] h-[80px] laptop:hidden  overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl laptop:ml-2 3xl:block 2xl:block desktop:block tablet:block ml-1">

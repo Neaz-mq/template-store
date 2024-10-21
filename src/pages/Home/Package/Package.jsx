@@ -52,14 +52,19 @@ const Package = () => {
             <div className="3xl:relative 2xl:relative desktop:relative laptop:relative tablet:relative 3xl:mr-[32.5rem] 2xl:mr-[25.5rem] desktop:mr-[27rem] laptop:mr-[13rem] tablet:mr-[7rem] 3xl:mt-20 2xl:mt-[5rem] desktop:mt-[5rem] laptop:mt-[5rem] tablet:mt-[4.8rem] 3xl:block 2xl:block desktop:block laptop:block tablet:block hidden">
   
               <div className="3xl:absolute 2xl:absolute desktop:absolute laptop:absolute tablet:absolute top-1/4 right-10 w-36 h-36 bg-yellow-400 rounded-full text-center text-black font-bold shadow-lg overflow-hidden">
+
                 {/* Top section: Darker Yellow */}
+
                 <div className="bg-[#e2b813] w-full h-1/2 flex flex-col justify-center items-center pb-2">
                   <p className="text-2xl mt-2 ">5 <br /> FLYERS</p>
                 </div>
   
                 {/* Bottom section: Lighter Yellow */}
+
                 <div className="bg-[#F7DC6F] w-full h-1/2 flex flex-col justify-center items-center relative pb-4">
+
                   {/* Strikethrough $99 */}
+
                   <div className="relative">
                     <p className="text-3xl text-black font-bold diagonal-line mt-2">$10</p>
                   </div>
@@ -69,6 +74,7 @@ const Package = () => {
             </div>
   
             {/* Inline CSS for Thinner Diagonal Line */}
+            
             <style jsx>{`
             .diagonal-line {
               position: relative;

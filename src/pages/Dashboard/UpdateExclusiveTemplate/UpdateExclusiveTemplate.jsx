@@ -331,6 +331,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                                 {/* Amount */}
+
                              <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
@@ -346,6 +347,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                                 {/* Money */}
+
                              <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
@@ -361,6 +363,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                              {/* Charge */}
+
                               <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
@@ -378,6 +381,7 @@ const UpdateExclusiveTemplate = () => {
                         </div>
 
                         {/* Category and Price */}
+
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
@@ -402,6 +406,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Price */}
+
                             <div className="form-control w-full my-72 h-auto px-3">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Price*</span>
@@ -415,6 +420,7 @@ const UpdateExclusiveTemplate = () => {
                                     className="input input-bordered w-full"
                                 />
                             </div>
+
                             {/* Revisions */}
 
                             <div className="flex gap-6  pb-32 pt-16">
@@ -438,7 +444,9 @@ const UpdateExclusiveTemplate = () => {
                                     </select>
                                 </div>
                             </div>
+
                             {/* Displaying Selected Revisions */}
+
                             <div className="-mt-24 pb-20 flex flex-wrap ml-4">
                                 {selectedRevisions.map((revision, index) => (
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
@@ -472,7 +480,9 @@ const UpdateExclusiveTemplate = () => {
                                     </select>
                                 </div>
                             </div>
+
                             {/* Displaying Selected Revisions */}
+
                             <div className="-mt-24 pb-20 flex flex-wrap ml-4">
                                 {selectedTimes.map((time, index) => (
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
@@ -487,8 +497,11 @@ const UpdateExclusiveTemplate = () => {
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
+
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+
                             {/* Descriptions */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -502,6 +515,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -515,6 +529,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Product Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -528,6 +543,7 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Files Included */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
@@ -543,6 +559,7 @@ const UpdateExclusiveTemplate = () => {
                     </div>
 
                     {/* Submit Button */}
+                    
                     <div className="">
                         <button
                             type="submit"

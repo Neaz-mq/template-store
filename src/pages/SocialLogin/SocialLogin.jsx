@@ -31,7 +31,7 @@ const SocialLogin = () => {
 
         <div>
 
-            <button onClick={handleGoogleSignIn} className="btn btn-google mb-6 bg-[#EDEEF7] hover:bg-gray-100  capitalize text-black rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full tablet:w-96  -mt-4 py-3 shadow-none font-medium font-roboto ">
+            <button onClick={handleGoogleSignIn} className="btn btn-google mb-6 bg-[#EDEEF7] hover:bg-gray-100 capitalize text-black rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full tablet:w-96  -mt-4 py-3 shadow-none font-medium font-roboto">
 
                 <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google

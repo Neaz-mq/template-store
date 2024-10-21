@@ -28,9 +28,9 @@ const Shop = () => {
     };
 
     const handleButtonClick = (buttonLabel) => {
-        setSearchQuery(''); // Clear the search query in the input when a button is clicked
+        setSearchQuery(''); 
         setSearchKeyword(buttonLabel); // Set the search keyword for filtering
-        console.log(`${buttonLabel} button clicked`); // Debugging action
+        console.log(`${buttonLabel} button clicked`); 
     };
 
     return (
@@ -62,7 +62,7 @@ const Shop = () => {
                                     className="text-gray-700 font-semibold flex items-center"
                                     onClick={() => {
                                         setIsDropdownOpen(!isDropdownOpen);
-                                        console.log('Dropdown toggled:', !isDropdownOpen); // Debugging
+                                        console.log('Dropdown toggled:', !isDropdownOpen); 
                                     }}
                                 >
                                     {selectedCategory}
@@ -107,7 +107,7 @@ const Shop = () => {
                                         className="text-gray-700 font-semibold  w-full py-2 flex items-center justify-between"
                                         onClick={() => {
                                             setIsDropdownOpen(!isDropdownOpen);
-                                            console.log('Dropdown toggled:', !isDropdownOpen); // Debugging
+                                            console.log('Dropdown toggled:', !isDropdownOpen); 
                                         }}
                                     >
                                         {selectedCategory}
@@ -140,7 +140,7 @@ const Shop = () => {
                                 <button
                                     key={buttonLabel}
                                     className="w-full px-6 py-3 text-base border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} // Call the button click handler
+                                    onClick={() => handleButtonClick(buttonLabel)} 
                                 >
                                     {buttonLabel}
                                 </button>
@@ -153,7 +153,7 @@ const Shop = () => {
                                 <button
                                     key={buttonLabel}
                                     className="px-4 py-2 border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} // Call the button click handler
+                                    onClick={() => handleButtonClick(buttonLabel)} 
                                 >
                                     {buttonLabel}
                                 </button>

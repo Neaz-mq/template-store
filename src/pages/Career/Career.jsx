@@ -137,12 +137,12 @@ const Career = () => {
         </div>
 
         <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden mb-36'>
-          <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-6 text-center '> Want to establish a stable career:
+          <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-6 text-center'> Want to establish a stable career:
             Opening Job( Joining from January 2025 )</h1>
         </div>
 
         <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block'>
-          <div className=" px-4 py-6 3xl:w-[76rem] 2xl:w-[62rem] desktop:w-[67rem] mx-auto -mt-20">
+          <div className="px-4 py-6 3xl:w-[76rem] 2xl:w-[62rem] desktop:w-[67rem] mx-auto -mt-20">
             <table className="min-w-full bg-white overflow-hidden">
               <thead>
                 <tr className="bg-[#4864EC] text-white">
@@ -161,11 +161,11 @@ const Career = () => {
                       <td className="py-4 px-6 text-base text-[#282A37]">{job.skills}</td>
                       <td className="py-4 px-6 text-base text-[#282A37]">{job.position}</td>
                       <td className="py-4 px-6 text-base text-[#282A37]">{job.experience}</td>
-                      <td className="py-4 px-6 text-center   flex items-center justify-end">
+                      <td className="py-4 px-6 text-center flex items-center justify-end">
                         <a
                           href="https://mail.google.com/mail/?view=cm&fs=1&to=career@prographr.com"
                           target="_blank"
-                          className="bg-white text-[#282A37] py-2 px-5 text-sm font-medium border border-[#d9d6d6] mr-">
+                          className="bg-white text-[#282A37] py-2 px-5 text-sm font-medium border border-[#d9d6d6]">
                           Drop CV
                         </a>
 
@@ -312,11 +312,8 @@ const Career = () => {
               </tbody>
             </table>
           </div>
-
         </div>
-
       </div>
-
       <PresentationTemplate />
     </div>
   );

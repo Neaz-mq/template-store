@@ -13,7 +13,7 @@ const Exclusive = () => {
             .then(data => {
                 setTemplates(data);  // Set templates state
             })
-            .catch(error => console.error("Error fetching templates:", error));  // Add error handling
+            .catch(error => console.error("Error fetching templates:", error));  
     }, []);
     
     const template = templates.slice(0, 4);

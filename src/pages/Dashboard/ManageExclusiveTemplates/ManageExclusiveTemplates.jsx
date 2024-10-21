@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useExclusiveTemplate from "../../../hooks/useExclusiveTemplate";
 
-
 const ManageExclusiveTemplates = () => {
 
     const [exclusive, , refetch] = useExclusiveTemplate();
@@ -192,7 +191,6 @@ const ManageExclusiveTemplates = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };

@@ -231,35 +231,31 @@ const AddFreeTemplates = () => {
                                 ))}
                             </div>
 
-                         {/* Drag and Drop File Upload Section */}
-                    <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
-                        <div
-                            {...getRootProps({ className: 'dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer' })}
-                        >
-                            <input {...getInputProps()} className="hidden" />
-                            <RxUpload className="text-gray-700 text-4xl mx-auto" />
-                            <div className="mt-2 font-medium">
-                                Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple docs</span> to Upload
+                            {/* Drag and Drop File Upload Section */}
+                            <div className="form-control rounded-md mx-3 my-3 bg-[#F3F4F6] mt-16">
+                                <div
+                                    {...getRootProps({ className: 'dropzone border-gray-300 p-16 rounded-lg text-center cursor-pointer' })}
+                                >
+                                    <input {...getInputProps()} className="hidden" />
+                                    <RxUpload className="text-gray-700 text-4xl mx-auto" />
+                                    <div className="mt-2 font-medium">
+                                        Drag & Drop or <span className="text-blue-600 font-medium">Choose Multiple docs</span> to Upload
+                                    </div>
+                                    <p className="text-gray-400 mt-1">.psd, .ai, .indd</p>
+                                </div>
                             </div>
-                            <p className="text-gray-400 mt-1">.psd, .ai, .indd</p>
-                        </div>
-                    </div>
 
-                    <div className="flex flex-wrap mt-4 ml-4">
-                        {selectedDocs.map((doc, index) => (
-                            <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                <span>{doc}</span>
-                                <button onClick={() => handleRemoveDoc(doc)} className="ml-2">
-                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                </button>
+                            <div className="flex flex-wrap mt-4 ml-4">
+                                {selectedDocs.map((doc, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                        <span>{doc}</span>
+                                        <button onClick={() => handleRemoveDoc(doc)} className="ml-2">
+                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
+                                        </button>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-
                         </div>
-
-
-
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
@@ -284,6 +280,7 @@ const AddFreeTemplates = () => {
                                 </select>
 
                                 {/* Price */}
+
                                 <div className="form-control w-full my-60 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
@@ -296,6 +293,7 @@ const AddFreeTemplates = () => {
                                     />
                                 </div>
                             </div>
+
                             {/* Revisions */}
 
                             <div className="flex gap-6  pb-36 pt-6 ">
@@ -324,12 +322,12 @@ const AddFreeTemplates = () => {
                                     </div>
                                 ))}
                             </div>
-
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+
                             {/* Descriptions */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -342,6 +340,7 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -354,6 +353,7 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Product Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -366,6 +366,7 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Documents Included */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
@@ -379,7 +380,7 @@ const AddFreeTemplates = () => {
                         </div>
                     </div>
 
-                    <button className="btn mt-6 hover:bg-[#4864EC] bg-[#4864EC] px-20  text-white">
+                    <button className="btn mt-6 hover:bg-[#4864EC] bg-[#4864EC] px-20 text-white">
                         Publish
                     </button>
 

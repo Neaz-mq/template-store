@@ -82,7 +82,7 @@ const AddTemplates = () => {
         if (selectedValue && !selectedFiles.includes(selectedValue)) {
             setSelectedFiles([...selectedFiles, selectedValue]);
         }
-        e.target.value = ""; // Reset the select input
+        e.target.value = ""; 
     };
 
 
@@ -91,7 +91,7 @@ const AddTemplates = () => {
         if (selectedRate && !selectedRevisions.includes(selectedRate)) {
             setSelectedRevisions([...selectedRevisions, selectedRate]);
         }
-        e.target.value = ""; // Reset the select input
+        e.target.value = ""; 
     };
 
     const handleRemoveRevision = (revision) => {
@@ -167,6 +167,7 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Preview and Remove Buttons for Additional Image URLs */}
+
                             <div className="flex flex-wrap gap-4">
                                 {pictureUrls.map((url, index) => (
                                     <div key={index} className="relative">
@@ -183,12 +184,13 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Files Included */}
+
                             <div className="flex pb-36 gap-6">
                                 <div className="form-control w-full mt-10 px-2">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg ">Files attached*</span>
+                                        <span className="label-text font-medium text-lg">Files attached*</span>
                                     </label>
-                                    <select className="select select-bordered w-full " onChange={handleFileChange}>
+                                    <select className="select select-bordered w-full" onChange={handleFileChange}>
                                         <option value="">Select files</option>
                                         <option value="Adobe Illustrator">Adobe Illustrator</option>
                                         <option value="Adobe Photoshop">Adobe Photoshop</option>
@@ -211,9 +213,6 @@ const AddTemplates = () => {
                                 ))}
                             </div>
                         </div>
-
-
-
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
@@ -253,7 +252,7 @@ const AddTemplates = () => {
 
                                 {/* Revisions */}
 
-                                <div className="flex gap-6  pb-32 pt-16 ">
+                                <div className="flex gap-6 pb-32 pt-16 ">
                                     <div className="form-control w-full my-10 h-auto">
                                         <label className="label">
                                             <span className="label-text font-medium text-lg">Revisions*</span>
@@ -272,7 +271,7 @@ const AddTemplates = () => {
 
                                 <div className="-mt-24 pb-20 flex flex-wrap">
                                     {selectedRevisions.map((revision, index) => (
-                                        <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2">
+                                        <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
                                             <span>{revision}</span>
                                             <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
                                                 <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
@@ -331,7 +330,6 @@ const AddTemplates = () => {
                                     placeholder="Documents"
                                 ></textarea>
                             </div>
-
                         </div>
                     </div>
 

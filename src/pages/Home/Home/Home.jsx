@@ -1,10 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import Banner from '../Banner/Banner';
 import Community from '../Community/Community';
-import Creativity from '../Creativity/Creativity';
-import Ideas from '../Ideas/Ideas';
 import Template from '../Template/Template';
-import Testimonial from '../Testimonial/Testimonial';
 import Exclusive from '../Exclusive/Exclusive';
 import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
@@ -46,18 +43,6 @@ const Home = () => {
                 <section id="package">
                     <Package />
                 </section> 
-                
-                {/* <section id="creativity">
-                    <Creativity />
-                </section> */}
-                 
-                {/* <section id="ideas">
-                    <Ideas />
-                </section> */}
-
-                {/* <section id="testimonials">
-                    <Testimonial />
-                </section> */}
                 
                 <section id="community">
                     <Community />

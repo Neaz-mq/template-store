@@ -1,15 +1,10 @@
-/* Error toast style */
 .error-toast {
-    background-color: #736d99;
-    /* Red color for error background */
+    background-color: #736d99;  
     color: #ffffff;
-    /* White color for text */
   }
   
-  /* Success toast style */
   .success-toast {
-    background-color: #0d7f90;
-    /* Green color for success background */
+    background-color: #0d7f90; 
     color: #fff;
-    /* White color for text */
+   
   }

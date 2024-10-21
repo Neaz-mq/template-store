@@ -7,8 +7,6 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const UpdateFreeTemplate = () => {
     const {
         type,
@@ -134,8 +132,11 @@ const UpdateFreeTemplate = () => {
                     </div>
 
                     {/* Main Row */}
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
+
                         {/* File Upload Section for Main Image */}
+
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Main Image URL</h2>
@@ -158,7 +159,9 @@ const UpdateFreeTemplate = () => {
                                     </div>
                                 )}
                             </div>
+
                             {/* Additional Image URLs */}
+
                             <div>
                                 <div>
                                     <h2 className="p-4 font-medium text-lg">Additional Image URLs</h2>
@@ -179,7 +182,9 @@ const UpdateFreeTemplate = () => {
                                         Add Image
                                     </button>
                                 </div>
+
                                 {/* Preview Additional Images */}
+
                                 <div className="flex flex-wrap gap-4 p-4">
                                     {additionalImages.map((pic, index) => (
                                         <div key={index} className="relative">
@@ -201,14 +206,15 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Files Included */}
+
                             <div className="flex pb-36 gap-6">
                                 <div className="form-control w-full mt-10 px-2">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg ">Files attached*</span>
+                                        <span className="label-text font-medium text-lg">Files attached*</span>
                                     </label>
                                     <select defaultValue={selectedFiles}
                                         {...register('files', { required: true })}
-                                        onChange={handleAddFile}  // Attach the function to the select element
+                                        onChange={handleAddFile}  
                                         className="select select-bordered w-full h-auto">
                                         <option value="default">Select files</option>
                                         <option value="Adobe Illustrator">Adobe Illustrator</option>
@@ -221,7 +227,9 @@ const UpdateFreeTemplate = () => {
                                     </select>
                                 </div>
                             </div>
+
                             {/* Displaying Selected Files */}
+
                             <div className="-mt-28 flex pb-36 flex-wrap ml-2">
                                 {selectedFiles.map((file, index) => (
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
@@ -236,6 +244,7 @@ const UpdateFreeTemplate = () => {
                         </div>
 
                         {/* Category and Price */}
+
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
@@ -260,6 +269,7 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                              {/* Price */}
+
                              <div className="form-control w-full my-72 h-auto px-3">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Price*</span>
@@ -275,7 +285,7 @@ const UpdateFreeTemplate = () => {
                        
                             {/* Revisions */}
 
-                            <div className="flex gap-6  pb-32 pt-16">
+                            <div className="flex gap-6 pb-32 pt-16">
                                 <div className="form-control w-full my-10 h-auto px-3">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Revisions*</span>
@@ -284,7 +294,7 @@ const UpdateFreeTemplate = () => {
                                         defaultValue={selectedRevisions}
                                         {...register('revisions', { required: true })}
                                         onChange={handleAddRevision}
-                                        className="select select-bordered w-full h-auto "
+                                        className="select select-bordered w-full h-auto"
                                     >
                                         <option value="default">Select Revisions</option>
                                         <option value="1">1</option>
@@ -296,7 +306,9 @@ const UpdateFreeTemplate = () => {
                                     </select>
                                 </div>
                             </div>
+
                             {/* Displaying Selected Revisions */}
+
                             <div className="-mt-24 pb-20 flex flex-wrap ml-4">
                                 {selectedRevisions.map((revision, index) => (
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
@@ -311,8 +323,11 @@ const UpdateFreeTemplate = () => {
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
+
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+
                             {/* Descriptions */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -326,6 +341,7 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -339,6 +355,7 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Product Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -352,6 +369,7 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Files Included */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
@@ -367,6 +385,7 @@ const UpdateFreeTemplate = () => {
                     </div>
 
                     {/* Submit Button */}
+                    
                     <div className="">
                         <button
                             type="submit"
@@ -381,6 +400,5 @@ const UpdateFreeTemplate = () => {
         </div>
     );
 };
-
 
 export default UpdateFreeTemplate;

@@ -45,10 +45,11 @@ const Testimonial = () => {
             <div className='lg:mx-24 lg:mt-9 lg:mb-32 overflow-hidden'>
                 <div className="mb-28 lg:mx-24">
                     <div className="layout mt-10 mb-14 lg:mt-16">
-                        <h2 className="lg:text-4xl text-xl tablet:text-xl text-[#282A37] 3xl:ml-16 2xl:ml-16 desktop:-ml-[5.2rem] font-raleway desktop:-mt-6 laptop:-ml-[5.5rem] tablet:ml-16 tablet:mt-16 ml-14 mt-16 ">Clients <strong>testimonial</strong></h2>
+                        <h2 className="lg:text-4xl text-xl tablet:text-xl text-[#282A37] 3xl:ml-16 2xl:ml-16 desktop:-ml-[5.2rem] font-raleway desktop:-mt-6 laptop:-ml-[5.5rem] tablet:ml-16 tablet:mt-16 ml-14 mt-16">Clients <strong>testimonial</strong></h2>
                     </div>
 
                     {/* Render Swiper only on smaller screens */}
+                    
                     <div className="swiper-container tablet:mt-16 -mt-8 lg:hidden" >
                         <div className="swiper-wrapper flex gap-44">
                             {/* Testimonial items */}
@@ -85,7 +86,7 @@ const Testimonial = () => {
                             </div>
 
                             <div className="swiper-slide">
-                                <div className="w-[220px] h-[400px] tablet:w-[300px] tablet:h-[326px]  mt-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50 hover:border-[#4864EC] shadow p-7 relative  -ml-[19.5rem] tablet:-ml-[9rem]">
+                                <div className="w-[220px] h-[400px] tablet:w-[300px] tablet:h-[326px] mt-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50 hover:border-[#4864EC] shadow p-7 relative  -ml-[19.5rem] tablet:-ml-[9rem]">
                                    
                                     <div className="h-full flex flex-col justify-between">
                                         <p className="pt-4 text-[13px]">Doing real estate business without business card was difficult for me. I found a business card template here and modified by the design owner. The designer did a fantastic job for me. Thanks...</p>

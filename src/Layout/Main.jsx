@@ -5,6 +5,7 @@ import NavBar from "../pages/Shared/NavBar/NavBar";
 import axios from "axios";
 
 const Main = () => {
+
     useEffect(() => {
         // Check if the visit has already been recorded in this session
         if (sessionStorage.getItem('visit') === null) {
@@ -16,8 +17,6 @@ const Main = () => {
                 .catch(error => {
                     console.error('Error updating visit count:', error);
                 });
-            
-            // Store a flag in sessionStorage to prevent multiple increments in the same session
             sessionStorage.setItem('visit', 'true');
         }
     }, []);

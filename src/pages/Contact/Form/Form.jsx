@@ -29,7 +29,6 @@ const Form = () => {
         }
 
         if (isEmpty) {
-            // Show toast notification for empty fields with error color
             diffToast("Please fill the form carefully!", true);
             return;
         }

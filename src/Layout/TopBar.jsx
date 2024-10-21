@@ -2,13 +2,12 @@ import { FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-
 const TopBar = () => {
     const { user } = useAuth();
     return (
         <div>
             <div className="flex items-center justify-between -mt-3 -mb-2">
-                <div className="flex items-center ">
+                <div className="flex items-center">
                     <div className="md:relative">
                         <Link to="/dashboard/adminHome" className="text-xl mt-7  ml-4 mr-3 mb-8">
                             <img
@@ -18,13 +17,13 @@ const TopBar = () => {
                             />
                         </Link>
                     </div>
-                    <div className="relative ">
-                        <div className="md:border-l md:border-gray-200 md:pl-8 md:ml-[5.54rem] md:h-16  mt-16 md:mt-0 -ml-20  pb-5 md:pb-0   ">
+                    <div className="relative">
+                        <div className="md:border-l md:border-gray-200 md:pl-8 md:ml-[5.54rem] md:h-16 mt-16 md:mt-0 -ml-20 pb-5 md:pb-0  ">
                             <div className="relative">
                                 <input
                                     type="text"
                                     placeholder="Search"
-                                    className="pl-8  md:pr-4 md:py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300 border-none mt-4 "
+                                    className="pl-8 md:pr-4 md:py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300 border-none mt-4"
                                 />
                                 <span className="absolute inset-y-0 left-0 pl-2 flex items-center">
                                     <svg
@@ -47,9 +46,7 @@ const TopBar = () => {
                     </div>
                 </div>
 
-
-                <div className="md:flex  items-center justify-between -mt-3 p-3 md:mr-7 ">
-
+                <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
                     <div className="flex items-center mr-6 mt-3">
                         <FaBell className="text-gray-500 mr-2 text-xl" />
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || 'Admin'}</span>
@@ -57,7 +54,6 @@ const TopBar = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };

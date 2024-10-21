@@ -2,7 +2,6 @@
 
 import { initializeApp } from "firebase/app";
 
-
 // Web app's Firebase configuration
 
 const firebaseConfig = {

@@ -11,7 +11,6 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Free from "../Home/Free/Free";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
-
 const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
     const template = useLoaderData();
     const [selectedRevisions, setSelectedRevisions] = useState([]);
@@ -70,7 +69,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
             window.addEventListener('wheel', handleWheel, { passive: true });
 
             return () => {
-                document.body.style.overflow = ''; // Re-enable scrolling
+                document.body.style.overflow = ''; 
                 window.removeEventListener('wheel', handleWheel);
             };
         }
@@ -121,7 +120,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         }
     };
 
-
     useEffect(() => {
         // Set the initial price to the price from MongoDB when the component loads
         setPrice(initialPrice);
@@ -133,7 +131,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         if (selectedValue && !selectedFiles.includes(selectedValue)) {
             setSelectedFiles([...selectedFiles, selectedValue]);
         }
-        e.target.value = ""; // Reset the select input
+        e.target.value = "";
     };
 
     const handleTimeChange = (e) => {
@@ -141,7 +139,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         if (selectedDay && !selectedTimes.includes(selectedDay)) {
             setSelectedTimes([...selectedTimes, selectedDay]);
         }
-        e.target.value = ""; // Reset the select input
+        e.target.value = ""; 
     };
 
 
@@ -185,6 +183,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
 
     const handleAddToCart = () => {
         if (user && user.email) {
+
             //send cart item to the database
 
             const cartItem = {
@@ -220,7 +219,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             timer: 1500
                         });
 
-                        // refetch cart to update the cart items count
                         refetch();
                     }
                 })
@@ -258,7 +256,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
 
                 <div className="lg:ml-20 mb-16">
                     <div className="flex lg:flex-row flex-col gap-6 ml-2">
-                        <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] ">
+                        <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%]">
                             <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
                                 Exclusive <strong>Graphics Template</strong>
                             </h2>
@@ -279,7 +277,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
                                             src={src}
-                                            className={`w-[75px] h-[75px] object-contain  p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
+                                            className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
                                             alt="Template"
                                             onClick={() => handleThumbnailClick(src, index)}
                                         />
@@ -289,10 +287,10 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                         </div>
 
                         <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20">
                                 <div
                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                        } rounded-[8px]  p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                        } rounded-[8px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-3">
@@ -305,13 +303,11 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                     <div className="pt-2 border-t font-raleway font-medium">
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                     </div>
-
-
                                 </div>
 
                             </div>
 
-                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52  3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
+                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
                                 <div
                                     className={`border ${selectedTemplate === "customizeTemplate" ? "border-[#4864EC]" : "border-gray-400"
                                         } rounded-[8px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
@@ -321,7 +317,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         <div className="flex gap-3 font-bold">
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
                                             <h2 className="font-raleway">Template + Customization
-                                                <span className="font-raleway text-[14px] text-[#4864EC] ml-3  ">( Basic )</span>
+                                                <span className="font-raleway text-[14px] text-[#4864EC] ml-3">( Basic )</span>
                                             </h2>
                                         </div>
                                         <div className="font-raleway font-medium">${price}</div>
@@ -331,7 +327,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                     </div>
                                     <select
                                         className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                        onChange={(e) => handlePackageChange(e.target.value)} // Handle package change
+                                        onChange={(e) => handlePackageChange(e.target.value)} 
                                         value={selectedPackage}
                                     >
                                         <option value="">Select Package</option>
@@ -413,7 +409,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                                     <option
                                                         key={index}
                                                         value={file}
-                                                        className={`option-${index} w-36`} // Add truncate to prevent long text overflow
+                                                        className={`option-${index} w-36`} 
                                                     >
                                                         {file}
                                                     </option>
@@ -424,7 +420,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         <div className="flex items-center">
 
                                             <select
-                                                className="border  rounded-md lg:px-3 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:ml-4"
+                                                className="border rounded-md lg:px-3 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:ml-4"
                                                 onChange={(e) => {
                                                     const newValue = e.target.value;
                                                     setSelectedTimes([...selectedTimes, newValue]);
@@ -453,19 +449,18 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
 
                                     </div>
 
-
-
-
                                 </div>
                             </div>
+
                             {/* Add to Cart button */}
+
                             <div className="ml-[12.5rem] mt-5">
-                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC]  3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] tablet:w-[36rem]  text-white font-bold rounded-lg hover:bg-blue-700">
+                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
                                     Add to Cart
                                 </button>
 
                                 <a href="/exclusive">
-                                    <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-4 ">
+                                    <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-4">
                                         Check more items
                                     </button>
                                 </a>
@@ -526,7 +521,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                         className="relative p-4 sm:p-8 md:p-12 lg:p-16 xl:p-20 3xl:p-2 overflow-hidden"
                         style={{
                             transform: `scale(${zoomLevel})`, // Apply zoom level to the modal container
-                            transformOrigin: 'center', // Center the scaling
+                            transformOrigin: 'center', 
                             transition: 'transform 0.3s ease-out', // Smooth zoom transition
                         }}
                     >
@@ -544,10 +539,11 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             />
 
                             {/* Fixed Size Buttons */}
+
                             <button
                                 className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={closeModal}
-                                style={{ zIndex: 10 }} // Ensure the close button is above other elements
+                                style={{ zIndex: 10 }} 
                             >
                                 &times;
                             </button>
@@ -555,7 +551,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             <button
                                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handlePreviousImage}
-                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                                style={{ zIndex: 10 }} 
                             >
                                 &lt;
                             </button>
@@ -563,7 +559,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             <button
                                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handleNextImage}
-                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                                style={{ zIndex: 10 }} 
                             >
                                 &gt;
                             </button>

@@ -4,33 +4,33 @@ import FreeTemp from "../../Home/FreeTemp/FreeTemp";
 const Search = () => {
 
     const freeTempRef = useRef(null);
-    const [selectedCategory, setSelectedCategory] = useState('All Categories'); 
-    const [searchQuery, setSearchQuery] = useState(''); 
-    const [searchKeyword, setSearchKeyword] = useState(''); 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+    const [selectedCategory, setSelectedCategory] = useState('All Categories');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleCategoryClick = (category) => {
-        console.log('Category clicked:', category); 
+        console.log('Category clicked:', category);
         setSelectedCategory(category);
-        setIsDropdownOpen(false); 
+        setIsDropdownOpen(false);
     };
 
     const handleSearch = (e) => {
-        setSearchQuery(e.target.value); // Update search input
-        setSearchKeyword(''); // Clear search keyword when typing
+        setSearchQuery(e.target.value);
+        setSearchKeyword('');
     };
 
     const getFilteredCategories = () => {
         if (selectedCategory === 'All Categories') {
             return ['agency', 'business', 'medical', 'construction', 'education', 'financial', 'food', 'environment'];
         }
-        return [selectedCategory.toLowerCase()]; // Convert to lowercase for matching
+        return [selectedCategory.toLowerCase()];
     };
 
     const handleButtonClick = (buttonLabel) => {
-        setSearchQuery(''); 
+        setSearchQuery('');
         setSearchKeyword(buttonLabel); // Set the search keyword for filtering
-        console.log(`${buttonLabel} button clicked`); // Debugging action
+        console.log(`${buttonLabel} button clicked`);
     };
 
     return (
@@ -53,7 +53,7 @@ const Search = () => {
                                 placeholder="Search resources..."
                                 className="flex-grow p-3 bg-transparent outline-none text-gray-600"
                                 type="text"
-                                value={searchQuery} // Display value
+                                value={searchQuery}
                                 onChange={handleSearch}
                             />
                             <div className="border-l border-gray-300 px-8 flex items-center cursor-pointer relative">
@@ -62,7 +62,7 @@ const Search = () => {
                                     className="text-gray-700 font-semibold flex items-center"
                                     onClick={() => {
                                         setIsDropdownOpen(!isDropdownOpen);
-                                        console.log('Dropdown toggled:', !isDropdownOpen); // Debugging
+                                        console.log('Dropdown toggled:', !isDropdownOpen);
                                     }}
                                 >
                                     {selectedCategory}
@@ -105,7 +105,7 @@ const Search = () => {
                                         className="text-gray-700 font-semibold  w-full py-2 flex items-center justify-between"
                                         onClick={() => {
                                             setIsDropdownOpen(!isDropdownOpen);
-                                            console.log('Dropdown toggled:', !isDropdownOpen); // Debugging
+                                            console.log('Dropdown toggled:', !isDropdownOpen);
                                         }}
                                     >
                                         {selectedCategory}
@@ -136,7 +136,7 @@ const Search = () => {
                                 <button
                                     key={buttonLabel}
                                     className="w-full px-6 py-3 text-base border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} 
+                                    onClick={() => handleButtonClick(buttonLabel)}
                                 >
                                     {buttonLabel}
                                 </button>
@@ -149,7 +149,7 @@ const Search = () => {
                                 <button
                                     key={buttonLabel}
                                     className="px-4 py-2 border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} // Call the button click handler
+                                    onClick={() => handleButtonClick(buttonLabel)} 
                                 >
                                     {buttonLabel}
                                 </button>

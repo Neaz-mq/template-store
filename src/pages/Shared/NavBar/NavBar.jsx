@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation
+import { Link, useLocation } from 'react-router-dom'; 
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
@@ -9,8 +9,8 @@ const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
-  const [selected, setSelected] = useState(null); // State to track selected button
-  const location = useLocation(); // Hook to get the current location
+  const [selected, setSelected] = useState(null);
+  const location = useLocation(); 
 
   const handleLogOut = () => {
     logOut()
@@ -34,7 +34,7 @@ const NavBar = () => {
     } else if (location.pathname.includes('contact')) {
       setSelected('contact');
     } else if (location.pathname.includes('sign-in') || location.pathname.includes('sign-up')) {
-      setSelected(null); // No link is selected when on Sign In or Sign Up page
+      setSelected(null); 
     }
   }, [location.pathname]);
   
@@ -117,8 +117,8 @@ const NavBar = () => {
 
             <Link
               to="/"
-              onClick={() => handleSelect(null)} // Reset selected when going to home
-              className="3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8  3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8"
+              onClick={() => handleSelect(null)}
+              className="3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8 3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8"
             >
               <div className="mt-[5.5rem] ">
                 <img
@@ -127,10 +127,10 @@ const NavBar = () => {
                   alt="Logo"
                 />
               </div>
-              <div className="mt-[5.5rem] ">
+              <div className="mt-[5.5rem]">
                 <a href="/">
                   <img
-                    className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto   2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem]   laptop:ml-[0.4rem] laptop:pt-2"
+                    className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto 2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem] laptop:ml-[0.4rem] laptop:pt-2"
                     src="/Logo_Prographr_Color.svg"
                     alt="Logo"
                   />
@@ -140,7 +140,7 @@ const NavBar = () => {
           </div>
 
           {/* Center menu */}
-          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 ">
+          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36">
             <ul className="menu cursor-pointer menu-horizontal text-[#282A37] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"

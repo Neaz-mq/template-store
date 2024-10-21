@@ -37,8 +37,7 @@ const AddExclusiveTemplates = () => {
         const basicsArray = data.basics.split('\n').map(item => item.trim()).filter(item => item);
         const standardsArray = data.standards.split('\n').map(item => item.trim()).filter(item => item);
         const premiumsArray = data.premiums.split('\n').map(item => item.trim()).filter(item => item);
-
-        // Prepare the template item
+  
         const templateItem = {
             type: data.type,
             category: data.category,
@@ -101,8 +100,6 @@ const AddExclusiveTemplates = () => {
     };
 
 
-
-
     const handleRevisionChange = (e) => {
         const selectedRate = e.target.value;
         if (selectedRate && !selectedRevisions.includes(selectedRate)) {
@@ -126,8 +123,6 @@ const AddExclusiveTemplates = () => {
     const handleRemoveFile = (file) => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
-
-
 
     const handleRemoveTime = (time) => {
         setSelectedTimes(selectedTimes.filter(f => f !== time));
@@ -217,9 +212,9 @@ const AddExclusiveTemplates = () => {
                             <div className="flex pb-36 gap-6">
                                 <div className="form-control w-full mt-10 px-2">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg ">Files attached*</span>
+                                        <span className="label-text font-medium text-lg">Files attached*</span>
                                     </label>
-                                    <select className="select select-bordered w-full " onChange={handleFileChange}>
+                                    <select className="select select-bordered w-full" onChange={handleFileChange}>
                                         <option value="">Select files</option>
                                         <option value="Adobe Illustrator">Adobe Illustrator</option>
                                         <option value="Adobe Photoshop">Adobe Photoshop</option>
@@ -295,6 +290,7 @@ const AddExclusiveTemplates = () => {
 
 
                             {/* Amount */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
@@ -309,6 +305,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Money */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
@@ -323,6 +320,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Charge */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
@@ -335,11 +333,7 @@ const AddExclusiveTemplates = () => {
                                     className="input input-bordered w-full"
                                 />
                             </div>
-
                         </div>
-
-
-
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
@@ -364,6 +358,7 @@ const AddExclusiveTemplates = () => {
                                 </select>
 
                                 {/* Price */}
+
                                 <div className="form-control w-full mt-60 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
@@ -420,7 +415,6 @@ const AddExclusiveTemplates = () => {
                                             <option value="6 Days">6 Days</option>
                                             <option value="10 Days">10 Days</option>
 
-
                                         </select>
                                     </div>
                                 </div>
@@ -439,7 +433,9 @@ const AddExclusiveTemplates = () => {
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+
                             {/* Descriptions */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -452,6 +448,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -464,6 +461,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Product Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -476,6 +474,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Documents Included */}
+                            
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>

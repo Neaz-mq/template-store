@@ -36,9 +36,8 @@ import Exclusives from "../pages/Temp/Exclusives/Exclusives";
 import Frees from "../pages/Temp/Frees/Frees";
 import Career from "../pages/Career/Career";
 
-
-
 export const router = createBrowserRouter([
+
   {
     path: "/",
     element: <Main></Main>,
@@ -92,7 +91,6 @@ export const router = createBrowserRouter([
         element: <Career></Career>
       },
 
-   
       {
         path: '/contact',
         element: <Contact></Contact>
@@ -128,7 +126,6 @@ export const router = createBrowserRouter([
     children: [
 
       // normal user routes
-
       {
         path: 'userHome',
         element: <UserHome></UserHome>

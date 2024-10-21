@@ -93,9 +93,9 @@ const SignUp = () => {
             </div>
 
             <div className='min-h-screen  bg-[#ffffff] 3xl:-mt-8 2xl:-mt-4 desktop:-mt-8 laptop:-mt-8 tablet:-mt-28 -mt-28 font-raleway '>
-                <div className=" flex items-center justify-center  mt-4 container mx-auto ">
-                    <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10  lg:-ml-0 3xl:mt-[20rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem]  tablet:mt-[20rem]">
-                        <h3 className="text-xl font-medium font-roboto text-slate-800 mb-6 mt-4">Sign Up</h3>
+                <div className=" flex items-center justify-center mt-4 container mx-auto">
+                    <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10 lg:-ml-0 3xl:mt-[20rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem] tablet:mt-[20rem]">
+                        <h3 className="text-xl font-medium font-raleway text-slate-800 mb-6 mt-4">Sign Up</h3>
                         <div className="flex flex-col gap-3 mb-3">
                             <div className="max-w-72 lg:max-w-[350px] flex gap-4">
                                 <div className="form-control">
@@ -104,7 +104,7 @@ const SignUp = () => {
                                         {...register("name", { required: true })}
                                         name="name"
                                         placeholder="First Name"
-                                        className="input input-bordered  inputField w-28   lg:w-44 rounded-lg outline-[#7666E3]"
+                                        className="input input-bordered  inputField w-28 lg:w-44 rounded-lg outline-[#7666E3]"
                                     />
                                     {errors.name && <span className="text-red-600 "> First Name is required</span>}
                                 </div>
@@ -158,7 +158,7 @@ const SignUp = () => {
                                     type={showConfirmPassword ? 'text' : 'password'}
                                     {...register("confirm", {
                                         required: true,
-                                        validate: value => value === password // Custom validation to check if confirm password matches password
+                                        validate: value => value === password 
                                     })}
                                     placeholder="Confirm password"
                                     className="input input-bordered inputField pr-12"
@@ -171,7 +171,7 @@ const SignUp = () => {
                                     {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
                                 </button>
                                 {errors.confirm?.type === 'required' && <p className="text-red-600">Confirm Password is required</p>}
-                                {errors.confirm?.type === 'validate' && <p className="text-red-600">Passwords do not match</p>} {/* Error message for password mismatch */}
+                                {errors.confirm?.type === 'validate' && <p className="text-red-600">Passwords do not match</p>} 
                             </div>
                         </div>
                         <div className="form-control py-3">
@@ -181,14 +181,14 @@ const SignUp = () => {
                                     type="checkbox"
                                     onChange={(e) => setTermsChecked(e.target.checked)}
                                 />
-                                <span className="label-text font-medium font-roboto text-slate-800">
+                                <span className="label-text font-medium font-raleway text-slate-800">
                                     I agree with all the <a href="#" className="text-blue-500 underline">terms and services</a>
                                 </span>
                             </label>
                         </div>
                         <div className="form-control -mt-5">
                             <button
-                                className="btn bg-[#6658C5]  font-medium font-roboto hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
+                                className="btn bg-[#6658C5] font-medium font-raleway hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
                                 type="submit"
                                 disabled={!termsChecked || !isValid}
                             >
@@ -207,8 +207,9 @@ const SignUp = () => {
                 </div>
 
                 {/* Google Sign-in Button */}
+                
                 <div className='flex justify-center items-center -mt-24 3xl:-mt-24 '>
-                    <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4   py-3 shadow-none font-medium font-roboto mb-24 w-[15rem]  ">
+                    <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4 py-3 shadow-none font-medium font-raleway mb-24 w-[15rem]  ">
                         <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
                         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

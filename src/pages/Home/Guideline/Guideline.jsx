@@ -17,11 +17,11 @@ const Guideline = () => {
                 <div className="mt-20">
                     <div className="max-w-[740px] mx-auto grid md:grid-cols-1 lg:grid-cols-3 gap-1 bg-[#EDEEF7] rounded-[25px] lg:rounded-full translate-y-24 opacity-0" style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
 
-                        <button className={`rounded-full font-roboto font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'guidelines' ? 'bg-[#7666E3] text-white hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('guidelines')}>Template</button>
+                        <button className={`rounded-full font-raleway font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'guidelines' ? 'bg-[#7666E3] text-white hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('guidelines')}>Template</button>
 
-                        <button className={`rounded-full font-roboto font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'submit' ? 'bg-[#7666E3] text-white hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('submit')}>Buy</button>
+                        <button className={`rounded-full font-raleway font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'submit' ? 'bg-[#7666E3] text-white hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('submit')}>Buy</button>
 
-                        <button className={`rounded-full font-roboto font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'approved' ? 'bg-[#7666E3] text-white hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('approved')}>Sold</button>
+                        <button className={`rounded-full font-raleway font-medium text-slate-900 p-3 text-sm hover:text-[#7668E5] hover:scale-105 duration-100 ${activeTab === 'approved' ? 'bg-[#7666E3] text-white hover:text-[#ffffff]' : ''}`} onClick={() => handleTabClick('approved')}>Sold</button>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@ const Guideline = () => {
                                     <div className="absolute w-[120px] h-[120px] bg-white rounded-full animate-ping"></div>
                                     <img alt="Template" loading="lazy" width="150" height="167" decoding="async" data-nimg="1" className="relative z-10 w-[120px] h-[120px] bg-[#ECEDF6] object-contain p-2 rounded-full" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslider.2aa6a74b.png&w=256&q=75" style={{ color: 'transparent' }} />
                                 </div>
-                                <p className=" font-roboto font-medium text-slate-900 mt-8">Template</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8">Template</p>
                             </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
@@ -51,7 +51,7 @@ const Guideline = () => {
                                     </div>
                                 </div>
                                 
-                                <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
 
                             </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
@@ -63,7 +63,7 @@ const Guideline = () => {
                                         <span className="absolute z-20 -bottom-2 text-[10px] -right-2 text-white bg-[#7666E3] rounded-full py-4 px-3">SOLD</span>
                                     </div>
                                 </div>
-                                <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Template Sold</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Template Sold</p>
                             </div>
                         </article>
                     )}
@@ -74,7 +74,7 @@ const Guideline = () => {
                                 <div className="relative">
                                     <img alt="Template" loading="lazy" width="150" height="167" decoding="async" data-nimg="1" className="relative z-10 w-[120px] h-[120px] bg-[#ECEDF6] object-contain p-2 rounded-full" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslider.2aa6a74b.png&w=256&q=75" style={{ color: 'transparent' }} />
                                 </div>
-                                <p className="font-roboto font-medium text-slate-900 mt-8">Template</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8">Template</p>
                             </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
@@ -87,7 +87,7 @@ const Guideline = () => {
                                         </svg>
                                     </span>
                                 </div>
-                                <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
                             </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
@@ -98,7 +98,7 @@ const Guideline = () => {
                                         <span className="absolute z-20 -bottom-2 text-[10px] -right-2 text-white bg-[#7666E3] rounded-full py-4 px-3">SOLD</span>
                                     </div>
                                 </div>
-                                <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Template Sold </p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Template Sold </p>
                             </div>
                         </article>
                     )}
@@ -110,7 +110,7 @@ const Guideline = () => {
                                     <div className="absolute w-[120px] h-[120px] bg-white rounded-full "></div>
                                     <img alt="Template" loading="lazy" width="150" height="167" decoding="async" data-nimg="1" className="relative z-10 w-[120px] h-[120px] bg-[#ECEDF6] object-contain p-2 rounded-full" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslider.2aa6a74b.png&w=256&q=75" style={{ color: 'transparent' }} />
                                 </div>
-                                <p className="font-roboto font-medium text-slate-900 mt-8">Template</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8">Template</p>
                             </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
@@ -125,7 +125,7 @@ const Guideline = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <p className="font-roboto font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
                             </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
@@ -134,7 +134,7 @@ const Guideline = () => {
                                     <img alt="Template" loading="lazy" width="150" height="167" decoding="async" data-nimg="1" className="relative z-10 w-[120px] h-[120px] bg-[#ECEDF6] object-contain p-2 rounded-full" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslider.2aa6a74b.png&w=256&q=75" style={{ color: 'transparent' }} />
                                     <span className="absolute z-20 -bottom-2 text-[10px] -right-2 text-white bg-[#7666E3] rounded-full py-4 px-3">SOLD </span>
                                 </div>
-                                <p className=" font-roboto  font-medium text-slate-900 mt-8 w-[210px]">Template Sold</p>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Template Sold</p>
                             </div>
                         </article>
                     )}
