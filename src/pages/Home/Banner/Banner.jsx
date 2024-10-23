@@ -41,7 +41,7 @@ const Banner = () => {
               <span className="bg-[#4864EC] px-2 3xl:py-1.5 2xl:py-1.5 desktop:py-1.5 laptop:py-1.5 py-0.5  text-white text-center lg:-ml-1">PRO</span> <span className='text-[#4864EC]'>PREMIUM</span>
             </p>
             <h1 className="text-3xl lg:text-6xl text-[#282A37] font-extrabold lg:font-bold leading-[50px] text-center lg:text-start md:mt-1 mb-3 lg:-ml-1">
-              A design that <br />match your business
+              A design that <br />match your business here
             </h1>
             <p className=" font-medium text-center lg:text-start text-[#282A37]  text-[15px]">
               Create professional-looking designs without starting from scratch, saving time and effort in the design process.
