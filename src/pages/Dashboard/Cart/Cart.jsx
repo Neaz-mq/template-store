@@ -2,20 +2,38 @@ import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Cart = () => {
-
     const [cart, refetch] = useCart();
 
     // Calculate total price based on the type of item
     const totalPrice = cart.reduce((total, temp) => {
-        // Check if the price is "free" or numeric
         const itemPrice = temp.price === "free" ? 0 : parseFloat(temp.price);
-        // Check if itemPrice is a valid number, otherwise add 0
         return isNaN(itemPrice) ? total : total + itemPrice;
     }, 0);
+
+    const handleBuyNow = async () => {
+        try {
+            const response = await axios.post('http://localhost:5000/create-payment', {
+                amount: totalPrice,
+                customerName: 'Neaz',
+                customerEmail: 'mneazmorshed@gmail.com',
+                successUrl: 'http://localhost:5000/success-payment', // Ensure this matches your route
+                failUrl: 'http://localhost:5000/fail-payment',
+                cancelUrl: 'http://localhost:5000/cancel-payment',
+            });
+            
+            if (response.data.paymentUrl) {
+                window.location.href = response.data.paymentUrl; // Redirect to SSLCommerz payment gateway
+            }
+        } catch (error) {
+            console.error('Error during payment initiation:', error);
+        }
+    };
+    
+    
 
     const axiosSecure = useAxiosSecure();
 
@@ -40,15 +58,13 @@ const Cart = () => {
                                 icon: "success"
                             });
                         }
-                    })
+                    });
             }
         });
-    }
+    };
 
     return (
-
         <div>
-
             <div>
                 <Helmet>
                     <title>Prographr | Cart</title>
@@ -60,16 +76,13 @@ const Cart = () => {
                     <h2 className="text-xl lg:text-4xl">Templates: {cart.length}</h2>
                     <h2 className="text-xl lg:text-4xl">Total Price: ${totalPrice.toFixed(2)}</h2>
                     {cart.length ? (
-                        <Link to="/dashboard/payment">
-                            <button className="btn btn-primary">Buy Now</button>
-                        </Link>
+                        <button onClick={handleBuyNow} className="btn btn-primary">Buy Now</button>
                     ) : (
                         <button disabled className="btn btn-primary">Buy Now</button>
                     )}
                 </div>
 
                 {/* Table view for larger screens */}
-                
                 <div className="hidden lg:block overflow-x-auto w-full">
                     <table className="table w-full">
                         <thead>
@@ -108,7 +121,7 @@ const Cart = () => {
                         </tbody>
                     </table>
                 </div>
-                
+
                 {/* Card view for smaller screens */}
                 <div className="lg:hidden space-y-4">
                     {cart.map((temp, index) => (

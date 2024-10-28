@@ -23,7 +23,6 @@ import UpdateTemplate from "../pages/Dashboard/UpdateTemplate/UpdateTemplate";
 import AddFreeTemplates from "../pages/Dashboard/AddFreeTemplates/AddFreeTemplates";
 import ManageFreeTemplates from "../pages/Dashboard/ManageFreeTemplates/ManageFreeTemplates";
 import UpdateFreeTemplate from "../pages/Dashboard/UpdateFreeTemplate/UpdateFreeTemplate";
-import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
@@ -35,6 +34,10 @@ import UpdateExclusiveTemplate from "../pages/Dashboard/UpdateExclusiveTemplate/
 import Exclusives from "../pages/Temp/Exclusives/Exclusives";
 import Frees from "../pages/Temp/Frees/Frees";
 import Career from "../pages/Career/Career";
+import Success from "../pages/Dashboard/Success/Success";
+import Fail from "../pages/Dashboard/Fail/Fail";
+import Cancel from "../pages/Dashboard/Cancel/Cancel";
+
 
 export const router = createBrowserRouter([
 
@@ -96,6 +99,8 @@ export const router = createBrowserRouter([
         element: <Contact></Contact>
       },
 
+  
+
       {
         path: '/sign-in',
         element: <SignIn></SignIn>
@@ -137,9 +142,25 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: 'payment',
-        element: <Payment></Payment>
+        path: 'success-payment',
+        element: <Success></Success>
       },
+
+      {
+        path: 'fail-payment',
+        element: <Fail></Fail>
+      },
+
+      {
+        path: 'cancel-payment',
+        element: <Cancel></Cancel>
+      },
+
+
+      // {
+      //   path: 'payment',
+      //   element: <Payment></Payment>
+      // },
 
       {
         path: 'paymentHistory',

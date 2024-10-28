@@ -33,6 +33,8 @@ const NavBar = () => {
       setSelected('company');
     } else if (location.pathname.includes('contact')) {
       setSelected('contact');
+    } else if (location.pathname.includes('check')) {
+      setSelected('check');
     } else if (location.pathname.includes('sign-in') || location.pathname.includes('sign-up')) {
       setSelected(null); 
     }
@@ -163,6 +165,8 @@ const NavBar = () => {
               >
                 Contact Us
               </Link>
+
+              
 
               {user && isAdmin && (
                 <li className="mt-[0.8rem] laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0">

@@ -7,6 +7,7 @@ import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
 
+
 const Home = () => {
 
     return (
@@ -47,6 +48,7 @@ const Home = () => {
                 <section id="community">
                     <Community />
                 </section>
+
 
             </main>
 
