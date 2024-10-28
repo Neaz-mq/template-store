@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
+import useAuth from "../../../hooks/useAuth";
+
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -14,12 +16,18 @@ const Cart = () => {
         return isNaN(itemPrice) ? total : total + itemPrice;
     }, 0);
 
+    const { user } = useAuth();
+
     const handleBuyNow = async () => {
+        if (totalPrice <= 0) {
+            Swal.fire('Invalid Amount', 'Total price must be greater than zero.', 'error');
+            return;
+        }
         try {
             const response = await axios.post('http://localhost:5000/create-payment', {
                 amount: totalPrice,
-                customerName: 'Neaz',
-                customerEmail: 'mneazmorshed@gmail.com',
+                customerName: user.name,
+                customerEmail: user.email,
                 successUrl: 'http://localhost:5173/dashboard/success-payment', // Ensure this matches your route
                 failUrl: 'http://localhost:5173/dashboard/fail-payment',
                 cancelUrl: 'http://localhost:5173/dashboard/cancel-payment',
