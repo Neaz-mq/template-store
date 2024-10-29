@@ -28,7 +28,7 @@ const Cart = () => {
                 amount: totalPrice,
                 customerName: user.name,
                 customerEmail: user.email,
-                successUrl: 'http://localhost:5173/dashboard/success-payment', // Ensure this matches your route
+                successUrl: 'http://localhost:5173/dashboard/paymentHistory', // Ensure this matches your route
                 failUrl: 'http://localhost:5173/dashboard/fail-payment',
                 cancelUrl: 'http://localhost:5173/dashboard/cancel-payment',
             });

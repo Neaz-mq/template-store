@@ -2,10 +2,26 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
+import { useNavigate } from 'react-router-dom';
+import useCart from '../../../hooks/useCart';
+import Swal from 'sweetalert2';
+import { useEffect } from "react";
+
 const PaymentHistory = () => {
 
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+
+    const [, refetch] = useCart();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Clear the cart on the frontend after payment success
+    refetch(); // Refetches the cart from the backend
+
+    // Display a success message
+    Swal.fire('Success', 'Your payment was successful, and your cart has been cleared!', 'success');
+  }, [refetch]);
 
     const { data: payments = [] } = useQuery({
         queryKey: ['payments', user.email],
@@ -14,6 +30,7 @@ const PaymentHistory = () => {
             return res.data;
         }
     });
+    
 
     return (
 
@@ -28,7 +45,7 @@ const PaymentHistory = () => {
                         <tr>
                             <th>#</th>
                             <th>Price</th>
-                            <th>Transaction Id</th>
+                            <th>Payment Id</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -36,26 +53,27 @@ const PaymentHistory = () => {
                         {payments.map((payment, index) => (
                             <tr key={payment._id}>
                                 <th>{index + 1}</th>
-                                <td>${payment.price.toFixed(2)}</td>
-                                <td className="break-all">{payment.transactionId}</td>
+                                <td>${parseFloat(payment.amount).toFixed(2)}</td> {/* Aligning with MongoDB field `amount` */}
+                                <td className="break-all">{payment.paymentId}</td> {/* Aligning with MongoDB field `paymentId` */}
                                 <td>{payment.status}</td>
                             </tr>
                         ))}
+
                     </tbody>
                 </table>
 
                 <div className="lg:hidden grid grid-cols-1 gap-4">
-                    {payments.map((payment, index) => (
-                        <div key={payment._id} className="card bg-base-100 shadow-md p-4">
-                            <h3 className="font-bold">Payment {index + 1}</h3>
-                            <p><span className="font-semibold">Price:</span> ${payment.price.toFixed(2)}</p>
-                            <p className="break-all"><span className="font-semibold">Transaction Id:</span> {payment.transactionId}</p>
-                            <p><span className="font-semibold">Status:</span> {payment.status}</p>
-                        </div>
-                    ))}
+                {payments.map((payment, index) => (
+                            <tr key={payment._id}>
+                                <th>{index + 1}</th>
+                                <td>${parseFloat(payment.amount).toFixed(2)}</td> {/* Aligning with MongoDB field `amount` */}
+                                <td className="break-all">{payment.paymentId}</td> {/* Aligning with MongoDB field `paymentId` */}
+                                <td>{payment.status}</td>
+                            </tr>
+                        ))}
                 </div>
             </div>
-            
+
         </div>
     );
 };
