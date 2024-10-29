@@ -9,7 +9,7 @@ const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [, refetchCart] = useCart(); // Renamed for clarity
-    
+
     const [hasShownSuccessAlert, setHasShownSuccessAlert] = useState(false);
     const [hasFailedPayments, setHasFailedPayments] = useState(false);
 
@@ -32,7 +32,7 @@ const PaymentHistory = () => {
             setHasFailedPayments(true);
             Swal.fire('Payment Failed', 'Unfortunately, your payment could not be processed. Please try again.', 'error');
         }
-        
+
         // Show alert for successful payments only once
         if (hasSuccessfulPayments && !hasShownSuccessAlert) {
             setHasShownSuccessAlert(true);
@@ -41,7 +41,7 @@ const PaymentHistory = () => {
                 text: 'Your payment has been processed successfully!',
                 icon: 'success'
             }).then(() => {
-                clearCart();
+                clearCart(); // Clear cart after showing alert
             });
         }
     }, [isLoading, isError, payments, hasShownSuccessAlert, hasFailedPayments]);
@@ -58,12 +58,12 @@ const PaymentHistory = () => {
     };
 
     if (isLoading) {
-        return <div>Loading payments...</div>;
+        return <div>Loading payments...</div>; // Loading state
     }
 
     if (isError) {
         console.error('Error fetching payments:', error);
-        return <div>Error fetching payments: {error.message}</div>;
+        return <div>Error fetching payments: {error.message}</div>; // Error handling
     }
 
     const filteredPayments = payments.filter(payment => payment.status === "success" || payment.status === "failed");
