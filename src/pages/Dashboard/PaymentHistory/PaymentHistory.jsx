@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
+import { useLocation } from 'react-router-dom'; // Import useLocation
 
 const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const [, refetchCart] = useCart(); // Renamed for clarity
+    const [cart, refetchCart] = useCart(); // Renamed for clarity
+    const location = useLocation(); // Get the current location
 
-    const [hasShownSuccessAlert, setHasShownSuccessAlert] = useState(false);
+    // State to track if the success alert has been shown
+    const hasShownSuccessAlertRef = useRef(false);
     const [hasFailedPayments, setHasFailedPayments] = useState(false);
 
     const { data: payments = [], isLoading, isError, error } = useQuery({
@@ -22,6 +25,9 @@ const PaymentHistory = () => {
     });
 
     useEffect(() => {
+        // Reset state on component mount
+        hasShownSuccessAlertRef.current = false;
+
         if (isLoading || isError) return;
 
         const hasSuccessfulPayments = payments.some(payment => payment.status === "success");
@@ -33,9 +39,13 @@ const PaymentHistory = () => {
             Swal.fire('Payment Failed', 'Unfortunately, your payment could not be processed. Please try again.', 'error');
         }
 
-        // Show alert for successful payments only once
-        if (hasSuccessfulPayments && !hasShownSuccessAlert) {
-            setHasShownSuccessAlert(true);
+        // Show alert for successful payments only if the query param is present
+        const queryParams = new URLSearchParams(location.search);
+        const fromPaymentSuccess = queryParams.get('fromPaymentSuccess');
+
+        // Show alert only if coming from a successful payment
+        if (fromPaymentSuccess && hasSuccessfulPayments && !hasShownSuccessAlertRef.current) {
+            hasShownSuccessAlertRef.current = true; // Set ref to true
             Swal.fire({
                 title: 'Payment Successful',
                 text: 'Your payment has been processed successfully!',
@@ -44,13 +54,25 @@ const PaymentHistory = () => {
                 clearCart(); // Clear cart after showing alert
             });
         }
-    }, [isLoading, isError, payments, hasShownSuccessAlert, hasFailedPayments]);
+    }, [isLoading, isError, payments, hasFailedPayments, location]);
 
     const clearCart = async () => {
+        if (!user.email) {
+            console.error("User email is not available");
+            return;
+        }
+
         try {
-            await axiosSecure.post('/clear-cart', { email: user.email });
-            console.log('Cart cleared successfully on backend');
-            refetchCart(); // Refresh cart state
+            const response = await axiosSecure.post('/clear-cart', { email: user.email });
+
+            // Check if the cart was cleared successfully
+            if (response.data.success) {
+                console.log('Cart cleared successfully on backend');
+                // Refetch cart state after clearing
+                refetchCart(); 
+            } else {
+                throw new Error(response.data.message || 'Failed to clear cart on the backend');
+            }
         } catch (error) {
             console.error('Error clearing cart:', error);
             Swal.fire('Error', 'Could not clear the cart', 'error');
