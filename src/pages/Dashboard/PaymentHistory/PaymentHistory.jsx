@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
@@ -14,7 +14,7 @@ const PaymentHistory = () => {
 
     // State to track if the success alert has been shown
     const hasShownSuccessAlertRef = useRef(false);
-    const [hasFailedPayments, setHasFailedPayments] = useState(false);
+    
 
     const { data: payments = [], isLoading, isError, error } = useQuery({
         queryKey: ['payments', user.email],
@@ -31,13 +31,10 @@ const PaymentHistory = () => {
         if (isLoading || isError) return;
 
         const hasSuccessfulPayments = payments.some(payment => payment.status === "success");
-        const hasFailedPaymentsInData = payments.some(payment => payment.status === "failed");
+        
 
         // Show alert for failed payments
-        if (hasFailedPaymentsInData && !hasFailedPayments) {
-            setHasFailedPayments(true);
-            Swal.fire('Payment Failed', 'Unfortunately, your payment could not be processed. Please try again.', 'error');
-        }
+      
 
         // Show alert for successful payments only if the query param is present
         const queryParams = new URLSearchParams(location.search);
@@ -54,7 +51,7 @@ const PaymentHistory = () => {
                 clearCart(); // Clear cart after showing alert
             });
         }
-    }, [isLoading, isError, payments, hasFailedPayments, location]);
+    }, [isLoading, isError, payments, location]);
 
     const clearCart = async () => {
         if (!user.email) {
@@ -88,7 +85,7 @@ const PaymentHistory = () => {
         return <div>Error fetching payments: {error.message}</div>; // Error handling
     }
 
-    const filteredPayments = payments.filter(payment => payment.status === "success" || payment.status === "failed");
+    const filteredPayments = payments.filter(payment => payment.status === "success");
 
     return (
         <div>
