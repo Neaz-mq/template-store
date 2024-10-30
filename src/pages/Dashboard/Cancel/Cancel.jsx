@@ -1,11 +1,23 @@
+import React, { useEffect } from 'react';
+import Swal from 'sweetalert2';
+
 const Cancel = () => {
-    return (
-        <div>
-        <h2 className="text-center text-2xl">Payment Cancel</h2>
-        <p className="text-center">Unfortunately, your payment could not be processed. Please try again.</p>
-        <a href="http://localhost:5173/dashboard/cart" className="text-center">Return to Cart</a>
-    </div>
-    );
+    useEffect(() => {
+        // Show the alert as soon as the component loads
+        Swal.fire({
+            title: 'Payment Canceled',
+            text: 'Your payment was canceled. Please try again.',
+            icon: 'warning',
+            confirmButtonText: 'Return to Cart',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to cart when the user clicks "Return to Cart"
+                window.location.href = 'http://localhost:5173/dashboard/cart';
+            }
+        });
+    }, []);
+
+    return null; // No need to render any other elements
 };
 
 export default Cancel;
