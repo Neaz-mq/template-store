@@ -99,6 +99,7 @@ const PaymentHistory = () => {
                             <th>Price</th>
                             <th>Payment Id</th>
                             <th>Status</th>
+                            <th>Download</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,6 +109,12 @@ const PaymentHistory = () => {
                                 <td>${parseFloat(payment.amount).toFixed(2)}</td>
                                 <td className="break-all">{payment.paymentId}</td>
                                 <td>{payment.status}</td>
+                                <td>
+  <button className="bg-[#4864EC] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+    Click Here
+  </button>
+</td>
+
                             </tr>
                         ))}
                     </tbody>
