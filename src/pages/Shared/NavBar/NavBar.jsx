@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; 
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
@@ -10,7 +10,7 @@ const NavBar = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
   const [selected, setSelected] = useState(null);
-  const location = useLocation(); 
+  const location = useLocation();
 
   const handleLogOut = () => {
     logOut()
@@ -36,10 +36,10 @@ const NavBar = () => {
     } else if (location.pathname.includes('check')) {
       setSelected('check');
     } else if (location.pathname.includes('sign-in') || location.pathname.includes('sign-up')) {
-      setSelected(null); 
+      setSelected(null);
     }
   }, [location.pathname]);
-  
+
 
   return (
     <div className="bg-[#ffffff] font-raleway">
@@ -78,32 +78,32 @@ const NavBar = () => {
                 <Link
                   to="/template"
                   onClick={() => handleSelect('template')}
-                  className={` mb-3 mt-4 font-roboto ${selected === 'template' ? 'text-[#4864EC]' : ''}`}
+                  className={` mb-3 mt-4 font-raleway ${selected === 'template' ? 'text-[#4864EC]' : ''}`}
                 >
                   Template
                 </Link>
                 <Link
                   to="/company"
                   onClick={() => handleSelect('company')}
-                  className={` mb-3 font-roboto ${selected === 'company' ? 'text-[#4864EC]' : ''}`}
+                  className={` mb-3 font-raleway ${selected === 'company' ? 'text-[#4864EC]' : ''}`}
                 >
                   Company
                 </Link>
                 <Link
                   to="/contact"
                   onClick={() => handleSelect('contact')}
-                  className={` mb-3 font-roboto ${selected === 'contact' ? 'text-[#4864EC]' : ''}`}
+                  className={` mb-3 font-raleway ${selected === 'contact' ? 'text-[#4864EC]' : ''}`}
                 >
                   Contact Us
                 </Link>
 
                 {user && isAdmin && (
-                  <li className="font-roboto ml-6 font-medium text-3xl">
+                  <li className="font-raleway ml-6 font-semibold text-3xl">
                     <Link to="/dashboard/adminHome">Dashboard</Link>
                   </li>
                 )}
                 {user && !isAdmin && (
-                  <li className="font-roboto ml-6 font-medium text-3xl">
+                  <li className="font-raleway ml-6 font-semibold text-3xl">
                     <Link to="/dashboard/userHome">Dashboard</Link>
                   </li>
                 )}
@@ -166,7 +166,7 @@ const NavBar = () => {
                 Contact Us
               </Link>
 
-              
+
 
               {user && isAdmin && (
                 <li className="mt-[0.8rem] laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0">
@@ -181,7 +181,7 @@ const NavBar = () => {
 
               <Link to="/dashboard/cart">
                 <button className="btn ml-4 mr-16 3xl:mt-1 2xl:mt-2  2xl:mr-20 2xl:-ml-4 3xl:-ml-0 3xl:mr-10 laptop:mt-2 laptop:ml-2 laptop:mr-10">
-                <FaShoppingCart className="mr-4"></FaShoppingCart>
+                  <FaShoppingCart className="mr-4"></FaShoppingCart>
                   <div className="badge">+{cart.length}</div>
                 </button>
               </Link>
@@ -192,7 +192,7 @@ const NavBar = () => {
           <div className="navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0">
             {user ? (
               <div className="flex items-center">
-                <span className="hidden 3xl:block 2xl:block font-bold text-2xl text-[#7868E6] mr-16 3xl:mt-[6.3rem] 3xl:-ml-[12rem] 3xl:mr-[6rem] 2xl:mt-[6.3rem] 2xl:-ml-[8.2rem] 2xl:mr-[5rem] laptop:hidden tablet:hidden font-roboto">
+                <span className="hidden 3xl:block 2xl:block font-bold text-2xl text-[#7868E6] mr-16 3xl:mt-[6.3rem] 3xl:-ml-[12rem] 3xl:mr-[6rem] 2xl:mt-[6.3rem] 2xl:-ml-[8.2rem] 2xl:mr-[5rem] laptop:hidden tablet:hidden font-raleway">
                   {user.displayName}
                 </span>
                 <button
