@@ -9,6 +9,7 @@ import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
 const TemplateDetails = () => {
     const template = useLoaderData();
@@ -199,7 +200,7 @@ const TemplateDetails = () => {
     }
 
     return (
-        <div className="bg-[#EDEEF7] ml-2 overflow-hidden -mt-[4.6rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 h-[250rem] 3xl:h-[114rem] 2xl:h-[110rem] desktop:h-[108rem] laptop:h-[100rem] tablet:h-[180rem] min-h-[calc(120vh-450px)]">
+        <div className="bg-[#ffffff]">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Premium</title>
@@ -394,6 +395,8 @@ const TemplateDetails = () => {
                                 />
                             ))}
                         </div>
+
+                      
                     </div>
                 </div>
             </div>
@@ -449,7 +452,12 @@ const TemplateDetails = () => {
                     </div>
                 </div>
             )}
+
+<PresentationTemplate></PresentationTemplate>
+
         </div>
+
+        
     );
 };
 
