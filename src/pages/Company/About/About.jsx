@@ -2,7 +2,7 @@ import LazyLoad from 'react-lazyload';
 
 const About = () => {
     return (
-        <section className="w-full bg-[#ffffff] font-raleway pt-6 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4">
+        <section className="w-full bg-[#ffffff] font-raleway pt-6 3xl:-mt-4 2xl:-mt-4 desktop:-mt-4 laptop:-mt-4 tablet:-mt-24 -mt-20">
             <div className='container mx-auto overflow-x-hidden overflow-y-hidden'>
                 <div className="layout lg:mx-24 mx-3">
                     <div>

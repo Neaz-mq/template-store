@@ -33,7 +33,7 @@ const Creativity = () => {
     <div className="font-raleway">
       <div className="container mx-auto overflow-x-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-x-hidden laptop:overflow-x-hidden">
         <header>
-          <h1 className="text-xl tablet:text-xl laptop:text-3xl 3xl:text-3xl  2xl:mt-36 2xl:text-3xl 3xl:mt-40 3xl:ml-60 2xl:ml-60 3xl:mb-12 desktop:ml-24 laptop:mt-36 desktop:mt-36 tablet:mt-36 tablet:mb-6 mt-16 ml-7 mb-4 text-[#282A37] font-raleway laptop:ml-24 laptop:mb-4 tablet:ml-16">
+          <h1 className="text-xl tablet:text-xl laptop:text-3xl 3xl:text-3xl  2xl:mt-36 2xl:text-3xl 3xl:mt-40 3xl:ml-60 2xl:ml-60 3xl:mb-12 desktop:ml-24 laptop:mt-36 desktop:mt-36 tablet:mt-24 tablet:mb-6 mt-16 ml-7 mb-4 text-[#282A37] font-raleway laptop:ml-24 laptop:mb-4 tablet:ml-16">
             What makes us <strong> better</strong>
           </h1>
         </header>
