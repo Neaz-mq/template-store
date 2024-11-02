@@ -46,7 +46,6 @@ const AdminHome = () => {
         }
     }, []);
 
-
     // Fetch monthly stats
     const { data: monthlyStats = {}, error: monthlyError, isLoading: isMonthlyLoading } = useQuery({
         queryKey: ['monthly-stats', { month: selectedMonth, year: selectedYear }],
@@ -66,14 +65,15 @@ const AdminHome = () => {
 
     // If either query fails
     if (allTimeError || monthlyError) {
-        return <div className="flex justify-center items-center h-screen">Error loading stats: {allTimeError?.message || monthlyError?.message}</div>;
+        console.error(allTimeError || monthlyError);
+        return <div className="flex justify-center items-center h-screen">Error loading stats</div>;
     }
 
     const monthlyChartData = [
         {
-            name: `0${selectedMonth}/${selectedYear}`,
-            orders: monthlyStats.orders,
-            earning: monthlyStats.revenue,
+            name: `${selectedMonth < 10 ? '0' : ''}${selectedMonth}/${selectedYear}`,
+            orders: monthlyStats.orders || 0,
+            earning: monthlyStats.revenue || 0,
         }
     ];
 
@@ -92,7 +92,6 @@ const AdminHome = () => {
 
             {/* Statistics Cards */}
             <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-1 lg:space-x-2 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 mt-12">
-
                 <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-yellow-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>}
                     title="Product Sold"
@@ -151,7 +150,6 @@ const AdminHome = () => {
             </div>
 
             {/* Month and Year Selector */}
-
             <div className="absolute top-0 right-0 p-4 -mt-2 mr-3">
                 <div className="bg-gradient-to-r from-purple-300 to-green-300 p-1 rounded-lg shadow-lg">
                     <div className="bg-white p-4 rounded-lg">
@@ -166,7 +164,7 @@ const AdminHome = () => {
                                 >
                                     {[...Array(12)].map((_, i) => (
                                         <option key={i + 1} value={i + 1}>
-                                            {new Date(0, i).toLocaleString('en', { month: 'long' })}
+                                            {new Date(0, i).toLocaleString('default', { month: 'long' })}
                                         </option>
                                     ))}
                                 </select>
@@ -179,9 +177,9 @@ const AdminHome = () => {
                                     onChange={(e) => setSelectedYear(parseInt(e.target.value))}
                                     className="p-2 border rounded-lg focus:outline-none transition-all duration-200 hover:shadow-lg focus:ring-2 focus:ring-blue-400"
                                 >
-                                    {[...Array(5)].map((_, i) => (
-                                        <option key={i} value={new Date().getFullYear() - i}>
-                                            {new Date().getFullYear() - i}
+                                    {Array.from({ length: 5 }, (_, index) => selectedYear - index).map((year) => (
+                                        <option key={year} value={year}>
+                                            {year}
                                         </option>
                                     ))}
                                 </select>
@@ -191,8 +189,8 @@ const AdminHome = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 
 export default AdminHome;
+
