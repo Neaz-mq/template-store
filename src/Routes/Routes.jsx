@@ -37,6 +37,7 @@ import Career from "../pages/Career/Career";
 import Success from "../pages/Dashboard/Success/Success";
 import Fail from "../pages/Dashboard/Fail/Fail";
 import Cancel from "../pages/Dashboard/Cancel/Cancel";
+import TemplateDownload from "../pages/Dashboard/TemplateDownload/TemplateDownload";
 
 
 export const router = createBrowserRouter([
@@ -166,6 +167,13 @@ export const router = createBrowserRouter([
         path: 'paymentHistory',
         element: <PaymentHistory></PaymentHistory>
       },
+
+      {
+        path: 'templateDownload',
+        element: <TemplateDownload></TemplateDownload>
+      },
+
+
 
       // admin only routes
 

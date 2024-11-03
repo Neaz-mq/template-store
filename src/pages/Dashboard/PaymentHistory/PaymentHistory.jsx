@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
-import { useLocation } from 'react-router-dom'; // Import useLocation
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 
 const PaymentHistory = () => {
     const { user } = useAuth();
@@ -14,7 +14,7 @@ const PaymentHistory = () => {
 
     // State to track if the success alert has been shown
     const hasShownSuccessAlertRef = useRef(false);
-    
+
 
     const { data: payments = [], isLoading, isError, error } = useQuery({
         queryKey: ['payments', user.email],
@@ -31,10 +31,10 @@ const PaymentHistory = () => {
         if (isLoading || isError) return;
 
         const hasSuccessfulPayments = payments.some(payment => payment.status === "success");
-        
+
 
         // Show alert for failed payments
-      
+
 
         // Show alert for successful payments only if the query param is present
         const queryParams = new URLSearchParams(location.search);
@@ -66,7 +66,7 @@ const PaymentHistory = () => {
             if (response.data.success) {
                 console.log('Cart cleared successfully on backend');
                 // Refetch cart state after clearing
-                refetchCart(); 
+                refetchCart();
             } else {
                 throw new Error(response.data.message || 'Failed to clear cart on the backend');
             }
@@ -110,10 +110,12 @@ const PaymentHistory = () => {
                                 <td className="break-all">{payment.paymentId}</td>
                                 <td>{payment.status}</td>
                                 <td>
-  <button className="bg-[#4864EC] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-    Click Here
-  </button>
-</td>
+                                    <Link to="/dashboard/templateDownload">
+                                        <button className="bg-[#4864EC] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                                            Click Here
+                                        </button>
+                                    </Link>
+                                </td>
 
                             </tr>
                         ))}
