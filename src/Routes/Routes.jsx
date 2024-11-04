@@ -169,9 +169,9 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: 'templateDownload',
+        path: 'templateDownload/:paymentId',
         element: <TemplateDownload></TemplateDownload>
-      },
+    },
 
 
 

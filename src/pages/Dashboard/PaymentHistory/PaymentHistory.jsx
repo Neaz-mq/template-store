@@ -110,11 +110,12 @@ const PaymentHistory = () => {
                                 <td className="break-all">{payment.paymentId}</td>
                                 <td>{payment.status}</td>
                                 <td>
-                                    <Link to="/dashboard/templateDownload">
-                                        <button className="bg-[#4864EC] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
+                                    <Link to={`/dashboard/templateDownload/${payment.paymentId}`}>
+                                        <button className="bg-[#4864EC] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                             Click Here
                                         </button>
                                     </Link>
+
                                 </td>
 
                             </tr>
