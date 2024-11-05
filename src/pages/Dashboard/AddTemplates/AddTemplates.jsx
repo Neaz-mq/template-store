@@ -85,7 +85,6 @@ const AddTemplates = () => {
         e.target.value = ""; 
     };
 
-
     const handleRevisionChange = (e) => {
         const selectedRate = e.target.value;
         if (selectedRate && !selectedRevisions.includes(selectedRate)) {

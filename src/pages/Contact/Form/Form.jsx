@@ -76,8 +76,6 @@ const Form = () => {
                         Send Message
                     </button>
 
-
-
                     <a
                         href="https://wa.me/+8801738200107"
                         target="_blank"
@@ -97,8 +95,6 @@ const Form = () => {
                         </svg>
                         WhatsApp
                     </a>
-
-
                 </form>
             </div>
             <ToastContainer />

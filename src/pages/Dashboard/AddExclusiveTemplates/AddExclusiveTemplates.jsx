@@ -58,7 +58,6 @@ const AddExclusiveTemplates = () => {
             amount: parseFloat(data.amount),
             money: parseFloat(data.money),
             charge: parseFloat(data.charge),
-
         };
 
         try {
@@ -98,7 +97,6 @@ const AddExclusiveTemplates = () => {
         }
         e.target.value = ""; // Reset the select input
     };
-
 
     const handleRevisionChange = (e) => {
         const selectedRate = e.target.value;

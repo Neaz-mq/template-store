@@ -3,7 +3,7 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useFreeTemplate = () => {
     const axiosPublic = useAxiosPublic();
-   
+ 
     const {data: free = [], isPending: loading, refetch} = useQuery({
         queryKey: ['free'], 
         queryFn: async() =>{

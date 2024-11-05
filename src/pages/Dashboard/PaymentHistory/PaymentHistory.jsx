@@ -15,7 +15,6 @@ const PaymentHistory = () => {
     // State to track if the success alert has been shown
     const hasShownSuccessAlertRef = useRef(false);
 
-
     const { data: payments = [], isLoading, isError, error } = useQuery({
         queryKey: ['payments', user.email],
         queryFn: async () => {
@@ -31,10 +30,6 @@ const PaymentHistory = () => {
         if (isLoading || isError) return;
 
         const hasSuccessfulPayments = payments.some(payment => payment.status === "success");
-
-
-        // Show alert for failed payments
-
 
         // Show alert for successful payments only if the query param is present
         const queryParams = new URLSearchParams(location.search);
