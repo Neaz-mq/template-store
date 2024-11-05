@@ -157,12 +157,6 @@ export const router = createBrowserRouter([
         element: <Cancel></Cancel>
       },
 
-
-      // {
-      //   path: 'payment',
-      //   element: <Payment></Payment>
-      // },
-
       {
         path: 'paymentHistory',
         element: <PaymentHistory></PaymentHistory>
