@@ -79,7 +79,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price: initialPrice, type, image, description, picture, specifications, product, files, revisions, documents,  packages: templatePackages, times, basics, standards, premiums, amount: basicAmount, money: standardMoney, charge: premiumCharge } = template;
+    const { _id, price: initialPrice, type, image, description, picture, specifications, product, files, revisions, documents,  packages: templatePackages, times, basics, standards, premiums, amount: basicAmount, money: standardMoney, charge: premiumCharge, records } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -205,7 +205,8 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                 premiums,
                 amount,
                 money,
-                charge
+                charge,
+                records
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
