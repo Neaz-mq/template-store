@@ -32,6 +32,8 @@ const AddExclusiveTemplates = () => {
 
     // Add the new records to the existing ones
     setSelectedRecords((prevRecords) => [...prevRecords, ...newRecords]);
+
+    
 };
 
 // Remove selected record
@@ -82,6 +84,7 @@ const handleRemoveRecords = (fileName) => {
             amount: parseFloat(data.amount),
             money: parseFloat(data.money),
             charge: parseFloat(data.charge),
+            records: selectedRecords
         };
 
         try {
