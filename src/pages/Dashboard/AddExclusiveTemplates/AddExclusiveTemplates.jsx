@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import {  useState } from "react";
+import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,30 +18,27 @@ const AddExclusiveTemplates = () => {
     const [selectedTimes, setSelectedTimes] = useState([]);
     // State for selected records (files)
     const [selectedRecords, setSelectedRecords] = useState([]);
-  
 
 
+    // Ref for the file input to manually reset
+    const fileInputRef = useRef();
 
-   // Handle file selection
-   const handleRecordChange = (event) => {
+  // Handle file selection and store file names as strings
+const handleRecordChange = (event) => {
     const files = event.target.files;
-    const newRecords = Array.from(files).map(file => ({
-        name: file.name,
-        file: file, // Store the file object if you need it later
-    }));
+    const newRecords = Array.from(files).map(file => file.name); // Store only the file names as strings
 
     // Add the new records to the existing ones
     setSelectedRecords((prevRecords) => [...prevRecords, ...newRecords]);
-
-    
 };
 
-// Remove selected record
+// Remove selected record by file name
 const handleRemoveRecords = (fileName) => {
     setSelectedRecords((prevRecords) =>
-        prevRecords.filter((record) => record.name !== fileName)
+        prevRecords.filter((record) => record !== fileName)
     );
 };
+
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -97,11 +94,11 @@ const handleRemoveRecords = (fileName) => {
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
                 setSelectedTimes([]);
+                setSelectedRecords([]); // Reset selected records (files)
                 Swal.fire({
                     position: "middle",
                     icon: "success",
                     title: `${data.type} has been added as a template.`,
-                    showConfirmButton: false,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -222,7 +219,7 @@ const handleRemoveRecords = (fileName) => {
                             <div className="flex flex-wrap gap-4">
                                 {pictureUrls.map((url, index) => (
                                     <div key={index} className="relative">
-                                         <img src={url} alt={`Selected ${index + 1}`} className="w-32 h-32 object-cover rounded ml-4" />
+                                        <img src={url} alt={`Selected ${index + 1}`} className="w-32 h-32 object-cover rounded ml-4" />
                                         <button
                                             type="button"
                                             onClick={() => removePictureUrl(index)}
@@ -511,36 +508,34 @@ const handleRemoveRecords = (fileName) => {
                                 ></textarea>
                             </div>
 
-                            {/* File Upload Field */}
+                            {/* File Upload Field for Records */}
                             <div className="form-control w-full my-6 h-auto px-6">
                 <label className="label">
                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Upload Files</span>
                 </label>
                 <input
                     type="file"
-                    multiple  // Allow multiple files
-                    onChange={handleRecordChange}  // Handle file selection
-                   
+                    multiple
+                    onChange={handleRecordChange} // Handle file selection
+                    ref={fileInputRef} // Reference to reset the file input
                     className="w-full"
                 />
             </div>
-
-            {/* Displaying selected records in one place */}
-            <div className="flex flex-wrap mt-4 ml-6">
+                            {/* Displaying selected records */}
+                            <div className="flex flex-wrap mt-4 ml-6">
                 {selectedRecords.map((record, index) => (
                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                        <span>{record.name}</span>  {/* Displaying the file name */}
+                        <span>{record}</span> {/* Directly display the file name */}
                         <button
-                            onClick={() => handleRemoveRecords(record.name)}  // Remove the selected file
+                            onClick={() => handleRemoveRecords(record)} // Remove the selected file by name
                             className="ml-2 text-red-500 hover:text-red-700"
-                            type="button"  // Prevent form submission
+                            type="button" // Prevent form submission
                         >
-                            <FontAwesomeIcon icon={faTimes} />  {/* Display remove icon */}
+                            <FontAwesomeIcon icon={faTimes} /> {/* Display remove icon */}
                         </button>
                     </div>
                 ))}
             </div>
-
 
                         </div>
                     </div>
