@@ -29,6 +29,7 @@ const TemplateDownload = () => {
                             <th>#</th>
                             <th>Template ID</th>
                             <th>Type</th>
+                            <th>Download</th>
                         </tr>
                     </thead>
                     <tbody>
