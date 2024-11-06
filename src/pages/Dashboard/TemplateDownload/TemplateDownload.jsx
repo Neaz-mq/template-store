@@ -31,23 +31,24 @@ const TemplateDownload = () => {
                     >
                         <option disabled>Select File</option>
                         <option value="All files">All files</option>
-                        {/* Check if records[idx] is an array, then render dropdown options */}
-                        {Array.isArray(records[idx])
-                            ? records[idx].map((file, fileIdx) => (
+                        {/* Render file options from records */}
+                        {Array.isArray(records) &&
+                            records.map((file, fileIdx) => (
                                 <option key={`${tempId}-file-${fileIdx}`} value={file}>
                                     {file}
                                 </option>
-                            ))
-                            : records[idx] && (
-                                <option key={`${tempId}-file-0`} value={records[idx]}>
-                                    {records[idx]}
-                                </option>
-                            )}
+                            ))}
                     </select>
-                    {/* Display download link if a file is selected */}
+
+                    {/* Trigger automatic download when a file is selected */}
                     {selectedFile[tempId] && selectedFile[tempId] !== "All files" && (
-                        <a href={`/downloads/${selectedFile[tempId]}`} download>
-                            Download
+                        <a
+                            href={`/downloads/${encodeURIComponent(selectedFile[tempId])}`} // Correct path for download
+                            download
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Download {selectedFile[tempId]}
                         </a>
                     )}
                 </td>
