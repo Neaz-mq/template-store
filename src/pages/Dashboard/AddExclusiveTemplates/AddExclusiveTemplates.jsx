@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useState } from "react";
+import {  useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,6 +16,30 @@ const AddExclusiveTemplates = () => {
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [selectedTimes, setSelectedTimes] = useState([]);
+    // State for selected records (files)
+    const [selectedRecords, setSelectedRecords] = useState([]);
+  
+
+
+
+   // Handle file selection
+   const handleRecordChange = (event) => {
+    const files = event.target.files;
+    const newRecords = Array.from(files).map(file => ({
+        name: file.name,
+        file: file, // Store the file object if you need it later
+    }));
+
+    // Add the new records to the existing ones
+    setSelectedRecords((prevRecords) => [...prevRecords, ...newRecords]);
+};
+
+// Remove selected record
+const handleRemoveRecords = (fileName) => {
+    setSelectedRecords((prevRecords) =>
+        prevRecords.filter((record) => record.name !== fileName)
+    );
+};
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -37,7 +61,7 @@ const AddExclusiveTemplates = () => {
         const basicsArray = data.basics.split('\n').map(item => item.trim()).filter(item => item);
         const standardsArray = data.standards.split('\n').map(item => item.trim()).filter(item => item);
         const premiumsArray = data.premiums.split('\n').map(item => item.trim()).filter(item => item);
-  
+
         const templateItem = {
             type: data.type,
             category: data.category,
@@ -74,6 +98,7 @@ const AddExclusiveTemplates = () => {
                     position: "middle",
                     icon: "success",
                     title: `${data.type} has been added as a template.`,
+                    showConfirmButton: false,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -194,7 +219,7 @@ const AddExclusiveTemplates = () => {
                             <div className="flex flex-wrap gap-4">
                                 {pictureUrls.map((url, index) => (
                                     <div key={index} className="relative">
-                                        <img src={url} alt={`Selected ${index + 1}`} className="w-32 h-32 object-cover rounded ml-4" />
+                                         <img src={url} alt={`Selected ${index + 1}`} className="w-32 h-32 object-cover rounded ml-4" />
                                         <button
                                             type="button"
                                             onClick={() => removePictureUrl(index)}
@@ -259,7 +284,6 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Basics"
                                 ></textarea>
                             </div>
-
                             {/* Standard Packages description */}
 
                             <div className="form-control w-full my-6 h-auto px-6">
@@ -472,7 +496,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
                             {/* Documents Included */}
-                            
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
@@ -483,6 +507,37 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Documents"
                                 ></textarea>
                             </div>
+
+                            {/* File Upload Field */}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                <label className="label">
+                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Upload Files</span>
+                </label>
+                <input
+                    type="file"
+                    multiple  // Allow multiple files
+                    onChange={handleRecordChange}  // Handle file selection
+                   
+                    className="w-full"
+                />
+            </div>
+
+            {/* Displaying selected records in one place */}
+            <div className="flex flex-wrap mt-4">
+                {selectedRecords.map((record, index) => (
+                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                        <span>{record.name}</span>  {/* Displaying the file name */}
+                        <button
+                            onClick={() => handleRemoveRecords(record.name)}  // Remove the selected file
+                            className="ml-2 text-red-500 hover:text-red-700"
+                            type="button"  // Prevent form submission
+                        >
+                            <FontAwesomeIcon icon={faTimes} />  {/* Display remove icon */}
+                        </button>
+                    </div>
+                ))}
+            </div>
+
 
                         </div>
                     </div>
