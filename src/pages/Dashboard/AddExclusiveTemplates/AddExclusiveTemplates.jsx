@@ -523,7 +523,7 @@ const handleRemoveRecords = (fileName) => {
             </div>
 
             {/* Displaying selected records in one place */}
-            <div className="flex flex-wrap mt-4">
+            <div className="flex flex-wrap mt-4 ml-6">
                 {selectedRecords.map((record, index) => (
                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
                         <span>{record.name}</span>  {/* Displaying the file name */}
