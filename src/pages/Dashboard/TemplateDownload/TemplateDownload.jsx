@@ -1,19 +1,32 @@
 import { useLoaderData } from 'react-router-dom';
-import { useState } from 'react';
 
 const TemplateDownload = () => {
     const paymentData = useLoaderData();
 
-    const handleFileSelection = (tempId, file) => {
+    const handleFileSelection = (file) => {
         // If a valid file is selected, trigger the download
         if (file && file !== "Select File") {
-            const downloadLink = document.createElement("a");
-            downloadLink.href = `/downloads/${encodeURIComponent(file)}`;
-            downloadLink.download = file;
-            downloadLink.target = "_blank";
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink); // Clean up the DOM
+            const fileUrl = `/downloads/${encodeURIComponent(file)}`;
+
+            // Check if the file exists in the `public/downloads/` directory
+            fetch(fileUrl)
+                .then(response => {
+                    if (response.ok) {
+                        // The file exists, trigger the download
+                        const downloadLink = document.createElement("a");
+                        downloadLink.href = fileUrl;
+                        downloadLink.download = file; // This will trigger the download
+                        downloadLink.style.display = "none"; // Hide the link
+                        document.body.appendChild(downloadLink);
+                        downloadLink.click();  // Trigger the click
+                        document.body.removeChild(downloadLink); // Clean up the DOM
+                    } else {
+                        alert("File not found, please try again.");
+                    }
+                })
+                .catch(() => {
+                    alert("Something went wrong while trying to download the file.");
+                });
         }
     };
 
@@ -25,7 +38,7 @@ const TemplateDownload = () => {
                 <td className="py-4 px-6 text-center text-gray-600">{types[idx] || 'N/A'}</td>
                 <td className="py-4 px-6 text-center">
                     <select
-                        onChange={(e) => handleFileSelection(tempId, e.target.value)}
+                        onChange={(e) => handleFileSelection(e.target.value)}
                         defaultValue="Select File"
                         className="bg-blue-100 text-blue-700 border border-blue-300 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
                     >
