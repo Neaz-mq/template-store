@@ -2,78 +2,68 @@ import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 
 const TemplateDownload = () => {
-    const paymentData = useLoaderData(); // Fetch payment data from the loader
-    const [selectedFile, setSelectedFile] = useState({}); // State to track selected file for each template
+    const paymentData = useLoaderData();
 
-    if (!paymentData) {
-        return <div>No payment data found.</div>; // Handle the case if no payment data is found
-    }
-
-    // Handle the case of multiple templates being part of a single payment
     const handleFileSelection = (tempId, file) => {
-        setSelectedFile(prevState => ({
-            ...prevState,
-            [tempId]: file
-        }));
+        // If a valid file is selected, trigger the download
+        if (file && file !== "Select File") {
+            const downloadLink = document.createElement("a");
+            downloadLink.href = `/downloads/${encodeURIComponent(file)}`;
+            downloadLink.download = file;
+            downloadLink.target = "_blank";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink); // Clean up the DOM
+        }
     };
 
     const renderTemplateRows = (tempIds, types, records) => {
         return tempIds.map((tempId, idx) => (
-            <tr key={`${paymentData._id}-${idx}`}>
-                <td>{idx + 1}</td>
-                <td>{tempId}</td>
-                <td>{types[idx] || 'N/A'}</td>
-                <td>
-                    {/* Dropdown for selecting a file */}
+            <tr key={`${paymentData._id}-${idx}`} className="hover:bg-gray-100">
+                <td className="py-4 px-6 text-center font-semibold text-gray-700">{idx + 1}</td>
+                <td className="py-4 px-6 text-center text-blue-600 font-medium">{tempId}</td>
+                <td className="py-4 px-6 text-center text-gray-600">{types[idx] || 'N/A'}</td>
+                <td className="py-4 px-6 text-center">
                     <select
                         onChange={(e) => handleFileSelection(tempId, e.target.value)}
                         defaultValue="Select File"
+                        className="bg-blue-100 text-blue-700 border border-blue-300 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
                     >
                         <option disabled>Select File</option>
-                        <option value="All files">All files</option>
-                        {/* Render file options from records */}
-                        {Array.isArray(records) &&
-                            records.map((file, fileIdx) => (
-                                <option key={`${tempId}-file-${fileIdx}`} value={file}>
-                                    {file}
-                                </option>
-                            ))}
+                        {Array.isArray(records) && records.map((file, fileIdx) => (
+                            <option key={`${tempId}-file-${fileIdx}`} value={file}>
+                                {file}
+                            </option>
+                        ))}
                     </select>
-
-                    {/* Trigger automatic download when a file is selected */}
-                    {selectedFile[tempId] && selectedFile[tempId] !== "All files" && (
-                        <a
-                            href={`/downloads/${encodeURIComponent(selectedFile[tempId])}`} // Correct path for download
-                            download
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Download {selectedFile[tempId]}
-                        </a>
-                    )}
                 </td>
             </tr>
         ));
     };
 
     return (
-        <div>
-            <h1 className='text-4xl'>Download Template</h1>
-
-            <div className="overflow-x-auto w-full lg:w-full mt-16">
-                <table className="table w-full table-zebra">
+        <div className="p-8">
+            <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Download Template</h1>
+            <div className="overflow-x-auto w-full">
+                <table className="table-auto w-full border border-gray-200 rounded-lg shadow-lg bg-white">
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Template ID</th>
-                            <th>Type</th>
-                            <th>Download</th>
+                        <tr className="bg-blue-600 text-white">
+                            <th className="py-3 px-4 text-center">#</th>
+                            <th className="py-3 px-4 text-center">Template ID</th>
+                            <th className="py-3 px-4 text-center">Type</th>
+                            <th className="py-3 px-4 text-center">Download</th>
                         </tr>
                     </thead>
                     <tbody>
                         {paymentData.tempId && paymentData.tempId.length > 0
                             ? renderTemplateRows(paymentData.tempId, paymentData.types, paymentData.records)
-                            : <tr><td colSpan="4">No templates found for this payment.</td></tr>}
+                            : (
+                                <tr>
+                                    <td colSpan="4" className="py-4 text-center text-gray-500">
+                                        No templates found for this payment.
+                                    </td>
+                                </tr>
+                            )}
                     </tbody>
                 </table>
             </div>
