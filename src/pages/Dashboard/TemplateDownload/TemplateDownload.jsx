@@ -6,16 +6,32 @@ const TemplateDownload = () => {
     const handleFileSelection = (file) => {
         // If a valid file is selected, trigger the download
         if (file && file !== "Select File") {
-            // Prepare base64 string for download
-            const fileData = file; // file is the base64 string stored in records
-            const fileExtension = fileData.split(';')[0].split('/')[1]; // Extract file extension (e.g., jpeg, pdf)
-            const blob = new Blob([new Uint8Array(atob(fileData.split(',')[1]).split('').map(c => c.charCodeAt(0)))], { type: `image/${fileExtension}` });
+            // Extract base64 data and MIME type
+            const base64String = file.split(',')[1]; // Extract base64 data
+            const mimeType = file.split(';')[0].split(':')[1] || 'application/octet-stream'; // Default to binary stream if MIME is not present
 
-            // Create a download link and trigger the download
+            // Decode the base64 string
+            const byteCharacters = atob(base64String); // Decode base64 string
+            const byteArrays = [];
+
+            // Convert base64 to a byte array (in chunks to avoid large memory usage)
+            for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
+                const slice = byteCharacters.slice(offset, offset + 1024);
+                const byteNumbers = new Array(slice.length);
+                for (let i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+                byteArrays.push(new Uint8Array(byteNumbers));
+            }
+
+            // Create a Blob from the byte array
+            const blob = new Blob(byteArrays, { type: mimeType }); // Blob with the correct MIME type
+
+            // Generate a file name and download the file
             const downloadLink = document.createElement("a");
             downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = `file.${fileExtension}`; // Filename based on extension
-            downloadLink.click();
+            downloadLink.download = `file.${mimeType.split('/')[1]}`; // File extension based on MIME type
+            downloadLink.click(); // Trigger the download
         }
     };
 
