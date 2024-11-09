@@ -6,27 +6,16 @@ const TemplateDownload = () => {
     const handleFileSelection = (file) => {
         // If a valid file is selected, trigger the download
         if (file && file !== "Select File") {
-            const fileUrl = `/downloads/${encodeURIComponent(file)}`;
+            // Prepare base64 string for download
+            const fileData = file; // file is the base64 string stored in records
+            const fileExtension = fileData.split(';')[0].split('/')[1]; // Extract file extension (e.g., jpeg, pdf)
+            const blob = new Blob([new Uint8Array(atob(fileData.split(',')[1]).split('').map(c => c.charCodeAt(0)))], { type: `image/${fileExtension}` });
 
-            // Check if the file exists in the `public/downloads/` directory
-            fetch(fileUrl)
-                .then(response => {
-                    if (response.ok) {
-                        // The file exists, trigger the download
-                        const downloadLink = document.createElement("a");
-                        downloadLink.href = fileUrl;
-                        downloadLink.download = file; // This will trigger the download
-                        downloadLink.style.display = "none"; // Hide the link
-                        document.body.appendChild(downloadLink);
-                        downloadLink.click();  // Trigger the click
-                        document.body.removeChild(downloadLink); // Clean up the DOM
-                    } else {
-                        alert("File not found, please try again.");
-                    }
-                })
-                .catch(() => {
-                    alert("Something went wrong while trying to download the file.");
-                });
+            // Create a download link and trigger the download
+            const downloadLink = document.createElement("a");
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = `file.${fileExtension}`; // Filename based on extension
+            downloadLink.click();
         }
     };
 
@@ -45,7 +34,7 @@ const TemplateDownload = () => {
                         <option disabled>Select File</option>
                         {Array.isArray(records) && records.map((file, fileIdx) => (
                             <option key={`${tempId}-file-${fileIdx}`} value={file}>
-                                {file}
+                                File {fileIdx + 1}
                             </option>
                         ))}
                     </select>

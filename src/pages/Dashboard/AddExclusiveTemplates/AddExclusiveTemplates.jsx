@@ -16,28 +16,40 @@ const AddExclusiveTemplates = () => {
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [selectedTimes, setSelectedTimes] = useState([]);
-    // State for selected records (files)
-    const [selectedRecords, setSelectedRecords] = useState([]);
+    // Set up state for file data
+    const [selectedRecords, setSelectedRecords] = useState([]); // Stores base64 strings or binary data
+
 
 
     // Ref for the file input to manually reset
     const fileInputRef = useRef();
 
-  // Handle file selection and store file names as strings
-const handleRecordChange = (event) => {
-    const files = event.target.files;
-    const newRecords = Array.from(files).map(file => file.name); // Store only the file names as strings
+    // Handle file selection and store only the file data (base64)
+    const handleRecordChange = async (event) => {
+        const files = Array.from(event.target.files);
 
-    // Add the new records to the existing ones
-    setSelectedRecords((prevRecords) => [...prevRecords, ...newRecords]);
-};
+        const fileDataPromises = files.map((file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    resolve(reader.result); // Store only base64 string (file data)
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file); // Reads file as base64
+            });
+        });
 
-// Remove selected record by file name
-const handleRemoveRecords = (fileName) => {
-    setSelectedRecords((prevRecords) =>
-        prevRecords.filter((record) => record !== fileName)
-    );
-};
+        // Wait for all files to be converted and add to `selectedRecords`
+        const fileData = await Promise.all(fileDataPromises);
+
+        setSelectedRecords((prevRecords) => [...prevRecords, ...fileData]);
+    };
+
+    // Remove selected record by index
+    const handleRemoveRecords = (index) => {
+        setSelectedRecords((prevRecords) => prevRecords.filter((_, i) => i !== index));
+    };
+
 
 
     const addPictureUrl = () => {
@@ -510,32 +522,32 @@ const handleRemoveRecords = (fileName) => {
 
                             {/* File Upload Field for Records */}
                             <div className="form-control w-full my-6 h-auto px-6">
-                <label className="label">
-                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Upload Files</span>
-                </label>
-                <input
-                    type="file"
-                    multiple
-                    onChange={handleRecordChange} // Handle file selection
-                    ref={fileInputRef} // Reference to reset the file input
-                    className="w-full"
-                />
-            </div>
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Upload Files</span>
+                                </label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    onChange={handleRecordChange} // Handle file selection
+                                    ref={fileInputRef} // Reference to reset the file input
+                                    className="w-full"
+                                />
+                            </div>
                             {/* Displaying selected records */}
                             <div className="flex flex-wrap mt-4 ml-6">
-                {selectedRecords.map((record, index) => (
-                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                        <span>{record}</span> {/* Directly display the file name */}
-                        <button
-                            onClick={() => handleRemoveRecords(record)} // Remove the selected file by name
-                            className="ml-2 text-red-500 hover:text-red-700"
-                            type="button" // Prevent form submission
-                        >
-                            <FontAwesomeIcon icon={faTimes} /> {/* Display remove icon */}
-                        </button>
-                    </div>
-                ))}
-            </div>
+                                {selectedRecords.map((record, index) => (
+                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
+                                        <span>File {index + 1}</span> {/* Optionally display a placeholder name */}
+                                        <button
+                                            onClick={() => handleRemoveRecords(index)} // Remove the selected file by index
+                                            className="ml-2 text-red-500 hover:text-red-700"
+                                            type="button" // Prevent form submission
+                                        >
+                                            <FontAwesomeIcon icon={faTimes} /> {/* Display remove icon */}
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
 
                         </div>
                     </div>
