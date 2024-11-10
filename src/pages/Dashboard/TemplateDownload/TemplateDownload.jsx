@@ -4,17 +4,15 @@ const TemplateDownload = () => {
     const paymentData = useLoaderData();
 
     const handleFileSelection = (file) => {
-        // If a valid file is selected, trigger the download
-        if (file && file !== "Select File") {
+        if (file && file.data && file.name) {
             // Extract base64 data and MIME type
-            const base64String = file.split(',')[1]; // Extract base64 data
-            const mimeType = file.split(';')[0].split(':')[1] || 'application/octet-stream'; // Default to binary stream if MIME is not present
+            const base64String = file.data.split(',')[1];
+            const mimeType = file.data.split(';')[0].split(':')[1] || 'application/octet-stream';
 
             // Decode the base64 string
-            const byteCharacters = atob(base64String); // Decode base64 string
+            const byteCharacters = atob(base64String);
             const byteArrays = [];
 
-            // Convert base64 to a byte array (in chunks to avoid large memory usage)
             for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
                 const slice = byteCharacters.slice(offset, offset + 1024);
                 const byteNumbers = new Array(slice.length);
@@ -25,13 +23,13 @@ const TemplateDownload = () => {
             }
 
             // Create a Blob from the byte array
-            const blob = new Blob(byteArrays, { type: mimeType }); // Blob with the correct MIME type
+            const blob = new Blob(byteArrays, { type: mimeType });
 
-            // Generate a file name and download the file
+            // Create a download link with the filename from MongoDB
             const downloadLink = document.createElement("a");
             downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = `file.${mimeType.split('/')[1]}`; // File extension based on MIME type
-            downloadLink.click(); // Trigger the download
+            downloadLink.download = file.name; // Use the file name from the MongoDB record
+            downloadLink.click();
         }
     };
 
@@ -43,14 +41,17 @@ const TemplateDownload = () => {
                 <td className="py-4 px-6 text-center text-gray-600">{types[idx] || 'N/A'}</td>
                 <td className="py-4 px-6 text-center">
                     <select
-                        onChange={(e) => handleFileSelection(e.target.value)}
+                        onChange={(e) => {
+                            const selectedFile = records[e.target.selectedIndex - 1];
+                            handleFileSelection(selectedFile);
+                        }}
                         defaultValue="Select File"
                         className="bg-blue-100 text-blue-700 border border-blue-300 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
                     >
                         <option disabled>Select File</option>
                         {Array.isArray(records) && records.map((file, fileIdx) => (
-                            <option key={`${tempId}-file-${fileIdx}`} value={file}>
-                                File {fileIdx + 1}
+                            <option key={`${tempId}-file-${fileIdx}`} value={file.name}>
+                                {file.name} {/* Display the actual file name */}
                             </option>
                         ))}
                     </select>

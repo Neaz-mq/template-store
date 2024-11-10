@@ -16,15 +16,16 @@ const AddExclusiveTemplates = () => {
     const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [selectedTimes, setSelectedTimes] = useState([]);
-    // Set up state for file data
-    const [selectedRecords, setSelectedRecords] = useState([]); // Stores base64 strings or binary data
+
+    // Set up state for file data, storing an array of objects with `name` and `data` properties
+    const [selectedRecords, setSelectedRecords] = useState([]); // Stores objects with file name and data
 
 
 
     // Ref for the file input to manually reset
     const fileInputRef = useRef();
 
-    // Handle file selection and store only the file data (base64)
+    // Handle file selection and store file name and data
     const handleRecordChange = async (event) => {
         const files = Array.from(event.target.files);
 
@@ -32,7 +33,7 @@ const AddExclusiveTemplates = () => {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = () => {
-                    resolve(reader.result); // Store only base64 string (file data)
+                    resolve({ name: file.name, data: reader.result }); // Store file name and base64 data
                 };
                 reader.onerror = reject;
                 reader.readAsDataURL(file); // Reads file as base64
@@ -45,11 +46,11 @@ const AddExclusiveTemplates = () => {
         setSelectedRecords((prevRecords) => [...prevRecords, ...fileData]);
     };
 
+
     // Remove selected record by index
     const handleRemoveRecords = (index) => {
         setSelectedRecords((prevRecords) => prevRecords.filter((_, i) => i !== index));
     };
-
 
 
     const addPictureUrl = () => {
@@ -537,7 +538,7 @@ const AddExclusiveTemplates = () => {
                             <div className="flex flex-wrap mt-4 ml-6">
                                 {selectedRecords.map((record, index) => (
                                     <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>File {index + 1}</span> {/* Optionally display a placeholder name */}
+                                        <span>{record.name}</span> {/* Display file name */}
                                         <button
                                             onClick={() => handleRemoveRecords(index)} // Remove the selected file by index
                                             className="ml-2 text-red-500 hover:text-red-700"
@@ -548,6 +549,7 @@ const AddExclusiveTemplates = () => {
                                     </div>
                                 ))}
                             </div>
+
 
                         </div>
                     </div>
