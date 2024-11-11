@@ -109,7 +109,7 @@ const AddExclusiveTemplates = () => {
                 setSelectedTimes([]);
                 setSelectedRecords([]); // Reset selected records (files)
                 Swal.fire({
-                    position: "middle",
+                    position: "center",
                     icon: "success",
                     title: `${data.type} has been added as a template.`,
                     showConfirmButton: false,
@@ -119,7 +119,7 @@ const AddExclusiveTemplates = () => {
         } catch (error) {
             console.error("Error adding template:", error);
             Swal.fire({
-                position: "middle",
+                position: "center",
                 icon: "error",
                 title: "Failed to add template.",
                 showConfirmButton: false,
