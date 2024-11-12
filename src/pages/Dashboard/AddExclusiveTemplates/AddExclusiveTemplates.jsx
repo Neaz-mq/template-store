@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,40 +17,7 @@ const AddExclusiveTemplates = () => {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [selectedTimes, setSelectedTimes] = useState([]);
 
-    // Set up state for file data, storing an array of objects with `name` and `data` properties
-    const [selectedRecords, setSelectedRecords] = useState([]); // Stores objects with file name and data
 
-
-
-    // Ref for the file input to manually reset
-    const fileInputRef = useRef();
-
-    // Handle file selection and store file name and data
-    const handleRecordChange = async (event) => {
-        const files = Array.from(event.target.files);
-
-        const fileDataPromises = files.map((file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    resolve({ name: file.name, data: reader.result }); // Store file name and base64 data
-                };
-                reader.onerror = reject;
-                reader.readAsDataURL(file); // Reads file as base64
-            });
-        });
-
-        // Wait for all files to be converted and add to `selectedRecords`
-        const fileData = await Promise.all(fileDataPromises);
-
-        setSelectedRecords((prevRecords) => [...prevRecords, ...fileData]);
-    };
-
-
-    // Remove selected record by index
-    const handleRemoveRecords = (index) => {
-        setSelectedRecords((prevRecords) => prevRecords.filter((_, i) => i !== index));
-    };
 
 
     const addPictureUrl = () => {
@@ -73,6 +40,7 @@ const AddExclusiveTemplates = () => {
         const basicsArray = data.basics.split('\n').map(item => item.trim()).filter(item => item);
         const standardsArray = data.standards.split('\n').map(item => item.trim()).filter(item => item);
         const premiumsArray = data.premiums.split('\n').map(item => item.trim()).filter(item => item);
+        const recordsArray = data.records.split('\n').map(item => item.trim()).filter(item => item);
 
         const templateItem = {
             type: data.type,
@@ -94,7 +62,7 @@ const AddExclusiveTemplates = () => {
             amount: parseFloat(data.amount),
             money: parseFloat(data.money),
             charge: parseFloat(data.charge),
-            records: selectedRecords
+            records: recordsArray 
         };
 
         try {
@@ -107,7 +75,6 @@ const AddExclusiveTemplates = () => {
                 setSelectedRevisions([]);
                 setSelectedFiles([]);
                 setSelectedTimes([]);
-                setSelectedRecords([]); // Reset selected records (files)
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -521,33 +488,19 @@ const AddExclusiveTemplates = () => {
                                 ></textarea>
                             </div>
 
-                            {/* File Upload Field for Records */}
+                          
+                          
+                            {/* Records Included */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Upload Files</span>
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
                                 </label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    onChange={handleRecordChange} // Handle file selection
-                                    ref={fileInputRef} // Reference to reset the file input
-                                    className="w-full"
-                                />
-                            </div>
-                            {/* Displaying selected records */}
-                            <div className="flex flex-wrap mt-4 ml-6">
-                                {selectedRecords.map((record, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{record.name}</span> {/* Display file name */}
-                                        <button
-                                            onClick={() => handleRemoveRecords(index)} // Remove the selected file by index
-                                            className="ml-2 text-red-500 hover:text-red-700"
-                                            type="button" // Prevent form submission
-                                        >
-                                            <FontAwesomeIcon icon={faTimes} /> {/* Display remove icon */}
-                                        </button>
-                                    </div>
-                                ))}
+                                <textarea
+                                    {...register('records')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Records"
+                                ></textarea>
                             </div>
 
 

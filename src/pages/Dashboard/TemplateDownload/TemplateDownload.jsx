@@ -3,33 +3,10 @@ import { useLoaderData } from 'react-router-dom';
 const TemplateDownload = () => {
     const paymentData = useLoaderData();
 
-    const handleFileSelection = (file) => {
-        if (file && file.data && file.name) {
-            // Extract base64 data and MIME type
-            const base64String = file.data.split(',')[1];
-            const mimeType = file.data.split(';')[0].split(':')[1] || 'application/octet-stream';
-
-            // Decode the base64 string
-            const byteCharacters = atob(base64String);
-            const byteArrays = [];
-
-            for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
-                const slice = byteCharacters.slice(offset, offset + 1024);
-                const byteNumbers = new Array(slice.length);
-                for (let i = 0; i < slice.length; i++) {
-                    byteNumbers[i] = slice.charCodeAt(i);
-                }
-                byteArrays.push(new Uint8Array(byteNumbers));
-            }
-
-            // Create a Blob from the byte array
-            const blob = new Blob(byteArrays, { type: mimeType });
-
-            // Create a download link with the filename from MongoDB
-            const downloadLink = document.createElement("a");
-            downloadLink.href = URL.createObjectURL(blob);
-            downloadLink.download = file.name; // Use the file name from the MongoDB record
-            downloadLink.click();
+    const handleFileSelection = (fileLink) => {
+        if (fileLink) {
+            // Open the link in a new tab
+            window.open(fileLink, "_blank");
         }
     };
 
@@ -42,16 +19,16 @@ const TemplateDownload = () => {
                 <td className="py-4 px-6 text-center">
                     <select
                         onChange={(e) => {
-                            const selectedFile = records[e.target.selectedIndex - 1];
-                            handleFileSelection(selectedFile);
+                            const selectedFileLink = records[e.target.selectedIndex - 1]; // Get the link from the records
+                            handleFileSelection(selectedFileLink);
                         }}
                         defaultValue="Select File"
                         className="bg-blue-100 text-blue-700 border border-blue-300 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
                     >
                         <option disabled>Select File</option>
-                        {Array.isArray(records) && records.map((file, fileIdx) => (
-                            <option key={`${tempId}-file-${fileIdx}`} value={file.name}>
-                                {file.name} {/* Display the actual file name */}
+                        {Array.isArray(records) && records.map((fileLink, fileIdx) => (
+                            <option key={`${tempId}-file-${fileIdx}`} value={fileLink}>
+                                {fileLink} {/* Display the Google Drive link */}
                             </option>
                         ))}
                     </select>
