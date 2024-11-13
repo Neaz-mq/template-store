@@ -82,6 +82,14 @@ const PaymentHistory = () => {
 
     const filteredPayments = payments.filter(payment => payment.status === "success");
 
+    const handleFileSelection = (url) => {
+        // Trigger file download automatically when a file is selected
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = url.split('/').pop(); // Extract filename from URL
+        link.click();
+    };
+
     return (
         <div>
             <h2 className="md:text-3xl text-xl md:mb-5 ml-2">Total Payments: {filteredPayments.length}</h2>
@@ -105,14 +113,20 @@ const PaymentHistory = () => {
                                 <td className="break-all">{payment.paymentId}</td>
                                 <td>{payment.status}</td>
                                 <td>
-                                    <Link to={`/dashboard/templateDownload/${payment.paymentId}`}>
-                                        <button className="bg-[#4864EC] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                            Click Here
-                                        </button>
-                                    </Link>
-
+                                    {/* File selection dropdown */}
+                                    <select
+                                        className="p-2 border rounded-md bg-white text-blue-500"
+                                        onChange={(e) => handleFileSelection(e.target.value)}
+                                        defaultValue=""
+                                    >
+                                        <option value="" disabled>Select File</option>
+                                        {payment.records.map((link, idx) => (
+                                            <option key={idx} value={link}>
+                                                Template {idx + 1} - Download
+                                            </option>
+                                        ))}
+                                    </select>
                                 </td>
-
                             </tr>
                         ))}
                     </tbody>
@@ -125,6 +139,21 @@ const PaymentHistory = () => {
                             <p>Price: ${parseFloat(payment.amount).toFixed(2)}</p>
                             <p>Payment ID: {payment.paymentId}</p>
                             <p>Status: {payment.status}</p>
+                            <div>
+                                {/* Mobile dropdown to select file */}
+                                <select
+                                    className="p-2 border rounded-md bg-white text-blue-500"
+                                    onChange={(e) => handleFileSelection(e.target.value)}
+                                    defaultValue=""
+                                >
+                                    <option value="" disabled>Select File</option>
+                                    {payment.records.map((link, idx) => (
+                                        <option key={idx} value={link}>
+                                            Template {idx + 1} - Download
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                     ))}
                 </div>

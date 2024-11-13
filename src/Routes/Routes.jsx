@@ -162,11 +162,11 @@ export const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>
       },
 
-      {
-        path: 'templateDownload/:paymentId',
-        element: <TemplateDownload></TemplateDownload>,
-        loader: ({ params }) => fetch(`http://localhost:5000/payments/tran/${params.paymentId}`)
-    },
+    //   {
+    //     path: 'templateDownload/:paymentId',
+    //     element: <TemplateDownload></TemplateDownload>,
+    //     loader: ({ params }) => fetch(`http://localhost:5000/payments/tran/${params.paymentId}`)
+    // },
 
 
 
