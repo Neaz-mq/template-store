@@ -40,8 +40,6 @@ const Cart = () => {
             console.error('Error during payment initiation:', error);
         }
     };
-    
-    
 
     const axiosSecure = useAxiosSecure();
 

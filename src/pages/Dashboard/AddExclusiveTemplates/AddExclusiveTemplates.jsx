@@ -18,8 +18,6 @@ const AddExclusiveTemplates = () => {
     const [selectedTimes, setSelectedTimes] = useState([]);
 
 
-
-
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
             setPictureUrls([...pictureUrls, currentPictureUrl.trim()]);
@@ -62,7 +60,7 @@ const AddExclusiveTemplates = () => {
             amount: parseFloat(data.amount),
             money: parseFloat(data.money),
             charge: parseFloat(data.charge),
-            records: recordsArray 
+            records: recordsArray
         };
 
         try {
@@ -264,6 +262,7 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Basics"
                                 ></textarea>
                             </div>
+
                             {/* Standard Packages description */}
 
                             <div className="form-control w-full my-6 h-auto px-6">
@@ -488,8 +487,6 @@ const AddExclusiveTemplates = () => {
                                 ></textarea>
                             </div>
 
-                          
-                          
                             {/* Records Included */}
 
                             <div className="form-control w-full my-6 h-auto px-6">
@@ -502,8 +499,6 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Records"
                                 ></textarea>
                             </div>
-
-
                         </div>
                     </div>
 

@@ -45,8 +45,6 @@ const UpdateExclusiveTemplate = () => {
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
     
-
-
     const onSubmit = async (data) => {
         const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
@@ -104,7 +102,6 @@ const UpdateExclusiveTemplate = () => {
     };
 
 
-
     const handleAddAdditionalImage = () => {
         if (newAdditionalImageUrl.trim()) {
             setAdditionalImages([...additionalImages, newAdditionalImageUrl.trim()]);
@@ -129,8 +126,6 @@ const UpdateExclusiveTemplate = () => {
     };
 
    
-
-
     const handleAddRevision = (event) => {
         const selectedRevision = event.target.value;
         if (selectedRevision && !selectedRevisions.includes(selectedRevision)) {

@@ -142,7 +142,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         e.target.value = ""; 
     };
 
-
     const handleNextImage = () => {
         const nextIndex = (selectedIndex + 1) % picture.length;
         setSelectedImage(picture[nextIndex]);

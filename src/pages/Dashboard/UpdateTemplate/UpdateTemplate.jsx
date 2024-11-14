@@ -100,7 +100,6 @@ const UpdateTemplate = () => {
         setSelectedFiles(selectedFiles.filter(f => f !== file));
     };
 
-
     const handleAddRevision = (event) => {
         const selectedRevision = event.target.value;
         if (selectedRevision && !selectedRevisions.includes(selectedRevision)) {
@@ -111,7 +110,6 @@ const UpdateTemplate = () => {
     const handleRemoveRevision = (revision) => {
         setSelectedRevisions(selectedRevisions.filter(r => r !== revision));
     };
-
 
     return (
         <div>
