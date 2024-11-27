@@ -4,13 +4,14 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
-import { useLocation } from 'react-router-dom'; // Import useLocation
+import { useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const [cart, refetchCart] = useCart(); // Renamed for clarity
     const location = useLocation(); // Get the current location
+    const navigate = useNavigate(); // Navigate programmatically
 
     // State to track if the success alert has been shown
     const hasShownSuccessAlertRef = useRef(false);
@@ -44,9 +45,14 @@ const PaymentHistory = () => {
                 icon: 'success'
             }).then(() => {
                 clearCart(); // Clear cart after showing alert
+
+                // Remove query parameter from the URL
+                const newSearchParams = new URLSearchParams(location.search);
+                newSearchParams.delete('fromPaymentSuccess');
+                navigate(`${location.pathname}?${newSearchParams.toString()}`, { replace: true });
             });
         }
-    }, [isLoading, isError, payments, location]);
+    }, [isLoading, isError, payments, location, navigate]);
 
     const clearCart = async () => {
         if (!user.email) {
