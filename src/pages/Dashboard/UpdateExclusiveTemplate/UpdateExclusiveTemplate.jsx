@@ -29,6 +29,7 @@ const UpdateExclusiveTemplate = () => {
         amount,
         money,
         charge,
+        records,
         _id
     } = useLoaderData();
 
@@ -49,6 +50,7 @@ const UpdateExclusiveTemplate = () => {
         const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
+        const recordsArray = data.records.split('\n').map(record => record.trim()).filter(record => record);
         const packagesArray = data.packages.split('\n').filter(pack => pack.trim() !== '');
         const basicsArray = data.basics.split('\n').filter(basic => basic.trim() !== '');
         const standardsArray = data.standards.split('\n').filter(standard => standard.trim() !== '');
@@ -78,6 +80,7 @@ const UpdateExclusiveTemplate = () => {
             amount: parseFloat(data.amount),
             money: parseFloat(data.money),
             charge: parseFloat(data.charge),
+            records: recordsArray,
 
         };
 
@@ -550,6 +553,22 @@ const UpdateExclusiveTemplate = () => {
                                     placeholder="Files Included"
                                 ></textarea>
                             </div>
+
+                            
+                            {/* Records Included */}
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
+                                </label>
+                                <textarea
+                                    defaultValue={records.join('\n')}
+                                    {...register('records')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Records Included"
+                                ></textarea>
+                            </div>
+
                         </div>
                     </div>
 

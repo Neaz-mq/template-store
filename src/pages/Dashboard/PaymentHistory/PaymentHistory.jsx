@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation
+import { useLocation } from 'react-router-dom'; // Import useLocation
 
 const PaymentHistory = () => {
     const { user } = useAuth();
@@ -83,11 +83,10 @@ const PaymentHistory = () => {
     const filteredPayments = payments.filter(payment => payment.status === "success");
 
     const handleFileSelection = (url) => {
-        // Trigger file download automatically when a file is selected
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = url.split('/').pop(); // Extract filename from URL
-        link.click();
+        // Open the selected file in a new tab
+        if (url) {
+            window.open(url, "_blank");
+        }
     };
 
     return (
@@ -122,7 +121,7 @@ const PaymentHistory = () => {
                                         <option value="" disabled>Select File</option>
                                         {payment.records.map((link, idx) => (
                                             <option key={idx} value={link}>
-                                                Template {idx + 1} - Download
+                                                Template {idx + 1} - Open
                                             </option>
                                         ))}
                                     </select>
@@ -149,7 +148,7 @@ const PaymentHistory = () => {
                                     <option value="" disabled>Select File</option>
                                     {payment.records.map((link, idx) => (
                                         <option key={idx} value={link}>
-                                            Template {idx + 1} - Download
+                                            Template {idx + 1} - Open
                                         </option>
                                     ))}
                                 </select>

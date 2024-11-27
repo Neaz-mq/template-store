@@ -37,7 +37,8 @@ import Career from "../pages/Career/Career";
 import Success from "../pages/Dashboard/Success/Success";
 import Fail from "../pages/Dashboard/Fail/Fail";
 import Cancel from "../pages/Dashboard/Cancel/Cancel";
-import TemplateDownload from "../pages/Dashboard/TemplateDownload/TemplateDownload";
+import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory";
+
 
 
 export const router = createBrowserRouter([
@@ -162,11 +163,7 @@ export const router = createBrowserRouter([
         element: <PaymentHistory></PaymentHistory>
       },
 
-    //   {
-    //     path: 'templateDownload/:paymentId',
-    //     element: <TemplateDownload></TemplateDownload>,
-    //     loader: ({ params }) => fetch(`http://localhost:5000/payments/tran/${params.paymentId}`)
-    // },
+
 
 
 
@@ -233,7 +230,12 @@ export const router = createBrowserRouter([
       {
         path: 'admins',
         element: <AllAdmins></AllAdmins>
-      }
+      },
+
+      {
+        path: 'paymentsHistory',
+        element: <AdminRoute><PaymentsHistory></PaymentsHistory></AdminRoute>
+      },
 
     ]
   }
