@@ -217,50 +217,7 @@ const AddExclusiveTemplates = () => {
                             </div>
 
 
-                            {/* Amount */}
-
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01" // Allow decimal values
-                                    placeholder="Amount"
-                                    {...register('amount', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
-                            {/* Money */}
-
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01" // Allow decimal values
-                                    placeholder="Money"
-                                    {...register('money', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
-                            {/* Charge */}
-
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01" // Allow decimal values
-                                    placeholder="Charge"
-                                    {...register('charge', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
+                           
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -299,6 +256,51 @@ const AddExclusiveTemplates = () => {
                                         className="input input-bordered w-full"
                                     />
                                 </div>
+
+                                 {/* Amount */}
+
+                            <div className="form-control w-full my-6 h-auto">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01" // Allow decimal values
+                                    placeholder="Amount"
+                                    {...register('amount', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            {/* Money */}
+
+                            <div className="form-control w-full my-6 h-auto">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01" // Allow decimal values
+                                    placeholder="Money"
+                                    {...register('money', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            {/* Charge */}
+
+                            <div className="form-control w-full my-6 h-auto">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01" // Allow decimal values
+                                    placeholder="Charge"
+                                    {...register('charge', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
                             </div>
                         </div>
 

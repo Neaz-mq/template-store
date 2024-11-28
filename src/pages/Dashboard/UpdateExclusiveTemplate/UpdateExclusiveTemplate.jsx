@@ -4,9 +4,6 @@ import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useState } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
 
 const UpdateExclusiveTemplate = () => {
     const {
@@ -16,13 +13,10 @@ const UpdateExclusiveTemplate = () => {
         specifications,
         product,
         documents,
-        files,
         packages,
         picture,
         price,
-        revisions,
         image,
-        times,
         basics,
         standards,
         premiums,
@@ -39,10 +33,6 @@ const UpdateExclusiveTemplate = () => {
     const [newImageUrl, setNewImageUrl] = useState('');
     const [newAdditionalImageUrl, setNewAdditionalImageUrl] = useState('');
     const axiosPublic = useAxiosPublic();
-    const [selectedFiles, setSelectedFiles] = useState(files || []);
-    const [selectedRevisions, setSelectedRevisions] = useState(revisions || []);
-    const [selectedTimes, setSelectedTimes] = useState(times || []);
-    const [newRevision, setNewRevision] = useState('');  // New state for revision
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
     
@@ -56,10 +46,6 @@ const UpdateExclusiveTemplate = () => {
         const standardsArray = data.standards.split('\n').filter(standard => standard.trim() !== '');
         const premiumsArray = data.premiums.split('\n').filter(premium => premium.trim() !== '');
 
-        const filesArray = selectedFiles;
-        const revisionsArray = selectedRevisions;
-        const timesArray = selectedTimes;
-
         const templateItem = {
             type: data.type,
             category: data.category,
@@ -70,10 +56,7 @@ const UpdateExclusiveTemplate = () => {
             product: productArray,
             documents: documentsArray,
             picture: additionalImages,
-            revisions: selectedRevisions,
-            files: selectedFiles,
             packages: packagesArray,
-            times: selectedTimes,
             basics: basicsArray,
             standards: standardsArray,
             premiums: premiumsArray,
@@ -114,42 +97,6 @@ const UpdateExclusiveTemplate = () => {
 
     const handleRemoveAdditionalImage = (url) => {
         setAdditionalImages(additionalImages.filter(img => img !== url));
-    };
-
-
-    const handleAddFile = (event) => {
-        const selectedFile = event.target.value;
-        if (selectedFile && !selectedFiles.includes(selectedFile)) {
-            setSelectedFiles([...selectedFiles, selectedFile]);
-        }
-    };
-
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
-
-   
-    const handleAddRevision = (event) => {
-        const selectedRevision = event.target.value;
-        if (selectedRevision && !selectedRevisions.includes(selectedRevision)) {
-            setSelectedRevisions([...selectedRevisions, selectedRevision]);
-        }
-    };
-
-    const handleRemoveRevision = (revision) => {
-        setSelectedRevisions(selectedRevisions.filter(r => r !== revision));
-    };
-
-
-    const handleAddTime = (event) => {
-        const selectedTime = event.target.value;
-        if (selectedTime && !selectedTimes.includes(selectedTime)) {
-            setSelectedTimes([...selectedTimes, selectedTime]);
-        }
-    };
-
-    const handleRemoveTime = (time) => {
-        setSelectedTimes(selectedTimes.filter(r => r !== time));
     };
 
 
@@ -197,6 +144,7 @@ const UpdateExclusiveTemplate = () => {
                                     </div>
                                 )}
                             </div>
+
                             {/* Additional Image URLs */}
                             <div>
                                 <div>
@@ -239,38 +187,6 @@ const UpdateExclusiveTemplate = () => {
                                 </div>
                             </div>
 
-                            {/* Files Included */}
-                            <div className="flex pb-36 gap-6">
-                                <div className="form-control w-full mt-10 px-2">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg ">Files attached*</span>
-                                    </label>
-                                    <select defaultValue={selectedFiles}
-                                        {...register('files', { required: true })}
-                                        onChange={handleAddFile}  // Attach the function to the select element
-                                        className="select select-bordered w-full h-auto">
-                                        <option  value="default">Select files</option>
-                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
-                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
-                                        <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
-                                        <option value="Canva">Canva</option>
-                                        <option value="Figma">Figma</option>
-                                        <option value="Adobe InDesign">Adobe InDesign</option>
-                                        <option value="Microsoft Word">Microsoft Word</option>
-                                    </select>
-                                </div>
-                            </div>
-                            {/* Displaying Selected Files */}
-                            <div className="-mt-28 flex pb-36 flex-wrap ml-2">
-                                {selectedFiles.map((file, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{file}</span>
-                                        <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
 
                              {/* Packages Included */}
                              <div className="form-control w-full my-6 h-auto px-6">
@@ -327,55 +243,6 @@ const UpdateExclusiveTemplate = () => {
                                     placeholder="Premiums"
                                 ></textarea>
                             </div>
-
-                                {/* Amount */}
-
-                             <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={amount}
-                                    placeholder="amount"
-                                    {...register('amount', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
-                                {/* Money */}
-
-                             <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={money}
-                                    placeholder="Money"
-                                    {...register('money', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
-                             {/* Charge */}
-
-                              <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={charge}
-                                    placeholder="Charge"
-                                    {...register('charge', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
                         </div>
 
                         {/* Category and Price */}
@@ -407,7 +274,7 @@ const UpdateExclusiveTemplate = () => {
 
                             <div className="form-control w-full my-72 h-auto px-3">
                                 <label className="label">
-                                    <span className="label-text font-medium text-lg">Price*</span>
+                                    <span className="label-text font-medium text-lg">Price (Basic)*</span>
                                 </label>
                                 <input
                                     type="number"
@@ -419,77 +286,52 @@ const UpdateExclusiveTemplate = () => {
                                 />
                             </div>
 
-                            {/* Revisions */}
+                             {/* Amount */}
 
-                            <div className="flex gap-6  pb-32 pt-16">
-                                <div className="form-control w-full my-10 h-auto px-3">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg">Revisions*</span>
-                                    </label>
-                                    <select
-                                        defaultValue={selectedRevisions}
-                                        {...register('revisions', { required: true })}
-                                        onChange={handleAddRevision}
-                                        className="select select-bordered w-full h-auto "
-                                    >
-                                        <option  value="default">Select Revisions</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-
-                                    </select>
-                                </div>
+                             <div className="form-control w-full my-6 h-auto px-3">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    defaultValue={amount}
+                                    placeholder="amount"
+                                    {...register('amount', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
                             </div>
 
-                            {/* Displaying Selected Revisions */}
+                                {/* Money */}
 
-                            <div className="-mt-24 pb-20 flex flex-wrap ml-4">
-                                {selectedRevisions.map((revision, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{revision}</span>
-                                        <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                        </button>
-                                    </div>
-                                ))}
+                             <div className="form-control w-full my-6 h-auto px-3">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    defaultValue={money}
+                                    placeholder="Money"
+                                    {...register('money', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
                             </div>
 
+                             {/* Charge */}
 
-                             {/* Delivery Time */}
-
-                             <div className="flex gap-6  pb-32 pt-16">
-                                <div className="form-control w-full my-10 h-auto px-3">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg">Delivery Time*</span>
-                                    </label>
-                                    <select
-                                        defaultValue={selectedTimes}
-                                        {...register('times', { required: true })}
-                                        onChange={handleAddTime}
-                                        className="select select-bordered w-full h-auto "
-                                    >
-                                        <option  value="default">Select Delivery Time</option>
-                                        <option value="3 Days">3 Days</option>
-                                            <option value="6 Days">6 Days</option>
-                                            <option value="10 Days">10 Days</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            {/* Displaying Selected Revisions */}
-
-                            <div className="-mt-24 pb-20 flex flex-wrap ml-4">
-                                {selectedTimes.map((time, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{time}</span>
-                                        <button onClick={() => handleRemoveTime(time)} className="ml-2">
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                        </button>
-                                    </div>
-                                ))}
+                              <div className="form-control w-full my-6 h-auto px-3">
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.01"
+                                    defaultValue={charge}
+                                    placeholder="Charge"
+                                    {...register('charge', { required: true })}
+                                    className="input input-bordered w-full"
+                                />
                             </div>
 
                         </div>
