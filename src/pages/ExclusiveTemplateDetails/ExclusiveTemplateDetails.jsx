@@ -6,8 +6,6 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import LazyLoad from 'react-lazyload';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Free from "../Home/Free/Free";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
@@ -99,13 +97,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         setZoomLevel(1); // Reset zoom level on close
     };
 
-    const handleRevisionChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedRevisions.includes(selectedValue)) {
-            setSelectedRevisions([...selectedRevisions, selectedValue]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
+    
 
     const handlePackageChange = (selectedPackage) => {
         setSelectedPackage(selectedPackage);
@@ -124,23 +116,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         // Set the initial price to the price from MongoDB when the component loads
         setPrice(initialPrice);
     }, [initialPrice]);
-
-
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
-        }
-        e.target.value = "";
-    };
-
-    const handleTimeChange = (e) => {
-        const selectedDay = e.target.value;
-        if (selectedDay && !selectedTimes.includes(selectedDay)) {
-            setSelectedTimes([...selectedTimes, selectedDay]);
-        }
-        e.target.value = ""; 
-    };
 
     const handleNextImage = () => {
         const nextIndex = (selectedIndex + 1) % picture.length;
@@ -169,14 +144,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         } else {
             zoomOut();
         }
-    };
-
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
-
-    const handleRemoveTime = (time) => {
-        setSelectedTimes(selectedTimes.filter(f => f !== time));
     };
 
 
@@ -377,77 +344,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         </div>
                                     )}
 
-                                    <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0 font-raleway">
-                                        <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-
-                                            <select
-                                                className="border w-32 rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setSelectedRevisions([...selectedRevisions, newValue]);
-                                                }}
-                                                value={selectedRevisions[selectedRevisions.length - 1] || ''}
-                                            >
-                                                <option value="">Revisions</option>
-                                                {revisions.map((revision, index) => (
-                                                    <option key={index} value={revision} className={`option-${_id}`}>
-                                                        {revision}
-                                                    </option>
-                                                ))}
-                                            </select>
-
-
-                                        </div>
-                                        <div className="flex items-center">
-
-                                            <select
-                                                className="border w-44 rounded-md lg:px-3 py-2 lg:-ml-6 mr-10 -ml-3 lg:mr-0"
-                                                onChange={handleFileChange}
-                                            >
-                                                <option value="">Files</option>
-                                                {files.map((file, index) => (
-                                                    <option
-                                                        key={index}
-                                                        value={file}
-                                                        className={`option-${index} w-36`} 
-                                                    >
-                                                        {file}
-                                                    </option>
-                                                ))}
-                                            </select>
-
-                                        </div>
-                                        <div className="flex items-center">
-
-                                            <select
-                                                className="border rounded-md lg:px-3 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:ml-4"
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setSelectedTimes([...selectedTimes, newValue]);
-                                                }}
-                                                value={selectedTimes[selectedTimes.length - 1] || ''}
-                                            >
-                                                <option value="">Delivery Time</option>
-                                                {times.map((time, index) => (
-                                                    <option key={index} value={time} className={`option-${_id}`}>
-                                                        {time}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="mt-4 flex flex-wrap flex-col lg:ml-32 ml-24 w-52">
-                                        {selectedFiles.map((file, index) => (
-                                            <div key={index} className="flex  items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                                                <span className="">{file}</span>
-                                                <button onClick={() => handleRemoveFile(file)}>
-                                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
-                                                </button>
-                                            </div>
-
-                                        ))}
-
-                                    </div>
+                                   
 
                                 </div>
                             </div>

@@ -13,7 +13,6 @@ const AddExclusiveTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
-    const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [selectedTimes, setSelectedTimes] = useState([]);
 
@@ -50,10 +49,7 @@ const AddExclusiveTemplates = () => {
             product: productArray,
             documents: documentsArray,
             picture: pictureUrls,
-            revisions: selectedRevisions,
-            files: selectedFiles,
             packages: packagesArray,
-            times: selectedTimes,
             basics: basicsArray,
             standards: standardsArray,
             premiums: premiumsArray,
@@ -70,7 +66,6 @@ const AddExclusiveTemplates = () => {
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
                 setPictureUrls([]); // Clear the picture URLs
-                setSelectedRevisions([]);
                 setSelectedFiles([]);
                 setSelectedTimes([]);
                 Swal.fire({
@@ -101,24 +96,12 @@ const AddExclusiveTemplates = () => {
         e.target.value = ""; // Reset the select input
     };
 
-    const handleRevisionChange = (e) => {
-        const selectedRate = e.target.value;
-        if (selectedRate && !selectedRevisions.includes(selectedRate)) {
-            setSelectedRevisions([...selectedRevisions, selectedRate]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
-
     const handleTimeChange = (e) => {
         const selectedDay = e.target.value;
         if (selectedDay && !selectedTimes.includes(selectedDay)) {
             setSelectedTimes([...selectedTimes, selectedDay]);
         }
         e.target.value = ""; // Reset the select input
-    };
-
-    const handleRemoveRevision = (revision) => {
-        setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
     };
 
     const handleRemoveFile = (file) => {
@@ -209,34 +192,7 @@ const AddExclusiveTemplates = () => {
                                 ))}
                             </div>
 
-                            {/* Files Included */}
-                            <div className="flex pb-36 gap-6">
-                                <div className="form-control w-full mt-10 px-2">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg">Files attached*</span>
-                                    </label>
-                                    <select className="select select-bordered w-full" onChange={handleFileChange}>
-                                        <option value="">Select files</option>
-                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
-                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
-                                        <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
-                                        <option value="Canva">Canva</option>
-                                        <option value="Figma">Figma</option>
-                                        <option value="Adobe InDesign">Adobe InDesign</option>
-                                        <option value="Microsoft Word">Microsoft Word</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="-mt-28 flex pb-36 flex-wrap ml-2">
-                                {selectedFiles.map((file, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{file}</span>
-                                        <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
+                           
 
                             {/* Packages Included */}
                             <div className="form-control w-full my-6 h-auto px-6">
@@ -371,64 +327,6 @@ const AddExclusiveTemplates = () => {
                                         {...register('price', { required: true })}
                                         className="input input-bordered w-full"
                                     />
-                                </div>
-
-                                {/* Revisions */}
-
-                                <div className="flex gap-6  pb-28 pt-16 ">
-                                    <div className="form-control w-full my-10 h-auto">
-                                        <label className="label">
-                                            <span className="label-text font-medium text-lg">Revisions*</span>
-                                        </label>
-                                        <select className="select select-bordered w-full" onChange={handleRevisionChange}>
-                                            <option value="">Select Revisions</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="-mt-24 pb-10 flex flex-wrap">
-                                    {selectedRevisions.map((revision, index) => (
-                                        <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2">
-                                            <span>{revision}</span>
-                                            <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Delivery Time */}
-
-                                <div className="flex gap-6  pb-24 pt-16 ">
-                                    <div className="form-control w-full my-10 h-auto">
-                                        <label className="label">
-                                            <span className="label-text font-medium text-lg">Delivery Time*</span>
-                                        </label>
-                                        <select className="select select-bordered w-full" onChange={handleTimeChange}>
-                                            <option value="">Select Delivery Time</option>
-                                            <option value="3 Days">3 Days</option>
-                                            <option value="6 Days">6 Days</option>
-                                            <option value="10 Days">10 Days</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="-mt-24 pb-20 flex flex-wrap">
-                                    {selectedTimes.map((time, index) => (
-                                        <div key={index} className="flex items-center border rounded-md px-4  mr-2 mb-2">
-                                            <span>{time}</span>
-                                            <button onClick={() => handleRemoveTime(time)} className="ml-2">
-                                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                            </button>
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
                         </div>
