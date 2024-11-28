@@ -3,8 +3,6 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const AddExclusiveTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -13,8 +11,7 @@ const AddExclusiveTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
-    const [selectedFiles, setSelectedFiles] = useState([]);
-    const [selectedTimes, setSelectedTimes] = useState([]);
+    
 
 
     const addPictureUrl = () => {
@@ -66,8 +63,6 @@ const AddExclusiveTemplates = () => {
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
                 setPictureUrls([]); // Clear the picture URLs
-                setSelectedFiles([]);
-                setSelectedTimes([]);
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -86,30 +81,6 @@ const AddExclusiveTemplates = () => {
                 timer: 1500
             });
         }
-    };
-
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
-
-    const handleTimeChange = (e) => {
-        const selectedDay = e.target.value;
-        if (selectedDay && !selectedTimes.includes(selectedDay)) {
-            setSelectedTimes([...selectedTimes, selectedDay]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
-
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
-
-    const handleRemoveTime = (time) => {
-        setSelectedTimes(selectedTimes.filter(f => f !== time));
     };
 
     return (
@@ -318,7 +289,7 @@ const AddExclusiveTemplates = () => {
 
                                 <div className="form-control w-full mt-60 h-auto">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg">Price*</span>
+                                        <span className="label-text font-medium text-lg">Price (Basic)*</span>
                                     </label>
                                     <input
                                         type="number"
