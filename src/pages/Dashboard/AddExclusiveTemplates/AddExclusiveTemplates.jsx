@@ -11,7 +11,7 @@ const AddExclusiveTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
-    
+
 
 
     const addPictureUrl = () => {
@@ -28,12 +28,8 @@ const AddExclusiveTemplates = () => {
     const onSubmit = async (data) => {
         // Convert fields to arrays
         const specificationsArray = data.specifications.split('\n').map(item => item.trim()).filter(item => item);
-        const packagesArray = data.packages.split('\n').map(item => item.trim()).filter(item => item);
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
-        const basicsArray = data.basics.split('\n').map(item => item.trim()).filter(item => item);
-        const standardsArray = data.standards.split('\n').map(item => item.trim()).filter(item => item);
-        const premiumsArray = data.premiums.split('\n').map(item => item.trim()).filter(item => item);
         const recordsArray = data.records.split('\n').map(item => item.trim()).filter(item => item);
 
         const templateItem = {
@@ -46,13 +42,6 @@ const AddExclusiveTemplates = () => {
             product: productArray,
             documents: documentsArray,
             picture: pictureUrls,
-            packages: packagesArray,
-            basics: basicsArray,
-            standards: standardsArray,
-            premiums: premiumsArray,
-            amount: parseFloat(data.amount),
-            money: parseFloat(data.money),
-            charge: parseFloat(data.charge),
             records: recordsArray
         };
 
@@ -141,7 +130,7 @@ const AddExclusiveTemplates = () => {
                                 <button
                                     type="button"
                                     onClick={addPictureUrl}
-                                    className="btn btn-sm mt-2"
+                                    className="btn btn-sm mt-4"
                                 >
                                     Add Image URL
                                 </button>
@@ -163,61 +152,28 @@ const AddExclusiveTemplates = () => {
                                 ))}
                             </div>
 
-                           
 
-                            {/* Packages Included */}
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Packages (one per line)</span>
-                                </label>
-                                <textarea
-                                    {...register('packages')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Packages"
-                                ></textarea>
-                            </div>
 
-                            {/* Basic Packages description */}
+                            
 
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Basic Packages Description (one per line)</span>
-                                </label>
-                                <textarea
-                                    {...register('basics')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Basics"
-                                ></textarea>
-                            </div>
-
-                            {/* Standard Packages description */}
-
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Standard Packages Description (one per line)</span>
-                                </label>
-                                <textarea
-                                    {...register('standards')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Standards"
-                                ></textarea>
-                            </div>
-
-                            {/* Premium Packages description */}
-
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Premium Packages Description (one per line)</span>
-                                </label>
-                                <textarea
-                                    {...register('premiums')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Premiums"
-                                ></textarea>
-                            </div>
-
+                          
 
                            
+
+
+                            {/* Records Included */}
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('records')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Records"
+                                ></textarea>
+                            </div>
+
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -257,50 +213,9 @@ const AddExclusiveTemplates = () => {
                                     />
                                 </div>
 
-                                 {/* Amount */}
+                              
+                            
 
-                            <div className="form-control w-full my-6 h-auto">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01" // Allow decimal values
-                                    placeholder="Amount"
-                                    {...register('amount', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
-                            {/* Money */}
-
-                            <div className="form-control w-full my-6 h-auto">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01" // Allow decimal values
-                                    placeholder="Money"
-                                    {...register('money', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
-                            {/* Charge */}
-
-                            <div className="form-control w-full my-6 h-auto">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01" // Allow decimal values
-                                    placeholder="Charge"
-                                    {...register('charge', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
                             </div>
                         </div>
 
@@ -358,18 +273,7 @@ const AddExclusiveTemplates = () => {
                                 ></textarea>
                             </div>
 
-                            {/* Records Included */}
 
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
-                                </label>
-                                <textarea
-                                    {...register('records')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Records"
-                                ></textarea>
-                            </div>
                         </div>
                     </div>
 

@@ -260,104 +260,30 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         } rounded-[8px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
-                                    <div className="flex justify-between pb-3">
+                                    <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-bold">
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
                                             <h2 className="font-raleway">Template</h2>
                                         </div>
-                                        <div className="font-raleway font-medium">${amount}</div>
-                                    </div>
-                                    <div className="pt-2 border-t font-raleway font-medium">
-                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[68%] 3xl:ml-48 2xl:w-[37%] 2xl:ml-20" >
-                                <div
-                                    className={`border ${selectedTemplate === "customizeTemplate" ? "border-[#4864EC]" : "border-gray-400"
-                                        } rounded-[8px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
-                                    onClick={() => handleTemplateChange("customizeTemplate")}
-                                >
-                                    <div className="flex justify-between pb-3">
-                                        <div className="flex gap-3 font-bold">
-                                            <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
-                                            <h2 className="font-raleway">Template + Customization
-                                                <span className="font-raleway text-[14px] text-[#4864EC] ml-3">( Basic )</span>
-                                            </h2>
-                                        </div>
                                         <div className="font-raleway font-medium">${price}</div>
                                     </div>
-                                    <div className="pt-2 border-t font-raleway font-medium">
-
+                                    <div className="pt-6 border-t font-raleway font-medium pb-4">
+                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs.
                                     </div>
-                                    <select
-                                        className="border w-full rounded-md lg:px-4 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                        onChange={(e) => handlePackageChange(e.target.value)} 
-                                        value={selectedPackage}
-                                    >
-                                        <option value="">Select Package</option>
-                                        {packages.map((pack, index) => (
-                                            <option key={index} value={pack}>
-                                                {pack}
-                                            </option>
-                                        ))}
-                                    </select>
-
-
-
-                                    {/* Conditionally Render Package Cards */}
-                                    {selectedPackage === 'Basic package' && (
-                                        <div className="card basics-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
-                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Basic</h3>
-                                            <ul className="list-disc ml-5 mt-2 text-gray-700">
-                                                {basics.map((item, index) => (
-                                                    <li key={index} className="mb-1">{item}</li>
-                                                ))}
-                                                <li className="mb-1">Price:${amount}</li>
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    {selectedPackage === 'Standard package' && (
-                                        <div className="card standard-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
-                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Standard</h3>
-                                            <ul className="list-disc ml-5 mt-2 text-gray-700">
-                                                {standards.map((item, index) => (
-                                                    <li key={index} className="mb-1">{item}</li>
-                                                ))}
-                                                <li className="mb-1">Price:${money}</li>
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    {selectedPackage === 'Premium package' && (
-                                        <div className="card premium-card border border-gray-300 rounded-lg shadow-lg p-4 mt-4 bg-white">
-                                            <h3 className="text-xl text-[#2F1C6A] font-medium">Premium</h3>
-                                            <ul className="list-disc ml-5 mt-2 text-gray-700">
-                                                {premiums.map((item, index) => (
-                                                    <li key={index} className="mb-1">{item}</li>
-                                                ))}
-                                                <li className="mb-1">Price:${charge}</li>
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                   
-
                                 </div>
+
                             </div>
+
 
                             {/* Add to Cart button */}
 
-                            <div className="ml-[12.5rem] mt-5">
+                            <div className="ml-[12.5rem] mt-16">
                                 <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
                                     Add to Cart
                                 </button>
 
                                 <a href="/exclusive">
-                                    <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-4">
+                                    <button className="3xl:w-[34rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-7">
                                         Check more items
                                     </button>
                                 </a>
