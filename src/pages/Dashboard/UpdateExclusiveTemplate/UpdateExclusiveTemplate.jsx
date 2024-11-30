@@ -13,16 +13,9 @@ const UpdateExclusiveTemplate = () => {
         specifications,
         product,
         documents,
-        packages,
         picture,
         price,
         image,
-        basics,
-        standards,
-        premiums,
-        amount,
-        money,
-        charge,
         records,
         _id
     } = useLoaderData();
@@ -35,16 +28,12 @@ const UpdateExclusiveTemplate = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
-    
+
     const onSubmit = async (data) => {
         const specificationsArray = data.specifications.split('\n').filter(spec => spec.trim() !== '');
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
         const recordsArray = data.records.split('\n').map(record => record.trim()).filter(record => record);
-        const packagesArray = data.packages.split('\n').filter(pack => pack.trim() !== '');
-        const basicsArray = data.basics.split('\n').filter(basic => basic.trim() !== '');
-        const standardsArray = data.standards.split('\n').filter(standard => standard.trim() !== '');
-        const premiumsArray = data.premiums.split('\n').filter(premium => premium.trim() !== '');
 
         const templateItem = {
             type: data.type,
@@ -56,13 +45,6 @@ const UpdateExclusiveTemplate = () => {
             product: productArray,
             documents: documentsArray,
             picture: additionalImages,
-            packages: packagesArray,
-            basics: basicsArray,
-            standards: standardsArray,
-            premiums: premiumsArray,
-            amount: parseFloat(data.amount),
-            money: parseFloat(data.money),
-            charge: parseFloat(data.charge),
             records: recordsArray,
 
         };
@@ -188,61 +170,23 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
 
-                             {/* Packages Included */}
-                             <div className="form-control w-full my-6 h-auto px-6">
+                            {/* Records Included */}
+
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Packages (one per line)</span>
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
                                 </label>
                                 <textarea
-                                    defaultValue={packages.join('\n')}
-                                    {...register('packages')}
+                                    defaultValue={records.join('\n')}
+                                    {...register('records')}
                                     className="textarea textarea-bordered h-24"
-                                    placeholder="Packages"
+                                    placeholder="Records Included"
                                 ></textarea>
                             </div>
 
-                           {/* Basic Packages description */}
-
-                             <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Basic Packages Description (one per line)</span>
-                                </label>
-                                <textarea
-                                    defaultValue={basics.join('\n')}
-                                    {...register('basics')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Basics"
-                                ></textarea>
-                            </div>
-
-                              {/* Standard Packages description */}
 
 
-                              <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Standard Packages Description (one per line)</span>
-                                </label>
-                                <textarea
-                                    defaultValue={standards.join('\n')}
-                                    {...register('standards')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Standards"
-                                ></textarea>
-                            </div>
 
-                               {/* Premium Packages description */}
-
-                               <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Premium Packages Description (one per line)</span>
-                                </label>
-                                <textarea
-                                    defaultValue={premiums.join('\n')}
-                                    {...register('premiums')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Premiums"
-                                ></textarea>
-                            </div>
                         </div>
 
                         {/* Category and Price */}
@@ -274,7 +218,7 @@ const UpdateExclusiveTemplate = () => {
 
                             <div className="form-control w-full my-72 h-auto px-3">
                                 <label className="label">
-                                    <span className="label-text font-medium text-lg">Price (Basic)*</span>
+                                    <span className="label-text font-medium text-lg">Price*</span>
                                 </label>
                                 <input
                                     type="number"
@@ -286,53 +230,11 @@ const UpdateExclusiveTemplate = () => {
                                 />
                             </div>
 
-                             {/* Amount */}
 
-                             <div className="form-control w-full my-6 h-auto px-3">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Amount (Basic Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={amount}
-                                    placeholder="amount"
-                                    {...register('amount', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
 
-                                {/* Money */}
 
-                             <div className="form-control w-full my-6 h-auto px-3">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Money (Standard Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={money}
-                                    placeholder="Money"
-                                    {...register('money', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
 
-                             {/* Charge */}
 
-                              <div className="form-control w-full my-6 h-auto px-3">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Charge (Premium Package)*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={charge}
-                                    placeholder="Charge"
-                                    {...register('charge', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
 
                         </div>
 
@@ -396,26 +298,14 @@ const UpdateExclusiveTemplate = () => {
                                 ></textarea>
                             </div>
 
-                            
-                            {/* Records Included */}
 
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
-                                </label>
-                                <textarea
-                                    defaultValue={records.join('\n')}
-                                    {...register('records')}
-                                    className="textarea textarea-bordered h-24"
-                                    placeholder="Records Included"
-                                ></textarea>
-                            </div>
+
 
                         </div>
                     </div>
 
                     {/* Submit Button */}
-                    
+
                     <div className="">
                         <button
                             type="submit"

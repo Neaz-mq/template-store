@@ -202,7 +202,7 @@ const AddExclusiveTemplates = () => {
 
                                 <div className="form-control w-full mt-60 h-auto">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg">Price (Basic)*</span>
+                                        <span className="label-text font-medium text-lg">Price*</span>
                                     </label>
                                     <input
                                         type="number"
