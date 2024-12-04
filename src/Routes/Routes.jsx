@@ -80,6 +80,8 @@ export const router = createBrowserRouter([
         element: <Frees></Frees>
       },
 
+      
+
       {
         path: '/exclusive/:id',
         element: <ExclusiveTemplateDetails></ExclusiveTemplateDetails>,

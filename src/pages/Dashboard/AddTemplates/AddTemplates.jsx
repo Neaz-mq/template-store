@@ -13,8 +13,7 @@ const AddTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
-    const [selectedRevisions, setSelectedRevisions] = useState([]);
-    const [selectedFiles, setSelectedFiles] = useState([]);
+    
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -32,6 +31,7 @@ const AddTemplates = () => {
         const specificationsArray = data.specifications.split('\n').map(item => item.trim()).filter(item => item);
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
+        const recordsArray = data.records.split('\n').map(item => item.trim()).filter(item => item);
 
         // Prepare the template item
         const templateItem = {
@@ -44,8 +44,7 @@ const AddTemplates = () => {
             product: productArray,
             documents: documentsArray,
             picture: pictureUrls,
-            revisions: selectedRevisions,
-            files: selectedFiles,
+            records: recordsArray
         };
 
         try {
@@ -55,8 +54,6 @@ const AddTemplates = () => {
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
                 setPictureUrls([]); // Clear the picture URLs
-                setSelectedRevisions([]);
-                setSelectedFiles([]);
                 Swal.fire({
                     position: "middle",
                     icon: "success",
@@ -77,29 +74,7 @@ const AddTemplates = () => {
         }
     };
 
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
-        }
-        e.target.value = ""; 
-    };
-
-    const handleRevisionChange = (e) => {
-        const selectedRate = e.target.value;
-        if (selectedRate && !selectedRevisions.includes(selectedRate)) {
-            setSelectedRevisions([...selectedRevisions, selectedRate]);
-        }
-        e.target.value = ""; 
-    };
-
-    const handleRemoveRevision = (revision) => {
-        setSelectedRevisions(selectedRevisions.filter(f => f !== revision));
-    };
-
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
+   
 
     return (
         <div>
@@ -159,7 +134,7 @@ const AddTemplates = () => {
                                 <button
                                     type="button"
                                     onClick={addPictureUrl}
-                                    className="btn btn-sm mt-2"
+                                    className="btn btn-sm mt-4"
                                 >
                                     Add Image URL
                                 </button>
@@ -182,34 +157,17 @@ const AddTemplates = () => {
                                 ))}
                             </div>
 
-                            {/* Files Included */}
+                           {/* Records Included */}
 
-                            <div className="flex pb-36 gap-6">
-                                <div className="form-control w-full mt-10 px-2">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg">Files attached*</span>
-                                    </label>
-                                    <select className="select select-bordered w-full" onChange={handleFileChange}>
-                                        <option value="">Select files</option>
-                                        <option value="Adobe Illustrator">Adobe Illustrator</option>
-                                        <option value="Adobe Photoshop">Adobe Photoshop</option>
-                                        <option value="Microsoft PowerPoint">Microsoft PowerPoint</option>
-                                        <option value="Canva">Canva</option>
-                                        <option value="Figma">Figma</option>
-                                        <option value="Adobe InDesign">Adobe InDesign</option>
-                                        <option value="Microsoft Word">Microsoft Word</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="-mt-28 flex pb-36 flex-wrap ml-2">
-                                {selectedFiles.map((file, index) => (
-                                    <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                        <span>{file}</span>
-                                        <button onClick={() => handleRemoveFile(file)} className="ml-2">
-                                            <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                        </button>
-                                    </div>
-                                ))}
+                           <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
+                                </label>
+                                <textarea
+                                    {...register('records')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="Records"
+                                ></textarea>
                             </div>
                         </div>
 
@@ -249,35 +207,6 @@ const AddTemplates = () => {
                                     />
                                 </div>
 
-                                {/* Revisions */}
-
-                                <div className="flex gap-6 pb-32 pt-16 ">
-                                    <div className="form-control w-full my-10 h-auto">
-                                        <label className="label">
-                                            <span className="label-text font-medium text-lg">Revisions*</span>
-                                        </label>
-                                        <select className="select select-bordered w-full" onChange={handleRevisionChange}>
-                                            <option value="">Select Revisions</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div className="-mt-24 pb-20 flex flex-wrap">
-                                    {selectedRevisions.map((revision, index) => (
-                                        <div key={index} className="flex items-center border rounded-md px-4 mr-2 mb-2">
-                                            <span>{revision}</span>
-                                            <button onClick={() => handleRemoveRevision(revision)} className="ml-2">
-                                                <FontAwesomeIcon icon={faTimes} className="text-gray-500" />
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
                             </div>
                         </div>
 

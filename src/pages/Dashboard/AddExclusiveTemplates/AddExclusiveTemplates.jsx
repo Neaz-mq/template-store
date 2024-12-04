@@ -152,15 +152,6 @@ const AddExclusiveTemplates = () => {
                                 ))}
                             </div>
 
-
-
-                            
-
-                          
-
-                           
-
-
                             {/* Records Included */}
 
                             <div className="form-control w-full my-6 h-auto px-6">

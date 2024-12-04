@@ -110,7 +110,7 @@ const FreeTemplateDetails = () => {
         if (selectedValue && !selectedRevisions.includes(selectedValue)) {
             setSelectedRevisions([...selectedRevisions, selectedValue]);
         }
-        e.target.value = ""; 
+        e.target.value = "";
     };
 
     const handleFileChange = (e) => {
@@ -118,7 +118,7 @@ const FreeTemplateDetails = () => {
         if (selectedValue && !selectedFiles.includes(selectedValue)) {
             setSelectedFiles([...selectedFiles, selectedValue]);
         }
-        e.target.value = ""; 
+        e.target.value = "";
     };
 
     const handleDocChange = (event) => {
@@ -281,18 +281,18 @@ const FreeTemplateDetails = () => {
                                         ))}
                                     </select>
 
-                                  <div className="mt-6">
-                                     
-                                  {selectedDoc && (
-                                        <a
-                                            href={selectedDoc} // Link to the document
-                                            download // This attribute tells the browser to download the file instead of navigating to it
-                                            className="bg-[#7666E3] text-white font-semibold rounded-lg p-2 hover:bg-[#4c16b1] font-raleway lg:ml-20"
-                                        >
-                                            Download Selected Document
-                                        </a>
-                                    )}
-                                  </div>
+                                    <div className="mt-6">
+
+                                        {selectedDoc && (
+                                            <a
+                                                href={selectedDoc} // Link to the document
+                                                download // This attribute tells the browser to download the file instead of navigating to it
+                                                className="bg-[#7666E3] text-white font-semibold rounded-lg p-2 hover:bg-[#4c16b1] font-raleway lg:ml-20"
+                                            >
+                                                Download Selected Document
+                                            </a>
+                                        )}
+                                    </div>
 
                                 </div>
 
@@ -451,7 +451,7 @@ const FreeTemplateDetails = () => {
                             />
 
                             {/* Fixed Size Buttons */}
-                            
+
                             <button
                                 className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={closeModal}

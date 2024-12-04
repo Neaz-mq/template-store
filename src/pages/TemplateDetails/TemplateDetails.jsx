@@ -74,7 +74,7 @@ const TemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents } = template;
+    const { _id, price, type, image, description, picture, specifications, product, records, revisions, documents } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -92,22 +92,6 @@ const TemplateDetails = () => {
     const closeModal = () => {
         setIsModalOpen(false);
         setZoomLevel(1); // Reset zoom level on close
-    };
-
-    const handleRevisionChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedRevisions.includes(selectedValue)) {
-            setSelectedRevisions([...selectedRevisions, selectedValue]);
-        }
-        e.target.value = ""; // Reset the select input
-    };
-
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
-        }
-        e.target.value = ""; // Reset the select input
     };
 
 
@@ -158,7 +142,7 @@ const TemplateDetails = () => {
                 description,
                 specifications,
                 product,
-                files,
+                records,
                 revisions,
                 documents
             }
@@ -172,9 +156,7 @@ const TemplateDetails = () => {
                             title: `${type} added to your cart`,
                             showConfirmButton: false,
                             timer: 1500
-                        });
-
-                        
+                        });                   
                         refetch();
                     }
                 })
@@ -269,7 +251,7 @@ const TemplateDetails = () => {
                                     Add to Cart
                                 </button>
 
-                                <a href="/exclusive">
+                                <a href="/template">
                                     <button className="3xl:w-[32.7rem] 2xl:w-[30.2rem] ml-2 desktop:w-[32rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-7">
                                         Check more items
                                     </button>
