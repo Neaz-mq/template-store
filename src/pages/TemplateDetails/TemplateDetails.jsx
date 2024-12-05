@@ -11,7 +11,6 @@ import PresentationTemplate from "../Home/PresentationTemplate/PresentationTempl
 
 const TemplateDetails = () => {
     const template = useLoaderData();
-    const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
     const [templates, setTemplates] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -124,9 +123,7 @@ const TemplateDetails = () => {
         }
     };
 
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
+   
 
 
     const handleAddToCart = () => {

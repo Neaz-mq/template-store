@@ -14,7 +14,6 @@ import PresentationTemplate from "../Home/PresentationTemplate/PresentationTempl
 
 const FreeTemplateDetails = () => {
     const template = useLoaderData();
-    const [selectedRevisions, setSelectedRevisions] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
     const [templates, setTemplates] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -29,8 +28,7 @@ const FreeTemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
-    const [selectedFiles, setSelectedFiles] = useState([]);
-    const [selectedDoc, setSelectedDoc] = useState("");
+    
 
 
     useEffect(() => {
@@ -79,7 +77,7 @@ const FreeTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, files, revisions, documents, docs } = template;
+    const { _id, price, type, image, description, picture, specifications, product,  documents, records } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -104,28 +102,7 @@ const FreeTemplateDetails = () => {
         setSelectedImage(picture[nextIndex]);
         setSelectedIndex(nextIndex);
     };
-
-    const handleRevisionChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedRevisions.includes(selectedValue)) {
-            setSelectedRevisions([...selectedRevisions, selectedValue]);
-        }
-        e.target.value = "";
-    };
-
-    const handleFileChange = (e) => {
-        const selectedValue = e.target.value;
-        if (selectedValue && !selectedFiles.includes(selectedValue)) {
-            setSelectedFiles([...selectedFiles, selectedValue]);
-        }
-        e.target.value = "";
-    };
-
-    const handleDocChange = (event) => {
-        const selected = event.target.value;
-        setSelectedDoc(selected); // Set the selected document for download
-    };
-
+    
 
     const handlePreviousImage = () => {
         const prevIndex = (selectedIndex - 1 + picture.length) % picture.length;
@@ -150,9 +127,6 @@ const FreeTemplateDetails = () => {
         }
     };
 
-    const handleRemoveFile = (file) => {
-        setSelectedFiles(selectedFiles.filter(f => f !== file));
-    };
 
 
     const handleAddToCart = () => {
@@ -169,9 +143,8 @@ const FreeTemplateDetails = () => {
                 description,
                 specifications,
                 product,
-                files,
-                revisions,
-                documents
+                documents,
+                records
 
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
@@ -224,16 +197,16 @@ const FreeTemplateDetails = () => {
 
                 <div className="lg:ml-20 mb-16">
                     <div className="md:mt-14 flex lg:flex-row flex-col gap-6 ml-2">
-                        <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%]">
+                        <div className="w-[97%] 3xl:w-[68%] 2xl:w-[44%]">
                             <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
                                 Free <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[7.9rem] 3xl:-mr-20 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
+                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-40 3xl:-mr-0 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
                                             src={selectedImage || image}
-                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] rounded-[20px] cursor-pointer"
+                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] cursor-pointer"
                                             alt="Template"
                                             onClick={handleImageClick}
                                         />
@@ -245,7 +218,7 @@ const FreeTemplateDetails = () => {
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
                                             src={src}
-                                            className={`w-[75px] h-[75px] object-contain rounded-lg p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#7666E3]' : 'bg-slate-50 hover:bg-[#7666E3]'}`}
+                                            className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
                                             alt="Template"
                                             onClick={() => handleThumbnailClick(src, index)}
                                         />
@@ -255,111 +228,42 @@ const FreeTemplateDetails = () => {
                         </div>
 
                         <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[76%] 3xl:ml-28 2xl:w-[37%] 2xl:ml-20" >
                                 <div
-                                    className={`border ${selectedTemplate === "templateCustom" ? "border-primary" : "border-gray-400"
-                                        } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                    className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                    } rounded-[8px] p-8 lg:w-[90%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-32 lg:mr-36 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
-                                    <div className="flex justify-between pb-3">
+                                    <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-bold">
                                             <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
                                             <h2 className="font-raleway">Template</h2>
                                         </div>
                                         <div className="font-raleway font-medium">${price}</div>
                                     </div>
-                                    <div className="pt-2 border-t font-raleway font-medium">
+                                    <div className="pt-6 border-t font-raleway font-medium pb-4">
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
-                                    </div>
-
-                                    <select className="border rounded-md lg:px-3 py-2 lg:ml-20 mr-10 -ml-3 lg:mr-0 mt-3" onChange={handleDocChange}>
-                                        <option value="">Choose file to Download</option>
-                                        {docs.map((doc, index) => (
-                                            <option key={index} value={doc}>
-                                                {doc}
-                                            </option>
-                                        ))}
-                                    </select>
-
-                                    <div className="mt-6">
-
-                                        {selectedDoc && (
-                                            <a
-                                                href={selectedDoc} // Link to the document
-                                                download // This attribute tells the browser to download the file instead of navigating to it
-                                                className="bg-[#7666E3] text-white font-semibold rounded-lg p-2 hover:bg-[#4c16b1] font-raleway lg:ml-20"
-                                            >
-                                                Download Selected Document
-                                            </a>
-                                        )}
-                                    </div>
-
+                                    </div>                         
                                 </div>
 
-                            </div>
+                                   {/* Add to Cart button */}
 
-                            <div className="flex flex-col items-center 3xl:mt-8 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[80%] 3xl:ml-24 2xl:w-[37%] 2xl:ml-20" >
-                                <div
-                                    className={`border ${selectedTemplate === "customizeTemplate" ? "border-primary" : "border-gray-400"
-                                        } rounded-[20px] p-8 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
-                                    onClick={() => handleTemplateChange("customizeTemplate")}
-                                >
-                                    <div className="flex justify-between pb-3">
-                                        <div className="flex gap-3 font-bold">
-                                            <input className="radio radio-primary" type="radio" checked={selectedTemplate === "customizeTemplate"} readOnly />
-                                            <h2 className="font-raleway">Template + Customization</h2>
-                                        </div>
-                                        <div className="font-raleway font-medium">$00</div>
-                                    </div>
-                                    <div className="pt-2 border-t font-raleway font-medium">
+                            <div className="mt-16">
+                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] ml-2 3xl:w-[32.7rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] 3xl:-ml-24 3xl:mr-24 tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
+                                    Add to Cart
+                                </button>
 
-                                    </div>
-
-                                    <div className="flex flex-col lg:flex-row items-center mt-4 -ml-6 lg:ml-0">
-                                        <div className="flex items-center lg:mr-8 ml-6 lg:ml-0 mb-8 lg:mb-0">
-                                            <div className="font-raleway  font-medium lg:mr-2 mr-8">Revisions:</div>
-                                            <select
-                                                className="border rounded-md lg:px-6 px-3 py-2 mr-6 -ml-5 lg:mr-0 lg:-ml-0"
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setSelectedRevisions([...selectedRevisions, newValue]);
-                                                }}
-                                                value={selectedRevisions[selectedRevisions.length - 1] || ''}
-                                            >
-                                                {revisions.map((revision, index) => (
-                                                    <option key={index} value={revision} className={`option-${_id}`}>
-                                                        {revision}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                        <div className="flex items-center">
-                                            <div className="font-raleway font-medium lg:ml-0 ml-10 mr-6">Files:</div>
-                                            <select className="border rounded-md lg:px-3 py-2 lg:-ml-3 mr-10 -ml-3 lg:mr-0" onChange={handleFileChange}>
-                                                <option value="">All Files</option>
-                                                {files.map((file, index) => (
-                                                    <option key={index} value={file} className={`option-${_id}`} >{file}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="mt-4 flex flex-wrap flex-col lg:ml-52 ml-24">
-                                        {selectedFiles.map((file, index) => (
-                                            <div key={index} className="flex items-center border rounded-md px-4 py-2 mr-2 mb-2">
-                                                <span className="">{file}</span>
-                                                <button onClick={() => handleRemoveFile(file)}>
-                                                    <FontAwesomeIcon icon={faTimes} className="text-gray-500 ml-4" />
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Add to Cart button */}
-                                    <button onClick={handleAddToCart} className="bg-[#7666E3] text-white font-semibold rounded-lg mr-24 lg:ml-32 lg:w-[31rem] mt-4 hover:bg-[#4c16b1] btn w-[15rem] ml-52 font-raleway md:text-lg 3xl:mr-[4rem] 2xl:mr-[4.8rem] 3xl:w-[10rem] 2xl:w-[25rem] desktop:w-[18rem]">
-                                        Add to Cart
+                                <a href="/free">
+                                    <button className="3xl:w-[32.7rem] 2xl:w-[30.2rem] ml-2 3xl:-ml-24 3xl:mr-16 desktop:w-[32rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-7">
+                                        Check more items
                                     </button>
-                                </div>
+                                </a>
                             </div>
+
+
+                            </div>
+
+                            
                         </div>
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
