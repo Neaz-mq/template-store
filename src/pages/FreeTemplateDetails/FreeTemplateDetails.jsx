@@ -249,9 +249,11 @@ const FreeTemplateDetails = () => {
                                    {/* Add to Cart button */}
 
                             <div className="mt-16">
-                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] ml-2 3xl:w-[32.7rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] 3xl:-ml-24 3xl:mr-24 tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
-                                    Add to Cart
+                               <a href="/contact">
+                               <button  className="p-3 bg-[#4864EC] ml-2 3xl:w-[32.7rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] 3xl:-ml-24 3xl:mr-24 tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
+                                    Contact Us
                                 </button>
+                               </a>
 
                                 <a href="/free">
                                     <button className="3xl:w-[32.7rem] 2xl:w-[30.2rem] ml-2 3xl:-ml-24 3xl:mr-16 desktop:w-[32rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-7">

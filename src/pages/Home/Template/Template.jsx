@@ -40,7 +40,7 @@ const Template = () => {
                                 <h1 className="3xl:text-4xl 2xl:text-4xl desktop:text-4xl laptop:text-4xl text-2xl font-semibold text-left leading-[2.5rem] text-[#4864EC] font-raleway 3xl:-mt-44 2xl:-mt-44 desktop:-mt-44 laptop:-mt-44 hidden 3xl:block 2xl:block desktop:block laptop:block">
                                     Explore <br /> <span className="italic">our work</span>
                                 </h1>
-                                <h1 className="text-[#4864EC] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden block tablet:text-3xl text-2xl font-raleway font-semibold tablet:mt-16 mt-12 -ml-3 tablet:-ml-0">
+                                <h1 className="text-[#4864EC] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden block tablet:text-3xl text-2xl font-raleway font-semibold tablet:mt-16 mt-12 -ml-3  tablet:-ml-16">
                                     Explore our work
                                 </h1>
                                 <p className="font-raleway text-sm mt-3 text-[#282A37] ml-1 hidden 3xl:block 2xl:block desktop:block laptop:block">
