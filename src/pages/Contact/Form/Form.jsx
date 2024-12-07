@@ -68,7 +68,7 @@ const Form = () => {
                         </p>
                     </div> 
                 </section>
-                <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-roboto 3xl:-mt-[72rem] 2xl:-mt-[65rem] desktop:-mt-[58rem] laptop:-mt-[54rem] tablet:-mt-[40rem] -mt-[45rem] 3xl:mb-96 2xl:mb-64 desktop:mb-52">
+                <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-roboto 3xl:-mt-[72rem] 2xl:-mt-[65rem] desktop:-mt-[58rem] laptop:-mt-[56rem] tablet:-mt-[44rem] -mt-[45rem] 3xl:mb-[25rem] 2xl:mb-64 desktop:mb-64 laptop:mb-64">
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Full Name" type="text" name="from_name" />
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Email" type="email" name="from_email" />
                     <textarea className="col-span-2 h-[150px] bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Message" name="message"></textarea>
