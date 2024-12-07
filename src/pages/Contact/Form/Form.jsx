@@ -59,7 +59,7 @@ const Form = () => {
         <div className='min-h-screen font-raleway'>
             <div className="layout pt-20 pb-48 flex flex-col items-center justify-center bg-white 3xl:-mt-0 2xl:-mt-0 desktop:-mt-4 laptop:-mt-4 -mt-0">
                 <section className="bg-[#ffffff] p-4 rounded-lg w-full 3xl:-mt-24 2xl:-mt-20 desktop:-mt-20 laptop:-mt-20 tablet:-mt-44 -mt-44   text-center 3xl:h-[100rem] 2xl:h-[90rem] desktop:h-[85rem]  laptop:h-[80rem]  h-[60rem] min-h-screen">
-                    <div className='container mx-auto mt-20 tablet:mt-24 3xl:mt-[22rem] 2xl:mt-52 desktop:mt-60 laptop:mt-52'>
+                    <div className='container mx-auto mt-20 tablet:mt-24 3xl:mt-[16rem] 2xl:mt-52 desktop:mt-60 laptop:mt-52'>
                         <h1 className="md:text-5xl text-3xl font-bold text-slate-800 pb-4 md:mt-24 mt-16">
                             How can we help?
                         </h1>
@@ -68,18 +68,18 @@ const Form = () => {
                         </p>
                     </div> 
                 </section>
-                <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-roboto 3xl:-mt-[65rem] 2xl:-mt-[65rem] desktop:-mt-[58rem] laptop:-mt-[54rem] tablet:-mt-[40rem] -mt-[45rem] 3xl:mb-64 2xl:mb-64 desktop:mb-52">
+                <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-roboto 3xl:-mt-[72rem] 2xl:-mt-[65rem] desktop:-mt-[58rem] laptop:-mt-[54rem] tablet:-mt-[40rem] -mt-[45rem] 3xl:mb-96 2xl:mb-64 desktop:mb-52">
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Full Name" type="text" name="from_name" />
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Email" type="email" name="from_email" />
                     <textarea className="col-span-2 h-[150px] bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Message" name="message"></textarea>
-                    <button type="submit" className="col-span-2 font-raleway   font-medium py-4 rounded-lg text-white bg-[#4864EC]">
+                    <button type="submit" className="col-span-2 font-raleway   font-medium py-4 rounded-lg text-white bg-[#4864EC] mt-3">
                         Send Message
                     </button>
 
                     <a
                         href="https://wa.me/+8801738200107"
                         target="_blank"
-                        className="col-span-2 border dark:border-gray-800 flex items-center justify-center hover:bg-[#9A8EE8] hover:text-white dark:hover:bg-[#4864EC] gap-3 font-raleway font-medium py-4 rounded-lg text-black "
+                        className="col-span-2 border dark:border-gray-800 flex items-center justify-center hover:bg-[#9A8EE8] hover:text-white dark:hover:bg-[#4864EC] gap-3 font-raleway font-medium py-4 rounded-lg text-black mt-3 "
                     >
                         <svg
                             stroke="currentColor"
