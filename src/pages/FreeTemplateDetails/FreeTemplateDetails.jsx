@@ -195,13 +195,13 @@ const FreeTemplateDetails = () => {
                     <link rel="canonical" href="https://www.prographr.com/premium" />
                 </Helmet>
 
-                <div className="lg:ml-20 mb-16">
+                <div className="lg:ml-20 mb-16 3xl:-mt-14 2xl:-mt-14 desktop:-mt-14 laptop:-mt-14 tablet:-mt-36">
                     <div className="md:mt-14 flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[68%] 2xl:w-[44%]">
-                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
+                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-[0.5rem] laptop:block -mt-20 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-mt-0">
                                 Free <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-40 3xl:-mr-0 2xl:ml-[9.5rem] desktop:-ml-52 2xl:-mr-20 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7">
+                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[8.4rem] 3xl:-mr-3 2xl:ml-[12rem] desktop:-ml-44 desktop:-mr-24 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 laptop:-ml-60">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
@@ -213,7 +213,7 @@ const FreeTemplateDetails = () => {
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5">
+                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5">
                                 {picture.map((src, index) => (
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
@@ -228,10 +228,10 @@ const FreeTemplateDetails = () => {
                         </div>
 
                         <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-16 desktop:-ml-10 laptop:mt-52 3xl:w-[76%] 3xl:ml-28 2xl:w-[37%] 2xl:ml-20" >
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:-ml-28 laptop:mt-44 3xl:w-[90%] 3xl:-ml-7 2xl:w-[60%] desktop:w-[130%] laptop:w-[150%] laptop:-ml-36 2xl:ml-44" >
                                 <div
                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                    } rounded-[8px] p-8 lg:w-[90%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-32 lg:mr-36 ml-28 cursor-pointer`}
+                                    } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-6 pt-3">
@@ -248,15 +248,15 @@ const FreeTemplateDetails = () => {
 
                                    {/* Add to Cart button */}
 
-                            <div className="mt-16">
+                            <div className="3xl:ml-[1rem] 3xl:mt-16 2xl:-ml-[0.2rem] 2xl:mt-4 desktop:ml-[0.8rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-[5rem]">
                                <a href="/contact">
-                               <button  className="p-3 bg-[#4864EC] ml-2 3xl:w-[32.7rem] 2xl:w-[30.2rem] desktop:w-[32.3rem] lg:w-[35rem] w-[17rem] 3xl:-ml-24 3xl:mr-24 tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
+                               <button  className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem]  w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
                                     Contact Us
                                 </button>
                                </a>
 
                                 <a href="/free">
-                                    <button className="3xl:w-[32.7rem] 2xl:w-[30.2rem] ml-2 3xl:-ml-24 3xl:mr-16 desktop:w-[32rem] p-3 lg:w-[35rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] mt-7">
+                                    <button className="3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[14rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-4 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
                                         Check more items
                                     </button>
                                 </a>
@@ -320,6 +320,16 @@ const FreeTemplateDetails = () => {
                                     <path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path>
                                 </svg>
                             </button>
+                            <a href="/template">
+                            <button
+                            
+                            className="mr-2 3xl:mr-[rem] 2xl:mr-44 desktop:mr-4 font-raleway text-[#4864EC] capitalize font-semibold gap-4 p-3 pl-4 flex items-center">
+                            <span className="mt-1 text-[13px] 3xl:text-[15px] 2xl:text-[15px] desktop:text-[15px] laptop:text-[15px] tablet:text-[15px]">Explore more Template</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M1.5 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-.5z" />
+                                <path d="M9.646 3.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .707l-4 4a.5.5 0 0 1-.708-.707L12.793 8 9.646 4.646a.5.5 0 0 1 0-.707z" />
+                            </svg>
+                        </button></a>
                         </div>
                         <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
                             {displayedTemplates.map(item => (
