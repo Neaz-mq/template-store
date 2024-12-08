@@ -92,7 +92,7 @@ const  SignUp = () => {
                 </Helmet>
             </div>
 
-            <div className='min-h-screen  bg-[#ffffff] 3xl:-mt-60 2xl:-mt-4 desktop:-mt-8 laptop:-mt-8 tablet:-mt-60 -mt-28 font-raleway '>
+            <div className='min-h-screen  bg-[#ffffff] 3xl:-mt-60 2xl:-mt-4 desktop:-mt-8 laptop:-mt-8 tablet:-mt-[24rem] -mt-28 font-raleway '>
                 <div className=" flex items-center justify-center mt-4 container mx-auto">
                     <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10 lg:-ml-0 3xl:mt-[19rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem] tablet:mt-[20rem]">
                         <h3 className="text-xl font-medium font-raleway text-slate-800 mb-6 mt-4">Sign Up</h3>
@@ -212,7 +212,7 @@ const  SignUp = () => {
                     <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4 py-3 shadow-none font-medium font-raleway mb-24 w-[15rem]  ">
                         <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
-                        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <svg className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:hidden' stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
