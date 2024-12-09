@@ -43,11 +43,11 @@ const SignInForm = () => {
 
         <div className='min-h-screen 3xl:h-[60rem] 2xl:h-[40rem] desktop:h-[35rem] laptop:h-[10rem] tablet:h-[10rem] h-[10rem] font-raleway  '>
 
-            <div className='mb-16 bg-[#ffffff] min-h-screen 3xl:-mt-48 2xl:mt-20 desktop:mt-16 laptop:mt-16 tablet:-mt-2 -mt-8  '>
+            <div className='mb-16 bg-[#fbfbfb] min-h-screen 3xl:-mt-4 2xl:mt-20 desktop:mt-16 laptop:mt-16 tablet:-mt-2 -mt-8  '>
 
                 <div className="flex items-center justify-center container">
 
-                    <form onSubmit={handleLogin} className="lg:w-fit  mt-10 3xl:mt-[22rem] bg-[#F9F9F9] text-center px-10 py-6  rounded-[30px] container mb-28  font-roboto    ">
+                    <form onSubmit={handleLogin} className="lg:w-fit  mt-10 3xl:mt-[17rem] bg-[#F9F9F9] text-center px-10 py-6  rounded-[30px] container mb-28  font-roboto    ">
                         <h3 className="text-xl font-medium text-slate-600 mb-6 mt-6  ">Sign In</h3>
                         <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-52 rounded-lg py-2.5 input bg-[#ffffff]" placeholder="Email" name="email" type="email" />
                         <br />

@@ -36,7 +36,7 @@ const Shop = () => {
     return (
         <main>
             <header className="bg-[#ffffff] font-raleway">
-                <div className="container mx-auto 3xl:-mt-[5rem] 2xl:-mt-[5rem] desktop:-mt-[5rem] laptop:-mt-[12rem] tablet:-mt-[5rem]  font-raleway">
+                <div className="container mx-auto 3xl:-mt-4  2xl:-mt-[5rem] desktop:-mt-[5rem] laptop:-mt-[12rem] tablet:-mt-[5rem]  font-raleway">
                     <div className="max-w-[800px] lg:h-[770px] mx-auto px-4 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-4xl lg:text-7xl font-bold text-center mt-3 mb-0 text-[#282A37]">A template <br /></h1>
                         <h1 className="text-4xl lg:text-7xl font-bold text-center  -mt-2 text-[#282A37]">for your business</h1>

@@ -26,9 +26,6 @@ const Template = () => {
         return <div>Error loading stats: {error.message}</div>;
     }
 
-
-
-
     return (
         <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
             <div className="overflow-hidden font-raleway">
