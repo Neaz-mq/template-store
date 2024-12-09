@@ -13,6 +13,7 @@ const NavBar = () => {
   const [selected, setSelected] = useState(null);
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false); // Manage dropdown state
+  
 
   const handleLogOut = () => {
     logOut()
@@ -145,7 +146,7 @@ const NavBar = () => {
 
           {/* Center menu */}
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36">
-            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-24 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
+            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-20 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
                 onClick={() => handleSelect('template')}
@@ -182,7 +183,7 @@ const NavBar = () => {
               )}
 
               <Link to="/dashboard/cart">
-                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-2 2xl:mr-20 2xl:-ml-4 3xl:ml-80 3xl:-mr-52 laptop:mt-2 laptop:ml-2 laptop:mr-10">
+                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-2 2xl:mr-20 2xl:-ml-4 3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
                   <FaShoppingCart className="mr-4 cursor-pointer  text-xl" />
 
@@ -205,7 +206,7 @@ const NavBar = () => {
                 {/* User Icon */}
                 <FaUserCircle
                   size={42}
-                  className="cursor-pointer text-white hover:text-[#4864EC] mt-28  "
+                  className="cursor-pointer text-white hover:text-[#4864EC] mt-24  "
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                 />
                 {/* Dropdown Menu */}
