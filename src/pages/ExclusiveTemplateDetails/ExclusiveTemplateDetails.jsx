@@ -277,13 +277,13 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
 
                             {/* Add to Cart button */}
 
-                            <div className="3xl:ml-[12.5rem] 3xl:mt-16 2xl:ml-[12rem] 2xl:mt-4 desktop:ml-[2.5rem] desktop:mt-4 laptop:-ml-[4.5rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-4 ml-1">
+                            <div className="3xl:ml-[12.5rem] 3xl:mt-16 2xl:ml-[12rem] 2xl:mt-4 desktop:ml-[2.5rem] desktop:mt-4 laptop:-ml-[4.5rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-1">
                                 <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[15rem]  w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
                                     Add to Cart
                                 </button>
 
                                 <a href="/exclusive">
-                                    <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[15rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-3">
+                                    <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[15rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
                                         Check more items
                                     </button>
                                 </a>
