@@ -36,7 +36,7 @@ const Banner = () => {
     <section className="w-full bg-[#ffffff] font-raleway 3xl:pb-[7rem] 2xl:pb-[7rem] desktop:pb-[7rem] laptop:pb-[7rem] pt-6 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5 -mt-16">
       <div className='container mx-auto overflow-x-hidden'>
         <div className="layout lg:h-[780px] lg:grid lg:gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-5 lg:-mt-36 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-24 3xl:ml-60 2xl:ml-60 3xl:-mt-14 2xl:mt-2">
+          <div className="lg:col-span-5 flex flex-col gap-3 items-center lg:items-start justify-center lg:ml-[7.5rem] 3xl:ml-60 2xl:ml-60 3xl:-mt-14 2xl:mt-2 desktop:ml-[6.2rem] desktop:mt-4 laptop:mt-6">
             <p className="tracking-[0.2rem] text-sm text-primary mb-3 laptop:-mt-16 tablet:-mt-0 font-medium">
               <span className="bg-[#4864EC] px-2 3xl:py-1.5 2xl:py-1.5 desktop:py-1.5 laptop:py-1.5 py-0.5  text-white text-center lg:-ml-1">PRO</span> <span className='text-[#4864EC]'>PREMIUM</span>
             </p>
