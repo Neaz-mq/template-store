@@ -154,7 +154,7 @@ const NavBar = () => {
 
           {/* Center menu */}
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36">
-            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-[5rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-24 desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
+            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-[5rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-[5rem] desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
                 onClick={() => handleSelect('template')}
@@ -191,7 +191,7 @@ const NavBar = () => {
               )}
 
               <Link to="/dashboard/cart">
-                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-2 2xl:mr-20 2xl:-ml-4 3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
+                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 2xl:ml-10 2xl:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
                   <FaShoppingCart className="mr-4 cursor-pointer  text-xl" />
 
@@ -243,7 +243,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4">
-                  <button className="capitalize font-raleway font-semibold text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-4 mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
+                  <button className="capitalize font-raleway font-semibold text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-4 mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
                     <span className="-mt-2">Sign in</span>
                   </button>
                 </Link>
@@ -254,7 +254,7 @@ const NavBar = () => {
             {!user && (
               <div className="flex items-center">
                 <Link to="/sign-up">
-                  <button className="btn btn-sm hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-semibold">
+                  <button className="btn btn-sm hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.3rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-semibold">
                     <span className="-mt-2">Sign Up</span>
                   </button>
                 </Link>
