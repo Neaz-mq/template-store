@@ -12,7 +12,15 @@ const NavBar = () => {
   const [isAdmin] = useAdmin();
   const [selected, setSelected] = useState(null);
   const location = useLocation();
-  const [dropdownOpen, setDropdownOpen] = useState(false); // Manage dropdown state
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+ 
+  
+    // When the user signs in, ensure the dropdown is closed by default
+    useEffect(() => {
+      if (user) {
+        setDropdownOpen(false);  // Ensure the dropdown is closed when user logs in
+      }
+    }, [user]);  // Runs whenever the user state changes
   
 
   const handleLogOut = () => {
@@ -201,61 +209,56 @@ const NavBar = () => {
 
           {/* Right section (Sign in / Sign up / Sign out) */}
           <div className="navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0">
-            {user ? (
-              <div className="-ml-52 mr-56">
-                {/* User Icon */}
-                <FaUserCircle
-                  size={42}
-                  className="cursor-pointer text-white hover:text-[#4864EC] mt-24  "
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                />
-                {/* Dropdown Menu */}
-                {dropdownOpen && (
-                  <div className="absolute right-0 mt-3 w-48 bg-white shadow-lg rounded-md py-2 z-10 -ml-52 mr-72">
-                    <span className="block px-4 py-2 text-gray-800 font-semibold">
-                      {user.displayName}
-                    </span>
-                    <button
-                      className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
-                      onClick={handleLogOut}
-                    >
-                      Sign Out
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <div className="flex items-center">
-                <Link to="/sign-in" className="mr-4">
-                  <button
-                    style={{ whiteSpace: 'nowrap' }}
-                    className="capitalize font-raleway font-semibold text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-4 mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10"
-                  >
-                    <span className="-mt-2">Sign in</span>
-                  </button>
-                </Link>
-              </div>
-            )}
-
-            {/* "Sign Up" button always visible */}
-            {!user && (
-              <div className="flex items-center">
-                <Link to="/sign-up">
-                  <button
-                    style={{ whiteSpace: 'nowrap' }}
-                    className="btn btn-sm hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-semibold"
-                  >
-                    <span className="-mt-2">Sign Up</span>
-                  </button>
-                </Link>
+        {user ? (
+          <div className="-ml-52 mr-56">
+            <FaUserCircle
+              size={42}
+              className="cursor-pointer text-white hover:text-[#4864EC] mt-24"
+              onClick={() => setDropdownOpen((prev) => !prev)}  // Toggle the dropdown when user clicks
+            />
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-4 w-48 bg-white shadow-lg rounded-md py-2 z-10 -ml-52 mr-72">
+                <span className="block px-4 py-2 text-gray-800 font-semibold">
+                  {user.displayName}
+                </span>
+                <button
+                  className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
+                  onClick={handleLogOut}
+                >
+                  Sign Out
+                </button>
               </div>
             )}
           </div>
-        </div>
+        ) : (
+          <div className="flex items-center">
+            <Link to="/sign-in" className="mr-4">
+              <button className="capitalize font-raleway font-semibold text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-4 mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.8rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
+                <span className="-mt-2">Sign in</span>
+              </button>
+            </Link>
+          </div>
+        )}
+
+        {/* "Sign Up" button always visible */}
+        {!user && (
+          <div className="flex items-center">
+            <Link to="/sign-up">
+              <button className="btn btn-sm hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.8rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-semibold">
+                <span className="-mt-2">Sign Up</span>
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
+
+    </div>
+  
+        </div>
+     
+    
   );
 };
 
 export default NavBar;
-
