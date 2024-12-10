@@ -120,13 +120,25 @@ const NavBar = () => {
                 )}
 
                 <li className="mb-2 mt-3">
-                  <Link to="/dashboard/cart" className="btn ml-4">
-                    <FaShoppingCart className="mr-4"></FaShoppingCart>
-                    <div className="badge">+{cart.length}</div>
+                  <Link to="/dashboard/cart" className="ml-10">
+                  <div className="relative">
+                  {/* Cart Icon */}
+                  <FaShoppingCart className="mr-4 cursor-pointer text-xl" />
+
+                  {/* Cart Length Badge */}
+                  {cart.length > 0 && (
+                    <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      +{cart.length}
+                    </div>
+                  )}
+                </div>
+                    
                   </Link>
                 </li>
               </ul>
             </div>
+
+           
 
             <Link
               to="/"
@@ -154,7 +166,7 @@ const NavBar = () => {
 
           {/* Center menu */}
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36">
-            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-[5rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[6.2rem] 2xl:mt-[5rem] desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
+            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-semibold 3xl:mr-8 3xl:gap-8 3xl:mt-[5rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[5.2rem] 2xl:mt-[5rem] desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
                 onClick={() => handleSelect('template')}
@@ -191,7 +203,7 @@ const NavBar = () => {
               )}
 
               <Link to="/dashboard/cart">
-                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 2xl:ml-10 2xl:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
+                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-10 2xl:-mr-28 desktop:ml-10 desktop:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
                   <FaShoppingCart className="mr-4 cursor-pointer  text-xl" />
 
