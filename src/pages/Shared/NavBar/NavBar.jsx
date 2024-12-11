@@ -192,7 +192,7 @@ const NavBar = () => {
 
 
               {user && isAdmin && (
-                <li className="mt-[0.8rem] laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0">
+                <li className="mt-[0.8rem]  laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0">
                   <Link to="/dashboard/adminHome">Dashboard</Link>
                 </li>
               )}
@@ -209,7 +209,7 @@ const NavBar = () => {
 
                   {/* Cart Length Badge */}
                   {cart.length > 0 && (
-                    <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    <div className="absolute -top-1 right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center 3xl:-ml-0 3xl:mr-0 2xl:-ml-12 2xl:mr-10 desktop:-ml-12 desktop:mr-10 ">
                       +{cart.length}
                     </div>
                   )}
@@ -222,7 +222,7 @@ const NavBar = () => {
           {/* Right section (Sign in / Sign up / Sign out) */}
           <div className="navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0">
             {user ? (
-              <div className="-ml-52 mr-56">
+              <div className="3xl:-ml-52 3xl:mr-56 2xl:-ml-52 2xl:mr-60 desktop:-ml-60 desktop:mr-16 laptop:-ml-60 laptop:mr-12 tablet:-mt-[5.3rem] 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-ml-72 tablet:mr-20  -mt-24">
                 {user.photoURL && user.photoURL !== '' ? (
                   <img
                     src={user.photoURL}  // Use photoURL if it exists and is not empty
@@ -239,7 +239,7 @@ const NavBar = () => {
                 )}
 
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-4 w-48 bg-white shadow-lg rounded-md py-2 z-10 -ml-52 mr-72">
+                  <div className="absolute right-0 mt-4 w-48 bg-white shadow-lg rounded-md py-2 z-10 3xl:-ml-52 3xl:mr-72 2xl:-ml-52 2xl:mr-52 desktop:-ml-44 desktop:mr-7 tablet:mr-8">
                     <span className="block px-4 py-2 text-gray-800 font-semibold">
                       {user.displayName}
                     </span>

@@ -177,7 +177,7 @@ const TemplateDetails = () => {
     }
 
     return (
-        <div className="bg-[#ffffff]">
+        <div className="bg-[#ffffff] -mt-[1rem]">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Premium</title>

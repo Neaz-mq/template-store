@@ -183,7 +183,7 @@ const FreeTemplateDetails = () => {
 
     return (
 
-        <div className="bg-[#ffffff]">
+        <div className="bg-[#ffffff] -mt-[4.5rem]">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Free</title>

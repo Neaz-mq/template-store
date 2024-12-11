@@ -5,14 +5,12 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
+import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
-import Free from "../Home/Free/Free";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
-const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
+const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
-    const [selectedRevisions, setSelectedRevisions] = useState([]);
-    const [selectedPackages, setSelectedPackages] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
     const [templates, setTemplates] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -26,18 +24,20 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
-
+    const initialDisplayCount = 4;
     const [selectedFiles, setSelectedFiles] = useState([]);
 
-    const [selectedTimes, setSelectedTimes] = useState([]);
+    useEffect(() => {
 
-    // State to track the selected package
-    const [selectedPackage, setSelectedPackage] = useState('');
-    const [price, setPrice] = useState(0); // Dynamically updated price state
+        fetch('http://localhost:5000/free')
+            .then(res => res.json())
+            .then(data => {
+                setTemplates(data);
+                setDisplayedTemplates(data.slice(0, initialDisplayCount));
+            });
 
-    // Assuming `data` is passed from MongoDB and contains the template info
-    const { packages, amount, money, charge } = template;
-
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (template && template.picture && template.picture.length > 0) {
@@ -45,10 +45,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
             setSelectedIndex(0);
         }
     }, [template]);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
 
     useEffect(() => {
         if (isModalOpen) {
@@ -67,7 +63,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
             window.addEventListener('wheel', handleWheel, { passive: true });
 
             return () => {
-                document.body.style.overflow = ''; 
+                document.body.style.overflow = ''; // Re-enable scrolling
                 window.removeEventListener('wheel', handleWheel);
             };
         }
@@ -77,7 +73,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price: initialPrice, type, image, description, picture, specifications, product, files, revisions, documents,  packages: templatePackages, times, basics, standards, premiums, amount: basicAmount, money: standardMoney, charge: premiumCharge, records } = template;
+    const { _id, price, type, image, description, picture, specifications, product, records, revisions, documents } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -97,25 +93,6 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         setZoomLevel(1); // Reset zoom level on close
     };
 
-    
-
-    const handlePackageChange = (selectedPackage) => {
-        setSelectedPackage(selectedPackage);
-
-        // Dynamically update price based on selected package from MongoDB
-        if (selectedPackage.includes("Basic")) {
-            setPrice(amount); // Use the amount field from MongoDB
-        } else if (selectedPackage.includes("Standard")) {
-            setPrice(money); // Use the money field from MongoDB
-        } else if (selectedPackage.includes("Premium")) {
-            setPrice(charge); // Use the charge field from MongoDB
-        }
-    };
-
-    useEffect(() => {
-        // Set the initial price to the price from MongoDB when the component loads
-        setPrice(initialPrice);
-    }, [initialPrice]);
 
     const handleNextImage = () => {
         const nextIndex = (selectedIndex + 1) % picture.length;
@@ -146,10 +123,11 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
         }
     };
 
+   
+
 
     const handleAddToCart = () => {
         if (user && user.email) {
-
             //send cart item to the database
 
             const cartItem = {
@@ -161,18 +139,9 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                 description,
                 specifications,
                 product,
-                files,
+                records,
                 revisions,
-                documents,
-                packages,
-                times,
-                basics,
-                standards,
-                premiums,
-                amount,
-                money,
-                charge,
-                records
+                documents
             }
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
@@ -184,8 +153,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             title: `${type} added to your cart`,
                             showConfirmButton: false,
                             timer: 1500
-                        });
-
+                        });                   
                         refetch();
                     }
                 })
@@ -209,7 +177,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
     }
 
     return (
-        <div className="bg-[#ffffff]">
+        <div className="bg-[#ffffff] -mt-[1rem]">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Exclusive</title>
@@ -221,13 +189,13 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                     <link rel="canonical" href="https://www.prographr.com/premium" />
                 </Helmet>
 
-                <div className="lg:ml-20 mb-16">
+                <div className="lg:ml-20 3xl:-mt-[1rem] 2xl:-mt-[1rem] desktop:-mt-[1rem] laptop:-mt-[1rem] tablet:-mt-[5rem] -mt-24 mb-16 overflow-hidden">
                     <div className="flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] desktop:w-[70%] laptop:w-[100%]">
-                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2  laptop:block tablet:-mt-36 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 -mt-16">
+                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2  laptop:block tablet:mt-6 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 mt-2">
                                 Exclusive <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[12.6rem] desktop:ml-2 desktop:-mr-10 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 laptop:-ml-60">
+                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[12.6rem] desktop:ml-2 desktop:-mr-10 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 tablet:mt-4 laptop:-ml-60">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
@@ -239,7 +207,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5">
+                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5 desktop:ml-2">
                                 {picture.map((src, index) => (
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
@@ -254,10 +222,10 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                         </div>
 
                         <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] laptop:-ml-36    2xl:ml-48">
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] tablet:w-[50%] laptop:-ml-36 2xl:ml-48" >
                                 <div
-                                    className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                        } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                     } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-6 pt-3">
@@ -268,26 +236,28 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                                         <div className="font-raleway font-medium">${price}</div>
                                     </div>
                                     <div className="pt-6 border-t font-raleway font-medium pb-4">
-                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs.
+                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
                                     </div>
+
+                                  
                                 </div>
+                                    {/* Add to Cart button */}
 
-                            </div>
-
-
-                            {/* Add to Cart button */}
-
-                            <div className="3xl:ml-[12.5rem] 3xl:mt-16 2xl:ml-[12rem] 2xl:mt-4 desktop:ml-[2.5rem] desktop:mt-4 laptop:-ml-[4.5rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-1">
-                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[15rem]  w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
+                            <div className="3xl:ml-[0.6rem] 3xl:mt-16 2xl:ml-[0rem] 2xl:mt-4 desktop:ml-[0.5rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-28 laptop:mt-4 tablet:mt-8 mt-6 ml-28">
+                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[20rem]  w-[17rem] tablet:w-[30rem] text-white font-bold rounded-lg hover:bg-blue-700">
                                     Add to Cart
                                 </button>
 
-                                <a href="/exclusive">
-                                    <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[15rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
+                                <a href="/template">
+                                    <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[30rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
                                         Check more items
                                     </button>
                                 </a>
                             </div>
+
+                            </div>
+
+                           
                         </div>
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
@@ -331,9 +301,28 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                         </div>
                     </div>
 
+                    <div className="layout lg:py-20 py-12 mt-6">
+                        <div className="flex items-center justify-between mb-10">
+                            <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
+                                Free <strong>Graphics Templates</strong>
+                            </h2>
+                            <button className="btn hidden mr-20 md:ml-4 ml-20 font-raleway text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
+                                <span className="-mt-1">Printing and Advertising</span>
+                                <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M277.375 85v259.704l119.702-119.702L427 256 256 427 85 256l29.924-29.922 119.701 118.626V85h42.75z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
+                            {displayedTemplates.map(item => (
+                                <FreeTemplate
+                                    key={item._id}
+                                    item={item}
+                                />
+                            ))}
+                        </div>
 
-                    <div className="lg:py-4 py-2 3xl:mt-6 2xl:mt-6 desktop:mt-6 laptop:mt-6 tablet:mt-6 mt-24 3xl:w-[120%] 3xl:h-[27rem] h-[60rem] 2xl:h-[27rem] desktop:h-[27rem] 3xl:-ml-52 2xl:w-[116%] laptop:w-[120%] desktop:w-[110%] 2xl:-ml-44 laptop:-ml-36 tablet:-ml-5 laptop:h-[55rem] tablet:h-[55rem] desktop:-ml-28 -ml-3 ">
-                        <Free></Free>
+                      
                     </div>
                 </div>
             </div>
@@ -362,11 +351,10 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             />
 
                             {/* Fixed Size Buttons */}
-
                             <button
                                 className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={closeModal}
-                                style={{ zIndex: 10 }} 
+                                style={{ zIndex: 10 }} // Ensure the close button is above other elements
                             >
                                 &times;
                             </button>
@@ -374,7 +362,7 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             <button
                                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handlePreviousImage}
-                                style={{ zIndex: 10 }} 
+                                style={{ zIndex: 10 }} // Ensure the button is above other elements
                             >
                                 &lt;
                             </button>
@@ -382,20 +370,20 @@ const ExclusiveTemplateDetails = ({ basicPackage, standard, premium}) => {
                             <button
                                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handleNextImage}
-                                style={{ zIndex: 10 }} 
+                                style={{ zIndex: 10 }} // Ensure the button is above other elements
                             >
                                 &gt;
                             </button>
                         </div>
                     </div>
                 </div>
-
             )}
 
-            <PresentationTemplate></PresentationTemplate>
-
+<PresentationTemplate></PresentationTemplate>
 
         </div>
+
+        
     );
 };
 
