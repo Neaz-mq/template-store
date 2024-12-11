@@ -37,7 +37,7 @@ const Filter = () => {
         <main>
             <header className="bg-[#ffffff] 3xl:mt-20 2xl:mt-20 desktop:mt-20 laptop:mt-20">
                 <div className="container mx-auto 3xl:-mt-[7.2rem] 2xl:-mt-[6rem] desktop:-mt-[6rem] laptop:-mt-[6rem] tablet:-mt-[6rem] -mt-[6rem] font-raleway">
-                    <div className="max-w-[800px] lg:h-[770px] mx-auto px-4 flex flex-col items-center justify-center gap-4 tablet:pt-10 3xl:mt-24 2xl:pt-0 desktop:pt-0 laptop:pt-0 pt-12">
+                    <div className="max-w-[800px] lg:h-[770px] mx-auto px-4 flex flex-col items-center justify-center gap-4 tablet:pt-10 3xl:mt-24 2xl:pt-0 desktop:pt-0 laptop:pt-0 pt-6">
                         <h1 className="text-4xl lg:text-7xl font-bold text-center -mt-3 mb-0">A template <br /></h1>
                         <h1 className="text-4xl lg:text-7xl font-bold text-center  -mt-2">for your business</h1>
                         <p className="max-w-[800px] text-center text-gray-500 text-lg py-6 font-medium">
