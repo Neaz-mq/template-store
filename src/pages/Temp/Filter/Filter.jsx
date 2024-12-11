@@ -35,7 +35,7 @@ const Filter = () => {
 
     return (
         <main>
-            <header className="bg-[#ffffff]">
+            <header className="bg-[#ffffff] 3xl:mt-20">
                 <div className="container mx-auto -mt-[6rem] font-raleway">
                     <div className="max-w-[800px] lg:h-[770px] mx-auto px-4 flex flex-col items-center justify-center gap-4">
                         <h1 className="text-4xl lg:text-7xl font-bold text-center mt-3 mb-0">A template <br /></h1>
