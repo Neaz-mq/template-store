@@ -226,7 +226,6 @@ const NavBar = () => {
                 {user.photoURL && user.photoURL !== '' ? (
                   <img
                     src={user.photoURL}  // Use photoURL if it exists and is not empty
-                    alt="User Avatar"
                     className="w-12 h-12 rounded-full cursor-pointer mt-24"
                     onClick={() => setDropdownOpen((prev) => !prev)}
                   />
