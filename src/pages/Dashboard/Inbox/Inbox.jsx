@@ -112,9 +112,9 @@ const Inbox = () => {
                   : "bg-gray-200 text-black mr-auto"
               }`}
             >
-              <p className="font-semibold">{msg.user?.email}</p>
+              
               <p className="mt-2">{msg.message}</p>
-              <small className="text-gray-500">
+              <small className="text-black">
                 {new Date(msg.timestamp).toLocaleString()}
               </small>
             </div>
