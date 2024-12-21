@@ -39,6 +39,7 @@ import Fail from "../pages/Dashboard/Fail/Fail";
 import Cancel from "../pages/Dashboard/Cancel/Cancel";
 import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory";
 import Inbox from "../pages/Dashboard/Inbox/Inbox";
+import Chat from "../pages/Dashboard/Chat/Chat";
 
 
 
@@ -244,6 +245,11 @@ export const router = createBrowserRouter([
         path: 'paymentsHistory',
         element: <AdminRoute><PaymentsHistory></PaymentsHistory></AdminRoute>
       },
+
+      {
+        path: 'chat',
+        element: <AdminRoute><Chat></Chat></AdminRoute>
+      }
 
     ]
   }

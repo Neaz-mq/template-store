@@ -24,6 +24,7 @@ const Dashboard = () => {
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
         { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" },
+        { to: "/dashboard/chat", icon: <FaEnvelope/>,  label: "Chat" },
     ];
     
     const userLinks = [
