@@ -54,7 +54,7 @@ const Testimonial = () => {
                         <div className="swiper-wrapper flex gap-44">
                             {/* Testimonial items */}
                             <div className="swiper-slide">
-                                <article className="w-[230px] h-[470px] tablet:w-[300px] tablet:h-[386px] mt-10 tablet:ml-56 bg-white text-slate-800 font-raleway font-medium border border-gray-50 hover:border-[#4864EC] shadow p-7 relative mr-2 ml-9">
+                                <article className="w-[230px] h-[470px] tablet:w-[300px] tablet:h-[386px] mt-10 tablet:ml-56 bg-white text-slate-800 font-raleway font-medium border border-gray-50  shadow p-7 relative mr-2 ml-9">
                                     
                                     <div className="h-full flex flex-col justify-between">
                                         <p className="pt-4 text-[13px] ml-3">We have been using Prographr marketplace for over 5 years now and has been instrumental in our branding, packaging and all creative design projects. They are always available, has very strong work ethic and integrity. Great quality and exceeds our expectations</p>
@@ -70,7 +70,7 @@ const Testimonial = () => {
                             </div>
 
                             <div className="swiper-slide">
-                                <div className="w-[220px] h-[380px] tablet:w-[300px] tablet:h-[350px] mt-10 tablet:ml-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50 hover:border-[#4864EC] shadow p-7 relative -ml-36">
+                                <div className="w-[220px] h-[380px] tablet:w-[300px] tablet:h-[350px] mt-10 tablet:ml-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50  shadow p-7 relative -ml-36">
                                    
                                     <div className="h-full flex flex-col justify-between">
                                         <p className="pt-4 text-[13px]">I have worked now with Prographr now for nearly a year, with a total of over 50 projects. I can say that with every project, we gets better and better. Reliable and ALWAYS on time!</p>
@@ -86,7 +86,7 @@ const Testimonial = () => {
                             </div>
 
                             <div className="swiper-slide">
-                                <div className="w-[220px] h-[400px] tablet:w-[300px] tablet:h-[326px] mt-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50 hover:border-[#4864EC] shadow p-7 relative  -ml-[19.5rem] tablet:-ml-[9rem]">
+                                <div className="w-[220px] h-[400px] tablet:w-[300px] tablet:h-[326px] mt-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50  shadow p-7 relative  -ml-[19.5rem] tablet:-ml-[9rem]">
                                    
                                     <div className="h-full flex flex-col justify-between">
                                         <p className="pt-4 text-[13px]">Doing real estate business without business card was difficult for me. I found a business card template here and modified by the design owner. The designer did a fantastic job for me. Thanks...</p>
@@ -120,7 +120,7 @@ const Testimonial = () => {
 
                     {
                         testimonials.map(testimonial =>
-                            <div className="3xl:max-w-[350px] 3xl:ml-8 3xl:mr-2 2xl:max-w-[400px] 2xl:ml-8 2xl:mr-2 desktop:max-w-[420px] desktop:ml-8 desktop:mr-2 laptop:max-w-[400px] laptop:ml-0 laptop:mr-2 text-slate-800 border border-gray-200 hover:border-[#4864EC] shadow-sm font-raleway font-medium  p-7 relative bg-[#F9F9F9]"
+                            <div className="3xl:max-w-[350px] 3xl:ml-8 3xl:mr-2 2xl:max-w-[400px] 2xl:ml-8 2xl:mr-2 desktop:max-w-[420px] desktop:ml-8 desktop:mr-2 laptop:max-w-[400px] laptop:ml-0 laptop:mr-2 text-slate-800 border border-gray-200  shadow-sm font-raleway font-medium  p-7 relative bg-[#F9F9F9]"
                                 key={testimonial._id}
 
                             >
