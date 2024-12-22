@@ -9,7 +9,7 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 4;
 
     useEffect(() => {
-        fetch('http://localhost:5000/free')
+        fetch('https://template-store-server.vercel.app/free')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);

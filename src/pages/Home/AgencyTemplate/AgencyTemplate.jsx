@@ -11,7 +11,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/template')
+        fetch('https://template-store-server.vercel.app/template')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
