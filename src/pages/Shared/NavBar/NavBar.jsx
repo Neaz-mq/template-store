@@ -191,17 +191,7 @@ const NavBar = () => {
 
 
 
-              {user && isAdmin && (
-                <li className="mt-[0.8rem]  laptop:mr-2 2xl:mr-6 2xl:-ml-4 3xl:mr-0 3xl:-ml-0">
-                  <Link to="/dashboard/adminHome">Dashboard</Link>
-                </li>
-              )}
-              {user && !isAdmin && (
-                <li className="mt-[0.8rem] laptop:mr-2">
-                  <Link to="/dashboard/userHome">Dashboard</Link>
-                </li>
-              )}
-
+             
               <Link to="/dashboard/cart">
                 <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-10 2xl:-mr-28 desktop:ml-10 desktop:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
@@ -242,12 +232,27 @@ const NavBar = () => {
                     <span className="block px-4 py-2 text-gray-800 font-semibold">
                       {user.displayName}
                     </span>
+
+                    {user && isAdmin && (
+                <div className="block px-4 py-2 text-[#4864EC] font-semibold">
+                  <Link to="/dashboard/adminHome">Dashboard</Link>
+                </div>
+              )}
+              {user && !isAdmin && (
+                <div className="block px-4 py-2 text-[#4864EC] font-semibold">
+                  <Link to="/dashboard/userHome">Profile</Link>
+                </div>
+              )}
+
                     <button
                       className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
                       onClick={handleLogOut}
                     >
                       Sign Out
                     </button>
+
+                   
+
                   </div>
                 )}
               </div>
