@@ -256,15 +256,10 @@ const UpdateTemplate = () => {
                                     className="select select-bordered w-full h-auto"
                                 >
                                     <option disabled value="default">Select a category</option>
-                                    <option value="agency">Agency</option>
+                                    <option value="flyer">Flyer</option>
+                                    <option value="brochure">Brochure</option>
                                     <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
-                                    <option value="construction">Construction</option>
-                                    <option value="financial">Financial</option>
-                                    <option value="food">Food</option>
-                                    <option value="portfolio">Portfolio</option>
-                                    <option value="education">Education</option>
-                                    <option value="environment">Environment</option>
+                                    <option value="medical">Medical</option> 
                                 </select>
                             </div>
 

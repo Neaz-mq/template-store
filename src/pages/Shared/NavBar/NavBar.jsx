@@ -55,7 +55,7 @@ const NavBar = () => {
   return (
     <div className="bg-[#282A37] font-raleway">
       <div className="container mx-auto">
-        <div className="navbar -mt-[6rem] 3xl:-mt-[7rem] 2xl:-mt-[7rem] laptop:-mt-[7rem] tablet:-mt-[4rem] -ml-2">
+        <div className="navbar -mt-[6rem] 3xl:-mt-[9rem] 2xl:-mt-[7rem] laptop:-mt-[7rem] tablet:-mt-[4rem] -ml-2">
           <div className="navbar-start">
             {/* Dropdown for mobile */}
             <div className="dropdown">
@@ -179,7 +179,7 @@ const NavBar = () => {
                 onClick={() => handleSelect('company')}
                 className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'company' ? 'text-[#98a9ff]' : ''}`}
               >
-                Company
+                About Us
               </Link>
               <Link
                 to="/contact"
