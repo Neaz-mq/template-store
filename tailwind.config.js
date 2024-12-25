@@ -9,12 +9,11 @@ export default {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
       },
-      /* Check for any global CSS files or libraries */
       screens: {
-        'sm': '320px',
+       'sm': '320px',
         'tablet': '640px',
-        'laptop': '1024px',
-        'desktop': '1280px',
+       'laptop': '1024px',
+       'desktop': '1280px',
         '2xl': '1536px',
         '3xl': '1683px',
       },
@@ -23,12 +22,18 @@ export default {
         padding: '1rem',
       },
       animation: {
-        marquee: 'marquee 30s linear infinite', // Adding the marquee animation
+        marquee: 'marquee 25s linear infinite', // Default duration for 3xl
+        'marquee-sm': 'marquee 12s linear infinite', // Adjusted duration for smaller screens
+        'marquee-tablet': 'marquee 22s linear infinite',
+        'marquee-laptop': 'marquee 20s linear infinite',
+        'marquee-desktop': 'marquee 16s linear infinite',
+        'marquee-2xl': 'marquee 20s linear infinite',
+       
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(100%)' }, // Start the text off-screen on the right
-          '100%': { transform: 'translateX(-100%)' }, // Move the text off-screen to the left
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
       },
     },
@@ -36,4 +41,4 @@ export default {
   plugins: [
     require('daisyui'),
   ],
-}
+};
