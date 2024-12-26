@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 
+
 const Shop = () => {
     const agencyTemplateRef = useRef(null);
     const [selectedCategory, setSelectedCategory] = useState('All Categories'); 
