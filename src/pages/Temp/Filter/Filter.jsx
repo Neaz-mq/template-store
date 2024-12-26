@@ -133,7 +133,7 @@ const Filter = () => {
                         {/* Random Buttons */}
                         <div className="flex flex-col items-start space-y-4 mt-4 w-[8rem] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden hidden">
                             <h1 className="text-[#4864EC] font-raleway font-semibold text-[15px] ml-1 -mr-2">For Quick Access</h1>
-                            {['Agency', 'Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
+                            {['Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
                                 <button
                                     key={buttonLabel}
                                     className="w-full px-6 py-3 text-base border border-gray-300  hover:bg-gray-100 focus:outline-none"
@@ -146,7 +146,7 @@ const Filter = () => {
 
                         {/* Random Buttons */}
                         <div className="3xl:flex 2xl:flex desktop:flex laptop:flex tablet:flex space-x-4 mt-4 hidden">
-                            {['Agency', 'Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
+                            {['Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
                                 <button
                                     key={buttonLabel}
                                     className="px-4 py-2 border border-gray-300  hover:bg-gray-100 focus:outline-none"
