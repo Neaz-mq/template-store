@@ -3,7 +3,6 @@ import ExclusiveTemplate from "../../Shared/ExclusiveTemplate/ExclusiveTemplate"
 import PropTypes from 'prop-types';
 
 const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
-    
     const [templates, setTemplates] = useState([]);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [showAll, setShowAll] = useState(false);
@@ -19,24 +18,16 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
                     item.type.toLowerCase().includes(searchQuery.toLowerCase())
                 );
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
-            })
-            .catch(error => console.error("Error fetching templates:", error));
+            });
     }, [selectedCategory, searchQuery]);
 
     const handleViewMore = () => {
-        if (showAll) {
-            const filteredTemplates = templates.filter(item =>
-                selectedCategory.includes(item.category) &&
-                item.type.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-            setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
-        } else {
-            const filteredTemplates = templates.filter(item =>
-                selectedCategory.includes(item.category) &&
-                item.type.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-            setDisplayedTemplates(filteredTemplates);
-        }
+        const filteredTemplates = templates.filter(item =>
+            selectedCategory.includes(item.category) &&
+            item.type.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+        setDisplayedTemplates(showAll ? filteredTemplates.slice(0, initialDisplayCount) : filteredTemplates);
         setShowAll(!showAll);
     };
 
@@ -60,10 +51,10 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
                             data-aos-duration="1000"
                             data-aos-easing="ease-in-out"
                         >
-                            {templates.map(item => (
-                        <ExclusiveTemplate
-                            key={item._id}
-                            item={item} />
+                            {displayedTemplates.map(item => (
+                                <ExclusiveTemplate
+                                    key={item._id}
+                                    item={item} />
                             ))}
                         </div>
                     </main>
@@ -80,9 +71,9 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
     );
 };
 
-ExclusiveTemplate.propTypes = {
-    selectedCategory: PropTypes.array.isRequired, 
-    searchQuery: PropTypes.string.isRequired,  
+ExclusiveTemplates.propTypes = {
+    selectedCategory: PropTypes.arrayOf(PropTypes.string).isRequired,
+    searchQuery: PropTypes.string.isRequired,
 };
 
 export default ExclusiveTemplates;

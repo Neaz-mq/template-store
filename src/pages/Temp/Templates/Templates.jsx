@@ -1,7 +1,7 @@
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
+import ExclusiveTemplates from "../../Home/ExclusiveTemplates/ExclusiveTemplates";
 import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 import PresentationTemplate from "../../Home/PresentationTemplate/PresentationTemplate";
-import NavBar from "../../Shared/NavBar/NavBar";
 import Marketplace from "../Marketplace/Marketplace";
 import Shop from "../Shop/Shop";
 import { Helmet } from 'react-helmet-async';
@@ -25,7 +25,11 @@ const Templates = () => {
 
             <GraphicsTemplate></GraphicsTemplate>
 
+           
             <PresentationTemplate></PresentationTemplate>
+
+            <ExclusiveTemplates></ExclusiveTemplates>
+
 
             <Marketplace></Marketplace>
 
