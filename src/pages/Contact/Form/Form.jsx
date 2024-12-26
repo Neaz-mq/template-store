@@ -58,7 +58,7 @@ const Form = () => {
 
         <div className='min-h-screen font-raleway'>
             <div className="layout pt-20 pb-48 flex flex-col items-center justify-center bg-white 3xl:-mt-0 2xl:-mt-4 desktop:-mt-5 laptop:-mt-4 -mt-0">
-                <section className="bg-[#ffffff] p-4 rounded-lg w-full 3xl:-mt-24 2xl:-mt-20 desktop:-mt-20 laptop:-mt-20 tablet:-mt-44 -mt-44   text-center 3xl:h-[100rem] 2xl:h-[90rem] desktop:h-[85rem]  laptop:h-[80rem]  h-[60rem] min-h-screen">
+                <section className="bg-[#ffffff] p-4  w-full 3xl:-mt-24 2xl:-mt-20 desktop:-mt-20 laptop:-mt-20 tablet:-mt-44 -mt-44   text-center 3xl:h-[100rem] 2xl:h-[90rem] desktop:h-[85rem]  laptop:h-[80rem]  h-[60rem] min-h-screen">
                     <div className='container mx-auto mt-20 tablet:mt-24 3xl:mt-[16rem] 2xl:mt-52 desktop:mt-60 laptop:mt-52'>
                         <h1 className="md:text-5xl text-3xl font-bold text-slate-800 pb-4 md:mt-24 mt-16">
                             How can we help?

@@ -23,10 +23,10 @@ export default {
       },
       animation: {
         marquee: 'marquee 25s linear infinite', // Default duration for 3xl
-        'marquee-sm': 'marquee 12s linear infinite', // Adjusted duration for smaller screens
+        'marquee-sm': 'marquee 17s linear infinite', // Adjusted duration for smaller screens
         'marquee-tablet': 'marquee 22s linear infinite',
         'marquee-laptop': 'marquee 20s linear infinite',
-        'marquee-desktop': 'marquee 16s linear infinite',
+        'marquee-desktop': 'marquee 17s linear infinite',
         'marquee-2xl': 'marquee 20s linear infinite',
        
       },

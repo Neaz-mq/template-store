@@ -6,7 +6,7 @@ const HeadBar = () => {
           {/* Marquee for the development text */}
           <div className="w-full">
             <p
-              className="inline-block whitespace-nowrap text-stone-50 3xl:px-4 3xl:py-4 2xl:py-2 desktop:py-3 laptop:py-4 tablet:py-4  
+              className="inline-block whitespace-nowrap text-stone-50 3xl:px-4 3xl:py-4 2xl:py-2 desktop:py-3 laptop:py-4 tablet:py-4 py-4  
                 font-semibold 
                 animate-marquee 
                 sm:animate-marquee-sm 
