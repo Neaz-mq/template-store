@@ -10,7 +10,7 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
 
     useEffect(() => {
 
-        fetch('https://template-store-server.vercel.app/free')
+        fetch('http://localhost:5000/free')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);

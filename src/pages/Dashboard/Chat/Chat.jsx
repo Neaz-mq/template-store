@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 
 // Initialize the socket connection
-const socket = io("https://template-store-server.vercel.app"); // Replace with your backend URL
+const socket = io("http://localhost:5000"); // Replace with your backend URL
 
 const Chat = () => {
   const [message, setMessage] = useState("");
@@ -22,7 +22,7 @@ const Chat = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await fetch("https://template-store-server.vercel.app/api/messages"); // Replace with your API endpoint
+        const response = await fetch("http://localhost:5000/api/messages"); // Replace with your API endpoint
         if (response.ok) {
           const messages = await response.json();
           setChat(messages); // Set the chat history with fetched messages

@@ -3,9 +3,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { RxUpload } from "react-icons/rx";
+
 
 const AddFreeTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -185,15 +183,10 @@ const AddFreeTemplates = () => {
                                     className="select select-bordered w-full h-auto"
                                 >
                                     <option disabled value="default">Select a category</option>
-                                    <option value="agency">Agency</option>
+                                    <option value="flyer">Flyer</option>
+                                    <option value="brochure">Brochure</option>
                                     <option value="business">Business</option>
                                     <option value="medical">Medical</option>
-                                    <option value="construction">Construction</option>
-                                    <option value="financial">Financial</option>
-                                    <option value="food">Food</option>
-                                    <option value="portfolio">Portfolio</option>
-                                    <option value="education">Education</option>
-                                    <option value="environment">Environment</option>
                                 </select>
 
                                 {/* Price */}

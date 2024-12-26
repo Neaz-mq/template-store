@@ -3,13 +3,14 @@ import ExclusiveTemplate from "../../Shared/ExclusiveTemplate/ExclusiveTemplate"
 import PropTypes from 'prop-types';
 
 const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
+    
     const [templates, setTemplates] = useState([]);
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const initialDisplayCount = 12;
 
     useEffect(() => {
-        fetch('https://template-store-server.vercel.app/exclusive')
+        fetch('http://localhost:5000/exclusive')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
