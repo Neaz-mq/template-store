@@ -124,7 +124,7 @@ const Career = () => {
   };
 
   return (
-    <div>
+    <div className='bg-white mt-20'>
       <div className="container mx-auto overflow-x-hidden tablet:overflow-x-hidden font-raleway 3xl:-mt-24 2xl:-mt-24 desktop:-mt-24 laptop:-mt-60 tablet:-mt-60 -mt-44">
         <section className="ml-5 p-16 tablet:ml-14 w-[16rem] laptop:w-[53rem] tablet:w-[40rem] bg-[#F9F9F9] 3xl:p-40 2xl:p-32 2xl:pb-28 desktop:p-28 laptop:p-28 tablet:p-20 desktop:px-5 gap-5 grid 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[74.4rem] 3xl:ml-[14.5rem] 2xl:w-[63rem] 2xl:ml-[14.8rem] desktop:w-[67rem] tablet:mt-44 mt-20 desktop:ml-[5.7rem] laptop:ml-[6rem]">
           <img className='3xl:w-[16rem] 3xl:ml-[19rem] 2xl:w-[14rem] desktop:w-[12rem] laptop:w-[12rem] tablet:w-[12rem] tablet:ml-[9rem] desktop:ml-[25rem] laptop:ml-[13rem] 2xl:ml-[15rem] w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
