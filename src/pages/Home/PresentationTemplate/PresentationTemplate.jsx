@@ -2,7 +2,7 @@ const PresentationTemplate = () => {
     return (
       <div className="bg-[#4864EC] h-[14.5rem] w-auto mt-28 overflow-hidden font-raleway">
         <div className="container mx-auto">
-          <div className="relative flex flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row items-center justify-start 3xl:ml-[15rem] 2xl:ml-[15rem] desktop:ml-[6.2rem] laptop:ml-[6.2rem] tablet:ml-[0.2rem]">
+          <div className="relative flex flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row items-center justify-start 3xl:ml-[15.8rem] 2xl:ml-[15rem] desktop:ml-[6.2rem] laptop:ml-[6.2rem] tablet:ml-[0.2rem]">
             {/* Text Section */}
             <div>
               <h1 className="3xl:text-3xl 2xl:text-3xl desktop:text-3xl laptop:text-3xl text-2xl font-semibold text-left 3xl:leading-[2.8rem] 2xl:leading-[2.8rem] desktop:leading-[2.8rem] laptop:leading-[2.8rem] leading-[2.3rem] text-white font-raleway 3xl:-mt-20 2xl:-mt-12 desktop:-mt-2 laptop:mt-8 tablet:mt-16 mt-6 ml-2">

@@ -45,7 +45,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
         <div className="container mx-auto font-raleway">
             <div className="layout lg:py-2 py-14 mt-0 lg:mx-20">
                 <header className="flex items-center justify-between mb-10">
-                    <h2 className="lg:text-4xl text-lg tablet:text-xl text-[#4864EC] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[10rem] 2xl:ml-[10rem] desktop:ml-[1rem] italic">Top Selling <span className="not-italic font-normal 3xl:ml-2 2xl:ml-2 desktop:ml-2 laptop:ml-2 text-black">Graphics Templates</span></h2>
+                    <h2 className="lg:text-4xl text-lg tablet:text-xl text-[#4864EC] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[11rem] 2xl:ml-[10rem] desktop:ml-[1rem] italic">Top Selling <span className="not-italic font-normal 3xl:ml-2 2xl:ml-2 desktop:ml-2 laptop:ml-2 text-black">Graphics Templates</span></h2>
                     <button className="btn hidden mr-2 lg:mr-4 font-raleway text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
                         <span className="-mt-1">Printing and Advertising</span>
                         <svg stroke="currentColor" fill="currentColor" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
                         </svg>
                     </button>
                 </header>
-                <section className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-40 3xl:mr-36 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-40 2xl:mr-44 2xl:gap-x-4 2xl:gap-y-8 laptop:gap-x-2 laptop:gap-y-8" data-aos="fade-up" data-aos-duration="700">
+                <section className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-[11.5rem] 3xl:mr-36 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-40 2xl:mr-44 2xl:gap-x-4 2xl:gap-y-8 laptop:gap-x-2 laptop:gap-y-8" data-aos="fade-up" data-aos-duration="700">
                     {displayedTemplates.map(item =>
                         <TemplateItem
                             key={item._id}
