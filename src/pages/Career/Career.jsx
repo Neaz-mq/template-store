@@ -132,7 +132,7 @@ const Career = () => {
         <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block'>
           <h1 className="flex items-center justify-center 3xl:text-3xl 2xl:text-2xl desktop:text-2xl mb-36 font-medium text-[#282A37] 3xl:-mt-16 2xl:-mt-16 desktop:-mt-16 laptop:mt-24 tablet:mt-20">
             Want to establish a stable<strong className="ml-2">career:</strong>&nbsp;
-            <strong className="-ml-1">Opening Job</strong>&nbsp;( Joining from January 2025 )
+            <strong className="-ml-1">Opening Job</strong>
           </h1>
         </div>
 

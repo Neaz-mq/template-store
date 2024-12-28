@@ -45,7 +45,7 @@ const Testimonial = () => {
             <div className='lg:mx-24 lg:mt-9 lg:mb-32 overflow-hidden'>
                 <div className="mb-28 lg:mx-24">
                     <div className="layout mt-10 mb-14 lg:mt-16">
-                        <h2 className="lg:text-4xl text-xl tablet:text-xl text-[#282A37] 3xl:ml-16 2xl:ml-16 desktop:-ml-[5.2rem] font-raleway desktop:-mt-6 laptop:-ml-[5.5rem] tablet:ml-16 tablet:mt-16 ml-14 mt-16">Clients <strong>testimonial</strong></h2>
+                        <h2 className="lg:text-3xl text-xl tablet:text-xl text-[#282A37] 3xl:ml-16 2xl:ml-16 desktop:-ml-[5.2rem] font-raleway desktop:-mt-6 laptop:-ml-[5.5rem] tablet:ml-16 tablet:mt-16 ml-14 mt-16">Clients <strong>testimonial</strong></h2>
                     </div>
 
                     {/* Render Swiper only on smaller screens */}
