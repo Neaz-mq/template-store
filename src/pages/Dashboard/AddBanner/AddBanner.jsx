@@ -5,15 +5,17 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 
 const AddBanner = () => {
-    const { handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [mainImageUrl, setMainImageUrl] = useState("");
 
-    const onSubmit = async () => {
-
+    const onSubmit = async (data) => {
         // Prepare the offer item
         const offerItem = {
+            description: data.description,
+            text: data.text,
+            background: data.background,
             image: mainImageUrl,
         };
 
@@ -26,7 +28,7 @@ const AddBanner = () => {
                 Swal.fire({
                     position: "middle",
                     icon: "success",
-                    title: "Image has been added as a banner.",
+                    title: "Banner has been added.",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -43,8 +45,6 @@ const AddBanner = () => {
         }
     };
 
-
-
     return (
         <div>
             <div className='mt-5'>
@@ -53,12 +53,47 @@ const AddBanner = () => {
             </div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
+                        <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Description</span>
+                                </label>
+                                <textarea
+                                    {...register('description')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
+                            {/* Text Color */}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Text Color</span>
+                                </label>
+                                <input
+                                    {...register('text')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+                        </div>
 
-                    <div className="w-full h-auto">
+                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color</span>
+                                </label>
+                                <input
+                                    {...register('background')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+                        </div>
                         {/* Main Image URL Section */}
-                        <div className="bg-white w-full my-5 pb-10 rounded-lg -ml-3  h-auto">
+                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
-                                <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Upload Banner Image</h2>
+                                <h2 className="p-4 -mt-2 font-medium text-lg -ml-1">Banner Image</h2>
                             </div>
                             <div className="form-control rounded-md mx-3 my-3">
                                 <input
@@ -73,7 +108,7 @@ const AddBanner = () => {
                                         <img
                                             src={mainImageUrl}
                                             alt="Main Preview"
-                                            className="w-full h-[34rem] object-cover rounded"
+                                            className="w-64 h-64  object-cover rounded"
                                         />
                                     </div>
                                 )}
@@ -92,3 +127,4 @@ const AddBanner = () => {
 };
 
 export default AddBanner;
+ 

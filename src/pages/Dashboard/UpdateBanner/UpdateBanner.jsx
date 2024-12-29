@@ -27,7 +27,7 @@ const UpdateBanner = () => {
             Swal.fire({
                 position: "middle",
                 icon: "success",
-                title: "image is updated in the Offer",
+                title: "Image is updated in the Offer",
                 showConfirmButton: false,
                 timer: 1500
             });
