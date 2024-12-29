@@ -7,18 +7,24 @@ import { useState } from 'react';
 
 const UpdateBanner = () => {
     const {
+        description,
+        text,
+        background,
         image,
         _id
     } = useLoaderData();
 
-    const {  handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm();
     const [imageUrl, setImageUrl] = useState(image); 
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
 
-    const onSubmit = async () => {
-        const offerItem = {       
+    const onSubmit = async (data) => {
+        const offerItem = { 
+            description: data.description,      
+            text: data.text,      
+            background: data.background,      
             image: imageUrl,  // Use the main image URL    
         };
 
@@ -27,7 +33,7 @@ const UpdateBanner = () => {
             Swal.fire({
                 position: "middle",
                 icon: "success",
-                title: "Image is updated in the Offer",
+                title: "Banner is updated.",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -56,6 +62,47 @@ const UpdateBanner = () => {
                     {/* Main Row */}
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
+
+                    <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Description</span>
+                                </label>
+                                <textarea
+                                defaultValue={description}
+                                    {...register('description')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
+                            {/* Text Color */}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Text Color</span>
+                                </label>
+                                <input
+                                 defaultValue={text}
+                                    {...register('text')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color</span>
+                                </label>
+                                <input
+                                 defaultValue={background}
+                                    {...register('background')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+                        </div>
+
 
                         {/* File Upload Section for Main Image */}
 

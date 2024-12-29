@@ -8,7 +8,7 @@ const PaymentsHistory = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await axios.get('https://template-store-server.vercel.app/payments');
+                const response = await axios.get('http://localhost:5000/payments');
                 setPayments(response.data); // Assume response.data contains an array of payment objects
             } catch (error) {
                 console.error('Error fetching payments:', error);

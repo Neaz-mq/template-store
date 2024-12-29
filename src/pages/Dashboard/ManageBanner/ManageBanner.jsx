@@ -47,6 +47,8 @@ const ManageBanner = () => {
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
+                                <th>Text</th>
+                                <th>Background</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -67,6 +69,8 @@ const ManageBanner = () => {
                                             </div>
                                         </div>
                                     </td>
+                                    <td>{item.text}</td>
+                                    <td>{item.background}</td>
                                     <td>
                                         <Link to={`/dashboard/updateBanner/${item._id}`}>
                                             <button className="btn btn-ghost hover:bg-[#4864EC] btn-sm bg-[#4864EC]">
