@@ -26,7 +26,7 @@ const Offer = () => {
                         key={index}
                         src={offer.image || "https://via.placeholder.com/150"}
                         alt={`Offer ${index + 1}`}
-                        className="w-full h-auto mb-4"
+                        className="w-full h-[50rem] mb-4"
                     />
                 ))
             ) : (

@@ -26,6 +26,11 @@ const Home = () => {
                 <section id="banner">
                     <Banner />
                 </section>
+
+                <section id="offer">
+                   <Offer  />
+                </section>
+
                 <section id="templates">
                     <Template />
                 </section>
@@ -50,9 +55,7 @@ const Home = () => {
                     <Community />
                 </section>
 
-                <section id="offer">
-                   <Offer  />
-                </section>
+               
 
 
             </main>
