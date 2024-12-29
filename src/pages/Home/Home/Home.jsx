@@ -6,6 +6,7 @@ import Exclusive from '../Exclusive/Exclusive';
 import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
+import Offer from '../Offer/Offer';
 
 
 const Home = () => {
@@ -47,6 +48,10 @@ const Home = () => {
                 
                 <section id="community">
                     <Community />
+                </section>
+
+                <section id="offer">
+                   <Offer  />
                 </section>
 
 
