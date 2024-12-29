@@ -21,6 +21,8 @@ const Dashboard = () => {
         { to: "/dashboard/manageFreeTemplates", icon: <FaList />, label: "Manage Free Templates" },
         { to: "/dashboard/uploadExclusiveTemplates", icon: <AiOutlineUpload />, label: "Upload Exclusive" },
         { to: "/dashboard/manageExclusiveTemplates", icon: <FaList />, label: "Manage Exclusive" },
+        { to: "/dashboard/uploadBanner", icon: <AiOutlineUpload />, label: "Upload Banner" },
+        { to: "/dashboard/manageBanner", icon: <FaList />, label: "Manage Banner" },
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
         { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" },
