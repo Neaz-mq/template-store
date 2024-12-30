@@ -225,12 +225,6 @@ const UpdateExclusiveTemplate = () => {
                                 />
                             </div>
 
-
-
-
-
-
-
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
