@@ -66,7 +66,7 @@ const  SignUp = () => {
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
-                                        title: 'User created successfully.',
+                                        title: 'Sign Up successfully.',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
@@ -104,7 +104,7 @@ const  SignUp = () => {
                                         {...register("name", { required: true })}
                                         name="name"
                                         placeholder="First Name"
-                                        className="input input-bordered  inputField w-28 lg:w-44 rounded-lg outline-[#7666E3]"
+                                        className="input input-bordered  inputField w-28 lg:w-44 rounded-lg outline-[#4864EC]"
                                     />
                                     {errors.name && <span className="text-red-600 "> First Name is required</span>}
                                 </div>
@@ -114,7 +114,7 @@ const  SignUp = () => {
                                         {...register("last", { required: true })}
                                         name="last"
                                         placeholder="Last Name"
-                                        className="input input-bordered inputField  w-28  lg:w-44  rounded-lg outline-[#7666E3]"
+                                        className="input input-bordered inputField  w-28  lg:w-44  rounded-lg outline-[#4864EC]"
                                     />
                                     {errors.last && <span className="text-red-600 "> Last Name is required</span>}
                                 </div>
@@ -177,7 +177,7 @@ const  SignUp = () => {
                         <div className="form-control py-3">
                             <label className="flex gap-3">
                                 <input
-                                    className="checkbox checkbox-primary"
+                                    className="checkbox"
                                     type="checkbox"
                                     onChange={(e) => setTermsChecked(e.target.checked)}
                                 />
@@ -188,7 +188,7 @@ const  SignUp = () => {
                         </div>
                         <div className="form-control -mt-5">
                             <button
-                                className="btn bg-[#6658C5] font-medium font-raleway hover:bg-[#4936c3] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
+                                className="btn bg-[#4864EC] font-medium font-raleway hover:bg-[#4864EC] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
                                 type="submit"
                                 disabled={!termsChecked || !isValid}
                             >

@@ -20,7 +20,7 @@ const Offer = () => {
 
     return (
         <div className="space-y-4">
-            {offers.length > 0 ? (
+            {offers.length > 0 &&
                 offers.map((offer, index) => (
                     <div 
                         key={index} 
@@ -35,17 +35,17 @@ const Offer = () => {
                                         className="3xl:text-4xl 3xl:ml-[14.2rem] 3xl:-mr-8 text-[#282A37] font-extrabold lg:font-bold leading-[50px] text-center lg:text-start 3xl:mt-[15rem] mb-3 font-raleway"
                                         style={{ color: offer.text }}
                                     >
-                                        {offer.description || "A design that match your business here"}
+                                        {offer.description || "A design that matches your business here"}
                                     </h1>
 
                                     {/* More Template Button */}
-                                  <a href="/template">
-                                  <button
-                                        className="mt-4 px-8 py-3 bg-[#965952] text-white font-bold rounded-lg hover:bg-[#f25e4f] transition duration-300 ease-in-out focus:outline-none ml-5"
-                                    >
-                                        More Template
-                                    </button>
-                                  </a>
+                                    <a href="/template">
+                                        <button
+                                            className="mt-4 px-8 py-3 bg-[#965952] text-white font-bold rounded-lg hover:bg-[#f25e4f] transition duration-300 ease-in-out focus:outline-none ml-5"
+                                        >
+                                            More Template
+                                        </button>
+                                    </a>
                                 </div>
 
                                 {/* Right Section: Image */}
@@ -60,9 +60,7 @@ const Offer = () => {
                         </div>
                     </div>
                 ))
-            ) : (
-                <p>Loading...</p>
-            )}
+            }
         </div>
     );
 };
