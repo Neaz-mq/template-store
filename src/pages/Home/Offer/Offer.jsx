@@ -41,7 +41,7 @@ const Offer = () => {
                                     {/* More Template Button */}
                                     <a href="/template">
                                         <button
-                                            className="mt-4 px-8 py-3 bg-[#965952] text-white font-bold rounded-lg hover:bg-[#f25e4f] transition duration-300 ease-in-out focus:outline-none 3xl:ml-5 2xl:ml-5 desktop:-ml-28 laptop:-ml-10"
+                                            className="mt-4 px-8 py-3 bg-[#4864EC] text-white font-bold rounded-lg transition duration-300 ease-in-out focus:outline-none 3xl:ml-5 2xl:ml-5 desktop:-ml-28 laptop:-ml-10"
                                         >
                                             More Template
                                         </button>
