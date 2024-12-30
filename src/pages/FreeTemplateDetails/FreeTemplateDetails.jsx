@@ -28,8 +28,19 @@ const FreeTemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
-    
 
+   
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Tracks dropdown visibility
+    const [selectedFile, setSelectedFile] = useState(null); // Tracks selected file
+
+
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen); // Toggles dropdown visibility
+    const handleSelectFile = (file, index) => {
+        setSelectedFile(`Download File ${index + 1}`);
+        setIsDropdownOpen(false); // Close dropdown after selection
+        // Automatically trigger download
+        window.open(file, "_blank", "noopener noreferrer");
+    };
 
     useEffect(() => {
 
@@ -249,11 +260,42 @@ const FreeTemplateDetails = () => {
                                    {/* Add to Cart button */}
 
                             <div className="3xl:ml-[1rem] 3xl:mt-16 2xl:-ml-[0.2rem] 2xl:mt-4 desktop:ml-[0.8rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-[5rem]">
-                               <a href="/contact">
-                               <button  className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem]  w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
-                                    Contact Us
+                              
+                            {records && records.length > 0 ? (
+                <div className="relative inline-block text-left">
+                    {/* Dropdown Button */}
+                    <button
+                        onClick={toggleDropdown}
+                        className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 flex items-center justify-between"
+                    >
+                        {selectedFile || "Download Options"}
+                        <span className="ml-2">&#x25BC;</span> {/* Downward arrow */}
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {isDropdownOpen && (
+                        <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                            {records.map((record, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleSelectFile(record, index)}
+                                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                >
+                                    Download File {index + 1}
                                 </button>
-                               </a>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <button
+                    className="p-3 bg-gray-500 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg cursor-not-allowed"
+                    disabled
+                >
+                    Download Unavailable
+                </button>
+            )}
+                              
 
                                 <a href="/free">
                                     <button className="3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[14rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-4 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
