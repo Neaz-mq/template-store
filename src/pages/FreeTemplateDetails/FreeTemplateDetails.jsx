@@ -33,7 +33,7 @@ const FreeTemplateDetails = () => {
 
     useEffect(() => {
 
-        fetch('https://template-store-server.vercel.app/template')
+        fetch('http://localhost:5000/template')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
@@ -147,7 +147,7 @@ const FreeTemplateDetails = () => {
                 records
 
             }
-            axiosSecure.post('https://template-store-server.vercel.app/carts', cartItem)
+            axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
