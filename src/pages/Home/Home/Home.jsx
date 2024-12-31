@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import Banner from '../Banner/Banner';
 import Community from '../Community/Community';
 import Template from '../Template/Template';
 import Exclusive from '../Exclusive/Exclusive';
@@ -23,9 +22,6 @@ const Home = () => {
             </Helmet>
 
             <main>
-                <section id="banner">
-                    <Banner />
-                </section>
 
                 <section id="offer">
                    <Offer  />
