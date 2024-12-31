@@ -32,7 +32,7 @@ const Template = () => {
                 <div className="bg-[#4864EC] h-[14.5rem] w-7 3xl:block 2xl:block desktop:block laptop:block tablet:hidden hidden"></div>
                 <div className="bg-[#ffffff] container mx-auto">
                     <div className="flex">
-                        <div className="flex 3xl:ml-60 2xl:ml-60 desktop:ml-24 tablet:ml-[16rem] laptop:ml-24 ml-16">
+                        <div className="flex 3xl:ml-60 2xl:ml-60 desktop:ml-24 tablet:ml-[18.3rem] laptop:ml-24 ml-16">
                             <div>
                                 <h1 className="3xl:text-4xl 2xl:text-4xl desktop:text-4xl laptop:text-4xl text-2xl font-semibold text-left leading-[2.5rem] text-[#4864EC] font-raleway 3xl:-mt-44 2xl:-mt-44 desktop:-mt-44 laptop:-mt-44 hidden 3xl:block 2xl:block desktop:block laptop:block">
                                     Explore <br /> <span className="italic">our work</span>
