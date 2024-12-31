@@ -14,7 +14,7 @@ const Main = () => {
         // Check if the visit has already been recorded in this session
         if (sessionStorage.getItem('visit') === null) {
             // Send a request to increment the visit count
-            axios.post('http://localhost:5000/api/visit')
+            axios.post('https://template-store-server.vercel.app/api/visit')
                 .then(response => {
                     console.log('Visit count updated:', response.data.visits);
                 })
