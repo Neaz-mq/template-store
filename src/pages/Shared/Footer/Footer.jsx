@@ -25,7 +25,7 @@ const Footer = () => {
                             <a href="/template" rel="noopener noreferrer" className="link link-hover">Logo and Branding</a>
                         </nav>
                         <nav className="flex text-[#ffffff] flex-col font-raleway font-medium flex-wrap text-[17px] gap-4 3xl:ml-5">
-                            <a href="/about-us" rel="noopener noreferrer" className="link link-hover">About</a>
+                            <a href="/company" rel="noopener noreferrer" className="link link-hover">About</a>
                             <a href="/contact" rel="noopener noreferrer" className="link link-hover">Contact</a>
                         </nav>
                         <nav className="flex text-[#ffffff] flex-col flex-wrap text-[17px] font-raleway font-medium gap-4 3xl:ml-5">

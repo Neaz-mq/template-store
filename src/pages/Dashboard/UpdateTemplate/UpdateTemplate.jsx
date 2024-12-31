@@ -182,7 +182,7 @@ const UpdateTemplate = () => {
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
                                 </label>
                                 <textarea
-                                    defaultValue={records}
+                                      defaultValue={records.join('\n')}
                                     {...register('records')}
                                     className="textarea textarea-bordered h-24"
                                     placeholder="Records Included"

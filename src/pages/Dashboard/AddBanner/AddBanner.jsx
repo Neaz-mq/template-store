@@ -14,6 +14,7 @@ const AddBanner = () => {
         // Prepare the offer item
         const offerItem = {
             description: data.description,
+            details: data.details,
             text: data.text,
             background: data.background,
             image: mainImageUrl,
@@ -65,6 +66,18 @@ const AddBanner = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Sub Description</span>
+                                </label>
+                                <textarea
+                                    {...register('details')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
+
                             {/* Text Color */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">

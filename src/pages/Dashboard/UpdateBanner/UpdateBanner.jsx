@@ -8,6 +8,7 @@ import { useState } from 'react';
 const UpdateBanner = () => {
     const {
         description,
+        details,
         text,
         background,
         image,
@@ -23,6 +24,7 @@ const UpdateBanner = () => {
     const onSubmit = async (data) => {
         const offerItem = { 
             description: data.description,      
+            details: data.details,      
             text: data.text,      
             background: data.background,      
             image: imageUrl,  // Use the main image URL    
@@ -71,6 +73,18 @@ const UpdateBanner = () => {
                                 <textarea
                                 defaultValue={description}
                                     {...register('description')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Sub Description</span>
+                                </label>
+                                <textarea
+                                defaultValue={details}
+                                    {...register('details')}
                                     className="textarea textarea-bordered w-full h-auto"
                                     placeholder="Description"
                                 ></textarea>
