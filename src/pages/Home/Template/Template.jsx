@@ -46,13 +46,13 @@ const Template = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-[#4864EC] h-[21.5rem] 3xl:h-[14.5rem] 2xl:h-[14.5rem] desktop:h-[14.5rem] laptop:h-[14.5rem] tablet:h-[13rem] w-fit 3xl:w-screen 2xl:w-screen desktop:w-screen laptop:w-screen overflow-hidden tablet:overflow-hidden container mx-auto 3xl:-mt-56 3xl:ml-[36rem] 2xl:-mt-56 2xl:ml-[36rem] desktop:-mt-56 laptop:-mt-56 tablet:mt-14 mt-10 desktop:ml-[30rem] laptop:ml-[22rem] tablet:ml-[0.5rem] ml-3">
+                    <div className="bg-[#4864EC] h-[21.5rem] 3xl:h-[16rem] 2xl:h-[14.5rem] desktop:h-[14.5rem] laptop:h-[14.5rem] tablet:h-[13rem] w-fit 3xl:w-screen 2xl:w-screen desktop:w-screen laptop:w-screen overflow-hidden tablet:overflow-hidden container mx-auto 3xl:-mt-64 3xl:ml-[36rem] 2xl:-mt-56 2xl:ml-[36rem] desktop:-mt-56 laptop:-mt-56 tablet:mt-14 mt-10 desktop:ml-[30rem] laptop:ml-[22rem] tablet:ml-[0.5rem] ml-3">
 
                         <div className="font-raleway">
                             <section className="text-white">
                                 <div className="flex justify-start items-start flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row gap-2 lg:gap-16 3xl:gap-28 2xl:gap-24 desktop:gap-20 tablet:gap-16 px-5 mt-6 3xl:ml-24 3xl:mt-7 2xl:ml-20 desktop:ml-8 laptop:ml-0 tablet:ml-6 ml-2">
                                     <div className="text-center">
-                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 -ml-6 3xl:-ml-0 font-raleway" aria-label="Template sales">
+                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 -ml-6 3xl:-ml-0 font-raleway" aria-label="Template sales">
                                             {counterOn && <CountUp start={0} end={stats.orders || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5 ml-6 hidden 3xl:block 2xl:block desktop:block laptop:block">
@@ -63,7 +63,7 @@ const Template = () => {
                                         </p>
                                     </div>
                                     <div className="text-center ml-4">
-                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 -ml-9" aria-label="Premium templates">
+                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 -ml-9" aria-label="Premium templates">
                                             {counterOn && <CountUp start={0} end={stats.templates || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5 ml-6 mr-12 hidden 3xl:block 2xl:block desktop:block laptop:block">
@@ -74,7 +74,7 @@ const Template = () => {
                                         </p>
                                     </div>
                                     <div className="text-center ml-9">
-                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 3xl:-ml-9 2xl:-ml-9 desktop:-ml-9 laptop:-ml-9 tablet:-ml-0 -ml-9" aria-label="Free templates">
+                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-2 3xl:-ml-9 2xl:-ml-9 desktop:-ml-9 laptop:-ml-9 tablet:-ml-0 -ml-9" aria-label="Free templates">
                                             {counterOn && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block -ml-12">
