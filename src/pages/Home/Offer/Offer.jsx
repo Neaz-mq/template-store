@@ -19,7 +19,7 @@ const Offer = () => {
     }, []);
 
     return (
-        <div className="pb-0 tablet:-mt-[8.5rem] 3xl:-mt-14 2xl:-mt-14 desktop:-mt-[3.8rem] laptop:-mt-14 -mt-24">
+        <div className="pb-0 tablet:-mt-[8.5rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-[1.2rem] laptop:-mt-4 -mt-24">
             {offers.length > 0 &&
                 offers.map((offer, index) => (
                     <div
