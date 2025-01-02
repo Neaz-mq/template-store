@@ -9,7 +9,7 @@ const Testimonial = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/testimonials')
+        fetch('https://template-store-server.vercel.app/testimonials')
             .then(res => res.json())
             .then(data => setTestimonials(data))
         const swiper = new Swiper('.swiper-container', {
