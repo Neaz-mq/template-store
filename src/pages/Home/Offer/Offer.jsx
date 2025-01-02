@@ -19,7 +19,7 @@ const Offer = () => {
     }, []);
 
     return (
-        <div className="pb-0 tablet:-mt-[8.5rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-[1.2rem] laptop:-mt-4 -mt-24">
+        <div className="pb-0 tablet:-mt-[6rem] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-[1.3rem] laptop:-mt-4 -mt-24">
             {offers.length > 0 &&
                 offers.map((offer, index) => (
                     <div
@@ -38,14 +38,14 @@ const Offer = () => {
                                         {offer.description || "A design that matches your business here"}
                                     </h1>
 
-                                    <p className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 text-[#282A37] font-medium  tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-2 mt-3">
+                                    <p className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 text-[#282A37] font-medium  tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2">
                                         {offer.details}
                                     </p>
 
                                     {/* More Template Button */}
                                     <a href="/template">
                                         <button
-                                            className="mt-4 px-8 py-3 bg-[#4864EC] text-white font-bold rounded-lg transition duration-300 ease-in-out focus:outline-none 3xl:ml-4 2xl:ml-5 desktop:-ml-28 laptop:-ml-12"
+                                            className="mt-4 px-8 py-3 bg-[#4864EC] text-white font-bold rounded-lg transition duration-300 ease-in-out focus:outline-none 3xl:ml-4 2xl:ml-5 desktop:-ml-[6.5rem] laptop:-ml-12"
                                         >
                                             More Template
                                         </button>
