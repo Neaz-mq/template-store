@@ -7,11 +7,11 @@ const About = () => {
             <div className='container mx-auto overflow-x-hidden overflow-y-hidden'>
                 <div className="layout lg:mx-24 mx-3">
                     <div>
-                        <h3 className="text-[#282A37] text-lg desktop:text-2xl 3xl:text-3xl 2xl:text-2xl laptop:text-2xl tablet:text-lg tablet:mt-10 font-medium font-raleway tablet:ml-12 ml-3 3xl:ml-[8.6rem] laptop:ml-0 2xl:ml-[8.7rem] desktop:-ml-1 3xl:mt-24 2xl:mt-24 desktop:mt-24 laptop:mt-16 3xl:mb-4 ">
+                        <h3 className="text-[#282A37] text-xl desktop:text-2xl 3xl:text-3xl 2xl:text-2xl laptop:text-2xl tablet:text-xl tablet:mt-10 font-medium font-raleway tablet:ml-12 ml-5 3xl:ml-[8.6rem] laptop:ml-0 2xl:ml-[8.7rem] desktop:-ml-1 3xl:mt-24 2xl:mt-24 desktop:mt-24 laptop:mt-16 3xl:mb-4 mt-5">
                             Welcome at <strong>Prographr</strong>
                         </h3>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-28">
-                            <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-16 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-16 ">
+                            <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-16 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-20 ">
                                 <div className="relative w-[21rem] h-[21rem] 3xl:h-[21rem] 2xl:h-[21rem] desktop:h-[21rem] laptop:h-[21rem] 3xl:w-[22rem] 2xl:w-[22rem] desktop:w-[22rem] laptop:w-[22rem] tablet:w-[22rem] tablet:h-[21rem] 3xl:-ml-28">                         
                                     <LazyLoad height={200} offset={100}>
                                         <img
