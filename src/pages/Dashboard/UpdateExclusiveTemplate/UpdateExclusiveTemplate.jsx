@@ -52,9 +52,9 @@ const UpdateExclusiveTemplate = () => {
             picture: additionalImages,
             records: recordsArray,
             license: licenseArray,
-            money :  parseFloat(data.money),
+            money: parseFloat(data.money),
             regular: data.regular,
-            extended: data.extended 
+            extended: data.extended
         };
 
         const templateRes = await axiosSecure.patch(`/exclusive/${_id}`, templateItem);
@@ -177,9 +177,9 @@ const UpdateExclusiveTemplate = () => {
                                 </div>
                             </div>
 
-                              {/* Category Included */}
+                            {/* Category Included */}
 
-                              <div className="form-control w-full my-6 h-auto px-6">
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Category*</span>
                                 </label>
@@ -221,21 +221,21 @@ const UpdateExclusiveTemplate = () => {
                                 <h2 className="p-4 -mt-1 font-medium text-lg">License (one per line)</h2>
                             </div>
                             <div className="form-control w-full lg:my-4 px-3 h-auto">
-                            <textarea
-                            defaultValue={license}
+                                <textarea
+                                    defaultValue={license}
                                     {...register('license')}
                                     className="textarea textarea-bordered h-24"
                                     placeholder="License"
                                 ></textarea>
 
-                              
+
 
                                 <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Regular license Price*</span>
                                     </label>
                                     <input
-                                     defaultValue={price}
+                                        defaultValue={price}
                                         type="number"
                                         step="0.01" // Allow decimal values
                                         placeholder="Price"
@@ -248,23 +248,23 @@ const UpdateExclusiveTemplate = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Regular license Description</span>
                                     </label>
-                                   
-                                   <textarea
-                                    defaultValue={regular}
-                                   {...register('regular')}
-                                   className="textarea textarea-bordered w-full h-auto"
-                                   placeholder="Description"
-                               ></textarea>
+
+                                    <textarea
+                                        defaultValue={regular}
+                                        {...register('regular')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
 
-                                 {/* Price */}
+                                {/* Price */}
 
-                                 <div className="form-control w-full mt-10 h-auto">
+                                <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Price*</span>
                                     </label>
                                     <input
-                                    defaultValue={money}
+                                        defaultValue={money}
                                         type="number"
                                         step="0.01" // Allow decimal values
                                         placeholder="Price"
@@ -277,17 +277,17 @@ const UpdateExclusiveTemplate = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Description</span>
                                     </label>
-                                   
-                                   <textarea
-                                   defaultValue={extended}
-                                   {...register('extended')}
-                                   className="textarea textarea-bordered w-full h-auto"
-                                   placeholder="Description"
-                               ></textarea>
+
+                                    <textarea
+                                        defaultValue={extended}
+                                        {...register('extended')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
 
-                                            
-                            
+
+
 
                             </div>
                         </div>
