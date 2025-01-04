@@ -38,7 +38,7 @@ const Offer = () => {
                                         {offer.description || "A design that matches your business here"}
                                     </h1>
 
-                                    <p className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 text-[#282A37] font-medium  tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2">
+                                    <p className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 text-[#ffffff] font-medium  tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2">
                                         {offer.details}
                                     </p>
 
