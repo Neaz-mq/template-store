@@ -152,8 +152,8 @@ const ExclusiveTemplateDetails = () => {
                 email: user.email,
                 type,
                 image,
-                price,
-                description,
+                price: licenseDetails.price, // Use the updated price based on selected license
+                description: licenseDetails.description, // Use the updated description based on selected license
                 specifications,
                 product,
                 records,
@@ -162,8 +162,9 @@ const ExclusiveTemplateDetails = () => {
                 money,
                 regular,
                 extended,
-                license
-            }
+                license: selectedLicense, // Store selected license type (Regular or Extended)
+            };
+    
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
                     console.log(res.data);
@@ -177,9 +178,8 @@ const ExclusiveTemplateDetails = () => {
                         });
                         refetch();
                     }
-                })
-        }
-        else {
+                });
+        } else {
             Swal.fire({
                 title: "You are not Signed In",
                 text: "Please signin to add to the cart?",
@@ -190,12 +190,13 @@ const ExclusiveTemplateDetails = () => {
                 confirmButtonText: "Yes, Sign In!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    //   send the user to the login page
-                    navigate('/sign-in', { state: { from: location } })
+                    // Send the user to the login page
+                    navigate('/sign-in', { state: { from: location } });
                 }
             });
         }
-    }
+    };
+    
 
     return (
         <div className="bg-[#ffffff] -mt-[1rem]">
