@@ -157,7 +157,7 @@ const AddExclusiveTemplates = () => {
                                 ))}
                             </div>
 
-                            {/* Records Included */}
+                            {/* Category Included */}
 
                             <div className="form-control w-full my-6 h-auto px-6 ">
                                 <label className="label">
@@ -175,6 +175,8 @@ const AddExclusiveTemplates = () => {
                                     <option value="medical">Medical</option>
                                 </select>
                             </div>
+
+                            {/* Records Included */}
 
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">

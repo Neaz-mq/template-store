@@ -52,7 +52,9 @@ const UpdateExclusiveTemplate = () => {
             picture: additionalImages,
             records: recordsArray,
             license: licenseArray,
-            money :  parseFloat(data.money)
+            money :  parseFloat(data.money),
+            regular: data.regular,
+            extended: data.extended 
         };
 
         const templateRes = await axiosSecure.patch(`/exclusive/${_id}`, templateItem);
@@ -175,6 +177,25 @@ const UpdateExclusiveTemplate = () => {
                                 </div>
                             </div>
 
+                              {/* Category Included */}
+
+                              <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Category*</span>
+                                </label>
+                                <select
+                                    defaultValue={category}
+                                    {...register('category', { required: true })}
+                                    className="select select-bordered w-full h-auto"
+                                >
+                                    <option disabled value="default">Select a category</option>
+                                    <option value="flyer">Flyer</option>
+                                    <option value="brochure">Brochure</option>
+                                    <option value="business">Business</option>
+                                    <option value="medical">Medical</option>
+                                </select>
+                            </div>
+
 
                             {/* Records Included */}
 
@@ -195,42 +216,80 @@ const UpdateExclusiveTemplate = () => {
 
                         </div>
 
-                        {/* Category and Price */}
-
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
-                                <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
+                                <h2 className="p-4 -mt-1 font-medium text-lg">License (one per line)</h2>
                             </div>
                             <div className="form-control w-full lg:my-4 px-3 h-auto">
-                                <select
-                                    defaultValue={category}
-                                    {...register('category', { required: true })}
-                                    className="select select-bordered w-full h-auto"
-                                >
-                                    <option disabled value="default">Select a category</option>
-                                    <option value="flyer">Flyer</option>
-                                    <option value="brochure">Brochure</option>
-                                    <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
-                                </select>
+                            <textarea
+                            defaultValue={license}
+                                    {...register('license')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="License"
+                                ></textarea>
+
+                              
+
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Regular license Price*</span>
+                                    </label>
+                                    <input
+                                     defaultValue={price}
+                                        type="number"
+                                        step="0.01" // Allow decimal values
+                                        placeholder="Price"
+                                        {...register('price', { required: true })}
+                                        className="input input-bordered w-full"
+                                    />
+                                </div>
+
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Regular license Description</span>
+                                    </label>
+                                   
+                                   <textarea
+                                    defaultValue={regular}
+                                   {...register('regular')}
+                                   className="textarea textarea-bordered w-full h-auto"
+                                   placeholder="Description"
+                               ></textarea>
+                                </div>
+
+                                 {/* Price */}
+
+                                 <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Extended license Price*</span>
+                                    </label>
+                                    <input
+                                    defaultValue={money}
+                                        type="number"
+                                        step="0.01" // Allow decimal values
+                                        placeholder="Price"
+                                        {...register('money', { required: true })}
+                                        className="input input-bordered w-full"
+                                    />
+                                </div>
+
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Extended license Description</span>
+                                    </label>
+                                   
+                                   <textarea
+                                   defaultValue={extended}
+                                   {...register('extended')}
+                                   className="textarea textarea-bordered w-full h-auto"
+                                   placeholder="Description"
+                               ></textarea>
+                                </div>
+
+                                            
+                            
+
                             </div>
-
-                            {/* Price */}
-
-                            <div className="form-control w-full my-72 h-auto px-3">
-                                <label className="label">
-                                    <span className="label-text font-medium text-lg">Price*</span>
-                                </label>
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    defaultValue={price}
-                                    placeholder="Price"
-                                    {...register('price', { required: true })}
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
