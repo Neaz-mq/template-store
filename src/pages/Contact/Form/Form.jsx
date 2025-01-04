@@ -56,19 +56,19 @@ const Form = () => {
 
     return (
 
-        <div className='min-h-screen font-raleway'>
-            <div className="layout pt-20 pb-48 flex flex-col items-center justify-center bg-white 3xl:-mt-0 2xl:-mt-4 desktop:-mt-5 laptop:-mt-4 -mt-0">
-                <section className="bg-[#ffffff] p-4  w-full 3xl:-mt-24 2xl:-mt-20 desktop:-mt-20 laptop:-mt-20 tablet:-mt-44 -mt-44   text-center 3xl:h-[100rem] 2xl:h-[90rem] desktop:h-[85rem]  laptop:h-[80rem]  h-[60rem] min-h-screen">
-                    <div className='container mx-auto mt-20 tablet:mt-24 3xl:mt-[16rem] 2xl:mt-52 desktop:mt-60 laptop:mt-52'>
-                        <h1 className="md:text-5xl text-3xl font-bold text-slate-800 pb-4 md:mt-24 mt-16">
+        <div className='font-raleway min-h-screen'>
+            <div className="layout flex flex-col items-center justify-center bg-white 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5 laptop:-mt-4 tablet:-mt-24 -mt-24     ">
+                <section className="bg-[#ffffff] w-full">
+                    <div className='container mx-auto 3xl:mt-44 2xl:mt-36 desktop:mt-36 laptop:mt-36 tablet:mt-36 mt-24 text-center '>
+                        <h1 className="md:text-5xl text-3xl font-bold text-slate-800">
                             How can we help?
                         </h1>
-                        <p className="mb-10 md:text-lg font-medium text-sm text-slate-600 md:mt-6">
+                        <p className="md:text-lg font-medium text-sm text-slate-600 3xl:mt-8 2xl:mt-8 desktop:mt-8 laptop:mt-8 tablet:mt-8 mt-9">
                             If you have any questions, reach out to our team for help.
                         </p>
                     </div> 
                 </section>
-                <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-roboto 3xl:-mt-[72rem] 2xl:-mt-[65rem] desktop:-mt-[58rem] laptop:-mt-[56rem] tablet:-mt-[44rem] -mt-[45rem] 3xl:mb-[25rem] 2xl:mb-64 desktop:mb-64 laptop:mb-64">
+                <form ref={form} onSubmit={sendEmail} className="lg:w-[600px] grid grid-cols-2 gap-5 mx-3 lg:mx-0 font-raleway 3xl:mt-10 2xl:mt-10 desktop:mt-10 laptop:mt-10 tablet:mt-10 mt-12">
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Full Name" type="text" name="from_name" />
                     <input className="bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Email" type="email" name="from_email" />
                     <textarea className="col-span-2 h-[150px] bg-[#F9F9F9] py-3 px-4 rounded-lg outline-[#7868E3]" placeholder="Message" name="message"></textarea>
