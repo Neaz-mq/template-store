@@ -17,6 +17,10 @@ const UpdateExclusiveTemplate = () => {
         price,
         image,
         records,
+        money,
+        license,
+        regular,
+        extended,
         _id
     } = useLoaderData();
 
@@ -34,6 +38,7 @@ const UpdateExclusiveTemplate = () => {
         const productArray = data.product.split('\n').filter(prod => prod.trim() !== '');
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
         const recordsArray = data.records.split('\n').map(record => record.trim()).filter(record => record);
+        const licenseArray = data.license.split('\n').map(item => item.trim()).filter(item => item);
 
         const templateItem = {
             type: data.type,
@@ -46,7 +51,8 @@ const UpdateExclusiveTemplate = () => {
             documents: documentsArray,
             picture: additionalImages,
             records: recordsArray,
-
+            license: licenseArray,
+            money :  parseFloat(data.money)
         };
 
         const templateRes = await axiosSecure.patch(`/exclusive/${_id}`, templateItem);

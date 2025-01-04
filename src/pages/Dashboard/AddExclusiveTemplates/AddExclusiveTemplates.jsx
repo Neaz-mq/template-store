@@ -31,6 +31,7 @@ const AddExclusiveTemplates = () => {
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
         const recordsArray = data.records.split('\n').map(item => item.trim()).filter(item => item);
+        const licenseArray = data.license.split('\n').map(item => item.trim()).filter(item => item);
 
         const templateItem = {
             type: data.type,
@@ -42,7 +43,11 @@ const AddExclusiveTemplates = () => {
             product: productArray,
             documents: documentsArray,
             picture: pictureUrls,
-            records: recordsArray
+            records: recordsArray,
+            license: licenseArray,
+            money :  parseFloat(data.money),
+            regular: data.regular,
+            extended: data.extended        
         };
 
         try {
@@ -154,6 +159,23 @@ const AddExclusiveTemplates = () => {
 
                             {/* Records Included */}
 
+                            <div className="form-control w-full my-6 h-auto px-6 ">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Category*</span>
+                                </label>
+                                <select
+                                    defaultValue="default"
+                                    {...register('category', { required: true })}
+                                    className="select select-bordered w-full h-auto mb-24"
+                                >
+                                    <option disabled value="default">Select a category</option>
+                                    <option value="flyer">Flyer</option>
+                                    <option value="brochure">Brochure</option>
+                                    <option value="business">Business</option>
+                                    <option value="medical">Medical</option>
+                                </select>
+                            </div>
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
@@ -165,30 +187,26 @@ const AddExclusiveTemplates = () => {
                                 ></textarea>
                             </div>
 
+                           
+
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
-                                <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
+                                <h2 className="p-4 -mt-1 font-medium text-lg">License (one per line)</h2>
                             </div>
                             <div className="form-control w-full lg:my-4 px-3 h-auto">
-                                <select
-                                    defaultValue="default"
-                                    {...register('category', { required: true })}
-                                    className="select select-bordered w-full h-auto"
-                                >
-                                    <option disabled value="default">Select a category</option>
-                                    <option value="flyer">Flyer</option>
-                                    <option value="brochure">Brochure</option>
-                                    <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
-                                </select>
+                            <textarea
+                                    {...register('license')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="License"
+                                ></textarea>
 
                                 {/* Price */}
 
-                                <div className="form-control w-full mt-60 h-auto">
+                                <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg">Price*</span>
+                                        <span className="label-text font-medium text-lg">Regular license Price*</span>
                                     </label>
                                     <input
                                         type="number"
@@ -198,6 +216,47 @@ const AddExclusiveTemplates = () => {
                                         className="input input-bordered w-full"
                                     />
                                 </div>
+
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Regular license Description</span>
+                                    </label>
+                                   
+                                   <textarea
+                                   {...register('regular')}
+                                   className="textarea textarea-bordered w-full h-auto"
+                                   placeholder="Description"
+                               ></textarea>
+                                </div>
+
+                                 {/* Price */}
+
+                                 <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Extended license Price*</span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        step="0.01" // Allow decimal values
+                                        placeholder="Price"
+                                        {...register('money', { required: true })}
+                                        className="input input-bordered w-full"
+                                    />
+                                </div>
+
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Extended license Description</span>
+                                    </label>
+                                   
+                                   <textarea
+                                   {...register('extended')}
+                                   className="textarea textarea-bordered w-full h-auto"
+                                   placeholder="Description"
+                               ></textarea>
+                                </div>
+
+                               
 
                               
                             
