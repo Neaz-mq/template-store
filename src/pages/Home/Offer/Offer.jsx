@@ -7,7 +7,7 @@ const Offer = () => {
         // Fetch the offers data from the backend
         const fetchOffers = async () => {
             try {
-                const response = await fetch('http://localhost:5000/offer');
+                const response = await fetch('https://template-store-server.vercel.app/offer');
                 const data = await response.json();
                 setOffers(data); // Assuming the response is an array
             } catch (error) {
