@@ -18,6 +18,7 @@ const AddBanner = () => {
             text: data.text,
             background: data.background,
             image: mainImageUrl,
+            sub: data.sub
         };
 
         try {
@@ -89,6 +90,17 @@ const AddBanner = () => {
                                     className="w-full h-10"
                                 />
                             </div>
+                            {/* sub Color */}
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Description Color</span>
+                                </label>
+                                <input
+                                    {...register('sub')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -140,4 +152,3 @@ const AddBanner = () => {
 };
 
 export default AddBanner;
- 
