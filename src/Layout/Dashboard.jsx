@@ -23,6 +23,8 @@ const Dashboard = () => {
         { to: "/dashboard/manageExclusiveTemplates", icon: <FaList />, label: "Manage Exclusive" },
         { to: "/dashboard/uploadBanner", icon: <AiOutlineUpload />, label: "Upload Banner" },
         { to: "/dashboard/manageBanner", icon: <FaList />, label: "Manage Banner" },
+        { to: "/dashboard/uploadDeal", icon: <AiOutlineUpload />, label: "Upload Deal" },
+        { to: "/dashboard/manageDeal", icon: <FaList />, label: "Manage Deal" },
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
         { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" },

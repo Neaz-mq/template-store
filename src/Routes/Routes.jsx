@@ -43,6 +43,7 @@ import Inbox from "../pages/Dashboard/Inbox/Inbox";
 import Chat from "../pages/Dashboard/Chat/Chat";
 import ManageBanner from "../pages/Dashboard/ManageBanner/ManageBanner";
 import UpdateBanner from "../pages/Dashboard/UpdateBanner/UpdateBanner";
+import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 
 
 
@@ -249,6 +250,11 @@ export const router = createBrowserRouter([
         path: 'updateBanner/:id',
         element: <AdminRoute><UpdateBanner></UpdateBanner></AdminRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/offer/${params.id}`)
+      },
+
+      {
+        path: 'uploadDeal',
+        element: <AdminRoute><AddDeal></AddDeal></AdminRoute>
       },
 
     
