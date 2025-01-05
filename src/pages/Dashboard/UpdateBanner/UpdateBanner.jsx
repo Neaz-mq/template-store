@@ -12,6 +12,7 @@ const UpdateBanner = () => {
         text,
         background,
         image,
+        sub,
         _id
     } = useLoaderData();
 
@@ -26,6 +27,7 @@ const UpdateBanner = () => {
             description: data.description,      
             details: data.details,      
             text: data.text,      
+            sub: data.sub,      
             background: data.background,      
             image: imageUrl,  // Use the main image URL    
         };
@@ -89,6 +91,7 @@ const UpdateBanner = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
+
                             {/* Text Color */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
@@ -97,6 +100,19 @@ const UpdateBanner = () => {
                                 <input
                                  defaultValue={text}
                                     {...register('text')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+
+                              {/* Sub Description Color */}
+                              <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Description Color</span>
+                                </label>
+                                <input
+                                 defaultValue={sub}
+                                    {...register('sub')}
                                     type="color"
                                     className="w-full h-10"
                                 />
