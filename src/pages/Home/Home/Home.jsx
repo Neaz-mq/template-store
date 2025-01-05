@@ -6,6 +6,7 @@ import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
 import Offer from '../Offer/Offer';
+import Deals from '../Deals/Deals';
 
 
 const Home = () => {
@@ -49,6 +50,10 @@ const Home = () => {
                 
                 <section id="community">
                     <Community />
+                </section>
+
+                <section id="deals">
+                   <Deals />
                 </section>
 
                
