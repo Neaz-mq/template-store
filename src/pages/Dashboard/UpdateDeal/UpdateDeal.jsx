@@ -16,6 +16,7 @@ const UpdateDeal = () => {
         color,
         variant,
         background,
+        back,
         image,
         photo,       
         _id
@@ -39,6 +40,7 @@ const UpdateDeal = () => {
             color: data.color,      
             variant: data.variant,      
             background: data.background,      
+            back: data.back,      
             image: imageUrl,
             photo: photoUrl  // Use the main image URL    
         };
@@ -238,11 +240,23 @@ const UpdateDeal = () => {
                          <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">   
                          <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color</span>
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 1</span>
                                 </label>
                                 <input
                                  defaultValue={background}
                                     {...register('background')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 2</span>
+                                </label>
+                                <input
+                                 defaultValue={back}
+                                    {...register('back')}
                                     type="color"
                                     className="w-full h-10"
                                 />

@@ -32,7 +32,6 @@ const Home = () => {
                     <Template />
                 </section>
                 
-
                 <section id="exclusive">
                     <Exclusive />
                 </section> 
@@ -49,7 +48,6 @@ const Home = () => {
                     <Promote />
                 </section> 
                 
-
                 <section id="package">
                     <Package />
                 </section> 

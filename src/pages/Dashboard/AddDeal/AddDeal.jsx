@@ -23,6 +23,7 @@ const AddDeal = () => {
             color: data.color,
             variant: data.variant,
             background: data.background,
+            back: data.back,
             image: mainImageUrl,
             photo: subImageUrl
            
@@ -209,10 +210,21 @@ const AddDeal = () => {
 
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color</span>
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 1</span>
                                 </label>
                                 <input
                                     {...register('background')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 2</span>
+                                </label>
+                                <input
+                                    {...register('back')}
                                     type="color"
                                     className="w-full h-10"
                                 />
