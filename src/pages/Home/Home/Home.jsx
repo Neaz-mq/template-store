@@ -7,6 +7,7 @@ import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
 import Offer from '../Offer/Offer';
 import Deals from '../Deals/Deals';
+import Deal from '../Deal/Deal';
 
 
 const Home = () => {
@@ -54,6 +55,10 @@ const Home = () => {
 
                 <section id="deals">
                    <Deals />
+                </section>
+
+                <section id="deal">
+                   <Deal />
                 </section>
 
                
