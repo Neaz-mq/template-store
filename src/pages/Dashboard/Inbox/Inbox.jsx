@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import { io } from "socket.io-client";
 import { AuthContext } from "../../../providers/AuthProvider";
 
-const socket = io("http://localhost:5000", {
+const socket = io("https://template-store-server.vercel.app", {
   autoConnect: false, // Prevent auto-connection
 });
 
@@ -23,7 +23,7 @@ const Inbox = () => {
     const fetchMessages = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/messages?email=${user.email}`);
+        const response = await fetch(`https://template-store-server.vercel.app/messages?email=${user.email}`);
         if (!response.ok) throw new Error("Failed to fetch messages");
         const messages = await response.json();
         setChat(messages);
@@ -67,7 +67,7 @@ const Inbox = () => {
     };
 
     try {
-      await fetch("http://localhost:5000/messages", {
+      await fetch("https://template-store-server.vercel.app/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
