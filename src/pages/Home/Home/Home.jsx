@@ -6,7 +6,6 @@ import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
 import Offer from '../Offer/Offer';
-import Deals from '../Deals/Deals';
 import Deal from '../Deal/Deal';
 
 
@@ -53,9 +52,9 @@ const Home = () => {
                     <Community />
                 </section>
 
-                <section id="deals">
+                {/* <section id="deals">
                    <Deals />
-                </section>
+                </section> */}
 
                 <section id="deal">
                    <Deal />
