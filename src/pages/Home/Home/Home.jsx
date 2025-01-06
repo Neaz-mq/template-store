@@ -31,10 +31,15 @@ const Home = () => {
                 <section id="templates">
                     <Template />
                 </section>
+                
 
                 <section id="exclusive">
                     <Exclusive />
                 </section> 
+                
+                <section id="deal">
+                   <Deal />
+                </section>
 
                 <section id="free">
                     <Free />
@@ -43,6 +48,7 @@ const Home = () => {
                 <section id="promote">
                     <Promote />
                 </section> 
+                
 
                 <section id="package">
                     <Package />
@@ -56,9 +62,7 @@ const Home = () => {
                    <Deals />
                 </section> */}
 
-                <section id="deal">
-                   <Deal />
-                </section>
+               
 
                
 

@@ -42,26 +42,26 @@ const Deal = () => {
                                     {showFirstContent ? (
                                         <>
                                             <h1
-                                                className="3xl:text-4xl 2xl:text-4xl desktop:text-2xl laptop:text-xl text-lg tablet:text-xl 3xl:ml-[13.8rem] 3xl:-mr-8 2xl:ml-[13.8rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:-ml-12 laptop:-mr-2 font-extrabold lg:font-bold 3xl:leading-[60px] 2xl:leading-[60px] desktop:leading-[45px] laptop:leading-[40px] tablet:leading-[50px] text-center lg:text-start 3xl:mt-12 2xl:mt-12 desktop:mt-8 laptop:mt-8 mb-3 font-raleway tablet:mt-12 mt-14"
+                                                className="3xl:text-6xl 2xl:text-6xl desktop:text-4xl laptop:text-base text-lg tablet:text-xl 3xl:ml-[13.8rem] 3xl:-mr-8 2xl:ml-[13.8rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:-ml-12 laptop:-mr-2  font-extrabold lg:font-bold 3xl:leading-[70px] 2xl:leading-[70px] desktop:leading-[50px] laptop:leading-[40px] tablet:leading-[60px] text-center lg:text-start 3xl:mt-[11rem] 2xl:mt-[10rem] desktop:mt-[12rem] laptop:mt-[12rem] mb-3 font-raleway tablet:mt-12 mt-14"
                                                 style={{ color: deal.text }}
                                             >
                                                 {deal.description || "A design that matches your business here"}
                                             </h1>
 
-                                            <p className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 font-medium tablet:leading-[30px] text-center lg:text-start 3xl:mt-4 2xl:mt-4 desktop:mt-4 laptop:mt-4 mb-3 font-raleway tablet:mt-0 mt-2" style={{ color: deal.sub }}>
+                                            <p className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2  font-medium  tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2" style={{ color: deal.sub }}>
                                                 {deal.details}
                                             </p>
                                         </>
                                     ) : (
                                         <>
-                                            <p
-                                                className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 font-medium tablet:leading-[30px] text-center lg:text-start 3xl:mt-4 2xl:mt-4 desktop:mt-4 laptop:mt-4 mb-3 font-raleway tablet:mt-0 mt-2"
+                                            <h1
+                                                className="3xl:text-6xl 2xl:text-6xl desktop:text-4xl laptop:text-base text-lg tablet:text-xl 3xl:ml-[13.8rem] 3xl:-mr-8 2xl:ml-[13.8rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:-ml-12 laptop:-mr-2  font-extrabold lg:font-bold 3xl:leading-[70px] 2xl:leading-[70px] desktop:leading-[50px] laptop:leading-[40px] tablet:leading-[60px] text-center lg:text-start 3xl:mt-[11rem] 2xl:mt-[10rem] desktop:mt-[12rem] laptop:mt-[12rem] mb-3 font-raleway tablet:mt-12 mt-14"
                                                 style={{ color: deal.color }} // Apply color to paragraph
                                             >
                                                 {deal.paragraph}
-                                            </p>
+                                            </h1>
                                             <p
-                                                className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 font-medium tablet:leading-[30px] text-center lg:text-start 3xl:mt-4 2xl:mt-4 desktop:mt-4 laptop:mt-4 mb-3 font-raleway tablet:mt-0 mt-2"
+                                                className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[4rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2  font-medium  tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2"
                                                 style={{ color: deal.variant }} // Apply variant to summary
                                             >
                                                 {deal.summary}
