@@ -44,6 +44,8 @@ import Chat from "../pages/Dashboard/Chat/Chat";
 import ManageBanner from "../pages/Dashboard/ManageBanner/ManageBanner";
 import UpdateBanner from "../pages/Dashboard/UpdateBanner/UpdateBanner";
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
+import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
+import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
 
 
 
@@ -255,6 +257,17 @@ export const router = createBrowserRouter([
       {
         path: 'uploadDeal',
         element: <AdminRoute><AddDeal></AddDeal></AdminRoute>
+      },
+
+      {
+        path: 'manageDeal',
+        element: <AdminRoute><ManageDeal></ManageDeal></AdminRoute>
+      },
+
+      {
+        path: 'updateDeal/:id',
+        element: <AdminRoute><UpdateDeal></UpdateDeal></AdminRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/deal/${params.id}`)
       },
 
     
