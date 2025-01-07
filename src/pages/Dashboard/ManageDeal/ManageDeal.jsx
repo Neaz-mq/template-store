@@ -83,7 +83,7 @@ const ManageDeal = () => {
                                     </td>
                                    
                                     <td>
-                                        <Link to={`/dashboard/updateDeal/${item._id}`}>
+                                        <Link to={`/dashboard/updateBanner/${item._id}`}>
                                             <button className="btn btn-ghost hover:bg-[#4864EC] btn-sm bg-[#4864EC]">
                                                 <FaEdit className="text-white" />
                                             </button>
@@ -124,7 +124,7 @@ const ManageDeal = () => {
                             </figure>
                             <div className="card-body p-2">
                                 <div className="card-actions justify-end mt-1">
-                                    <Link to={`/dashboard/updateDeal/${item._id}`}>
+                                    <Link to={`/dashboard/updateBanner/${item._id}`}>
                                         <button className="btn btn-primary btn-xs">
                                             <FaEdit />
                                         </button>

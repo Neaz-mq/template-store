@@ -8,7 +8,7 @@ const Deal = () => {
         // Fetch the deals data from the backend
         const fetchDeals = async () => {
             try {
-                const response = await fetch('https://template-store-server.vercel.app/deal');
+                const response = await fetch('http://localhost:5000/deal');
                 const data = await response.json();
                 setDeals(data); // Assuming the response is an array
             } catch (error) {
@@ -42,11 +42,11 @@ const Deal = () => {
                         <div className="container mx-auto 3xl:px-60 2xl:px-60 desktop:px-24 laptop:px-24 tablet:px-14 overflow-x-hidden">
                             <div className="flex flex-col lg:flex-row w-full 3xl:gap-12 2xl:gap-12 desktop:gap-8 laptop:gap-8">
                                 {/* Left Section: Description */}
-                                <div className="w-full lg:w-[40%] p-4 flex flex-col items-start justify-center lg:justify-start 3xl:mt-52 2xl:mt-52 desktop:mt-60 laptop:mt-64 tablet:mt-16 tablet:ml-40 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 mt-12">
+                                <div className="w-full lg:w-[40%] p-4 flex flex-col items-start justify-center lg:justify-start 3xl:mt-52 2xl:mt-52 desktop:mt-60 laptop:mt-44 tablet:mt-16 tablet:ml-40 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 mt-12">
                                     {showFirstContent ? (
                                         <>
                                             <h1
-                                                className="text-3xl 3xl:text-6xl 2xl:text-5xl desktop:text-5xl font-extrabold  text-start mb-4 font-raleway 3xl:leading-[70px] 2xl:leading-[60px] desktop:leading-[60px]"
+                                                className="text-3xl 3xl:text-6xl 2xl:text-5xl desktop:text-5xl laptop:text-4xl font-extrabold  text-start mb-4 font-raleway 3xl:leading-[70px] 2xl:leading-[60px] desktop:leading-[60px]"
                                                 style={{ color: deal.text }}
                                             >
                                                 {deal.description || "A design that matches your business here"}
@@ -62,7 +62,7 @@ const Deal = () => {
                                     ) : (
                                         <>
                                             <h1
-                                                className="text-3xl 3xl:text-6xl 2xl:text-5xl desktop:text-5xl font-extrabold  text-start mb-4 font-raleway 3xl:leading-[70px] 2xl:leading-[60px] desktop:leading-[60px]"
+                                                className="text-3xl 3xl:text-6xl 2xl:text-5xl desktop:text-5xl laptop:text-4xl font-extrabold  text-start mb-4 font-raleway 3xl:leading-[70px] 2xl:leading-[60px] desktop:leading-[60px]"
                                                 style={{ color: deal.color }}
                                             >
                                                 {deal.paragraph}

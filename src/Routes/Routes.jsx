@@ -28,7 +28,6 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllAdmins from "../pages/Dashboard/AllAdmins/AllAdmins";
 import AddExclusiveTemplates from "../pages/Dashboard/AddExclusiveTemplates/AddExclusiveTemplates";
-import AddBanner from "../pages/Dashboard/AddBanner/AddBanner";
 import ManageExclusiveTemplates from "../pages/Dashboard/ManageExclusiveTemplates/ManageExclusiveTemplates";
 import ExclusiveTemplateDetails from "../pages/ExclusiveTemplateDetails/ExclusiveTemplateDetails";
 import UpdateExclusiveTemplate from "../pages/Dashboard/UpdateExclusiveTemplate/UpdateExclusiveTemplate";
@@ -41,8 +40,6 @@ import Cancel from "../pages/Dashboard/Cancel/Cancel";
 import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory";
 import Inbox from "../pages/Dashboard/Inbox/Inbox";
 import Chat from "../pages/Dashboard/Chat/Chat";
-import ManageBanner from "../pages/Dashboard/ManageBanner/ManageBanner";
-import UpdateBanner from "../pages/Dashboard/UpdateBanner/UpdateBanner";
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
@@ -69,13 +66,13 @@ export const router = createBrowserRouter([
       {
         path: '/template/:id',
         element: <TemplateDetails></TemplateDetails>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/template/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/template/${params.id}`)
       },
 
       {
         path: '/free/:id',
         element: <FreeTemplateDetails></FreeTemplateDetails>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/free/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
       },
 
       {
@@ -93,7 +90,7 @@ export const router = createBrowserRouter([
       {
         path: '/exclusive/:id',
         element: <ExclusiveTemplateDetails></ExclusiveTemplateDetails>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/exclusive/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/exclusive/${params.id}`)
       },
 
       {
@@ -202,7 +199,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateTemplate/:id',
         element: <AdminRoute><UpdateTemplate></UpdateTemplate></AdminRoute>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/template/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/template/${params.id}`)
       },
 
       {
@@ -218,7 +215,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateFreeTemplate/:id',
         element: <AdminRoute><UpdateFreeTemplate></UpdateFreeTemplate></AdminRoute>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/free/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
       },
 
       {
@@ -234,40 +231,23 @@ export const router = createBrowserRouter([
       {
         path: 'updateExclusiveTemplate/:id',
         element: <AdminRoute><UpdateExclusiveTemplate></UpdateExclusiveTemplate></AdminRoute>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/exclusive/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/exclusive/${params.id}`)
       },
-
 
       {
         path: 'uploadBanner',
-        element: <AdminRoute><AddBanner></AddBanner></AdminRoute>
-      },
-
-      {
-        path: 'manageBanner',
-        element: <AdminRoute><ManageBanner></ManageBanner></AdminRoute>
-      },
-
-      {
-        path: 'updateBanner/:id',
-        element: <AdminRoute><UpdateBanner></UpdateBanner></AdminRoute>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/offer/${params.id}`)
-      },
-
-      {
-        path: 'uploadDeal',
         element: <AdminRoute><AddDeal></AddDeal></AdminRoute>
       },
 
       {
-        path: 'manageDeal',
+        path: 'manageBanner',
         element: <AdminRoute><ManageDeal></ManageDeal></AdminRoute>
       },
 
       {
-        path: 'updateDeal/:id',
+        path: 'updateBanner/:id',
         element: <AdminRoute><UpdateDeal></UpdateDeal></AdminRoute>,
-        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/deal/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/deal/${params.id}`)
       },
 
     
