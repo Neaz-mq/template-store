@@ -24,7 +24,7 @@ const Cart = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/create-payment', {
+            const response = await axios.post('https://template-store-server.vercel.app/create-payment', {
                 amount: totalPrice,
                 customerName: user.name,
                 customerEmail: user.email,
