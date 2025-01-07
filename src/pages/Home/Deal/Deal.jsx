@@ -8,7 +8,7 @@ const Deal = () => {
         // Fetch the deals data from the backend
         const fetchDeals = async () => {
             try {
-                const response = await fetch('https://template-store-server.vercel.app/deal');
+                const response = await fetch('http://localhost:5000/deal');
                 const data = await response.json();
                 setDeals(data); // Assuming the response is an array
             } catch (error) {
@@ -39,21 +39,21 @@ const Deal = () => {
                         }} // Apply background to the outer div
                     >
                         {/* Main Content inside the container */}
-                        <div className="container mx-auto px-4 overflow-x-hidden">
-                            <div className="flex flex-col lg:flex-row w-full gap-16">
+                        <div className="container mx-auto 3xl:px-60 2xl:px-60 desktop:px-24 laptop:px-24 tablet:px-14 overflow-x-hidden">
+                            <div className="flex flex-col lg:flex-row w-full 3xl:gap-12 2xl:gap-12 desktop:gap-8 laptop:gap-8">
                                 {/* Left Section: Description */}
-                                <div className="w-full 3xl:w-[40rem] 2xl:w-[40rem] desktop:w-[30rem] laptop:w-[30rem] p-4 flex flex-col items-center justify-center lg:justify-start">
+                                <div className="w-full lg:w-[40%] p-4 flex flex-col items-start justify-center lg:justify-start 3xl:mt-52 2xl:mt-52 desktop:mt-60 laptop:mt-64 tablet:mt-16 tablet:ml-40 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 mt-12">
                                     {showFirstContent ? (
                                         <>
                                             <h1
-                                                className="3xl:text-6xl 2xl:text-6xl desktop:text-4xl laptop:text-base text-lg tablet:text-xl 3xl:ml-[13.8rem] 3xl:-mr-8 2xl:ml-[13.8rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:-ml-12 laptop:-mr-2 font-extrabold lg:font-bold 3xl:leading-[70px] 2xl:leading-[70px] desktop:leading-[50px] laptop:leading-[40px] tablet:leading-[60px] text-center lg:text-start 3xl:mt-[11rem] 2xl:mt-[10rem] desktop:mt-[12rem] laptop:mt-[12rem] mb-3 font-raleway tablet:mt-12 mt-14"
+                                                className="text-3xl 3xl:text-6xl 2xl:text-5xl desktop:text-5xl font-extrabold  text-start mb-4 font-raleway 3xl:leading-[70px] 2xl:leading-[60px] desktop:leading-[60px]"
                                                 style={{ color: deal.text }}
                                             >
                                                 {deal.description || "A design that matches your business here"}
                                             </h1>
 
                                             <p
-                                                className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[14.2rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 font-medium tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2"
+                                                className="text-sm lg:text-base leading-relaxed text-start mb-6 font-medium font-raleway"
                                                 style={{ color: deal.sub }}
                                             >
                                                 {deal.details}
@@ -62,14 +62,14 @@ const Deal = () => {
                                     ) : (
                                         <>
                                             <h1
-                                                className="3xl:text-6xl 2xl:text-6xl desktop:text-4xl laptop:text-base text-lg tablet:text-xl 3xl:ml-[13.8rem] 3xl:-mr-8 2xl:ml-[13.8rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:-ml-12 laptop:-mr-2 font-extrabold lg:font-bold 3xl:leading-[70px] 2xl:leading-[70px] desktop:leading-[50px] laptop:leading-[40px] tablet:leading-[60px] text-center lg:text-start 3xl:mt-[11rem] 2xl:mt-[10rem] desktop:mt-[12rem] laptop:mt-[12rem] mb-3 font-raleway tablet:mt-12 mt-14"
-                                                style={{ color: deal.color }} // Apply color to paragraph
+                                                className="text-3xl 3xl:text-6xl 2xl:text-5xl desktop:text-5xl font-extrabold  text-start mb-4 font-raleway 3xl:leading-[70px] 2xl:leading-[60px] desktop:leading-[60px]"
+                                                style={{ color: deal.color }}
                                             >
                                                 {deal.paragraph}
                                             </h1>
                                             <p
-                                                className="3xl:text-lg 2xl:text-lg desktop:text-base laptop:text-sm text-sm tablet:text-sm 3xl:ml-[12.5rem] 3xl:-mr-8 2xl:ml-[14.2rem] 2xl:-mr-8 desktop:ml-[5rem] desktop:-mr-8 laptop:ml-[6.3rem] laptop:-mr-2 font-medium tablet:leading-[30px] text-center lg:text-start 3xl:mt-2 2xl:mt-2 desktop:mt-2 laptop:mt-2 mb-3 font-raleway tablet:mt-0 mt-2"
-                                                style={{ color: deal.variant }} // Apply variant to summary
+                                                className="text-sm lg:text-base leading-relaxed text-start mb-6 font-medium font-raleway"
+                                                style={{ color: deal.variant }}
                                             >
                                                 {deal.summary}
                                             </p>
@@ -79,7 +79,7 @@ const Deal = () => {
                                     {/* More Template Button */}
                                     <a href="/template">
                                         <button
-                                            className="mt-4 px-8 py-3 bg-[#4864EC] text-white font-bold rounded-lg transition duration-300 ease-in-out focus:outline-none 3xl:ml-9 2xl:ml-5 desktop:-ml-[6.5rem] laptop:-ml-12"
+                                            className="px-6 py-3 bg-[#4864EC] text-white font-bold rounded-lg transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none ml-24 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block"
                                         >
                                             More Template
                                         </button>
@@ -87,15 +87,17 @@ const Deal = () => {
                                 </div>
 
                                 {/* Right Section: Image */}
-                                <div className="w-full lg:w-[60%] relative">
+                                <div className="w-full lg:w-[70%] relative flex justify-center items-center">
                                     <img
-                                        src={showFirstContent ? deal.image : deal.photo} // Switch images based on content
+                                        src={showFirstContent ? deal.image : deal.photo}
                                         alt={`Deal ${index + 1}`}
-                                        className="3xl:w-[44rem] 3xl:h-[50rem] 2xl:w-[36rem] 2xl:h-[48rem] desktop:w-[39rem] desktop:h-[48rem] laptop:w-[30rem] laptop:h-[45rem] tablet:w-[30rem] tablet:h-[45rem] object-cover 3xl:ml-10 2xl:-ml-8 desktop:ml-1 tablet:ml-32 laptop:-ml-20 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-mt-20 tablet:pb-20 3xl:pb-0 2xl:pb-0 desktop:pb-0 laptop:pb-0 -mt-14 pb-20 w-[30rem] h-[30rem]"
+                                        className="w-full max-w-[30rem] lg:max-w-[45rem] h-auto object-cover 3xl:-mt-14"
                                     />
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 ))}
         </div>

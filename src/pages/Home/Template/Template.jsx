@@ -46,7 +46,7 @@ const Template = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-[#4864EC] h-[21.5rem] 3xl:h-[16rem] 2xl:h-[16rem] desktop:h-[15rem] laptop:h-[14.5rem] tablet:h-[13rem] w-fit 3xl:w-screen 2xl:w-screen desktop:w-screen laptop:w-screen overflow-hidden tablet:overflow-hidden container mx-auto 3xl:-mt-60 3xl:ml-[36rem] 2xl:-mt-64 2xl:ml-[36rem] desktop:-mt-60 laptop:-mt-56 tablet:mt-14 mt-10 desktop:ml-[30rem] laptop:ml-[22rem] tablet:ml-[0.5rem] ml-3">
+                    <div className="bg-[#4864EC] h-[21.5rem] 3xl:h-[16rem] 2xl:h-[16rem] desktop:h-[15rem] laptop:h-[14.5rem] tablet:h-[13rem] w-fit 3xl:w-screen 2xl:w-screen desktop:w-screen laptop:w-screen overflow-hidden tablet:overflow-hidden container mx-auto 3xl:-mt-60 3xl:ml-[36rem] 2xl:-mt-64 2xl:ml-[36rem] desktop:-mt-60 laptop:-mt-60 tablet:mt-14 mt-10 desktop:ml-[30rem] laptop:ml-[22rem] tablet:ml-[0.5rem] ml-3">
 
                         <div className="font-raleway">
                             <section className="text-white">

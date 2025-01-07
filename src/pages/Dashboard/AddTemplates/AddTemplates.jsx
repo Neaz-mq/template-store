@@ -31,6 +31,7 @@ const AddTemplates = () => {
         const productArray = data.product.split('\n').map(item => item.trim()).filter(item => item);
         const documentsArray = data.documents.split('\n').map(item => item.trim()).filter(item => item);
         const recordsArray = data.records.split('\n').map(item => item.trim()).filter(item => item);
+        const licenseArray = data.license.split('\n').map(item => item.trim()).filter(item => item);
 
         // Prepare the template item
         const templateItem = {
@@ -43,7 +44,11 @@ const AddTemplates = () => {
             product: productArray,
             documents: documentsArray,
             picture: pictureUrls,
-            records: recordsArray
+            records: recordsArray,
+            license: licenseArray,
+            money :  parseFloat(data.money),
+            regular: data.regular,
+            extended: data.extended   
         };
 
         try {
@@ -76,7 +81,7 @@ const AddTemplates = () => {
    
 
     return (
-        <div>
+        <div className="font-raleway">
             <div className='mt-5'>
                 <h2 className="-ml-3 lg:text-xl text-lg font-medium text-[#2F1C6A] mt-10 md:mt-0">Good day! Prographr</h2>
                 <p className="text-gray-400 font-medium md:text-base text-sm -ml-3 mt-2">Wish you have less work today!</p>
@@ -140,7 +145,6 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Preview and Remove Buttons for Additional Image URLs */}
-
                             <div className="flex flex-wrap gap-4">
                                 {pictureUrls.map((url, index) => (
                                     <div key={index} className="relative">
@@ -156,9 +160,28 @@ const AddTemplates = () => {
                                 ))}
                             </div>
 
-                           {/* Records Included */}
+                            {/* Category Included */}
 
-                           <div className="form-control w-full my-6 h-auto px-6">
+                            <div className="form-control w-full my-6 h-auto px-6 ">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Category*</span>
+                                </label>
+                                <select
+                                    defaultValue="default"
+                                    {...register('category', { required: true })}
+                                    className="select select-bordered w-full h-auto mb-24"
+                                >
+                                    <option disabled value="default">Select a category</option>
+                                    <option value="flyer">Flyer</option>
+                                    <option value="brochure">Brochure</option>
+                                    <option value="business">Business</option>
+                                    <option value="medical">Medical</option>
+                                </select>
+                            </div>
+
+                            {/* Records Included */}
+
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
                                 </label>
@@ -168,29 +191,27 @@ const AddTemplates = () => {
                                     placeholder="Records"
                                 ></textarea>
                             </div>
+
+                           
+
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
-                                <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
+                                <h2 className="p-4 -mt-1 font-medium text-lg">License (one per line)</h2>
                             </div>
                             <div className="form-control w-full lg:my-4 px-3 h-auto">
-                                <select
-                                    defaultValue="default"
-                                    {...register('category', { required: true })}
-                                    className="select select-bordered w-full h-auto"
-                                >
-                                    <option disabled value="default">Select a category</option>
-                                    <option value="flyer">Flyer</option>
-                                    <option value="brochure">Brochure</option>
-                                    <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
-                                </select>
+                            <textarea
+                                    {...register('license')}
+                                    className="textarea textarea-bordered h-24"
+                                    placeholder="License"
+                                ></textarea>
 
                                 {/* Price */}
-                                <div className="form-control w-full mt-60 h-auto">
+
+                                <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
-                                        <span className="label-text font-medium text-lg">Price*</span>
+                                        <span className="label-text font-medium text-lg">Regular license Price*</span>
                                     </label>
                                     <input
                                         type="number"
@@ -201,11 +222,57 @@ const AddTemplates = () => {
                                     />
                                 </div>
 
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Regular license Description</span>
+                                    </label>
+                                   
+                                   <textarea
+                                   {...register('regular')}
+                                   className="textarea textarea-bordered w-full h-auto"
+                                   placeholder="Description"
+                               ></textarea>
+                                </div>
+
+                                 {/* Price */}
+
+                                 <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Extended license Price*</span>
+                                    </label>
+                                    <input
+                                        type="number"
+                                        step="0.01" // Allow decimal values
+                                        placeholder="Price"
+                                        {...register('money', { required: true })}
+                                        className="input input-bordered w-full"
+                                    />
+                                </div>
+
+                                <div className="form-control w-full mt-10 h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Extended license Description</span>
+                                    </label>
+                                   
+                                   <textarea
+                                   {...register('extended')}
+                                   className="textarea textarea-bordered w-full h-auto"
+                                   placeholder="Description"
+                               ></textarea>
+                                </div>
+
+                               
+
+                              
+                            
+
                             </div>
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+
                             {/* Descriptions */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -218,6 +285,7 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -230,6 +298,7 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Product Specifications */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -242,6 +311,7 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Documents Included */}
+
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>
@@ -252,10 +322,12 @@ const AddTemplates = () => {
                                     placeholder="Documents"
                                 ></textarea>
                             </div>
+
+
                         </div>
                     </div>
 
-                    <button className="btn mt-6 hover:bg-[#7666E3] px-20 bg-[#9A8EE8] text-white">
+                    <button className="btn mt-6 hover:bg-[#4864EC] px-20 bg-[#4864EC] text-white">
                         Publish
                     </button>
 

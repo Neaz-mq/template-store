@@ -5,7 +5,6 @@ import Exclusive from '../Exclusive/Exclusive';
 import Free from '../Free/Free';
 import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
-import Offer from '../Offer/Offer';
 import Deal from '../Deal/Deal';
 
 
@@ -24,8 +23,10 @@ const Home = () => {
 
             <main>
 
-                <section id="offer">
-                   <Offer  />
+                
+
+                <section id="deal">
+                   <Deal />
                 </section>
 
                 <section id="templates">
@@ -36,9 +37,7 @@ const Home = () => {
                     <Exclusive />
                 </section> 
                 
-                <section id="deal">
-                   <Deal />
-                </section>
+                
 
                 <section id="free">
                     <Free />

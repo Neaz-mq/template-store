@@ -25,11 +25,30 @@ const TemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
-    const [selectedFiles, setSelectedFiles] = useState([]);
+     const [selectedLicense, setSelectedLicense] = useState("regular");
+       const [licenseDetails, setLicenseDetails] = useState({
+           price: template.price,
+           description: template.regular,
+       });
+
+       useEffect(() => {
+        // Update license details dynamically
+        const updatedDetails = {
+            price: selectedLicense === "regular" ? template.price : template.money,
+            description:
+                selectedLicense === "regular" ? template.regular : template.extended,
+        };
+        setLicenseDetails(updatedDetails);
+    }, [selectedLicense, template]);
+
+    const handleLicenseChange = (event) => {
+        setSelectedLicense(event.target.value);
+    };
+
 
     useEffect(() => {
 
-        fetch('https://template-store-server.vercel.app/free')
+        fetch('http://localhost:5000/free')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
@@ -73,7 +92,7 @@ const TemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, records, revisions, documents } = template;
+    const {_id, price, type, image, description, picture, specifications, product, records, revisions, documents, money, regular, extended, license } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -135,15 +154,19 @@ const TemplateDetails = () => {
                 email: user.email,
                 type,
                 image,
-                price,
-                description,
+                price: licenseDetails.price, // Use the updated price based on selected license
+                description: licenseDetails.description, // Use the updated description based on selected license
                 specifications,
                 product,
                 records,
                 revisions,
-                documents
+                documents,
+                money,
+                regular,
+                extended,
+                license: selectedLicense, // Store selected license type (Regular or Extended)
             }
-            axiosSecure.post('https://template-store-server.vercel.app/carts', cartItem)
+            axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
@@ -223,23 +246,25 @@ const TemplateDetails = () => {
 
                         <div>
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] laptop:-ml-36 2xl:ml-48" >
-                                <div
-                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                     } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
-                                    onClick={() => handleTemplateChange("templateCustom")}
-                                >
+                            <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                     } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
                                     <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-bold">
-                                            <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
-                                            <h2 className="font-raleway">Template</h2>
+                                            
+                                            <select
+                                                className="border rounded px-2 py-1 font-raleway"
+                                                value={selectedLicense}
+                                                onChange={handleLicenseChange}
+                                            >
+                                                <option value="regular">Regular License</option>
+                                                <option value="extended">Extended License</option>
+                                            </select>
                                         </div>
-                                        <div className="font-raleway font-medium">${price}</div>
+                                        <div className="font-raleway font-medium">${licenseDetails.price}</div>
                                     </div>
                                     <div className="pt-6 border-t font-raleway font-medium pb-4">
-                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                                        {licenseDetails.description}
                                     </div>
-
-                                  
                                 </div>
                                     {/* Add to Cart button */}
 
