@@ -222,7 +222,7 @@ const UpdateTemplate = () => {
                         </div>
                         <div className="form-control w-full lg:my-4 px-3 h-auto">
                             <textarea
-                                defaultValue={license}
+                                defaultValue={license.join('\n')}
                                 {...register('license')}
                                 className="textarea textarea-bordered h-24"
                                 placeholder="License"

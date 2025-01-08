@@ -89,32 +89,34 @@ const AddDeal = () => {
                             </div>
 
                             {/* Text Color */}
-                            <div className="form-control w-full my-6 h-auto px-6">
+                           <div className="flex">
+                           <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Text Color</span>
                                 </label>
                                 <input
                                     {...register('text')}
                                     type="color"
-                                    className="w-full h-10"
+                                    className="w-1/2 h-10"
                                 />
                             </div>
                             {/* sub Color */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Description Color</span>
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Color</span>
                                 </label>
                                 <input
                                     {...register('sub')}
                                     type="color"
-                                    className="w-full h-10"
+                                    className="w-1/2 h-10"
                                 />
                             </div>
+                           </div>
 
                             <div>
-                                <h2 className="p-4 -mt-2 font-medium text-lg -ml-1">Banner Image 1</h2>
+                                <h2 className="p-4 -mt-2 font-medium text-lg ml-3">Banner Image</h2>
                             </div>
-                            <div className="form-control rounded-md mx-3 my-3">
+                            <div className="form-control rounded-md mx-7 my-3">
                                 <input
                                     type="url"
                                     placeholder="Enter image URL"
@@ -132,9 +134,19 @@ const AddDeal = () => {
                                     </div>
                                 )}
                             </div>
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-3">Background color</span>
+                                </label>
+                                <input
+                                    {...register('background')}
+                                    type="color"
+                                    className="w-full h-10 mx-2"
+                                />
+                            </div>
                         </div>
 
-                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
+                        <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                         <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Description 2</span>
@@ -158,33 +170,35 @@ const AddDeal = () => {
                             </div>
 
                                {/* Text Color */}
-                               <div className="form-control w-full my-6 h-auto px-6">
+                              <div className="flex">
+                              <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Text Color 2</span>
                                 </label>
                                 <input
                                     {...register('color')}
                                     type="color"
-                                    className="w-full h-10"
+                                    className="w-1/2 h-10"
                                 />
                             </div>
 
                              {/* sub Color */}
                              <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Description Color 2</span>
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub  Color 2</span>
                                 </label>
                                 <input
                                     {...register('variant')}
                                     type="color"
-                                    className="w-full h-10"
+                                    className="w-1/2 h-10"
                                 />
                             </div>
+                              </div>
 
                             <div>
-                                <h2 className="p-4 -mt-2 font-medium text-lg -ml-1">Banner Image 2</h2>
+                                <h2 className="p-4 -mt-2 font-medium text-lg ml-3">Banner Image 2</h2>
                             </div>
-                            <div className="form-control rounded-md mx-3 my-3">
+                            <div className="form-control rounded-md mx-7 my-3">
                                 <input
                                     type="url"
                                     placeholder="Enter image URL"
@@ -202,33 +216,25 @@ const AddDeal = () => {
                                     </div>
                                 )}
                             </div>
-                            
-                        </div>
-                     
-                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
-                           
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
-                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 1</span>
-                                </label>
-                                <input
-                                    {...register('background')}
-                                    type="color"
-                                    className="w-full h-10"
-                                />
-                            </div>
-
-                            <div className="form-control w-full my-6 h-auto px-6">
-                                <label className="label">
-                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 2</span>
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-3">Background color 2</span>
                                 </label>
                                 <input
                                     {...register('back')}
                                     type="color"
-                                    className="w-full h-10"
+                                    className="w-full h-10 mx-2"
                                 />
                             </div>
+                            
+                        </div>
+                     
+                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto flex">
+                           
+
+                          
+
+                           
                         </div>
                     </div>
 
