@@ -64,7 +64,7 @@ const AddDeal = () => {
             </div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 -ml-2 w-full h-auto">
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
