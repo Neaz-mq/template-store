@@ -228,14 +228,6 @@ const AddDeal = () => {
                             </div>
                             
                         </div>
-                     
-                        <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto flex">
-                           
-
-                          
-
-                           
-                        </div>
                     </div>
 
                     <button className="btn mt-6 hover:bg-[#3d5bf0] px-20 bg-[#4864EC] text-white -ml-3">
