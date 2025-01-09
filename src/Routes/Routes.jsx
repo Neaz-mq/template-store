@@ -66,13 +66,13 @@ export const router = createBrowserRouter([
       {
         path: '/template/:id',
         element: <TemplateDetails></TemplateDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/template/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/template/${params.id}`)
       },
 
       {
         path: '/free/:id',
         element: <FreeTemplateDetails></FreeTemplateDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/free/${params.id}`)
       },
 
       {
@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
       {
         path: '/exclusive/:id',
         element: <ExclusiveTemplateDetails></ExclusiveTemplateDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/exclusive/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/exclusive/${params.id}`)
       },
 
       {
@@ -199,7 +199,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateTemplate/:id',
         element: <AdminRoute><UpdateTemplate></UpdateTemplate></AdminRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/template/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/template/${params.id}`)
       },
 
       {
@@ -215,7 +215,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateFreeTemplate/:id',
         element: <AdminRoute><UpdateFreeTemplate></UpdateFreeTemplate></AdminRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/free/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/free/${params.id}`)
       },
 
       {
@@ -231,7 +231,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateExclusiveTemplate/:id',
         element: <AdminRoute><UpdateExclusiveTemplate></UpdateExclusiveTemplate></AdminRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/exclusive/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/exclusive/${params.id}`)
       },
 
       {
@@ -247,7 +247,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateBanner/:id',
         element: <AdminRoute><UpdateDeal></UpdateDeal></AdminRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/deal/${params.id}`)
+        loader: ({ params }) => fetch(`https://template-store-server.vercel.app/deal/${params.id}`)
       },
 
     
