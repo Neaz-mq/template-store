@@ -4,7 +4,6 @@ import Package from "../../Home/Package/Package";
 import Filter from "../Filter/Filter";
 import ExclusiveTemplates from "../../Home/ExclusiveTemplates/ExclusiveTemplates";
 
-
 const Exclusives = () => {
 
     return (

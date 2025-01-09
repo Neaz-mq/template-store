@@ -164,7 +164,7 @@ const ExclusiveTemplateDetails = () => {
                 extended,
                 license: selectedLicense, // Store selected license type (Regular or Extended)
             };
-    
+
             axiosSecure.post('http://localhost:5000/carts', cartItem)
                 .then(res => {
                     console.log(res.data);
@@ -196,7 +196,7 @@ const ExclusiveTemplateDetails = () => {
             });
         }
     };
-    
+
 
     return (
         <div className="bg-[#ffffff] -mt-[1rem]">
@@ -246,10 +246,10 @@ const ExclusiveTemplateDetails = () => {
                         <div>
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] tablet:w-[50%] laptop:-ml-36 2xl:ml-48" >
                                 <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                     } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
+                                    } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
                                     <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-bold">
-                                            
+
                                             <select
                                                 className="border rounded px-2 py-1 font-raleway"
                                                 value={selectedLicense}

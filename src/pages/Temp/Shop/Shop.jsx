@@ -2,36 +2,35 @@ import { useRef, useState } from "react";
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
 
-
 const Shop = () => {
     const agencyTemplateRef = useRef(null);
-    const [selectedCategory, setSelectedCategory] = useState('All Categories'); 
-    const [searchQuery, setSearchQuery] = useState(''); 
-    const [searchKeyword, setSearchKeyword] = useState(''); 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+    const [selectedCategory, setSelectedCategory] = useState('All Categories');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleCategoryClick = (category) => {
-        console.log('Category clicked:', category); 
+        console.log('Category clicked:', category);
         setSelectedCategory(category);
-        setIsDropdownOpen(false); 
+        setIsDropdownOpen(false);
     };
 
     const handleSearch = (e) => {
-        setSearchQuery(e.target.value); 
+        setSearchQuery(e.target.value);
         setSearchKeyword(''); // Clear search keyword when typing
     };
 
     const getFilteredCategories = () => {
         if (selectedCategory === 'All Categories') {
-            return ['flyer','brochure', 'business', 'medical'];
+            return ['flyer', 'brochure', 'business', 'medical'];
         }
         return [selectedCategory.toLowerCase()]; // Convert to lowercase for matching
     };
 
     const handleButtonClick = (buttonLabel) => {
-        setSearchQuery(''); 
+        setSearchQuery('');
         setSearchKeyword(buttonLabel); // Set the search keyword for filtering
-        console.log(`${buttonLabel} button clicked`); 
+        console.log(`${buttonLabel} button clicked`);
     };
 
     return (
@@ -63,7 +62,7 @@ const Shop = () => {
                                     className="text-gray-700 font-semibold flex items-center"
                                     onClick={() => {
                                         setIsDropdownOpen(!isDropdownOpen);
-                                        console.log('Dropdown toggled:', !isDropdownOpen); 
+                                        console.log('Dropdown toggled:', !isDropdownOpen);
                                     }}
                                 >
                                     {selectedCategory}
@@ -108,7 +107,7 @@ const Shop = () => {
                                         className="text-gray-700 font-semibold  w-full py-2 flex items-center justify-between"
                                         onClick={() => {
                                             setIsDropdownOpen(!isDropdownOpen);
-                                            console.log('Dropdown toggled:', !isDropdownOpen); 
+                                            console.log('Dropdown toggled:', !isDropdownOpen);
                                         }}
                                     >
                                         {selectedCategory}
@@ -118,7 +117,7 @@ const Shop = () => {
                                     </button>
                                     {isDropdownOpen && (
                                         <ul className="absolute top-full left-0 bg-white shadow-lg border border-gray-300 mt-1 rounded-lg w-full z-20">
-                                            {['All Categories', 'Flyer', 'Brochure',  'Business', 'Medical'].map((category) => (
+                                            {['All Categories', 'Flyer', 'Brochure', 'Business', 'Medical'].map((category) => (
                                                 <li
                                                     key={category}
                                                     className={`px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer ${selectedCategory === category ? 'bg-gray-100' : ''}`}
@@ -137,11 +136,11 @@ const Shop = () => {
                         {/* Random Buttons */}
                         <div className="flex flex-col items-start space-y-4 mt-4 w-[8rem] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden hidden">
                             <h1 className="text-[#4864EC] font-raleway font-semibold text-[15px] ml-1 -mr-2">For Quick Access</h1>
-                            {['Agency', 'Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
+                            {['Agency', 'Business', 'Medical', 'Education', 'Food', 'Environment'].map((buttonLabel) => (
                                 <button
                                     key={buttonLabel}
                                     className="w-full px-6 py-3 text-base border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} 
+                                    onClick={() => handleButtonClick(buttonLabel)}
                                 >
                                     {buttonLabel}
                                 </button>
@@ -154,7 +153,7 @@ const Shop = () => {
                                 <button
                                     key={buttonLabel}
                                     className="px-4 py-2 border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} 
+                                    onClick={() => handleButtonClick(buttonLabel)}
                                 >
                                     {buttonLabel}
                                 </button>
@@ -166,11 +165,11 @@ const Shop = () => {
                 <div className="bg-white" ref={agencyTemplateRef}>
                     <AgencyTemplate
                         selectedCategory={getFilteredCategories()}
-                        searchQuery={searchQuery || searchKeyword} 
+                        searchQuery={searchQuery || searchKeyword}
                     />
                     <GraphicsTemplate
                         selectedCategory={getFilteredCategories()}
-                        searchQuery={searchQuery || searchKeyword} 
+                        searchQuery={searchQuery || searchKeyword}
                     />
                 </div>
             </header>

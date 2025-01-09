@@ -19,16 +19,16 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
                 setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
             });
 
-    }, [selectedCategory, searchQuery]); 
+    }, [selectedCategory, searchQuery]);
 
     const handleViewMore = () => {
         if (!showAll) {
-           
+
             const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates);
         }
 
-        else {         
+        else {
             const filteredTemplates = templates.filter(item => selectedCategory.includes(item.category) && item.type.toLowerCase().includes(searchQuery.toLowerCase()));
             setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
         }
@@ -75,8 +75,8 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
 };
 
 AgencyTemplate.propTypes = {
-    selectedCategory: PropTypes.array.isRequired, 
-    searchQuery: PropTypes.string.isRequired, 
+    selectedCategory: PropTypes.array.isRequired,
+    searchQuery: PropTypes.string.isRequired,
 };
 
 export default AgencyTemplate;

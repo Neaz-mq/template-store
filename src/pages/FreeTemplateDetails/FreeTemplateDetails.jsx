@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
-
 const FreeTemplateDetails = () => {
     const template = useLoaderData();
     const [selectedTemplate, setSelectedTemplate] = useState("templateCustom");
@@ -28,11 +27,8 @@ const FreeTemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
-
-   
     const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Tracks dropdown visibility
     const [selectedFile, setSelectedFile] = useState(null); // Tracks selected file
-
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen); // Toggles dropdown visibility
     const handleSelectFile = (file, index) => {
@@ -88,7 +84,7 @@ const FreeTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product,  documents, records } = template;
+    const { _id, price, type, image, description, picture, specifications, product, documents, records } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -113,7 +109,7 @@ const FreeTemplateDetails = () => {
         setSelectedImage(picture[nextIndex]);
         setSelectedIndex(nextIndex);
     };
-    
+
 
     const handlePreviousImage = () => {
         const prevIndex = (selectedIndex - 1 + picture.length) % picture.length;
@@ -137,8 +133,6 @@ const FreeTemplateDetails = () => {
             zoomOut();
         }
     };
-
-
 
     const handleAddToCart = () => {
         if (user && user.email) {
@@ -242,7 +236,7 @@ const FreeTemplateDetails = () => {
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:-ml-28 laptop:mt-44 3xl:w-[90%] 3xl:-ml-7 2xl:w-[60%] desktop:w-[130%] laptop:w-[150%] laptop:-ml-36 2xl:ml-44" >
                                 <div
                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                    } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                        } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-6 pt-3">
@@ -254,60 +248,55 @@ const FreeTemplateDetails = () => {
                                     </div>
                                     <div className="pt-6 border-t font-raleway font-medium pb-4">
                                         We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
-                                    </div>                         
+                                    </div>
                                 </div>
 
-                                   {/* Add to Cart button */}
+                                {/* Add to Cart button */}
 
-                            <div className="3xl:ml-[1rem] 3xl:mt-16 2xl:-ml-[0.2rem] 2xl:mt-4 desktop:ml-[0.8rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-[5rem]">
-                              
-                            {records && records.length > 0 ? (
-                <div className="relative inline-block text-left">
-                    {/* Dropdown Button */}
-                    <button
-                        onClick={toggleDropdown}
-                        className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 flex items-center justify-between"
-                    >
-                        {selectedFile || "Download Options"}
-                        <span className="ml-2">&#x25BC;</span> {/* Downward arrow */}
-                    </button>
+                                <div className="3xl:ml-[1rem] 3xl:mt-16 2xl:-ml-[0.2rem] 2xl:mt-4 desktop:ml-[0.8rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-[5rem]">
 
-                    {/* Dropdown Menu */}
-                    {isDropdownOpen && (
-                        <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                            {records.map((record, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => handleSelectFile(record, index)}
-                                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                >
-                                    Download File {index + 1}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <button
-                    className="p-3 bg-gray-500 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg cursor-not-allowed"
-                    disabled
-                >
-                    Download Unavailable
-                </button>
-            )}
-                              
+                                    {records && records.length > 0 ? (
+                                        <div className="relative inline-block text-left">
+                                            {/* Dropdown Button */}
+                                            <button
+                                                onClick={toggleDropdown}
+                                                className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 flex items-center justify-between"
+                                            >
+                                                {selectedFile || "Download Options"}
+                                                <span className="ml-2">&#x25BC;</span> {/* Downward arrow */}
+                                            </button>
 
-                                <a href="/free">
-                                    <button className="3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[14rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-4 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
-                                        Check more items
-                                    </button>
-                                </a>
+                                            {/* Dropdown Menu */}
+                                            {isDropdownOpen && (
+                                                <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                                                    {records.map((record, index) => (
+                                                        <button
+                                                            key={index}
+                                                            onClick={() => handleSelectFile(record, index)}
+                                                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                        >
+                                                            Download File {index + 1}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <button
+                                            className="p-3 bg-gray-500 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg cursor-not-allowed"
+                                            disabled
+                                        >
+                                            Download Unavailable
+                                        </button>
+                                    )}
+
+                                    <a href="/free">
+                                        <button className="3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[14rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-4 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
+                                            Check more items
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
-
-
-                            </div>
-
-                            
                         </div>
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
@@ -363,15 +352,15 @@ const FreeTemplateDetails = () => {
                                 </svg>
                             </button>
                             <a href="/template">
-                            <button
-                            
-                            className="mr-2 3xl:mr-[rem] 2xl:mr-44 desktop:mr-4 font-raleway text-[#4864EC] capitalize font-semibold gap-4 p-3 pl-4 flex items-center">
-                            <span className="mt-1 text-[13px] 3xl:text-[15px] 2xl:text-[15px] desktop:text-[15px] laptop:text-[15px] tablet:text-[15px]">Explore more Template</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M1.5 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-.5z" />
-                                <path d="M9.646 3.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .707l-4 4a.5.5 0 0 1-.708-.707L12.793 8 9.646 4.646a.5.5 0 0 1 0-.707z" />
-                            </svg>
-                        </button></a>
+                                <button
+
+                                    className="mr-2 3xl:mr-[rem] 2xl:mr-44 desktop:mr-4 font-raleway text-[#4864EC] capitalize font-semibold gap-4 p-3 pl-4 flex items-center">
+                                    <span className="mt-1 text-[13px] 3xl:text-[15px] 2xl:text-[15px] desktop:text-[15px] laptop:text-[15px] tablet:text-[15px]">Explore more Template</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M1.5 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-.5z" />
+                                        <path d="M9.646 3.646a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .707l-4 4a.5.5 0 0 1-.708-.707L12.793 8 9.646 4.646a.5.5 0 0 1 0-.707z" />
+                                    </svg>
+                                </button></a>
                         </div>
                         <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
                             {displayedTemplates.map(item => (

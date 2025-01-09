@@ -7,30 +7,30 @@ const Filter = () => {
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [searchQuery, setSearchQuery] = useState('');
     const [searchKeyword, setSearchKeyword] = useState('');
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleCategoryClick = (category) => {
-        console.log('Category clicked:', category); 
+        console.log('Category clicked:', category);
         setSelectedCategory(category);
-        setIsDropdownOpen(false); 
+        setIsDropdownOpen(false);
     };
 
     const handleSearch = (e) => {
-        setSearchQuery(e.target.value); 
-        setSearchKeyword(''); 
+        setSearchQuery(e.target.value);
+        setSearchKeyword('');
     };
 
     const getFilteredCategories = () => {
         if (selectedCategory === 'All Categories') {
-            return ['flyer','brochure', 'business', 'medical'];
+            return ['flyer', 'brochure', 'business', 'medical'];
         }
-        return [selectedCategory.toLowerCase()]; 
+        return [selectedCategory.toLowerCase()];
     };
 
     const handleButtonClick = (buttonLabel) => {
-        setSearchQuery(''); 
+        setSearchQuery('');
         setSearchKeyword(buttonLabel);
-        console.log(`${buttonLabel} button clicked`); 
+        console.log(`${buttonLabel} button clicked`);
     };
 
     return (
@@ -53,7 +53,7 @@ const Filter = () => {
                                 placeholder="Search resources..."
                                 className="flex-grow p-3 bg-transparent outline-none text-gray-600"
                                 type="text"
-                                value={searchQuery} 
+                                value={searchQuery}
                                 onChange={handleSearch}
                             />
                             <div className="border-l border-gray-300 px-8 flex items-center cursor-pointer relative">
@@ -62,7 +62,7 @@ const Filter = () => {
                                     className="text-gray-700 font-semibold flex items-center"
                                     onClick={() => {
                                         setIsDropdownOpen(!isDropdownOpen);
-                                        console.log('Dropdown toggled:', !isDropdownOpen); 
+                                        console.log('Dropdown toggled:', !isDropdownOpen);
                                     }}
                                 >
                                     {selectedCategory}
@@ -95,7 +95,7 @@ const Filter = () => {
                                         placeholder="Search resources..."
                                         className="flex-grow p-3 bg-transparent outline-none text-gray-600"
                                         type="text"
-                                        value={searchQuery} 
+                                        value={searchQuery}
                                         onChange={handleSearch}
                                     />
                                 </div>
@@ -105,7 +105,7 @@ const Filter = () => {
                                         className="text-gray-700 font-semibold  w-full py-2 flex items-center justify-between"
                                         onClick={() => {
                                             setIsDropdownOpen(!isDropdownOpen);
-                                            console.log('Dropdown toggled:', !isDropdownOpen); 
+                                            console.log('Dropdown toggled:', !isDropdownOpen);
                                         }}
                                     >
                                         {selectedCategory}
@@ -115,7 +115,7 @@ const Filter = () => {
                                     </button>
                                     {isDropdownOpen && (
                                         <ul className="absolute top-full left-0 bg-white shadow-lg border border-gray-300 mt-1 rounded-lg w-full z-20">
-                                            {['All Categories', 'Flyer', 'Brochure',  'Business', 'Medical'].map((category) => (
+                                            {['All Categories', 'Flyer', 'Brochure', 'Business', 'Medical'].map((category) => (
                                                 <li
                                                     key={category}
                                                     className={`px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer ${selectedCategory === category ? 'bg-gray-100' : ''}`}
@@ -133,11 +133,11 @@ const Filter = () => {
                         {/* Random Buttons */}
                         <div className="flex flex-col items-start space-y-4 mt-4 w-[8rem] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden hidden">
                             <h1 className="text-[#4864EC] font-raleway font-semibold text-[15px] ml-1 -mr-2">For Quick Access</h1>
-                            {['Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
+                            {['Business', 'Medical', 'Education', 'Food', 'Environment'].map((buttonLabel) => (
                                 <button
                                     key={buttonLabel}
                                     className="w-full px-6 py-3 text-base border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} 
+                                    onClick={() => handleButtonClick(buttonLabel)}
                                 >
                                     {buttonLabel}
                                 </button>
@@ -146,11 +146,11 @@ const Filter = () => {
 
                         {/* Random Buttons */}
                         <div className="3xl:flex 2xl:flex desktop:flex laptop:flex tablet:flex space-x-4 mt-4 hidden">
-                            {['Business', 'Medical',  'Education',  'Food', 'Environment'].map((buttonLabel) => (
+                            {['Business', 'Medical', 'Education', 'Food', 'Environment'].map((buttonLabel) => (
                                 <button
                                     key={buttonLabel}
                                     className="px-4 py-2 border border-gray-300  hover:bg-gray-100 focus:outline-none"
-                                    onClick={() => handleButtonClick(buttonLabel)} 
+                                    onClick={() => handleButtonClick(buttonLabel)}
                                 >
                                     {buttonLabel}
                                 </button>

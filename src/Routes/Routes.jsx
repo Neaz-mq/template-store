@@ -84,9 +84,6 @@ export const router = createBrowserRouter([
         path: '/free',
         element: <Frees></Frees>
       },
-
-      
-
       {
         path: '/exclusive/:id',
         element: <ExclusiveTemplateDetails></ExclusiveTemplateDetails>,

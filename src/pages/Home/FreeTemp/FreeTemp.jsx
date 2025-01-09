@@ -23,13 +23,13 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
     }, [selectedCategory, searchQuery]);
 
     const handleViewMore = () => {
-        if (showAll) {          
+        if (showAll) {
             const filteredTemplates = templates.filter(item =>
                 selectedCategory.includes(item.category) &&
                 item.type.toLowerCase().includes(searchQuery.toLowerCase())
             );
             setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
-        } else {          
+        } else {
             const filteredTemplates = templates.filter(item =>
                 selectedCategory.includes(item.category) &&
                 item.type.toLowerCase().includes(searchQuery.toLowerCase())
@@ -78,8 +78,8 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
 };
 
 FreeTemp.propTypes = {
-    selectedCategory: PropTypes.array.isRequired, 
-    searchQuery: PropTypes.string.isRequired,     
+    selectedCategory: PropTypes.array.isRequired,
+    searchQuery: PropTypes.string.isRequired,
 };
 
 export default FreeTemp;

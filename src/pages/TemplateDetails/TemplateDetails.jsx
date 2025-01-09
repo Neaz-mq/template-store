@@ -25,13 +25,13 @@ const TemplateDetails = () => {
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
-     const [selectedLicense, setSelectedLicense] = useState("regular");
-       const [licenseDetails, setLicenseDetails] = useState({
-           price: template.price,
-           description: template.regular,
-       });
+    const [selectedLicense, setSelectedLicense] = useState("regular");
+    const [licenseDetails, setLicenseDetails] = useState({
+        price: template.price,
+        description: template.regular,
+    });
 
-       useEffect(() => {
+    useEffect(() => {
         // Update license details dynamically
         const updatedDetails = {
             price: selectedLicense === "regular" ? template.price : template.money,
@@ -92,7 +92,7 @@ const TemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const {_id, price, type, image, description, picture, specifications, product, records, revisions, documents, money, regular, extended, license } = template;
+    const { _id, price, type, image, description, picture, specifications, product, records, revisions, documents, money, regular, extended, license } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -142,7 +142,7 @@ const TemplateDetails = () => {
         }
     };
 
-   
+
 
 
     const handleAddToCart = () => {
@@ -176,7 +176,7 @@ const TemplateDetails = () => {
                             title: `${type} added to your cart`,
                             showConfirmButton: false,
                             timer: 1500
-                        });                   
+                        });
                         refetch();
                     }
                 })
@@ -246,11 +246,11 @@ const TemplateDetails = () => {
 
                         <div>
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] laptop:-ml-36 2xl:ml-48" >
-                            <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                     } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
+                                <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                    } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
                                     <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-bold">
-                                            
+
                                             <select
                                                 className="border rounded px-2 py-1 font-raleway"
                                                 value={selectedLicense}
@@ -266,23 +266,23 @@ const TemplateDetails = () => {
                                         {licenseDetails.description}
                                     </div>
                                 </div>
-                                    {/* Add to Cart button */}
+                                {/* Add to Cart button */}
 
-                            <div className="3xl:ml-[0.6rem] 3xl:mt-16 2xl:ml-[0rem] 2xl:mt-4 desktop:ml-[0.5rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-28">
-                                <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[20rem]  w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
-                                    Add to Cart
-                                </button>
-
-                                <a href="/template">
-                                    <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
-                                        Check more items
+                                <div className="3xl:ml-[0.6rem] 3xl:mt-16 2xl:ml-[0rem] 2xl:mt-4 desktop:ml-[0.5rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-28">
+                                    <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[20rem]  w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
+                                        Add to Cart
                                     </button>
-                                </a>
-                            </div>
+
+                                    <a href="/template">
+                                        <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
+                                            Check more items
+                                        </button>
+                                    </a>
+                                </div>
 
                             </div>
 
-                           
+
                         </div>
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
@@ -346,8 +346,6 @@ const TemplateDetails = () => {
                                 />
                             ))}
                         </div>
-
-                      
                     </div>
                 </div>
             </div>
@@ -358,7 +356,7 @@ const TemplateDetails = () => {
                         className="relative p-4 sm:p-8 md:p-12 lg:p-16 xl:p-20 3xl:p-2 overflow-hidden"
                         style={{
                             transform: `scale(${zoomLevel})`, // Apply zoom level to the modal container
-                            transformOrigin: 'center', 
+                            transformOrigin: 'center',
                             transition: 'transform 0.3s ease-out', // Smooth zoom transition
                         }}
                     >
@@ -404,11 +402,11 @@ const TemplateDetails = () => {
                 </div>
             )}
 
-<PresentationTemplate></PresentationTemplate>
+            <PresentationTemplate></PresentationTemplate>
 
         </div>
 
-        
+
     );
 };
 

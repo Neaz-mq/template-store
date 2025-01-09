@@ -5,7 +5,6 @@ import Marketplace from "../Marketplace/Marketplace";
 import Shop from "../Shop/Shop";
 import { Helmet } from 'react-helmet-async';
 
-
 const Templates = () => {
 
     return (
@@ -16,14 +15,12 @@ const Templates = () => {
                 <meta name="description" content="Find high-quality templates for your projects at the Template Store. Choose from a variety of options including agency templates, graphics templates, and more." />
             </Helmet>
 
-           
-
             <Shop></Shop>
 
             <AgencyTemplate></AgencyTemplate>
 
             <GraphicsTemplate></GraphicsTemplate>
-           
+
             <PresentationTemplate></PresentationTemplate>
 
             <Marketplace></Marketplace>
