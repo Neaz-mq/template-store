@@ -9,7 +9,7 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 12;
 
     useEffect(() => {
-        fetch('https://template-store-server.vercel.app/exclusive')
+        fetch('http://localhost:5000/exclusive')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
