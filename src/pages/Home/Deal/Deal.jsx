@@ -39,8 +39,8 @@ const Deal = () => {
                                     : currentContent === 1
                                     ? deal.back
                                     : currentContent === 2
-                                    ? deal.frame
-                                    : deal.framework, // Background based on currentContent
+                                    ? deal.framework
+                                    : deal.frame, // Background based on currentContent
                         }}
                     >
                         {/* Main Content inside the container */}
