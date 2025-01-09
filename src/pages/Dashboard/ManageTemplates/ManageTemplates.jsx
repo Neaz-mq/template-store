@@ -106,7 +106,7 @@ const ManageTemplates = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>                           
+                                    </td>
                                     <td>{temp.type}</td>
                                     <td>{temp.category}</td>
                                     <td>${temp.price}</td>
@@ -191,7 +191,6 @@ const ManageTemplates = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };

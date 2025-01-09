@@ -5,7 +5,6 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useState } from 'react';
 
-
 const UpdateFreeTemplate = () => {
     const {
         type,

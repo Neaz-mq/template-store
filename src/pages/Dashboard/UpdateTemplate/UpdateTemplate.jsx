@@ -5,7 +5,6 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useState } from 'react';
 
-
 const UpdateTemplate = () => {
     const {
         type,
@@ -351,10 +350,6 @@ const UpdateTemplate = () => {
                                     placeholder="Files Included"
                                 ></textarea>
                             </div>
-
-
-
-
                         </div>
                     </div>
 

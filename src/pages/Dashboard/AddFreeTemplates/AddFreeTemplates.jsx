@@ -4,7 +4,6 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 
-
 const AddFreeTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosSecure = useAxiosSecure();
@@ -12,7 +11,6 @@ const AddFreeTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
-  
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -156,9 +154,9 @@ const AddFreeTemplates = () => {
                                 ))}
                             </div>
 
-                           {/* Records Included */}
+                            {/* Records Included */}
 
-                           <div className="form-control w-full my-6 h-auto px-6">
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
                                 </label>
@@ -169,7 +167,7 @@ const AddFreeTemplates = () => {
                                 ></textarea>
                             </div>
 
-                            
+
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">

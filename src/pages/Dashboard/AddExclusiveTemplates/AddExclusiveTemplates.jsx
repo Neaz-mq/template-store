@@ -12,8 +12,6 @@ const AddExclusiveTemplates = () => {
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
 
-
-
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
             setPictureUrls([...pictureUrls, currentPictureUrl.trim()]);
@@ -45,9 +43,9 @@ const AddExclusiveTemplates = () => {
             picture: pictureUrls,
             records: recordsArray,
             license: licenseArray,
-            money :  parseFloat(data.money),
+            money: parseFloat(data.money),
             regular: data.regular,
-            extended: data.extended        
+            extended: data.extended
         };
 
         try {
@@ -188,9 +186,6 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Records"
                                 ></textarea>
                             </div>
-
-                           
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -198,7 +193,7 @@ const AddExclusiveTemplates = () => {
                                 <h2 className="p-4 -mt-1 font-medium text-lg">License (one per line)</h2>
                             </div>
                             <div className="form-control w-full lg:my-4 px-3 h-auto">
-                            <textarea
+                                <textarea
                                     {...register('license')}
                                     className="textarea textarea-bordered h-24"
                                     placeholder="License"
@@ -223,17 +218,17 @@ const AddExclusiveTemplates = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Regular license Description</span>
                                     </label>
-                                   
-                                   <textarea
-                                   {...register('regular')}
-                                   className="textarea textarea-bordered w-full h-auto"
-                                   placeholder="Description"
-                               ></textarea>
+
+                                    <textarea
+                                        {...register('regular')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
 
-                                 {/* Price */}
+                                {/* Price */}
 
-                                 <div className="form-control w-full mt-10 h-auto">
+                                <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Price*</span>
                                     </label>
@@ -250,19 +245,13 @@ const AddExclusiveTemplates = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Description</span>
                                     </label>
-                                   
-                                   <textarea
-                                   {...register('extended')}
-                                   className="textarea textarea-bordered w-full h-auto"
-                                   placeholder="Description"
-                               ></textarea>
+
+                                    <textarea
+                                        {...register('extended')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
-
-                               
-
-                              
-                            
-
                             </div>
                         </div>
 
@@ -319,8 +308,6 @@ const AddExclusiveTemplates = () => {
                                     placeholder="Documents"
                                 ></textarea>
                             </div>
-
-
                         </div>
                     </div>
 

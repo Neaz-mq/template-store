@@ -4,7 +4,6 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import useDeal from "../../../hooks/useDeal";
 
-
 const ManageDeal = () => {
     const [deal, , refetch] = useDeal(); // Fetch offer data and refetch function
     const axiosSecure = useAxiosSecure();
@@ -81,7 +80,7 @@ const ManageDeal = () => {
                                             </div>
                                         </div>
                                     </td>
-                                   
+
                                     <td>
                                         <Link to={`/dashboard/updateBanner/${item._id}`}>
                                             <button className="btn btn-ghost hover:bg-[#4864EC] btn-sm bg-[#4864EC]">

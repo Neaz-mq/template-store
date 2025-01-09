@@ -4,7 +4,6 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 
-
 const AddTemplates = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
@@ -12,7 +11,6 @@ const AddTemplates = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
     const [pictureUrls, setPictureUrls] = useState([]);
     const [currentPictureUrl, setCurrentPictureUrl] = useState("");
-    
 
     const addPictureUrl = () => {
         if (currentPictureUrl.trim() !== "") {
@@ -46,9 +44,9 @@ const AddTemplates = () => {
             picture: pictureUrls,
             records: recordsArray,
             license: licenseArray,
-            money :  parseFloat(data.money),
+            money: parseFloat(data.money),
             regular: data.regular,
-            extended: data.extended   
+            extended: data.extended
         };
 
         try {
@@ -78,7 +76,7 @@ const AddTemplates = () => {
         }
     };
 
-   
+
 
     return (
         <div className="font-raleway">
@@ -192,7 +190,7 @@ const AddTemplates = () => {
                                 ></textarea>
                             </div>
 
-                           
+
 
                         </div>
 
@@ -201,7 +199,7 @@ const AddTemplates = () => {
                                 <h2 className="p-4 -mt-1 font-medium text-lg">License (one per line)</h2>
                             </div>
                             <div className="form-control w-full lg:my-4 px-3 h-auto">
-                            <textarea
+                                <textarea
                                     {...register('license')}
                                     className="textarea textarea-bordered h-24"
                                     placeholder="License"
@@ -226,17 +224,17 @@ const AddTemplates = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Regular license Description</span>
                                     </label>
-                                   
-                                   <textarea
-                                   {...register('regular')}
-                                   className="textarea textarea-bordered w-full h-auto"
-                                   placeholder="Description"
-                               ></textarea>
+
+                                    <textarea
+                                        {...register('regular')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
 
-                                 {/* Price */}
+                                {/* Price */}
 
-                                 <div className="form-control w-full mt-10 h-auto">
+                                <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Price*</span>
                                     </label>
@@ -253,18 +251,18 @@ const AddTemplates = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Description</span>
                                     </label>
-                                   
-                                   <textarea
-                                   {...register('extended')}
-                                   className="textarea textarea-bordered w-full h-auto"
-                                   placeholder="Description"
-                               ></textarea>
+
+                                    <textarea
+                                        {...register('extended')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
 
-                               
 
-                              
-                            
+
+
+
 
                             </div>
                         </div>

@@ -285,10 +285,6 @@ const UpdateExclusiveTemplate = () => {
                                         placeholder="Description"
                                     ></textarea>
                                 </div>
-
-
-
-
                             </div>
                         </div>
 
@@ -351,10 +347,6 @@ const UpdateExclusiveTemplate = () => {
                                     placeholder="Files Included"
                                 ></textarea>
                             </div>
-
-
-
-
                         </div>
                     </div>
 

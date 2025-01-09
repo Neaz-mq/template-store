@@ -18,17 +18,17 @@ const AddDeal = () => {
         const dealItem = {
             description: data.description,
             paragraph: data.paragraph,
-            explanation: data.explanation,  
+            explanation: data.explanation,
             representation: data.representation,
             details: data.details,
             summary: data.summary,
-            feature: data.feature,  
-            describe: data.describe, 
+            feature: data.feature,
+            describe: data.describe,
             text: data.text,
             color: data.color,
             shade: data.shade,
-            tone: data.tone,  
-            sub: data.sub,       
+            tone: data.tone,
+            sub: data.sub,
             variant: data.variant,
             paint: data.paint,
             blush: data.blush,
@@ -38,8 +38,8 @@ const AddDeal = () => {
             frame: data.frame,
             image: mainImageUrl,
             photo: subImageUrl,
-            picture: subPhotoUrl,           
-            figure: subPictureUrl 
+            picture: subPhotoUrl,
+            figure: subPictureUrl
 
         };
 
