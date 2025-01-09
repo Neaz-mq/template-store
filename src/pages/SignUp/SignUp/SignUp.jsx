@@ -9,8 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../hooks/useAuth';
 
-
-const  SignUp = () => {
+const SignUp = () => {
 
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
@@ -158,7 +157,7 @@ const  SignUp = () => {
                                     type={showConfirmPassword ? 'text' : 'password'}
                                     {...register("confirm", {
                                         required: true,
-                                        validate: value => value === password 
+                                        validate: value => value === password
                                     })}
                                     placeholder="Confirm password"
                                     className="input input-bordered inputField pr-12"
@@ -171,7 +170,7 @@ const  SignUp = () => {
                                     {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
                                 </button>
                                 {errors.confirm?.type === 'required' && <p className="text-red-600">Confirm Password is required</p>}
-                                {errors.confirm?.type === 'validate' && <p className="text-red-600">Passwords do not match</p>} 
+                                {errors.confirm?.type === 'validate' && <p className="text-red-600">Passwords do not match</p>}
                             </div>
                         </div>
                         <div className="form-control py-3">
@@ -207,7 +206,7 @@ const  SignUp = () => {
                 </div>
 
                 {/* Google Sign-in Button */}
-                
+
                 <div className='flex justify-center items-center -mt-24 3xl:-mt-24 '>
                     <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4 py-3 shadow-none font-medium font-raleway mb-24 w-[15rem]  ">
                         <FaGoogle className=" text-base

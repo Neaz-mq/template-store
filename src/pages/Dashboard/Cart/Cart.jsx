@@ -32,7 +32,7 @@ const Cart = () => {
                 failUrl: 'http://localhost:5173/dashboard/fail-payment',
                 cancelUrl: 'http://localhost:5173/dashboard/cancel-payment',
             });
-            
+
             if (response.data.paymentUrl) {
                 window.location.href = response.data.paymentUrl; // Redirect to SSLCommerz payment gateway
             }

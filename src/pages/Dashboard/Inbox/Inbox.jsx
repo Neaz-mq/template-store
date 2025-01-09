@@ -106,13 +106,12 @@ const Inbox = () => {
           {chat.map((msg, index) => (
             <div
               key={index}
-              className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
-                msg.user?.email === user.email
+              className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${msg.user?.email === user.email
                   ? "bg-blue-500 text-white ml-auto"
                   : "bg-gray-200 text-black mr-auto"
-              }`}
+                }`}
             >
-              
+
               <p className="mt-2">{msg.message}</p>
               <small className="text-black">
                 {new Date(msg.timestamp).toLocaleString()}

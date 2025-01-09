@@ -1,7 +1,7 @@
 import LazyLoad from 'react-lazyload';
 
 const About = () => {
-    
+
     return (
         <section className="w-full bg-[#ffffff] font-raleway pt-6 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5 laptop:-mt-4 tablet:-mt-24 -mt-24">
             <div className='container mx-auto overflow-x-hidden overflow-y-hidden'>
@@ -12,7 +12,7 @@ const About = () => {
                         </h3>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-28">
                             <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-16 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-20 ">
-                                <div className="relative w-[21rem] h-[21rem] 3xl:h-[21rem] 2xl:h-[21rem] desktop:h-[21rem] laptop:h-[21rem] 3xl:w-[22rem] 2xl:w-[22rem] desktop:w-[22rem] laptop:w-[22rem] tablet:w-[22rem] tablet:h-[21rem] 3xl:-ml-28">                         
+                                <div className="relative w-[21rem] h-[21rem] 3xl:h-[21rem] 2xl:h-[21rem] desktop:h-[21rem] laptop:h-[21rem] 3xl:w-[22rem] 2xl:w-[22rem] desktop:w-[22rem] laptop:w-[22rem] tablet:w-[22rem] tablet:h-[21rem] 3xl:-ml-28">
                                     <LazyLoad height={200} offset={100}>
                                         <img
                                             className='w-[24rem] h-[21rem] bg-[#257aa8a0] object-cover mix-blend-multiply '

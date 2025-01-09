@@ -20,19 +20,19 @@ const Dashboard = () => {
         { to: "/dashboard/uploadFreeTemplates", icon: <AiOutlineUpload />, label: "Upload Free Templates" },
         { to: "/dashboard/manageFreeTemplates", icon: <FaList />, label: "Manage Free Templates" },
         { to: "/dashboard/uploadExclusiveTemplates", icon: <AiOutlineUpload />, label: "Upload Exclusive" },
-        { to: "/dashboard/manageExclusiveTemplates", icon: <FaList />, label: "Manage Exclusive" },     
+        { to: "/dashboard/manageExclusiveTemplates", icon: <FaList />, label: "Manage Exclusive" },
         { to: "/dashboard/uploadBanner", icon: <AiOutlineUpload />, label: "Upload Banner" },
         { to: "/dashboard/manageBanner", icon: <FaList />, label: "Manage Banner" },
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
         { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" },
-        { to: "/dashboard/chat", icon: <FaEnvelope/>,  label: "Chat" },
+        { to: "/dashboard/chat", icon: <FaEnvelope />, label: "Chat" },
     ];
-    
+
     const userLinks = [
         { to: "/dashboard/userHome", icon: <FaHome />, label: "User Home" },
         { to: "/dashboard/cart", icon: <FaShoppingCart />, label: `My Cart (${cart.length})` },
-        { to: "/dashboard/inbox", icon: <FaEnvelope/>, label: "Inbox" },
+        { to: "/dashboard/inbox", icon: <FaEnvelope />, label: "Inbox" },
         { to: "/dashboard/paymentHistory", icon: <FaList />, label: "Payment History" },
     ];
 

@@ -39,11 +39,11 @@ const Creativity = () => {
         </header>
         <main className="py-6 -ml-2 tablet:ml-14 tablet:mr-0 grid place-items-center desktop:gap-0 tablet:grid-cols-2 laptop:grid-cols-3 gap-4 tablet:gap-2 laptop:gap-0 2xl:gap-0 3xl:gap-0 3xl:ml-48 2xl:-mr-4 2xl:ml-48 3xl:-mr-6 desktop:-mr-9 desktop:ml-20 laptop:mr-10 laptop:ml-9 mt-0 2xl:mt-7 desktop:mt-6 laptop:mt-6">
           <section className="w-full flex justify-center 3xl:mr-10 3xl:-ml-20 2xl:mr-10 2xl:-ml-20 desktop:mr-16 desktop:-ml-16">
-          <article className="bg-[#F9F9F9] desktop:max-w-[340px] laptop:h-[380px] 2xl:max-w-[330px] desktop:h-[290px] laptop:max-w-[250px] tablet:max-w-[350px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-[7rem] 3xl:mr-4 3xl:mb-12 2xl:ml-[7rem] 2xl:mr-0 2xl:mb-12 desktop:ml-20 laptop:ml-16 desktop:mr-0 desktop:mb-12 font-raleway ">
+            <article className="bg-[#F9F9F9] desktop:max-w-[340px] laptop:h-[380px] 2xl:max-w-[330px] desktop:h-[290px] laptop:max-w-[250px] tablet:max-w-[350px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-[7rem] 3xl:mr-4 3xl:mb-12 2xl:ml-[7rem] 2xl:mr-0 2xl:mb-12 desktop:ml-20 laptop:ml-16 desktop:mr-0 desktop:mb-12 font-raleway ">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-medium text-[#15141ce7]">Creativity</h2>
                 <div className="w-[90px] 3xl:w-[80px] 2xl:w-[80px] desktop:w-[80px] tablet:w-[80px] h-[80px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl">
-                <img
+                  <img
                     className="lazy-load decoration-transparent scale-125 3xl:mt-6 3xl:ml-5 2xl:mt-6 2xl:ml-5 desktop:mt-6 desktop:ml-5 laptop:mt-6 laptop:ml-5 tablet:mt-6 tablet:ml-5 "
                     data-src="/Group 286.svg"
                     alt="Creativity Icon"
@@ -55,7 +55,7 @@ const Creativity = () => {
                 </div>
               </div>
               <p className="py-8 text-base text-[#15141ce7] mt-5">
-              We are pushing boundaries, exploring possibilities, and delivering visually striking, functional, meaningful, and impactful designs.
+                We are pushing boundaries, exploring possibilities, and delivering visually striking, functional, meaningful, and impactful designs.
               </p>
               <a href="#" title="Learn more about our team collaboration" className="hidden">
                 <button className="btn bg-white hover:bg-gray-100 font-medium capitalize text-[#15141ce7]  gap-4 mt-5">
