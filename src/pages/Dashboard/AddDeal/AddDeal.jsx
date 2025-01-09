@@ -25,10 +25,10 @@ const AddDeal = () => {
             feature: data.feature,  
             describe: data.describe, 
             text: data.text,
-            sub: data.sub,
-            shade: data.shade,
-            tone: data.tone,
             color: data.color,
+            shade: data.shade,
+            tone: data.tone,  
+            sub: data.sub,       
             variant: data.variant,
             paint: data.paint,
             blush: data.blush,
@@ -38,8 +38,8 @@ const AddDeal = () => {
             frame: data.frame,
             image: mainImageUrl,
             photo: subImageUrl,
-            picture: data.picture,           
-            figure: data.figure 
+            picture: subPhotoUrl,           
+            figure: subPictureUrl 
 
         };
 
@@ -286,7 +286,7 @@ const AddDeal = () => {
                                         <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Color 3</span>
                                     </label>
                                     <input
-                                        {...register('tone')}
+                                        {...register('paint')}
                                         type="color"
                                         className="w-1/2 h-10"
                                     />
@@ -367,7 +367,7 @@ const AddDeal = () => {
                                         <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Color 4</span>
                                     </label>
                                     <input
-                                        {...register('tone')}
+                                        {...register('blush')}
                                         type="color"
                                         className="w-1/2 h-10"
                                     />

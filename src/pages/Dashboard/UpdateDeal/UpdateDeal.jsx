@@ -38,7 +38,7 @@ const UpdateDeal = () => {
     const [imageUrl, setImageUrl] = useState(image); 
     const [photoUrl, setPhotoUrl] = useState(photo); 
     const [pictureUrl, setPictureUrl] = useState(picture); 
-    const [figureUrl, setfigureUrl] = useState(figure); 
+    const [figureUrl, setFigureUrl] = useState(figure); 
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
@@ -53,11 +53,11 @@ const UpdateDeal = () => {
             summary: data.summary,      
             feature: data.feature,      
             describe: data.describe,      
-            text: data.text,      
-            sub: data.sub,      
+            text: data.text,  
+            color: data.color,  
             shade: data.shade,      
-            tone: data.tone,      
-            color: data.color,      
+            tone: data.tone,   
+            sub: data.sub,              
             variant: data.variant,      
             paint: data.paint,      
             blush: data.blush,      
@@ -299,7 +299,7 @@ const UpdateDeal = () => {
                                 </label>
                                 <textarea
                                 defaultValue={explanation}
-                                    {...register('description')}
+                                    {...register('explanation')}
                                     className="textarea textarea-bordered w-full h-auto"
                                     placeholder="Description"
                                 ></textarea>
@@ -311,7 +311,7 @@ const UpdateDeal = () => {
                                 </label>
                                 <textarea
                                 defaultValue={feature}
-                                    {...register('details')}
+                                    {...register('feature')}
                                     className="textarea textarea-bordered w-full h-auto"
                                     placeholder="Description"
                                 ></textarea>
@@ -325,7 +325,7 @@ const UpdateDeal = () => {
                                 </label>
                                 <input
                                  defaultValue={shade}
-                                    {...register('text')}
+                                    {...register('shade')}
                                     type="color"
                                     className="w-1/2 h-10"
                                 />
@@ -337,8 +337,8 @@ const UpdateDeal = () => {
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Color 3</span>
                                 </label>
                                 <input
-                                 defaultValue={tone}
-                                    {...register('tone')}
+                                 defaultValue={paint}
+                                    {...register('paint')}
                                     type="color"
                                     className="w-1/2 h-10"
                                 />
@@ -374,6 +374,95 @@ const UpdateDeal = () => {
                                 <input
                                  defaultValue={framework}
                                     {...register('framework')}
+                                    type="color"
+                                    className="w-full h-10"
+                                />
+                            </div>
+                        </div>
+
+
+                        <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Description 4</span>
+                                </label>
+                                <textarea
+                                defaultValue={representation}
+                                    {...register('representation')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Sub Description 4</span>
+                                </label>
+                                <textarea
+                                defaultValue={describe}
+                                    {...register('describe')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
+
+                            {/* Text Color */}
+                           <div className='flex'>
+                           <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Text Color 4</span>
+                                </label>
+                                <input
+                                 defaultValue={tone}
+                                    {...register('tone')}
+                                    type="color"
+                                    className="w-1/2 h-10"
+                                />
+                            </div>
+
+                              {/* Sub Description Color */}
+                              <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Color 4</span>
+                                </label>
+                                <input
+                                 defaultValue={blush}
+                                    {...register('blush')}
+                                    type="color"
+                                    className="w-1/2 h-10"
+                                />
+                            </div>
+                           </div>
+
+                            <div>
+                                <h2 className="p-4 -mt-2 font-medium text-lg ml-3">Banner Image 4</h2>
+                            </div>
+                            <div className="form-control rounded-md mx-7 my-3">
+                                <input
+                                    type="url"
+                                    value={figureUrl}
+                                    onChange={(e) => setFigureUrl(e.target.value)}
+                                    placeholder="Enter main image URL"
+                                    className="input input-bordered w-full"
+                                />
+                                {figureUrl && (
+                                    <div className="relative mt-4 flex items-center justify-center">
+                                        <img
+                                            src={figureUrl}
+                                            alt="Main"
+                                            className="w-80 object-cover"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="form-control w-full my-6 h-auto px-6">
+                                <label className="label">
+                                    <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color 4</span>
+                                </label>
+                                <input
+                                 defaultValue={frame}
+                                    {...register('frame')}
                                     type="color"
                                     className="w-full h-10"
                                 />
