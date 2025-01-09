@@ -21,7 +21,7 @@ const Deal = () => {
         // Cycle through content every 4 seconds
         const interval = setInterval(() => {
             setCurrentContent((prev) => (prev + 1) % 4); // Cycle through 0, 1, 2, 3
-        }, 4000);
+        }, 6000);
 
         return () => clearInterval(interval); // Cleanup interval on unmount
     }, []);
