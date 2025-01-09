@@ -3,7 +3,7 @@ const Community = () => {
     return (
 
         <div className='container mx-auto overflow-x-hidden tablet:overflow-x-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-x-hidden laptop:overflow-x-hidden font-raleway'>
-            
+
             <div className='mx-3'>
                 <header className="layout 3xl:-mb-10 3xl:-mt-40 2xl:-mb-10  2xl:-mt-40 desktop:-mb-10 desktop:-mt-40 laptop:mb-20 laptop:-mt-40 tablet:mb-20 tablet:-mt-40 mb-20 -mt-20">
                     <section className="text-[#15141ce7] -ml-3 tablet:ml-1 w-[18rem] tablet:w-[43.5rem] laptop:w-[49rem] bg-[#F9F9F9]  pt-10 pb-24 font-raleway font-medium px-5 3xl:pb-28 3xl:px-13 2xl:pb-28 2xl:px-10 desktop:pb-28 desktop:px-5 gap-5 grid 3xl:grid-cols-2 2xl:grid-cols-2 desktop:grid-cols-2 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[72rem] 3xl:ml-[15.6rem] 2xl:w-[62rem] 2xl:ml-[15.5rem] desktop:w-[64rem] tablet:mt-44 mt-20 desktop:ml-[7rem] laptop:ml-[6.5rem] place-items-center">

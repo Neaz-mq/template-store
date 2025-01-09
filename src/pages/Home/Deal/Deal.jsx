@@ -37,10 +37,10 @@ const Deal = () => {
                                 currentContent === 0
                                     ? deal.background
                                     : currentContent === 1
-                                    ? deal.back
-                                    : currentContent === 2
-                                    ? deal.framework
-                                    : deal.frame, // Background based on currentContent
+                                        ? deal.back
+                                        : currentContent === 2
+                                            ? deal.framework
+                                            : deal.frame, // Background based on currentContent
                         }}
                     >
                         {/* Main Content inside the container */}
@@ -127,10 +127,10 @@ const Deal = () => {
                                             currentContent === 0
                                                 ? deal.image
                                                 : currentContent === 1
-                                                ? deal.photo
-                                                : currentContent === 2
-                                                ? deal.picture
-                                                : deal.figure
+                                                    ? deal.photo
+                                                    : currentContent === 2
+                                                        ? deal.picture
+                                                        : deal.figure
                                         }
                                         alt={`Deal ${index + 1}`}
                                         className="w-full max-w-[30rem] lg:max-w-[45rem] h-auto object-cover 3xl:-mt-14"

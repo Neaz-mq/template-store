@@ -42,8 +42,8 @@ const Free = () => {
                     <main className="layout lg:-mt-10 py-12 -mt-16 lg:mx-20">
                         <div className="grid grid-cols-1 mx-4 md:grid-cols-2 laptop:grid-cols-2 3xl:grid-cols-4 2xl:grid-cols-4 desktop:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-[5.7rem] 3xl:mr-16 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-[5.7rem] 2xl:mr-24 2xl:gap-x-4 2xl:gap-y-8 desktop:-ml-12 desktop:-mr-16 laptop:-ml-12 laptop:-mr-16"
                             data-aos="fade-up"
-                            data-aos-duration="1000"  
-                            data-aos-easing="ease-in-out"  
+                            data-aos-duration="1000"
+                            data-aos-easing="ease-in-out"
                         >
                             {displayedTemplates.map(item => (
                                 <FreeTemplate key={item._id} item={item} />

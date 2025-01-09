@@ -2,7 +2,7 @@ import { useState } from "react";
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../../hooks/useAxiosSecure'; 
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Template = () => {
     const [counterOn, setCounterOn] = useState(false);

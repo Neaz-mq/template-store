@@ -13,9 +13,9 @@ const Exclusive = () => {
             .then(data => {
                 setTemplates(data);  // Set templates state
             })
-            .catch(error => console.error("Error fetching templates:", error));  
+            .catch(error => console.error("Error fetching templates:", error));
     }, []);
-    
+
     const template = templates.slice(0, 4);
 
     const handleExploreMore = () => {
@@ -47,11 +47,11 @@ const Exclusive = () => {
                             data-aos-easing="ease-in-out"
                         >
                             {template.map(item => (
-                        <ExclusiveTemplate
-                            key={item._id}
-                            item={item}
-                        />
-                    ))}
+                                <ExclusiveTemplate
+                                    key={item._id}
+                                    item={item}
+                                />
+                            ))}
                         </div>
                     </main>
                 </div>

@@ -23,8 +23,6 @@ const Home = () => {
 
             <main>
 
-                
-
                 <section id="deal">
                    <Deal />
                 </section>
@@ -37,8 +35,6 @@ const Home = () => {
                     <Exclusive />
                 </section> 
                 
-                
-
                 <section id="free">
                     <Free />
                 </section> 
@@ -54,16 +50,6 @@ const Home = () => {
                 <section id="community">
                     <Community />
                 </section>
-
-                {/* <section id="deals">
-                   <Deals />
-                </section> */}
-
-               
-
-               
-
-
             </main>
 
         </div>
