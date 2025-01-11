@@ -24,22 +24,28 @@ const Cart = () => {
             return;
         }
         try {
+            // Send the dynamic price (in USD) to the backend
             const response = await axios.post('http://localhost:5000/create-payment', {
-                amount: totalPrice,
+                amount: totalPrice, // Total price in USD
                 customerName: user.name,
                 customerEmail: user.email,
                 successUrl: 'http://localhost:5173/dashboard/paymentHistory', // Ensure this matches your route
                 failUrl: 'http://localhost:5173/dashboard/fail-payment',
                 cancelUrl: 'http://localhost:5173/dashboard/cancel-payment',
             });
-
+    
+            // Handle the payment gateway redirection
             if (response.data.paymentUrl) {
                 window.location.href = response.data.paymentUrl; // Redirect to SSLCommerz payment gateway
+            } else {
+                Swal.fire('Error', 'Payment initialization failed.', 'error');
             }
         } catch (error) {
             console.error('Error during payment initiation:', error);
+            Swal.fire('Error', 'An error occurred while processing your payment.', 'error');
         }
     };
+    
 
     const axiosSecure = useAxiosSecure();
 
