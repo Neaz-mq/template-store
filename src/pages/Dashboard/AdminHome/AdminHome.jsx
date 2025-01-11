@@ -6,6 +6,7 @@ import { FaBook, FaList, FaUsers } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
+import Chat from '../Chat/Chat';
 
 const StatCard = ({ icon, title, value }) => (
 
@@ -189,6 +190,9 @@ const AdminHome = () => {
                     </div>
                 </div>
             </div>
+
+            <Chat></Chat>
+       
         </div>
     );
 };

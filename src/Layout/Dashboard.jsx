@@ -26,13 +26,12 @@ const Dashboard = () => {
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
         { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" },
-        { to: "/dashboard/chat", icon: <FaEnvelope />, label: "Chat" },
+        
     ];
 
     const userLinks = [
         { to: "/dashboard/userHome", icon: <FaHome />, label: "User Home" },
         { to: "/dashboard/cart", icon: <FaShoppingCart />, label: `My Cart (${cart.length})` },
-        { to: "/dashboard/inbox", icon: <FaEnvelope />, label: "Inbox" },
         { to: "/dashboard/paymentHistory", icon: <FaList />, label: "Payment History" },
     ];
 

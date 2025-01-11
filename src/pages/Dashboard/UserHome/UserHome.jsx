@@ -1,34 +1,53 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../hooks/useAuth";
+import Inbox from "../Inbox/Inbox";
 
 const UserHome = () => {
+  const { user } = useAuth();
 
-    const {user} = useAuth();
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good Morning";
+    if (hour < 18) return "Good Afternoon";
+    return "Good Evening";
+  };
 
-    return (
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 relative">
+      <Helmet>
+        <title>Prographr | User</title>
+        <meta
+          name="description"
+          content={`Welcome ${user?.displayName || "back"} to Prographr! Discover templates for creative projects and more.`}
+        />
+        <meta
+          name="keywords"
+          content="templates, creativity, community, guidelines, ideas, testimonials"
+        />
+        <link rel="canonical" href="https://www.prographr.com/user" />
+      </Helmet>
 
-        <div>
+      {user?.photoURL && (
+        <img
+          src={user.photoURL}
+          alt={`${user.displayName || "User"}'s profile`}
+          className="w-16 h-16 rounded-full mb-4"
+        />
+      )}
 
-            <div>
+      <h2 className="text-4xl font-bold text-gray-800 mb-4">
+        <span>{getGreeting()}, Welcome </span>
+        {user?.displayName || "Back"}
+      </h2>
 
-            <Helmet>
-                <title>Prographr | User</title>
-                <meta name="description" content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more." />
-                <meta name="keywords" content="templates, creativity, community, guidelines, ideas, testimonials" />
-                <link rel="canonical" href="https://www.prographr.com/user" />
-            </Helmet>
+      <p className="text-gray-600">
+        Explore your dashboard and manage your account here.
+      </p>
 
-            </div>
-
-            <h2 className="text-3xl">
-                <span>Hi, Welcome </span>
-                {
-                    user?.displayName ? user.displayName : 'Back'
-                }
-            </h2>
-            
-        </div>
-    );
+      <Inbox></Inbox>
+    
+    </div>
+  );
 };
 
 export default UserHome;

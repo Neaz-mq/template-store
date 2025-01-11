@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { io } from "socket.io-client";
 import { AuthContext } from "../../../providers/AuthProvider";
 
@@ -10,6 +10,7 @@ const Inbox = () => {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false); // State to toggle chat visibility
   const chatEndRef = useRef(null);
   const { user } = useContext(AuthContext); // Access user context
 
@@ -96,49 +97,71 @@ const Inbox = () => {
   }
 
   return (
-    <div className="chatbox max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg flex flex-col">
-      <h2 className="text-2xl font-bold mb-4 text-center">Inbox</h2>
+    <>
+      {/* Floating Chat Bubble Icon */}
+      <div
+        className="fixed bottom-5 right-5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full p-4 shadow-xl cursor-pointer flex items-center justify-center w-14 h-14"
+        onClick={() => setIsChatOpen(!isChatOpen)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="white"
+          viewBox="0 0 24 24"
+          className="w-6 h-6"
+        >
+          <path
+            d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z"
+          />
+        </svg>
+      </div>
 
-      {loading ? (
-        <div className="text-center text-gray-500">Loading messages...</div>
-      ) : (
-        <div className="chat-log h-96 overflow-auto mb-4 p-2 border border-gray-200 rounded-lg">
-          {chat.map((msg, index) => (
-            <div
-              key={index}
-              className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${msg.user?.email === user.email
-                  ? "bg-blue-500 text-white ml-auto"
-                  : "bg-gray-200 text-black mr-auto"
-                }`}
-            >
+      {/* Chat Box */}
+      {isChatOpen && (
+        <div className="fixed bottom-16 right-5 max-w-sm w-full bg-white p-4 rounded-lg shadow-lg">
+          <h1 className="text-xl font-bold mb-4">Inbox</h1>
 
-              <p className="mt-2">{msg.message}</p>
-              <small className="text-black">
-                {new Date(msg.timestamp).toLocaleString()}
-              </small>
+          {loading ? (
+            <div className="text-center text-gray-500">Loading messages...</div>
+          ) : (
+            <div className="chat-log h-60 overflow-auto mb-4 p-2 border-b border-gray-200">
+              {chat.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
+                    msg.user?.email === user.email
+                      ? "bg-blue-500 text-white ml-auto"
+                      : "bg-gray-200 text-black mr-auto"
+                  }`}
+                >
+                  <p className="mt-2">{msg.message}</p>
+                  <small className="text-black">
+                    {new Date(msg.timestamp).toLocaleString()}
+                  </small>
+                </div>
+              ))}
+              <div ref={chatEndRef} />
             </div>
-          ))}
-          <div ref={chatEndRef} />
+          )}
+
+          <div className="flex items-center mt-4 border-t border-gray-200 pt-4">
+            <input
+              type="text"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+              placeholder="Type a message..."
+              className="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              onClick={handleSendMessage}
+              className="ml-2 bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-600 transition duration-300"
+            >
+              Send
+            </button>
+          </div>
         </div>
       )}
-
-      <div className="flex items-center mt-4 border-t border-gray-200 pt-4">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-          placeholder="Type a message..."
-          className="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <button
-          onClick={handleSendMessage}
-          className="ml-2 bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-600 transition duration-300"
-        >
-          Send
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
