@@ -8,7 +8,7 @@ const Deal = () => {
         // Fetch the deals data from the backend
         const fetchDeals = async () => {
             try {
-                const response = await fetch('https://template-store-server.vercel.app/deal');
+                const response = await fetch('http://localhost:5000/deal');
                 const data = await response.json();
                 setDeals(data); // Assuming the response is an array
             } catch (error) {

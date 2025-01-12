@@ -25,7 +25,7 @@ const Cart = () => {
         }
         try {
             // Send the dynamic price (in USD) to the backend
-            const response = await axios.post('https://template-store-server.vercel.app/create-payment', {
+            const response = await axios.post('http://localhost:5000/create-payment', {
                 amount: totalPrice, // Total price in USD
                 customerName: user.name,
                 customerEmail: user.email,

@@ -37,7 +37,7 @@ const AdminHome = () => {
 
     useEffect(() => {
         if (sessionStorage.getItem('visit') === null) {
-            axios.post('https://template-store-server.vercel.app/api/visit')
+            axios.post('http://localhost:5000/api/visit')
                 .then(response => {
                     console.log('Visit count updated:', response.data.visits);
                 })
