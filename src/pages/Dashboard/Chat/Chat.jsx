@@ -3,21 +3,23 @@ import { io } from "socket.io-client";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const socket = io("http://localhost:5000", {
-  autoConnect: false, // Prevent auto-connection
+  autoConnect: true, // Auto-connect on initialization
+  reconnection: true, // Enable reconnection
+  reconnectionAttempts: 5, // Retry connection up to 5 times
 });
 
-const Inbox = () => {
+const Chat = () => {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isChatOpen, setIsChatOpen] = useState(false); // State to toggle chat visibility
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const chatEndRef = useRef(null);
   const { user } = useContext(AuthContext); // Access user context
 
-  // Fetch messages every time the component mounts or the user changes
+  // Fetch messages and set up socket connection
   useEffect(() => {
     if (!user) {
-      setChat([]); // Clear messages if no user
+      setChat([]);
       return;
     }
 
@@ -35,31 +37,29 @@ const Inbox = () => {
       }
     };
 
-    // Connect socket and fetch messages
     socket.connect();
-    fetchMessages();
 
-    // Listen for incoming messages
-    socket.on("receiveMessage", (data) => {
-      // Only append the message if it is not from the logged-in user
+    socket.off("receiveMessage").on("receiveMessage", (data) => {
       if (data.user?.email !== user.email) {
         setChat((prevChat) => [...prevChat, data]);
       }
     });
 
+    socket.on("connect_error", (err) => {
+      console.error("Socket connection error:", err.message);
+    });
+
+    fetchMessages();
+
     return () => {
       socket.off("receiveMessage");
-      socket.disconnect(); // Disconnect socket on unmount
+      socket.disconnect();
     };
   }, [user]);
 
   // Handle sending messages
   const handleSendMessage = async () => {
-    if (!message.trim()) return; // Prevent empty messages
-    if (!user) {
-      console.error("User must be logged in to send messages.");
-      return;
-    }
+    if (!message.trim() || !user) return;
 
     const messageData = {
       user: { email: user.email },
@@ -68,28 +68,34 @@ const Inbox = () => {
     };
 
     try {
-      // Add the message to the chat immediately
       setChat((prevChat) => [...prevChat, messageData]);
 
-      // Send the message to the server
       await fetch("http://localhost:5000/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`, // Include user token for authentication
         },
         body: JSON.stringify(messageData),
       });
 
-      // Emit the message through socket to other users
       socket.emit("sendMessage", messageData);
-      setMessage(""); // Clear the message input
+      setMessage("");
     } catch (error) {
       console.error("Error sending message:", error);
     }
   };
 
+  // Scroll to the latest message
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const chatLog = chatEndRef.current?.parentElement;
+    if (chatLog) {
+      const isNearBottom =
+        chatLog.scrollTop + chatLog.clientHeight >= chatLog.scrollHeight - 10;
+      if (isNearBottom) {
+        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   }, [chat]);
 
   if (!user) {
@@ -113,9 +119,7 @@ const Inbox = () => {
           viewBox="0 0 24 24"
           className="w-6 h-6"
         >
-          <path
-            d="M12 3C6.48 3 2 6.82 2 11.5c0 2.56 1.4 4.84 3.62 6.38L4.07 20.93c-.1.37.29.7.65.48l3.44-2.06C9.43 19.65 10.71 20 12 20c5.52 0 10-3.82 10-8.5S17.52 3 12 3zm0 15c-1.02 0-2.02-.23-2.93-.68-.23-.11-.5-.09-.72.05l-2.42 1.45.83-2.9c.07-.24 0-.5-.18-.68C5.27 14.21 4 12.06 4 11.5 4 7.36 7.79 4 12 4s8 3.36 8 7.5-3.79 7.5-8 7.5zm-2-8h4c.55 0 1-.45 1-1s-.45-1-1-1h-4c-.55 0-1 .45-1 1s.45 1 1 1zm0 2c-.55 0-1 .45-1 1s.45 1 1 1h4c.55 0 1-.45 1-1s-.45-1-1-1h-4z"
-          />
+          <path d="M12 3C6.48 3 2 6.82 2 11.5c0 2.56 1.4 4.84 3.62 6.38L4.07 20.93c-.1.37.29.7.65.48l3.44-2.06C9.43 19.65 10.71 20 12 20c5.52 0 10-3.82 10-8.5S17.52 3 12 3zm0 15c-1.02 0-2.02-.23-2.93-.68-.23-.11-.5-.09-.72.05l-2.42 1.45.83-2.9c.07-.24 0-.5-.18-.68C5.27 14.21 4 12.06 4 11.5 4 7.36 7.79 4 12 4s8 3.36 8 7.5-3.79 7.5-8 7.5zm-2-8h4c.55 0 1-.45 1-1s-.45-1-1-1h-4c-.55 0-1 .45-1 1s.45 1 1 1zm0 2c-.55 0-1 .45-1 1s.45 1 1 1h4c.55 0 1-.45 1-1s-.45-1-1-1h-4z" />
         </svg>
       </div>
 
@@ -158,7 +162,12 @@ const Inbox = () => {
             />
             <button
               onClick={handleSendMessage}
-              className="ml-2 bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-600 transition duration-300"
+              disabled={!message.trim()}
+              className={`ml-2 p-3 rounded-full shadow-md transition duration-300 ${
+                message.trim()
+                  ? "bg-blue-500 text-white hover:bg-blue-600"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
             >
               Send
             </button>
@@ -169,4 +178,4 @@ const Inbox = () => {
   );
 };
 
-export default Inbox;
+export default Chat;

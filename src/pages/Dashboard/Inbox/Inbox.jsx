@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { io } from "socket.io-client";
 import { AuthContext } from "../../../providers/AuthProvider";
 
+// Initialize the socket connection (autoconnect is disabled)
 const socket = io("http://localhost:5000", {
-  autoConnect: false, // Prevent auto-connection
+  autoConnect: false,
 });
 
 const Inbox = () => {
@@ -17,7 +18,7 @@ const Inbox = () => {
   // Fetch messages every time the component mounts or the user changes
   useEffect(() => {
     if (!user) {
-      setChat([]); // Clear messages if no user
+      setChat([]); // Clear messages if no user is logged in
       return;
     }
 
@@ -41,14 +42,14 @@ const Inbox = () => {
 
     // Listen for incoming messages
     socket.on("receiveMessage", (data) => {
-      // Only append the message if it is from the logged-in user
+      // Append the message to the chat if it matches the user's email
       if (data.user?.email === user.email) {
         setChat((prevChat) => [...prevChat, data]);
       }
     });
 
     return () => {
-      socket.off("receiveMessage");
+      socket.off("receiveMessage"); // Clean up listeners
       socket.disconnect(); // Disconnect socket on unmount
     };
   }, [user]);
@@ -68,6 +69,7 @@ const Inbox = () => {
     };
 
     try {
+      // Save message to the database
       await fetch("http://localhost:5000/messages", {
         method: "POST",
         headers: {
@@ -76,14 +78,18 @@ const Inbox = () => {
         body: JSON.stringify(messageData),
       });
 
+      // Send the message via the socket
       socket.emit("sendMessage", messageData);
-      setChat((prevChat) => [...prevChat, messageData]); // Add to chat immediately
-      setMessage("");
+
+      // Update the local chat state
+      setChat((prevChat) => [...prevChat, messageData]);
+      setMessage(""); // Clear the input field
     } catch (error) {
       console.error("Error sending message:", error);
     }
   };
 
+  // Auto-scroll to the latest message
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
@@ -109,9 +115,7 @@ const Inbox = () => {
           viewBox="0 0 24 24"
           className="w-6 h-6"
         >
-          <path
-            d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z"
-          />
+          <path d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z" />
         </svg>
       </div>
 
@@ -143,6 +147,7 @@ const Inbox = () => {
             </div>
           )}
 
+          {/* Input Field and Send Button */}
           <div className="flex items-center mt-4 border-t border-gray-200 pt-4">
             <input
               type="text"
@@ -154,7 +159,12 @@ const Inbox = () => {
             />
             <button
               onClick={handleSendMessage}
-              className="ml-2 bg-blue-500 text-white p-3 rounded-full shadow-md hover:bg-blue-600 transition duration-300"
+              disabled={!message.trim()}
+              className={`ml-2 p-3 rounded-full shadow-md transition duration-300 ${
+                message.trim()
+                  ? "bg-blue-500 text-white hover:bg-blue-600"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
             >
               Send
             </button>
