@@ -45,7 +45,6 @@ import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
 
 
-
 export const router = createBrowserRouter([
 
   {
@@ -104,8 +103,6 @@ export const router = createBrowserRouter([
         path: '/contact',
         element: <Contact></Contact>
       },
-
-  
 
       {
         path: '/sign-in',
