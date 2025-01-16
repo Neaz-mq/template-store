@@ -8,7 +8,7 @@ const Exclusive = () => {
 
     useEffect(() => {
         // Fetch templates from JSON
-        fetch('http://localhost:5000/exclusive')
+        fetch('https://template-store-server.vercel.app/exclusive')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);  // Set templates state
