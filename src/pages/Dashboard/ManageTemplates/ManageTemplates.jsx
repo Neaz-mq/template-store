@@ -6,10 +6,12 @@ import { useState } from "react";
 import useTemplate from "../../../hooks/useTemplate";
 
 const ManageTemplates = () => {
-
     const [template, , refetch] = useTemplate();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
+
+    // Sort templates by createdAt descending
+    const sortedTemplates = [...template].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     // Pagination
     const TEMPLATES_PER_PAGE = 10;
@@ -17,7 +19,11 @@ const ManageTemplates = () => {
 
     const indexOfLastTemplate = currentPage * TEMPLATES_PER_PAGE;
     const indexOfFirstTemplate = indexOfLastTemplate - TEMPLATES_PER_PAGE;
-    const filteredTemplates = template.filter(item => item.type.toLowerCase().includes(search.toLowerCase()));
+
+    // Filter and paginate templates
+    const filteredTemplates = sortedTemplates.filter(item =>
+        item.type.toLowerCase().includes(search.toLowerCase())
+    );
     const currentItems = filteredTemplates.slice(indexOfFirstTemplate, indexOfLastTemplate);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -30,7 +36,7 @@ const ManageTemplates = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, delete it!",
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.delete(`/template/${temp._id}`);
@@ -41,18 +47,18 @@ const ManageTemplates = () => {
                         icon: "success",
                         title: `${temp.type} has been deleted`,
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1500,
                     });
                 }
             }
         });
-    }
+    };
 
-    const handleSearch = e => {
+    const handleSearch = (e) => {
         e.preventDefault();
         const searchText = e.target.search.value;
         setSearch(searchText);
-    }
+    };
 
     const nextPage = () => {
         if (currentPage < Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)) {
@@ -67,14 +73,20 @@ const ManageTemplates = () => {
     };
 
     return (
-
         <div className="px-2 md:px-6">
-            <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Premium Templates</h2>
+            <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">
+                Manage Premium Templates
+            </h2>
 
             <div>
                 <div className="text-center mb-4 md:mb-10">
                     <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center">
-                        <input type="text" name="search" id="" className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1" placeholder="Template Search" />
+                        <input
+                            type="text"
+                            name="search"
+                            className="input input-bordered text-xs md:text-base mb-2 md:mb-0 md:mr-1"
+                            placeholder="Template Search"
+                        />
                         <button className="btn text-xs md:text-base">Search</button>
                     </form>
                 </div>
@@ -82,7 +94,6 @@ const ManageTemplates = () => {
                 {/* Table for larger screens */}
                 <div className="hidden md:block overflow-x-auto">
                     <table className="table w-full">
-                        {/* head */}
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -102,7 +113,7 @@ const ManageTemplates = () => {
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={temp.image} alt="Avatar Tailwind CSS Component" />
+                                                    <img src={temp.image} alt="Template" />
                                                 </div>
                                             </div>
                                         </div>
@@ -120,7 +131,8 @@ const ManageTemplates = () => {
                                     <td>
                                         <button
                                             onClick={() => handleDeleteItem(temp)}
-                                            className="btn btn-ghost btn-sm -ml-2">
+                                            className="btn btn-ghost btn-sm -ml-2"
+                                        >
                                             <FaTrashAlt className="text-red-600" />
                                         </button>
                                     </td>
@@ -130,50 +142,25 @@ const ManageTemplates = () => {
                     </table>
                 </div>
 
-                {/* Cards for smaller screens */}
-                <div className="block md:hidden">
-                    {currentItems.map((temp, index) => (
-                        <div key={temp._id} className="card bg-base-100 shadow-xl mb-3 p-2 mr-2">
-                            <figure className="px-2 pt-2">
-                                <img src={temp.image} alt="Template Image" className="w-full h-20 object-cover rounded-md" />
-                            </figure>
-                            <div className="card-body p-2">
-                                <h2 className="card-title text-xs">{temp.type}</h2>
-                                <p className="text-xs">Price: ${temp.price}</p>
-                                <div className="card-actions justify-end mt-1">
-                                    <Link to={`/dashboard/updateTemplate/${temp._id}`}>
-                                        <button className="btn btn-primary btn-xs">
-                                            <FaEdit />
-                                        </button>
-                                    </Link>
-                                    <button onClick={() => handleDeleteItem(temp)} className="btn btn-danger btn-xs">
-                                        <FaTrashAlt />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
                 {/* Pagination */}
                 <div className="pagination mt-4 md:mt-8 flex justify-center text-xs md:text-base">
                     <button
                         onClick={prevPage}
                         className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === 1
-                            ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
-                            : 'bg-blue-500 text-white'
+                            ? "bg-gray-200 text-gray-700 cursor-not-allowed"
+                            : "bg-blue-500 text-white"
                             }`}
                         disabled={currentPage === 1}
                     >
-                        <span className="mr-1">Previous</span>
+                        Previous
                     </button>
                     {Array.from({ length: Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE) }, (_, i) => (
                         <button
                             key={i + 1}
                             onClick={() => paginate(i + 1)}
                             className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === i + 1
-                                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white'
-                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300 hover:text-gray-800'
+                                ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                                 }`}
                         >
                             {i + 1}
@@ -182,12 +169,12 @@ const ManageTemplates = () => {
                     <button
                         onClick={nextPage}
                         className={`px-2 py-1 md:px-4 md:py-2 mx-1 rounded-full focus:outline-none focus:shadow-outline ${currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)
-                            ? 'bg-gray-200 text-gray-700 cursor-not-allowed'
-                            : 'bg-blue-500 text-white'
+                            ? "bg-gray-200 text-gray-700 cursor-not-allowed"
+                            : "bg-blue-500 text-white"
                             }`}
                         disabled={currentPage === Math.ceil(filteredTemplates.length / TEMPLATES_PER_PAGE)}
                     >
-                        <span className="mr-1">Next</span>
+                        Next
                     </button>
                 </div>
             </div>
