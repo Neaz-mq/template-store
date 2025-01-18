@@ -9,7 +9,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
   const initialDisplayCount = 8;
 
   useEffect(() => {
-    fetch("https://template-store-server.vercel.app/template")
+    fetch("http://localhost:5000/template")
       .then((res) => res.json())
       .then((data) => {
         // Sort templates in descending order by a specific property
