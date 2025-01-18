@@ -1,4 +1,4 @@
-import { FaHome, FaList, FaShoppingCart, FaAlignLeft, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaList, FaShoppingCart, FaAlignLeft, FaRegCommentDots } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
@@ -26,6 +26,7 @@ const Dashboard = () => {
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
         { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" },
+        { to: "/dashboard/messages", icon: <FaRegCommentDots  />, label: "Messages" },
         
     ];
 

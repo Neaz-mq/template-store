@@ -43,6 +43,7 @@ import Chat from "../pages/Dashboard/Chat/Chat";
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
+import Messages from "../pages/Dashboard/Messages/Messages";
 
 
 export const router = createBrowserRouter([
@@ -262,8 +263,8 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: 'chat',
-        element: <AdminRoute><Chat></Chat></AdminRoute>
+        path: 'messages',
+        element: <AdminRoute><Messages></Messages></AdminRoute>
       }
 
     ]
