@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Users } from "lucide-react";
 import NoConnectSelected from "../NoConnectSelected/NoConnectSelected";
 
-
 const Connect = () => {
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null); // State to manage selected user
+  const [messages, setMessages] = useState([]); // State to store chat messages
 
   // Sample data for users
   const users = [
@@ -34,6 +35,26 @@ const Connect = () => {
   const filteredUsers = showOnlineOnly
     ? users.filter((user) => user.isOnline)
     : users;
+
+  const handleUserClick = (user) => {
+    setSelectedUser(user);
+
+    // Fetch or load chat history dynamically (mocked here)
+    setMessages([
+      { sender: user.fullName, content: "Hello!", time: "10:54 AM" },
+      { sender: "You", content: "Hi there!", time: "10:55 AM" },
+    ]);
+  };
+
+  const handleSendMessage = (content) => {
+    if (!content.trim()) return;
+
+    const newMessage = { sender: "You", content, time: new Date().toLocaleTimeString() };
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+    // Emit the message to the backend or socket server (mocked here)
+    console.log("Message sent:", newMessage);
+  };
 
   return (
     <div className="h-full flex">
@@ -68,7 +89,8 @@ const Connect = () => {
           {filteredUsers.map((user) => (
             <div
               key={user._id}
-              className="w-full p-3 flex items-center gap-3 hover:bg-base-300 transition-colors"
+              className="w-full p-3 flex items-center gap-3 hover:bg-base-300 transition-colors cursor-pointer"
+              onClick={() => handleUserClick(user)}
             >
               <div className="relative mx-auto lg:mx-0">
                 <img
@@ -101,9 +123,76 @@ const Connect = () => {
         </div>
       </div>
 
-      {/* Right Column: Placeholder for No Connection Selected */}
-      <div className="flex-1">
-        <NoConnectSelected />
+      {/* Right Column: Chat Section */}
+      <div className="flex-1 flex flex-col">
+        {selectedUser ? (
+          <div className="h-full flex flex-col p-4">
+            {/* Header */}
+            <div className="flex items-center gap-3 border-b pb-4">
+              <img
+                src={selectedUser.profilePic || "/avatar.png"}
+                alt={`${selectedUser.fullName}'s profile`}
+                className="size-12 object-cover rounded-full"
+              />
+              <div>
+                <div className="font-medium">{selectedUser.fullName}</div>
+                <div className="text-sm text-zinc-400">
+                  {selectedUser.isOnline ? "Online" : "Offline"}
+                </div>
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto my-4">
+              {messages.map((msg, index) => (
+                <div
+                  key={index}
+                  className={`flex ${
+                    msg.sender === "You" ? "justify-end" : "justify-start"
+                  } mb-2`}
+                >
+                  <div
+                    className={`p-3 rounded-lg ${
+                      msg.sender === "You"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 text-black"
+                    }`}
+                  >
+                    <div>{msg.content}</div>
+                    <div className="text-xs text-zinc-500 mt-1">{msg.time}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Input Box */}
+            <div className="flex items-center gap-2 border-t pt-4">
+              <input
+                type="text"
+                placeholder="Type a message..."
+                className="flex-1 p-2 border rounded-lg focus:outline-none"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSendMessage(e.target.value);
+                    e.target.value = "";
+                  }
+                }}
+              />
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                onClick={() => {
+                  const input = document.querySelector("input[type=text]");
+                  handleSendMessage(input.value);
+                  input.value = "";
+                }}
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        ) : (
+          <NoConnectSelected />
+        )}
       </div>
     </div>
   );
