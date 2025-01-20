@@ -3,71 +3,71 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Messages = () => {
-  const [messages, setMessages] = useState([]);
+const Communication = () => {
+  const [replies, setReplies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reply, setReply] = useState('');
-  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [selectedReply, setSelectedReply] = useState(null);
 
   useEffect(() => {
-    const fetchMessages = async () => {
+    const fetchReplies = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/messages'); // Fetch all messages
-        setMessages(response.data);
+        const response = await axios.get('http://localhost:5000/replies'); // Fetch all replies
+        setReplies(response.data);
       } catch (err) {
-        setError('Failed to fetch messages');
-        toast.error('Failed to fetch messages', { position: 'top-center' });
+        setError('Failed to fetch replies');
+        toast.error('Failed to fetch replies', { position: 'top-center' });
       } finally {
         setLoading(false);
       }
     };
 
-    fetchMessages();
+    fetchReplies();
   }, []);
 
-  const handleReplySubmit = async (messageId) => {
+  const handleReplySubmit = async (replyId) => {
     try {
-      const name = "Admin"; // Replace this with dynamic user/admin name if available
+      const name = "Admin"; // Replace with dynamic user/admin name if available
       await axios.post('http://localhost:5000/replies', {
-        messageId,
+        replyId,
         reply,
-        name, // Add the name field
+        name,
       });
       toast.success('Reply sent successfully', { position: 'top-center' });
       setReply('');
-      setSelectedMessage(null);
+      setSelectedReply(null);
     } catch (err) {
       console.error('Failed to send reply:', err.message);
       toast.error('Failed to send reply', { position: 'top-center' });
     }
   };
 
-  if (loading) return <p>Loading messages...</p>;
+  if (loading) return <p>Loading replies...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-2xl font-bold mb-4">All Messages</h1>
+      <h1 className="text-2xl font-bold mb-4">Communication - All Replies</h1>
       <table className="min-w-full border-collapse border border-gray-200">
         <thead>
           <tr className="bg-gray-100">
-            <th className="border border-gray-300 px-4 py-2">Email</th>
-            <th className="border border-gray-300 px-4 py-2">Message</th>
+            <th className="border border-gray-300 px-4 py-2">Name</th>
+            <th className="border border-gray-300 px-4 py-2">Reply</th>
             <th className="border border-gray-300 px-4 py-2">Timestamp</th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {messages.map((msg) => (
-            <tr key={msg._id} className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-4 py-2">{msg.email}</td>
-              <td className="border border-gray-300 px-4 py-2">{msg.message}</td>
+          {replies.map((rep) => (
+            <tr key={rep._id} className="hover:bg-gray-50">
+              <td className="border border-gray-300 px-4 py-2">{rep.name}</td>
+              <td className="border border-gray-300 px-4 py-2">{rep.reply}</td>
               <td className="border border-gray-300 px-4 py-2">
-                {new Date(msg.timestamp).toLocaleString()}
+                {new Date(rep.timestamp).toLocaleString()}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {selectedMessage === msg._id ? (
+                {selectedReply === rep._id ? (
                   <div>
                     <input
                       type="text"
@@ -77,13 +77,13 @@ const Messages = () => {
                       placeholder="Type your reply"
                     />
                     <button
-                      onClick={() => handleReplySubmit(msg._id)}
+                      onClick={() => handleReplySubmit(rep._id)}
                       className="bg-blue-500 text-white px-4 py-1 rounded"
                     >
                       Send
                     </button>
                     <button
-                      onClick={() => setSelectedMessage(null)}
+                      onClick={() => setSelectedReply(null)}
                       className="bg-gray-300 text-black px-4 py-1 rounded ml-2"
                     >
                       Cancel
@@ -91,7 +91,7 @@ const Messages = () => {
                   </div>
                 ) : (
                   <button
-                    onClick={() => setSelectedMessage(msg._id)}
+                    onClick={() => setSelectedReply(rep._id)}
                     className="bg-green-500 text-white px-4 py-1 rounded"
                   >
                     Reply
@@ -112,4 +112,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default Communication;

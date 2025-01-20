@@ -44,6 +44,7 @@ import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
 import Messages from "../pages/Dashboard/Messages/Messages";
+import Communication from "../pages/Dashboard/Communication/Communication";
 
 
 
@@ -170,6 +171,11 @@ export const router = createBrowserRouter([
       {
         path: 'paymentHistory',
         element: <PaymentHistory></PaymentHistory>
+      },
+
+      {
+        path: 'communication',
+        element: <Communication></Communication>
       },
 
       // {
