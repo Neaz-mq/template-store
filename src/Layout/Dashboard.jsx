@@ -34,7 +34,7 @@ const Dashboard = () => {
         { to: "/dashboard/userHome", icon: <FaHome />, label: "User Home" },
         { to: "/dashboard/cart", icon: <FaShoppingCart />, label: `My Cart (${cart.length})` },
         { to: "/dashboard/paymentHistory", icon: <FaList />, label: "Payment History" },
-        { to: "/dashboard/connect", icon: <FaRegCommentDots  />, label: "Contact" },
+       
     ];
 
     const sharedLinks = [

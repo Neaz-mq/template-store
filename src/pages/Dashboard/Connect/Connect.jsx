@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios"; // Ensure axios is installed in your project
 import { Users } from "lucide-react";
 import NoConnectSelected from "../NoConnectSelected/NoConnectSelected";
 
@@ -6,31 +7,36 @@ const Connect = () => {
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null); // State to manage selected user
   const [messages, setMessages] = useState([]); // State to store chat messages
+  const [users, setUsers] = useState([]); // State to store users fetched from MongoDB
+  const [loading, setLoading] = useState(true); // State for loading indicator
+  const [error, setError] = useState(null); // State for error handling
 
-  // Sample data for users
-  const users = [
-    {
-      _id: "1",
-      fullName: "John Doe",
-      profilePic:
-        "https://res.cloudinary.com/dzi3u164c/image/upload/v1736931115/pqjp9joyeprx49idafy0.jpg",
-      isOnline: true,
-    },
-    {
-      _id: "2",
-      fullName: "Jane Smith",
-      profilePic:
-        "https://res.cloudinary.com/dzi3u164c/image/upload/v1736931071/dymx37ychwdggwpxhdtj.jpg",
-      isOnline: false,
-    },
-    {
-      _id: "3",
-      fullName: "Michael Brown",
-      profilePic:
-        "https://res.cloudinary.com/dzi3u164c/image/upload/v1736851541/as8c9nvbs3bc2pniwkxm.jpg",
-      isOnline: true,
-    },
-  ];
+  // Fetch users from backend API
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+  
+        // Mocked data
+        const data = [
+          { _id: "66375f588da67cb69cd9c7e4", email: "neazmorshed666@gmail.com", name: "Md. Neaz Morshed", role: "admin" },
+          { _id: "66375fbd8da67cb69cd9c7e5", email: "cse.neazmorshed@gmail.com", name: "Neaz Morshed", role: "admin" },
+          { _id: "6638787bbaf1ee1c2e46daff", email: "neazmorshed.cse@gmail.com", name: "Neaz Morshed" },
+          { _id: "66448b1b2464b7e471cb018f", name: "Prographr", email: "prographr@gmail.com", role: "admin" },
+        ];
+  
+        setUsers(data);
+      } catch (err) {
+        console.error("Error fetching users:", err.response || err.message || err);
+        setError("Failed to load users. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchUsers();
+  }, []);
+  
 
   const filteredUsers = showOnlineOnly
     ? users.filter((user) => user.isOnline)
@@ -41,7 +47,7 @@ const Connect = () => {
 
     // Fetch or load chat history dynamically (mocked here)
     setMessages([
-      { sender: user.fullName, content: "Hello!", time: "10:54 AM" },
+      { sender: user.name || user.fullName, content: "Hello!", time: "10:54 AM" },
       { sender: "You", content: "Hi there!", time: "10:55 AM" },
     ]);
   };
@@ -55,6 +61,9 @@ const Connect = () => {
     // Emit the message to the backend or socket server (mocked here)
     console.log("Message sent:", newMessage);
   };
+
+  if (loading) return <div>Loading users...</div>;
+  if (error) return <div className="text-red-500">{error}</div>;
 
   return (
     <div className="h-full flex">
@@ -95,7 +104,7 @@ const Connect = () => {
               <div className="relative mx-auto lg:mx-0">
                 <img
                   src={user.profilePic || "/avatar.png"}
-                  alt={`${user.fullName}'s profile picture`}
+                  alt={`${user.name || user.fullName}'s profile picture`}
                   className="size-12 object-cover rounded-full"
                 />
                 {user.isOnline && (
@@ -107,7 +116,7 @@ const Connect = () => {
               </div>
 
               <div className="hidden lg:block text-left min-w-0">
-                <div className="font-medium truncate">{user.fullName}</div>
+                <div className="font-medium truncate">{user.name || user.fullName}</div>
                 <div className="text-sm text-zinc-400">
                   {user.isOnline ? "Online" : "Offline"}
                 </div>
@@ -131,11 +140,11 @@ const Connect = () => {
             <div className="flex items-center gap-3 border-b pb-4">
               <img
                 src={selectedUser.profilePic || "/avatar.png"}
-                alt={`${selectedUser.fullName}'s profile`}
+                alt={`${selectedUser.name || selectedUser.fullName}'s profile`}
                 className="size-12 object-cover rounded-full"
               />
               <div>
-                <div className="font-medium">{selectedUser.fullName}</div>
+                <div className="font-medium">{selectedUser.name || selectedUser.fullName}</div>
                 <div className="text-sm text-zinc-400">
                   {selectedUser.isOnline ? "Online" : "Offline"}
                 </div>
