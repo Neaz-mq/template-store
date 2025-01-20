@@ -15,36 +15,53 @@ const Inbox = () => {
   const chatEndRef = useRef(null);
   const { user } = useContext(AuthContext); // Access user context
 
-  // Fetch messages every time the component mounts or the user changes
+  // Fetch messages and replies every time the component mounts or the user changes
   useEffect(() => {
     if (!user) {
       setChat([]); // Clear messages if no user is logged in
       return;
     }
 
-    const fetchMessages = async () => {
+    const fetchMessagesAndReplies = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/messages?email=${user.email}`);
-        if (!response.ok) throw new Error("Failed to fetch messages");
-        const messages = await response.json();
-        setChat(messages);
+        // Fetch user-specific messages
+        const messagesResponse = await fetch(
+          `http://localhost:5000/messages?email=${user.email}`
+        );
+        if (!messagesResponse.ok) throw new Error("Failed to fetch messages");
+        const messages = await messagesResponse.json();
+    
+        // Fetch all replies for the admin email
+        const repliesResponse = await fetch(
+          `http://localhost:5000/replies?email=neazmorshed666@gmail.com`
+        );
+        if (!repliesResponse.ok) throw new Error("Failed to fetch replies");
+        const allReplies = await repliesResponse.json();
+    
+        // Merge messages with their respective replies
+        const combinedChat = messages.map((message) => ({
+          ...message,
+          replies: allReplies.filter((reply) => reply.messageId === message._id),
+        }));
+    
+        setChat(combinedChat);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error("Error fetching messages and replies:", error);
       } finally {
         setLoading(false);
       }
     };
+    
 
-    // Connect socket and fetch messages
+    // Connect socket and fetch messages and replies
     socket.connect();
-    fetchMessages();
+    fetchMessagesAndReplies();
 
     // Listen for incoming messages
     socket.on("receiveMessage", (data) => {
-      // Append the message to the chat if it matches the user's email
       if (data.user?.email === user.email) {
-        setChat((prevChat) => [...prevChat, data]);
+        setChat((prevChat) => [...prevChat, { ...data, replies: [] }]);
       }
     });
 
@@ -69,7 +86,6 @@ const Inbox = () => {
     };
 
     try {
-      // Save message to the database
       await fetch("http://localhost:5000/messages", {
         method: "POST",
         headers: {
@@ -78,11 +94,9 @@ const Inbox = () => {
         body: JSON.stringify(messageData),
       });
 
-      // Send the message via the socket
       socket.emit("sendMessage", messageData);
 
-      // Update the local chat state
-      setChat((prevChat) => [...prevChat, messageData]);
+      setChat((prevChat) => [...prevChat, { ...messageData, replies: [] }]);
       setMessage(""); // Clear the input field
     } catch (error) {
       console.error("Error sending message:", error);
@@ -129,18 +143,34 @@ const Inbox = () => {
           ) : (
             <div className="chat-log h-60 overflow-auto mb-4 p-2 border-b border-gray-200">
               {chat.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
-                    msg.user?.email === user.email
-                      ? "bg-blue-500 text-white ml-auto"
-                      : "bg-gray-200 text-black mr-auto"
-                  }`}
-                >
-                  <p className="mt-2">{msg.message}</p>
-                  <small className="text-black">
-                    {new Date(msg.timestamp).toLocaleString()}
-                  </small>
+                <div key={index}>
+                  <div
+                    className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
+                      msg.user?.email === user.email
+                        ? "bg-blue-500 text-white ml-auto"
+                        : "bg-gray-200 text-black mr-auto"
+                    }`}
+                  >
+                    <p className="mt-2">{msg.message}</p>
+                    <small className="text-black">
+                      {new Date(msg.timestamp).toLocaleString()}
+                    </small>
+                  </div>
+
+                  {/* Display replies */}
+                 {/* Display replies */}
+  {msg.replies.length > 0 &&
+    msg.replies.map((reply, idx) => (
+      <div
+        key={idx}
+        className="reply-message p-2 ml-6 mb-3 rounded-lg bg-gray-100 text-black shadow-sm"
+      >
+        <p>{reply.reply}</p>
+        <small className="text-gray-500">
+          {reply.email} • {new Date(reply.timestamp).toLocaleString()}
+        </small>
+      </div>
+    ))}
                 </div>
               ))}
               <div ref={chatEndRef} />

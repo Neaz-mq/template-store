@@ -28,11 +28,11 @@ const Communication = () => {
 
   const handleReplySubmit = async (replyId) => {
     try {
-      const name = "Admin"; // Replace with dynamic user/admin name if available
+      const email = "admin@example.com"; // Replace with dynamic email if available
       await axios.post('http://localhost:5000/replies', {
         replyId,
         reply,
-        name,
+        email,
       });
       toast.success('Reply sent successfully', { position: 'top-center' });
       setReply('');
@@ -52,7 +52,7 @@ const Communication = () => {
       <table className="min-w-full border-collapse border border-gray-200">
         <thead>
           <tr className="bg-gray-100">
-            <th className="border border-gray-300 px-4 py-2">Name</th>
+            <th className="border border-gray-300 px-4 py-2">Email</th>
             <th className="border border-gray-300 px-4 py-2">Reply</th>
             <th className="border border-gray-300 px-4 py-2">Timestamp</th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
@@ -61,7 +61,7 @@ const Communication = () => {
         <tbody>
           {replies.map((rep) => (
             <tr key={rep._id} className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-4 py-2">{rep.name}</td>
+              <td className="border border-gray-300 px-4 py-2">{rep.email}</td>
               <td className="border border-gray-300 px-4 py-2">{rep.reply}</td>
               <td className="border border-gray-300 px-4 py-2">
                 {new Date(rep.timestamp).toLocaleString()}

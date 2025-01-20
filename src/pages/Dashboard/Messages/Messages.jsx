@@ -28,11 +28,11 @@ const Messages = () => {
 
   const handleReplySubmit = async (messageId) => {
     try {
-      const name = "Admin"; // Replace this with dynamic user/admin name if available
+      const adminEmail = "neazmorshed666@gmail.com"; // You can fetch this dynamically from the logged-in admin user
       await axios.post('http://localhost:5000/replies', {
         messageId,
         reply,
-        name, // Add the name field
+        email: adminEmail,  // Pass the admin's email instead of the user's email
       });
       toast.success('Reply sent successfully', { position: 'top-center' });
       setReply('');
@@ -42,6 +42,7 @@ const Messages = () => {
       toast.error('Failed to send reply', { position: 'top-center' });
     }
   };
+  
 
   if (loading) return <p>Loading messages...</p>;
   if (error) return <p>{error}</p>;
@@ -59,48 +60,49 @@ const Messages = () => {
           </tr>
         </thead>
         <tbody>
-          {messages.map((msg) => (
-            <tr key={msg._id} className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-4 py-2">{msg.email}</td>
-              <td className="border border-gray-300 px-4 py-2">{msg.message}</td>
-              <td className="border border-gray-300 px-4 py-2">
-                {new Date(msg.timestamp).toLocaleString()}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {selectedMessage === msg._id ? (
-                  <div>
-                    <input
-                      type="text"
-                      className="border px-2 py-1 mr-2"
-                      value={reply}
-                      onChange={(e) => setReply(e.target.value)}
-                      placeholder="Type your reply"
-                    />
-                    <button
-                      onClick={() => handleReplySubmit(msg._id)}
-                      className="bg-blue-500 text-white px-4 py-1 rounded"
-                    >
-                      Send
-                    </button>
-                    <button
-                      onClick={() => setSelectedMessage(null)}
-                      className="bg-gray-300 text-black px-4 py-1 rounded ml-2"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    onClick={() => setSelectedMessage(msg._id)}
-                    className="bg-green-500 text-white px-4 py-1 rounded"
-                  >
-                    Reply
-                  </button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {messages.map((msg) => (
+    <tr key={msg._id} className="hover:bg-gray-50">
+      <td className="border border-gray-300 px-4 py-2">{msg.email}</td>
+      <td className="border border-gray-300 px-4 py-2">{msg.message}</td>
+      <td className="border border-gray-300 px-4 py-2">
+        {new Date(msg.timestamp).toLocaleString()}
+      </td>
+      <td className="border border-gray-300 px-4 py-2">
+        {selectedMessage === msg._id ? (
+          <div>
+            <input
+              type="text"
+              className="border px-2 py-1 mr-2"
+              value={reply}
+              onChange={(e) => setReply(e.target.value)}
+              placeholder="Type your reply"
+            />
+            <button
+              onClick={() => handleReplySubmit(msg._id)}
+              className="bg-blue-500 text-white px-4 py-1 rounded"
+            >
+              Send
+            </button>
+            <button
+              onClick={() => setSelectedMessage(null)}
+              className="bg-gray-300 text-black px-4 py-1 rounded ml-2"
+            >
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setSelectedMessage(msg._id)}
+            className="bg-green-500 text-white px-4 py-1 rounded"
+          >
+            Reply
+          </button>
+        )}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
       <ToastContainer 
         position="top-center" // Position toast at the top center
