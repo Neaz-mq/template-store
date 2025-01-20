@@ -26,15 +26,25 @@ const Communication = () => {
     fetchReplies();
   }, []);
 
-  const handleReplySubmit = async (replyId) => {
+  const handleReplySubmit = async (messageId) => {
     try {
-      const email = "admin@example.com"; // Replace with dynamic email if available
+      const email = 'admin@example.com'; // Replace with dynamic admin email if needed
       await axios.post('http://localhost:5000/replies', {
-        replyId,
+        messageId, // Send the correct `messageId` field
         reply,
         email,
       });
       toast.success('Reply sent successfully', { position: 'top-center' });
+
+      // Update replies list locally after successful submission
+      setReplies((prevReplies) =>
+        prevReplies.map((r) =>
+          r._id === messageId
+            ? { ...r, reply } // Update the reply for the selected message
+            : r
+        )
+      );
+
       setReply('');
       setSelectedReply(null);
     } catch (err) {
@@ -102,11 +112,11 @@ const Communication = () => {
           ))}
         </tbody>
       </table>
-      <ToastContainer 
-        position="top-center" // Position toast at the top center
-        autoClose={5000} // Auto-close after 5 seconds
-        hideProgressBar={false} // Show progress bar
-        closeButton={false} // Hide the close button
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeButton={false}
       />
     </div>
   );
