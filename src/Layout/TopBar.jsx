@@ -99,13 +99,13 @@ const TopBar = () => {
                 </div>
 
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
-                    <div className="flex items-center mr-6 mt-3 relative cursor-pointer" onClick={toggleDropdown}>
+                    <div className="flex items-center mr-6 mt-3 relative">
                         <FaBell
-                            className="text-gray-500 mr-14 -ml-8 text-2xl cursor-pointer"
+                            className="text-gray-500 mr-14 -ml-8 text-2xl cursor-pointer "  onClick={toggleDropdown}
                         // Toggle dropdown visibility on click
                         />
                         {notifications > 0 && (
-                            <span className="absolute top-0 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center right-48 -left-6">
+                            <span className="absolute top-0 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center right-48 -left-6 cursor-pointer"  onClick={toggleDropdown}>
                                 +{notifications}
                             </span>
                         )}
@@ -114,7 +114,7 @@ const TopBar = () => {
 
                         {/* Notification Dropdown */}
                         {isDropdownOpen && (
-                            <div className="absolute right-80 -left-72 mt-56 bg-white shadow-lg rounded-lg w-64 p-4 max-h-40 overflow-y-auto z-10">
+                            <div className="absolute right-80 -left-72 mt-40 bg-white shadow-lg rounded-lg w-64 p-4 max-h-40 overflow-y-auto z-10">
                                 <h3 className="text-lg font-semibold mb-3">Notifications</h3>
                                 {messages.length > 0 ? (
                                     messages.map((message) => (
@@ -133,8 +133,8 @@ const TopBar = () => {
                                             </p>
                                         </div>
                                     ))
-                                ) : (
-                                    <div className="text-gray-500">No new notifications</div>
+                                ) : (                              
+                                        <div className="text-gray-500">No new notifications</div>
                                 )}
                             </div>
                         )}
