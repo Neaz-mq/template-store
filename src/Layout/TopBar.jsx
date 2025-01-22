@@ -1,25 +1,51 @@
-import { FaBell } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
-import socket from "../utils/socket"; // Corrected import for the socket instance
+import { FaBell } from "react-icons/fa";
+import socket from "../utils/socket"; // Corrected import for socket instance
+import useAuth from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
-    const { user } = useAuth(); // Accessing the user context
-    const [notifications, setNotifications] = useState(0); // Track the number of unread notifications
-    const [message, setMessage] = useState(null); // Store the received message (optional)
+    const { user } = useAuth();
+    const [notifications, setNotifications] = useState(0); // Notifications for bell icon
+    const [notificationCount, setNotificationCount] = useState(0); // Notifications for chat bubble
+    const [messages, setMessages] = useState([]); // Store fetched messages
 
+    // Fetch messages when the component mounts or when user changes
+    useEffect(() => {
+        const fetchMessages = async () => {
+            if (user) {
+                try {
+                    const response = await fetch(`http://localhost:5000/messages?email=${user.email}`);
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch messages");
+                    }
+                    const data = await response.json();
+                    setMessages(data); // Update state with fetched messages
+                    setNotifications(data.length); // Set notification count to the number of messages
+                } catch (error) {
+                    console.error("Error fetching messages:", error);
+                }
+            }
+        };
+
+        fetchMessages();
+    }, [user]); // Fetch messages whenever user changes
+
+    // Listen for new messages to update notification counts
     useEffect(() => {
         if (user?.role === 'admin') {
-            // Listen for incoming messages for admins only
-            socket.on("receiveMessage", (message) => {
-                console.log(message);  // Log the received message for debugging or other purposes
-                setNotifications((prev) => prev + 1); // Increment notifications only for admins
-                setMessage(message); // Store the received message (optional)
+            socket.on("notifyNewMessage", (data) => {
+                console.log(data.message);  // Log the received message for debugging
+                setNotifications((prev) => prev + 1); // Increment bell notifications
+            });
+
+            socket.on("notifyNewChatMessage", (data) => {
+                setNotificationCount((prev) => prev + 1); // Increment chat bubble notifications
             });
 
             return () => {
-                socket.off("receiveMessage"); // Cleanup the socket event on component unmount
+                socket.off("notifyNewMessage"); // Cleanup
+                socket.off("notifyNewChatMessage"); // Cleanup
             };
         }
     }, [user]);
@@ -68,16 +94,36 @@ const TopBar = () => {
 
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
                     <div className="flex items-center mr-6 mt-3 relative">
-                        <FaBell className="text-gray-500 mr-2 text-xl" />
+                        <FaBell className="text-gray-500 mr-2 text-2xl" />
                         {notifications > 0 && (
-                            <span className="absolute top-0 right-0 block w-3 h-3 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
-                                {notifications}
+                            <span className="absolute top-0 right-44 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+                                +{notifications}
                             </span>
                         )}
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || 'Admin'}</span>
-                        <div className="ml-4 md:h-8 h-6 md:w-8 w-9 bg-[#4864EC] rounded-full"></div>
+                        <div className="ml-4 md:h-8 h-6 md:w-8 w-16 bg-[#4864EC] rounded-full"></div>
                     </div>
                 </div>
+            </div>
+
+            {/* Floating Chat Bubble Icon */}
+            <div
+                className="fixed bottom-5 right-5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full p-4 shadow-xl cursor-pointer flex items-center justify-center w-14 h-14"
+                onClick={() => setIsChatOpen(!isChatOpen)}
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="white"
+                    viewBox="0 0 24 24"
+                    className="w-6 h-6"
+                >
+                    <path d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z" />
+                </svg>
+                {notificationCount > 0 && (
+                    <div className="absolute top-0 right-0 bg-red-500 text-white text-xs p-1 rounded-full">
+                        +{notificationCount}
+                    </div>
+                )}
             </div>
         </div>
     );

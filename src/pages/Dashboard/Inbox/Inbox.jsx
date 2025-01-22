@@ -52,7 +52,6 @@ const Inbox = () => {
         setLoading(false);
       }
     };
-    
 
     // Connect socket and fetch messages and replies
     socket.connect();
@@ -98,6 +97,9 @@ const Inbox = () => {
 
       setChat((prevChat) => [...prevChat, { ...messageData, replies: [] }]);
       setMessage(""); // Clear the input field
+
+      // Update the notification count based on message count (1 or 2)
+      setNotificationCount((prevCount) => prevCount + 1);
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -131,6 +133,7 @@ const Inbox = () => {
         >
           <path d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z" />
         </svg>
+       
       </div>
 
       {/* Chat Box */}
@@ -158,19 +161,18 @@ const Inbox = () => {
                   </div>
 
                   {/* Display replies */}
-                 {/* Display replies */}
-  {msg.replies.length > 0 &&
-    msg.replies.map((reply, idx) => (
-      <div
-        key={idx}
-        className="reply-message p-2 ml-6 mb-3 rounded-lg bg-gray-100 text-black shadow-sm"
-      >
-        <p>{reply.reply}</p>
-        <small className="text-gray-500">
-          {reply.email} • {new Date(reply.timestamp).toLocaleString()}
-        </small>
-      </div>
-    ))}
+                  {msg.replies.length > 0 &&
+                    msg.replies.map((reply, idx) => (
+                      <div
+                        key={idx}
+                        className="reply-message p-2 ml-6 mb-3 rounded-lg bg-gray-100 text-black shadow-sm"
+                      >
+                        <p>{reply.reply}</p>
+                        <small className="text-gray-500">
+                          {reply.email} • {new Date(reply.timestamp).toLocaleString()}
+                        </small>
+                      </div>
+                    ))}
                 </div>
               ))}
               <div ref={chatEndRef} />
