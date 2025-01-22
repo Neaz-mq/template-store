@@ -9,6 +9,7 @@ const TopBar = () => {
     const [notifications, setNotifications] = useState(0); // Notifications for bell icon
     const [notificationCount, setNotificationCount] = useState(0); // Notifications for chat bubble
     const [messages, setMessages] = useState([]); // Store fetched messages
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to control dropdown visibility
 
     // Fetch messages when the component mounts or when user changes
     useEffect(() => {
@@ -49,6 +50,11 @@ const TopBar = () => {
             };
         }
     }, [user]);
+
+    // Toggle the notification dropdown
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
     return (
         <div>
@@ -93,15 +99,46 @@ const TopBar = () => {
                 </div>
 
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
-                    <div className="flex items-center mr-6 mt-3 relative">
-                        <FaBell className="text-gray-500 mr-2 text-2xl" />
+                    <div className="flex items-center mr-6 mt-3 relative cursor-pointer" onClick={toggleDropdown}>
+                        <FaBell
+                            className="text-gray-500 mr-14 -ml-8 text-2xl cursor-pointer"
+                        // Toggle dropdown visibility on click
+                        />
                         {notifications > 0 && (
-                            <span className="absolute top-0 right-44 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center">
+                            <span className="absolute top-0 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center right-48 -left-6">
                                 +{notifications}
                             </span>
                         )}
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || 'Admin'}</span>
                         <div className="ml-4 md:h-8 h-6 md:w-8 w-16 bg-[#4864EC] rounded-full"></div>
+
+                        {/* Notification Dropdown */}
+                        {isDropdownOpen && (
+                            <div className="absolute right-80 -left-72 mt-56 bg-white shadow-lg rounded-lg w-64 p-4 max-h-40 overflow-y-auto z-10">
+                                <h3 className="text-lg font-semibold mb-3">Notifications</h3>
+                                {messages.length > 0 ? (
+                                    messages.map((message) => (
+                                        <div
+                                            key={message._id}
+                                            className="flex flex-col mb-3 p-3 bg-gray-100 rounded-lg shadow-sm"
+                                        >
+                                            <p className="text-sm font-medium text-gray-700">
+                                                {message.message}
+                                            </p>
+                                            <small className="text-gray-500">
+                                                {new Date(message.timestamp).toLocaleString()}
+                                            </small>
+                                            <p className="text-xs text-gray-400">
+                                                From: {message.email}
+                                            </p>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="text-gray-500">No new notifications</div>
+                                )}
+                            </div>
+                        )}
+
                     </div>
                 </div>
             </div>

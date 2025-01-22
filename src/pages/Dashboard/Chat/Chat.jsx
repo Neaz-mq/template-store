@@ -3,9 +3,9 @@ import { io } from "socket.io-client";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const socket = io("http://localhost:5000", {
-  autoConnect: true, // Auto-connect on initialization
-  reconnection: true, // Enable reconnection
-  reconnectionAttempts: 5, // Retry connection up to 5 times
+  autoConnect: true,
+  reconnection: true,
+  reconnectionAttempts: 5,
 });
 
 const Chat = () => {
@@ -16,40 +16,51 @@ const Chat = () => {
   const chatEndRef = useRef(null);
   const { user } = useContext(AuthContext); // Access user context
 
-  // Fetch messages and set up socket connection
   useEffect(() => {
     if (!user) {
       setChat([]);
       return;
     }
 
-    const fetchMessages = async () => {
+    const fetchMessagesAndReplies = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:5000/messages?email=${user.email}`);
-        if (!response.ok) throw new Error("Failed to fetch messages");
-        const messages = await response.json();
-        setChat(messages);
+        // Fetch user-specific messages
+        const messagesResponse = await fetch(
+          `http://localhost:5000/messages?email=${user.email}`
+        );
+        if (!messagesResponse.ok) throw new Error("Failed to fetch messages");
+        const messages = await messagesResponse.json();
+    
+        // Fetch all replies for the admin email
+        const repliesResponse = await fetch(
+          `http://localhost:5000/replies?email=neazmorshed666@gmail.com`
+        );
+        if (!repliesResponse.ok) throw new Error("Failed to fetch replies");
+        const allReplies = await repliesResponse.json();
+    
+        // Merge messages with their respective replies
+        const combinedChat = messages.map((message) => ({
+          ...message,
+          replies: allReplies.filter((reply) => reply.messageId === message._id),
+        }));
+    
+        setChat(combinedChat);
       } catch (error) {
-        console.error("Error fetching messages:", error);
+        console.error("Error fetching messages and replies:", error);
       } finally {
         setLoading(false);
       }
     };
 
     socket.connect();
+    fetchMessagesAndReplies();
 
-    socket.off("receiveMessage").on("receiveMessage", (data) => {
-      if (data.user?.email !== user.email) {
-        setChat((prevChat) => [...prevChat, data]);
+    socket.on("receiveMessage", (data) => {
+      if (data.user?.email === user.email) {
+        setChat((prevChat) => [...prevChat, { ...data, replies: [] }]);
       }
     });
-
-    socket.on("connect_error", (err) => {
-      console.error("Socket connection error:", err.message);
-    });
-
-    fetchMessages();
 
     return () => {
       socket.off("receiveMessage");
@@ -59,7 +70,11 @@ const Chat = () => {
 
   // Handle sending messages
   const handleSendMessage = async () => {
-    if (!message.trim() || !user) return;
+    if (!message.trim()) return;
+    if (!user) {
+      console.error("User must be logged in to send messages.");
+      return;
+    }
 
     const messageData = {
       user: { email: user.email },
@@ -68,34 +83,26 @@ const Chat = () => {
     };
 
     try {
-      setChat((prevChat) => [...prevChat, messageData]);
-
       await fetch("http://localhost:5000/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user.token}`, // Include user token for authentication
         },
         body: JSON.stringify(messageData),
       });
 
       socket.emit("sendMessage", messageData);
-      setMessage("");
+
+      setChat((prevChat) => [...prevChat, { ...messageData, replies: [] }]);
+      setMessage(""); // Clear the input field
     } catch (error) {
       console.error("Error sending message:", error);
     }
   };
 
-  // Scroll to the latest message
+  // Auto-scroll to the latest message
   useEffect(() => {
-    const chatLog = chatEndRef.current?.parentElement;
-    if (chatLog) {
-      const isNearBottom =
-        chatLog.scrollTop + chatLog.clientHeight >= chatLog.scrollHeight - 10;
-      if (isNearBottom) {
-        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-      }
-    }
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
 
   if (!user) {
@@ -108,7 +115,7 @@ const Chat = () => {
 
   return (
     <>
-      {/* Floating Chat Icon */}
+      {/* Floating Chat Bubble Icon */}
       <div
         className="fixed bottom-5 right-5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full p-4 shadow-xl cursor-pointer flex items-center justify-center w-14 h-14"
         onClick={() => setIsChatOpen(!isChatOpen)}
@@ -119,7 +126,7 @@ const Chat = () => {
           viewBox="0 0 24 24"
           className="w-6 h-6"
         >
-          <path d="M12 3C6.48 3 2 6.82 2 11.5c0 2.56 1.4 4.84 3.62 6.38L4.07 20.93c-.1.37.29.7.65.48l3.44-2.06C9.43 19.65 10.71 20 12 20c5.52 0 10-3.82 10-8.5S17.52 3 12 3zm0 15c-1.02 0-2.02-.23-2.93-.68-.23-.11-.5-.09-.72.05l-2.42 1.45.83-2.9c.07-.24 0-.5-.18-.68C5.27 14.21 4 12.06 4 11.5 4 7.36 7.79 4 12 4s8 3.36 8 7.5-3.79 7.5-8 7.5zm-2-8h4c.55 0 1-.45 1-1s-.45-1-1-1h-4c-.55 0-1 .45-1 1s.45 1 1 1zm0 2c-.55 0-1 .45-1 1s.45 1 1 1h4c.55 0 1-.45 1-1s-.45-1-1-1h-4z" />
+          <path d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z" />
         </svg>
       </div>
 
@@ -133,24 +140,40 @@ const Chat = () => {
           ) : (
             <div className="chat-log h-60 overflow-auto mb-4 p-2 border-b border-gray-200">
               {chat.map((msg, index) => (
-                <div
-                  key={index}
-                  className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
-                    msg.user?.email === user.email
-                      ? "bg-blue-500 text-white ml-auto"
-                      : "bg-gray-200 text-black mr-auto"
-                  }`}
-                >
-                  <p className="mt-2">{msg.message}</p>
-                  <small className="text-black">
-                    {new Date(msg.timestamp).toLocaleString()}
-                  </small>
+                <div key={index}>
+                  <div
+                    className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
+                      msg.user?.email === user.email
+                        ? "bg-blue-500 text-white ml-auto"
+                        : "bg-gray-200 text-black mr-auto"
+                    }`}
+                  >
+                    <p className="mt-2">{msg.message}</p>
+                    <small className="text-black">
+                      {new Date(msg.timestamp).toLocaleString()}
+                    </small>
+                  </div>
+
+                  {/* Display replies */}
+                  {msg.replies.length > 0 &&
+                    msg.replies.map((reply, idx) => (
+                      <div
+                        key={idx}
+                        className="reply-message p-2 ml-6 mb-3 rounded-lg bg-gray-100 text-black shadow-sm"
+                      >
+                        <p>{reply.reply}</p>
+                        <small className="text-gray-500">
+                          {reply.email} • {new Date(reply.timestamp).toLocaleString()}
+                        </small>
+                      </div>
+                    ))}
                 </div>
               ))}
               <div ref={chatEndRef} />
             </div>
           )}
 
+          {/* Input Field and Send Button */}
           <div className="flex items-center mt-4 border-t border-gray-200 pt-4">
             <input
               type="text"
