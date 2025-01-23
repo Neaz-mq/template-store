@@ -63,6 +63,7 @@ const Communication = () => {
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-300 px-4 py-2">Email</th>
+            <th className="border border-gray-300 px-4 py-2">Role</th> {/* Added Role column */}
             <th className="border border-gray-300 px-4 py-2">Reply</th>
             <th className="border border-gray-300 px-4 py-2">Timestamp</th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
@@ -72,6 +73,7 @@ const Communication = () => {
           {replies.map((rep) => (
             <tr key={rep._id} className="hover:bg-gray-50">
               <td className="border border-gray-300 px-4 py-2">{rep.email}</td>
+              <td className="border border-gray-300 px-4 py-2">{rep.role}</td> {/* Display Role */}
               <td className="border border-gray-300 px-4 py-2">{rep.reply}</td>
               <td className="border border-gray-300 px-4 py-2">
                 {new Date(rep.timestamp).toLocaleString()}

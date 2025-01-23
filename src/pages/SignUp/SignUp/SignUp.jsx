@@ -93,7 +93,7 @@ const SignUp = () => {
 
             <div className='min-h-screen  bg-[#ffffff] 3xl:-mt-8 2xl:-mt-8 desktop:-mt-9 laptop:-mt-8 tablet:-mt-[7em] -mt-28 font-raleway'>
                 <div className=" flex items-center justify-center mt-4 container mx-auto">
-                    <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10 lg:-ml-0 3xl:mt-[19rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem] tablet:mt-[5rem]">
+                    <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10 lg:-ml-0 3xl:mt-[12rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem] tablet:mt-[5rem]">
                         <h3 className="text-xl font-medium font-raleway text-slate-800 mb-6 mt-4">Sign Up</h3>
                         <div className="flex flex-col gap-3 mb-3">
                             <div className="max-w-72 lg:max-w-[350px] flex gap-4">
