@@ -22,7 +22,9 @@ const TopBar = () => {
                     }
                     const data = await response.json();
                     setMessages(data); // Update state with fetched messages
-                    setNotifications(data.length); // Set notification count to the number of messages
+                    const count = data.length;
+                    setNotifications(count); // Set notification count to the number of messages
+                    localStorage.setItem("notifications", count.toString()); // Store notification count in localStorage
                 } catch (error) {
                     console.error("Error fetching messages:", error);
                 }
@@ -37,7 +39,11 @@ const TopBar = () => {
         if (user?.role === 'admin') {
             socket.on("notifyNewMessage", (data) => {
                 console.log(data.message);  // Log the received message for debugging
-                setNotifications((prev) => prev + 1); // Increment bell notifications
+                setNotifications((prev) => {
+                    const newCount = prev + 1;
+                    localStorage.setItem("notifications", newCount.toString()); // Persist to localStorage
+                    return newCount;
+                });
             });
 
             socket.on("notifyNewChatMessage", (data) => {
@@ -51,9 +57,24 @@ const TopBar = () => {
         }
     }, [user]);
 
-    // Toggle the notification dropdown
+    // Retrieve notifications from localStorage when the component mounts
+    useEffect(() => {
+        const storedNotifications = localStorage.getItem("notifications");
+        if (storedNotifications) {
+            setNotifications(parseInt(storedNotifications));
+        }
+    }, []); // Run only once on mount
+
+    // Toggle the notification dropdown and reset notification count
     const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
+        setIsDropdownOpen((prev) => {
+            const isOpening = !prev; // Determine if the dropdown is being opened
+            if (isOpening) {
+                setNotifications(0); // Reset the bell notification count
+                localStorage.setItem("notifications", "0"); // Persist reset state in localStorage
+            }
+            return isOpening;
+        });
     };
 
     return (
@@ -101,17 +122,20 @@ const TopBar = () => {
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
                     <div className="flex items-center mr-6 mt-3 relative">
                         <FaBell
-                            className="text-gray-500 mr-14 -ml-8 text-2xl cursor-pointer "  onClick={toggleDropdown}
-                        // Toggle dropdown visibility on click
+                            className="text-gray-500 mr-14 -ml-8 text-2xl cursor-pointer"
+                            onClick={toggleDropdown} // Toggle dropdown and reset notifications
                         />
                         {notifications > 0 && (
-                            <span className="absolute top-0 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center right-48 -left-6 cursor-pointer"  onClick={toggleDropdown}>
+                            <span
+                                className="absolute top-0 block w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center right-48 -left-6 cursor-pointer"
+                                onClick={toggleDropdown} // Toggle dropdown and reset notifications
+                            >
                                 +{notifications}
                             </span>
                         )}
-                        <span className="font-semibold text-gray-700 ml-4">{user?.displayName || 'Admin'}</span>
-                        <div className="ml-4 md:h-8 h-6 md:w-8 w-16 bg-[#4864EC] rounded-full"></div>
-
+                        <span className="font-semibold text-gray-700 ml-4">{user?.displayName || "Admin"}</span>
+                        <a href="/"><div className="ml-4 md:h-8 h-6 md:w-8 w-16 bg-[#4864EC] rounded-full"></div>
+                        </a>
                         {/* Notification Dropdown */}
                         {isDropdownOpen && (
                             <div className="absolute right-80 -left-72 mt-40 bg-white shadow-lg rounded-lg w-64 p-4 max-h-40 overflow-y-auto z-10">
@@ -122,23 +146,18 @@ const TopBar = () => {
                                             key={message._id}
                                             className="flex flex-col mb-3 p-3 bg-gray-100 rounded-lg shadow-sm"
                                         >
-                                            <p className="text-sm font-medium text-gray-700">
-                                                {message.message}
-                                            </p>
+                                            <p className="text-sm font-medium text-gray-700">{message.message}</p>
                                             <small className="text-gray-500">
                                                 {new Date(message.timestamp).toLocaleString()}
                                             </small>
-                                            <p className="text-xs text-gray-400">
-                                                From: {message.email}
-                                            </p>
+                                            <p className="text-xs text-gray-400">From: {message.email}</p>
                                         </div>
                                     ))
-                                ) : (                              
-                                        <div className="text-gray-500">No new notifications</div>
+                                ) : (
+                                    <div className="text-gray-500">No new notifications</div>
                                 )}
                             </div>
                         )}
-
                     </div>
                 </div>
             </div>

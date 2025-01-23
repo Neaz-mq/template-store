@@ -10,10 +10,10 @@ const socket = io("http://localhost:5000", {
 
 const Chat = () => {
   const [message, setMessage] = useState("");
-  const [chat, setChat] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const chatEndRef = useRef(null);
+  const [chat, setChat] = useState([]); // Store the chat messages
+  const [loading, setLoading] = useState(true); // Loading state
+  const [isChatOpen, setIsChatOpen] = useState(false); // Chat visibility state
+  const chatEndRef = useRef(null); // Reference to scroll to the latest message
   const { user } = useContext(AuthContext); // Access user context
 
   useEffect(() => {
@@ -43,6 +43,7 @@ const Chat = () => {
         const combinedChat = messages.map((message) => ({
           ...message,
           replies: allReplies.filter((reply) => reply.messageId === message._id),
+          read: false, // Add a read status to messages
         }));
     
         setChat(combinedChat);
@@ -68,7 +69,6 @@ const Chat = () => {
     };
   }, [user]);
 
-  // Handle sending messages
   const handleSendMessage = async () => {
     if (!message.trim()) return;
     if (!user) {
@@ -93,7 +93,7 @@ const Chat = () => {
 
       socket.emit("sendMessage", messageData);
 
-      setChat((prevChat) => [...prevChat, { ...messageData, replies: [] }]);
+      setChat((prevChat) => [...prevChat, { ...messageData, replies: [], read: false }]);
       setMessage(""); // Clear the input field
     } catch (error) {
       console.error("Error sending message:", error);
@@ -104,6 +104,15 @@ const Chat = () => {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
+
+  // Handle message read/unread state change
+  const handleMarkAsRead = (messageId) => {
+    setChat((prevChat) =>
+      prevChat.map((msg) =>
+        msg._id === messageId ? { ...msg, read: true } : msg
+      )
+    );
+  };
 
   if (!user) {
     return (
@@ -140,18 +149,22 @@ const Chat = () => {
           ) : (
             <div className="chat-log h-60 overflow-auto mb-4 p-2 border-b border-gray-200">
               {chat.map((msg, index) => (
-                <div key={index}>
+                <div key={index} className="mb-4">
                   <div
-                    className={`chat-message p-3 mb-3 rounded-lg shadow-sm ${
+                    className={`chat-message p-3 rounded-lg shadow-sm ${
                       msg.user?.email === user.email
                         ? "bg-blue-500 text-white ml-auto"
                         : "bg-gray-200 text-black mr-auto"
                     }`}
+                    onClick={() => handleMarkAsRead(msg._id)} // Mark as read when clicked
                   >
                     <p className="mt-2">{msg.message}</p>
                     <small className="text-black">
                       {new Date(msg.timestamp).toLocaleString()}
                     </small>
+                    {!msg.read && (
+                      <div className="text-xs text-gray-500 mt-1">Unread</div>
+                    )}
                   </div>
 
                   {/* Display replies */}

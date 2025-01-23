@@ -14,6 +14,9 @@ const Inbox = () => {
   const [isChatOpen, setIsChatOpen] = useState(false); // State to toggle chat visibility
   const chatEndRef = useRef(null);
   const { user } = useContext(AuthContext); // Access user context
+  const [notificationCount, setNotificationCount] = useState(
+    parseInt(localStorage.getItem("notificationCount")) || 0
+  );
 
   // Fetch messages and replies every time the component mounts or the user changes
   useEffect(() => {
@@ -98,8 +101,12 @@ const Inbox = () => {
       setChat((prevChat) => [...prevChat, { ...messageData, replies: [] }]);
       setMessage(""); // Clear the input field
 
-      // Update the notification count based on message count (1 or 2)
-      setNotificationCount((prevCount) => prevCount + 1);
+      // Update the notification count and store it in localStorage
+      setNotificationCount((prevCount) => {
+        const newCount = prevCount + 1;
+        localStorage.setItem("notificationCount", newCount); // Persist in localStorage
+        return newCount;
+      });
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -133,7 +140,6 @@ const Inbox = () => {
         >
           <path d="M20 2H4a2 2 0 00-2 2v16l4-4h14V4a2 2 0 00-2-2z" />
         </svg>
-       
       </div>
 
       {/* Chat Box */}
