@@ -9,6 +9,9 @@ const Communication = () => {
   const [error, setError] = useState(null);
   const [reply, setReply] = useState('');
   const [selectedReply, setSelectedReply] = useState(null);
+  
+  // Simulating a logged-in admin's email (replace with actual dynamic email)
+  const loggedInAdminEmail = 'admin@example.com'; // Replace with actual logged-in admin email
 
   useEffect(() => {
     const fetchReplies = async () => {
@@ -28,12 +31,18 @@ const Communication = () => {
 
   const handleReplySubmit = async (messageId) => {
     try {
-      const email = 'admin@example.com'; // Replace with dynamic admin email if needed
+      // Dynamically setting the admin's email
+      console.log('Submitting reply for messageId:', messageId);
+      console.log('Reply content:', reply);
+      console.log('Admin email:', loggedInAdminEmail);
+
+      // Sending the reply with the correct messageId and admin email
       await axios.post('http://localhost:5000/replies', {
         messageId, // Send the correct `messageId` field
         reply,
-        email,
+        email: loggedInAdminEmail, // Pass the admin's email dynamically
       });
+
       toast.success('Reply sent successfully', { position: 'top-center' });
 
       // Update replies list locally after successful submission
@@ -63,7 +72,7 @@ const Communication = () => {
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-300 px-4 py-2">Email</th>
-            <th className="border border-gray-300 px-4 py-2">Role</th> {/* Added Role column */}
+            <th className="border border-gray-300 px-4 py-2">Role</th>
             <th className="border border-gray-300 px-4 py-2">Reply</th>
             <th className="border border-gray-300 px-4 py-2">Timestamp</th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
@@ -73,7 +82,7 @@ const Communication = () => {
           {replies.map((rep) => (
             <tr key={rep._id} className="hover:bg-gray-50">
               <td className="border border-gray-300 px-4 py-2">{rep.email}</td>
-              <td className="border border-gray-300 px-4 py-2">{rep.role}</td> {/* Display Role */}
+              <td className="border border-gray-300 px-4 py-2">{rep.role}</td>
               <td className="border border-gray-300 px-4 py-2">{rep.reply}</td>
               <td className="border border-gray-300 px-4 py-2">
                 {new Date(rep.timestamp).toLocaleString()}

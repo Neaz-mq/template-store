@@ -39,11 +39,9 @@ import Fail from "../pages/Dashboard/Fail/Fail";
 import Cancel from "../pages/Dashboard/Cancel/Cancel";
 import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory";
 import Inbox from "../pages/Dashboard/Inbox/Inbox";
-import Chat from "../pages/Dashboard/Chat/Chat";
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
-import Messages from "../pages/Dashboard/Messages/Messages";
 import Communication from "../pages/Dashboard/Communication/Communication";
 
 
@@ -178,15 +176,7 @@ export const router = createBrowserRouter([
         element: <Communication></Communication>
       },
 
-      // {
-      //   path: 'connect',
-      //   element: <Connect></Connect>
-      // },
-
-
-
-
-
+  
       // admin only routes
 
       {
@@ -275,10 +265,6 @@ export const router = createBrowserRouter([
         element: <AdminRoute><PaymentsHistory></PaymentsHistory></AdminRoute>
       },
 
-      {
-        path: 'messages',
-        element: <AdminRoute><Messages></Messages></AdminRoute>
-      }
 
     ]
   }
