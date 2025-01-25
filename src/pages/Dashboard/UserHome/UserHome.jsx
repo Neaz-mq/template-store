@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../hooks/useAuth";
-import Inbox from "../Inbox/Inbox";
 
 const UserHome = () => {
   const { user } = useAuth();
@@ -44,7 +43,7 @@ const UserHome = () => {
         Explore your dashboard and manage your account here.
       </p>
 
-      <Inbox></Inbox>
+      
     
     </div>
   );

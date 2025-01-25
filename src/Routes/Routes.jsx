@@ -38,7 +38,6 @@ import Success from "../pages/Dashboard/Success/Success";
 import Fail from "../pages/Dashboard/Fail/Fail";
 import Cancel from "../pages/Dashboard/Cancel/Cancel";
 import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory";
-import Inbox from "../pages/Dashboard/Inbox/Inbox";
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
@@ -145,12 +144,7 @@ export const router = createBrowserRouter([
         path: 'cart',
         element: <Cart></Cart>
       },
-
-      {
-        path: 'inbox',
-        element: <Inbox></Inbox>
-      },
-
+      
       {
         path: 'success-payment',
         element: <Success></Success>
