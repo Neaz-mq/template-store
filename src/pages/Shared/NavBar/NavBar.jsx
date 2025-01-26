@@ -5,7 +5,6 @@ import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import useCart from '../../../hooks/useCart';
 import useAdmin from '../../../hooks/useAdmin';
 
-
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
@@ -14,14 +13,12 @@ const NavBar = () => {
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-
   // When the user signs in, ensure the dropdown is closed by default
   useEffect(() => {
     if (user) {
       setDropdownOpen(false);  // Ensure the dropdown is closed when user logs in
     }
   }, [user]);  // Runs whenever the user state changes
-
 
   const handleLogOut = () => {
     logOut()
@@ -131,14 +128,11 @@ const NavBar = () => {
                       +{cart.length}
                     </div>
                   )}
-                </div>
-                    
+                </div>                   
                   </Link>
                 </li>
               </ul>
             </div>
-
-           
 
             <Link
               to="/"
@@ -188,17 +182,11 @@ const NavBar = () => {
               >
                 Contact Us
               </Link>
-
-             
-
-
-
-             
+           
               <Link to="/dashboard/cart">
                 <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-10 2xl:-mr-28 desktop:ml-10 desktop:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
                   <FaShoppingCart className="mr-4 cursor-pointer  text-xl" />
-
                   {/* Cart Length Badge */}
                   {cart.length > 0 && (
                     <div className="absolute -top-1 right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center 3xl:-ml-0 3xl:mr-0 2xl:-ml-12 2xl:mr-10 desktop:-ml-12 desktop:mr-10 ">
@@ -206,7 +194,6 @@ const NavBar = () => {
                     </div>
                   )}
                 </div>
-
               </Link>
             </ul>
           </div>
@@ -245,16 +232,12 @@ const NavBar = () => {
                   <Link to="/dashboard/userHome">Profile</Link>
                 </div>
               )}
-
                     <button
                       className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
                       onClick={handleLogOut}
                     >
                       Sign Out
-                    </button>
-
-                   
-
+                    </button>                   
                   </div>
                 )}
               </div>
@@ -279,15 +262,9 @@ const NavBar = () => {
               </div>
             )}
           </div>
-
-
         </div>
-
       </div>
-
     </div>
-
-
   );
 };
 

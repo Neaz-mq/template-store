@@ -3,13 +3,9 @@ import { Outlet } from "react-router-dom";
 import Footer from "../pages/Shared/Footer/Footer";
 import NavBar from "../pages/Shared/NavBar/NavBar";
 import axios from "axios";
-
 import HeadBar from "../pages/Shared/HeadBar/HeadBar";
 
-
-
 const Main = () => {
-
     useEffect(() => {
         // Check if the visit has already been recorded in this session
         if (sessionStorage.getItem('visit') === null) {
