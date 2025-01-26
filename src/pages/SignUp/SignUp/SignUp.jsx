@@ -71,14 +71,10 @@ const SignUp = () => {
                                     });
                                     navigate('/');
                                 }
-                            })
-                        // console.log('user profile info updated');
-                        // Reset the form after submission
-
+                            })                  
                     })
                     .catch(error => console.log(error))
             })
-
     };
 
     const password = watch("password", "");
@@ -198,11 +194,8 @@ const SignUp = () => {
                                 </svg>
                             </button>
                             <br /> <br />
-
                         </div>
-
                     </form>
-
                 </div>
 
                 {/* Google Sign-in Button */}

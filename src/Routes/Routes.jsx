@@ -9,7 +9,6 @@ import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../pages/Shared/Secret/Secret";
 import TemplateDetails from "../pages/TemplateDetails/TemplateDetails";
 import FreeTemplateDetails from "../pages/FreeTemplateDetails/FreeTemplateDetails";
 import Dashboard from "../Layout/Dashboard";
@@ -111,10 +110,7 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
 
-      {
-        path: 'secret',
-        element: <PrivateRoute><Secret></Secret></PrivateRoute>
-      }
+     
 
     ]
   },
