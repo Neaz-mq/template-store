@@ -7,51 +7,39 @@ import Promote from '../Promote/Promote';
 import Package from '../Package/Package';
 import Deal from '../Deal/Deal';
 
-
 const Home = () => {
 
     return (
-
         <div>
-
             <Helmet>
                 <title>Prographr | Home</title>
                 <meta name="description" content="Discover a wide range of templates for your creative projects at Template Store. Explore community ideas, guidelines, testimonials, and more." />
                 <meta name="keywords" content="templates, creativity, community, guidelines, ideas, testimonials" />
                 <link rel="canonical" href="https://www.prographr.com/home" />
             </Helmet>
-
             <main>
-
                 <section id="deal">
                    <Deal />
                 </section>
-
                 <section id="templates">
                     <Template />
-                </section>
-                
+                </section>             
                 <section id="exclusive">
                     <Exclusive />
-                </section> 
-                
+                </section>             
                 <section id="free">
                     <Free />
                 </section> 
-
                 <section id="promote">
                     <Promote />
-                </section> 
-                
+                </section>             
                 <section id="package">
                     <Package />
-                </section> 
-                
+                </section>            
                 <section id="community">
                     <Community />
                 </section>
             </main>
-
         </div>
     );
 };

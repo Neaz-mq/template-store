@@ -8,7 +8,6 @@ const Footer = () => {
     }, []);
 
     return (
-
         <footer className="bg-[#282A37] relative font-raleway">
             <div className="container mx-auto overflow-x-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-x-hidden laptop:overflow-x-hidden">
                 <div className="footer p-10 text-base-content relative">
@@ -54,7 +53,6 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-
     );
 };
 
