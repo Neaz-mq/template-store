@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import ExclusiveTemplates from "../../Home/ExclusiveTemplates/ExclusiveTemplates";
 
 const Filter = () => {
-
     const exclusiveTemplateRef = useRef(null);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [searchQuery, setSearchQuery] = useState('');
@@ -158,10 +157,7 @@ const Filter = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Render Templates based on selected category and search keyword */}
-
-
+          
                 <div className="bg-white" ref={exclusiveTemplateRef}>
                     <ExclusiveTemplates
                         selectedCategory={getFilteredCategories()}

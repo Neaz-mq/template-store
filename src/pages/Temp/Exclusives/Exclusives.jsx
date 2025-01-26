@@ -7,7 +7,6 @@ import ExclusiveTemplates from "../../Home/ExclusiveTemplates/ExclusiveTemplates
 const Exclusives = () => {
 
     return (
-
         <div>
             <Helmet>
                 <title>Prographr | Exclusive</title>

@@ -2,31 +2,26 @@ import { useRef, useState } from "react";
 import FreeTemp from "../../Home/FreeTemp/FreeTemp";
 
 const Search = () => {
-
     const freeTempRef = useRef(null);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
     const [searchQuery, setSearchQuery] = useState('');
     const [searchKeyword, setSearchKeyword] = useState('');
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
     const handleCategoryClick = (category) => {
         console.log('Category clicked:', category);
         setSelectedCategory(category);
         setIsDropdownOpen(false);
     };
-
     const handleSearch = (e) => {
         setSearchQuery(e.target.value);
         setSearchKeyword('');
     };
-
     const getFilteredCategories = () => {
         if (selectedCategory === 'All Categories') {
             return ['flyer', 'brochure', 'business', 'medical'];
         }
         return [selectedCategory.toLowerCase()];
     };
-
     const handleButtonClick = (buttonLabel) => {
         setSearchQuery('');
         setSearchKeyword(buttonLabel); // Set the search keyword for filtering
