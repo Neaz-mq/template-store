@@ -198,7 +198,6 @@ const ManageFreeTemplates = () => {
                     </button>
                 </div>
             </div>
-
         </div>
     );
 };

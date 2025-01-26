@@ -14,7 +14,6 @@ const AddDeal = () => {
     const [subPictureUrl, setSubPictureUrl] = useState("");
 
     const onSubmit = async (data) => {
-        // Prepare the offer item
         const dealItem = {
             description: data.description,
             paragraph: data.paragraph,
@@ -40,7 +39,6 @@ const AddDeal = () => {
             photo: subImageUrl,
             picture: subPhotoUrl,
             figure: subPictureUrl
-
         };
 
         try {

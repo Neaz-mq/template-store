@@ -76,8 +76,6 @@ const AddTemplates = () => {
         }
     };
 
-
-
     return (
         <div className="font-raleway">
             <div className='mt-5'>
@@ -189,9 +187,6 @@ const AddTemplates = () => {
                                     placeholder="Records"
                                 ></textarea>
                             </div>
-
-
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -258,12 +253,6 @@ const AddTemplates = () => {
                                         placeholder="Description"
                                     ></textarea>
                                 </div>
-
-
-
-
-
-
                             </div>
                         </div>
 
@@ -320,8 +309,6 @@ const AddTemplates = () => {
                                     placeholder="Documents"
                                 ></textarea>
                             </div>
-
-
                         </div>
                     </div>
 

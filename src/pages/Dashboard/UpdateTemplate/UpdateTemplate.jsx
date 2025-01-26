@@ -209,10 +209,6 @@ const UpdateTemplate = () => {
                                     placeholder="Records Included"
                                 ></textarea>
                             </div>
-
-
-
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -226,8 +222,6 @@ const UpdateTemplate = () => {
                                     className="textarea textarea-bordered h-24"
                                     placeholder="License"
                                 ></textarea>
-
-
 
                                 <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
@@ -284,10 +278,6 @@ const UpdateTemplate = () => {
                                         placeholder="Description"
                                     ></textarea>
                                 </div>
-
-
-
-
                             </div>
                         </div>
 

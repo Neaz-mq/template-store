@@ -71,7 +71,6 @@ const AddFreeTemplates = () => {
         }
     };
 
-
     return (
         <div>
             <div className='mt-5'>

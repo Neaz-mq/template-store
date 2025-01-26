@@ -186,10 +186,6 @@ const UpdateFreeTemplate = () => {
                                     placeholder="Records Included"
                                 ></textarea>
                             </div>
-
-
-
-
                         </div>
 
                         {/* Category and Price */}

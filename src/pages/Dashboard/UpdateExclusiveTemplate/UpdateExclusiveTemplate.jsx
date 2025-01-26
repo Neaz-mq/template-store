@@ -77,7 +77,6 @@ const UpdateExclusiveTemplate = () => {
         }
     };
 
-
     const handleAddAdditionalImage = () => {
         if (newAdditionalImageUrl.trim()) {
             setAdditionalImages([...additionalImages, newAdditionalImageUrl.trim()]);
@@ -88,7 +87,6 @@ const UpdateExclusiveTemplate = () => {
     const handleRemoveAdditionalImage = (url) => {
         setAdditionalImages(additionalImages.filter(img => img !== url));
     };
-
 
     return (
         <div>
@@ -196,7 +194,6 @@ const UpdateExclusiveTemplate = () => {
                                 </select>
                             </div>
 
-
                             {/* Records Included */}
 
                             <div className="form-control w-full my-6 h-auto px-6">
@@ -211,9 +208,6 @@ const UpdateExclusiveTemplate = () => {
                                 ></textarea>
                             </div>
 
-
-
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -227,8 +221,6 @@ const UpdateExclusiveTemplate = () => {
                                     className="textarea textarea-bordered h-24"
                                     placeholder="License"
                                 ></textarea>
-
-
 
                                 <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">

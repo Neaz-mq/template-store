@@ -5,7 +5,6 @@ import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
-
     const axiosSecure = useAxiosSecure();
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -19,7 +18,6 @@ const AllUsers = () => {
     const [usersPerPage] = useState(10);
     const [search, setSearch] = useState('');
     const [filteredUsers, setFilteredUsers] = useState([]);
-
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = (search ? filteredUsers : users).slice(indexOfFirstUser, indexOfLastUser);
@@ -78,7 +76,6 @@ const AllUsers = () => {
         e.preventDefault();
         const searchText = e.target.search.value.toLowerCase();
         setSearch(searchText);
-
         const filtered = users.filter(user => user.email.toLowerCase().includes(searchText));
         setFilteredUsers(filtered);
         setCurrentPage(1);  // Reset to the first page on new search
@@ -91,7 +88,6 @@ const AllUsers = () => {
     };
 
     return (
-
         <div className="px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center sm:flex-row sm:justify-between mb-6">
                 <h2 className="hidden md:block text-2xl sm:text-3xl font-semibold">All Users</h2>

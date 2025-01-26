@@ -369,7 +369,6 @@ const UpdateDeal = () => {
                             </div>
                         </div>
 
-
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
