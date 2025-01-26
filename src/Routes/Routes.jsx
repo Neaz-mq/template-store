@@ -39,6 +39,7 @@ import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory"
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
+import Chat from "../pages/Chat/Chat";
 
 
 export const router = createBrowserRouter([
@@ -108,7 +109,12 @@ export const router = createBrowserRouter([
       {
         path: '/sign-up',
         element: <SignUp></SignUp>
-      },  
+      }, 
+      
+      {
+        path: '/chat',
+        element: <Chat></Chat>
+      }, 
 
     ]
   },
