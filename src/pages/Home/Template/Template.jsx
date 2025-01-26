@@ -7,8 +7,6 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 const Template = () => {
     const [counterOn, setCounterOn] = useState(false);
     const axiosSecure = useAxiosSecure();
-
-
     // Fetch the admin stats
     const { data: stats = {}, isLoading, error } = useQuery({
         queryKey: ['admin-stats'],
