@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
@@ -7,10 +7,8 @@ import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 
-
 const StatCard = ({ icon, title, value }) => (
-
-    <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r hover:from-purple-100 hover:to-blue-100 transition-all duration-300 font-roboto">
+    <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r  transition-all duration-300 font-roboto">
         <div className="stat-figure text-secondary mb-2">
             {icon}
         </div>
@@ -190,9 +188,6 @@ const AdminHome = () => {
                     </div>
                 </div>
             </div>
-
-          
-       
         </div>
     );
 };
