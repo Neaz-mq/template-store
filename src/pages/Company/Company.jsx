@@ -6,9 +6,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Company = () => {
     return (
-
-        <div>
-            
+        <div>            
             <Helmet>
                 <title>Prographr | Company</title>
             </Helmet>

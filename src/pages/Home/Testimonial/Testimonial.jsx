@@ -87,8 +87,7 @@ const Testimonial = () => {
 
                             <div className="swiper-slide">
                                 <div className="w-[220px] h-[400px] tablet:w-[300px] tablet:h-[326px] mt-10 bg-white text-slate-800 font-raleway font-medium border border-gray-50  shadow p-7 relative  -ml-[19.5rem] tablet:-ml-[9rem]">
-
-                                    <div className="h-full flex flex-col justify-between">
+                               <div className="h-full flex flex-col justify-between">
                                         <p className="pt-4 text-[13px]">Doing real estate business without business card was difficult for me. I found a business card template here and modified by the design owner. The designer did a fantastic job for me. Thanks...</p>
                                         <div className="ml-20">
                                             <img alt="Stuff" loading="lazy" width="442" height="442" decoding="async" data-nimg="1" className="w-[80px] h-[80px]  -ml-9 tablet:ml-2" src="https://prographr.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2F3.b967d41d.png&w=640&q=75" style={{ color: 'transparent' }} />

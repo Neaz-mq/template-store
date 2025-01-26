@@ -6,7 +6,6 @@ import './Form.css';
 
 const Form = () => {
   const form = useRef();
-
   const diffToast = (message, isError) => {
     toast(message, {
       position: 'top-center',
@@ -16,7 +15,6 @@ const Form = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     const formData = new FormData(form.current);
     let isEmpty = false;
     for (let pair of formData.entries()) {

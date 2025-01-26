@@ -10,9 +10,7 @@ const SignIn = () => {
                 <title>Prographr | Sign-In</title>
                 <meta name="description" content="Sign in to Template Store to access your account and manage your orders." />
             </Helmet>
-
             <SignInForm></SignInForm>
-
         </div>
     );
 };
