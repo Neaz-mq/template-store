@@ -41,10 +41,7 @@ const UserHome = () => {
 
       <p className="text-gray-600">
         Explore your dashboard and manage your account here.
-      </p>
-
-      
-    
+      </p>  
     </div>
   );
 };

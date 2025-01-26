@@ -6,10 +6,8 @@ import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 
-
 const Cart = () => {
     const [cart, refetch] = useCart();
-
     // Calculate total price based on the type of item
     const totalPrice = cart.reduce((total, temp) => {
         const itemPrice = temp.price === "free" ? 0 : parseFloat(temp.price);
@@ -46,7 +44,6 @@ const Cart = () => {
         }
     };
     
-
     const axiosSecure = useAxiosSecure();
 
     const handleDelete = id => {

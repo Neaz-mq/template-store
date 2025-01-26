@@ -16,7 +16,6 @@ const Fail = () => {
             }
         });
     }, []);
-
     return null; // No need to render any other elements
 };
 
