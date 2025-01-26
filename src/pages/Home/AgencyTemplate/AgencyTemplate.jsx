@@ -38,7 +38,6 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
     } else {
       setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
     }
-
     setShowAll(!showAll);
   };
 
@@ -81,7 +80,6 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
           ))}
         </section>
       </div>
-
       <div className="flex justify-center">
         <div className="mt-16 mb-10 lg:mb-0">
           <button

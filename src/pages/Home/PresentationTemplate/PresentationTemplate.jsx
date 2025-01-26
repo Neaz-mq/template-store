@@ -17,7 +17,6 @@ const PresentationTemplate = () => {
                 loading="lazy"
               />
             </div>            
-  
             <a
               className="3xl:-mt-24 2xl:-mt-16 desktop:-mt-2 laptop:mt-6 tablet:mt-14 relative z-10"  
               href="https://graphicriver.net/user/prographr/portfolio"

@@ -6,7 +6,6 @@ const FreeTemplate = ({ item }) => {
     const { _id, category, image, price, type } = item;
 
     return (
-
         <article>
             <div>
                 <div className="translate-y-10 opacity-0 templateScrollTrigger"
@@ -32,7 +31,6 @@ const FreeTemplate = ({ item }) => {
                 </div>
             </div>
         </article>
-
     );
 };
 
