@@ -48,7 +48,6 @@ const ExclusiveTemplateDetails = () => {
 
 
     useEffect(() => {
-
         fetch('http://localhost:5000/free')
             .then(res => res.json())
             .then(data => {
@@ -113,7 +112,6 @@ const ExclusiveTemplateDetails = () => {
         setZoomLevel(1); // Reset zoom level on close
     };
 
-
     const handleNextImage = () => {
         const nextIndex = (selectedIndex + 1) % picture.length;
         setSelectedImage(picture[nextIndex]);
@@ -142,7 +140,6 @@ const ExclusiveTemplateDetails = () => {
             zoomOut();
         }
     };
-
 
     const handleAddToCart = () => {
         if (user && user.email) {
@@ -242,7 +239,6 @@ const ExclusiveTemplateDetails = () => {
                                 ))}
                             </div>
                         </div>
-
                         <div>
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] tablet:w-[50%] laptop:-ml-36 2xl:ml-48" >
                                 <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
@@ -278,10 +274,7 @@ const ExclusiveTemplateDetails = () => {
                                         </button>
                                     </a>
                                 </div>
-
                             </div>
-
-
                         </div>
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
@@ -312,7 +305,6 @@ const ExclusiveTemplateDetails = () => {
                                 ))}
                             </ul>
                         </div>
-
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Documents Included</h3>
                             <div className="mt-2">
@@ -345,12 +337,9 @@ const ExclusiveTemplateDetails = () => {
                                 />
                             ))}
                         </div>
-
-
                     </div>
                 </div>
             </div>
-
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 overflow-hidden">
                     <div
@@ -402,12 +391,8 @@ const ExclusiveTemplateDetails = () => {
                     </div>
                 </div>
             )}
-
             <PresentationTemplate></PresentationTemplate>
-
         </div>
-
-
     );
 };
 
