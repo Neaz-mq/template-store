@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
@@ -7,8 +7,6 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import TemplateItem from "../Shared/TemplateItem/TemplateItem";
 import LazyLoad from 'react-lazyload';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
 const FreeTemplateDetails = () => {
@@ -60,7 +58,6 @@ const FreeTemplateDetails = () => {
     useEffect(() => {
         if (isModalOpen) {
             document.body.style.overflow = 'hidden'; // Disable scrolling
-
             const handleWheel = (event) => {
                 if (isHovering) { // Only zoom on hover
                     event.preventDefault();
@@ -110,7 +107,6 @@ const FreeTemplateDetails = () => {
         setSelectedIndex(nextIndex);
     };
 
-
     const handlePreviousImage = () => {
         const prevIndex = (selectedIndex - 1 + picture.length) % picture.length;
         setSelectedImage(picture[prevIndex]);
@@ -136,9 +132,6 @@ const FreeTemplateDetails = () => {
 
     const handleAddToCart = () => {
         if (user && user.email) {
-
-            //send cart item to the database
-
             const cartItem = {
                 tempId: _id,
                 email: user.email,
@@ -163,7 +156,6 @@ const FreeTemplateDetails = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
-
                         refetch();
                     }
                 })
@@ -178,8 +170,7 @@ const FreeTemplateDetails = () => {
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, Sign In!"
             }).then((result) => {
-                if (result.isConfirmed) {
-                    //   send the user to the login page
+                if (result.isConfirmed) {               
                     navigate('/sign-in', { state: { from: location } })
                 }
             });
@@ -187,7 +178,6 @@ const FreeTemplateDetails = () => {
     }
 
     return (
-
         <div className="bg-[#ffffff] -mt-[4.5rem]">
             <div className="container mx-auto">
                 <Helmet>
@@ -254,16 +244,14 @@ const FreeTemplateDetails = () => {
                                 {/* Add to Cart button */}
 
                                 <div className="3xl:ml-[1rem] 3xl:mt-16 2xl:-ml-[0.2rem] 2xl:mt-4 desktop:ml-[0.8rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-[5rem]">
-
                                     {records && records.length > 0 ? (
-                                        <div className="relative inline-block text-left">
-                                            {/* Dropdown Button */}
+                                        <div className="relative inline-block text-left">                                       
                                             <button
                                                 onClick={toggleDropdown}
                                                 className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 flex items-center justify-between"
                                             >
                                                 {selectedFile || "Download Options"}
-                                                <span className="ml-2">&#x25BC;</span> {/* Downward arrow */}
+                                                <span className="ml-2">&#x25BC;</span> 
                                             </button>
 
                                             {/* Dropdown Menu */}
@@ -316,7 +304,6 @@ const FreeTemplateDetails = () => {
                                 ))}
                             </ul>
                         </div>
-
                         <div className="flex-1 lg:mb-8 lg:ml-14 lg:-mr-2 ml-3">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Product Specs</h3>
                             <ul className="text-gray-500 mt-2 font-raleway leading-8 list-disc ml-5">
@@ -327,7 +314,6 @@ const FreeTemplateDetails = () => {
                                 ))}
                             </ul>
                         </div>
-
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Documents Included</h3>
                             <div className="mt-2">
@@ -339,7 +325,6 @@ const FreeTemplateDetails = () => {
                             </div>
                         </div>
                     </div>
-
                     <div className="layout lg:py-20 py-12 mt-6">
                         <div className="flex items-center justify-between mb-10">
                             <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
@@ -379,13 +364,12 @@ const FreeTemplateDetails = () => {
                     <div
                         className="relative p-4 sm:p-8 md:p-12 lg:p-16 xl:p-20 3xl:p-2 overflow-hidden"
                         style={{
-                            transform: `scale(${zoomLevel})`, // Apply zoom level to the modal container
-                            transformOrigin: 'center', // Center the scaling
-                            transition: 'transform 0.3s ease-out', // Smooth zoom transition
+                            transform: `scale(${zoomLevel})`, 
+                            transformOrigin: 'center', 
+                            transition: 'transform 0.3s ease-out', 
                         }}
                     >
                         {/* Modal Content */}
-
                         <div
                             className="relative"
                             onMouseEnter={() => setIsHovering(true)}

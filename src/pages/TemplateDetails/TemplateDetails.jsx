@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import  { useEffect, useState, useCallback } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
@@ -45,9 +45,7 @@ const TemplateDetails = () => {
         setSelectedLicense(event.target.value);
     };
 
-
     useEffect(() => {
-
         fetch('http://localhost:5000/free')
             .then(res => res.json())
             .then(data => {
@@ -112,7 +110,6 @@ const TemplateDetails = () => {
         setZoomLevel(1); // Reset zoom level on close
     };
 
-
     const handleNextImage = () => {
         const nextIndex = (selectedIndex + 1) % picture.length;
         setSelectedImage(picture[nextIndex]);
@@ -141,9 +138,6 @@ const TemplateDetails = () => {
             zoomOut();
         }
     };
-
-
-
 
     const handleAddToCart = () => {
         if (user && user.email) {
@@ -279,10 +273,7 @@ const TemplateDetails = () => {
                                         </button>
                                     </a>
                                 </div>
-
                             </div>
-
-
                         </div>
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
@@ -405,7 +396,6 @@ const TemplateDetails = () => {
             <PresentationTemplate></PresentationTemplate>
 
         </div>
-
 
     );
 };
