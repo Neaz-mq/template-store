@@ -8,7 +8,6 @@ import Company from "../pages/Company/Company";
 import Contact from "../pages/Contact/Contact";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp/SignUp";
-import BuyerSignUp from "../pages/SignUp/BuyerSignUp/BuyerSignUp";
 import PrivateRoute from "./PrivateRoute";
 import Secret from "../pages/Shared/Secret/Secret";
 import TemplateDetails from "../pages/TemplateDetails/TemplateDetails";
@@ -41,9 +40,6 @@ import PaymentsHistory from "../pages/Dashboard/PaymentsHistory/PaymentsHistory"
 import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
-import Communication from "../pages/Dashboard/Communication/Communication";
-
-
 
 
 export const router = createBrowserRouter([
@@ -116,11 +112,6 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: '/sign-up-here',
-        element: <BuyerSignUp></BuyerSignUp>
-      },
-
-      {
         path: 'secret',
         element: <PrivateRoute><Secret></Secret></PrivateRoute>
       }
@@ -163,11 +154,6 @@ export const router = createBrowserRouter([
       {
         path: 'paymentHistory',
         element: <PaymentHistory></PaymentHistory>
-      },
-
-      {
-        path: 'communication',
-        element: <Communication></Communication>
       },
 
   
@@ -242,8 +228,6 @@ export const router = createBrowserRouter([
         loader: ({ params }) => fetch(`http://localhost:5000/deal/${params.id}`)
       },
 
-    
-
       {
         path: 'users',
         element: <AllUsers></AllUsers>
@@ -258,7 +242,6 @@ export const router = createBrowserRouter([
         path: 'paymentsHistory',
         element: <AdminRoute><PaymentsHistory></PaymentsHistory></AdminRoute>
       },
-
 
     ]
   }
