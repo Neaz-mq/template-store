@@ -1,18 +1,24 @@
-import NoChatSelected from "../pages/NoChatSelected/NoChatSelected";
+import { useState } from "react";
 import Sidebar from "./SideBar";
+import NoChatSelected from "../pages/NoChatSelected/NoChatSelected";
+import ChatContainer from "../pages/ChatContainer/ChatContainer";
+
 
 const ChatLayout = () => {
-    return (
-        <div className="flex h-screen bg-base-200 -mt-4">
-            {/* Sidebar on the left */}
-            <Sidebar />
+  const [selectedUser, setSelectedUser] = useState(null);
 
-            {/* NoChatSelected on the right */}
-            <div className="flex-1">
-                <NoChatSelected />
-            </div>
-        </div>
-    );
+  return (
+    <div className="flex h-screen bg-base-200">
+      <Sidebar onSelectUser={setSelectedUser} />
+      <div className="flex-1">
+        {selectedUser ? (
+          <ChatContainer selectedUser={selectedUser} />
+        ) : (
+          <NoChatSelected />
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default ChatLayout;
