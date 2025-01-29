@@ -8,7 +8,7 @@ const ChatLayout = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   return (
-    <div className="flex h-screen bg-base-200">
+    <div className="flex h-screen bg-base-200 lg:-mt-4">
       <Sidebar onSelectUser={setSelectedUser} />
       <div className="flex-1">
         {selectedUser ? (
