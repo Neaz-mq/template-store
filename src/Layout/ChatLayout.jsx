@@ -3,7 +3,6 @@ import Sidebar from "./SideBar";
 import NoChatSelected from "../pages/NoChatSelected/NoChatSelected";
 import ChatContainer from "../pages/ChatContainer/ChatContainer";
 
-
 const ChatLayout = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 

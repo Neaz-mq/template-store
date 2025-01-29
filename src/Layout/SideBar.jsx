@@ -6,7 +6,6 @@ const Sidebar = ({ onSelectUser }) => {
     const [contacts, setContacts] = useState([]);
     const [showOnlineOnly, setShowOnlineOnly] = useState(false);
 
-    // Fetch user data
     useEffect(() => {
         const fetchContacts = async () => {
             try {
@@ -24,7 +23,6 @@ const Sidebar = ({ onSelectUser }) => {
         fetchContacts();
     }, []);
 
-    // Filter contacts based on online status
     const filteredContacts = showOnlineOnly
         ? contacts.filter((contact) => contact.status === "Online")
         : contacts;
@@ -37,6 +35,7 @@ const Sidebar = ({ onSelectUser }) => {
                     <Users className="w-5 h-5 text-primary" />
                     <span className="font-medium hidden lg:block">Contacts</span>
                 </div>
+
                 {/* Online Filter Toggle */}
                 <div className="mt-3 hidden lg:flex items-center gap-2">
                     <label className="cursor-pointer flex items-center gap-2">
@@ -70,7 +69,7 @@ const Sidebar = ({ onSelectUser }) => {
                             />
                             <div className="hidden lg:block">
                                 <span className="font-medium">{contact.name}</span>
-                                <span className="text-xs text-zinc-500 ml-3">{contact.status || "Offline"}</span>
+                                <span className="text-xs text-zinc-500 ml-3">{contact.role || "User"}</span>
                             </div>
                         </li>
                     ))}
