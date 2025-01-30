@@ -182,6 +182,8 @@ const NavBar = () => {
               >
                 Contact Us
               </Link>
+
+             
            
               <Link to="/dashboard/cart">
                 <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-10 2xl:-mr-28 desktop:ml-10 desktop:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
