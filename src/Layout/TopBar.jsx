@@ -48,12 +48,7 @@ const TopBar = () => {
 
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
                     <div className="flex items-center mr-6 mt-3 relative">
-                        <Link to="/chat">
-                            <button className="font-semibold text-white bg-[#4864EC] px-4 py-2 rounded-md shadow-md hover:bg-[#3752B6] mr-20">
-                                Chat
-                            </button>
-
-                        </Link>
+                        
                         <FaBell
                             className="text-gray-500 text-2xl"
                         />
