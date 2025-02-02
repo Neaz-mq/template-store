@@ -25,23 +25,24 @@ const UserHome = () => {
   // Send message to backend
   const sendMessage = async () => {
     if (!newMessage.trim()) return;
-
+  
     // Include role from the logged-in user
     const messageData = {
-        message: newMessage,
-        email: user?.email, // Ensure email is sent
-        senderId: user?.uid,
+      message: newMessage,
+      email: user?.email, // Ensure email is sent
+      senderId: user?.uid,
     };
-
+  
     try {
-        // Send message data to the backend, which will include the role
-        await axios.post("http://localhost:5000/send-message", messageData);
-        setMessages([...messages, { ...messageData, timestamp: new Date() }]);
-        setNewMessage("");
+      // Send message data to the backend, which will include the role and receiverIds for admins
+      await axios.post("http://localhost:5000/send-message", messageData);
+      setMessages([...messages, { ...messageData, timestamp: new Date() }]);
+      setNewMessage("");
     } catch (error) {
-        console.error("Error sending message:", error);
+      console.error("Error sending message:", error);
     }
-};
+  };
+  
 
   
 
