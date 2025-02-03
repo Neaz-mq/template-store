@@ -1,6 +1,6 @@
 const Promote = () => {
   return (
-    <div className="bg-[#4864EC] h-[14.5rem] w-auto 3xl:-mt-14 2xl:-mt-14 desktop:-mt-14 laptop:-mt-14 tablet:-mt-14 -mt-32 overflow-hidden font-raleway">
+    <div className="bg-[#4864EC] h-[14.5rem] w-auto 3xl:-mt-60 2xl:-mt-14 desktop:-mt-14 laptop:-mt-14 tablet:-mt-14 -mt-32 overflow-hidden font-raleway">
       <div className="container mx-auto">
         <div className="relative flex flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row items-center justify-start 3xl:ml-[14.8rem] 2xl:ml-[14.8rem] desktop:ml-[6.5rem] laptop:ml-[6rem] tablet:ml-0">
           <div>

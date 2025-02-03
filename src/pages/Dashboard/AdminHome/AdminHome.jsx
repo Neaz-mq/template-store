@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { FaBook, FaList, FaUsers } from 'react-icons/fa';
+import { FaBook, FaList, FaUsers } from 'react-icons/fa'; // Import FaCommentDots
 import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
+
 
 const StatCard = ({ icon, title, value }) => (
     <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r  transition-all duration-300 font-roboto">
@@ -188,9 +189,11 @@ const AdminHome = () => {
                     </div>
                 </div>
             </div>
+
+         
+          
         </div>
     );
 };
 
 export default AdminHome;
-
