@@ -12,7 +12,7 @@ const Company = () => {
             </Helmet>
             <About></About>
             <Creativity></Creativity>          
-            <Testimonial></Testimonial>
+            <Testimonial></Testimonial>         
             <PresentationTemplate></PresentationTemplate>
 
         </div>
