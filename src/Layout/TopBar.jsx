@@ -13,7 +13,7 @@ const TopBar = () => {
                             <img
                                 src="/Logo_Prographr_Color.svg"
                                 alt="Logo"
-                                className="md:ml-24 md:mr-2 ml-2 w-36 h-auto -mt-8 md:-mt-0"
+                                className="md:ml-24 md:mr-2 ml-8 w-36  h-auto -mt-8 md:-mt-0"
                             />
                         </Link>
                     </div>
@@ -23,11 +23,11 @@ const TopBar = () => {
                                 <input
                                     type="text"
                                     placeholder="Search"
-                                    className="pl-8 md:pr-4 md:py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300 border-none mt-4"
+                                    className="pl-8 md:pr-4 md:py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300 border-none mt-4 ml-6  3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0 "
                                 />
                                 <span className="absolute inset-y-0 left-0 pl-2 flex items-center">
                                     <svg
-                                        className="h-4 w-4 text-gray-500 mt-4"
+                                        className="h-4 w-4 text-gray-500 mt-4 ml-6 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -53,7 +53,7 @@ const TopBar = () => {
                             className="text-gray-500 text-2xl"
                         />
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || "Admin"}</span>
-                        <a href="/"><div className="ml-4 md:h-8 h-6 md:w-8 w-16 bg-[#4864EC] rounded-full"></div>
+                        <a href="/"><div className="ml-4 md:h-8 h-6 md:w-8 w-6 bg-[#4864EC] rounded-full"></div>
                         </a>
                     </div>
                 </div>
