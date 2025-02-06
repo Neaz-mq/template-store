@@ -92,7 +92,7 @@ const ManageTemplates = () => {
                 </div>
 
                 {/* Table for larger screens */}
-                <div className="hidden md:block overflow-x-auto">
+                <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead>
                             <tr>

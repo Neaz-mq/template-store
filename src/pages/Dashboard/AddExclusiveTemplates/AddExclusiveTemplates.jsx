@@ -311,7 +311,7 @@ const AddExclusiveTemplates = () => {
                         </div>
                     </div>
 
-                    <button className="btn mt-6 hover:bg-[#4864EC] px-20 bg-[#4864EC] text-white">
+                    <button className="btn mt-6 hover:bg-[#4864EC] px-20 bg-[#4864EC] text-white 3xl:-ml-2 2xl:-ml-2 desktop:-ml-2 laptop:-ml-2 tablet:-ml-2 -ml-6">
                         Publish
                     </button>
 
