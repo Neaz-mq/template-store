@@ -92,7 +92,7 @@ const AdminHome = () => {
             </div>
 
             {/* Statistics Cards */}
-            <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-1 lg:space-x-2 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 mt-12">
+            <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-1 lg:space-x-2 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 3xl:mt-12 2xl:mt-12 desktop:mt-12 laptop:mt-12 tablet:mt-36  ">
                 <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-yellow-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>}
                     title="Product Sold"
@@ -132,7 +132,7 @@ const AdminHome = () => {
 
             {/* Monthly Statistics Chart */}
             <div className="w-full mt-8">
-                <div className="bg-white p-3 rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1">
+                <div className="bg-white p-3 rounded-lg shadow-lg md:mr-8 md:mt-10 md:-ml-1 hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block">
                     <h4 className="text-base font-roboto font-semibold text-gray-700 mb-4">Monthly Statistics</h4>
                     <div className='ml-16'>
                         <ResponsiveContainer width="80%" height={232}>
@@ -152,7 +152,7 @@ const AdminHome = () => {
 
             {/* Month and Year Selector */}
             <div className="absolute top-0 right-0 p-4 -mt-2 mr-3">
-                <div className="bg-gradient-to-r from-purple-300 to-green-300 p-1 rounded-lg shadow-lg">
+                <div className="bg-gradient-to-r from-purple-300 to-green-300 p-1 rounded-lg shadow-lg 3xl:mt-0 2xl:mt-0 desktop:mt-0 laptop:mt-0 tablet:mt-20 tablet:mr-24 3xl:mr-0 2xl:mr-0 desktop:mr-0 laptop:mr-0 mt-32 hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block">
                     <div className="bg-white p-4 rounded-lg">
                         <div className="flex space-x-4">
                             <div className="flex flex-col">
