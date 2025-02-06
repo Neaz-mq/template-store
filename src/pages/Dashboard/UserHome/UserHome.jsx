@@ -19,7 +19,7 @@ const UserHome = () => {
         ) : (
           <FaUserCircle className="text-gray-400 text-7xl mb-4" />
         )}
-        <h2 className="text-3xl font-extrabold text-gray-800 mt-4">{user?.displayName || "User"}!</h2>
+        <h2 className="3xl:text-3xl 2xl:text-3xl desktop:text-3xl laptop:text-3xl tablet:text-3xl text-2xl font-extrabold text-gray-800 mt-4">{user?.displayName || "User"}!</h2>
         <p className="text-gray-600 mt-2">Explore your dashboard and manage your account here.</p>
         <a href="/">
           <motion.button 
