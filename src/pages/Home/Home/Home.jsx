@@ -7,9 +7,18 @@ import Promote from "../Promote/Promote";
 import Package from "../Package/Package";
 import Deal from "../Deal/Deal";
 import Chatbot from "../../Chatbot/Chatbot";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom"; // Ensure you're using React Router
 
 
 const Home = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50); // Delay for smoother effect
+  }, [location.pathname]); // Runs on page change
   return (
     <div>
       <Helmet>

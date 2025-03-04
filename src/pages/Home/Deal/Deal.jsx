@@ -1,29 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Deal = () => {
     const [deals, setDeals] = useState([]);
     const [currentContent, setCurrentContent] = useState(0); // Track current content index
+    const intervalRef = useRef(null);
 
     useEffect(() => {
-        // Fetch the deals data from the backend
+        const controller = new AbortController();
+        const signal = controller.signal;
+
         const fetchDeals = async () => {
             try {
-                const response = await fetch('http://localhost:5000/deal');
+                const response = await fetch('http://localhost:5000/deal', { signal });
+                if (!response.ok) throw new Error('Failed to fetch deals');
                 const data = await response.json();
-                setDeals(data); // Assuming the response is an array
+                setDeals(data);
             } catch (error) {
-                console.error('Error fetching deals data:', error);
+                if (error.name !== "AbortError") console.error('Error fetching deals:', error);
             }
         };
 
         fetchDeals();
 
-        // Cycle through content every 4 seconds
-        const interval = setInterval(() => {
-            setCurrentContent((prev) => (prev + 1) % 4); // Cycle through 0, 1, 2, 3
+        intervalRef.current = setInterval(() => {
+            setCurrentContent((prev) => (prev + 1) % 4);
         }, 5000);
 
-        return () => clearInterval(interval); // Cleanup interval on unmount
+        return () => {
+            clearInterval(intervalRef.current);
+            controller.abort();
+        };
     }, []);
 
     return (
@@ -32,6 +38,7 @@ const Deal = () => {
                 deals.map((deal, index) => (
                     <div
                         key={index}
+                        className="transition-all duration-700 ease-in-out"
                         style={{
                             backgroundColor:
                                 currentContent === 0

@@ -7,22 +7,23 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 const Template = () => {
     const [counterOn, setCounterOn] = useState(false);
     const axiosSecure = useAxiosSecure();
-    // Fetch the admin stats
-    const { data: stats = {}, isLoading, error } = useQuery({
+
+    // Fetch stats with query caching & disabled refetch on window focus
+    const { data: stats, isFetching } = useQuery({
         queryKey: ['admin-stats'],
         queryFn: async () => {
             const res = await axiosSecure.get('/admin-stats');
             return res.data;
-        }
+        },
+        placeholderData: (previousData) => previousData || { orders: 0, templates: 0, free: 0 },
+        staleTime: 10 * 60 * 1000, // Increase to 10 minutes
+        cacheTime: 15 * 60 * 1000, // Cache for 15 minutes
+        gcTime: 20 * 60 * 1000, // Prevent early cache garbage collection
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
     });
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error loading stats: {error.message}</div>;
-    }
+    
+    
 
     return (
         <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
@@ -51,7 +52,7 @@ const Template = () => {
                                 <div className="flex justify-start items-start flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row gap-2 lg:gap-16 3xl:gap-28 2xl:gap-24 desktop:gap-20 tablet:gap-16 px-5 mt-6 3xl:ml-24 3xl:mt-7 2xl:ml-20 desktop:ml-8 laptop:ml-0 tablet:ml-6 ml-2">
                                     <div className="text-center">
                                         <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 -ml-5 3xl:-ml-0 2xl:-ml-0 desktop:-ml-0  laptop:-ml-0 font-raleway" aria-label="Template sales">
-                                            {counterOn && <CountUp start={0} end={stats.orders || 0} duration={3} delay={0} />}
+                                        {(!isFetching && counterOn) && <CountUp start={0} end={stats.orders || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5 ml-6 hidden 3xl:block 2xl:block desktop:block laptop:block">
                                             Template <br /> <span className="ml-6">sold till now</span>
@@ -62,7 +63,7 @@ const Template = () => {
                                     </div>
                                     <div className="text-center ml-4">
                                         <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 -ml-9" aria-label="Premium templates">
-                                            {counterOn && <CountUp start={0} end={stats.templates || 0} duration={3} delay={0} />}
+                                        {(!isFetching && counterOn) && <CountUp start={0} end={stats.templates || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5 ml-6 mr-12 hidden 3xl:block 2xl:block desktop:block laptop:block">
                                             Premium <br /> <span className="ml-2">Templates</span>
@@ -73,7 +74,7 @@ const Template = () => {
                                     </div>
                                     <div className="text-center ml-9">
                                         <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 3xl:-ml-9 2xl:-ml-9 desktop:-ml-9 laptop:-ml-9 tablet:-ml-0 -ml-9" aria-label="Free templates">
-                                            {counterOn && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
+                                        {(!isFetching && counterOn) && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
                                         </h1>
                                         <p className="text-lg text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block -ml-12">
                                             Free <br /> <span className="ml-10">Templates</span>
