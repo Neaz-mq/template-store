@@ -11,7 +11,7 @@ const Deal = () => {
 
         const fetchDeals = async () => {
             try {
-                const response = await fetch('http://localhost:5000/deal', { signal });
+                const response = await fetch('https://template-store-server.vercel.app/deal', { signal });
                 if (!response.ok) throw new Error('Failed to fetch deals');
                 const data = await response.json();
                 setDeals(data);

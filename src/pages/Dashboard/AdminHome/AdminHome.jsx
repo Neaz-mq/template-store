@@ -13,7 +13,7 @@ const StatCard = ({ icon, title, value }) => (
         <div className="stat-figure text-secondary mb-2">
             {icon}
         </div>
-        <div className="stat-title text-lg font-medium mb-1">{title}</div>
+        <div className="stat-title 3xl:text-lg 2xl:text-lg desktop:text-lg text-sm font-medium mb-1">{title}</div>
         <div className="stat-value text-2xl lg:text-3xl font-medium">{value}</div>
     </div>
 );
@@ -36,7 +36,7 @@ const AdminHome = () => {
 
     useEffect(() => {
         if (sessionStorage.getItem('visit') === null) {
-            axios.post('http://localhost:5000/api/visit')
+            axios.post('https://template-store-server.vercel.app/api/visit')
                 .then(response => {
                     console.log('Visit count updated:', response.data.visits);
                 })
@@ -113,8 +113,8 @@ const AdminHome = () => {
 
                 <StatCard
                     icon={<FaList className='text-3xl lg:text-4xl text-red-500' />}
-                    title="Free Templates"
-                    value={allTimeStats.free}
+                    title="Exclusive Templates"
+                    value={allTimeStats.exclusives}
                 />
 
                 <StatCard

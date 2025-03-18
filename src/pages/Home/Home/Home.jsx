@@ -6,10 +6,10 @@ import Free from "../Free/Free";
 import Promote from "../Promote/Promote";
 import Package from "../Package/Package";
 import Deal from "../Deal/Deal";
-import Chatbot from "../../Chatbot/Chatbot";
+
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Ensure you're using React Router
-
+import TawkMessenger from "../../TawkMessenger/TawkMessenger";
 
 const Home = () => {
   const location = useLocation();
@@ -19,6 +19,7 @@ const Home = () => {
       window.scrollTo(0, 0);
     }, 50); // Delay for smoother effect
   }, [location.pathname]); // Runs on page change
+
   return (
     <div>
       <Helmet>
@@ -33,6 +34,7 @@ const Home = () => {
         />
         <link rel="canonical" href="https://www.prographr.com/home" />
       </Helmet>
+
       <main>
         <section id="deal">
           <Deal />
@@ -56,9 +58,10 @@ const Home = () => {
           <Community />
         </section>
       </main>
-
-      {/* Chatbot in the bottom-right corner */}
-      <Chatbot></Chatbot>
+    
+      
+        <TawkMessenger />
+    
     </div>
   );
 };

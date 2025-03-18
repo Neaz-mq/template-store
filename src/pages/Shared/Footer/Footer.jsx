@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
 
                 {/* Up Arrow Button */}
-                <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+                <div className="absolute bottom-8  right-80 md:bottom-6 md:right-36">
                     <Link to="navbar" smooth={true} duration={500} className="cursor-pointer">
                         <button className="rounded-lg border border-[#aaacbb] bg-[#aaacbb] p-0.5 text-white transition-colors enabled:[#aaacbb]disabled:text-gray-400 disabled:opacity-10 dark:border-white dark:bg-white dark:hover:bg-[#EDEEF7] outline-none focus:outline-none">
                             <span className="block" data-state="closed">

@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import ExclusiveTemplate from "../../Shared/ExclusiveTemplate/ExclusiveTemplate";
 import { useNavigate } from "react-router-dom";
 
+
 const Exclusive = () => {
     const [templates, setTemplates] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch templates from JSON
-        fetch('http://localhost:5000/exclusive')
+        fetch('https://template-store-server.vercel.app/exclusive')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);  // Set templates state
@@ -55,8 +56,11 @@ const Exclusive = () => {
                         </div>
                     </main>
                 </div>
+                
             </div>
+           
         </div>
+       
     );
 };
 

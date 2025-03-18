@@ -36,7 +36,7 @@ const Template = () => {
                                 <h1 className="3xl:text-4xl 2xl:text-4xl desktop:text-4xl laptop:text-4xl text-2xl font-semibold text-left leading-[2.5rem] text-[#4864EC] font-raleway 3xl:-mt-44 2xl:-mt-44 desktop:-mt-44 laptop:-mt-44 hidden 3xl:block 2xl:block desktop:block laptop:block">
                                     Explore <br /> <span className="italic">our work</span>
                                 </h1>
-                                <h1 className="text-[#4864EC] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden block tablet:text-3xl text-2xl font-raleway font-semibold tablet:mt-16 mt-12 -ml-3  tablet:-ml-14">
+                                <h1 className="text-[#4864EC] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden block tablet:text-3xl text-2xl font-raleway font-semibold tablet:mt-16 mt-20 -ml-3  tablet:-ml-14">
                                     Explore our work
                                 </h1>
                                 <p className="font-raleway text-sm mt-3 text-[#282A37] ml-1 hidden 3xl:block 2xl:block desktop:block laptop:block">
@@ -72,15 +72,15 @@ const Template = () => {
                                             Premium Templates
                                         </p>
                                     </div>
-                                    <div className="text-center ml-9">
-                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 3xl:-ml-9 2xl:-ml-9 desktop:-ml-9 laptop:-ml-9 tablet:-ml-0 -ml-9" aria-label="Free templates">
-                                        {(!isFetching && counterOn) && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
+                                    <div className="text-center ml-6">
+                                        <h1 className="text-2xl font-bold lg:text-5xl 3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 3xl:-ml-9 2xl:-ml-9 desktop:-ml-9 laptop:-ml-9 tablet:-ml-0 -ml-12" aria-label="Exclusive templates">
+                                        {(!isFetching && counterOn) && <CountUp start={0} end={stats.exclusives || 0} duration={3} delay={0} />}
                                         </h1>
-                                        <p className="text-lg text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block -ml-12">
-                                            Free <br /> <span className="ml-10">Templates</span>
+                                        <p className="text-lg text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block -ml-2">
+                                        Exclusive <br /> <span className="ml-2">Templates</span>
                                         </p>
-                                        <p className="text-lg text-white mt-5 block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden">
-                                            Free Templates
+                                        <p className="text-lg text-white mt-5 block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden -ml-2">
+                                        Exclusive Templates
                                         </p>
                                     </div>
                                 </div>

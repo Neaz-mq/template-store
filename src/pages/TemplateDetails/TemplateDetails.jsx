@@ -46,7 +46,7 @@ const TemplateDetails = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5000/free')
+        fetch('https://template-store-server.vercel.app/free')
             .then(res => res.json())
             .then(data => {
                 setTemplates(data);
@@ -160,7 +160,7 @@ const TemplateDetails = () => {
                 extended,
                 license: selectedLicense, // Store selected license type (Regular or Extended)
             }
-            axiosSecure.post('http://localhost:5000/carts', cartItem)
+            axiosSecure.post('https://template-store-server.vercel.app/carts', cartItem)
                 .then(res => {
                     console.log(res.data);
                     if (res.data.insertedId) {
