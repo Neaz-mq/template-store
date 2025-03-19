@@ -2,10 +2,6 @@ import { useEffect } from "react";
 
 const TawkMessenger = () => {
   useEffect(() => {
-    loadTawkScript();
-  }, []);
-
-  const loadTawkScript = () => {
     if (window.Tawk_API) return;
 
     const script = document.createElement("script");
@@ -21,23 +17,14 @@ const TawkMessenger = () => {
       window.Tawk_API = window.Tawk_API || {};
       window.Tawk_API.onLoad = function () {
         console.log("Tawk.to Chat Widget Loaded");
-        window.Tawk_API.showWidget();
-      };
 
-      window.Tawk_API.onStatusChange = function (status) {
-        if (status === "online") {
-          console.log("Tawk.to is Online");
-          window.Tawk_API.showWidget();
-        }
+        // ✅ Instead of hiding the widget completely, minimize it
+        window.Tawk_API.minimize(); 
       };
     };
-  };
+  }, []);
 
-  return (
-    <div>
-     
-    </div>
-  );
+  return null; // No extra UI, just the Tawk.to widget
 };
 
 export default TawkMessenger;

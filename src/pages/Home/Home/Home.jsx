@@ -6,7 +6,6 @@ import Free from "../Free/Free";
 import Promote from "../Promote/Promote";
 import Package from "../Package/Package";
 import Deal from "../Deal/Deal";
-
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Ensure you're using React Router
 import TawkMessenger from "../../TawkMessenger/TawkMessenger";
