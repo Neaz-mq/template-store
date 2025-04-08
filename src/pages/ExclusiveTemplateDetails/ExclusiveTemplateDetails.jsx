@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
-import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
+// import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 
@@ -317,7 +317,7 @@ const ExclusiveTemplateDetails = () => {
                         </div>
                     </div>
 
-                    <div className="layout lg:py-20 py-12 mt-6">
+                    {/* <div className="layout lg:py-20 py-12 mt-6">
                         <div className="flex items-center justify-between mb-10">
                             <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
                                 Free <strong>Graphics Templates</strong>
@@ -337,7 +337,7 @@ const ExclusiveTemplateDetails = () => {
                                 />
                             ))}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {isModalOpen && (
