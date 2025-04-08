@@ -2,9 +2,9 @@ import { Helmet } from "react-helmet-async";
 import Community from "../Community/Community";
 import Template from "../Template/Template";
 import Exclusive from "../Exclusive/Exclusive";
-import Free from "../Free/Free";
+// import Free from "../Free/Free";
 import Promote from "../Promote/Promote";
-import Package from "../Package/Package";
+// import Package from "../Package/Package";
 import Deal from "../Deal/Deal";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom"; // Ensure you're using React Router
@@ -44,17 +44,19 @@ const Home = () => {
         <section id="exclusive">
           <Exclusive />
         </section>
-        <section id="free">
+        {/* <section id="free">
           <Free />
-        </section>
-        <section id="promote">
-          <Promote />
-        </section>
-        <section id="package">
+        </section> */}
+       
+        {/* <section id="package">
           <Package />
-        </section>
+        </section> */}
         <section id="community">
           <Community />
+        </section>
+
+        <section id="promote">
+          <Promote />
         </section>
       </main>
     
