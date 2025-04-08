@@ -10,6 +10,7 @@ const ManageExclusiveTemplates = () => {
     const [exclusive, , refetch] = useExclusiveTemplate();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
+    
 
     // Pagination
     const TEMPLATES_PER_PAGE = 10;

@@ -18,7 +18,7 @@ const Search = () => {
     };
     const getFilteredCategories = () => {
         if (selectedCategory === 'All Categories') {
-            return ['flyer', 'brochure', 'business', 'medical'];
+            return ['flyer', 'brochure'];
         }
         return [selectedCategory.toLowerCase()];
     };
@@ -67,7 +67,7 @@ const Search = () => {
                                 </button>
                                 {isDropdownOpen && (
                                     <ul className="absolute top-full left-0 bg-white shadow-lg border mt-1 rounded-lg w-full z-20">
-                                        {['All Categories', 'Flyer', 'Brochure', 'Business', 'Medical'].map((category) => (
+                                        {['All Categories', 'Flyer', 'Brochure'].map((category) => (
                                             <li
                                                 key={category}
                                                 className={`px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer ${selectedCategory === category ? 'bg-gray-100' : ''}`}
@@ -110,7 +110,7 @@ const Search = () => {
                                     </button>
                                     {isDropdownOpen && (
                                         <ul className="absolute top-full left-0 bg-white shadow-lg border border-gray-300 mt-1 rounded-lg w-full z-20">
-                                            {['All Categories', 'Flyer', 'Brochure', 'Business', 'Medical'].map((category) => (
+                                            {['All Categories', 'Flyer', 'Brochure'].map((category) => (
                                                 <li
                                                     key={category}
                                                     className={`px-4 py-2 text-gray-700 hover:bg-gray-100 cursor-pointer ${selectedCategory === category ? 'bg-gray-100' : ''}`}

@@ -9,17 +9,22 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 12;
 
     useEffect(() => {
-        fetch('https://template-store-server.vercel.app/exclusive')
-            .then(res => res.json())
-            .then(data => {
-                setTemplates(data);
-                const filteredTemplates = data.filter(item =>
-                    selectedCategory.includes(item.category) &&
-                    item.type.toLowerCase().includes(searchQuery.toLowerCase())
-                );
-                setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
-            });
-    }, [selectedCategory, searchQuery]);
+        fetch("https://template-store-server.vercel.app/exclusive")
+          .then((res) => res.json())
+          .then((data) => {
+            // Sort templates in descending order by a specific property
+            const sortedTemplates = data.sort((a, b) => b.createdAt - a.createdAt); // Replace 'createdAt' with the desired property
+            setTemplates(sortedTemplates);
+    
+            // Filter and display the sorted templates
+            const filteredTemplates = sortedTemplates.filter(
+              (item) =>
+                selectedCategory.includes(item.category) &&
+                item.type.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
+          });
+      }, [selectedCategory, searchQuery]);
 
     const handleViewMore = () => {
         const filteredTemplates = templates.filter(item =>
@@ -37,8 +42,7 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
 
     return (
         <div className="bg-[#ffffff] font-raleway">
-            <div className="container mx-auto 3xl:pt-5 2xl:pt-5 desktop:pt-5 laptop:pt-5 tablet:pt-5 pt-0 -mt-10 3xl:-mt-36
-             2xl:-mt-36 desktop:-mt-44 laptop:-mt-36 tablet:-mt-16">
+            <div className="container mx-auto 3xl:pt-5 2xl:pt-5 desktop:pt-5 laptop:pt-5 tablet:pt-5 pt-0 -mt-10 3xl:-mt-36 2xl:-mt-36 desktop:-mt-44 laptop:-mt-36 tablet:-mt-16">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
                         <h1 className="text-xl tablet:text-3xl laptop:text-3xl 3xl:text-3xl 2xl:text-3xl text-[#4864EC] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] italic font-semibold">
@@ -52,9 +56,7 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
                             data-aos-easing="ease-in-out"
                         >
                             {displayedTemplates.map(item => (
-                                <ExclusiveTemplate
-                                    key={item._id}
-                                    item={item} />
+                                <ExclusiveTemplate key={item._id} item={item} />
                             ))}
                         </div>
                     </main>
@@ -62,7 +64,10 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
             </div>
             <div className="flex justify-center">
                 <div className="mt-16 mb-10 lg:mb-0">
-                    <button className="btn font-raleway mr-2 lg:mr-4 text-[#4864EC] bg-transparent capitalize hover:bg-[#F9F9F9] font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 rounded-[0px]" onClick={handleViewMore}>
+                    <button
+                        className="btn font-raleway mr-2 lg:mr-4 text-[#4864EC] bg-transparent capitalize hover:bg-[#F9F9F9] font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 rounded-[0px]"
+                        onClick={handleViewMore}
+                    >
                         <span className="-mt-1">{showAll ? "Show Less" : "View More Exclusive Items"}</span>
                     </button>
                 </div>

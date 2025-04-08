@@ -18,13 +18,15 @@ const TawkMessenger = () => {
       window.Tawk_API.onLoad = function () {
         console.log("Tawk.to Chat Widget Loaded");
 
-        // ✅ Instead of hiding the widget completely, minimize it
-        window.Tawk_API.minimize(); 
+        // ✅ Ensure chat is minimized and doesn't auto-open
+        setTimeout(() => {
+          window.Tawk_API.minimize();
+        }, 1000);
       };
     };
   }, []);
 
-  return null; // No extra UI, just the Tawk.to widget
+  return null; // Keeps the icon visible without forcing an extra button
 };
 
 export default TawkMessenger;

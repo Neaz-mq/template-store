@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ExclusiveTemplate = ({ item }) => {
 
-    const { _id, name, category, image, price, details, type } = item;
+    const { _id, category, image, price,  type } = item;
 
     return (
 
