@@ -169,8 +169,6 @@ const AddExclusiveTemplates = () => {
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
                                     <option value="brochure">Brochure</option>
-                                    <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
                                 </select>
                             </div>
 
