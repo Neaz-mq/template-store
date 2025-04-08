@@ -25,8 +25,9 @@ const Templates = () => {
             <Shop></Shop>
             <AgencyTemplate></AgencyTemplate>
             <GraphicsTemplate></GraphicsTemplate>
-            <PresentationTemplate></PresentationTemplate>
             <Marketplace></Marketplace>
+            <PresentationTemplate></PresentationTemplate>
+            
         </div>
     );
 };
