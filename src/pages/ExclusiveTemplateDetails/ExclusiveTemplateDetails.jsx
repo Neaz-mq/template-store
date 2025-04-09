@@ -244,7 +244,7 @@ const ExclusiveTemplateDetails = () => {
                                 <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
                                     } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
                                     <div className="flex justify-between pb-6 pt-3">
-                                        <div className="flex gap-3 font-bold">
+                                        <div className="flex gap-3 font-medium">
 
                                             <select
                                                 className="border rounded px-2 py-1 font-raleway"
