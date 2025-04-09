@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import useCart from "../../hooks/useCart";
 // import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Import arrow icons
+
 
 const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
@@ -30,6 +32,11 @@ const ExclusiveTemplateDetails = () => {
         price: template.price,
         description: template.regular,
     });
+
+    const [visibleThumbnails, setVisibleThumbnails] = useState([]);
+    const [startIndex, setStartIndex] = useState(0);
+    const thumbnailContainerRef = useRef(null);
+    const thumbnailsToShow = 3; // Number of thumbnails to display
 
 
     useEffect(() => {
@@ -62,8 +69,39 @@ const ExclusiveTemplateDetails = () => {
         if (template && template.picture && template.picture.length > 0) {
             setSelectedImage(template.picture[0]);
             setSelectedIndex(0);
+            updateVisibleThumbnails(template.picture, 0);
         }
     }, [template]);
+
+    const updateVisibleThumbnails = (pictures, start) => {
+        setVisibleThumbnails(pictures.slice(start, start + thumbnailsToShow));
+        setStartIndex(start);
+    };
+
+    const handleNextThumbnail = () => {
+        if (template.picture && startIndex + thumbnailsToShow < template.picture.length) {
+            setStartIndex(prev => prev + 1);
+            updateVisibleThumbnails(template.picture, startIndex + 1);
+            // Ensure selected index stays within the bounds of visible thumbnails
+            if (selectedIndex < startIndex || selectedIndex >= startIndex + thumbnailsToShow) {
+                setSelectedIndex(startIndex);
+                setSelectedImage(template.picture[startIndex]);
+            }
+        }
+    };
+
+    const handlePrevThumbnail = () => {
+        if (startIndex > 0) {
+            setStartIndex(prev => prev - 1);
+            updateVisibleThumbnails(template.picture, startIndex - 1);
+            // Ensure selected index stays within the bounds of visible thumbnails
+            if (selectedIndex < startIndex || selectedIndex >= startIndex + thumbnailsToShow) {
+                setSelectedIndex(startIndex);
+                setSelectedImage(template.picture[startIndex]);
+            }
+        }
+    };
+
 
     useEffect(() => {
         if (isModalOpen) {
@@ -226,17 +264,29 @@ const ExclusiveTemplateDetails = () => {
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5 desktop:ml-2">
-                                {picture.map((src, index) => (
-                                    <LazyLoad key={index} height={75} offset={100}>
-                                        <img
-                                            src={src}
-                                            className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
-                                            alt="Template"
-                                            onClick={() => handleThumbnailClick(src, index)}
-                                        />
-                                    </LazyLoad>
-                                ))}
+                            <div className="w-full mt-6 flex items-center 3xl:ml-36">
+                                {template.picture?.length > thumbnailsToShow && startIndex > 0 && (
+                                    <button onClick={handlePrevThumbnail} className="mr-2">
+                                        <FaChevronLeft />
+                                    </button>
+                                )}
+                                <div className="flex flex-wrap gap-4 overflow-hidden" ref={thumbnailContainerRef}>
+                                    {visibleThumbnails.map((src, index) => (
+                                        <LazyLoad key={index} height={75} offset={100}>
+                                            <img
+                                                src={src}
+                                                className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${template.picture.indexOf(src) === selectedIndex ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
+                                                alt="Template Thumbnail"
+                                                onClick={() => handleThumbnailClick(src, template.picture.indexOf(src))}
+                                            />
+                                        </LazyLoad>
+                                    ))}
+                                </div>
+                                {template.picture?.length > thumbnailsToShow && startIndex + thumbnailsToShow < template.picture.length && (
+                                    <button onClick={handleNextThumbnail} className="ml-2">
+                                        <FaChevronRight />
+                                    </button>
+                                )}
                             </div>
                         </div>
                         <div>
