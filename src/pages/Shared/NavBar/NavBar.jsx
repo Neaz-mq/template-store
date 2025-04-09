@@ -52,7 +52,7 @@ const NavBar = () => {
   return (
     <div className="bg-[#282A37] font-raleway">
       <div className="container mx-auto">
-        <div className="navbar -mt-[8rem] 3xl:-mt-[9rem] 2xl:-mt-[8rem] desktop:-mt-[9rem] laptop:-mt-[8.5rem] tablet:-mt-[8rem] -ml-2">
+        <div className="navbar -mt-[6rem] 3xl:-mt-[9rem] 2xl:-mt-[8rem] desktop:-mt-[9rem] laptop:-mt-[8.5rem] tablet:-mt-[6rem] -ml-2">
           <div className="navbar-start">
             {/* Dropdown for mobile */}
             <div className="dropdown">
