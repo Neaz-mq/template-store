@@ -52,7 +52,7 @@ const NavBar = () => {
   return (
     <div className="bg-[#282A37] font-raleway">
       <div className="container mx-auto">
-        <div className="navbar -mt-[6rem] 3xl:-mt-[9rem] 2xl:-mt-[8rem] desktop:-mt-[9rem] laptop:-mt-[8.5rem] tablet:-mt-[6rem] -ml-2">
+        <div className="navbar -ml-2">
           <div className="navbar-start">
             {/* Dropdown for mobile */}
             <div className="dropdown">
@@ -146,10 +146,10 @@ const NavBar = () => {
                   alt="Logo"
                 />
               </div>
-              <div className="mt-[5.5rem]">
+              <div className="3xl:-mt-28 2xl:-mt-28">
                 <a href="/">
                   <img
-                    className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto 2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem] laptop:ml-[0.4rem] laptop:pt-2"
+                    className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto 2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem] laptop:ml-[0.4rem] laptop:pt-2 "
                     src="/Logo_Prographr_Semi Color.svg"
                     alt="Logo"
                   />
@@ -159,7 +159,7 @@ const NavBar = () => {
           </div>
 
           {/* Center menu */}
-          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36">
+          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 3xl:-mt-28 2xl:-mt-28">
             <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-[5rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[5.2rem] 2xl:mt-[5rem] desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
@@ -245,8 +245,8 @@ const NavBar = () => {
               </div>
             ) : (
               <div className="flex items-center">
-                <Link to="/sign-in" className="mr-4">
-                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
+                <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28">
+                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44  2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
                     <span className="-mt-2">Sign in</span>
                   </button>
                 </Link>
@@ -257,7 +257,7 @@ const NavBar = () => {
             {!user && (
               <div className="flex items-center">
                 <Link to="/sign-up">
-                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.3rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium ">
+                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48  2xl:mr-[15.5rem] 2xl:-ml-[15.6rem]  desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium 3xl:-mt-36 2xl:-mt-36 ">
                     <span className="-mt-2">Sign Up</span>
                   </button>
                 </Link>
