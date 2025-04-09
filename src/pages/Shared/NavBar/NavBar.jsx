@@ -225,12 +225,12 @@ const NavBar = () => {
                     </span>
 
                     {user && isAdmin && (
-                <div className="block px-4 py-2 text-[#4864EC] font-semibold">
+                <div className="block px-4 py-2 text-[#4864EC] font-medium ">
                   <Link to="/dashboard/adminHome">Dashboard</Link>
                 </div>
               )}
               {user && !isAdmin && (
-                <div className="block px-4 py-2 text-[#4864EC] font-semibold">
+                <div className="block px-4 py-2 text-[#4864EC] font-medium ">
                   <Link to="/dashboard/userHome">Profile</Link>
                 </div>
               )}
@@ -246,7 +246,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4">
-                  <button className="capitalize font-raleway font-semibold text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
+                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44 3xl:mt-[6.3rem] 2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
                     <span className="-mt-2">Sign in</span>
                   </button>
                 </Link>
@@ -257,7 +257,7 @@ const NavBar = () => {
             {!user && (
               <div className="flex items-center">
                 <Link to="/sign-up">
-                  <button className="btn btn-sm hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-6 2xl:px-6 desktop:px-6 px-5 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.1rem] -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.3rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-semibold">
+                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48 3xl:mt-[6.3rem] 2xl:mr-[15.5rem] 2xl:-ml-[15.6rem] 2xl:mt-[6.3rem] desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium ">
                     <span className="-mt-2">Sign Up</span>
                   </button>
                 </Link>
