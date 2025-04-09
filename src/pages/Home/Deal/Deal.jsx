@@ -120,7 +120,7 @@ const Deal = () => {
                                     {/* More Template Button */}
                                     <a href="/template">
                                         <button
-                                            className="px-6 py-3 bg-[#4864EC] text-white font-bold rounded-lg transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block mt-4"
+                                            className="px-6 py-3 bg-[#4864EC] text-white font-medium rounded-lg transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block mt-4"
                                         >
                                             More Template
                                         </button>
