@@ -245,7 +245,7 @@ const TemplateDetails = () => {
                 <div className="lg:ml-20 mb-16">
                     <div className="flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] desktop:w-[70%] laptop:w-[100%]">
-                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2  laptop:block tablet:-mt-36 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 -mt-16">
+                            <h2 className="text-2xl text-[#282A37] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2  laptop:block tablet:-mt-36 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 -mt-16">
                                 Premium <strong>Graphics Template</strong>
                             </h2>
                             <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[12.6rem] desktop:ml-2 desktop:-mr-10 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 laptop:-ml-60">
