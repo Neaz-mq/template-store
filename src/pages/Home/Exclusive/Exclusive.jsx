@@ -28,7 +28,7 @@ const Exclusive = () => {
             <div className="container mx-auto 3xl:pt-5 2xl:pt-5 desktop:pt-5 laptop:pt-5 tablet:pt-5 pt-0 -mt-10 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-mt-0">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
-                        <h1 className="text-xl tablet:text-3xl laptop:text-3xl 3xl:text-3xl 2xl:text-3xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+                        <h1 className="text-xl tablet:text-3xl laptop:text-3xl 3xl:text-2xl 2xl:text-2xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
                             Exclusive <strong>Templates</strong>
                         </h1>
 
