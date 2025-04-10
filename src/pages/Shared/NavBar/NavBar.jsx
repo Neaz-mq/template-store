@@ -56,10 +56,10 @@ const NavBar = () => {
           <div className="navbar-start">
             {/* Dropdown for mobile */}
             <div className="dropdown">
-              <div tabIndex={0} className="3xl:hidden text-[#ffffff] 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:mt-[6rem]">
+              <div tabIndex={0} className="3xl:hidden text-[#ffffff] 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:-mt-4 -mt-14">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="h-4 w-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -74,7 +74,7 @@ const NavBar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm cursor-pointer dropdown-content -mt-16 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-2 font-raleway font-semibold text-[17px]"
+                className="menu menu-sm cursor-pointer dropdown-content -mt-12 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-4 font-raleway font-semibold text-[17px]"
               >
                 <Link to="/" className="text-xl mt-5 ml-4 mr-1 mb-8">
                   <img
@@ -118,17 +118,17 @@ const NavBar = () => {
 
                 <li className="mb-2 mt-3">
                   <Link to="/dashboard/cart" className="ml-10">
-                  <div className="relative">
-                  {/* Cart Icon */}
-                  <FaShoppingCart className="mr-4 cursor-pointer text-xl" />
+                    <div className="relative">
+                      {/* Cart Icon */}
+                      <FaShoppingCart className="mr-4 cursor-pointer text-xl" />
 
-                  {/* Cart Length Badge */}
-                  {cart.length > 0 && (
-                    <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                      +{cart.length}
+                      {/* Cart Length Badge */}
+                      {cart.length > 0 && (
+                        <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                          +{cart.length}
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>                   
                   </Link>
                 </li>
               </ul>
@@ -137,16 +137,12 @@ const NavBar = () => {
             <Link
               to="/"
               onClick={() => handleSelect(null)}
-              className="3xl:mt-10 2xl:mt-10 desktop:mt-10 mt-8 3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8"
+              className="3xl:mt-10 2xl:mt-10 desktop:mt-10  mt-8 3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8 "
             >
-              <div className="mt-[5.5rem] ">
-                <img
-                  className="3xl:hidden 2xl:hidden desktop:hidden laptop:hidden  tablet:ml-[2rem] w-36 h-auto"
-                  src="/Logo_Prographr_Color.svg"
-                  alt="Logo"
-                />
-              </div>
-              <div className="3xl:-mt-28 2xl:-mt-28">
+              <div className="mt-[5.5rem]">
+               
+              
+              <div className="3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28">
                 <a href="/">
                   <img
                     className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto 2xl:ml-[9.5rem] 2xl:pt-1 desktop:ml-[0.8rem] laptop:ml-[0.4rem] laptop:pt-2 "
@@ -155,11 +151,29 @@ const NavBar = () => {
                   />
                 </a>
               </div>
+              </div>
             </Link>
+
+            <Link to="/" onClick={() => handleSelect(null)} className="flex items-center 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden -mt-24 ml-2 tablet:ml-4">
+              {/* Mobile / Tablet Logo */}
+              <img
+                className="block laptop:hidden w-44 h-auto"
+                src="/Logo_Prographr_Color.svg"
+                alt="Logo"
+              />
+
+              {/* Laptop and Up Logo */}
+              <img
+                className="hidden laptop:block w-36 h-auto laptop:ml-2"
+                src="/Logo_Prographr_Semi Color.svg"
+                alt="Logo"
+              />
+            </Link>
+
           </div>
 
           {/* Center menu */}
-          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 3xl:-mt-28 2xl:-mt-28">
+          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-36 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28">
             <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-[5rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[5.2rem] 2xl:mt-[5rem] desktop:ml-16 text-[17px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
@@ -183,8 +197,8 @@ const NavBar = () => {
                 Contact Us
               </Link>
 
-             
-           
+
+
               <Link to="/dashboard/cart">
                 <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-10 2xl:-mr-28 desktop:ml-10 desktop:-mr-28  3xl:ml-64 3xl:-mr-44 laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
@@ -225,27 +239,27 @@ const NavBar = () => {
                     </span>
 
                     {user && isAdmin && (
-                <div className="block px-4 py-2 text-[#4864EC] font-medium ">
-                  <Link to="/dashboard/adminHome">Dashboard</Link>
-                </div>
-              )}
-              {user && !isAdmin && (
-                <div className="block px-4 py-2 text-[#4864EC] font-medium ">
-                  <Link to="/dashboard/userHome">Profile</Link>
-                </div>
-              )}
+                      <div className="block px-4 py-2 text-[#4864EC] font-medium ">
+                        <Link to="/dashboard/adminHome">Dashboard</Link>
+                      </div>
+                    )}
+                    {user && !isAdmin && (
+                      <div className="block px-4 py-2 text-[#4864EC] font-medium ">
+                        <Link to="/dashboard/userHome">Profile</Link>
+                      </div>
+                    )}
                     <button
                       className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
                       onClick={handleLogOut}
                     >
                       Sign Out
-                    </button>                   
+                    </button>
                   </div>
                 )}
               </div>
             ) : (
               <div className="flex items-center">
-                <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28">
+                <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28 tablet:-mt-24 -mt-24">
                   <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44  2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10">
                     <span className="-mt-2">Sign in</span>
                   </button>
@@ -256,8 +270,8 @@ const NavBar = () => {
             {/* "Sign Up" button always visible */}
             {!user && (
               <div className="flex items-center">
-                <Link to="/sign-up">
-                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48  2xl:mr-[15.5rem] 2xl:-ml-[15.6rem]  desktop:mr-[4.5rem] desktop:-ml-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium 3xl:-mt-36 2xl:-mt-36 ">
+                <Link to="/sign-up" className='tablet:-mt-24 -mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0'>
+                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48  2xl:mr-[15.5rem] 2xl:-ml-[15.6rem]  desktop:mr-[4.5rem] desktop:-ml-20 laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium 3xl:-mt-36 2xl:-mt-36 desktop:-mt-36 laptop:-mt-36   ">
                     <span className="-mt-2">Sign Up</span>
                   </button>
                 </Link>
