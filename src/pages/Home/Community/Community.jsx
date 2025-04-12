@@ -9,28 +9,28 @@ const Community = () => {
                     </div>
                     <div className="w-fit grid grid-cols-1 tablet:grid-cols-2 gap-3 lg:block lg:w-[400px] laptop:-ml-20 float-right relative 3xl:mr-28 2xl:mr-32 desktop:mr-32   tablet:-ml-0 3xl:mt-0 2xl:mt-0 desktop:mt-0 laptop:mt-3 tablet:mt-3 mt-2">
                         <div className="lg:ml-[37%]">
-                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] hover:text-white rounded-full shadow-2xl" href="https://www.facebook.com/prographr.page" target="_blank" title="Join us on Facebook">Facebook
+                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] hover:text-white rounded-full shadow-2xl text-sm " href="https://www.facebook.com/prographr.page" target="_blank" title="Join us on Facebook">Facebook
                                 <p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#4864EC]"><span>f</span></p>
                             </a>
                         </div>
                         <div className="lg:ml-[80%]">
-                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC]  hover:text-white rounded-full shadow-2xl" href="https://www.freepik.com/author/prographr" target="_blank" rel="noopener noreferrer" title="Join us on Freepik">
+                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC]  hover:text-white rounded-full shadow-2xl text-sm" href="https://www.freepik.com/author/prographr" target="_blank" rel="noopener noreferrer" title="Join us on Freepik">
                                 Freepik
                                 <p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#4864EC]"><span>F</span></p>
                             </a>
                         </div>
                         <div className="lg:ml-[63%] lg:mt-[20px]">
-                            <a className="w-[185px] flex items-center justify-between gap-4 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] hover:text-white rounded-full shadow-2xl" href="https://stock.adobe.com/contributor/211997436/prographr?load_type=author&prev_url=detail" target="_blank" title="Join us on Adobe Stock">Adobe stock
+                            <a className="w-[185px] flex items-center justify-between gap-4 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] hover:text-white rounded-full shadow-2xl text-sm" href="https://stock.adobe.com/contributor/211997436/prographr?load_type=author&prev_url=detail" target="_blank" title="Join us on Adobe Stock">Adobe stock
                                 <p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#4864EC]"><span>St</span></p>
                             </a>
                         </div>
                         <div className="lg:ml-[15%] lg:-mt-[37px]">
-                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] hover:text-white rounded-full shadow-2xl" href="https://www.behance.net/prographr" target="_blank" title="Join us on Behance">Behance
+                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] hover:text-white rounded-full shadow-2xl text-sm" href="https://www.behance.net/prographr" target="_blank" title="Join us on Behance">Behance
                                 <p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#4864EC]"><span>b</span></p>
                             </a>
                         </div>
                         <div className="lg:-mt-[29%]">
-                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] duration-200 hover:text-white rounded-full shadow-2xl" href="https://dribbble.com/prographr" target="_blank" rel="noopener noreferrer" title="Join us on Dribbble">Dribbble
+                            <a className="w-[180px] flex items-center justify-between gap-2 py-2 pl-5 pr-2 font-bold bg-white hover:bg-[#4864EC] duration-200 hover:text-white rounded-full shadow-2xl text-sm" href="https://dribbble.com/prographr" target="_blank" rel="noopener noreferrer" title="Join us on Dribbble">Dribbble
                                 <p className="w-8 h-8 grid place-items-center font-bold text-white rounded-full bg-[#4864EC]"><span>d</span></p>
                             </a>
                         </div>
