@@ -3,32 +3,40 @@ import { Link } from "react-router-dom";
 
 const ExclusiveTemplate = ({ item }) => {
 
-    const { _id, category, image, price,  type } = item;
+    const { _id, category, image, price, type } = item;
 
     return (
 
         <article>
-        <div className="translate-y-10 opacity-0 templateScrollTrigger"
-            style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
-            <Link to={`/exclusive/${_id}`}>
-                <div>
-                    <div className="overflow-hidden">
-                        <LazyLoad height={200} offset={100}>
-                            <img src={image} alt={category} />
-                        </LazyLoad>
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-between px-5 py-4 font-raleway">
+            <div className="translate-y-10 opacity-0 templateScrollTrigger"
+                style={{ translate: 'none', rotate: 'none', scale: 'none', opacity: 1, transform: 'translate(0px, 0px)' }}>
+                <Link to={`/exclusive/${_id}`}>
                     <div>
-                        <h3 className="font-bold font-raleway 3xl:text-[14.5px] 2xl:text-[12px] desktop:text-[12px] laptop:text-[10px] text-[13px] -ml-5 3xl:-ml-5 2xl:-ml-4 desktop:-ml-4 laptop:-ml-4">{type}</h3>
-                        <h3 className="text-xs font-medium font-raleway 3xl:-ml-5 2xl:-ml-4 desktop:-ml-4 laptop:-ml-4 -ml-5">{category}</h3>
+                        <div className="overflow-hidden">
+                            <LazyLoad height={200} offset={100}>
+                                <img src={image} alt={category} />
+                            </LazyLoad>
+                        </div>
                     </div>
-                    <p className="font-bold font-raleway text-white px-3 py-1  3xl:text-[14px] 2xl:text-[12px] desktop:text-[10px] laptop:text-[8px] bg-[#4864EC] 3xl:ml-7 3xl:-mr-5 2xl:ml-7 2xl:-mr-5 ml-7 desktop:ml-7 desktop:-mr-5 laptop:ml-7 laptop:-mr-5 -mr-5">${price}</p>
-                </div>
-            </Link>
-        </div>
-    </article>
+
+                    <div className="flex items-center justify-between px-5 py-4 font-raleway relative">
+                        <div>
+                            <h3 className="font-bold font-raleway 3xl:text-[13px] 2xl:text-[11px] desktop:text-[11px] laptop:text-[10px] tablet:text-[10px] text-[10px] -ml-5">
+                                {type}
+                            </h3>
+                            <h3 className="3xl:text-[11px] 2xl:text-[10px] desktop:text-[10px] laptop:text-[10px] tablet:text-[9px] text-[9px] font-medium font-raleway -ml-5">
+                                {category}
+                            </h3>
+                        </div>
+
+                        <p className="absolute top-0 right-0 font-bold font-raleway text-white px-3 py-1 bg-[#4864EC] 3xl:text-[14px] 2xl:text-[12px] desktop:text-[11px] laptop:text-[11px] 3xl:mt-4 2xl:mt-4 desktop:mt-4 laptop:mt-4 tablet:mt-4 mt-3">
+                            ${price}
+                        </p>
+                    </div>
+
+                </Link>
+            </div>
+        </article>
     );
 };
 
