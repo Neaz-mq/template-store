@@ -50,12 +50,11 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
     <div className="container mx-auto font-raleway">
       <div className="layout lg:py-2 py-14 mt-0 lg:mx-20">
         <header className="flex items-center justify-between mb-10">
-          <h2 className="lg:text-4xl text-lg tablet:text-xl text-[#4864EC] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[11rem] 2xl:ml-[10rem] desktop:ml-[1rem] italic">
-            Top Selling{" "}
-            <span className="not-italic font-normal 3xl:ml-2 2xl:ml-2 desktop:ml-2 laptop:ml-2 text-black">
-              Graphics Templates
-            </span>
-          </h2>
+          
+
+          <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[11.2rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+          Top Selling <strong>Graphics Templates</strong>
+                        </h1>
           <button className="btn hidden mr-2 lg:mr-4 font-raleway text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
             <span className="-mt-1">Printing and Advertising</span>
             <svg
