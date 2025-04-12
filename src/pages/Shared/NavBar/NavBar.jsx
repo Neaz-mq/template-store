@@ -173,7 +173,7 @@ const NavBar = () => {
           </div>
 
           {/* Center menu */}
-          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-52 3xl:-ml-10 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28">
+          <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:mr-52 3xl:-ml-10 2xl:mr-44 2xl:-ml-8  desktop:mr-40 desktop:-ml-12 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28">
             <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-medium 3xl:mr-8 3xl:gap-8 3xl:mt-[5.2rem] 2xl:mr-28 2xl:gap-0 desktop:gap-4 desktop:mt-[5.2rem] 2xl:mt-[5rem] desktop:ml-16 text-[15px] laptop:mr-1 laptop:ml-32 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
@@ -200,7 +200,7 @@ const NavBar = () => {
 
 
               <Link to="/dashboard/cart">
-                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-10 2xl:-mr-28 desktop:ml-10 desktop:-mr-28  3xl:ml-[27rem] 3xl:-mr-72 laptop:mt-2 laptop:ml-2 laptop:mr-10">
+                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-60 2xl:-mr-72 desktop:ml-96 desktop:-mr-52  3xl:ml-[27rem] 3xl:-mr-72  laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
                   <FaShoppingCart className="mr-4 cursor-pointer  text-xl" />
                   {/* Cart Length Badge */}
@@ -260,7 +260,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28 tablet:-mt-24 -mt-24">
-                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44  2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-20 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10 ">
+                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44  2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-16 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10 ">
                     <span className="-mt-2 text-[15px]">Sign in</span>
                   </button>
                 </Link>
