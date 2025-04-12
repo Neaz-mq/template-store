@@ -38,9 +38,9 @@ const Shop = () => {
             <header className="bg-[#ffffff] font-raleway">
                 <div className="container mx-auto 3xl:-mt-4  2xl:-mt-[1rem] desktop:-mt-[1.3rem] laptop:-mt-[1rem] tablet:-mt-[6rem] -mt-[6rem]  font-raleway">
                     <div className="max-w-[800px] lg:h-[770px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
-                        <h1 className="text-4xl lg:text-7xl font-bold text-center 3xl:mt-0 2xl:mt-0 desktop:mt-0 laptop:mt-0 tablet:mt-16 mt-10 mb-0 text-[#282A37]">A template <br /></h1>
-                        <h1 className="text-4xl lg:text-7xl font-bold text-center  -mt-2 text-[#282A37]">for your business</h1>
-                        <p className="max-w-[800px] text-center text-gray-500 text-lg py-6 font-medium">
+                        <h1 className="text-3xl lg:text-6xl font-bold text-center 3xl:-mt-16 2xl:-mt-14 desktop:-mt-12 laptop:-mt-10 tablet:mt-16 mt-10 mb-0 text-[#282A37]">A template <br /></h1>
+                        <h1 className="text-3xl lg:text-6xl font-bold text-center  -mt-2 text-[#282A37]">for your business</h1>
+                        <p className="max-w-[800px] text-center text-gray-500 3xl:text-base py-6 font-medium">
                             Find and download the best logos, flyers, brochures, illustrations that match your business
                         </p>
                         <form className="w-full max-w-[700px] border border-gray-300 3xl:flex 2xl:flex desktop:flex laptop:flex tablet:flex items-center overflow-visible bg-white relative hidden">
