@@ -38,9 +38,9 @@ const Shop = () => {
             <header className="bg-[#ffffff] font-raleway">
                 <div className="container mx-auto 3xl:-mt-4  2xl:-mt-[1rem] desktop:-mt-[1.3rem] laptop:-mt-[1rem] tablet:-mt-[6rem] -mt-[6rem]  font-raleway">
                     <div className="max-w-[800px] lg:h-[770px] mx-auto px-4 flex flex-col items-center justify-center gap-4 ">
-                        <h1 className="text-3xl lg:text-6xl font-bold text-center 3xl:-mt-16 2xl:-mt-14 desktop:-mt-12 laptop:-mt-10 tablet:mt-16 mt-10 mb-0 text-[#282A37]">A template <br /></h1>
-                        <h1 className="text-3xl lg:text-6xl font-bold text-center  -mt-2 text-[#282A37]">for your business</h1>
-                        <p className="max-w-[800px] text-center text-gray-500 3xl:text-base py-6 font-medium">
+                        <h1 className="text-4xl lg:text-6xl font-bold text-center 3xl:-mt-16 2xl:-mt-14 desktop:-mt-12 laptop:-mt-10 tablet:mt-20 mt-16 mb-0 text-[#282A37]">A template <br /></h1>
+                        <h1 className="text-4xl lg:text-6xl font-bold text-center  3xl:-mt-2 2xl:-mt-2 desktop:-mt-2 laptop:-mt-2 tablet:-mt-2 -mt-4 text-[#282A37]">for your business</h1>
+                        <p className="max-w-[800px] text-center text-gray-500 3xl:text-base 2xl:text-base desktop:text-base laptop:text-base tablet:text-[14px] text-[12px]  py-6 font-medium">
                             Find and download the best logos, flyers, brochures, illustrations that match your business
                         </p>
                         <form className="w-full max-w-[700px] border border-gray-300 3xl:flex 2xl:flex desktop:flex laptop:flex tablet:flex items-center overflow-visible bg-white relative hidden">
@@ -51,7 +51,7 @@ const Shop = () => {
                             </div>
                             <input
                                 placeholder="Search resources..."
-                                className="flex-grow p-3 bg-transparent outline-none text-gray-600"
+                                className="flex-grow p-3 bg-transparent outline-none text-gray-600 text-base"
                                 type="text"
                                 value={searchQuery} // Display value
                                 onChange={handleSearch}
@@ -59,7 +59,7 @@ const Shop = () => {
                             <div className="border-l border-gray-300 px-8 flex items-center cursor-pointer relative">
                                 <button
                                     type="button"
-                                    className="text-gray-700 font-semibold flex items-center"
+                                    className="text-gray-700 font-semibold flex items-center text-sm"
                                     onClick={() => {
                                         setIsDropdownOpen(!isDropdownOpen);
                                         console.log('Dropdown toggled:', !isDropdownOpen);
@@ -71,7 +71,7 @@ const Shop = () => {
                                     </svg>
                                 </button>
                                 {isDropdownOpen && (
-                                    <ul className="absolute top-full left-0 bg-white shadow-lg border mt-1 rounded-lg w-full z-20">
+                                    <ul className="absolute top-full left-0 bg-white shadow-lg border mt-1 rounded-lg w-full z-20 text-sm">
                                         {['All Categories', 'Flyer', 'Brochure'].map((category) => (
                                             <li
                                                 key={category}
@@ -148,7 +148,7 @@ const Shop = () => {
                         </div>
 
                         {/* Random Buttons */}
-                        <div className="3xl:flex 2xl:flex desktop:flex laptop:flex tablet:flex space-x-4 mt-4 hidden">
+                        <div className="3xl:flex 2xl:flex desktop:flex laptop:flex tablet:flex space-x-4 mt-4 hidden text-sm">
                             {['Agency', 'Business', 'Medical', 'Education', 'Food', 'Environment'].map((buttonLabel) => (
                                 <button
                                     key={buttonLabel}
