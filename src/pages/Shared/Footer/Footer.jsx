@@ -15,19 +15,24 @@ const Footer = () => {
                         <a href="/">
                             <img src="/Logo_Prographr_Semi Color 2.svg" alt="Prographr Logo" className="w-36 h-auto -mt-1 ml-5" />
                         </a>
-                        <p className="text-[#ffffff] text-base font-medium mt-4 font-raleway ml-5">Belgari, Fapor, Bogura Sadar, <br /> Bogura, Bangladesh<br />support@prographr.com</p>
+                        <p className="text-[#ffffff] text-[15px] font-medium mt-4 font-raleway ml-5 leading-[28px]">
+                            Belgari, Fapor, Bogura Sadar, <br />
+                            Bogura, Bangladesh<br />
+                            support@prographr.com
+                        </p>
+
                     </aside>
                     <div className="flex flex-wrap justify-between 3xl:gap-24 3xl:-ml-7 3xl:-mr-72 2xl:gap-24 2xl:-ml-4 2xl:-mr-72 desktop:gap-16 desktop:-ml-2 desktop:-mr-96 laptop:gap-16 laptop:-ml-2 laptop:-mr-[20rem] gap-4 mx-auto">
-                        <nav className="flex text-[#ffffff] flex-col flex-wrap text-[17px] font-raleway font-medium gap-4 lg:ml-32 3xl:ml-[20rem] lg:-mr-5">
+                        <nav className="flex text-[#ffffff] flex-col flex-wrap text-[15px] font-raleway font-medium gap-4 lg:ml-32 3xl:ml-[20rem] lg:-mr-5">
                             <a href="/template" rel="noopener noreferrer" className="link link-hover">Flyers</a>
                             <a href="/template" rel="noopener noreferrer" className="link link-hover">Brochures</a>
                             <a href="/template" rel="noopener noreferrer" className="link link-hover">Logo and Branding</a>
                         </nav>
-                        <nav className="flex text-[#ffffff] flex-col font-raleway font-medium flex-wrap text-[17px] gap-4 3xl:ml-5">
+                        <nav className="flex text-[#ffffff] flex-col font-raleway font-medium flex-wrap text-[15px] gap-4 3xl:ml-5">
                             <a href="/company" rel="noopener noreferrer" className="link link-hover">About</a>
                             <a href="/contact" rel="noopener noreferrer" className="link link-hover">Contact</a>
                         </nav>
-                        <nav className="flex text-[#ffffff] flex-col flex-wrap text-[17px] font-raleway font-medium gap-4 3xl:ml-5">
+                        <nav className="flex text-[#ffffff] flex-col flex-wrap text-[15px] font-raleway font-medium gap-4 3xl:ml-5">
                             <a href="/contact" className="link link-hover 3xl:-ml-0 2xl:-ml-0 desktop:-ml-0">Customer Support</a>
                             <a href="/career" rel="noopener noreferrer" className="link link-hover 3xl:-ml-0 2xl:-ml-0 desktop:-ml-0">Career</a>
                         </nav>
