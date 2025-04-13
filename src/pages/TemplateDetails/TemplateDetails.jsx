@@ -248,7 +248,7 @@ const TemplateDetails = () => {
                             <h2 className="text-2xl text-[#282A37] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2  laptop:block tablet:-mt-36 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 -mt-16">
                                 Premium <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[12.6rem] desktop:ml-2 desktop:-mr-10 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 laptop:-ml-60">
+                            <div className="rounded-xl flex items-center justify-center pt-6  lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[12.6rem] desktop:ml-2 desktop:-mr-10 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 laptop:-ml-60">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
@@ -260,7 +260,7 @@ const TemplateDetails = () => {
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <div className="w-full mt-6 flex items-center 3xl:ml-36">
+                            <div className="w-full flex items-center 3xl:ml-36">
                                 {template.picture?.length > thumbnailsToShow && startIndex > 0 && (
                                     <button onClick={handlePrevThumbnail} className="mr-2">
                                         <FaChevronLeft />

@@ -33,7 +33,7 @@ const Creativity = () => {
     <div className="font-raleway">
       <div className="container mx-auto overflow-x-hidden 2xl:overflow-x-hidden 3xl:overflow-x-hidden desktop:overflow-x-hidden laptop:overflow-x-hidden">
         <header>
-          <h1 className="text-xl tablet:text-xl laptop:text-3xl 3xl:text-3xl  2xl:mt-36 2xl:text-3xl 3xl:mt-40 3xl:ml-60 2xl:ml-60 3xl:mb-12 desktop:ml-24 laptop:mt-36 desktop:mt-36 tablet:mt-24 tablet:mb-6 mt-16 ml-7 mb-4 text-[#282A37] font-raleway laptop:ml-24 laptop:mb-4 tablet:ml-16">
+          <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl  2xl:mt-36  3xl:mt-40 3xl:ml-60 2xl:ml-60 3xl:mb-12 desktop:ml-24 laptop:mt-36 desktop:mt-36 tablet:mt-24 tablet:mb-6 mt-16 ml-7 mb-4 text-[#282A37] font-raleway laptop:ml-24 laptop:mb-4 tablet:ml-16">
             What makes us <strong> better</strong>
           </h1>
         </header>
@@ -41,20 +41,20 @@ const Creativity = () => {
           <section className="w-full flex justify-center 3xl:mr-10 3xl:-ml-20 2xl:mr-10 2xl:-ml-20 desktop:mr-16 desktop:-ml-16">
             <article className="bg-[#F9F9F9] desktop:max-w-[340px] laptop:h-[380px] 2xl:max-w-[330px] desktop:h-[290px] laptop:max-w-[250px] tablet:max-w-[350px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-[7rem] 3xl:mr-4 3xl:mb-12 2xl:ml-[7rem] 2xl:mr-0 2xl:mb-12 desktop:ml-20 laptop:ml-16 desktop:mr-0 desktop:mb-12 font-raleway ">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-medium text-[#15141ce7]">Creativity</h2>
-                <div className="w-[90px] 3xl:w-[80px] 2xl:w-[80px] desktop:w-[80px] tablet:w-[80px] h-[80px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl">
+                <h2 className="text-xl font-medium text-[#15141ce7]">Creativity</h2>
+                <div className="w-[70px] 3xl:w-[60px] 2xl:w-[60px] desktop:w-[60px] tablet:w-[60px] h-[60px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl">
                   <img
                     className="lazy-load decoration-transparent scale-125 3xl:mt-6 3xl:ml-5 2xl:mt-6 2xl:ml-5 desktop:mt-6 desktop:ml-5 laptop:mt-6 laptop:ml-5 tablet:mt-6 tablet:ml-5 "
                     data-src="/Group 286.svg"
                     alt="Creativity Icon"
-                    width="40"
-                    height="40"
+                    width="20"
+                    height="20"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
               </div>
-              <p className="py-8 text-base text-[#15141ce7] mt-5">
+              <p className="py-8 text-sm text-[#15141ce7] mt-5">
                 We are pushing boundaries, exploring possibilities, and delivering visually striking, functional, meaningful, and impactful designs.
               </p>
               <a href="#" title="Learn more about our team collaboration" className="hidden">
@@ -72,20 +72,20 @@ const Creativity = () => {
           <section className="w-full flex justify-center 3xl:mr-[12.7rem] 2xl:mr-[13.6rem] desktop:mr-[12.7rem]">
             <article className="bg-[#F9F9F9] desktop:max-w-[340px] laptop:h-[380px] 2xl:max-w-[330px] desktop:h-[290px] laptop:max-w-[250px] tablet:max-w-[350px] tablet:h-[280px] max-w-[320px] h-[340px]  p-6  3xl:max-w-[380px] 3xl:h-[290px] 3xl:ml-0 3xl:mr-5 3xl:mb-12 2xl:ml-8 2xl:mr-4 2xl:mb-12 desktop:ml-14 laptop:ml-3 desktop:mr-1 desktop:mb-12 font-raleway ">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-medium text-[#15141ce7]">Team Collaboration</h2>
-                <div className="w-[90px] 3xl:w-[80px] 2xl:w-[80px] desktop:w-[80px] tablet:w-[80px] h-[80px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl">
+                <h2 className="text-xl font-medium text-[#15141ce7]">Team Collaboration</h2>
+                <div className="w-[70px] 3xl:w-[60px] 2xl:w-[60px] desktop:w-[60px] tablet:w-[60px] h-[60px] laptop:hidden 3xl:block 2xl:block desktop:block tablet:block overflow-hidden bg-[#4864EC] text-white flex items-center justify-center text-2xl">
                   <img
                     className="lazy-load decoration-transparent scale-125 3xl:mt-0 3xl:ml-0 2xl:mt-1 2xl:ml-0 desktop:mt-0 desktop:ml-0 laptop:mt-6 laptop:ml-5 tablet:mt-0 tablet:ml-0"
                     data-src="/35-01.svg"
                     alt="Team Collaboration Icon"
-                    width="80"
-                    height="80"
+                    width="60"
+                    height="60"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
               </div>
-              <p className="py-8 text-base text-[#15141ce7] mt-5">
+              <p className="py-8 text-sm text-[#15141ce7] mt-5">
                 Working together effectively and efficiently to achieve common goals or objectives of any business.
               </p>
               <a href="#" title="Learn more about our team collaboration" className="hidden">

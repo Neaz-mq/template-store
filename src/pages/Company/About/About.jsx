@@ -7,7 +7,7 @@ const About = () => {
             <div className='container mx-auto overflow-x-hidden overflow-y-hidden'>
                 <div className="layout lg:mx-24 mx-3">
                     <div>
-                        <h3 className="text-[#282A37] text-xl desktop:text-2xl 3xl:text-3xl 2xl:text-2xl laptop:text-2xl tablet:text-xl tablet:mt-10 font-medium font-raleway tablet:ml-12 ml-5 3xl:ml-[8.6rem] laptop:ml-0 2xl:ml-[8.7rem] desktop:-ml-1 3xl:mt-24 2xl:mt-24 desktop:mt-24 laptop:mt-16 3xl:mb-4 mt-5">
+                        <h3 className="text-[#282A37] text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl tablet:mt-10 font-medium font-raleway tablet:ml-12 ml-5 3xl:ml-[8.6rem] laptop:ml-0 2xl:ml-[8.7rem] desktop:-ml-1 3xl:mt-24 2xl:mt-24 desktop:mt-24 laptop:mt-16 3xl:mb-4 mt-5">
                             Welcome at <strong>Prographr</strong>
                         </h3>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-28">
