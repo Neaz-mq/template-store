@@ -1,5 +1,5 @@
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
-import GraphicsTemplate from "../../Home/GraphicsTemplate/GraphicsTemplate";
+
 import PresentationTemplate from "../../Home/PresentationTemplate/PresentationTemplate";
 // import Marketplace from "../Marketplace/Marketplace";
 import Shop from "../Shop/Shop";
@@ -24,7 +24,7 @@ const Templates = () => {
             </Helmet>
             <Shop></Shop>
             <AgencyTemplate></AgencyTemplate>
-            <GraphicsTemplate></GraphicsTemplate>
+           
             {/* <Marketplace></Marketplace> */}
             <PresentationTemplate></PresentationTemplate>
             
