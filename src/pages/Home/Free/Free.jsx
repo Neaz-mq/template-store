@@ -23,7 +23,7 @@ const Free = () => {
 
     return (
         <div className="bg-[#ffffff] font-raleway">
-            <div className="container mx-auto pb-32 3xl:-mt-16 2xl:-mt-10 desktop:-mt-10 laptop:-mt-10 tablet:-mt-32 -mt-44">
+            <div className="container mx-auto pb-10 3xl:-mt-16 2xl:-mt-10 desktop:-mt-10 laptop:-mt-10 tablet:-mt-32 -mt-44">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
                        
