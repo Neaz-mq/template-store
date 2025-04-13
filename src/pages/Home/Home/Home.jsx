@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Community from "../Community/Community";
 import Template from "../Template/Template";
 import Exclusive from "../Exclusive/Exclusive";
-// import Free from "../Free/Free";
+import Free from "../Free/Free";
 import Promote from "../Promote/Promote";
 // import Package from "../Package/Package";
 import Deal from "../Deal/Deal";
@@ -44,9 +44,9 @@ const Home = () => {
         <section id="exclusive">
           <Exclusive />
         </section>
-        {/* <section id="free">
+        <section id="free">
           <Free />
-        </section> */}
+        </section>
        
         {/* <section id="package">
           <Package />

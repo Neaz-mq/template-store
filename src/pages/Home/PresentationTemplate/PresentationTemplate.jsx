@@ -21,7 +21,7 @@ const PresentationTemplate = () => {
               className="3xl:-mt-24 2xl:-mt-16 desktop:-mt-2 laptop:mt-6 tablet:mt-14 relative z-10"  
               href="https://graphicriver.net/user/prographr/portfolio"
             >
-              <button className="bg-white text-[#282A37] py-3 3xl:px-12 2xl:px-12 desktop:px-12 laptop:px-12 tablet:px-12 px-6 font-bold 3xl:-ml-[46rem] 2xl:-ml-[42rem] desktop:-ml-[33rem] laptop:-ml-[30rem] tablet:ml-44 mt-6">
+              <button className="bg-white text-[#282A37]  3xl:py-3 3xl:px-10 2xl:py-3 2xl:px-10 desktop:py-3 desktop:px-10 laptop:py-3 laptop:px-10 tablet:py-2 tablet:px-8 py-2 px-6 font-bold 3xl:-ml-[46rem] 2xl:-ml-[42rem] desktop:-ml-[33rem] laptop:-ml-[30rem] tablet:ml-44 mt-6">
                 Get presentation template
               </button>
             </a>

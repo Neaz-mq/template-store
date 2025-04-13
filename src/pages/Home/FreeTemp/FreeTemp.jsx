@@ -49,8 +49,8 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
              2xl:-mt-36 desktop:-mt-44 laptop:-mt-36 tablet:-mt-16">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
-                        <h1 className="text-xl tablet:text-3xl laptop:text-3xl 3xl:text-3xl 2xl:text-3xl text-[#4864EC] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] italic font-semibold">
-                            Free <span className="not-italic font-normal 3xl:ml-2 2xl:ml-2 desktop:ml-2 laptop:ml-2 text-black">Templates</span>
+                        <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+                            Free <strong>Templates</strong>
                         </h1>
                     </header>
                     <main className="layout lg:-mt-10 py-12 -mt-16 lg:mx-20">

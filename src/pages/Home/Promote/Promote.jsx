@@ -4,7 +4,7 @@ const Promote = () => {
       <div className="container mx-auto">
         <div className="relative flex flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row items-center justify-start 3xl:ml-[14.8rem] 2xl:ml-[14.8rem] desktop:ml-[6.5rem] laptop:ml-[6rem] tablet:ml-0">
           <div>
-            <h1 className="3xl:text-2xl 2xl:text-2xl desktop:text-xl laptop:text-xl text-xl font-semibold text-left 3xl:leading-[2.8rem] 2xl:leading-[2.8rem] desktop:leading-[2.8rem] laptop:leading-[2.8rem] leading-[2.3rem] text-white font-raleway 3xl:-mt-20 2xl:-mt-12 desktop:-mt-2 laptop:mt-8 tablet:mt-16 mt-6 ml-4">
+            <h1 className="3xl:text-3xl 2xl:text-3xl desktop:text-3xl laptop:text-3xl text-2xl font-semibold text-left 3xl:leading-[2.8rem] 2xl:leading-[2.8rem] desktop:leading-[2.8rem] laptop:leading-[2.8rem] leading-[2.3rem] text-white font-raleway 3xl:-mt-20 2xl:-mt-12 desktop:-mt-2 laptop:mt-8 tablet:mt-16 mt-6 ml-4">
               Looking to <br /> <span className="italic">promote</span> <br /> <span>your business?</span>
             </h1>
           </div>
