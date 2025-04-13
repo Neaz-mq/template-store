@@ -7,11 +7,11 @@ const About = () => {
             <div className='container mx-auto overflow-x-hidden overflow-y-hidden'>
                 <div className="layout lg:mx-24 mx-3">
                     <div>
-                        <h3 className="text-[#282A37] text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl tablet:mt-10 font-medium font-raleway tablet:ml-12 ml-5 3xl:ml-[8.6rem] laptop:ml-0 2xl:ml-[8.7rem] desktop:-ml-1 3xl:mt-24 2xl:mt-24 desktop:mt-24 laptop:mt-16 3xl:mb-4 mt-5">
+                        <h3 className="text-[#282A37] text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl tablet:mt-10 font-medium font-raleway tablet:ml-12 ml-5 3xl:ml-[8.6rem] laptop:ml-0 2xl:ml-[8.7rem] desktop:-ml-1 3xl:mt-24 2xl:mt-20 desktop:mt-20 laptop:mt-16 3xl:mb-4 mt-5">
                             Welcome at <strong>Prographr</strong>
                         </h3>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-28">
-                            <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-16 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-20 ">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-32">
+                            <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-20 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-24 ">
                                 <div className="relative w-[21rem] h-[21rem] 3xl:h-[21rem] 2xl:h-[21rem] desktop:h-[21rem] laptop:h-[21rem] 3xl:w-[22rem] 2xl:w-[22rem] desktop:w-[22rem] laptop:w-[22rem] tablet:w-[22rem] tablet:h-[21rem] 3xl:-ml-28">
                                     <LazyLoad height={200} offset={100}>
                                         <img
@@ -28,8 +28,8 @@ const About = () => {
                                     <div className="absolute bottom-0 right-2 3xl:left-[13.1rem] 2xl:left-[13.1rem] desktop:left-[13.1rem] laptop:left-[13.1rem] tablet:left-[13.1rem] left-[7.6rem] w-[8.9rem] h-[9.7rem] bg-white rounded-br-[100%]"></div>
                                 </div>
                             </div>
-                            <div className="lg:mb-32 mr-2 desktop:mt-40 laptop:mt-24 2xl:-ml-[9.5rem] desktop:-ml-[9rem] desktop:mr-16 laptop:-ml-[3rem] laptop:mr-16 2xl:mr-[8rem] 3xl:mt-9 2xl:mt-9 tablet:ml-6 ml-2">
-                                <p className="mt-10 text-slate-600 font-raleway font-medium 3xl:-ml-12 2xl:ml-7 desktop:ml-7 ml-2 laptop:ml-7 tablet:ml-7 3xl:text-base 2xl:text-base desktop:text-sm laptop:text-sm 3xl:-mt-28 2xl:-mt-28 desktop:-mt-[15rem] tablet:mt-16 laptop:-mt-[11rem] tablet:text-sm text-sm" style={{ lineHeight: "1.75" }}>
+                            <div className="lg:mb-32 mr-2 desktop:mt-40 laptop:mt-24 2xl:-ml-[9.5rem] desktop:-ml-[9rem] desktop:mr-16 laptop:-ml-[3rem] laptop:mr-16 2xl:mr-[8rem] 3xl:mt-6 2xl:mt-9 tablet:ml-6 ml-2">
+                                <p className="mt-10 text-slate-600 font-raleway font-medium 3xl:-ml-12 2xl:ml-7 desktop:ml-7 ml-2 laptop:ml-7 tablet:ml-7 3xl:-mt-28 2xl:-mt-28 desktop:-mt-[15rem] tablet:mt-16 laptop:-mt-[11rem] tablet:text-sm text-sm" style={{ lineHeight: "1.75" }}>
                                     Prographr is a pre-made graphic resource site. There is also an option for clients who <br />
                                     want to modify the template with their brand identity. We have dedicated team <br />
                                     members specialized in specific sectors, can be logo specialists, or print design <br />
