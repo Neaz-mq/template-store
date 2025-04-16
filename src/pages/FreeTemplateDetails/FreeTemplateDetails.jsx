@@ -81,7 +81,7 @@ const FreeTemplateDetails = () => {
         return <div>Loading...</div>;
     }
 
-    const { _id, price, type, image, description, picture, specifications, product, documents, records } = template;
+    const { _id, price, type, image, description, picture, specifications, product, documents, records, regular } = template;
 
     const handleTemplateChange = (templateType) => {
         setSelectedTemplate(templateType);
@@ -142,7 +142,8 @@ const FreeTemplateDetails = () => {
                 specifications,
                 product,
                 documents,
-                records
+                records,
+                regular
 
             }
             axiosSecure.post('https://template-store-server.vercel.app/carts', cartItem)
@@ -237,7 +238,7 @@ const FreeTemplateDetails = () => {
                                         <div className="font-raleway font-medium">${price}</div>
                                     </div>
                                     <div className="pt-6 border-t font-raleway font-medium pb-4">
-                                        We are about pushing boundaries, exploring possibilities, and ultimately delivering designs
+                                    {regular}
                                     </div>
                                 </div>
 

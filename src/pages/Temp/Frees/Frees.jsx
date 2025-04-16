@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Search from "../Search/Search";
 import FreeTemp from "../../Home/FreeTemp/FreeTemp";
 import PresentationTemplate from "../../Home/PresentationTemplate/PresentationTemplate";
-import Package from "../../Home/Package/Package";
+// import Package from "../../Home/Package/Package";
 
 const Frees = () => {   
     useEffect(() => {
@@ -22,7 +22,7 @@ const Frees = () => {
             <Search />
             <FreeTemp />
             <PresentationTemplate />
-            <Package />
+            {/* <Package /> */}
         </div>
     );
 };

@@ -17,6 +17,7 @@ const UpdateFreeTemplate = () => {
         price,
         image,
         records,
+        regular,
         _id
     } = useLoaderData();
 
@@ -46,6 +47,7 @@ const UpdateFreeTemplate = () => {
             product: productArray,
             documents: documentsArray,
             records: recordsArray,
+            regular: data.regular
 
         };
 
@@ -203,14 +205,13 @@ const UpdateFreeTemplate = () => {
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
                                     <option value="brochure">Brochure</option>
-                                    <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
+                                   
                                 </select>
                             </div>
 
                             {/* Price */}
 
-                            <div className="form-control w-full my-72 h-auto px-3">
+                            <div className="form-control w-full mt-44 h-auto px-3">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Price*</span>
                                 </label>
@@ -222,6 +223,19 @@ const UpdateFreeTemplate = () => {
                                     className="input input-bordered w-full"
                                 />
                             </div>
+
+                            <div className="form-control w-full mt-20 h-auto px-3">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Template Description</span>
+                                    </label>
+
+                                    <textarea
+                                        defaultValue={regular}
+                                        {...register('regular')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
+                                </div>
 
                         </div>
 

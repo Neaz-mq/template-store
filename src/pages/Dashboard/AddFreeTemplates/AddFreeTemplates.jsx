@@ -41,7 +41,8 @@ const AddFreeTemplates = () => {
             product: productArray,
             documents: documentsArray,
             picture: pictureUrls,
-            records: recordsArray
+            records: recordsArray,
+            regular: data.regular
         };
 
         try {
@@ -182,13 +183,12 @@ const AddFreeTemplates = () => {
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
                                     <option value="brochure">Brochure</option>
-                                    <option value="business">Business</option>
-                                    <option value="medical">Medical</option>
+                                    
                                 </select>
 
                                 {/* Price */}
 
-                                <div className="form-control w-full my-60 h-auto">
+                                <div className="form-control w-full mt-44 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
                                     </label>
@@ -198,6 +198,18 @@ const AddFreeTemplates = () => {
                                         {...register('price', { required: true })}
                                         className="input input-bordered w-full"
                                     />
+                                </div>
+
+                                <div className="form-control w-full mt-20  h-auto">
+                                    <label className="label">
+                                        <span className="label-text font-medium text-lg">Template Description</span>
+                                    </label>
+
+                                    <textarea
+                                        {...register('regular')}
+                                        className="textarea textarea-bordered w-full h-auto"
+                                        placeholder="Description"
+                                    ></textarea>
                                 </div>
                             </div>
                         </div>

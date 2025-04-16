@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import PresentationTemplate from "../../Home/PresentationTemplate/PresentationTemplate";
-import Package from "../../Home/Package/Package";
+// import Package from "../../Home/Package/Package";
 import Filter from "../Filter/Filter";
 import ExclusiveTemplates from "../../Home/ExclusiveTemplates/ExclusiveTemplates";
 
@@ -15,7 +15,7 @@ const Exclusives = () => {
             <Filter></Filter>
             <ExclusiveTemplates></ExclusiveTemplates>
             <PresentationTemplate></PresentationTemplate>
-            <Package></Package>
+            {/* <Package></Package> */}
         </div>
     );
 };

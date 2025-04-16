@@ -68,7 +68,7 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
             </div>
             <div className="flex justify-center">
                 <div className="mt-16 mb-10 lg:mb-0">
-                    <button className="btn font-raleway mr-2 lg:mr-4 text-[#4864EC] bg-transparent capitalize hover:bg-primary/10  font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 rounded-[0px]" onClick={handleViewMore}>
+                    <button className="btn font-raleway mr-2 lg:mr-4 text-gray-600 bg-transparent capitalize   font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 rounded-[0px]" onClick={handleViewMore}>
                         <span className="-mt-1">{showAll ? "Show Less" : "View More Free Items"}</span>
                     </button>
                 </div>
