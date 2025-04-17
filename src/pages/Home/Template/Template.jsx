@@ -44,11 +44,11 @@ const Template = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-[#4864EC] h-[20rem] 3xl:h-[16rem] 2xl:h-[16rem] desktop:h-[15rem] laptop:h-[14.5rem] tablet:h-[13rem] w-fit 3xl:w-screen 2xl:w-screen desktop:w-screen laptop:w-screen overflow-hidden tablet:overflow-hidden container mx-auto 3xl:-mt-60 3xl:ml-[36rem] 2xl:-mt-64 2xl:ml-[36rem] desktop:-mt-60 laptop:-mt-60 tablet:mt-14 mt-10 desktop:ml-[30rem] laptop:ml-[22rem] tablet:ml-[0.5rem] ml-3">
+                    <div className="bg-[#4864EC] h-[25.5rem] 3xl:h-[16rem] 2xl:h-[16rem] desktop:h-[15rem] laptop:h-[14.5rem] tablet:h-[13rem] w-fit 3xl:w-screen 2xl:w-screen desktop:w-screen laptop:w-screen overflow-hidden tablet:overflow-hidden container mx-auto 3xl:-mt-60 3xl:ml-[36rem] 2xl:-mt-64 2xl:ml-[36rem] desktop:-mt-60 laptop:-mt-60 tablet:mt-14 mt-10 desktop:ml-[30rem] laptop:ml-[22rem] tablet:ml-[0.5rem] ml-3">
 
                         <div className="font-raleway">
                             <section className="text-white">
-                                <div className="flex justify-start items-start flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row gap-2 lg:gap-16 3xl:gap-28 2xl:gap-24 desktop:gap-20 tablet:gap-16 px-5 mt-6 3xl:ml-24 3xl:mt-7 2xl:ml-20 desktop:ml-8 laptop:ml-0 tablet:ml-6 ml-2">
+                                <div className="flex justify-start items-start flex-col 3xl:flex-row 2xl:flex-row desktop:flex-row laptop:flex-row tablet:flex-row gap-2 lg:gap-2 3xl:gap-16 2xl:gap-10 desktop:gap-2 tablet:gap-6 px-5 mt-6 3xl:ml-24 3xl:mt-7 2xl:ml-20 desktop:ml-8 laptop:ml-0 tablet:ml-6 ml-2">
                                     <div className="text-center">
                                         <h1 className="3xl:text-4xl 2xl:text-4xl desktop:text-3xl laptop:text-3xl tablet:text-2xl text-xl  font-bold 3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 -ml-5 3xl:-ml-0 2xl:-ml-0 desktop:-ml-0  laptop:-ml-0 font-raleway" aria-label="Template sales">
                                         {(!isFetching && counterOn) && <CountUp start={0} end={stats.orders || 0} duration={3} delay={0} />}
@@ -80,6 +80,18 @@ const Template = () => {
                                         </p>
                                         <p className="text-base text-white mt-5 block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden -ml-2">
                                         Exclusive Templates
+                                        </p>
+                                    </div>
+
+                                    <div className="ml-12">
+                                        <h1 className="3xl:text-4xl 2xl:text-4xl desktop:text-3xl laptop:text-3xl tablet:text-2xl text-xl font-bold  3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0 ml-5" aria-label="Exclusive templates">
+                                        {(!isFetching && counterOn) && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
+                                        </h1>
+                                        <p className="text-[16px] text-white mt-5  hidden 3xl:block 2xl:block desktop:block laptop:block">
+                                        Free <br /> <span className="">Templates</span>
+                                        </p>
+                                        <p className="text-base text-white mt-5 block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden -ml-2">
+                                        Free Templates
                                         </p>
                                     </div>
                                 </div>
