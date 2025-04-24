@@ -2,9 +2,9 @@ const Community = () => {
     return (
         <div className='overflow-x-hidden font-raleway overflow-hidden bg-[#F9F9F9] '> {/* Removed mx-3 */}
             <header className="pb-20"> {/* Removed layout and top margins */}
-                <section className="text-[#15141ce7] container mx-auto  pt-1 pb-24 font-raleway font-medium px-5 gap-5 grid 3xl:grid-cols-2 2xl:grid-cols-2 desktop:grid-cols-2 place-items-center 3xl:mb-40  3xl:mt-10 2xl:mt-10 desktop:mt-10 laptop:mt-10 tablet:mt-6 mt-8 ">
+                <section className="text-[#15141ce7] container mx-auto  pt-1 pb-24 font-raleway font-medium px-5 gap-5 grid 3xl:grid-cols-2 2xl:grid-cols-2 desktop:grid-cols-2 place-items-center 3xl:mb-40  3xl:mt-10 2xl:mt-10 desktop:mt-10 laptop:mt-10 tablet:mt-6 mt-0 ">
                     <div className='laptop:ml-8  3xl:ml-60 2xl:ml-60 desktop:ml-28 tablet:ml-4 ml-4'>
-                        <h2 className="3xl:text-2xl 2xl:text-xl desktop:text-xl laptop:text-lg tablet:text-lg text-lg mb-7 mt-3">Check Our Portfolio</h2>
+                        <h2 className="3xl:text-2xl 2xl:text-xl desktop:text-xl laptop:text-lg tablet:text-lg text-lg mb-7 mt-4">Check Our Portfolio</h2>
                         <p className='3xl:leading-7 2xl:leading-7 desktop:leading-7 laptop:leading-3 tablet:leading-0 leading-normal 3xl:text-sm 2xl:text-sm desktop:text-sm laptop:text-[13px] tablet:text-sm text-[11px]'>Join our online portfolio to explore our imagination. Learn more about our focus, interests, and our creativity.</p>
                     </div>
                     <div className="w-fit grid grid-cols-1 tablet:grid-cols-2 gap-3 lg:block lg:w-[400px] laptop:-ml-20 float-right relative 3xl:mr-28 2xl:mr-32 desktop:mr-32   tablet:-ml-0 3xl:mt-0 2xl:mt-0 desktop:mt-0 laptop:mt-3 tablet:mt-3 mt-2">
