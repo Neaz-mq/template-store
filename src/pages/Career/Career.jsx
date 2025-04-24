@@ -6,7 +6,7 @@ const jobData = [
     title: 'UI/UX Designer',
     skills: 'Figma, Adobe Xd',
     position: 1,
-    experience: 'Minimum 2 years',
+    experience: 'Min. 2 years',
     requirements: [
       'The candidate must be from Bangladesh and must be willing to work onsite',
       'Strong understanding of design principles, typography, color theory, and layout techniques.',
@@ -28,7 +28,7 @@ const jobData = [
       'Long-term career growth and stability.',
       'Salary increments opportunity, considering the performance of services.'
     ],
-    salary: 'Negotiable',
+    salary: '20-25k',
     nature: 'Onsite'
     
   },
@@ -36,7 +36,7 @@ const jobData = [
     title: 'Creative Graphic Designer',
     skills: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop',
     position: 1,
-    experience: 'Minimum 2 years',
+    experience: 'Min. 2 years',
     requirements: [
       'The candidate must be from Bangladesh and must be willing to work onsite',
       'Strong understanding of design principles, typography, color theory, and layout techniques.',
@@ -58,7 +58,7 @@ const jobData = [
       'Long-term career growth and stability.',
       'Salary increments opportunity, considering the performance of services.'
     ],
-    salary: 'Negotiable',
+    salary: '15-20k',
     nature: 'Onsite'
   },
   
@@ -99,9 +99,9 @@ const Career = () => {
               <thead>
                 <tr className="bg-[#4864EC] text-white">
                   <th className="py-4 px-6 text-left font-semibold text-[16px]">Job Title</th>
-                  <th className="py-4 px-6 text-left font-semibold text-[16px]">Software Skills</th>
-                  <th className="py-4 px-6 text-left font-semibold text-[16px]">Position</th>
-                  <th className="py-4 px-6 text-left font-semibold text-[16px]">Experience</th>
+                  <th className="py-4 px-5 text-left font-semibold text-[16px]">Software Skills</th>
+                  <th className="py-4 px-5 text-left font-semibold text-[16px]">Position</th>
+                  <th className="py-4 px-5 text-left font-semibold text-[16px]">Experience</th>
                   <th className="py-4 px-6 text-left font-semibold text-[16px]">Salary</th>
                   <th className="py-4 px-4 text-left font-semibold text-[16px] whitespace-nowrap">Job Nature</th>
 
@@ -116,8 +116,8 @@ const Career = () => {
                       <td className="py-4 px-6 text-[14px] text-[#282A37]">{job.skills}</td>
                       <td className="py-4 px-6 text-[14px] text-[#282A37]">{job.position}</td>
                       <td className="py-4 px-6 text-[14px] text-[#282A37]">{job.experience}</td>
-                      <td className="py-4 px-6 text-[14px] text-[#282A37]">{job.salary}</td>
-                      <td className="py-4 px-6 text-[14px] text-[#282A37]">{job.nature}</td>
+                      <td className="py-4 px-7 text-[15px] text-[#282A37] whitespace-nowrap">{job.salary}</td>
+                      <td className="py-4 px-5 text-[14px] text-[#282A37]">{job.nature}</td>
                       <td className="py-4 px-6 text-center flex items-center justify-end">
                         <a
                           href="https://mail.google.com/mail/?view=cm&fs=1&to=career@prographr.com"
