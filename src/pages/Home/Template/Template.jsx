@@ -83,7 +83,7 @@ const Template = () => {
                                         </p>
                                     </div>
 
-                                    <div className="ml-14">
+                                    <div className="ml-16">
                                         <h1 className="3xl:text-4xl 2xl:text-4xl desktop:text-3xl laptop:text-3xl tablet:text-2xl text-xl font-bold  3xl:mt-12 2xl:mt-14 desktop:mt-10 laptop:mt-8 tablet:mt-8 mt-2 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-8 ml-3" aria-label="Exclusive templates">
                                         {(!isFetching && counterOn) && <CountUp start={0} end={stats.free || 0} duration={3} delay={0} />}
                                         </h1>
