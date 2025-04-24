@@ -122,7 +122,7 @@ const Career = () => {
                         <a
                           href="https://mail.google.com/mail/?view=cm&fs=1&to=career@prographr.com"
                           target="_blank"
-                          className="bg-white text-[#282A37] py-2 px-5 text-[14px] font-medium border border-[#d9d6d6]">
+                          className="bg-white whitespace-nowrap text-[#282A37] py-2 px-4 text-[14px] font-medium border border-[#d9d6d6]">
                           Drop CV
                         </a>
 
