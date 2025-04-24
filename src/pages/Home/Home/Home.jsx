@@ -58,10 +58,11 @@ const Home = () => {
         <section id="promote">
           <Promote />
         </section>
+        
       </main>
     
       
-        <TawkMessenger />
+      <TawkMessenger />
     
     </div>
   );
