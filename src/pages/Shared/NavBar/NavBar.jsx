@@ -41,6 +41,8 @@ const NavBar = () => {
       setSelected('company');
     } else if (location.pathname.includes('contact')) {
       setSelected('contact');
+    } else if (location.pathname.includes('career')) {
+      setSelected('career');
     } else if (location.pathname.includes('check')) {
       setSelected('check');
     } else if (location.pathname.includes('sign-in') || location.pathname.includes('sign-up')) {
@@ -103,6 +105,14 @@ const NavBar = () => {
                   className={` mb-3 font-raleway ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
                 >
                   Contact Us
+                </Link>
+
+                <Link
+                  to="/career"
+                  onClick={() => handleSelect('contact')}
+                  className={` mb-3 font-raleway ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
+                >
+                 Career
                 </Link>
 
                 {user && isAdmin && (
@@ -197,10 +207,18 @@ const NavBar = () => {
                 Contact Us
               </Link>
 
+              <Link
+                to="/career"
+                onClick={() => handleSelect('contact')}
+                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
+              >
+                Career
+              </Link>
+
 
 
               <Link to="/dashboard/cart">
-                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-60 2xl:-mr-72 desktop:ml-96 desktop:-mr-52  3xl:ml-[27rem] 3xl:-mr-72  laptop:mt-2 laptop:ml-2 laptop:mr-10">
+                <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-52 2xl:-mr-[18rem] desktop:ml-72 desktop:-mr-64  3xl:ml-[22rem] 3xl:-mr-[18rem]  laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
                   <FaShoppingCart className="mr-4 cursor-pointer  text-xl" />
                   {/* Cart Length Badge */}

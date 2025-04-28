@@ -28,8 +28,8 @@ const jobData = [
       'Long-term career growth and stability.',
       'Salary increments opportunity, considering the performance of services.'
     ],
-    salary: '20-25k',
-    nature: 'Onsite'
+    salary: '15-20k',
+    nature: 'Remote'
     
   },
   {
