@@ -109,8 +109,8 @@ const NavBar = () => {
 
                 <Link
                   to="/career"
-                  onClick={() => handleSelect('contact')}
-                  className={` mb-3 font-raleway ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
+                  onClick={() => handleSelect('career')}
+                  className={` mb-3 font-raleway ${selected === 'career' ? 'text-[#98a9ff]' : ''}`}
                 >
                  Career
                 </Link>
@@ -209,8 +209,8 @@ const NavBar = () => {
 
               <Link
                 to="/career"
-                onClick={() => handleSelect('contact')}
-                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
+                onClick={() => handleSelect('career')}
+                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'career' ? 'text-[#98a9ff]' : ''}`}
               >
                 Career
               </Link>
