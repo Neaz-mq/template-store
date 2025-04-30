@@ -7,11 +7,10 @@ const Exclusive = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch templates from JSON
         fetch('https://template-store-server.vercel.app/exclusive')
             .then(res => res.json())
             .then(data => {
-                setTemplates(data);  // Set templates state
+                setTemplates(data);
             })
             .catch(error => console.error("Error fetching templates:", error));
     }, []);
@@ -55,9 +54,9 @@ const Exclusive = () => {
                             ))}
                         </div>
                     </main>
-                </div>             
-            </div>        
-        </div>      
+                </div>
+            </div>
+        </div>
     );
 };
 

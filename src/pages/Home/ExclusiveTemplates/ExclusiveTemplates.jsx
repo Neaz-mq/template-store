@@ -10,21 +10,19 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
 
     useEffect(() => {
         fetch("https://template-store-server.vercel.app/exclusive")
-          .then((res) => res.json())
-          .then((data) => {
-            // Sort templates in descending order by a specific property
-            const sortedTemplates = data.sort((a, b) => b.createdAt - a.createdAt); 
-            setTemplates(sortedTemplates);
-    
-            // Filter and display the sorted templates
-            const filteredTemplates = sortedTemplates.filter(
-              (item) =>
-                selectedCategory.includes(item.category) &&
-                item.type.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-            setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
-          });
-      }, [selectedCategory, searchQuery]);
+            .then((res) => res.json())
+            .then((data) => {
+                const sortedTemplates = data.sort((a, b) => b.createdAt - a.createdAt);
+                setTemplates(sortedTemplates);
+
+                const filteredTemplates = sortedTemplates.filter(
+                    (item) =>
+                        selectedCategory.includes(item.category) &&
+                        item.type.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+                setDisplayedTemplates(filteredTemplates.slice(0, initialDisplayCount));
+            });
+    }, [selectedCategory, searchQuery]);
 
     const handleViewMore = () => {
         const filteredTemplates = templates.filter(item =>
@@ -45,7 +43,7 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
             <div className="container mx-auto 3xl:pt-5 2xl:pt-5 desktop:pt-5 laptop:pt-5 tablet:pt-5 pt-0 -mt-10 3xl:-mt-36 2xl:-mt-36 desktop:-mt-44 laptop:-mt-36 tablet:-mt-16">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
-                    <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+                        <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
                             Exclusive <strong>Templates</strong>
                         </h1>
 
