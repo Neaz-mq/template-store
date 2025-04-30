@@ -17,18 +17,18 @@ const UpdateBanner = () => {
     } = useLoaderData();
 
     const { register, handleSubmit } = useForm();
-    const [imageUrl, setImageUrl] = useState(image); 
+    const [imageUrl, setImageUrl] = useState(image);
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [isLoading, setIsLoading] = useState(false);
 
     const onSubmit = async (data) => {
-        const offerItem = { 
-            description: data.description,      
-            details: data.details,      
-            text: data.text,      
-            sub: data.sub,      
-            background: data.background,      
+        const offerItem = {
+            description: data.description,
+            details: data.details,
+            text: data.text,
+            sub: data.sub,
+            background: data.background,
             image: imageUrl,  // Use the main image URL    
         };
 
@@ -60,16 +60,16 @@ const UpdateBanner = () => {
             </div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                   
+
                     {/* Main Row */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
-                    <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
+                        <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Description</span>
                                 </label>
                                 <textarea
-                                defaultValue={description}
+                                    defaultValue={description}
                                     {...register('description')}
                                     className="textarea textarea-bordered w-full h-auto"
                                     placeholder="Description"
@@ -81,7 +81,7 @@ const UpdateBanner = () => {
                                     <span className="label-text p-4 -mt-6 font-medium text-lg -ml-5">Sub Description</span>
                                 </label>
                                 <textarea
-                                defaultValue={details}
+                                    defaultValue={details}
                                     {...register('details')}
                                     className="textarea textarea-bordered w-full h-auto"
                                     placeholder="Description"
@@ -94,20 +94,20 @@ const UpdateBanner = () => {
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Text Color</span>
                                 </label>
                                 <input
-                                 defaultValue={text}
+                                    defaultValue={text}
                                     {...register('text')}
                                     type="color"
                                     className="w-full h-10"
                                 />
                             </div>
 
-                              {/* Sub Description Color */}
-                              <div className="form-control w-full my-6 h-auto px-6">
+                            {/* Sub Description Color */}
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Sub Description Color</span>
                                 </label>
                                 <input
-                                 defaultValue={sub}
+                                    defaultValue={sub}
                                     {...register('sub')}
                                     type="color"
                                     className="w-full h-10"
@@ -121,7 +121,7 @@ const UpdateBanner = () => {
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Background color</span>
                                 </label>
                                 <input
-                                 defaultValue={background}
+                                    defaultValue={background}
                                     {...register('background')}
                                     type="color"
                                     className="w-full h-10"
@@ -151,11 +151,11 @@ const UpdateBanner = () => {
                                         />
                                     </div>
                                 )}
-                            </div>                                          
-                        </div>                           
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Submit Button */}                   
+                    {/* Submit Button */}
                     <div className="">
                         <button
                             type="submit"

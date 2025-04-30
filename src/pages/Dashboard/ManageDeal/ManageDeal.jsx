@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import useDeal from "../../../hooks/useDeal";
 
 const ManageDeal = () => {
-    const [deal, , refetch] = useDeal(); 
+    const [deal, , refetch] = useDeal();
     const axiosSecure = useAxiosSecure();
 
     // Handle delete action
@@ -22,7 +22,7 @@ const ManageDeal = () => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.delete(`/deal/${item._id}`);
                 if (res.data.deletedCount > 0) {
-                    refetch(); 
+                    refetch();
                     Swal.fire({
                         position: "top-end",
                         icon: "success",

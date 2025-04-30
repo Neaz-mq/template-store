@@ -7,7 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import LazyLoad from 'react-lazyload';
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Import arrow icons
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
@@ -17,8 +17,8 @@ const ExclusiveTemplateDetails = () => {
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [zoomLevel, setZoomLevel] = useState(1); // Add zoom level state
-    const [isHovering, setIsHovering] = useState(false); // Hover state
+    const [zoomLevel, setZoomLevel] = useState(1);
+    const [isHovering, setIsHovering] = useState(false);
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();

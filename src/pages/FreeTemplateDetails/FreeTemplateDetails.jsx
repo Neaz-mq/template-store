@@ -17,21 +17,21 @@ const FreeTemplateDetails = () => {
     const [displayedTemplates, setDisplayedTemplates] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [zoomLevel, setZoomLevel] = useState(1); 
-    const [isHovering, setIsHovering] = useState(false); 
+    const [zoomLevel, setZoomLevel] = useState(1);
+    const [isHovering, setIsHovering] = useState(false);
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const [, refetch] = useCart();
     const initialDisplayCount = 4;
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
-    const [selectedFile, setSelectedFile] = useState(null); 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
 
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen); 
+    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const handleSelectFile = (file, index) => {
         setSelectedFile(`Download File ${index + 1}`);
-        setIsDropdownOpen(false); 
+        setIsDropdownOpen(false);
         window.open(file, "_blank", "noopener noreferrer");
     };
 
@@ -55,13 +55,13 @@ const FreeTemplateDetails = () => {
 
     useEffect(() => {
         if (isModalOpen) {
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden';
             const handleWheel = (event) => {
                 if (isHovering) { // Only zoom on hover
                     event.preventDefault();
                     setZoomLevel(prevZoom => {
                         const newZoom = prevZoom + (event.deltaY < 0 ? 0.1 : -0.1);
-                        return Math.max(1, newZoom); 
+                        return Math.max(1, newZoom);
                     });
                 }
             };
@@ -96,7 +96,7 @@ const FreeTemplateDetails = () => {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setZoomLevel(1); 
+        setZoomLevel(1);
     };
 
     const handleNextImage = () => {
@@ -112,11 +112,11 @@ const FreeTemplateDetails = () => {
     };
 
     const zoomIn = () => {
-        setZoomLevel(prev => prev + 0.1); 
+        setZoomLevel(prev => prev + 0.1);
     };
 
     const zoomOut = () => {
-        setZoomLevel(prev => Math.max(1, prev - 0.1)); 
+        setZoomLevel(prev => Math.max(1, prev - 0.1));
     };
 
     const handleWheel = (event) => {
@@ -236,7 +236,7 @@ const FreeTemplateDetails = () => {
                                         <div className="font-raleway font-medium">${price}</div>
                                     </div>
                                     <div className="pt-6 border-t font-raleway font-medium pb-4">
-                                    {regular}
+                                        {regular}
                                     </div>
                                 </div>
 
@@ -384,7 +384,7 @@ const FreeTemplateDetails = () => {
                             <button
                                 className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={closeModal}
-                                style={{ zIndex: 10 }} 
+                                style={{ zIndex: 10 }}
                             >
                                 &times;
                             </button>
@@ -392,7 +392,7 @@ const FreeTemplateDetails = () => {
                             <button
                                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handlePreviousImage}
-                                style={{ zIndex: 10 }} 
+                                style={{ zIndex: 10 }}
                             >
                                 &lt;
                             </button>
@@ -400,7 +400,7 @@ const FreeTemplateDetails = () => {
                             <button
                                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handleNextImage}
-                                style={{ zIndex: 10 }} 
+                                style={{ zIndex: 10 }}
                             >
                                 &gt;
                             </button>

@@ -10,7 +10,7 @@ const ManageExclusiveTemplates = () => {
     const [exclusive, , refetch] = useExclusiveTemplate();
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
-    
+
     // Pagination
     const TEMPLATES_PER_PAGE = 10;
     const [currentPage, setCurrentPage] = useState(1);
@@ -105,7 +105,7 @@ const ManageExclusiveTemplates = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>                           
+                                    </td>
                                     <td>{temp.type}</td>
                                     <td>{temp.category}</td>
                                     <td>${temp.price}</td>

@@ -199,7 +199,7 @@ const UpdateFreeTemplate = () => {
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
                                     <option value="brochure">Brochure</option>
-                                   
+
                                 </select>
                             </div>
 
@@ -218,17 +218,17 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             <div className="form-control w-full mt-20 h-auto px-3">
-                                    <label className="label">
-                                        <span className="label-text font-medium text-lg">Template Description</span>
-                                    </label>
+                                <label className="label">
+                                    <span className="label-text font-medium text-lg">Template Description</span>
+                                </label>
 
-                                    <textarea
-                                        defaultValue={regular}
-                                        {...register('regular')}
-                                        className="textarea textarea-bordered w-full h-auto"
-                                        placeholder="Description"
-                                    ></textarea>
-                                </div>
+                                <textarea
+                                    defaultValue={regular}
+                                    {...register('regular')}
+                                    className="textarea textarea-bordered w-full h-auto"
+                                    placeholder="Description"
+                                ></textarea>
+                            </div>
 
                         </div>
 

@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const PaymentsHistory = () => {
@@ -9,7 +9,7 @@ const PaymentsHistory = () => {
         const fetchPayments = async () => {
             try {
                 const response = await axios.get('https://template-store-server.vercel.app/payments');
-                setPayments(response.data); // Assume response.data contains an array of payment objects
+                setPayments(response.data); 
             } catch (error) {
                 console.error('Error fetching payments:', error);
             }
@@ -39,11 +39,10 @@ const PaymentsHistory = () => {
                             <td className="border border-gray-300 px-4 py-2">{payment.paymentId}</td>
                             <td className="border border-gray-300 px-4 py-2">{payment.amount}</td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 ${
-                                    payment.status === 'success'
+                                className={`border border-gray-300 px-4 py-2 ${payment.status === 'success'
                                         ? 'text-green-600'
                                         : 'text-red-600'
-                                }`}
+                                    }`}
                             >
                                 {payment.status}
                             </td>

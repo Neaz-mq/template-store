@@ -160,8 +160,8 @@ const Connect = () => {
                 >
                   <div
                     className={`p-3 rounded-lg ${msg.sender === "You"
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-200 text-black"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-black"
                       }`}
                   >
                     <div>{msg.content}</div>
