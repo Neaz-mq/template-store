@@ -101,7 +101,6 @@ const AddDeal = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-
                             {/* Text Color */}
                             <div className="flex">
                                 <div className="form-control w-full my-6 h-auto px-6">
@@ -265,7 +264,6 @@ const AddDeal = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-
                             {/* Text Color */}
                             <div className="flex">
                                 <div className="form-control w-full my-6 h-auto px-6">
@@ -346,7 +344,6 @@ const AddDeal = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-
                             {/* Text Color */}
                             <div className="flex">
                                 <div className="form-control w-full my-6 h-auto px-6">
@@ -371,7 +368,6 @@ const AddDeal = () => {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <h2 className="p-4 -mt-2 font-medium text-lg ml-3">Banner Image 4</h2>
                             </div>

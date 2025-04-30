@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ExclusiveTemplate from "../../Shared/ExclusiveTemplate/ExclusiveTemplate";
 import { useNavigate } from "react-router-dom";
 
-
 const Exclusive = () => {
     const [templates, setTemplates] = useState([]);
     const navigate = useNavigate();
@@ -56,12 +55,9 @@ const Exclusive = () => {
                             ))}
                         </div>
                     </main>
-                </div>
-                
-            </div>
-           
-        </div>
-       
+                </div>             
+            </div>        
+        </div>      
     );
 };
 

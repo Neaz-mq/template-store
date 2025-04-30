@@ -177,7 +177,6 @@ const UpdateTemplate = () => {
                             </div>
 
                             {/* Category Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Category*</span>
@@ -197,7 +196,6 @@ const UpdateTemplate = () => {
 
 
                             {/* Records Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
@@ -241,7 +239,6 @@ const UpdateTemplate = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Regular license Description</span>
                                     </label>
-
                                     <textarea
                                         defaultValue={regular}
                                         {...register('regular')}
@@ -251,7 +248,6 @@ const UpdateTemplate = () => {
                                 </div>
 
                                 {/* Price */}
-
                                 <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Price*</span>
@@ -270,7 +266,6 @@ const UpdateTemplate = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Description</span>
                                     </label>
-
                                     <textarea
                                         defaultValue={extended}
                                         {...register('extended')}
@@ -345,7 +340,7 @@ const UpdateTemplate = () => {
 
                     {/* Submit Button */}
 
-                    <div className="">
+                    <div>
                         <button
                             type="submit"
                             className="btn mt-6 hover:bg-[#4864EC] bg-[#4864EC] text-white"

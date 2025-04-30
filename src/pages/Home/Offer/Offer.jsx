@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Offer = () => {
     const [offers, setOffers] = useState([]);
@@ -28,7 +28,7 @@ const Offer = () => {
                     >
                         {/* Main Content inside the container */}
                         <div className="container mx-auto px-4 overflow-x-hidden">
-                            <div className="flex flex-col lg:flex-row w-full gap-16"> {/* Added gap-8 for space between sections */}
+                            <div className="flex flex-col lg:flex-row w-full gap-16">
                                 {/* Left Section: Description */}
                                 <div className="w-full 3xl:w-[40rem] 2xl:w-[40rem] desktop:w-[30rem] laptop:w-[30rem] p-4 flex flex-col items-center justify-center lg:justify-start">
                                     <h1

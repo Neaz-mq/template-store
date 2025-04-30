@@ -6,7 +6,6 @@ import { FaUserCircle } from "react-icons/fa";
 const UserHome = () => {
   const { user } = useAuth();
   
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br p-6 relative">
       <Helmet>
@@ -29,8 +28,7 @@ const UserHome = () => {
             Go to Home
           </motion.button>
         </a>
-      </motion.div>        
-      
+      </motion.div>             
     </div>
   );
 };

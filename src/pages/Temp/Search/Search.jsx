@@ -24,7 +24,7 @@ const  Search = () => {
     };
     const handleButtonClick = (buttonLabel) => {
         setSearchQuery('');
-        setSearchKeyword(buttonLabel); // Set the search keyword for filtering
+        setSearchKeyword(buttonLabel); 
         console.log(`${buttonLabel} button clicked`);
     };
 

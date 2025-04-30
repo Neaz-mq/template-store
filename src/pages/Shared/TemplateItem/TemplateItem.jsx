@@ -32,8 +32,6 @@ const TemplateItem = ({ item }) => {
                             ${price}
                         </p>
                     </div>
-
-
                 </Link>
             </div>
         </article>

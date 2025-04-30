@@ -5,11 +5,11 @@ import NoConnectSelected from "../NoConnectSelected/NoConnectSelected";
 
 const Connect = () => {
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null); // State to manage selected user
-  const [messages, setMessages] = useState([]); // State to store chat messages
-  const [users, setUsers] = useState([]); // State to store users fetched from MongoDB
-  const [loading, setLoading] = useState(true); // State for loading indicator
-  const [error, setError] = useState(null); // State for error handling
+  const [selectedUser, setSelectedUser] = useState(null); 
+  const [messages, setMessages] = useState([]); 
+  const [users, setUsers] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   // Fetch users from backend API
   useEffect(() => {
@@ -37,7 +37,6 @@ const Connect = () => {
     fetchUsers();
   }, []);
   
-
   const filteredUsers = showOnlineOnly
     ? users.filter((user) => user.isOnline)
     : users;

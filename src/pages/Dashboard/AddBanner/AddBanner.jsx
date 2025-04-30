@@ -78,7 +78,6 @@ const AddBanner = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-
                             {/* Text Color */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">

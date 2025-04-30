@@ -116,7 +116,6 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Additional Images URLs Section */}
-
                             <div>
                                 <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Additional Image</h2>
                             </div>
@@ -155,7 +154,6 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Records Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Record Links Included (one per line)</span>
@@ -166,8 +164,6 @@ const AddFreeTemplates = () => {
                                     placeholder="Records"
                                 ></textarea>
                             </div>
-
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -182,12 +178,10 @@ const AddFreeTemplates = () => {
                                 >
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
-                                    <option value="brochure">Brochure</option>
-                                    
+                                    <option value="brochure">Brochure</option>                                  
                                 </select>
 
                                 {/* Price */}
-
                                 <div className="form-control w-full mt-44 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Price*</span>
@@ -204,7 +198,6 @@ const AddFreeTemplates = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Template Description</span>
                                     </label>
-
                                     <textarea
                                         {...register('regular')}
                                         className="textarea textarea-bordered w-full h-auto"
@@ -215,9 +208,7 @@ const AddFreeTemplates = () => {
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
-
                             {/* Descriptions */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -228,9 +219,8 @@ const AddFreeTemplates = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-
+                            
                             {/* Specifications */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -243,7 +233,6 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Product Specifications */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -256,7 +245,6 @@ const AddFreeTemplates = () => {
                             </div>
 
                             {/* Documents Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>

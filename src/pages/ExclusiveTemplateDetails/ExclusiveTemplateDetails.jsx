@@ -5,11 +5,9 @@ import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
-// import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Import arrow icons
-
 
 const ExclusiveTemplateDetails = () => {
     const template = useLoaderData();
@@ -38,7 +36,6 @@ const ExclusiveTemplateDetails = () => {
     const thumbnailContainerRef = useRef(null);
     const thumbnailsToShow = 3; // Number of thumbnails to display
 
-
     useEffect(() => {
         // Update license details dynamically
         const updatedDetails = {
@@ -52,7 +49,6 @@ const ExclusiveTemplateDetails = () => {
     const handleLicenseChange = (event) => {
         setSelectedLicense(event.target.value);
     };
-
 
     useEffect(() => {
         fetch('https://template-store-server.vercel.app/free')
@@ -101,7 +97,6 @@ const ExclusiveTemplateDetails = () => {
             }
         }
     };
-
 
     useEffect(() => {
         if (isModalOpen) {

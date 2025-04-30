@@ -40,7 +40,6 @@ const Testimonial = () => {
 
 
     return (
-
         <section className='container mx-auto overflow-hidden font-raleway'>
             <div className='lg:mx-24 lg:mt-9 lg:mb-14 overflow-hidden'>
                 <div className="mb-4 lg:mx-24">
@@ -49,7 +48,6 @@ const Testimonial = () => {
                     </div>
 
                     {/* Render Swiper only on smaller screens */}
-
                     <div className="swiper-container tablet:mt-5 -mt-8 lg:hidden" >
                         <div className="swiper-wrapper flex gap-44">
                             {/* Testimonial items */}

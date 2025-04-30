@@ -26,12 +26,9 @@ const Free = () => {
             <div className="container mx-auto pb-10 3xl:-mt-16 2xl:-mt-10 desktop:-mt-10 laptop:-mt-10 tablet:-mt-32 -mt-32">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
-                       
-
                         <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
                         Free <strong>Templates</strong>
                         </h1>
-
                         <button
                             onClick={handleExploreMore}
                             className="mr-2 3xl:mr-[8.2rem] 2xl:mr-44 desktop:mr-4 font-raleway text-[#6e6d7a] capitalize font-semibold gap-4 p-3 pl-4 flex items-center">

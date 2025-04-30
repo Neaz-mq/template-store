@@ -34,7 +34,7 @@ const FreeTemplate = ({ item }) => {
                             {price}
                         </p>
                     </div>
-                    </Link>
+                </Link>
                 </div>
             </div>
         </article>

@@ -40,11 +40,7 @@ import AddDeal from "../pages/Dashboard/AddDeal/AddDeal";
 import ManageDeal from "../pages/Dashboard/ManageDeal/ManageDeal";
 import UpdateDeal from "../pages/Dashboard/UpdateDeal/UpdateDeal";
 
-
-
-
 export const router = createBrowserRouter([
-
   {
     path: "/",
     element: <Main></Main>,

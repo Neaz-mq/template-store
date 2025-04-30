@@ -47,13 +47,10 @@ const Guideline = () => {
                                                 <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path>
                                             </svg>
                                         </span>
-
                                     </div>
-                                </div>
-                                
-                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
-
-                            </div>
+                                </div>                               
+                               <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
+                          </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
                                 <div className="relative">
@@ -141,7 +138,6 @@ const Guideline = () => {
                 </div>
             </div>
         </section>
-
     );
 };
 

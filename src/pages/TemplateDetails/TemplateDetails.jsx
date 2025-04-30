@@ -8,7 +8,7 @@ import useCart from "../../hooks/useCart";
 // import FreeTemplate from "../Shared/FreeTemplate/FreeTemplate";
 import LazyLoad from 'react-lazyload';
 import PresentationTemplate from "../Home/PresentationTemplate/PresentationTemplate";
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Import arrow icons
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; 
 
 const TemplateDetails = () => {
     const template = useLoaderData();
@@ -143,7 +143,7 @@ const TemplateDetails = () => {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setZoomLevel(1); // Reset zoom level on close
+        setZoomLevel(1); 
     };
 
     const handleNextImage = () => {
@@ -159,11 +159,11 @@ const TemplateDetails = () => {
     };
 
     const zoomIn = () => {
-        setZoomLevel(prev => prev + 0.1); // Increase zoom level
+        setZoomLevel(prev => prev + 0.1); 
     };
 
     const zoomOut = () => {
-        setZoomLevel(prev => Math.max(1, prev - 0.1)); // Decrease zoom level, but not below 1
+        setZoomLevel(prev => Math.max(1, prev - 0.1)); 
     };
 
     const handleWheel = (event) => {
@@ -178,7 +178,6 @@ const TemplateDetails = () => {
     const handleAddToCart = () => {
         if (user && user.email) {
             //send cart item to the database
-
             const cartItem = {
                 tempId: _id,
                 email: user.email,
@@ -194,7 +193,7 @@ const TemplateDetails = () => {
                 money,
                 regular,
                 extended,
-                license: selectedLicense, // Store selected license type (Regular or Extended)
+                license: selectedLicense, 
             }
             axiosSecure.post('https://template-store-server.vercel.app/carts', cartItem)
                 .then(res => {
@@ -222,7 +221,6 @@ const TemplateDetails = () => {
                 confirmButtonText: "Yes, Sign In!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    //   send the user to the login page
                     navigate('/sign-in', { state: { from: location } })
                 }
             });
@@ -309,7 +307,6 @@ const TemplateDetails = () => {
                                     </div>
                                 </div>
                                 {/* Add to Cart button */}
-
                                 <div className="3xl:ml-[0.6rem] 3xl:mt-16 2xl:ml-[0rem] 2xl:mt-4 desktop:ml-[0.5rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-28">
                                     <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[20rem]  w-[17rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700">
                                         Add to Cart
@@ -394,9 +391,9 @@ const TemplateDetails = () => {
                     <div
                         className="relative p-4 sm:p-8 md:p-12 lg:p-16 xl:p-20 3xl:p-2 overflow-hidden"
                         style={{
-                            transform: `scale(${zoomLevel})`, // Apply zoom level to the modal container
+                            transform: `scale(${zoomLevel})`, 
                             transformOrigin: 'center',
-                            transition: 'transform 0.3s ease-out', // Smooth zoom transition
+                            transition: 'transform 0.3s ease-out', 
                         }}
                     >
                         {/* Modal Content */}
@@ -416,7 +413,7 @@ const TemplateDetails = () => {
                             <button
                                 className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={closeModal}
-                                style={{ zIndex: 10 }} // Ensure the close button is above other elements
+                                style={{ zIndex: 10 }} 
                             >
                                 &times;
                             </button>
@@ -424,7 +421,7 @@ const TemplateDetails = () => {
                             <button
                                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handlePreviousImage}
-                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                                style={{ zIndex: 10 }} 
                             >
                                 &lt;
                             </button>
@@ -432,7 +429,7 @@ const TemplateDetails = () => {
                             <button
                                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
                                 onClick={handleNextImage}
-                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                                style={{ zIndex: 10 }} 
                             >
                                 &gt;
                             </button>
@@ -440,11 +437,8 @@ const TemplateDetails = () => {
                     </div>
                 </div>
             )}
-
             <PresentationTemplate></PresentationTemplate>
-
         </div>
-
     );
 };
 

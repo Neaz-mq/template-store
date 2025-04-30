@@ -116,8 +116,7 @@ const Ideas = () => {
                 </div>
                 </div>
             </section>
-        </div>
-        
+        </div>       
     );
 };
 

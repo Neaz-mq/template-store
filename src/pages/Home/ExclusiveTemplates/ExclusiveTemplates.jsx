@@ -13,7 +13,7 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
           .then((res) => res.json())
           .then((data) => {
             // Sort templates in descending order by a specific property
-            const sortedTemplates = data.sort((a, b) => b.createdAt - a.createdAt); // Replace 'createdAt' with the desired property
+            const sortedTemplates = data.sort((a, b) => b.createdAt - a.createdAt); 
             setTemplates(sortedTemplates);
     
             // Filter and display the sorted templates

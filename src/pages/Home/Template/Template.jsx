@@ -16,9 +16,9 @@ const Template = () => {
             return res.data;
         },
         placeholderData: (previousData) => previousData || { orders: 0, templates: 0, free: 0 },
-        staleTime: 10 * 60 * 1000, // Increase to 10 minutes
-        cacheTime: 15 * 60 * 1000, // Cache for 15 minutes
-        gcTime: 20 * 60 * 1000, // Prevent early cache garbage collection
+        staleTime: 10 * 60 * 1000, 
+        cacheTime: 15 * 60 * 1000, 
+        gcTime: 20 * 60 * 1000, 
         refetchOnMount: false,
         refetchOnWindowFocus: false,
     });
@@ -97,13 +97,6 @@ const Template = () => {
                                 </div>
                             </section>
                         </div>
-
-                        {/* <img
-                            className="3xl:-mt-[15rem] 3xl:-ml-[12rem] 2xl:-mt-[16rem] 2xl:-ml-[10rem] desktop:-mt-[12rem] desktop:-ml-[11rem] laptop:-mt-[12rem] laptop:-ml-[8rem] tablet:-mt-[10.5rem] tablet:-ml-[7rem] -mt-[12rem] opacity-45"
-                            src="/Line Art.svg"
-                            alt="Line Art"
-                            loading="lazy"
-                        /> */}
                     </div>
                 </div>
             </div>

@@ -10,10 +10,10 @@ export default {
         raleway: ['Raleway', 'sans-serif'],
       },
       screens: {
-       'sm': '320px',
+        'sm': '320px',
         'tablet': '640px',
-       'laptop': '1024px',
-       'desktop': '1280px',
+        'laptop': '1024px',
+        'desktop': '1280px',
         '2xl': '1536px',
         '3xl': '1683px',
       },
@@ -21,8 +21,8 @@ export default {
         center: true,
         padding: '1rem',
       },
-      
-      
+
+
     },
   },
   plugins: [

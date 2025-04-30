@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
 
-
 const Shop = () => {
     const agencyTemplateRef = useRef(null);
     const [selectedCategory, setSelectedCategory] = useState('All Categories');
@@ -53,7 +52,7 @@ const Shop = () => {
                                 placeholder="Search resources..."
                                 className="flex-grow p-3 bg-transparent outline-none text-gray-600 text-base"
                                 type="text"
-                                value={searchQuery} // Display value
+                                value={searchQuery} 
                                 onChange={handleSearch}
                             />
                             <div className="border-l border-gray-300 px-8 flex items-center cursor-pointer relative">
@@ -96,7 +95,7 @@ const Shop = () => {
                                         placeholder="Search resources..."
                                         className="flex-grow p-3 bg-transparent outline-none text-gray-600"
                                         type="text"
-                                        value={searchQuery} // Display value
+                                        value={searchQuery} 
                                         onChange={handleSearch}
                                     />
                                 </div>
@@ -166,8 +165,7 @@ const Shop = () => {
                     <AgencyTemplate
                         selectedCategory={getFilteredCategories()}
                         searchQuery={searchQuery || searchKeyword}
-                    />
-                  
+                    />             
                 </div>
             </header>
         </main>

@@ -9,7 +9,6 @@ const GraphicsTemplate = ({ selectedCategory, searchQuery }) => {
     const initialDisplayCount = 4;
 
     useEffect(() => {
-
         fetch('https://template-store-server.vercel.app/free')
             .then(res => res.json())
             .then(data => {

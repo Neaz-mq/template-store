@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 
-
 const StatCard = ({ icon, title, value }) => (
     <div className="stat flex flex-col items-center w-full lg:w-1/5 p-4 bg-white rounded-lg shadow-lg border-4 border-transparent hover:border-gradient-to-r hover:from-purple-400 hover:to-blue-400 hover:bg-gradient-to-r  transition-all duration-300 font-roboto">
         <div className="stat-figure text-secondary mb-2">
@@ -21,7 +20,6 @@ const StatCard = ({ icon, title, value }) => (
 const AdminHome = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-
     const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
 
@@ -98,31 +96,26 @@ const AdminHome = () => {
                     title="Product Sold"
                     value={allTimeStats.orders}
                 />
-
                 <StatCard
                     icon={<FaUsers className='text-3xl lg:text-4xl text-blue-500' />}
                     title="Users"
                     value={allTimeStats.users}
                 />
-
                 <StatCard
                     icon={<FaBook className='text-3xl lg:text-4xl text-green-500' />}
                     title="Templates"
                     value={allTimeStats.templates}
                 />
-
                 <StatCard
                     icon={<FaList className='text-3xl lg:text-4xl text-red-500' />}
                     title="Exclusive Templates"
                     value={allTimeStats.exclusives}
                 />
-
                 <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-purple-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m1-4H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2v-7h-1V4a2 2 0 00-2-2zm-1 0h-4"></path></svg>}
                     title="Total Earning"
                     value={`$${allTimeStats.revenue}`}
                 />
-
                 <StatCard
                     icon={<FaUsers className='text-3xl lg:text-4xl text-teal-500' />}
                     title="Total Visits"
@@ -188,10 +181,7 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-
-         
-          
+            </div>     
         </div>
     );
 };

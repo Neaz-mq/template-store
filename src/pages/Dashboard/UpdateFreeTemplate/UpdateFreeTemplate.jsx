@@ -102,11 +102,9 @@ const UpdateFreeTemplate = () => {
                     </div>
 
                     {/* Main Row */}
-
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
 
                         {/* File Upload Section for Main Image */}
-
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Main Image URL</h2>
@@ -131,7 +129,6 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Additional Image URLs */}
-
                             <div>
                                 <div>
                                     <h2 className="p-4 font-medium text-lg">Additional Image URLs</h2>
@@ -154,7 +151,6 @@ const UpdateFreeTemplate = () => {
                                 </div>
 
                                 {/* Preview Additional Images */}
-
                                 <div className="flex flex-wrap gap-4 p-4">
                                     {additionalImages.map((pic, index) => (
                                         <div key={index} className="relative">
@@ -176,7 +172,6 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Records Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
@@ -191,7 +186,6 @@ const UpdateFreeTemplate = () => {
                         </div>
 
                         {/* Category and Price */}
-
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 -mt-1 font-medium text-lg">Category*</h2>
@@ -210,7 +204,6 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Price */}
-
                             <div className="form-control w-full mt-44 h-auto px-3">
                                 <label className="label">
                                     <span className="label-text font-medium text-lg">Price*</span>
@@ -240,11 +233,9 @@ const UpdateFreeTemplate = () => {
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
-
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
 
                             {/* Descriptions */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -258,7 +249,6 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Specifications */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -272,7 +262,6 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Product Specifications */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -286,7 +275,6 @@ const UpdateFreeTemplate = () => {
                             </div>
 
                             {/* Files Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Files Included (one per line)</span>
@@ -302,8 +290,7 @@ const UpdateFreeTemplate = () => {
                     </div>
 
                     {/* Submit Button */}
-
-                    <div className="">
+                    <div>
                         <button
                             type="submit"
                             className="btn mt-6 hover:bg-[#4864EC] bg-[#4864EC] text-white"

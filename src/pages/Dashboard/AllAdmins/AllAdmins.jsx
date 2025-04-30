@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllAdmins = () => {
-
     const axiosSecure = useAxiosSecure();
     const { data: admins, error, isLoading } = useQuery({
         queryKey: 'admins',
@@ -23,14 +22,12 @@ const AllAdmins = () => {
     return (
 
         <div className="p-4 md:p-8 bg-white rounded-lg shadow-lg overflow-x-hidden">
-
             <div className="flex flex-col md:flex-row justify-between items-center my-4 pb-8 space-y-4 md:space-y-0">
                 <h2 className="hidden md:block text-2xl md:text-3xl font-semibold text-center md:text-left">All Admins</h2>
                 <h2 className="text-2xl md:text-3xl font-semibold text-center md:text-left">Total Admins: {admins.length}</h2>
             </div>
 
             <div className="overflow-x-auto w-full">
-
                 <table className="hidden md:table table-auto w-full">
                     <thead>
                         <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">

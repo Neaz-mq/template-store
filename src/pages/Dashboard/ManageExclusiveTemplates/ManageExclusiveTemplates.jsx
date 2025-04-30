@@ -11,7 +11,6 @@ const ManageExclusiveTemplates = () => {
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState('');
     
-
     // Pagination
     const TEMPLATES_PER_PAGE = 10;
     const [currentPage, setCurrentPage] = useState(1);
@@ -71,7 +70,6 @@ const ManageExclusiveTemplates = () => {
 
         <div className="px-2 md:px-6">
             <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Exclusive Templates</h2>
-
             <div>
                 <div className="text-center mb-4 md:mb-10">
                     <form onSubmit={handleSearch} className="flex flex-col items-center md:flex-row md:justify-center">

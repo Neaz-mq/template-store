@@ -101,7 +101,6 @@ const UpdateDeal = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     {/* Main Row */}
-
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-2 -ml-2 w-full h-auto">
 
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
@@ -193,7 +192,6 @@ const UpdateDeal = () => {
                         </div>
 
                         {/* File Upload Section for Main Image */}
-
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">

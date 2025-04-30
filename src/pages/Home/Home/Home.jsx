@@ -60,8 +60,7 @@ const Home = () => {
         </section>
         
       </main>
-    
-      
+        
       <TawkMessenger />
     
     </div>

@@ -13,12 +13,11 @@ const NavBar = () => {
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // When the user signs in, ensure the dropdown is closed by default
   useEffect(() => {
     if (user) {
-      setDropdownOpen(false);  // Ensure the dropdown is closed when user logs in
+      setDropdownOpen(false);  
     }
-  }, [user]);  // Runs whenever the user state changes
+  }, [user]);  
 
   const handleLogOut = () => {
     logOut()
@@ -27,10 +26,9 @@ const NavBar = () => {
   };
 
   const handleSelect = (link) => {
-    setSelected(link); // Set the selected link
+    setSelected(link); 
   };
 
-  // Use useEffect to update the selected link based on the current path
   useEffect(() => {
     // Update the selected link based on the current path
     if (location.pathname === '/') {
@@ -149,9 +147,7 @@ const NavBar = () => {
               onClick={() => handleSelect(null)}
               className="3xl:mt-10 2xl:mt-10 desktop:mt-10  mt-8 3xl:ml-20 2xl:ml-20 desktop:ml-20 ml-2 -mr-1  3xl:-mr-2 2xl:-mr-2 desktop:-mr-2 mb-8 "
             >
-              <div className="mt-[5.5rem]">
-               
-              
+              <div className="mt-[5.5rem]">        
               <div className="3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28">
                 <a href="/">
                   <img
@@ -214,9 +210,6 @@ const NavBar = () => {
               >
                 Career
               </Link>
-
-
-
               <Link to="/dashboard/cart">
                 <div className="relative ml-4 mr-16 3xl:mt-5 2xl:mt-5 desktop:mt-5 2xl:ml-52 2xl:-mr-[18rem] desktop:ml-72 desktop:-mr-64  3xl:ml-[22rem] 3xl:-mr-[18rem]  laptop:mt-2 laptop:ml-2 laptop:mr-10">
                   {/* Cart Icon */}
@@ -231,19 +224,18 @@ const NavBar = () => {
               </Link>
             </ul>
           </div>
-
           {/* Right section (Sign in / Sign up / Sign out) */}
           <div className="navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0">
             {user ? (
               <div className="3xl:-ml-52 3xl:mr-56 2xl:-ml-52 2xl:mr-60 desktop:-ml-60 desktop:mr-16 laptop:-ml-60 laptop:mr-12 tablet:-mt-32 3xl:-mt-12 2xl:-mt-12 desktop:-mt-12 laptop:-mt-12 tablet:-ml-72 tablet:mr-20  -mt-32">
                 {user.photoURL && user.photoURL !== '' ? (
                   <img
-                    src={user.photoURL}  // Use photoURL if it exists and is not empty
+                    src={user.photoURL}  
                     className="w-12 h-12 rounded-full cursor-pointer mt-10"
                     onClick={() => setDropdownOpen((prev) => !prev)}
                   />
                 ) : (
-                  <FaUserCircle  // Fallback to FaUserCircle if photoURL is absent or empty
+                  <FaUserCircle  
                     size={42}
                     className="cursor-pointer text-white hover:text-[#4864EC] mt-24"
                     onClick={() => setDropdownOpen((prev) => !prev)}
@@ -284,8 +276,6 @@ const NavBar = () => {
                 </Link>
               </div>
             )}
-
-            {/* "Sign Up" button always visible */}
             {!user && (
               <div className="flex items-center">
                 <Link to="/sign-up" className='tablet:-mt-24 -mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0'>

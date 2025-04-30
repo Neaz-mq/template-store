@@ -10,7 +10,6 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../hooks/useAuth';
 
 const SignUp = () => {
-
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, watch, formState: { errors, isValid }, reset } = useForm({ mode: 'onChange' });
     const [showPassword, setShowPassword] = useState(false);
@@ -199,7 +198,6 @@ const SignUp = () => {
                 </div>
 
                 {/* Google Sign-in Button */}
-
                 <div className='flex justify-center items-center -mt-24 3xl:-mt-24 '>
                     <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4 py-3 shadow-none font-medium font-raleway mb-24 w-[15rem]  ">
                         <FaGoogle className=" text-base

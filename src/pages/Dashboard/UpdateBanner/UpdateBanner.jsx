@@ -52,7 +52,6 @@ const UpdateBanner = () => {
         }
     };
 
-
     return (
         <div>
             <div className='mt-5'>
@@ -62,11 +61,8 @@ const UpdateBanner = () => {
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                    
-
                     {/* Main Row */}
-
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 -ml-2 w-full h-auto">
-
                     <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
@@ -133,9 +129,7 @@ const UpdateBanner = () => {
                             </div>
                         </div>
 
-
                         {/* File Upload Section for Main Image */}
-
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div>
                                 <h2 className="p-4 font-medium text-lg mr-2 -ml-1">Update Banner Image</h2>
@@ -158,13 +152,10 @@ const UpdateBanner = () => {
                                     </div>
                                 )}
                             </div>                                          
-
-                        </div>        
-                       
+                        </div>                           
                     </div>
 
-                    {/* Submit Button */}
-                    
+                    {/* Submit Button */}                   
                     <div className="">
                         <button
                             type="submit"

@@ -195,7 +195,6 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Records Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Records Included (one per line)</span>
@@ -207,7 +206,6 @@ const UpdateExclusiveTemplate = () => {
                                     placeholder="Records Included"
                                 ></textarea>
                             </div>
-
                         </div>
 
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
@@ -240,7 +238,6 @@ const UpdateExclusiveTemplate = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Regular license Description</span>
                                     </label>
-
                                     <textarea
                                         defaultValue={regular}
                                         {...register('regular')}
@@ -250,7 +247,6 @@ const UpdateExclusiveTemplate = () => {
                                 </div>
 
                                 {/* Price */}
-
                                 <div className="form-control w-full mt-10 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Price*</span>
@@ -269,7 +265,6 @@ const UpdateExclusiveTemplate = () => {
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Extended license Description</span>
                                     </label>
-
                                     <textarea
                                         defaultValue={extended}
                                         {...register('extended')}
@@ -281,11 +276,9 @@ const UpdateExclusiveTemplate = () => {
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}
-
                         <div className="bg-white w-full my-5 py-3 rounded-lg mr-2 h-auto">
 
                             {/* Descriptions */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-9 font-medium text-lg -ml-5">Description</span>
@@ -299,7 +292,6 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Specifications */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Item Specifications (one per line)</span>
@@ -313,7 +305,6 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Product Specifications */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Product Specifications (one per line)</span>
@@ -327,7 +318,6 @@ const UpdateExclusiveTemplate = () => {
                             </div>
 
                             {/* Files Included */}
-
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Documents Included (one per line)</span>

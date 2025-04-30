@@ -1,11 +1,10 @@
 import AgencyTemplate from "../../Home/AgencyTemplate/AgencyTemplate";
-
 import PresentationTemplate from "../../Home/PresentationTemplate/PresentationTemplate";
 // import Marketplace from "../Marketplace/Marketplace";
 import Shop from "../Shop/Shop";
 import { Helmet } from 'react-helmet-async';
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom"; // Ensure you're using React Router
+import { useLocation } from "react-router-dom"; 
 
 const Templates = () => {
      const location = useLocation();

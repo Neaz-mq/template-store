@@ -1,6 +1,6 @@
 const HeadBar = () => {
   return (
-    <div className="w-full bg-[#4864EC]"> {/* Added bg-blue-500 class */}
+    <div className="w-full bg-[#4864EC]"> 
       <div className="w-full overflow-hidden">
         <div className="flex justify-center">
           <div className="w-full">
