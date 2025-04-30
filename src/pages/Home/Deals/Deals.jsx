@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Deals = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,9 +19,9 @@ const Deals = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % dealsData.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, [dealsData.length]);
 
   return (

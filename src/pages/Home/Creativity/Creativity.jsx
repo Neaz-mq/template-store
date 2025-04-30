@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const Creativity = () => {
   useEffect(() => {
-    // Lazy load images when user enters the viewport
+
     const images = document.querySelectorAll('.lazy-load');
     const options = {
       root: null,

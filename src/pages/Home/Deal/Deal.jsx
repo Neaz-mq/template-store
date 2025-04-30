@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 const Deal = () => {
     const [deals, setDeals] = useState([]);
-    const [currentContent, setCurrentContent] = useState(0); // Track current content index
+    const [currentContent, setCurrentContent] = useState(0);
     const intervalRef = useRef(null);
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const Deal = () => {
                                         ? deal.back
                                         : currentContent === 2
                                             ? deal.framework
-                                            : deal.frame, 
+                                            : deal.frame,
                         }}
                     >
                         {/* Main Content inside the container */}

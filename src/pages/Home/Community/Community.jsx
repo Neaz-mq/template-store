@@ -1,7 +1,7 @@
 const Community = () => {
     return (
-        <div className='overflow-x-hidden font-raleway overflow-hidden bg-[#F9F9F9] '> {/* Removed mx-3 */}
-            <header className="pb-20"> {/* Removed layout and top margins */}
+        <div className='overflow-x-hidden font-raleway overflow-hidden bg-[#F9F9F9] '>
+            <header className="pb-20">
                 <section className="text-[#15141ce7] container mx-auto  pt-1 pb-24 font-raleway font-medium px-5 gap-5 grid 3xl:grid-cols-2 2xl:grid-cols-2 desktop:grid-cols-2 place-items-center 3xl:mb-40  3xl:mt-10 2xl:mt-10 desktop:mt-10 laptop:mt-10 tablet:mt-6 mt-0 ">
                     <div className='laptop:ml-8  3xl:ml-60 2xl:ml-60 desktop:ml-28 tablet:ml-4 ml-4'>
                         <h2 className="3xl:text-2xl 2xl:text-xl desktop:text-xl laptop:text-lg tablet:text-lg text-lg mb-7 mt-4">Check Our Portfolio</h2>
