@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { FaBook, FaList, FaUsers } from 'react-icons/fa'; // Import FaCommentDots
+import { FaBook, FaList, FaUsers } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
@@ -54,7 +54,7 @@ const AdminHome = () => {
             });
             return res.data;
         },
-        enabled: !!selectedMonth && !!selectedYear // Ensure query is enabled only if month and year are selected
+        enabled: !!selectedMonth && !!selectedYear 
     });
 
     // If either query is loading
@@ -181,7 +181,7 @@ const AdminHome = () => {
                         </div>
                     </div>
                 </div>
-            </div>     
+            </div>
         </div>
     );
 };

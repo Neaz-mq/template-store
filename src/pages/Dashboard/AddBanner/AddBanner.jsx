@@ -11,7 +11,7 @@ const AddBanner = () => {
     const [mainImageUrl, setMainImageUrl] = useState("");
 
     const onSubmit = async (data) => {
-        // Prepare the offer item
+
         const offerItem = {
             description: data.description,
             details: data.details,
@@ -24,7 +24,6 @@ const AddBanner = () => {
         try {
             const offerRes = await axiosSecure.post('/offer', offerItem);
             if (offerRes.data.insertedId) {
-                // Show success popup
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
                 Swal.fire({
@@ -143,7 +142,6 @@ const AddBanner = () => {
                     <button className="btn mt-6 hover:bg-[#3d5bf0] px-20 bg-[#4864EC] text-white -ml-3">
                         Publish
                     </button>
-
                 </form>
             </div>
         </div>

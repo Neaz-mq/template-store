@@ -7,7 +7,7 @@ const Contact = () => {
             <Helmet>
                 <title>Prographr | Contact</title>
             </Helmet>
-            <Form></Form>        
+            <Form></Form>
         </div>
     );
 };

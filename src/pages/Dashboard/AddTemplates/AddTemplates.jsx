@@ -52,7 +52,7 @@ const AddTemplates = () => {
         try {
             const templateRes = await axiosSecure.post('/template', templateItem);
             if (templateRes.data.insertedId) {
-                // Show success popup
+
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
                 setPictureUrls([]); // Clear the picture URLs
@@ -169,7 +169,7 @@ const AddTemplates = () => {
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
                                     <option value="brochure">Brochure</option>
-                                    
+
                                 </select>
                             </div>
 

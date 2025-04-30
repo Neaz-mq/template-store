@@ -5,18 +5,18 @@ import NoConnectSelected from "../NoConnectSelected/NoConnectSelected";
 
 const Connect = () => {
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null); 
-  const [messages, setMessages] = useState([]); 
-  const [users, setUsers] = useState([]); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // Fetch users from backend API
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-  
+
         // Mocked data
         const data = [
           { _id: "66375f588da67cb69cd9c7e4", email: "neazmorshed666@gmail.com", name: "Md. Neaz Morshed", role: "admin" },
@@ -24,7 +24,7 @@ const Connect = () => {
           { _id: "6638787bbaf1ee1c2e46daff", email: "neazmorshed.cse@gmail.com", name: "Neaz Morshed" },
           { _id: "66448b1b2464b7e471cb018f", name: "Prographr", email: "prographr@gmail.com", role: "admin" },
         ];
-  
+
         setUsers(data);
       } catch (err) {
         console.error("Error fetching users:", err.response || err.message || err);
@@ -33,10 +33,10 @@ const Connect = () => {
         setLoading(false);
       }
     };
-  
+
     fetchUsers();
   }, []);
-  
+
   const filteredUsers = showOnlineOnly
     ? users.filter((user) => user.isOnline)
     : users;
@@ -155,16 +155,14 @@ const Connect = () => {
               {messages.map((msg, index) => (
                 <div
                   key={index}
-                  className={`flex ${
-                    msg.sender === "You" ? "justify-end" : "justify-start"
-                  } mb-2`}
+                  className={`flex ${msg.sender === "You" ? "justify-end" : "justify-start"
+                    } mb-2`}
                 >
                   <div
-                    className={`p-3 rounded-lg ${
-                      msg.sender === "You"
+                    className={`p-3 rounded-lg ${msg.sender === "You"
                         ? "bg-blue-500 text-white"
                         : "bg-gray-200 text-black"
-                    }`}
+                      }`}
                   >
                     <div>{msg.content}</div>
                     <div className="text-xs text-zinc-500 mt-1">{msg.time}</div>

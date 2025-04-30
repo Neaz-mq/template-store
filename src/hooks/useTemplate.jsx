@@ -3,10 +3,10 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useTemplate = () => {
     const axiosPublic = useAxiosPublic();
-   
-    const {data: template = [], isPending: loading, refetch} = useQuery({
-        queryKey: ['template'], 
-        queryFn: async() =>{
+
+    const { data: template = [], isPending: loading, refetch } = useQuery({
+        queryKey: ['template'],
+        queryFn: async () => {
             const res = await axiosPublic.get('/template');
             return res.data;
         }

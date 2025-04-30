@@ -70,7 +70,7 @@ const AllAdmins = () => {
                             </div>
                         </div>
                     ))}
-                </div>           
+                </div>
             </div>
         </div>
     );

@@ -47,8 +47,8 @@ const TopBar = () => {
                 </div>
 
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
-                    <div className="flex items-center mr-6 mt-3 relative">                  
-                        <FaBell className="text-gray-500 text-2xl"/>
+                    <div className="flex items-center mr-6 mt-3 relative">
+                        <FaBell className="text-gray-500 text-2xl" />
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || "Admin"}</span>
                         <a href="/"><div className="ml-4 md:h-8 h-6 md:w-8 w-6 bg-[#4864EC] rounded-full"></div>
                         </a>

@@ -51,7 +51,7 @@ const AddFreeTemplates = () => {
                 // Show success popup
                 reset();
                 setMainImageUrl(""); // Clear the main image URL
-                setPictureUrls([]); // Clear the picture URLs
+                setPictureUrls([]); 
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -178,7 +178,7 @@ const AddFreeTemplates = () => {
                                 >
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
-                                    <option value="brochure">Brochure</option>                                  
+                                    <option value="brochure">Brochure</option>
                                 </select>
 
                                 {/* Price */}
@@ -219,7 +219,7 @@ const AddFreeTemplates = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-                            
+
                             {/* Specifications */}
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">

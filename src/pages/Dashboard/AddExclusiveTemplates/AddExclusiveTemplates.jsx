@@ -51,9 +51,8 @@ const AddExclusiveTemplates = () => {
         try {
             const templateRes = await axiosSecure.post('/exclusive', templateItem);
             if (templateRes.data.insertedId) {
-                // Show success popup
                 reset();
-                setMainImageUrl(""); // Clear the main image URL
+                setMainImageUrl("");
                 setPictureUrls([]); // Clear the picture URLs
                 Swal.fire({
                     position: "center",

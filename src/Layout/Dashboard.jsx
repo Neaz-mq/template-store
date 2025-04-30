@@ -25,14 +25,14 @@ const Dashboard = () => {
         { to: "/dashboard/manageBanner", icon: <FaList />, label: "Manage Banner" },
         { to: "/dashboard/users", icon: <LuUser2 />, label: "Users" },
         { to: "/dashboard/admins", icon: <LiaUserCogSolid />, label: "Admins" },
-        { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" }         
-                  
+        { to: "/dashboard/paymentsHistory", icon: <FaAlignLeft />, label: "Payment History" }
+
     ];
 
     const userLinks = [
         { to: "/dashboard/userHome", icon: <FaHome />, label: "User Home" },
         { to: "/dashboard/cart", icon: <FaShoppingCart />, label: `My Cart (${cart.length})` },
-        { to: "/dashboard/paymentHistory", icon: <FaList />, label: "Payment History" },     
+        { to: "/dashboard/paymentHistory", icon: <FaList />, label: "Payment History" },
     ];
 
     const sharedLinks = [

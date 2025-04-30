@@ -27,14 +27,14 @@ const Cart = () => {
                 amount: totalPrice, // Total price in USD
                 customerName: user.name,
                 customerEmail: user.email,
-                successUrl: 'https://prographr.com/paymentHistory', // Ensure this matches your route
+                successUrl: 'https://prographr.com/paymentHistory',
                 failUrl: 'https://prographr.com/fail-payment',
                 cancelUrl: 'https://prographr.com/cancel-payment',
             });
-    
+
             // Handle the payment gateway redirection
             if (response.data.paymentUrl) {
-                window.location.href = response.data.paymentUrl; // Redirect to SSLCommerz payment gateway
+                window.location.href = response.data.paymentUrl;
             } else {
                 Swal.fire('Error', 'Payment initialization failed.', 'error');
             }
@@ -43,7 +43,7 @@ const Cart = () => {
             Swal.fire('Error', 'An error occurred while processing your payment.', 'error');
         }
     };
-    
+
     const axiosSecure = useAxiosSecure();
 
     const handleDelete = id => {
