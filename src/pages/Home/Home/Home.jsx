@@ -47,7 +47,7 @@ const Home = () => {
         <section id="free">
           <Free />
         </section>
-       
+
         {/* <section id="package">
           <Package />
         </section> */}
@@ -58,11 +58,11 @@ const Home = () => {
         <section id="promote">
           <Promote />
         </section>
-        
+
       </main>
-        
+
       <TawkMessenger />
-    
+
     </div>
   );
 };

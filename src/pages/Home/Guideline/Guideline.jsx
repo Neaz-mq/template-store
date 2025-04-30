@@ -48,9 +48,9 @@ const Guideline = () => {
                                             </svg>
                                         </span>
                                     </div>
-                                </div>                               
-                               <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
-                          </div>
+                                </div>
+                                <p className="font-raleway font-medium text-slate-900 mt-8 w-[210px]">Client Bought Template</p>
+                            </div>
                             <img alt="Roadmap" loading="lazy" width="385" height="25" decoding="async" data-nimg="1" className="hidden lg:block col-span-3 -mt-10" src="https://prographr.vercel.app/_next/static/media/road.b10c4628.svg" style={{ color: 'transparent' }} />
                             <div className="col-span-2 text-center flex flex-col items-center">
                                 <div className="relative">
