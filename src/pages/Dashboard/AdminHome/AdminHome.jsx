@@ -90,7 +90,7 @@ const AdminHome = () => {
             </div>
 
             {/* Statistics Cards */}
-            <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-1 lg:space-x-2 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 3xl:mt-12 2xl:mt-12 desktop:mt-12 laptop:mt-12 tablet:mt-36  ">
+            <div className="stats flex flex-col lg:flex-row justify-center lg:justify-between gap-1 lg:space-x-2 bg-[#F3F4F6] p-4 rounded-lg mr-4 -ml-6 3xl:mt-12 2xl:mt-12 desktop:mt-12 laptop:mt-12 tablet:mt-36">
                 <StatCard
                     icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 lg:w-10 lg:h-10 stroke-current text-yellow-500"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>}
                     title="Product Sold"

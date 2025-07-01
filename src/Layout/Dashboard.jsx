@@ -44,7 +44,7 @@ const Dashboard = () => {
         <div className="font-raleway">
             <TopBar />
             <div className="flex min-h-screen bg-[#F3F4F6]">
-                <div className={`md:w-64 w-48 min-h-screen  bg-white text-black flex flex-col md:ml-20 shadow-lg -mt-0.4`}>
+                <div className={`md:w-64 w-48 min-h-screen bg-white text-black flex flex-col md:ml-20 shadow-lg -mt-0.4`}>
                     <ul className="flex-1 p-4 space-y-2 mt-2">
                         {isAdmin
                             ? adminLinks.map(link => (

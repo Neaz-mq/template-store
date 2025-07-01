@@ -157,7 +157,7 @@ const AddTemplates = () => {
                             </div>
 
                             {/* Category Included */}
-                            <div className="form-control w-full my-6 h-auto px-6 ">
+                            <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
                                     <span className="label-text p-4 -mt-2 font-medium text-lg -ml-5">Category*</span>
                                 </label>

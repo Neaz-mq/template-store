@@ -13,7 +13,7 @@ const TopBar = () => {
                             <img
                                 src="/Logo_Prographr_Color.svg"
                                 alt="Logo"
-                                className="md:ml-24 md:mr-2 ml-8 w-36  h-auto -mt-8 md:-mt-0"
+                                className="md:ml-24 md:mr-2 ml-8 w-36 h-auto -mt-8 md:-mt-0"
                             />
                         </Link>
                     </div>
@@ -23,7 +23,7 @@ const TopBar = () => {
                                 <input
                                     type="text"
                                     placeholder="Search"
-                                    className="pl-8 md:pr-4 md:py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300 border-none mt-4 ml-6  3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0 "
+                                    className="pl-8 md:pr-4 md:py-2 rounded-lg focus:outline-none focus:ring focus:border-blue-300 border-none mt-4 ml-6 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0"
                                 />
                                 <span className="absolute inset-y-0 left-0 pl-2 flex items-center">
                                     <svg

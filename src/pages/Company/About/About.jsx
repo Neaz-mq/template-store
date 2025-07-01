@@ -11,7 +11,7 @@ const About = () => {
                             Welcome at <strong>Prographr</strong>
                         </h3>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 mt-32">
-                            <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-20 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-24 ">
+                            <div className="relative flex items-center justify-center 3xl:ml-5 2xl:-ml-4 desktop:-ml-44 laptop:-ml-12 tablet:-mt-20 3xl:-mt-28 2xl:-mt-[7rem] desktop:-mt-[6rem] laptop:-mt-[7rem] -mt-24">
                                 <div className="relative w-[21rem] h-[21rem] 3xl:h-[21rem] 2xl:h-[21rem] desktop:h-[21rem] laptop:h-[21rem] 3xl:w-[22rem] 2xl:w-[22rem] desktop:w-[22rem] laptop:w-[22rem] tablet:w-[22rem] tablet:h-[21rem] 3xl:-ml-28">
                                     <LazyLoad height={200} offset={100}>
                                         <img

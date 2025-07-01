@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios"; // Ensure axios is installed in your project
 import { Users } from "lucide-react";
 import NoConnectSelected from "../NoConnectSelected/NoConnectSelected";
 

@@ -194,7 +194,7 @@ const AddFreeTemplates = () => {
                                     />
                                 </div>
 
-                                <div className="form-control w-full mt-20  h-auto">
+                                <div className="form-control w-full mt-20 h-auto">
                                     <label className="label">
                                         <span className="label-text font-medium text-lg">Template Description</span>
                                     </label>

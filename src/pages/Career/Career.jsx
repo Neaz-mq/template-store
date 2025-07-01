@@ -82,30 +82,24 @@ const Career = () => {
 
         <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block'>
           <h1 className="flex items-center justify-center 3xl:text-3xl 2xl:text-2xl desktop:text-2xl mb-36 font-medium text-[#282A37] 3xl:-mt-16 2xl:-mt-16 desktop:-mt-16 laptop:mt-44 tablet:mt-36">
-
           </h1>
         </div>
 
         <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden mb-36'>
-
         </div>
         <div className='-mt-28'>
-          <section className="ml-5 p-16 tablet:ml-14 w-[16rem] laptop:w-[53rem] tablet:w-[40rem] bg-[#F9F9F9] 3xl:p-40 2xl:p-32 2xl:pb-28 desktop:p-28 laptop:p-28 tablet:p-20 desktop:px-5 gap-5 grid 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[74.4rem] 3xl:ml-[14.5rem] 2xl:w-[63rem] 2xl:ml-[14.8rem] desktop:w-[67rem] tablet:mt-44   desktop:ml-[5.7rem] laptop:ml-[6rem]  ">
+          <section className="ml-5 p-16 tablet:ml-14 w-[16rem] laptop:w-[53rem] tablet:w-[40rem] bg-[#F9F9F9] 3xl:p-40 2xl:p-32 2xl:pb-28 desktop:p-28 laptop:p-28 tablet:p-20 desktop:px-5 gap-5 grid 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[74.4rem] 3xl:ml-[14.5rem] 2xl:w-[63rem] 2xl:ml-[14.8rem] desktop:w-[67rem] tablet:mt-44   desktop:ml-[5.7rem] laptop:ml-[6rem]">
             <img className='3xl:w-[16rem] 3xl:ml-[19rem] 2xl:w-[14rem] desktop:w-[12rem] laptop:w-[12rem] tablet:w-[12rem] tablet:ml-[9rem] desktop:ml-[25rem] laptop:ml-[13rem] 2xl:ml-[15rem] w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
           </section>
         </div>
 
-
-
         <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block'>
-
           <div className="px-4 py-6 3xl:w-[76rem] 2xl:w-[62rem] desktop:w-[67rem] mx-auto -mt-20">
             <h1 className="flex items-center justify-center 3xl:text-3xl 2xl:text-2xl desktop:text-2xl laptop:text-2xl mb-36 font-medium text-[#282A37] 3xl:mt-8 2xl:mt-6 desktop:mt-16 laptop:mt-36 tablet:mt-36">
               Want to establish a stable career :
               Opening Job
             </h1>
             <table className="min-w-full bg-white 3xl:overflow-hidden 2xl:overflow-hidden desktop:overflow-hidden laptop:overflow-hidden 3xl:-mt-10 2xl:-mt-10 desktop:-mt-6 laptop:-mt-16 tablet:-mt-16">
-
               <thead>
                 <tr className="bg-[#4864EC] text-white">
                   <th className="py-4 px-6 text-left font-semibold text-[16px]">Job Title</th>
@@ -114,7 +108,6 @@ const Career = () => {
                   <th className="py-4 px-5 text-left font-semibold text-[16px]">Experience</th>
                   <th className="py-4 px-6 text-left font-semibold text-[16px]">Salary</th>
                   <th className="py-4 px-4 text-left font-semibold text-[16px] whitespace-nowrap">Job Nature</th>
-
                   <th className="py-4 px-6"></th>
                 </tr>
               </thead>
@@ -184,7 +177,7 @@ const Career = () => {
           </div>
         </div>
         <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden overflow-hidden -mt-24'>
-          <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-36 text-center '> Want to establish a stable career:
+          <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-36 text-center'> Want to establish a stable career:
             Opening Job</h1>
           <div className="px-4 py-12 mx-auto -mt-2">
             <table className="w-full bg-white">
@@ -291,7 +284,6 @@ const Career = () => {
                         </td>
                       </tr>
                     )}
-
                   </React.Fragment>
                 ))}
               </tbody>
@@ -299,12 +291,8 @@ const Career = () => {
           </div>
         </div>
       </div>
-
-
-
       <PresentationTemplate />
     </div>
-
   );
 };
 

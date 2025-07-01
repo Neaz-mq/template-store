@@ -270,8 +270,8 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28 tablet:-mt-24 -mt-24">
-                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44  2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-16 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10 ">
-                    <span className="-mt-2 text-[15px]">Sign in</span>
+                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7 px-5 -ml-16   mr-8 3xl:py-5 2xl:py-5 desktop:py-5 py-[1.12rem] 3xl:mr-44  2xl:mr-60 2xl:mt-[6.3rem] desktop:mr-16 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:mr-10 whitespace-nowrap ">
+                    <span className="-mt-2 text-[15px] whitespace-nowrap">Sign in</span>
                   </button>
                 </Link>
               </div>
@@ -279,8 +279,8 @@ const NavBar = () => {
             {!user && (
               <div className="flex items-center">
                 <Link to="/sign-up" className='tablet:-mt-24 -mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0'>
-                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48  2xl:mr-[15.5rem] 2xl:-ml-[15.6rem]  desktop:mr-[4.5rem] desktop:-ml-20 laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium 3xl:-mt-36 2xl:-mt-36 desktop:-mt-36 laptop:-mt-36   ">
-                    <span className="-mt-2 text-[15px]">Sign Up</span>
+                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 px-4 3xl:py-2 2xl:py-2 desktop:py-2 py-2 -mr-4 -ml-14 3xl:mr-56 3xl:-ml-48  2xl:mr-[15.5rem] 2xl:-ml-[15.6rem]  desktop:mr-[4.5rem] desktop:-ml-20 laptop:mr-14 laptop:-ml-10 tablet:mr-10 font-medium 3xl:-mt-36 2xl:-mt-36 desktop:-mt-36 laptop:-mt-36 whitespace-nowrap  ">
+                    <span className="-mt-2 text-[15px] whitespace-nowrap">Sign Up</span>
                   </button>
                 </Link>
               </div>
