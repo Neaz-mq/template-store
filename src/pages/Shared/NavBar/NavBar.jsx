@@ -231,7 +231,7 @@ const NavBar = () => {
                {user.photoURL && user.photoURL !== '' ? (
                   <img
                     src={user.photoURL}  
-                    className="w-12 h-12 rounded-full cursor-pointer mt-10"
+                    className="w-12 h-12 rounded-full cursor-pointer mt-24"
                     onClick={() => setDropdownOpen((prev) => !prev)}
                   />
                 ) : (
