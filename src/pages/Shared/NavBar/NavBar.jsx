@@ -227,7 +227,7 @@ const NavBar = () => {
           {/* Right section (Sign in / Sign up / Sign out) */}
           <div className=" navbar-end gap-3 3xl:gap-0 2xl:gap-0 desktop:gap-0 3xl:ml-[20rem]">
             {user ? (
-              <div className="relative flex justify-center items-center mt-4 3xl:-ml-[2rem] 3xl:mr-[8rem]   2xl:-ml-44 2xl:mr-32 desktop:-ml-60 desktop:mr-16 laptop:-ml-60 laptop:mr-12 tablet:-mt-32 3xl:-mt-12 2xl:-mt-12 desktop:-mt-12 laptop:-mt-12 tablet:-ml-72 tablet:mr-20  ">
+              <div className="relative flex justify-center items-center  3xl:-ml-[2rem] 3xl:mr-[8rem]   2xl:-ml-44 2xl:mr-32 desktop:-ml-60 desktop:mr-16 laptop:-ml-60 laptop:mr-12 tablet:-mt-[11.4rem] 3xl:-mt-[6.4rem] 2xl:-mt-[6.4rem] desktop:-mt-[6.4rem] laptop:-mt-[6.4rem] tablet:-ml-72 tablet:mr-20  -mt-[11.7rem]">
                {user.photoURL && user.photoURL !== '' ? (
                   <img
                     src={user.photoURL}  
@@ -243,7 +243,7 @@ const NavBar = () => {
                 )}
 
                 {dropdownOpen && (
-                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 top-[5.6rem] w-48 bg-white shadow-lg py-2 z-50">
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 top-[9.2rem] w-48 bg-white shadow-lg py-2 z-50">
                     <span className="block px-4 py-2 text-gray-800 font-semibold">
                       {user.displayName}
                     </span>
