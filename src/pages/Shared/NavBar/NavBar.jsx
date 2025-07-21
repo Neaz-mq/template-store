@@ -243,7 +243,7 @@ const NavBar = () => {
                 )}
 
                 {dropdownOpen && (
-                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 top-[9.2rem] w-48 bg-white shadow-lg py-2 z-50">
+                  <div className="absolute 3xl:left-1/2 2xl:left-1/2 desktop:left-1/2 laptop:left-1/2 tablet:left-1/2 -left-6 -translate-x-1/2 mt-2 top-[9.2rem] w-48 bg-white shadow-lg py-2 z-50">
                     <span className="block px-4 py-2 text-gray-800 font-semibold">
                       {user.displayName}
                     </span>
