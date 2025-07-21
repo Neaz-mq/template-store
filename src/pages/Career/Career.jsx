@@ -78,23 +78,22 @@ const Career = () => {
   return (
 
     <div className='bg-white mt-20'>
-      <div className="container font-raleway 3xl:-mt-24 2xl:-mt-24 desktop:-mt-24 laptop:-mt-48 tablet:-mt-60 -mt-60">
+      <div className="container mx-auto font-raleway 3xl:-mt-24 2xl:-mt-24 desktop:-mt-24 laptop:-mt-48 tablet:-mt-60 -mt-60">
 
         <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block'>
           <h1 className="flex items-center justify-center 3xl:text-3xl 2xl:text-2xl desktop:text-2xl mb-36 font-medium text-[#282A37] 3xl:-mt-16 2xl:-mt-16 desktop:-mt-16 laptop:mt-44 tablet:mt-36">
           </h1>
         </div>
 
-        <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden mb-36'>
-        </div>
+        <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden mb-36'></div>
         <div className='-mt-28'>
-          <section className="ml-5 p-16 tablet:ml-14 w-[16rem] laptop:w-[53rem] tablet:w-[40rem] bg-[#F9F9F9] 3xl:p-40 2xl:p-32 2xl:pb-28 desktop:p-28 laptop:p-28 tablet:p-20 desktop:px-5 gap-5 grid 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[74.4rem] 3xl:ml-[14.5rem] 2xl:w-[63rem] 2xl:ml-[14.8rem] desktop:w-[67rem] tablet:mt-44   desktop:ml-[5.7rem] laptop:ml-[6rem]">
-            <img className='3xl:w-[16rem] 3xl:ml-[19rem] 2xl:w-[14rem] desktop:w-[12rem] laptop:w-[12rem] tablet:w-[12rem] tablet:ml-[9rem] desktop:ml-[25rem] laptop:ml-[13rem] 2xl:ml-[15rem] w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
+          <section className="ml-5 p-16 tablet:ml-14 w-[16rem] laptop:w-[53rem] tablet:w-[30rem] bg-[#F9F9F9] 3xl:p-40 2xl:p-32 2xl:pb-28 desktop:p-28 laptop:p-28 tablet:p-20 desktop:px-5 gap-5 grid 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[74.4rem] 3xl:ml-[14.5rem] 2xl:w-[63rem] 2xl:ml-[14.8rem] desktop:w-[67rem] tablet:mt-44   desktop:ml-[5.7rem] laptop:ml-[6rem] hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block">
+            <img className='3xl:w-[16rem] 3xl:ml-[19rem] 2xl:w-[14rem] desktop:w-[12rem] laptop:w-[12rem] tablet:w-[12rem] tablet:ml-[4rem] desktop:ml-[25rem] laptop:ml-[13rem] 2xl:ml-[15rem] w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
           </section>
         </div>
 
-        <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block'>
-          <div className="px-4 py-6 3xl:w-[76rem] 2xl:w-[62rem] desktop:w-[67rem] mx-auto -mt-20">
+        <div className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:hidden'>
+          <div className="px-4 py-6 3xl:w-[76rem] 2xl:w-[62rem] desktop:w-[67rem] laptop:w-[62rem] tablet:w-[30rem] mx-auto -mt-20  3xl:ml-56 2xl:ml-64 desktop:ml-24 laptop:ml-2">
             <h1 className="flex items-center justify-center 3xl:text-3xl 2xl:text-2xl desktop:text-2xl laptop:text-2xl mb-36 font-medium text-[#282A37] 3xl:mt-8 2xl:mt-6 desktop:mt-16 laptop:mt-36 tablet:mt-36">
               Want to establish a stable career :
               Opening Job
@@ -138,12 +137,12 @@ const Career = () => {
 
                     </tr>
                     {activeJob === index && (
-                      <tr className="bg-[#ffffff]">
+                      <tr className="bg-[#ffffff] ">
                         <td colSpan="5" className="py-4 px-6">
                           <div className="grid grid-cols-3 gap-10">
                             <div className="space-y-4">
                               <h4 className="font-semibold text-sm text-[#282A37]">Requirements:</h4>
-                              <ul className="list-disc ml-5 text-[14px] 3xl:w-60 2xl:w-60 desktop:w-60 laptop:w-60 tablet:w-32 text-[#282A37]">
+                              <ul className="list-disc ml-5 text-[14px] 3xl:w-60 2xl:w-44 desktop:w-44 laptop:w-44 tablet:w-32 text-[#282A37]">
                                 {job.requirements.map((req, i) => (
                                   <li key={i} className="mb-4">{req}</li>
                                 ))}
@@ -152,7 +151,7 @@ const Career = () => {
                             </div>
                             <div className="space-y-4">
                               <h4 className="font-semibold text-sm text-[#282A37]">Qualifications:</h4>
-                              <ul className="list-disc ml-5 text-[14px] 3xl:w-60 2xl:w-60 desktop:w-60 laptop:w-60 tablet:w-32 text-[#282A37]">
+                              <ul className="list-disc ml-5 text-[14px] 3xl:w-60 2xl:w-44 desktop:w-44 laptop:w-44 tablet:w-32 text-[#282A37]">
                                 {job.qualifications.map((req, i) => (
                                   <li key={i} className="mb-4">{req}</li>
                                 ))}
@@ -160,7 +159,7 @@ const Career = () => {
                             </div>
                             <div className="space-y-4">
                               <h4 className="font-semibold text-sm text-[#282A37]">Benefits:</h4>
-                              <ul className="list-disc ml-5 text-[14px] 3xl:w-60 2xl:w-60 desktop:w-60 laptop:w-60 tablet:w-32 text-[#282A37]">
+                              <ul className="list-disc ml-5 text-[14px] 3xl:w-60 2xl:w-44 desktop:w-44 laptop:w-44 tablet:w-32 text-[#282A37]">
                                 {job.benefits.map((benefit, i) => (
                                   <li key={i} className="mb-4">{benefit}</li>
                                 ))}
@@ -176,8 +175,11 @@ const Career = () => {
             </table>
           </div>
         </div>
-        <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden overflow-hidden -mt-24'>
-          <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-36 text-center'> Want to establish a stable career:
+        <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:block overflow-hidden -mt-2'>
+          <section className="ml-5 p-16  w-[16rem] mt-6 bg-[#F9F9F9] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden  ">
+            <img className=' w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
+          </section>
+          <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-12 text-center'> Want to establish a stable career:
             Opening Job</h1>
           <div className="px-4 py-12 mx-auto -mt-2">
             <table className="w-full bg-white">
@@ -242,8 +244,6 @@ const Career = () => {
                           {activeJob === index ? '-' : '+'}
                         </button>
                       </td>
-
-
                     </tr>
 
                     {/* Accordion Content */}

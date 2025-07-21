@@ -241,25 +241,25 @@ const ExclusiveTemplateDetails = () => {
                     <link rel="canonical" href="https://www.prographr.com/premium" />
                 </Helmet>
 
-                <div className="lg:ml-20 3xl:-mt-[1rem] 2xl:-mt-[1rem] desktop:-mt-[1rem] laptop:-mt-[1rem] tablet:-mt-[5rem] -mt-24 mb-16 overflow-hidden">
+                <div className="3xl:-mt-[1rem] 2xl:-mt-[1rem] desktop:-mt-[1rem] laptop:-mt-[1rem] tablet:-mt-[6rem] -mt-24 mb-16 overflow-hidden">
                     <div className="flex lg:flex-row flex-col gap-6 ml-2">
-                        <div className="w-[97%] 3xl:w-[45%] 2xl:w-[44%] desktop:w-[70%] laptop:w-[100%]">
-                            <h2 className="text-2xl text-[#282A37] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2  laptop:block tablet:mt-6 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 mt-2">
+                        <div className="w-[97%] 3xl:w-[45%] 2xl:w-[60%] desktop:w-[60%] laptop:w-[60%]">
+                            <h2 className="text-2xl text-[#282A37] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[5.7rem] 2xl:ml-[6.1rem] desktop:ml-[4.6rem] laptop:ml-[4.6rem] laptop:block tablet:mt-6 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-4 mt-2">
                                 Exclusive <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6  lg:pl-2 lg:pr-4 mt-4 3xl:ml-[13.6rem] 3xl:-mr-36 2xl:ml-[12.6rem] desktop:ml-2 desktop:-mr-10 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 tablet:mt-4 laptop:-ml-60">
+                            <div className="rounded-xl flex items-center justify-center pt-6  lg:pl-2 lg:pr-4 mt-4 3xl:ml-[1rem] 3xl:-mr-10 2xl:-ml-[9.6rem] 2xl:-mr-3 desktop:-ml-[5.6rem] desktop:-mr-3 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 tablet:mt-4 laptop:ml-[7.7rem] laptop:-mr-3">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
                                             src={selectedImage || image}
-                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] cursor-pointer"
+                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[270px] cursor-pointer"
                                             alt="Template"
                                             onClick={handleImageClick}
                                         />
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <div className="w-full flex items-center 3xl:ml-36 2xl:ml-36">
+                            <div className="w-full flex items-center 3xl:ml-[5.8rem] 2xl:ml-[6rem] desktop:ml-[4.7rem] laptop:ml-[4.7rem]  tablet:mt-6 3xl:mt-0 2xl:mt-0 desktop:mt-0 laptop:mt-0 mt-12">
                                 {template.picture?.length > thumbnailsToShow && startIndex > 0 && (
                                     <button onClick={handlePrevThumbnail} className="mr-2">
                                         <FaChevronLeft />
@@ -284,10 +284,10 @@ const ExclusiveTemplateDetails = () => {
                                 )}
                             </div>
                         </div>
-                        <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:ml-8 laptop:mt-44 3xl:w-[68%] 3xl:ml-48 2xl:w-[60%] desktop:w-[100%] laptop:w-[150%] tablet:w-[50%] laptop:-ml-36 2xl:ml-48" >
+                      
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:-ml-[10rem] laptop:mt-44 3xl:w-[50%] 3xl:-ml-16 2xl:w-[50%] desktop:w-[50%] laptop:w-[70%] tablet:w-[50%] laptop:ml-[3rem] 2xl:-ml-[16rem]" >
                                 <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                    } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
+                                    }  3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 3xl:w-[70%] 3xl:h-[42%] 2xl:w-[70%] 2xl:h-[45%] desktop:w-[70%] desktop:h-[48%] laptop:w-[70%] laptop:h-[60%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
                                     <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-medium">
 
@@ -308,21 +308,21 @@ const ExclusiveTemplateDetails = () => {
                                 </div>
                                 {/* Add to Cart button */}
 
-                                <div className="3xl:ml-[0.6rem] 3xl:mt-16 2xl:ml-[0rem] 2xl:mt-4 desktop:ml-[0.5rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-28 laptop:mt-4 tablet:mt-8 mt-6 ml-28">
-                                    <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] laptop:w-[20rem]  w-[17rem] tablet:w-[30rem] text-white font-bold rounded-lg hover:bg-blue-700">
+                                <div className="3xl:ml-[4.3rem] 3xl:mt-16 2xl:ml-[3.5rem] 2xl:mt-10 desktop:ml-[2.2rem] desktop:mt-4  laptop:ml-[1.8rem] tablet:ml-28 laptop:mt-6 tablet:mt-8 mt-6 ml-28">
+                                    <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[35.7rem] 2xl:w-[32.5rem] desktop:w-[27.1rem] laptop:w-[20rem]  w-[17rem] tablet:w-[30rem] text-white font-bold  hover:bg-blue-700">
                                         Add to Cart
                                     </button>
 
                                     <a href="/template">
-                                        <button className="3xl:w-[34rem] 2xl:w-[25rem] desktop:w-[32.3rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[17rem] rounded-lg hover:bg-gray-200 tablet:w-[30rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
+                                        <button className="3xl:w-[35.7rem] 2xl:w-[32.5rem] desktop:w-[27.1rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[17rem]  hover:bg-gray-200 tablet:w-[30rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-5">
                                             Check more items
                                         </button>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
+                   
+                    <div className="mt-20 flex lg:flex-row flex-col 3xl:gap-12 2xl:gap-12 xl:gap-24 laptop:gap-8 gap-12 3xl:ml-[5.8rem] 3xl:mr-[10rem] 2xl:ml-[6rem] 2xl:mr-[13rem] desktop:ml-[4.3rem] desktop:mr-[10rem] laptop:ml-[4.4rem] laptop:mr-[6rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Description</h3>
                             <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-raleway leading-relaxed">
@@ -410,28 +410,30 @@ const ExclusiveTemplateDetails = () => {
 
                             {/* Fixed Size Buttons */}
                             <button
-                                className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
+                                className="absolute top-4 right-4 text-white bg-red-600 w-7 h-7  text-sm flex items-center justify-center focus:outline-none"
                                 onClick={closeModal}
-                                style={{ zIndex: 10 }} // Ensure the close button is above other elements
+                                style={{ zIndex: 10 }}
                             >
                                 &times;
                             </button>
 
                             <button
-                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black w-7 h-7  text-sm flex items-center justify-center focus:outline-none"
                                 onClick={handlePreviousImage}
-                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                                style={{ zIndex: 10 }}
                             >
                                 &lt;
                             </button>
 
+
                             <button
-                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black w-7 h-7  text-sm flex items-center justify-center focus:outline-none"
                                 onClick={handleNextImage}
-                                style={{ zIndex: 10 }} // Ensure the button is above other elements
+                                style={{ zIndex: 10 }}
                             >
                                 &gt;
                             </button>
+
                         </div>
                     </div>
                 </div>

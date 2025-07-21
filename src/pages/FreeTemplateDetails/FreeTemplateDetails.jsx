@@ -177,7 +177,7 @@ const FreeTemplateDetails = () => {
     }
 
     return (
-        <div className="bg-[#ffffff] -mt-[4.5rem]">
+        <div className="bg-[#ffffff] 3xl:-mt-[1rem] 2xl:-mt-[1rem] desktop:-mt-[1.3rem] laptop:-mt-[1rem] tablet:-mt-[6rem] -mt-[6rem] overflow-hidden">
             <div className="container mx-auto">
                 <Helmet>
                     <title>Prographr | Free</title>
@@ -189,25 +189,25 @@ const FreeTemplateDetails = () => {
                     <link rel="canonical" href="https://www.prographr.com/premium" />
                 </Helmet>
 
-                <div className="lg:ml-20 mb-16 3xl:-mt-14 2xl:-mt-14 desktop:-mt-14 laptop:-mt-14 tablet:-mt-36">
+                <div className="lg:ml-20 mb-16 3xl:-mt-14 2xl:-mt-14 desktop:-mt-14 laptop:-mt-14 tablet:-mt-9">
                     <div className="md:mt-14 flex lg:flex-row flex-col gap-6 ml-2">
                         <div className="w-[97%] 3xl:w-[68%] 2xl:w-[44%]">
-                            <h2 className="text-2xl text-[#2F1C6A] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-[0.5rem] laptop:block -mt-20 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 tablet:-mt-0">
+                            <h2 className="text-2xl text-[#282A37] pb-5 md:pt-24 pt-14 font-medium font-raleway 3xl:ml-[0.5rem] 2xl:ml-[1rem] desktop:-ml-[0.4rem] laptop:-ml-[0.4rem] laptop:block tablet:mt-4 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0 mt-2 tablet:-ml-0">
                                 Free <strong>Graphics Template</strong>
                             </h2>
-                            <div className="rounded-xl flex items-center justify-center pt-6 pb-4 lg:pl-2 lg:pr-4 mt-4 3xl:ml-[8.4rem] 3xl:-mr-3 2xl:ml-[12rem] desktop:-ml-44 desktop:-mr-24 2xl:-mr-32 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 laptop:-ml-60">
+                            <div className="rounded-xl flex items-center justify-center pt-6  lg:pl-2 lg:pr-4 mt-4 3xl:-ml-[13rem] 3xl:-mr-0 2xl:ml-[5rem] 2xl:-mr-3 desktop:-ml-[12.6rem] desktop:-mr-2 3xl:-mt-7 2xl:-mt-7 desktop:-mt-7 laptop:-mt-7 tablet:mt-4 laptop:-ml-[4.2rem] laptop:-mr-2">
                                 <div className="flex items-center justify-between lg:gap-16 gap-10 lg:my-8 lg:-mx-20">
                                     <LazyLoad height={200} offset={100}>
                                         <img
                                             src={selectedImage || image}
-                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[200px] cursor-pointer"
+                                            className="3xl:max-h-[400px]  2xl:max-h-[370px] desktop:max-h-[340px] max-h-[200px] object-contain laptop:max-h-[270px] cursor-pointer"
                                             alt="Template"
                                             onClick={handleImageClick}
                                         />
                                     </LazyLoad>
                                 </div>
                             </div>
-                            <div className="w-full mt-6 flex flex-wrap gap-4 ml-2 lg:ml-0 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] desktop:ml-2 3xl:-mt-5 2xl:-mt-5 desktop:-mt-5 laptop:-mt-5">
+                            <div className="w-full mt-6 flex flex-wrap gap-4 -ml-0 3xl:ml-[0.3rem] 2xl:ml-[1rem] desktop:-ml-[0.4rem] laptop:-ml-[0.4rem] tablet:-ml-0 3xl:-mt-1 2xl:-mt-1 desktop:-mt-1 laptop:-mt-1 ">
                                 {picture.map((src, index) => (
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
@@ -222,10 +222,10 @@ const FreeTemplateDetails = () => {
                         </div>
 
                         <div>
-                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:-ml-28 laptop:mt-44 3xl:w-[90%] 3xl:-ml-7 2xl:w-[60%] desktop:w-[130%] laptop:w-[150%] laptop:-ml-36 2xl:ml-44" >
+                            <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[62%] tablet:ml-20 desktop:-ml-[4rem] laptop:mt-44 3xl:w-[85%] 3xl:-ml-[9rem] 3xl:mr-10 2xl:w-[75%] desktop:w-[97%] laptop:w-[98%] tablet:w-[50%] laptop:ml-[3rem] 2xl:ml-[5rem] " >
                                 <div
                                     className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
-                                        } rounded-[8px] 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 lg:w-[80%] lg:h-[42%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}
+                                        } 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 3xl:w-[85%] 2xl:w-[75%]  desktop:w-[97%] desktop:h-[48%] 2xl:h-[48%]  laptop:w-[98%] laptop:h-[48%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-[6rem] cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-6 pt-3">
@@ -241,12 +241,12 @@ const FreeTemplateDetails = () => {
                                 </div>
 
                                 {/* Add to Cart button */}
-                                <div className="3xl:ml-[1rem] 3xl:mt-16 2xl:-ml-[0.2rem] 2xl:mt-4 desktop:ml-[0.8rem] desktop:mt-4 laptop:ml-[2rem] tablet:ml-20 laptop:mt-4 tablet:mt-8 mt-6 ml-[5rem]">
+                                <div className="3xl:-ml-[0.7rem] 3xl:mt-16 2xl:ml-[1.6rem] 2xl:mt-9 desktop:-ml-[3.2rem] desktop:mt-4 laptop:-ml-[3.2rem] tablet:ml-[6rem] laptop:mt-6 tablet:mt-8 mt-6 ml-[6rem] ">
                                     {records && records.length > 0 ? (
                                         <div className="relative inline-block text-left">
                                             <button
                                                 onClick={toggleDropdown}
-                                                className="p-3 bg-[#4864EC] 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg hover:bg-blue-700 flex items-center justify-between"
+                                                className="p-3 bg-[#4864EC] 3xl:w-[32.5rem] 2xl:w-[31.5rem] desktop:w-[25.3rem] laptop:w-[25rem]  w-[14rem] tablet:w-[30rem] text-white font-bold  hover:bg-blue-700 flex items-center justify-between"
                                             >
                                                 {selectedFile || "Download Options"}
                                                 <span className="ml-2">&#x25BC;</span>
@@ -254,7 +254,7 @@ const FreeTemplateDetails = () => {
 
                                             {/* Dropdown Menu */}
                                             {isDropdownOpen && (
-                                                <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                                                <div className="absolute mt-2 w-full bg-white border border-gray-300  shadow-lg z-10">
                                                     {records.map((record, index) => (
                                                         <button
                                                             key={index}
@@ -269,7 +269,7 @@ const FreeTemplateDetails = () => {
                                         </div>
                                     ) : (
                                         <button
-                                            className="p-3 bg-gray-500 3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] laptop:w-[20rem] w-[14rem] tablet:w-[36rem] text-white font-bold rounded-lg cursor-not-allowed"
+                                            className="p-3 bg-gray-500 3xl:w-[32.2rem] 2xl:w-[31.5rem] desktop:w-[25.6rem] laptop:w-[25rem] w-[14rem] tablet:w-[30rem] text-white font-bold cursor-not-allowed"
                                             disabled
                                         >
                                             Download Unavailable
@@ -277,7 +277,7 @@ const FreeTemplateDetails = () => {
                                     )}
 
                                     <a href="/free">
-                                        <button className="3xl:w-[34.8rem] 2xl:w-[25rem] desktop:w-[33rem] p-3  laptop:w-[20rem] bg-gray-100 text-gray-600 font-bold w-[14rem] rounded-lg hover:bg-gray-200 tablet:w-[36rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-3 tablet:mt-3 mt-4 ml-8 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
+                                        <button className="3xl:w-[32.2rem] 2xl:w-[31.5rem] desktop:w-[25.6rem] p-3  laptop:w-[25rem] bg-gray-100 text-gray-600 font-bold w-[14rem] hover:bg-gray-200 tablet:w-[30rem] 3xl:mt-6 2xl:mt-5 desktop:mt-3 laptop:mt-5 tablet:mt-3 mt-4 ml-0 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 tablet:ml-0">
                                             Check more items
                                         </button>
                                     </a>
@@ -285,7 +285,7 @@ const FreeTemplateDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-20 flex lg:flex-row flex-col gap-12 3xl:ml-[9.3rem] 3xl:mr-[9rem] 2xl:ml-[9.3rem] 2xl:mr-[13rem]">
+                    <div className="mt-20 flex lg:flex-row flex-col 3xl:gap-12 2xl:gap-12 desktop:gap-16 laptop:gap-8 gap-12 3xl:ml-[0.2rem] 3xl:mr-[20rem] 2xl:ml-[1rem] 2xl:mr-[13rem] desktop:-ml-[0.4rem] desktop:mr-[15rem] laptop:-ml-[0.4rem] laptop:mr-[15rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
                             <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Description</h3>
                             <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-raleway leading-relaxed">
@@ -325,7 +325,7 @@ const FreeTemplateDetails = () => {
                     </div>
                     <div className="layout lg:py-20 py-12 mt-6">
                         <div className="flex items-center justify-between mb-10">
-                            <h1 className="text-base tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[9rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+                            <h1 className="text-base tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3  font-raleway 3xl:ml-[1rem] 2xl:ml-[1.8rem] desktop:ml-[0.4rem] laptop:ml-[0.4rem] font-medium">
                                 Top Selling <strong>Graphics Templates</strong>
                             </h1>
                             <button className="btn hidden mr-20 md:ml-4 ml-20 font-raleway text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
@@ -336,8 +336,7 @@ const FreeTemplateDetails = () => {
                             </button>
                             <a href="/template">
                                 <button
-
-                                    className="mr-2 3xl:mr-[rem] 2xl:mr-44 desktop:mr-4 font-raleway text-[#6e6d7a] capitalize font-semibold gap-4 p-3 pl-4 flex items-center">
+                                    className="mr-2 3xl:mr-[11rem] 2xl:mr-48 desktop:mr-[15rem] laptop:mr-[15rem] font-raleway text-[#6e6d7a] capitalize font-semibold gap-4 p-3 pl-4 flex items-center">
                                     <span className="mt-1 text-[13px] 3xl:text-[15px] 2xl:text-[15px] desktop:text-[15px] laptop:text-[15px] tablet:text-[15px]">Explore more Template</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                                         <path d="M1.5 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-.5z" />
@@ -345,7 +344,7 @@ const FreeTemplateDetails = () => {
                                     </svg>
                                 </button></a>
                         </div>
-                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-36 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-36 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
+                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:mr-20 3xl:ml-5 3xl:mr-48 3xl:gap-x-2 3xl:gap-y-4 2xl:ml-8 2xl:mr-52 2xl:gap-x-2 2xl:gap-y-4 desktop:ml-2 desktop:mr-64 desktop:gap-x-6 desktop:gap-y-4 laptop:ml-2 laptop:mr-64 laptop:gap-x-6 laptop:gap-y-4" data-aos="lg:fade-right" data-aos-duration="700">
                             {displayedTemplates.map(item => (
                                 <TemplateItem
                                     key={item._id}
@@ -382,23 +381,23 @@ const FreeTemplateDetails = () => {
                             {/* Fixed Size Buttons */}
 
                             <button
-                                className="absolute top-4 right-4 text-white bg-red-600 p-2 rounded-[5px] text-sm focus:outline-none"
+                                className="absolute top-4 right-4 text-white bg-red-600 w-7 h-7  text-sm flex items-center justify-center focus:outline-none"
                                 onClick={closeModal}
                                 style={{ zIndex: 10 }}
                             >
                                 &times;
                             </button>
 
-                            <button
-                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
+                             <button
+                                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black w-7 h-7  text-sm flex items-center justify-center focus:outline-none"
                                 onClick={handlePreviousImage}
                                 style={{ zIndex: 10 }}
                             >
                                 &lt;
                             </button>
 
-                            <button
-                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black p-2 rounded-[5px] text-sm focus:outline-none"
+                             <button
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black w-7 h-7  text-sm flex items-center justify-center focus:outline-none"
                                 onClick={handleNextImage}
                                 style={{ zIndex: 10 }}
                             >

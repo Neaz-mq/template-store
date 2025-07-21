@@ -48,9 +48,9 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
 
   return (
     <div className="container mx-auto font-raleway 3xl:-mt-16 2xl:-mt-16 desktop:-mt-16 laptop:-mt-20 tablet:mt-10 mt-10">
-      <div className="layout lg:py-2 py-14 mt-0 lg:mx-20">
+      <div className="layout lg:py-2 py-14 mt-0 3xl:mx-0 2xl:mx-0 desktop:mx-16 laptop:mx-16 tablet:mx-8 ">
         <header className="flex items-center justify-between mb-10">      
-          <h1 className="text-base tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[11.2rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+          <h1 className="text-base tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 laptop:ml-10 font-raleway 3xl:ml-[6.7rem] 2xl:ml-[6.7rem] desktop:ml-[1.5rem] font-medium">
           Top Selling <strong>Graphics Templates</strong>
                         </h1>
           <button className="btn hidden mr-2 lg:mr-4 font-raleway text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">
@@ -68,7 +68,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
           </button>
         </header>
         <section
-          className="grid grid-cols-1 mx-4 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-[11.5rem] 3xl:mr-36 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-40 2xl:mr-44 2xl:gap-x-4 2xl:gap-y-8 laptop:gap-x-2 laptop:gap-y-8"
+          className="grid grid-cols-1 mx-4 md:grid-cols-2 3xl:grid-cols-4 2xl:grid-cols-4 desktop:grid-cols-4 laptop:grid-cols-3 gap-x-4 gap-y-6 3xl:ml-[7rem] 3xl:mr-36 3xl:gap-x-6 3xl:gap-y-8 2xl:ml-[7rem] 2xl:mr-32 2xl:gap-x-6 desktop:gap-x-4 2xl:gap-y-8 laptop:gap-x-4 laptop:gap-y-8 laptop:ml-10 desktop:ml-6"
           data-aos="fade-up"
           data-aos-duration="700"
         >

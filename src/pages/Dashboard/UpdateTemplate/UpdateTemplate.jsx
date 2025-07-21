@@ -155,6 +155,7 @@ const UpdateTemplate = () => {
                                         Add Image
                                     </button>
                                 </div>
+                                
                                 {/* Preview Additional Images */}
                                 <div className="flex flex-wrap gap-4 p-4">
                                     {additionalImages.map((pic, index) => (

@@ -80,7 +80,7 @@ const UpdateExclusiveTemplate = () => {
     const handleAddAdditionalImage = () => {
         if (newAdditionalImageUrl.trim()) {
             setAdditionalImages([...additionalImages, newAdditionalImageUrl.trim()]);
-            setNewAdditionalImageUrl('');  // Clear the input field
+            setNewAdditionalImageUrl('');  
         }
     };
 
@@ -333,7 +333,6 @@ const UpdateExclusiveTemplate = () => {
                     </div>
 
                     {/* Submit Button */}
-
                     <div className="">
                         <button
                             type="submit"

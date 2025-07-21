@@ -239,9 +239,8 @@ const AddDeal = () => {
                                     className="w-full h-10 mx-2"
                                 />
                             </div>
-
-
                         </div>
+
                         <div className="bg-white w-full my-5 pb-10 rounded-lg mr-2 h-auto">
                             <div className="form-control w-full my-6 h-auto px-6">
                                 <label className="label">
@@ -264,6 +263,7 @@ const AddDeal = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
+
                             {/* Text Color */}
                             <div className="flex">
                                 <div className="form-control w-full my-6 h-auto px-6">
@@ -276,6 +276,7 @@ const AddDeal = () => {
                                         className="w-1/2 h-10"
                                     />
                                 </div>
+
                                 {/* sub Color */}
                                 <div className="form-control w-full my-6 h-auto px-6">
                                     <label className="label">
@@ -344,6 +345,7 @@ const AddDeal = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
+
                             {/* Text Color */}
                             <div className="flex">
                                 <div className="form-control w-full my-6 h-auto px-6">
@@ -356,6 +358,7 @@ const AddDeal = () => {
                                         className="w-1/2 h-10"
                                     />
                                 </div>
+                                
                                 {/* sub Color */}
                                 <div className="form-control w-full my-6 h-auto px-6">
                                     <label className="label">

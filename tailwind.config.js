@@ -10,19 +10,25 @@ export default {
         raleway: ['Raleway', 'sans-serif'],
       },
       screens: {
-        'sm': '320px',
-        'tablet': '640px',
-        'laptop': '1024px',
-        'desktop': '1280px',
+        sm: '320px',
+        tablet: '640px',
+        laptop: '1024px',
+        desktop: '1280px',
         '2xl': '1536px',
         '3xl': '1683px',
       },
-      container: {
+      container: {  
         center: true,
         padding: '1rem',
+        screens: {
+          sm: '320px',
+          tablet: '640px',     
+          laptop: '1024px',    // maps to `lg`
+          desktop: '1280px',  // maps to `xl`
+          '2xl': '1536px',
+          '3xl': '1683px',
+        },
       },
-
-
     },
   },
   plugins: [

@@ -67,7 +67,6 @@ const ManageExclusiveTemplates = () => {
     };
 
     return (
-
         <div className="px-2 md:px-6">
             <h2 className="text-xl md:text-3xl text-center font-bold mb-4 md:mb-10">Manage Exclusive Templates</h2>
             <div>

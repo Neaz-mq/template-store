@@ -98,7 +98,7 @@ const SignUp = () => {
                                         {...register("name", { required: true })}
                                         name="name"
                                         placeholder="First Name"
-                                        className="input input-bordered  inputField w-28 lg:w-44 rounded-lg outline-[#4864EC]"
+                                        className="input input-bordered  inputField w-28 lg:w-44 rounded-lg outline-[#4864EC]  3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                     />
                                     {errors.name && <span className="text-red-600 "> First Name is required</span>}
                                 </div>
@@ -108,7 +108,7 @@ const SignUp = () => {
                                         {...register("last", { required: true })}
                                         name="last"
                                         placeholder="Last Name"
-                                        className="input input-bordered inputField  w-28  lg:w-44  rounded-lg outline-[#4864EC]"
+                                        className="input input-bordered inputField  w-28  lg:w-44  rounded-lg outline-[#4864EC] 3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                     />
                                     {errors.last && <span className="text-red-600 "> Last Name is required</span>}
                                 </div>
@@ -119,7 +119,7 @@ const SignUp = () => {
                                     {...register("email", { required: true })}
                                     name="email"
                                     placeholder="Email"
-                                    className="input input-bordered inputField"
+                                    className="input input-bordered inputField 3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                 />
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
@@ -133,7 +133,7 @@ const SignUp = () => {
                                         pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                     })}
                                     placeholder="Password"
-                                    className="input input-bordered inputField pr-12"
+                                    className="input input-bordered inputField pr-12 3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                 />
                                 <button
                                     type="button"
@@ -155,7 +155,7 @@ const SignUp = () => {
                                         validate: value => value === password
                                     })}
                                     placeholder="Confirm password"
-                                    className="input input-bordered inputField pr-12"
+                                    className="input input-bordered inputField pr-12 3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                 />
                                 <button
                                     type="button"

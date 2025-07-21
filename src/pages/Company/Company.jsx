@@ -12,8 +12,8 @@ const Company = () => {
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
-    }, 50); // Delay for smoother effect
-  }, [location.pathname]); // Runs on page change
+    }, 50); 
+  }, [location.pathname]); 
   return (
     <div>
       <Helmet>

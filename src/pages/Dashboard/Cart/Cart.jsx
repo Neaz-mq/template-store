@@ -15,7 +15,7 @@ const Cart = () => {
     }, 0);
 
     const { user } = useAuth();
-
+    
     const handleBuyNow = async () => {
         if (totalPrice <= 0) {
             Swal.fire('Invalid Amount', 'Total price must be greater than zero.', 'error');

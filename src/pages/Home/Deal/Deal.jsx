@@ -51,20 +51,20 @@ const Deal = () => {
                         }}
                     >
                         {/* Main Content inside the container */}
-                        <div className="container mx-auto 3xl:px-60 2xl:px-60 desktop:px-24 laptop:px-24 tablet:px-14 overflow-x-hidden">
-                            <div className="flex flex-col lg:flex-row w-full 3xl:gap-12 2xl:gap-12 desktop:gap-8 laptop:gap-8">
+                        <div className="container mx-auto 3xl:px-16 2xl:px-20 desktop:px-14 laptop:px-16 tablet:px-14 overflow-x-hidden">
+                            <div className="flex flex-col lg:flex-row w-full 3xl:gap-32 2xl:gap-32 desktop:gap-24 laptop:gap-20">
                                 {/* Left Section: Description */}
-                                <div className="w-full lg:w-[40%] p-4 flex flex-col items-start justify-center lg:justify-start 3xl:mt-40 2xl:mt-52 desktop:mt-60 laptop:mt-32 tablet:mt-16 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 mt-12">
+                                <div className="w-full lg:w-[40%] p-4 flex flex-col items-start justify-center lg:justify-start 3xl:mt-52 2xl:mt-56 desktop:mt-56 laptop:mt-32 tablet:mt-16 3xl:ml-8 2xl:ml-8 desktop:ml-8 laptop:ml-8 mt-12">
                                     {currentContent === 0 ? (
                                         <>
                                             <h1
-                                                className="text-3xl 3xl:text-5xl 2xl:text-5xl desktop:text-5xl laptop:text-4xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[60px] desktop:leading-[60px] "
+                                                className="text-2xl 3xl:text-5xl 2xl:text-4xl desktop:text-4xl laptop:text-3xl  font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[50px] desktop:leading-[50px] "
                                                 style={{ color: deal.text }}
                                             >
                                                 {deal.description || "A design that matches your business here"}
                                             </h1>
                                             <p
-                                                className="text-sm lg:text-base leading-relaxed text-start mb-6 font-medium font-raleway"
+                                                className="text-xs 3xl:text-base 2xl:text-base desktop:text-[15px] laptop:text-[14px] leading-relaxed text-start mb-6 font-medium font-raleway"
                                                 style={{ color: deal.sub }}
                                             >
                                                 {deal.details}
@@ -73,13 +73,13 @@ const Deal = () => {
                                     ) : currentContent === 1 ? (
                                         <>
                                             <h1
-                                                className="text-3xl 3xl:text-5xl 2xl:text-5xl desktop:text-5xl laptop:text-4xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[60px] desktop:leading-[60px] "
+                                                className="text-2xl 3xl:text-5xl 2xl:text-4xl desktop:text-4xl laptop:text-3xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[50px] desktop:leading-[50px] "
                                                 style={{ color: deal.color }}
                                             >
                                                 {deal.paragraph}
                                             </h1>
                                             <p
-                                                className="text-sm lg:text-base leading-relaxed text-start mb-6 font-medium font-raleway"
+                                                className="text-xs 3xl:text-base 2xl:text-base desktop:text-[15px] laptop:text-[14px] leading-relaxed text-start mb-6 font-medium font-raleway"
                                                 style={{ color: deal.variant }}
                                             >
                                                 {deal.summary}
@@ -88,13 +88,13 @@ const Deal = () => {
                                     ) : currentContent === 2 ? (
                                         <>
                                             <h1
-                                                className="text-3xl 3xl:text-5xl 2xl:text-5xl desktop:text-5xl laptop:text-4xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[60px] desktop:leading-[60px]"
+                                                className="text-2xl 3xl:text-5xl 2xl:text-4xl desktop:text-4xl laptop:text-4xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[50px] desktop:leading-[50px]"
                                                 style={{ color: deal.shade }}
                                             >
                                                 {deal.explanation}
                                             </h1>
                                             <p
-                                                className="text-sm lg:text-base leading-relaxed text-start mb-6 font-medium font-raleway"
+                                                className="text-xs 3xl:text-base 2xl:text-base desktop:text-[15px] laptop:text-[14px] leading-relaxed text-start mb-6 font-medium font-raleway"
                                                 style={{ color: deal.shade }}
                                             >
                                                 {deal.feature}
@@ -103,13 +103,13 @@ const Deal = () => {
                                     ) : (
                                         <>
                                             <h1
-                                                className="text-3xl 3xl:text-5xl 2xl:text-5xl desktop:text-5xl laptop:text-4xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[60px] desktop:leading-[60px]"
+                                                className="text-2xl 3xl:text-5xl 2xl:text-4xl desktop:text-4xl laptop:text-3xl font-extrabold text-start mb-4 font-raleway 3xl:leading-[60px] 2xl:leading-[50px] desktop:leading-[50px]"
                                                 style={{ color: deal.tone }}
                                             >
                                                 {deal.representation}
                                             </h1>
                                             <p
-                                                className="text-sm lg:text-base leading-relaxed text-start mb-6 font-medium font-raleway"
+                                                className="text-xs 3xl:text-base 2xl:text-base desktop:text-[15px] laptop:text-[14px] leading-relaxed text-start mb-6 font-medium font-raleway"
                                                 style={{ color: deal.variant }}
                                             >
                                                 {deal.describe}
@@ -120,7 +120,7 @@ const Deal = () => {
                                     {/* More Template Button */}
                                     <a href="/template">
                                         <button
-                                            className="px-6 py-3 bg-[#4864EC] text-white font-medium rounded-lg transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0 hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block mt-4"
+                                            className="3xl:px-6 3xl:py-3 2xl:px-6 2xl:py-3 desktop:px-6 desktop:py-3 laptop:px-6 laptop:py-3 tablet:px-5 tablet:py-2 px-3 py-2 bg-[#4864EC] text-white font-medium  transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0  "
                                         >
                                             More Template
                                         </button>
@@ -128,7 +128,7 @@ const Deal = () => {
                                 </div>
 
                                 {/* Right Section: Image */}
-                                <div className="w-full lg:w-[70%] relative flex justify-center items-center">
+                                <div className="w-full lg:w-[50%] relative flex justify-end items-end">
                                     <img
                                         src={
                                             currentContent === 0
@@ -140,7 +140,7 @@ const Deal = () => {
                                                         : deal.figure
                                         }
                                         alt={`Deal ${index + 1}`}
-                                        className="w-full max-w-[30rem] lg:max-w-[45rem] h-auto object-cover 3xl:-mt-14"
+                                        className="w-full max-w-[30rem] lg:max-w-[65rem] h-auto object-cover 3xl:-mt-14"
                                     />
                                 </div>
                             </div>

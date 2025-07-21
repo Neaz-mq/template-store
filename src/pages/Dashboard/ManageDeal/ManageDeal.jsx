@@ -88,6 +88,7 @@ const ManageDeal = () => {
                                             </button>
                                         </Link>
                                     </td>
+                                    
                                     <td>
                                         <button
                                             onClick={() => handleDeleteItem(item)}

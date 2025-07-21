@@ -35,7 +35,7 @@ const ExclusiveTemplate = ({ item }) => {
                                 {category}
                             </h3>
                         </div>
-                        <p className="absolute top-0 right-0 font-bold text-white px-3 py-1 bg-[#4864EC] 3xl:text-[14px] 2xl:text-[12px] desktop:text-[11px] laptop:text-[11px] tablet:text-[11px] text-[10px] mt-4">
+                        <p className="absolute top-0 right-0 font-bold  3xl:text-[14px] 2xl:text-[12px] desktop:text-[11px] laptop:text-[11px] tablet:text-[11px] text-[10px] mt-4">
                             ${price}
                         </p>
                     </div>

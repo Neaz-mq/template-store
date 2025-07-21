@@ -1,6 +1,7 @@
 import { MessageSquare } from "lucide-react";
 
 const NoConnectSelected = () => {
+  
   return (
     <div className="w-full min-h-screen flex flex-1 flex-col items-center justify-center p-16 bg-base-100/50">
       <div className="max-w-md text-center space-y-6">

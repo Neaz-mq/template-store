@@ -41,7 +41,7 @@ const UpdateFreeTemplate = () => {
             category: data.category,
             price: data.price,
             image: imageUrl,  // Use the main image URL
-            picture: additionalImages, // Use the additional image URLs
+            picture: additionalImages, 
             description: data.description,
             specifications: specificationsArray,
             product: productArray,
@@ -74,7 +74,7 @@ const UpdateFreeTemplate = () => {
     const handleAddAdditionalImage = () => {
         if (newAdditionalImageUrl.trim()) {
             setAdditionalImages([...additionalImages, newAdditionalImageUrl.trim()]);
-            setNewAdditionalImageUrl('');  // Clear the input field
+            setNewAdditionalImageUrl('');  
         }
     };
 
@@ -199,7 +199,6 @@ const UpdateFreeTemplate = () => {
                                     <option disabled value="default">Select a category</option>
                                     <option value="flyer">Flyer</option>
                                     <option value="brochure">Brochure</option>
-
                                 </select>
                             </div>
 
@@ -229,7 +228,6 @@ const UpdateFreeTemplate = () => {
                                     placeholder="Description"
                                 ></textarea>
                             </div>
-
                         </div>
 
                         {/* Descriptions, Specifications, Product Specifications, Files Included */}

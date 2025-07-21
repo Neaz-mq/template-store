@@ -20,8 +20,8 @@ const StatCard = ({ icon, title, value }) => (
 const AdminHome = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); // Default to current month
-    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
+    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1); 
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); 
 
     // Fetch all-time stats including visits count
     const { data: allTimeStats = {}, error: allTimeError, isLoading: isAllTimeLoading } = useQuery({

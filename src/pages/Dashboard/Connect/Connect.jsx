@@ -23,7 +23,6 @@ const Connect = () => {
           { _id: "6638787bbaf1ee1c2e46daff", email: "neazmorshed.cse@gmail.com", name: "Neaz Morshed" },
           { _id: "66448b1b2464b7e471cb018f", name: "Prographr", email: "prographr@gmail.com", role: "admin" },
         ];
-
         setUsers(data);
       } catch (err) {
         console.error("Error fetching users:", err.response || err.message || err);
@@ -32,7 +31,6 @@ const Connect = () => {
         setLoading(false);
       }
     };
-
     fetchUsers();
   }, []);
 
@@ -41,7 +39,7 @@ const Connect = () => {
     : users;
 
   const handleUserClick = (user) => {
-    setSelectedUser(user);
+  setSelectedUser(user);
 
     // Fetch or load chat history dynamically (mocked here)
     setMessages([
