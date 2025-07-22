@@ -56,7 +56,7 @@ const NavBar = () => {
           <div className="navbar-start">
             {/* Dropdown for mobile */}
             <div className="dropdown">
-              <div tabIndex={0} className="3xl:hidden text-[#ffffff] 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:-mt-4 -mt-14">
+              <div tabIndex={0} className="3xl:hidden text-[#282A37] 2xl:hidden desktop:hidden laptop:ml-20 laptop:block laptop:-mt-4 -mt-14">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4"
@@ -74,11 +74,11 @@ const NavBar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm cursor-pointer dropdown-content -mt-12 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-4 font-raleway font-semibold text-[15px]"
+                className="menu menu-sm cursor-pointer dropdown-content -mt-11 z-[1] p-8 leading-8 shadow bg-base-100 w-52 text-center -ml-4 font-raleway font-semibold text-[15px]"
               >
                 <Link to="/" className="text-xl mt-5 ml-4 mr-1 mb-8">
                   <img
-                    src="/Logo_Prographr_Color.svg"
+                    src="/Logo_Prographr_Black.svg"
                     alt="Logo"
                   />
                 </Link>
@@ -164,7 +164,7 @@ const NavBar = () => {
               {/* Mobile / Tablet Logo */}
               <img
                 className="block laptop:hidden tablet:w-32 w-24 h-auto"
-                src="/Logo_Prographr_Semi Color.svg"
+                src="/Logo_Prographr_Black.svg"
                 alt="Logo"
               />
 

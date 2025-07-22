@@ -43,13 +43,13 @@ const ExclusiveTemplates = ({ selectedCategory, searchQuery }) => {
             <div className="container mx-auto 3xl:pt-5 2xl:pt-5 desktop:pt-5 laptop:pt-5 tablet:pt-5 pt-0 -mt-10 3xl:-mt-36 2xl:-mt-36 desktop:-mt-44 laptop:-mt-36 tablet:-mt-16">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
-                        <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[1rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+                        <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[1rem] 2xl:ml-[1.2rem] desktop:ml-[0.2rem] font-medium">
                             Exclusive <strong>Templates</strong>
                         </h1>
 
                     </header>
                     <main className="layout lg:-mt-10 py-12 -mt-16 lg:mx-20">
-                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 laptop:grid-cols-2 3xl:grid-cols-4 2xl:grid-cols-4 desktop:grid-cols-4 gap-x-4 gap-y-6 3xl:-ml-[4rem] 3xl:mr-16 3xl:gap-x-6 3xl:gap-y-8 2xl:ml-[5.7rem] 2xl:mr-24 2xl:gap-x-4 2xl:gap-y-8 desktop:-ml-12 desktop:-mr-16 laptop:-ml-12 laptop:-mr-16"
+                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 laptop:grid-cols-2 3xl:grid-cols-4 2xl:grid-cols-4 desktop:grid-cols-4 gap-x-4 gap-y-6 3xl:-ml-[4rem] 3xl:mr-16 3xl:gap-x-6 3xl:gap-y-8 2xl:-ml-[3.8rem] 2xl:mr-24 2xl:gap-x-4 2xl:gap-y-8 desktop:-ml-[4.8rem] desktop:-mr-16 laptop:-ml-[3.6rem] laptop:-mr-16"
                             data-aos="fade-up"
                             data-aos-duration="1000"
                             data-aos-easing="ease-in-out"

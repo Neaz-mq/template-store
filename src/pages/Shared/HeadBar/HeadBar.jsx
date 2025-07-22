@@ -1,6 +1,6 @@
 const HeadBar = () => {
   return (
-    <div className="w-full bg-[#282A37] h-12"> 
+    <div className="w-full bg-[#282A37] 3xl:h-12 2xl:h-12 desktop:h-12 laptop:h-12 tablet:h-16 "> 
       <div className="w-full overflow-hidden">
         <div className="flex justify-center">
           <div className="w-full">
