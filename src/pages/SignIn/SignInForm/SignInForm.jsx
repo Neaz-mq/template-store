@@ -46,12 +46,12 @@ const SignInForm = () => {
 
                 <div className="flex items-center justify-center container">
 
-                    <form onSubmit={handleLogin} className="lg:w-fit  mt-10 3xl:mt-[17rem] bg-[#F9F9F9] text-center px-10 py-6  rounded-[30px] container mb-28  font-roboto    ">
+                    <form onSubmit={handleLogin} className="lg:w-fit  mt-10 3xl:mt-[17rem] bg-[#F9F9F9] text-center px-10 py-6  rounded-[30px] container mb-28      ">
                         <h3 className="text-xl font-medium text-slate-600 mb-6 mt-6  ">Sign In</h3>
-                        <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-52 rounded-lg py-2.5 input bg-[#ffffff]" placeholder="Email" name="email" type="email" />
+                        <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-52  py-2.5 input bg-[#ffffff]" placeholder="Email" name="email" type="email" />
                         <br />
                         <div className="relative">
-                            <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-52 rounded-lg py-2.5 input mt-4 bg-[#ffffff]" placeholder="Password" type={inputType} name="password" />
+                            <input className="3xl:w-96 2xl:w-96 desktop:w-96 laptop:w-96 tablet:w-96 w-52  py-2.5 input mt-4 bg-[#ffffff]" placeholder="Password" type={inputType} name="password" />
                             <span className="absolute inset-y-0 right-0 pr-3 flex items-center mt-4  tablet:mr-36 3xl:mr-0 2xl:mr-0 desktop:mr-0 laptop:mr-0 mr-7 ">
                                 {passwordVisible ? (
                                     <FaEye onClick={togglePasswordVisibility} className="text-gray-400 cursor-pointer" />
@@ -61,7 +61,7 @@ const SignInForm = () => {
                             </span>
                         </div>
 
-                        <button className="btn bg-[#4864EC] capitalize text-white rounded-full gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full w-52 tablet:w-96 mt-6 py-3 shadow-none font-medium hover:bg-[#4864EC]">
+                        <button className="btn bg-[#282A37] capitalize text-white  gap-4 3xl:w-full 2xl:w-full desktop:w-full laptop:w-full w-52 tablet:w-96 mt-6 py-3 shadow-none font-medium hover:bg-[#383a4b]">
                             <span className="-mt-1">Sign in</span>
                             <svg className="hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>

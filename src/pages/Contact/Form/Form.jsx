@@ -46,7 +46,7 @@ const Form = () => {
   };
 
   return (
-    <div className="font-raleway min-h-screen bg-gray-100 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5 laptop:-mt-4 tablet:-mt-24 -mt-24">
+    <div className="font-raleway min-h-screen bg-[#F9F9F9] 3xl:-mt-4 2xl:-mt-4 desktop:-mt-5 laptop:-mt-4 tablet:-mt-24 -mt-24">
       <div className="flex flex-col items-center justify-center px-4 py-12">
         <section className="text-center mt-10 md:mt-16 lg:mt-20">
           <h1 className="text-2xl md:text-4xl font-bold text-slate-800">
@@ -62,25 +62,25 @@ const Form = () => {
           className="w-full max-w-lg mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           <input
-            className="bg-white py-3 px-4 rounded-lg shadow-md outline-[#7868E3] w-full"
+            className="bg-white py-3 px-4   outline-[#282A37] w-full"
             placeholder="Full Name"
             type="text"
             name="from_name"
           />
           <input
-            className="bg-white py-3 px-4 rounded-lg shadow-md outline-[#7868E3] w-full"
+            className="bg-white py-3 px-4   outline-[#282A37] w-full"
             placeholder="Email"
             type="email"
             name="from_email"
           />
           <textarea
-            className="col-span-1 md:col-span-2 bg-white py-3 px-4 rounded-lg shadow-md outline-[#7868E3] h-36 resize-none"
+            className="col-span-1 md:col-span-2 bg-white py-3 px-4   outline-[#282A37] h-36 resize-none"
             placeholder="Message"
             name="message"
           />
           <button
             type="submit"
-            className="col-span-1 md:col-span-2 bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-all"
+            className="col-span-1 md:col-span-2 bg-[#282A37] text-white py-3 px-6   hover:bg-[#33364a] transition-all"
           >
             Send Message
           </button>
@@ -88,7 +88,7 @@ const Form = () => {
             href="https://wa.me/+8801303660481"
             target="_blank"
             rel="noopener noreferrer"
-            className="col-span-1 md:col-span-2 flex items-center justify-center py-3 px-6 rounded-lg shadow-md text-green-600 border border-gray-300 hover:bg-green-100 transition-all"
+            className="col-span-1 md:col-span-2 flex items-center justify-center py-3 px-6  shadow-md text-green-600 border border-[#282A37] hover:bg-[#36394b] transition-all"
           >
             <svg
               stroke="currentColor"

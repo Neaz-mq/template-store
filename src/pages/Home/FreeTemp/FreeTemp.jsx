@@ -49,12 +49,12 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
              2xl:-mt-36 desktop:-mt-44 laptop:-mt-36 tablet:-mt-16">
                 <div className="layout lg:py-8 py-14 mt-24 lg:mx-20">
                     <header className="flex items-center justify-between mb-10">
-                        <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[10.6rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
+                        <h1 className="text-lg tablet:text-lg laptop:text-lg 3xl:text-2xl 2xl:text-2xl desktop:text-xl text-[#282A37] ml-3 lg:ml-6 font-raleway 3xl:ml-[1rem] 2xl:ml-[10.6rem] desktop:ml-[2rem] font-medium">
                             Free <strong>Templates</strong>
                         </h1>
                     </header>
                     <main className="layout lg:-mt-10 py-12 -mt-16 lg:mx-20">
-                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 laptop:grid-cols-2 3xl:grid-cols-4 2xl:grid-cols-4 desktop:grid-cols-4 gap-x-4 gap-y-6 3xl:ml-[5.7rem] 3xl:mr-16 3xl:gap-x-4 3xl:gap-y-8 2xl:ml-[5.7rem] 2xl:mr-24 2xl:gap-x-4 2xl:gap-y-8 desktop:-ml-12 desktop:-mr-16 laptop:-ml-12 laptop:-mr-16"
+                        <div className="grid grid-cols-1 mx-4 md:grid-cols-2 laptop:grid-cols-2 3xl:grid-cols-4 2xl:grid-cols-4 desktop:grid-cols-4 gap-x-4 gap-y-6 3xl:-ml-[4rem] 3xl:mr-16 3xl:gap-x-6 3xl:gap-y-8 2xl:ml-[5.7rem] 2xl:mr-24 2xl:gap-x-4 2xl:gap-y-8 desktop:-ml-12 desktop:-mr-16 laptop:-ml-12 laptop:-mr-16"
                             data-aos="fade-up"
                             data-aos-duration="1000"
                             data-aos-easing="ease-in-out"
@@ -68,7 +68,7 @@ const FreeTemp = ({ selectedCategory, searchQuery }) => {
             </div>
             <div className="flex justify-center">
                 <div className="mt-16 mb-10 lg:mb-0">
-                    <button className="btn font-raleway mr-2 lg:mr-4 text-gray-600 bg-transparent capitalize   font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700 rounded-[0px]" onClick={handleViewMore}>
+                    <button className="btn font-raleway mr-2 lg:mr-4 text-gray-600 bg-transparent capitalize   font-semibold gap-4 shadow-none pt-1 pl-4 border-[#282A37] rounded-[0px]" onClick={handleViewMore}>
                         <span className="-mt-1">{showAll ? "Show Less" : "View More Free Items"}</span>
                     </button>
                 </div>

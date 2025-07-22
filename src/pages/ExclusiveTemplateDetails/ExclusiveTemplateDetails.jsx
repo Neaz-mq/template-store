@@ -270,7 +270,7 @@ const ExclusiveTemplateDetails = () => {
                                         <LazyLoad key={index} height={75} offset={100}>
                                             <img
                                                 src={src}
-                                                className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${template.picture.indexOf(src) === selectedIndex ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
+                                                className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${template.picture.indexOf(src) === selectedIndex ? 'bg-[#282A37]' : 'bg-slate-50 hover:bg-[#3b3e53]'}`}
                                                 alt="Template Thumbnail"
                                                 onClick={() => handleThumbnailClick(src, template.picture.indexOf(src))}
                                             />
@@ -286,7 +286,7 @@ const ExclusiveTemplateDetails = () => {
                         </div>
                       
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[60%] tablet:ml-20 desktop:-ml-[10rem] laptop:mt-44 3xl:w-[50%] 3xl:-ml-16 2xl:w-[50%] desktop:w-[50%] laptop:w-[70%] tablet:w-[50%] laptop:ml-[3rem] 2xl:-ml-[16rem]" >
-                                <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                <div className={`border ${selectedTemplate === "templateCustom" ? "border-[#282A37]" : "border-gray-400"
                                     }  3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 3xl:w-[70%] 3xl:h-[42%] 2xl:w-[70%] 2xl:h-[45%] desktop:w-[70%] desktop:h-[48%] laptop:w-[70%] laptop:h-[60%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-28 cursor-pointer`}>
                                     <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-medium">
@@ -309,7 +309,7 @@ const ExclusiveTemplateDetails = () => {
                                 {/* Add to Cart button */}
 
                                 <div className="3xl:ml-[4.3rem] 3xl:mt-16 2xl:ml-[3.5rem] 2xl:mt-10 desktop:ml-[2.2rem] desktop:mt-4  laptop:ml-[1.8rem] tablet:ml-28 laptop:mt-6 tablet:mt-8 mt-6 ml-28">
-                                    <button onClick={handleAddToCart} className="p-3 bg-[#4864EC] 3xl:w-[35.7rem] 2xl:w-[32.5rem] desktop:w-[27.1rem] laptop:w-[20rem]  w-[17rem] tablet:w-[30rem] text-white font-bold  hover:bg-blue-700">
+                                    <button onClick={handleAddToCart} className="p-3 bg-[#282A37] 3xl:w-[35.7rem] 2xl:w-[32.5rem] desktop:w-[27.1rem] laptop:w-[20rem]  w-[17rem] tablet:w-[30rem] text-white font-bold  hover:bg-[#3d4056]">
                                         Add to Cart
                                     </button>
 
@@ -324,13 +324,13 @@ const ExclusiveTemplateDetails = () => {
                    
                     <div className="mt-20 flex lg:flex-row flex-col 3xl:gap-12 2xl:gap-12 xl:gap-24 laptop:gap-8 gap-12 3xl:ml-[5.8rem] 3xl:mr-[10rem] 2xl:ml-[6rem] 2xl:mr-[13rem] desktop:ml-[4.3rem] desktop:mr-[10rem] laptop:ml-[4.4rem] laptop:mr-[6rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Description</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium font-raleway">Description</h3>
                             <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-raleway leading-relaxed">
                                 {description}
                             </p>
                         </div>
                         <div className="flex-1 lg:mb-8 lg:-mr-16 ml-3 lg:ml-2">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium mb-2 font-raleway">Item Specifications</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium mb-2 font-raleway">Item Specifications</h3>
                             <ul className="text-gray-500 mt-1 font-raleway leading-6 list-disc ml-5">
                                 {specifications.map((spec, index) => (
                                     <li key={index} className="mb-2">
@@ -341,7 +341,7 @@ const ExclusiveTemplateDetails = () => {
                         </div>
 
                         <div className="flex-1 lg:mb-8 lg:ml-14 lg:-mr-2 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Product Specs</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium font-raleway">Product Specs</h3>
                             <ul className="text-gray-500 mt-2 font-raleway leading-8 list-disc ml-5">
                                 {product.map((spec, index) => (
                                     <li key={index}>
@@ -351,7 +351,7 @@ const ExclusiveTemplateDetails = () => {
                             </ul>
                         </div>
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Documents Included</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium font-raleway">Documents Included</h3>
                             <div className="mt-2">
                                 {documents.map((document, index) => (
                                     <p key={index} className="text-gray-500 mt-2 font-raleway leading-relaxed">
@@ -364,7 +364,7 @@ const ExclusiveTemplateDetails = () => {
 
                     {/* <div className="layout lg:py-20 py-12 mt-6">
                         <div className="flex items-center justify-between mb-10">
-                            <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#2F1C6A] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
+                            <h2 className="lg:text-4xl text-xl lg:-mt-8 text-[#282A37] ml-3 lg:ml-4 font-medium font-raleway 3xl:ml-[9.3rem] 2xl:ml-[9.3rem] laptop:block">
                                 Free <strong>Graphics Templates</strong>
                             </h2>
                             <button className="btn hidden mr-20 md:ml-4 ml-20 font-raleway text-[#47435d] bg-transparent capitalize hover:bg-primary/10 rounded-full font-semibold gap-4 shadow-none p-3 pl-4 border-slate-700">

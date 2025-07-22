@@ -15,14 +15,14 @@ const About = () => {
                                 <div className="relative w-[21rem] h-[21rem] 3xl:h-[21rem] 2xl:h-[21rem] desktop:h-[21rem] laptop:h-[21rem] 3xl:w-[29rem] 2xl:w-[29rem] desktop:w-[26rem] laptop:w-[20rem] tablet:w-[22rem] tablet:h-[21rem] 3xl:-ml-2">
                                     <LazyLoad height={200} offset={100}>
                                         <img
-                                            className='3xl:w-[29rem] 2xl:w-[29rem] desktop:w-[26rem] laptop:w-[20rem] h-[21rem] bg-[#257aa8a0] object-cover mix-blend-multiply '
+                                            className='3xl:w-[29rem] 2xl:w-[29rem] desktop:w-[26rem] laptop:w-[20rem] h-[21rem] bg-[#282A37] object-cover mix-blend-multiply '
                                             src="https://res.cloudinary.com/dzi3u164c/image/upload/v1726114976/prographr-team_erlkev.jpg"
                                             alt="Prographr team"
                                         />
                                     </LazyLoad>
 
                                     {/* Blue Overlay */}
-                                    <div className="absolute inset-0 bg-[#4864EC] opacity-60"></div>
+                                    <div className="absolute inset-0 bg-[#282A37] opacity-60"></div>
 
                                     {/* Bottom-Right Quarter Circle Shape */}
                                     <div className="absolute bottom-0 right-2 3xl:left-[20.1rem] 2xl:left-[20.1rem] desktop:left-[17.1rem] laptop:left-[11.1rem] tablet:left-[13.1rem] left-[7.6rem] w-[8.9rem] h-[9.7rem] bg-white rounded-br-[100%]"></div>

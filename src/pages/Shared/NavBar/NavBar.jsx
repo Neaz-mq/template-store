@@ -50,7 +50,7 @@ const NavBar = () => {
 
 
   return (
-    <div className="bg-[#2f3243ec] font-raleway">
+    <div className="bg-white font-raleway">
       <div className="container mx-auto relative">
         <div className="navbar -ml-2">
           <div className="navbar-start">
@@ -86,21 +86,21 @@ const NavBar = () => {
                 <Link
                   to="/template"
                   onClick={() => handleSelect('template')}
-                  className={` mb-3 mt-4 font-raleway ${selected === 'template' ? 'text-[#98a9ff]' : ''}`}
+                  className={` mb-3 mt-4 font-raleway ${selected === 'template' ? 'text-[#282A37]' : ''}`}
                 >
                   Template
                 </Link>
                 <Link
                   to="/company"
                   onClick={() => handleSelect('company')}
-                  className={` mb-3 font-raleway ${selected === 'company' ? 'text-[#98a9ff]' : ''}`}
+                  className={` mb-3 font-raleway ${selected === 'company' ? 'text-[#282A37]' : ''}`}
                 >
                   About Us
                 </Link>
                 <Link
                   to="/contact"
                   onClick={() => handleSelect('contact')}
-                  className={` mb-3 font-raleway ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
+                  className={` mb-3 font-raleway ${selected === 'contact' ? 'text-[#282A37]' : ''}`}
                 >
                   Contact Us
                 </Link>
@@ -108,7 +108,7 @@ const NavBar = () => {
                 <Link
                   to="/career"
                   onClick={() => handleSelect('career')}
-                  className={` mb-3 font-raleway ${selected === 'career' ? 'text-[#98a9ff]' : ''}`}
+                  className={` mb-3 font-raleway ${selected === 'career' ? 'text-[#282A37]' : ''}`}
                 >
                   Career
                 </Link>
@@ -152,7 +152,7 @@ const NavBar = () => {
                   <a href="/">
                     <img
                       className="hidden 3xl:block 2xl:block desktop:block laptop:block w-36 h-auto 3xl:ml-[1rem] 2xl:ml-[1.5rem] 2xl:pt-1 desktop:ml-0 laptop:ml-[0.4rem] laptop:pt-2 "
-                      src="/Logo_Prographr_Semi Color.svg"
+                      src="/Logo_Prographr_Black.svg"
                       alt="Logo"
                     />
                   </a>
@@ -180,25 +180,25 @@ const NavBar = () => {
 
           {/* Center menu */}
           <div className="navbar-center hidden 3xl:flex 2xl:flex desktop:flex ml-16 -mr-14 3xl:-mr-6 3xl:ml-40 2xl:mr-4 2xl:ml-16  desktop:mr-4 desktop:-ml-10 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28">
-            <ul className="menu cursor-pointer menu-horizontal text-[#ffffff] flex-row gap-8 font-raleway font-medium 3xl:mr-52 3xl:-ml-40 3xl:gap-6 3xl:mt-[5.2rem] 2xl:mr-52 2xl:-ml-36 2xl:gap-0 desktop:gap-6 desktop:mt-[5.2rem] 2xl:mt-[5rem] desktop:mr-52 desktop:-ml-10 text-[15px] laptop:mr-1 laptop:ml-3 laptop:gap-1 laptop:mt-[5.5rem]">
+            <ul className="menu cursor-pointer menu-horizontal text-[#282A37] flex-row gap-8 font-raleway font-medium 3xl:mr-52 3xl:-ml-40 3xl:gap-6 3xl:mt-[5.2rem] 2xl:mr-52 2xl:-ml-36 2xl:gap-0 desktop:gap-6 desktop:mt-[5.2rem] 2xl:mt-[5rem] desktop:mr-52 desktop:-ml-10 text-[15px] laptop:mr-1 laptop:ml-3 laptop:gap-1 laptop:mt-[5.5rem]">
               <Link
                 to="/template"
                 onClick={() => handleSelect('template')}
-                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'template' ? 'text-[#98a9ff]' : ''}`}
+                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'template' ? 'text-[#282A37]' : ''}`}
               >
                 Template
               </Link>
               <Link
                 to="/company"
                 onClick={() => handleSelect('company')}
-                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'company' ? 'text-[#98a9ff]' : ''}`}
+                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'company' ? 'text-[#282A37]' : ''}`}
               >
                 About Us
               </Link>
               <Link
                 to="/contact"
                 onClick={() => handleSelect('contact')}
-                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'contact' ? 'text-[#98a9ff]' : ''}`}
+                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'contact' ? 'text-[#282A37]' : ''}`}
               >
                 Contact Us
               </Link>
@@ -206,7 +206,7 @@ const NavBar = () => {
               <Link
                 to="/career"
                 onClick={() => handleSelect('career')}
-                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'career' ? 'text-[#98a9ff]' : ''}`}
+                className={` mt-[1.3rem] 2xl:mr-8 3xl:mr-0 ${selected === 'career' ? 'text-[#282A37]' : ''}`}
               >
                 Career
               </Link>
@@ -271,7 +271,7 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center">
                 <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28 tablet:-mt-24 -mt-24 3xl:block 2xl:block desktop:block laptop:block tablet:block hidden ">
-                  <button className="capitalize font-raleway font-medium  text-[#ffffff] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7  px-5 3xl:-ml-2  desktop:-ml-20  laptop:-ml-28 ml-16   mr-2 3xl:py-5 2xl:py-5 desktop:py-5  py-[1.12rem] 3xl:mr-32  2xl:mr-36 2xl:-ml-10 2xl:mt-[6.3rem] desktop:mr-14 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:-mr-12 tablet:ml-40 whitespace-nowrap  ">
+                  <button className="capitalize font-raleway font-medium  text-[#282A37] gap-4 shadow-none 3xl:px-7 2xl:px-7 desktop:px-7  px-5 3xl:-ml-2  desktop:-ml-20  laptop:-ml-28 ml-16   mr-2 3xl:py-5 2xl:py-5 desktop:py-5  py-[1.12rem] 3xl:mr-32  2xl:mr-36 2xl:-ml-10 2xl:mt-[6.3rem] desktop:mr-14 desktop:mt-[6.4rem] laptop:mt-[6.4rem] tablet:-mr-12 tablet:ml-40 whitespace-nowrap  ">
                     <span className="-mt-2 3xl:text-[15px] 2xl:text-[15px] desktop:text-[15px] laptop:text-[15px] tablet:text-[15px] text-[13px] whitespace-nowrap ">Sign in</span>
                   </button>
                 </Link>
@@ -286,7 +286,7 @@ const NavBar = () => {
             {!user && (
               <div className="flex items-center">
                 <Link to="/sign-up" className='tablet:-mt-24 -mt-24 3xl:-mt-0 2xl:-mt-0 desktop:-mt-0 laptop:-mt-0'>
-                  <button className=" hover:bg-[#4864EC] bg-[#4864EC] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 laptop:px-3 tablet:px-3 3xl:py-2 2xl:py-2 desktop:py-2  laptop:py-2 tablet:py-2 px-2 py-1 -mr-4 -ml-10 3xl:mr-20 3xl:-ml-36  2xl:mr-[2rem] 2xl:-ml-[10rem]  desktop:mr-[4.5rem] desktop:-ml-20 laptop:mr-14 laptop:-ml-10 tablet:mr-0 tablet:ml-4 font-medium 3xl:-mt-36 2xl:-mt-36 desktop:-mt-36 laptop:-mt-36 whitespace-nowrap  ">
+                  <button className=" hover:bg-[#323441] bg-[#282A37] font-raleway rounded-none capitalize text-white gap-4 3xl:px-4 2xl:px-4 desktop:px-4 laptop:px-3 tablet:px-3 3xl:py-2 2xl:py-2 desktop:py-2  laptop:py-2 tablet:py-2 px-2 py-1 -mr-4 -ml-10 3xl:mr-20 3xl:-ml-36  2xl:mr-[2rem] 2xl:-ml-[10rem]  desktop:mr-[4.5rem] desktop:-ml-20 laptop:mr-14 laptop:-ml-10 tablet:mr-0 tablet:ml-4 font-medium 3xl:-mt-36 2xl:-mt-36 desktop:-mt-36 laptop:-mt-36 whitespace-nowrap  ">
                     <span className="-mt-2 3xl:text-[15px] 2xl:text-[15px] desktop:text-[15px] laptop:text-[15px] tablet:text-[15px] text-[13px] whitespace-nowrap">Sign Up</span>
                   </button>
                 </Link>

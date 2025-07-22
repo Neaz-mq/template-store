@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import Community from "../Community/Community";
+// import Community from "../Community/Community";
 import Template from "../Template/Template";
 import Exclusive from "../Exclusive/Exclusive";
 import Free from "../Free/Free";
@@ -51,9 +51,9 @@ const Home = () => {
         {/* <section id="package">
           <Package />
         </section> */}
-        <section id="community">
+        {/* <section id="community">
           <Community />
-        </section>
+        </section> */}
 
         <section id="promote">
           <Promote />

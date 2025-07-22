@@ -120,7 +120,7 @@ const Deal = () => {
                                     {/* More Template Button */}
                                     <a href="/template">
                                         <button
-                                            className="3xl:px-6 3xl:py-3 2xl:px-6 2xl:py-3 desktop:px-6 desktop:py-3 laptop:px-6 laptop:py-3 tablet:px-5 tablet:py-2 px-3 py-2 bg-[#4864EC] text-white font-medium  transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0  "
+                                            className="3xl:px-6 3xl:py-3 2xl:px-6 2xl:py-3 desktop:px-6 desktop:py-3 laptop:px-6 laptop:py-3 tablet:px-5 tablet:py-2 px-3 py-2 bg-[#282A37] text-white font-medium  transition duration-300 ease-in-out hover:bg-[#373a4d] focus:outline-none 3xl:ml-0 2xl:ml-0 desktop:ml-0 laptop:ml-0  "
                                         >
                                             More Template
                                         </button>

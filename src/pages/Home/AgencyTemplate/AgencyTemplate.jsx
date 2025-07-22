@@ -80,7 +80,7 @@ const AgencyTemplate = ({ selectedCategory, searchQuery }) => {
       <div className="flex justify-center">
         <div className="mt-16 mb-10 lg:mb-0">
           <button
-            className="btn font-raleway mr-2 lg:mr-4 text-gray-600 bg-transparent capitalize  font-semibold gap-4 shadow-none pt-1 pl-4 border-blue-700  rounded-none"
+            className="btn font-raleway mr-2 lg:mr-4 text-gray-600 bg-transparent capitalize  font-semibold gap-4 shadow-none pt-1 pl-4 border-[#282A37]  rounded-none"
             onClick={handleViewMore}
           >
             <span className="-mt-1">

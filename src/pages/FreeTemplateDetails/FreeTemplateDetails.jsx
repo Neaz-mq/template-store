@@ -212,7 +212,7 @@ const FreeTemplateDetails = () => {
                                     <LazyLoad key={index} height={75} offset={100}>
                                         <img
                                             src={src}
-                                            className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#4864EC]' : 'bg-slate-50 hover:bg-[#4864EC]'}`}
+                                            className={`w-[75px] h-[75px] object-contain p-3 cursor-pointer  ${selectedIndex === index ? 'bg-[#282A37]' : 'bg-slate-50 hover:bg-[#282b3f]'}`}
                                             alt="Template"
                                             onClick={() => handleThumbnailClick(src, index)}
                                         />
@@ -224,13 +224,13 @@ const FreeTemplateDetails = () => {
                         <div>
                             <div className="flex flex-col items-center 3xl:mt-44 2xl:mt-44 desktop:mt-44 mt-10 w-[62%] tablet:ml-20 desktop:-ml-[4rem] laptop:mt-44 3xl:w-[85%] 3xl:-ml-[9rem] 3xl:mr-10 2xl:w-[75%] desktop:w-[97%] laptop:w-[98%] tablet:w-[50%] laptop:ml-[3rem] 2xl:ml-[5rem] " >
                                 <div
-                                    className={`border ${selectedTemplate === "templateCustom" ? "border-[#4864EC]" : "border-gray-400"
+                                    className={`border ${selectedTemplate === "templateCustom" ? "border-[#282A37]" : "border-gray-400"
                                         } 3xl:p-8 2xl:p-8 desktop:p-8 laptop:p-6 tablet:p-6 p-6 3xl:w-[85%] 2xl:w-[75%]  desktop:w-[97%] desktop:h-[48%] 2xl:h-[48%]  laptop:w-[98%] laptop:h-[48%] w-[160%] h-[100%] lg:-ml-20 lg:mr-9 ml-[6rem] cursor-pointer`}
                                     onClick={() => handleTemplateChange("templateCustom")}
                                 >
                                     <div className="flex justify-between pb-6 pt-3">
                                         <div className="flex gap-3 font-bold">
-                                            <input className="radio radio-primary" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
+                                            <input className="radio radio-[#282A37]" type="radio" checked={selectedTemplate === "templateCustom"} readOnly />
                                             <h2 className="font-raleway">Template</h2>
                                         </div>
                                         <div className="font-raleway font-medium">${price}</div>
@@ -246,7 +246,7 @@ const FreeTemplateDetails = () => {
                                         <div className="relative inline-block text-left">
                                             <button
                                                 onClick={toggleDropdown}
-                                                className="p-3 bg-[#4864EC] 3xl:w-[32.5rem] 2xl:w-[31.5rem] desktop:w-[25.3rem] laptop:w-[25rem]  w-[14rem] tablet:w-[30rem] text-white font-bold  hover:bg-blue-700 flex items-center justify-between"
+                                                className="p-3 bg-[#282A37] 3xl:w-[32.5rem] 2xl:w-[31.5rem] desktop:w-[25.3rem] laptop:w-[25rem]  w-[14rem] tablet:w-[30rem] text-white font-bold  hover:bg-[#353748] flex items-center justify-between"
                                             >
                                                 {selectedFile || "Download Options"}
                                                 <span className="ml-2">&#x25BC;</span>
@@ -287,13 +287,13 @@ const FreeTemplateDetails = () => {
                     </div>
                     <div className="mt-20 flex lg:flex-row flex-col 3xl:gap-12 2xl:gap-12 desktop:gap-16 laptop:gap-8 gap-12 3xl:ml-[0.2rem] 3xl:mr-[20rem] 2xl:ml-[1rem] 2xl:mr-[13rem] desktop:-ml-[0.4rem] desktop:mr-[15rem] laptop:-ml-[0.4rem] laptop:mr-[15rem]">
                         <div className="flex-1 lg:mb-8 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Description</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium font-raleway">Description</h3>
                             <p className="text-gray-500 lg:w-[30rem] mt-2 overflow-hidden font-raleway leading-relaxed">
                                 {description}
                             </p>
                         </div>
                         <div className="flex-1 lg:mb-8 lg:-mr-16 ml-3 lg:ml-2">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium mb-2 font-raleway">Item Specifications</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium mb-2 font-raleway">Item Specifications</h3>
                             <ul className="text-gray-500 mt-1 font-raleway leading-6 list-disc ml-5">
                                 {specifications.map((spec, index) => (
                                     <li key={index} className="mb-2">
@@ -303,7 +303,7 @@ const FreeTemplateDetails = () => {
                             </ul>
                         </div>
                         <div className="flex-1 lg:mb-8 lg:ml-14 lg:-mr-2 ml-3">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Product Specs</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium font-raleway">Product Specs</h3>
                             <ul className="text-gray-500 mt-2 font-raleway leading-8 list-disc ml-5">
                                 {product.map((spec, index) => (
                                     <li key={index}>
@@ -313,7 +313,7 @@ const FreeTemplateDetails = () => {
                             </ul>
                         </div>
                         <div className="flex-1 lg:mr-1 ml-3 lg:ml-0">
-                            <h3 className="text-xl text-[#2F1C6A] font-medium font-raleway">Documents Included</h3>
+                            <h3 className="text-xl text-[#282A37] font-medium font-raleway">Documents Included</h3>
                             <div className="mt-2">
                                 {documents.map((document, index) => (
                                     <p key={index} className="text-gray-500 mt-2 font-raleway leading-relaxed">

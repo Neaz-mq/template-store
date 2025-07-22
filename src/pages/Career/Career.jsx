@@ -88,7 +88,7 @@ const Career = () => {
         <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden mb-36'></div>
         <div className='-mt-28'>
           <section className="ml-5 p-16 tablet:ml-14 w-[16rem] laptop:w-[53rem] tablet:w-[30rem] bg-[#F9F9F9] 3xl:p-40 2xl:p-32 2xl:pb-28 desktop:p-28 laptop:p-28 tablet:p-20 desktop:px-5 gap-5 grid 3xl:mb-40 2xl:mb-40 desktop:mb-40 3xl:w-[74.4rem] 3xl:ml-[14.5rem] 2xl:w-[63rem] 2xl:ml-[14.8rem] desktop:w-[67rem] tablet:mt-44   desktop:ml-[5.7rem] laptop:ml-[6rem] hidden 3xl:block 2xl:block desktop:block laptop:block tablet:block">
-            <img className='3xl:w-[16rem] 3xl:ml-[19rem] 2xl:w-[14rem] desktop:w-[12rem] laptop:w-[12rem] tablet:w-[12rem] tablet:ml-[4rem] desktop:ml-[25rem] laptop:ml-[13rem] 2xl:ml-[15rem] w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
+            <img className='3xl:w-[16rem] 3xl:ml-[19rem] 2xl:w-[14rem] desktop:w-[12rem] laptop:w-[12rem] tablet:w-[12rem] tablet:ml-[4rem] desktop:ml-[25rem] laptop:ml-[13rem] 2xl:ml-[15rem] w-24 ml-3' src="/Logo_Prographr_Black.svg" alt="" />
           </section>
         </div>
 
@@ -100,7 +100,7 @@ const Career = () => {
             </h1>
             <table className="min-w-full bg-white 3xl:overflow-hidden 2xl:overflow-hidden desktop:overflow-hidden laptop:overflow-hidden 3xl:-mt-10 2xl:-mt-10 desktop:-mt-6 laptop:-mt-16 tablet:-mt-16">
               <thead>
-                <tr className="bg-[#4864EC] text-white">
+                <tr className="bg-[#282A37] text-white">
                   <th className="py-4 px-6 text-left font-semibold text-[16px]">Job Title</th>
                   <th className="py-4 px-5 text-left font-semibold text-[16px]">Software Skills</th>
                   <th className="py-4 px-5 text-left font-semibold text-[16px]">Position</th>
@@ -177,7 +177,7 @@ const Career = () => {
         </div>
         <div className='block 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:block overflow-hidden -mt-2'>
           <section className="ml-5 p-16  w-[16rem] mt-6 bg-[#F9F9F9] 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden  ">
-            <img className=' w-24 ml-3' src="/Logo_Prographr_Color.svg" alt="" />
+            <img className=' w-24 ml-3' src="/Logo_Prographr_Black.svg" alt="" />
           </section>
           <h1 className='text-[#282A37] font-medium text-sm ml-5 leading-loose mt-12 text-center'> Want to establish a stable career:
             Opening Job</h1>

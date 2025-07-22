@@ -86,9 +86,9 @@ const SignUp = () => {
                 </Helmet>
             </div>
 
-            <div className='min-h-screen  bg-[#ffffff] 3xl:-mt-8 2xl:-mt-8 desktop:-mt-9 laptop:-mt-8 tablet:-mt-[7em] -mt-28 font-raleway'>
+            <div className='min-h-screen  bg-[#fbfbfb] 3xl:-mt-8 2xl:-mt-8 desktop:-mt-9 laptop:-mt-8 tablet:-mt-[7em] -mt-28 font-raleway'>
                 <div className=" flex items-center justify-center mt-4 container mx-auto">
-                    <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6 rounded-[30px] mt-10 lg:-ml-0 3xl:mt-[12rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem] tablet:mt-[5rem]">
+                    <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[450px] w-[20rem] min-h-[400px] bg-[#F9F9F9] text-center px-10 pb-16 pt-6  mt-10 lg:-ml-0 3xl:mt-[12rem] 2xl:mt-[10rem] desktop:mt-[5rem] laptop:mt-[2rem] tablet:mt-[5rem]">
                         <h3 className="text-xl font-medium font-raleway text-slate-800 mb-6 mt-4">Sign Up</h3>
                         <div className="flex flex-col gap-3 mb-3">
                             <div className="max-w-72 lg:max-w-[350px] flex gap-4">
@@ -98,7 +98,7 @@ const SignUp = () => {
                                         {...register("name", { required: true })}
                                         name="name"
                                         placeholder="First Name"
-                                        className="input input-bordered  inputField w-28 lg:w-44 rounded-lg outline-[#4864EC]  3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
+                                        className="input input-bordered  inputField w-28 lg:w-44  outline-[#4864EC]  3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                     />
                                     {errors.name && <span className="text-red-600 "> First Name is required</span>}
                                 </div>
@@ -108,7 +108,7 @@ const SignUp = () => {
                                         {...register("last", { required: true })}
                                         name="last"
                                         placeholder="Last Name"
-                                        className="input input-bordered inputField  w-28  lg:w-44  rounded-lg outline-[#4864EC] 3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
+                                        className="input input-bordered inputField  w-28  lg:w-44   outline-[#282A37] 3xl:text-[16px] 2xl:text-[16px] desktop:text-[16px] laptop:text-[16px] tablet:text-[14px] text-[13px]"
                                     />
                                     {errors.last && <span className="text-red-600 "> Last Name is required</span>}
                                 </div>
@@ -182,7 +182,7 @@ const SignUp = () => {
                         </div>
                         <div className="form-control -mt-5">
                             <button
-                                className="btn bg-[#4864EC] font-medium font-raleway hover:bg-[#4864EC] capitalize text-white rounded-full gap-4 w-full mt-8 py-3 shadow-none mb-4"
+                                className="btn bg-[#282A37] font-medium font-raleway hover:bg-[#292b3d] capitalize text-white  gap-4 w-full mt-8 py-3 shadow-none mb-4"
                                 type="submit"
                                 disabled={!termsChecked || !isValid}
                             >
@@ -199,7 +199,7 @@ const SignUp = () => {
 
                 {/* Google Sign-in Button */}
                 <div className='flex justify-center items-center -mt-24 3xl:-mt-24 '>
-                    <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black rounded-full gap-4 py-3 shadow-none font-medium font-raleway mb-24 w-[15rem]  ">
+                    <button onClick={handleGoogleSignIn} className="btn btn-google bg-[#EDEEF7] hover:bg-gray-100 lg:w-[23rem] capitalize text-black  gap-4 py-3 shadow-none font-medium font-raleway mb-24 w-[15rem]  ">
                         <FaGoogle className=" text-base
                             mr-2 text-red-600" />Sign up with Google
                         <svg className='hidden 3xl:block 2xl:block desktop:block laptop:block tablet:hidden' stroke="currentColor" fill="none" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
