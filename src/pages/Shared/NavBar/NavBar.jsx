@@ -278,7 +278,7 @@ const NavBar = () => {
 
                  <Link to="/sign-in" className="mr-4 3xl:-mt-28 2xl:-mt-28 desktop:-mt-28 laptop:-mt-28 tablet:-mt-24 -mt-24 3xl:hidden 2xl:hidden desktop:hidden laptop:hidden tablet:hidden block ">
                   
-                    <span className="text-[13px] whitespace-nowrap text-white mr-7 ">Sign in</span>
+                    <span className="text-[13px] whitespace-nowrap text-[#282A37] mr-7 ">Sign in</span>
                 
                 </Link>
               </div>
