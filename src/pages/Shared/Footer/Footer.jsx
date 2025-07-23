@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
+import { FaFacebookF, FaDribbble, FaBehance } from "react-icons/fa6";
 
 const Footer = () => {
     const [year, setYear] = useState("");
@@ -44,19 +45,60 @@ const Footer = () => {
                             <a href="/career" className="link link-hover">Career</a>
                         </nav>
 
-                       
-                        {/* Social */}
-                        <nav className="flex flex-col gap-4 text-[#e6e5e5] text-[13px] tablet:text-[15px] font-medium font-raleway">
-                            <a href="https://www.facebook.com/prographr.page" target="_blank" rel="noopener noreferrer" className="link link-hover">Facebook</a>
-                            <a href="https://www.freepik.com/author/prographr" target="_blank" rel="noopener noreferrer" className="link link-hover">Dribbble</a>
-                            <a href="https://www.behance.net/prographr" target="_blank" rel="noopener noreferrer" className="link link-hover">Behance</a>
-                        </nav>
+                        {/* Portfolio and Social Icons */}
+                        <div className="flex flex-col gap-4 text-[#e6e5e5] text-[13px] tablet:text-[15px] font-medium font-raleway">
+                            <h6 className="footer-title text-base text-white">Portfolio</h6>
+                            <div className="grid grid-flow-col gap-4 items-center">
+                                <a href="https://www.facebook.com/prographr.page" target="_blank" rel="noopener noreferrer">
+                                    <FaFacebookF className="text-2xl hover:text-blue-600 transition-colors" />
+                                </a>
+                                <a href="https://www.dribbble.com/prographr" target="_blank" rel="noopener noreferrer">
+                                    <FaDribbble className="text-2xl hover:text-pink-500 transition-colors" />
+                                </a>
+                                <a href="https://www.behance.net/prographr" target="_blank" rel="noopener noreferrer">
+                                    <FaBehance className="text-2xl hover:text-blue-500 transition-colors" />
+                                </a>
+                                <a href="https://www.freepik.com/author/prographr" target="_blank" rel="noopener noreferrer" aria-label="Freepik">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-6 h-6 fill-white hover:fill-blue-300 transition-colors">
+                                        <path d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224c123.8 0 224-100.3 224-224S379.8 32 256 32zm61 312c-15.4 0-28-12.6-28-28s12.6-28 28-28 28 12.6 28 28-12.5 28-28 28zm0-96c-15.4 0-28-12.6-28-28s12.6-28 28-28 28 12.6 28 28-12.5 28-28 28zm-122 96c-15.4 0-28-12.6-28-28s12.6-28 28-28 28 12.6 28 28-12.6 28-28 28zm0-96c-15.4 0-28-12.6-28-28s12.6-28 28-28 28 12.6 28 28-12.6 28-28 28z" />
+                                    </svg>
+                                </a>
+                                <a
+                                    href="https://stock.adobe.com/contributor/211997436/prographr"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Adobe Stock"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="32"
+                                        height="32"
+                                        viewBox="0 0 64 64"
+                                        className="w-8 h-8 transition-transform hover:scale-110"
+                                    >
+                                       
+                                        <circle cx="32" cy="32" r="32" fill="white" />
 
-                        {/* Resources */}
-                        <nav className="flex flex-col gap-4 text-[#e6e5e5] text-[13px] tablet:text-[15px] font-medium font-raleway">
-                            <a href="https://www.freepik.com/author/prographr" target="_blank" rel="noopener noreferrer" className="link link-hover">Freepik</a>
-                            <a href="https://stock.adobe.com/contributor/211997436/prographr?load_type=author&prev_url=detail" target="_blank" rel="noopener noreferrer" className="link link-hover">Adobe Stock</a>
-                        </nav>
+                                       
+                                        <rect x="12" y="16" width="40" height="32" rx="6" fill="black" />
+
+                                      
+                                        <text
+                                            x="32"
+                                            y="39"
+                                            textAnchor="middle"
+                                            fill="white"
+                                            fontFamily="Arial, sans-serif"
+                                            fontWeight="bold"
+                                            fontSize="20"
+                                        >
+                                            St
+                                        </text>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
 
