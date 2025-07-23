@@ -11,7 +11,7 @@ const TopBar = () => {
                     <div className="md:relative">
                         <Link to="/dashboard/adminHome" className="text-xl mt-7 ml-4 mr-3 mb-8">
                             <img
-                                src="/public/Logo_Prographr_Black.svg"
+                                src="Logo_Prographr_Black.svg"
                                 alt="Logo"
                                 className="md:ml-24 md:mr-2 ml-8 w-36 h-auto -mt-8 md:-mt-0"
                             />
