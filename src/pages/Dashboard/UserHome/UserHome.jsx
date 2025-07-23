@@ -24,7 +24,7 @@ const UserHome = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-6 px-6 py-3 bg-indigo-500 text-white font-semibold rounded-full shadow-md hover:bg-indigo-600 transition">
+            className="mt-6 px-6 py-3 bg-[#282A37] text-white font-semibold rounded-full shadow-md hover:bg-[#3c3f54] transition">
             Go to Home
           </motion.button>
         </a>

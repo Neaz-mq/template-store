@@ -11,7 +11,7 @@ const TopBar = () => {
                     <div className="md:relative">
                         <Link to="/dashboard/adminHome" className="text-xl mt-7 ml-4 mr-3 mb-8">
                             <img
-                                src="/Logo_Prographr_Color.svg"
+                                src="/public/Logo_Prographr_Black.svg"
                                 alt="Logo"
                                 className="md:ml-24 md:mr-2 ml-8 w-36 h-auto -mt-8 md:-mt-0"
                             />
@@ -48,9 +48,9 @@ const TopBar = () => {
 
                 <div className="md:flex items-center justify-between -mt-3 p-3 md:mr-7">
                     <div className="flex items-center mr-6 mt-3 relative">
-                        <FaBell className="text-gray-500 text-2xl" />
+                        <FaBell className="text-[#282A37] text-2xl" />
                         <span className="font-semibold text-gray-700 ml-4">{user?.displayName || "Admin"}</span>
-                        <a href="/"><div className="ml-4 md:h-8 h-6 md:w-8 w-6 bg-[#4864EC] rounded-full"></div>
+                        <a href="/"><div className="ml-4 md:h-8 h-6 md:w-8 w-6 bg-[#282A37] rounded-full"></div>
                         </a>
                     </div>
                 </div>
