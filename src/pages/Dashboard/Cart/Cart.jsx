@@ -27,9 +27,9 @@ const Cart = () => {
                 amount: totalPrice, // Total price in USD
                 customerName: user.name,
                 customerEmail: user.email,
-                successUrl: 'https://prographr.com/paymentHistory',
-                failUrl: 'https://prographr.com/fail-payment',
-                cancelUrl: 'https://prographr.com/cancel-payment',
+                successUrl: 'https://prographr-templates.netlify.app/paymentHistory',
+                failUrl: 'https://prographr-templates.netlify.app/fail-payment',
+                cancelUrl: 'https://prographr-templates.netlify.app/cancel-payment',
             });
 
             // Handle the payment gateway redirection

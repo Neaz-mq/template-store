@@ -12,7 +12,7 @@ const Fail = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect to cart when the user clicks "Return to Cart"
-                window.location.href = 'https://prographr.com/dashboard/cart';
+                window.location.href = 'https://prographr-templates.netlify.app/dashboard/cart';
             }
         });
     }, []);
